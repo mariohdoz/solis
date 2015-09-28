@@ -14,6 +14,22 @@ class SiteController extends Controller
 			'page' => array('class' => 'CViewAction')
 		);
 	}
+	public function accessRules()
+	{
+		return array(
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>array('index','busqueda','vista', 'error', 'login', 'logout'),
+				'users'=>array('@'),
+			),
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions'=>array('admin','delete'),
+				'users'=>array('admin'),
+			),
+			array('deny',  // deny all users
+				'users'=>array('*'),
+			),
+		);
+	}
 	/**
 	 * This is the default 'index' action that is invoked
 	 * when an action is not explicitly requested by users.
@@ -43,6 +59,7 @@ class SiteController extends Controller
 	}
 	public function actionBusqueda()
 	{
+		$this->layout ='//layouts/busquedaLayout';
 		$model2 = new Propiedad();
 		$model  = new BusquedaForm();
 		if (isset($_POST['Propiedad'])) {

@@ -2685,3 +2685,652 @@ Stack trace:
 REQUEST_URI=/nuevo/index.php/intra/index?r=access/logout
 HTTP_REFERER=http://localhost/nuevo/index.php/intra/index
 ---
+2015/09/28 00:33:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "busqued" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('busqued')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('busqued')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/busqued')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/busqued
+HTTP_REFERER=http://localhost/nuevo/
+---
+2015/09/28 00:33:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "busqued" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('busqued')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('busqued')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/busqued')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/busqued
+HTTP_REFERER=http://localhost/nuevo/
+---
+2015/09/28 00:35:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "css" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/css/style....')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/css/style.css
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:35:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "js" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/js/moderni...')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/js/modernizr.js
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:35:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "css" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/css/reset....')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/css/reset.css
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:35:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "img" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/logoV2...')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/img/logoV2.png
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:35:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "img" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/p3.jpg')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/img/p3.jpg
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:35:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "img" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/p4.jpg')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/img/p4.jpg
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:35:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "img" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/p2.jpg')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/img/p2.jpg
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:35:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "css" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/css/reset....')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/css/reset.css
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:35:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "css" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/css/style....')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/css/style.css
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:35:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "nuevo" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('nuevo')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('nuevo')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/nuevo/css/...')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/nuevo/css/style.css
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:35:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "nuevo" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('nuevo')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('nuevo')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/nuevo/css/...')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/nuevo/css/reset.css
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:35:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "js" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/js/moderni...')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/js/modernizr.js
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:35:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "img" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/logoV2...')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/img/logoV2.png
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:35:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "img" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/p2.jpg')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/img/p2.jpg
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:35:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "img" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/p3.jpg')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/img/p3.jpg
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:35:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "img" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/p4.jpg')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/img/p4.jpg
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:36:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "img" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/logoV2...')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/img/logoV2.png
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:36:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "js" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/js/moderni...')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/js/modernizr.js
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:36:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "img" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/p3.jpg')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/img/p3.jpg
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:36:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "img" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/p2.jpg')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/img/p2.jpg
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:36:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "img" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/p4.jpg')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/img/p4.jpg
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:36:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "img" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/logoV2...')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/img/logoV2.png
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:37:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "img" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/logoV2...')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/img/logoV2.png
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:37:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "js" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/js/moderni...')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/js/modernizr.js
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:37:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "img" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/p2.jpg')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/img/p2.jpg
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:37:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "img" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/p3.jpg')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/img/p3.jpg
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:37:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "img" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/p4.jpg')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/img/p4.jpg
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:37:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "img" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/logoV2...')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/img/logoV2.png
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:37:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "images" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('images')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('images')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/images/log...')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/images/logoV2.png
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:37:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "js" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/js/moderni...')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/js/modernizr.js
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:37:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "img" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/p3.jpg')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/img/p3.jpg
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:37:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "img" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/p2.jpg')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/img/p2.jpg
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:37:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "img" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/p4.jpg')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/img/p4.jpg
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:37:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "images" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('images')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('images')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/images/log...')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/images/logoV2.png
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:37:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "js" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/js/moderni...')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/js/modernizr.js
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:37:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "img" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/p2.jpg')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/img/p2.jpg
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:37:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "img" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/p3.jpg')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/img/p3.jpg
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:37:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "img" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/p4.jpg')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/img/p4.jpg
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:37:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "img" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/p2.jpg')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/img/p2.jpg
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:37:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "img" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/p3.jpg')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/img/p3.jpg
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:37:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "img" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/p4.jpg')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/img/p4.jpg
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/09/28 00:45:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "css" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/css/reset....')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/css/reset.css
+HTTP_REFERER=http://localhost/nuevo/index.php/site/index.html
+---
+2015/09/28 00:45:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "css" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/css/style....')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/css/style.css
+HTTP_REFERER=http://localhost/nuevo/index.php/site/index.html
+---
+2015/09/28 00:45:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "js" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/js/moderni...')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/js/modernizr.js
+HTTP_REFERER=http://localhost/nuevo/index.php/site/index.html
+---
+2015/09/28 00:45:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "js" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/js/jquery-...')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/js/jquery-2.1.1.js
+HTTP_REFERER=http://localhost/nuevo/index.php/site/index.html
+---
+2015/09/28 00:45:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "js" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/js/main.js')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/js/main.js
+HTTP_REFERER=http://localhost/nuevo/index.php/site/index.html
+---
+2015/09/28 00:45:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "images" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('images')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('images')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/images/log...')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/images/logoV2.png
+HTTP_REFERER=http://localhost/nuevo/index.php/site/index.html
+---
+2015/09/28 00:45:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "images" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('images')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('images')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/images/log...')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/images/logoV2.png
+HTTP_REFERER=http://localhost/nuevo/index.php/site/index.html
+---
+2015/09/28 00:47:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "js" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/js/jquery-...')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/js/jquery-2.1.1.js
+HTTP_REFERER=http://localhost/nuevo/index.php/site/index.html
+---
+2015/09/28 00:47:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "css" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/css/reset....')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/css/reset.css
+HTTP_REFERER=http://localhost/nuevo/index.php/site/index.html
+---
+2015/09/28 00:47:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "images" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('images')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('images')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/images/log...')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/images/logoV2.png
+HTTP_REFERER=http://localhost/nuevo/index.php/site/index.html
+---
+2015/09/28 00:47:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "js" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/js/moderni...')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/js/modernizr.js
+HTTP_REFERER=http://localhost/nuevo/index.php/site/index.html
+---
+2015/09/28 00:47:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "css" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/css/style....')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/css/style.css
+HTTP_REFERER=http://localhost/nuevo/index.php/site/index.html
+---
+2015/09/28 00:47:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "js" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/js/main.js')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/js/main.js
+HTTP_REFERER=http://localhost/nuevo/index.php/site/index.html
+---
+2015/09/28 00:47:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "images" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('images')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('images')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/images/log...')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/images/logoV2.png
+HTTP_REFERER=http://localhost/nuevo/index.php/site/index.html
+---
+2015/09/28 00:47:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "css" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/css/style....')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/css/style.css
+HTTP_REFERER=http://localhost/nuevo/index.php/site/index.html
+---
+2015/09/28 00:47:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "css" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('css')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('css')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/css/reset....')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/css/reset.css
+HTTP_REFERER=http://localhost/nuevo/index.php/site/index.html
+---

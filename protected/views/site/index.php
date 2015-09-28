@@ -118,8 +118,65 @@
 </div> <!-- .cd-secondary-nav -->
 <main class="cd-main-content">
 	<section id="cd-placeholder-1" class="cd-section cd-container">
-    <h2>asdsad</h2>
-		<a class="button raised green" href="Busqueda.html" fit >Buscar<paper-ripple fit></paper-ripple></a>
+    <h1>Buscar Propiedades</h1>
+      <?php $form=$this->beginWidget('CActiveForm', array(
+         'id'=>'busqueda-form',
+         'action'=>Yii::app()->createUrl('//site/busqueda'),
+         // Please note: When you enable ajax validation, make sure the corresponding
+         // controller action is handling ajax validation correctly.
+         // There is a call to performAjaxValidation() commented in generated controller code.
+         // See class documentation of CActiveForm for details on this.
+         'enableAjaxValidation'=>false,
+         )); ?>
+      <div class="row">
+         <div class="col-md-3">
+            <blanco>Venta/Arriendo</blanco>
+            <?php echo $form->dropDownList($model2,'SERVICIO',
+               array(
+                   'Todas' => 'Todas',
+                   'Venta' => 'Venta',
+                   'Arriendo' => 'Arriendo',
+               ),
+               array("class"=>"form-control select2"),
+               array('empty' => '(Tipo de propiedad)')); ?>
+         </div>
+         <div class="col-md-3">
+            <blanco>Ciudad</blanco>
+            <?php echo $form->dropDownList($model2,'COMUNAPROPIEDAD',
+               array(
+                   'Antofagasta' => 'Antofagasta',
+                   'Arica' => 'Arica',
+                   'Calama' => 'Calama',
+                   'Iquique' => 'Iquique',
+               ),
+               array("class"=>"form-control select2"),
+               array('empty' => '(Tipo de propiedad)')); ?>
+         </div>
+         <div class="col-md-3">
+            <blanco>Típo de propiedad</blanco>
+            <?php echo $form->dropDownList($model2,'TIPO',
+               array(
+                   'Departamento Habitación' => 'Departamento Habitación',
+                   'Local' => 'Local',
+                   'Oficina Casa' => 'Oficina Casa',
+                   'Galpón' => 'Galpón',
+                   'Oficina Departamento' => 'Oficina Departamento',
+                   'Sitio Comercial' => 'Sitio Comercial',
+                   'Sitio Recidencial' => 'Sitio Recidencial',
+                   'Propiedad de inversión' => 'Propiedad de inversión',
+                   'Terreno' => 'Terreno'
+               ),
+               array("class"=>"form-control select2"),
+               array('empty' => '(Tipo de propiedad)')); ?>
+         </div>
+         <div class="col-md-3">
+            <label> </label>
+            <?php echo CHtml::submitButton('Buscar', array("class"=>"btn-warning ") ); ?>
+         </div>
+      </div>
+      <br><br>
+      <?php $this->endWidget(); ?>
+   </div>
 	</section> <!-- #cd-placeholder-1 -->
 	<section id="cd-placeholder-2" class="cd-section cd-container">
 		<h2>¿Quiénes Sómos?</h2>
