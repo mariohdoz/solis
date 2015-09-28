@@ -6,7 +6,7 @@
    }else {
        $estado = false;
        $url = '?r=access/index';
-       $label = 'Iniciar sesión';
+       $label = 'Iniciar s esión';
    }
  ?>
 <header class="cd-header">
