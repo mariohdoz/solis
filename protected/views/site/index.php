@@ -10,14 +10,14 @@
    }
  ?>
 <header class="cd-header">
-		<div id="cd-logo"><a href="#0"><img src="images/logoV2.png" width="150px" height="50px" alt="Logo"></a></div>
+		<div id="cd-logo"><a href="#0"><img src="images/LogoV2.png" width="150px" height="50px" alt="Logo"></a></div>
 		<nav class="main-nav">
 			<ul>
 				<!-- inser more links here -->
 				<?php if(!Yii::app()->session['activo']) {
-						echo '<li><a class="cd-signin " href="#0">Iniciar Sesión<paper-ripple fit></paper-ripple></a></li>';
+						echo '<li><a class="cd-signin " href="#0">Iniciar Sesión</a></li>';
 					}else {
-						echo '<li><a class="cd-signin " href="index.php/site/logout">Cerrar seción<paper-ripple fit></paper-ripple></a></li>';
+						echo '<li><a class="cd-signin " href="index.php/site/logout">Cerrar sesión</a></li>';
 					}
 				?>
 			</ul>
@@ -40,6 +40,7 @@
 							echo $form->passwordField($model,'password',array( "class"=>"full-width has-padding has-border", "placeholder"=>"Constraseña"));
 				      echo $form->error($model,'password');
 						echo'</p>
+
 						<p class="fieldset">
 							<input type="checkbox" id="remember-me" checked>
 							<label for="remember-me">Guardar contraseña</label>
@@ -48,6 +49,10 @@
 							<input class="full-width" type="submit" value="Iniciar sesión" />
 						</p>
 					</div>
+					';
+}
+?>
+<?php $this->endWidget(); ?>
 					<p class="cd-form-bottom-message"><a href="#0">¿Olvidó su contraseña?</a></p>
 					<!-- <a href="#0" class="cd-close-form">Close</a> -->
 				</div>		<!-- termina el inicio de sesion -->
@@ -67,15 +72,17 @@
 				</div> <!-- cd-reset-password -->
 				<a href="#0" class="cd-close-form">Cerrar</a>
 			</div> <!-- cd-user-modal-container -->
-		</div> <!-- termin el inicio de sesion completo -->';
-	}
-?>
-<?php $this->endWidget(); ?>
+		</div> <!-- termin el inicio de sesion completo -->
 
 
 <section id="cd-intro">
 	<div id="cd-intro-tagline">
-		<h1>Propiedades Sol y Cobre</h1>
+		<div class="changer">
+			<div class="sub">Corredora de Propiedades</div>
+			<h1>SOL Y COBRE</h1>
+
+		</div>
+		<div id="container"></div>
 	</div> <!-- #cd-intro-tagline -->
 </section> <!-- #cd-intro -->
 
@@ -118,7 +125,10 @@
 </div> <!-- .cd-secondary-nav -->
 <main class="cd-main-content">
 	<section id="cd-placeholder-1" class="cd-section cd-container">
-    <h1>Buscar Propiedades</h1>
+    <h2>Buscar Propiedades</h2>
+
+
+
       <?php $form=$this->beginWidget('CActiveForm', array(
          'id'=>'busqueda-form',
          'action'=>Yii::app()->createUrl('//site/busqueda'),
@@ -131,17 +141,20 @@
       <div class="row">
          <div class="col-md-3">
             <blanco>Venta/Arriendo</blanco>
+			 <span class="custom-dropdown">
             <?php echo $form->dropDownList($model2,'SERVICIO',
                array(
                    'Todas' => 'Todas',
                    'Venta' => 'Venta',
                    'Arriendo' => 'Arriendo',
                ),
-               array("class"=>"form-control select2"),
+               array("class"=>""),
                array('empty' => '(Tipo de propiedad)')); ?>
+				 </span>
          </div>
          <div class="col-md-3">
             <blanco>Ciudad</blanco>
+			 <span class="custom-dropdown">
             <?php echo $form->dropDownList($model2,'COMUNAPROPIEDAD',
                array(
                    'Antofagasta' => 'Antofagasta',
@@ -149,11 +162,13 @@
                    'Calama' => 'Calama',
                    'Iquique' => 'Iquique',
                ),
-               array("class"=>"form-control select2"),
+               array("class"=>"custom-dropdown"),
                array('empty' => '(Tipo de propiedad)')); ?>
+				 </span>
          </div>
          <div class="col-md-3">
             <blanco>Típo de propiedad</blanco>
+			 <span class="custom-dropdown">
             <?php echo $form->dropDownList($model2,'TIPO',
                array(
                    'Departamento Habitación' => 'Departamento Habitación',
@@ -168,20 +183,27 @@
                ),
                array("class"=>"form-control select2"),
                array('empty' => '(Tipo de propiedad)')); ?>
+				 </span>
          </div>
          <div class="col-md-3">
             <label> </label>
-            <?php echo CHtml::submitButton('Buscar', array("class"=>"btn-warning ") ); ?>
+            <?php echo CHtml::submitButton('Buscar', array("class"=>"button raised green  ") ); ?>
          </div>
       </div>
       <br><br>
       <?php $this->endWidget(); ?>
+
    </div>
+
 	</section> <!-- #cd-placeholder-1 -->
+
+
+
 	<section id="cd-placeholder-2" class="cd-section cd-container">
 		<h2>¿Quiénes Sómos?</h2>
 		<p>
 			La empresa Propiedades sol y cobre es una empresa que se dedica a la venta y arriendo de propiedades tales como: casas, departamentos, locales y hospedaje. También presta servicios como: Obras menores y ampliaciones (pintura, cambio y lavado de alfombras, aseos, búsquedas de propiedades, etc.), y asesorías como: Regularización de Ampliaciones, asesorías de ventas, tasaciones y estudio de título. Actualmente trabaja con particulares y empresas las cuales por nombrar algunas son: Elecda, Komatsu, Mena y Ovalle, a los cuales presta los servicios mencionados anteriormente.
+
 		</p>
 	</section> <!-- #cd-placeholder-2 -->
 	<section id="cd-placeholder-3" class="cd-section cd-container">

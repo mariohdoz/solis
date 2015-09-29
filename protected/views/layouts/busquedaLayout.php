@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link rel="import" href="https://www.polymer-project.org/0.5/components/paper-ripple/paper-ripple.html">
     <link rel="stylesheet" href="/nuevo/css/reset.css"> <!-- CSS reset -->
     <link rel="stylesheet" href="/nuevo/css/style.css"> <!-- Resource style -->
     <script src="/nuevo/js/modernizr.js"></script> <!-- Modernizr -->
@@ -15,7 +16,7 @@
     <nav class="main-nav">
         <ul>
             <!-- inser more links here -->
-            <li><a class="cd-signin " href="index.html">Volver<paper-ripple fit></paper-ripple></a></li>
+            <li><a class="cd-signin " href="http://localhost/nuevo">Volver<paper-ripple fit></paper-ripple></a></li>
         </ul>
     </nav>
 </header>

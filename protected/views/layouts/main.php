@@ -7,6 +7,7 @@
 		<link rel="import" href="https://www.polymer-project.org/0.5/components/paper-ripple/paper-ripple.html">
 		<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
 		<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+
 		<script src="js/modernizr.js"></script> <!-- Modernizr -->
 		<title>Sol y Cobre</title>
 	</head>
