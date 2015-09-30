@@ -222,11 +222,11 @@ var demos = [];
 
 var cloudsuit = {
 	one : {
-		bg: "http://i.imgur.com/ZnkfwAR.jpg",
+		bg: "http://i.imgur.com/Oj2AB0o.jpg",
 		bm: "none"
 	},
 	two : {
-		bg: "http://i.imgur.com/ONBXKkS.jpg",
+		bg: "http://i.imgur.com/IdWL9M2.jpg",
 		bm: "lighten"
 	},
 	three : {
@@ -236,39 +236,6 @@ var cloudsuit = {
 }
 demos.push(cloudsuit);
 
-
-var urbansky = {
-	one : {
-		bg: "http://i.imgur.com/l1MS7kk.jpg",
-		bm: "none"
-	},
-	two : {
-		bg: "http://i.imgur.com/6QBLNy6.jpg",
-		bm: "multiply"
-	},
-	three : {
-		bg: "http://i.imgur.com/bmnzJRs.png",
-		bm: "none"
-	}
-}
-demos.push(urbansky);
-
-
-var knowledge = {
-	one : {
-		bg: "http://i.imgur.com/YpTSfYD.jpg",
-		bm: "none"
-	},
-	two : {
-		bg: "http://i.imgur.com/ziAdjNM.jpg",
-		bm: "multiply"
-	},
-	three : {
-		bg: "http://i.imgur.com/dnfONso.png",
-		bm: "none"
-	}
-}
-demos.push(knowledge);
 
 
 var container = document.getElementById("container");
@@ -320,3 +287,7 @@ $('.demos').on('click', 'a', function(event) {
 		}
 	});
 });
+
+
+
+

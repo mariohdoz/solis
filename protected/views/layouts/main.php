@@ -6,7 +6,9 @@
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
 		<link rel="import" href="https://www.polymer-project.org/0.5/components/paper-ripple/paper-ripple.html">
 		<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+		<link href="/nuevo/bootstrap/css/bootstrap.css" rel="stylesheet">
 		<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+
 
 		<script src="js/modernizr.js"></script> <!-- Modernizr -->
 		<title>Sol y Cobre</title>

@@ -5196,3 +5196,12 @@ Stack trace:
 REQUEST_URI=/nuevo/index.php/intra/index?r=access/logout
 HTTP_REFERER=http://localhost/nuevo/index.php/intra/index
 ---
+2015/09/30 19:00:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "propiedad/index"' in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('propiedad/index')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\nuevo\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/nuevo/index.php/intra/index?r=propiedad/index
+HTTP_REFERER=http://localhost/nuevo/index.php/intra/index
+---

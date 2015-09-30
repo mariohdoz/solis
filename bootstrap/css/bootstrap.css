@@ -2549,8 +2549,8 @@ output {
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.42857143;
-  color: #555;
-  background-color: #fff;
+  background-color: #1abc9c;
+  color: #fff;
   background-image: none;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -3221,9 +3221,17 @@ fieldset[disabled] .btn-info.active {
   background-color: #fff;
 }
 .btn-warning {
-  color: #fff;
-  background-color: #f0ad4e;
-  border-color: #eea236;
+  font-size: 12px;
+  display: inline-block;
+  padding: 1em 1.8em;
+  background-color: rgba(255, 87, 34, 0.9);
+  margin-top: 1em;
+  border-radius: .9em;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: white;
 }
 .btn-warning:hover,
 .btn-warning:focus,
