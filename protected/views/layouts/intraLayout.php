@@ -3,7 +3,7 @@
 /* @var $model Cliente */
 /* @var $form CActiveForm */
 if(!Yii::app()->session['activo'])
-    $this->redirect('?r=site/index');;
+    $this->redirect(Yii::app()->request->baseUrl.'site/index');;
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">
@@ -149,10 +149,10 @@ if(!Yii::app()->session['activo'])
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="?r=propiedad/index"><i class="fa fa-plus"></i> Ingresar nueva propiedad</a></li>
-                        <li><a href="?r=propiedad/select"><i class="fa fa-exchange"></i> Modificar Propiedades</a></li>
-                        <li><a href="?r=propiedad/eliminar"><i class="fa fa-close"></i> Eliminar Propiedad</a></li>
-                        <li><a href="?r=propiedad/ver"><i class="fa fa-file-text-o"></i> Listado de Propiedades</a></li>
+                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/propiedad/index"><i class="fa fa-plus"></i> Ingresar nueva propiedad</a></li>
+                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/propiedad/select"><i class="fa fa-exchange"></i> Modificar Propiedades</a></li>
+                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/propiedad/eliminar"><i class="fa fa-close"></i> Eliminar Propiedad</a></li>
+                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/propiedad/ver"><i class="fa fa-file-text-o"></i> Listado de Propiedades</a></li>
                     </ul>
                 </li>
             </ul>
@@ -165,10 +165,10 @@ if(!Yii::app()->session['activo'])
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-plus"></i> Agregar Clientes</a></li>
-                        <li><a href="?r=propiedad/ver"><i class="fa fa-exchange"></i> Modificar Clientes</a></li>
-                        <li><a href="#"><i class="fa fa-close"></i> Eliminar Clientes</a></li>
-                        <li><a href="#"><i class="fa fa-file-text-o"></i> Listado de Clientes</a></li>
+                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/"><i class="fa fa-plus"></i> Agregar Clientes</a></li>
+                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/propiedad/ver"><i class="fa fa-exchange"></i> Modificar Clientes</a></li>
+                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/"><i class="fa fa-close"></i> Eliminar Clientes</a></li>
+                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/"><i class="fa fa-file-text-o"></i> Listado de Clientes</a></li>
                     </ul>
                 </li>
             </ul>
@@ -180,9 +180,9 @@ if(!Yii::app()->session['activo'])
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-plus"></i> Agregar Funcionarios</a></li>
-                        <li><a href="#"><i class="fa fa-exchange"></i> Modificar Funcionarios</a></li>
-                        <li><a href="#"><i class="fa fa-close"></i> Eliminar Funcionarios</a></li>
+                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-plus"></i> Agregar Funcionarios</a></li>
+                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-exchange"></i> Modificar Funcionarios</a></li>
+                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-close"></i> Eliminar Funcionarios</a></li>
                     </ul>
                 </li>
             </ul>
@@ -194,10 +194,10 @@ if(!Yii::app()->session['activo'])
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-plus"></i> Crear Nueva OT</a></li>
-                        <li><a href="#"><i class="fa fa-exchange"></i> Modificar OT</a></li>
-                        <li><a href="#"><i class="fa fa-close"></i> Eliminar OT</a></li>
-                        <li><a href="#"><i class="fa fa-close"></i> Crear reunion</a></li>
+                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-plus"></i> Crear Nueva OT</a></li>
+                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-exchange"></i> Modificar OT</a></li>
+                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-close"></i> Eliminar OT</a></li>
+                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-close"></i> Crear reunion</a></li>
                     </ul>
                 </li>
             </ul>

@@ -10,7 +10,7 @@
    }
  ?>
 <header class="cd-header">
-		<div id="cd-logo"><a href="#0"><img src="images/LogoV2.png" width="150px" height="50px" alt="Logo"></a></div>
+		<div id="cd-logo"><a href="#0"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/LogoV2.png" width="150px" height="50px" alt="Logo"></a></div>
 		<nav class="main-nav">
 			<ul>
 				<!-- inser more links here -->
