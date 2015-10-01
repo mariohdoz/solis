@@ -1,20 +1,17 @@
 <div class="cd-filter">
         <form>
-
             <div class="cd-filter-block">
-
                 <div class="cd-filter-content">
                     <input type="search" placeholder="...">
                 </div> <!-- cd-filter-content -->
             </div> <!-- cd-filter-block -->
             <div class="cd-filter-block">
                 <h4>Ciudad</h4>
-
                 <div class="cd-filter-content">
                     <div class="cd-select cd-filters">
                         <select class="filter" name="selectThis">
-                            <option value="">Calama</option>
-                            <option value=".option1">Antofagasta</option>
+                            <option value=".calama">Calama</option>
+                            <option value=".antofagasta">Antofagasta</option>
                             <option value=".option2">Iquique</option>
 
                         </select>

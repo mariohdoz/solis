@@ -130,7 +130,7 @@
 			<div class="container-fluid row-centered">
 				<?php $form=$this->beginWidget('CActiveForm', array(
 					'id'=>'busqueda-form',
-					'action'=>Yii::app()->createUrl('//site/busqueda'),
+					'action'=>Yii::app()->createUrl('/site/busqueda'),
 					// Please note: When you enable ajax validation, make sure the corresponding
 					// controller action is handling ajax validation correctly.
 					// There is a call to performAjaxValidation() commented in generated controller code.
@@ -228,5 +228,5 @@
 	</section> <!-- #cd-placeholder-5 -->
 </main> <!-- .cd-main-content -->
 
-<script src="js/jquery-2.1.1.js"></script>
-<script src="js/main.js"></script> <!-- Resource jQuery -->
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-2.1.1.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/main.js"></script> <!-- Resource jQuery -->
