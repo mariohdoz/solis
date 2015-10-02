@@ -203,27 +203,33 @@
 	<section id="cd-placeholder-3" class="cd-section cd-container">
 		<h1>Misión</h1>
 		<p>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem ab consequatur fugiat delectus sint in velit quo possimus, ullam aspernatur ipsa natus tenetur nulla distinctio doloremque totam. Earum enim sed dolorum, exercitationem temporibus quaerat eos, accusantium amet facilis facere eaque commodi optio quidem rem minima nisi laborum quae animi nostrum aut voluptates veniam. Cum neque quam fuga sapiente quidem eum necessitatibus nulla, cupiditate a, repudiandae iusto in dolor eaque commodi nostrum consequuntur dolores velit eligendi dolorem quae. Distinctio quae, cumque aliquid quos consequuntur perspiciatis voluptates, laboriosam velit qui et aut sint esse nemo voluptatibus, dolore veritatis natus facilis commodi sed. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias sunt mollitia atque tempore ea cum exercitationem, quisquam est consectetur tempora ipsam, obcaecati voluptate a. Autem minus cumque voluptatem eaque fugit nostrum reprehenderit incidunt officia. Nesciunt reiciendis delectus officiis fugit sint at totam nisi commodi repellendus iusto dolorum molestias dignissimos natus, impedit quam atque ex voluptas ut facere assumenda iure incidunt rerum vitae accusamus? Et voluptatibus unde, fugiat tenetur sed dolore, praesentium magni illo nobis incidunt, possimus doloremque dolorem sunt. Aliquid ducimus delectus esse voluptatem officia perferendis, a voluptate omnis adipisci expedita distinctio praesentium natus veniam accusamus iure, quasi, inventore reiciendis.
+			texto
 		</p>
 	</section> <!-- #cd-placeholder-3 -->
 	<section id="cd-placeholder-4" class="cd-section cd-container">
 		<h1>Visión</h1>
 		<p>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem ab consequatur fugiat delectus sint in velit quo possimus, ullam aspernatur ipsa natus tenetur nulla distinctio doloremque totam. Earum enim sed dolorum, exercitationem temporibus quaerat eos, accusantium amet facilis facere eaque commodi optio quidem rem minima nisi laborum quae animi nostrum aut voluptates veniam. Cum neque quam fuga sapiente quidem eum necessitatibus nulla, cupiditate a, repudiandae iusto in dolor eaque commodi nostrum consequuntur dolores velit eligendi dolorem quae. Distinctio quae, cumque aliquid quos consequuntur perspiciatis voluptates, laboriosam velit qui et aut sint esse nemo voluptatibus, dolore veritatis natus facilis commodi sed. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, minus nisi ipsam quasi. Reprehenderit quo dolorem ratione in, porro placeat nihil asperiores, ab earum excepturi sint non. Error officiis, sint expedita dolore fuga voluptates ipsam temporibus vero suscipit porro asperiores deserunt sapiente optio. Quas vero nam nihil, id suscipit, similique facere dicta velit, quis, commodi perspiciatis. Perferendis necessitatibus, in, sequi ipsum eum voluptates quisquam voluptatem, rerum fugiat deleniti voluptatum eius odio, expedita enim libero quaerat! Veniam eos, maiores nostrum mollitia reprehenderit, obcaecati repudiandae eius perspiciatis? Quo voluptatum ipsa voluptatem sequi esse eius consectetur, quae ea accusamus porro autem ipsum, quam dignissimos, nesciunt consequuntur quaerat. Numquam iure velit veniam saepe sunt enim asperiores hic nam aperiam illo officia molestias quis dicta autem incidunt consequatur dolor, explicabo corrupti nostrum odio ea laudantium magni, nulla. Eaque officiis, distinctio, dolores eligendi facilis tempore reiciendis illum iste sed temporibus rerum aliquid culpa dolor, et voluptatibus!
+			texto
 		</p>
 	</section> <!-- #cd-placeholder-4 -->
 	<section id="cd-placeholder-5" class="cd-section cd-container">
 		<h1>Contáctenos</h1>
 		<form class="cf">
+
 			<div class="half left cf">
-				<input type="text" id="input-name" placeholder="Name">
-				<input type="email" id="input-email" placeholder="Email address">
+				<input type="text" id="input-name" placeholder="Nombre Completo">
+				<input type="email" id="input-email" placeholder="Correo Eletrónico">
 				<input type="text" id="input-subject" placeholder="Subject">
+				<textarea name="message" type="text" id="input-message" placeholder="Comentarios"></textarea>
+				<input type="submit" value="Enviar" id="input-submit">
 			</div>
 			<div class="half right cf">
-				<textarea name="message" type="text" id="input-message" placeholder="Message"></textarea>
+				<div class="google-map">
+
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1550.1614112716795!2d-68.9253001374728!3d-22.469416482835825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96ac09cb43a152a5%3A0xd5a4bc040bd6013a!2sLatorre+1291%2C+Calama%2C+Regi%C3%B3n+de+Antofagasta!5e0!3m2!1ses-419!2scl!4v1443819530064" width="600" height="450" frameborder="0" style="border:0"></iframe>
+				</div>
 			</div>
-			<input type="submit" value="Submit" id="input-submit">
+
 		</form>
 	</section> <!-- #cd-placeholder-5 -->
 </main> <!-- .cd-main-content -->

@@ -2264,16 +2264,17 @@ form textarea {
 
 .half {
   float: left;
-  width: 48%;
+  width: 49%;
   margin-bottom: 1em;
 }
 
 .right {
   width: 50%;
+  float: left;
 }
 
 .left {
-  margin-right: 2%;
+  margin-right: 1%;
 }
 
 @media (max-width: 480px) {
@@ -2352,6 +2353,18 @@ cite {
 
 centrar{
   text-align: center;
-  color: #a8a8a8;
+  color: #000000;
   text-shadow: 1px 1px 0 white;
+}
+.google-map{
+  position: relative;
+  padding-bottom: 75%;
+  height: 0;
+  overlow: hidden;
+}
+.google-map iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100% !important;
+  height: 100% !important;
 }
