@@ -897,7 +897,7 @@ xsigin/signup popup
   appearance: none;
 }
 .cd-form input.has-border:focus {
-  border-color: #343642;
+  border-color: #ff5722;
   box-shadow: 0 0 5px rgba(52, 54, 66, 0.1);
   outline: none;
 }
@@ -1805,13 +1805,14 @@ xcustom form elements
 .changer {
   position: absolute;
   z-index: 30;
-  width: 230px;
-  left: 10%;
-  bottom: 10%;
+  width: 330px;
+  left: 8%;
+  bottom: 30%;
   padding: 0px;
   color: #777777;
 }
 .changer .sub {
+  font-size: 25px;
   font-weight: 300;
 }
 .changer h1 {
@@ -2282,15 +2283,75 @@ form textarea {
     margin-bottom: 0;
   }
 }
-/* Clearfix */
-.cf:before,
-.cf:after {
-  content: " ";
-  /* 1 */
-  display: table;
-  /* 2 */
+figure {
+  position: relative;
+  display: block;
+  margin-bottom: 500px;
 }
 
-.cf:after {
-  clear: both;
+/* Quotes */
+blockquote {
+  position: absolute;
+  padding: 0.5em 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #53b7ad;
+
+  color: #888;
+  font-family: 'Open Sans';
+  font-size: 2em;
+
+  opacity: 0;
+}
+
+blockquote:before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0%;
+  width: 0%;
+
+  border-top: 1px solid #ff5722;
+
+  animation: bar 6s linear forwards infinite;
+}
+
+/* Attribution */
+cite {
+  display: block;
+  margin: 1em 0;
+  color: #ff5722;
+  font-size: 1em;
+  text-align: center;
+  text-shadow: 1px 1px 0 white;
+}
+
+
+@keyframes bar {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Animations */
+@keyframes fade-in {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fade-out {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Animation classes */
+.fade-in  { animation: fade-in 1s ease forwards; }
+.fade-out { animation: fade-out 1s ease forwards; }
+
+centrar{
+  text-align: center;
+  color: #a8a8a8;
+  text-shadow: 1px 1px 0 white;
 }
