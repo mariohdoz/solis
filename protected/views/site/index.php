@@ -42,10 +42,6 @@
 						echo'</p>
 
 						<p class="fieldset">
-							<input type="checkbox" id="remember-me" checked>
-							<label for="remember-me">Guardar contraseña</label>
-						</p>
-						<p class="fieldset">
 							<input class="full-width" type="submit" value="Iniciar sesión" />
 						</p>
 					</div>
@@ -53,23 +49,10 @@
 }
 ?>
 <?php $this->endWidget(); ?>
-					<p class="cd-form-bottom-message"><a href="#0">¿Olvidó su contraseña?</a></p>
+
 					<!-- <a href="#0" class="cd-close-form">Close</a> -->
 				</div>		<!-- termina el inicio de sesion -->
-				<div id="cd-reset-password"> <!-- solicitar contrseña-->
-					<p class="cd-form-message">¿Olvidó su contraseña?, Por favor ingrese su correo electrónico para solicitar una nueva contraseña.</p>
-					<form class="cd-form">
-						<p class="fieldset">
-							<label class="image-replace cd-email" for="reset-email">E-mail</label>
-							<input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="Correo electrónico">
-							<span class="cd-error-message">Ingrese su correo eletrónico!</span>
-						</p>
-						<p class="fieldset">
-							<input class="full-width has-padding" type="submit" value="Solicitar nueva contraseña">
-						</p>
-					</form>
-					<p class="cd-form-bottom-message"><a href="#0">Volver</a></p>
-				</div> <!-- cd-reset-password -->
+
 				<a href="#0" class="cd-close-form">Cerrar</a>
 			</div> <!-- cd-user-modal-container -->
 		</div> <!-- termin el inicio de sesion completo -->
@@ -77,11 +60,7 @@
 
 <section id="cd-intro">
 	<div id="cd-intro-tagline">
-		<div class="changer">
-			<div class="sub">Corredora de Propiedades</div>
-			<h1>SOL Y COBRE</h1>
 
-		</div>
 		<div id="container"></div>
 	</div> <!-- #cd-intro-tagline -->
 </section> <!-- #cd-intro -->
@@ -195,10 +174,27 @@
 
 	<section id="cd-placeholder-2" class="cd-section cd-container">
 		<h1>¿Quiénes Sómos?</h1>
-		<p>
-			La empresa Propiedades sol y cobre es una empresa que se dedica a la venta y arriendo de propiedades tales como: casas, departamentos, locales y hospedaje. También presta servicios como: Obras menores y ampliaciones (pintura, cambio y lavado de alfombras, aseos, búsquedas de propiedades, etc.), y asesorías como: Regularización de Ampliaciones, asesorías de ventas, tasaciones y estudio de título. Actualmente trabaja con particulares y empresas las cuales por nombrar algunas son: Elecda, Komatsu, Mena y Ovalle, a los cuales presta los servicios mencionados anteriormente.
 
-		</p>
+		<!-- slider -->
+
+		<figure>
+			<blockquote>
+				<cite>Nosotros</cite>
+				<centrar>La empresa Propiedades sol y cobre es una empresa que se dedica a la venta y arriendo de propiedades tales como: casas, departamentos, locales y hospedaje. También presta servicios como: Obras menores y ampliaciones (pintura, cambio y lavado de alfombras, aseos, búsquedas de propiedades, etc.), y asesorías como: Regularización de Ampliaciones, asesorías de ventas, tasaciones y estudio de título. Actualmente trabaja con particulares y empresas las cuales por nombrar algunas son: Elecda, Komatsu, Mena y Ovalle, a los cuales presta los servicios mencionados anteriormente.</centrar>
+			</blockquote>
+			<blockquote>
+				<cite>Misión</cite>
+				<centrar>Entregar excelencia en servicios de Corretaje de Propiedades, Administración de Condominios, Edificios y Tasaciones de Bienes Raíces y Capacitación. Consolidándonos como una organización joven, moderna, eficiente y eficaz.
+					De nuestra corredora de propiedades en atender las necesidades de nuestros clientes entregando seguridad, información y tranquilidad en el proceso de compra venta o arrendamiento de su propiedad. Esto apoyado en el conocimiento y profesionalismo de nuestro equipo de trabajo y de las políticas de control de gestión de la empresa, entregando como resultado un servicio de alta calidad y adecuada eficiencia en cada etapa de la cadena.</centrar>
+			</blockquote>
+			<blockquote>
+				<cite>Visión</cite>
+				<centrar>“Creemos en un proceso de mejora continua, ser un equipo multidisciplinario profesional y comercialmente consolidado, manteniendo la excelencia en la atención de nuestros clientes. Expandir nuestro mercado a nivel nacional, mediante la captación de asociados y la apertura de nuevos mercados y negocios. Que nuestros clientes se sientan plenamente acompañados y asesorados durante todo el proceso de compra venta o arrendamiento de su propiedad por nosotros como corredores de propiedades, generando así relaciones de largo plazo.”</centrar>
+
+			</blockquote>
+		</figure>
+
+
 	</section> <!-- #cd-placeholder-2 -->
 	<section id="cd-placeholder-3" class="cd-section cd-container">
 		<h1>Misión</h1>
@@ -230,3 +226,4 @@
 
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-2.1.1.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/main.js"></script> <!-- Resource jQuery -->
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/modernizr.js"></script> <!-- Resource jQuery -->
