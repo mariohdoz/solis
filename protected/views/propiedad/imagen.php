@@ -33,7 +33,7 @@
                      </p>
                      <?php $form=$this->beginWidget('CActiveForm', array(
                         'id'=>'imagen-form',
-                         'action'=>Yii::app()->createUrl('/propiedad/update&id='.$model->IDPROP),
+                         'action'=>Yii::app()->createUrl('/propiedad/update/'.$model->IDPROP),
                          // Please note: When you enable ajax validation, make sure the corresponding
                          // controller ac tion is handling ajax validation correctly.
                          // There is a call to performAjaxValidation() commented in generated controller code.
@@ -47,7 +47,7 @@
                          $this->widget('ext.EAjaxUpload.EAjaxUpload', array(
                              'id' => 'uploadFile',
                              'config' => array(
-                                 'action' => Yii::app()->createUrl('propiedad/upload&id='.$model->IDPROP),
+                                 'action' => Yii::app()->createUrl('propiedad/upload/'.$model->IDPROP),
                                  'allowedExtensions' => array("jpg","jpeg","gif","png"), //array("jpg","jpeg","gif","exe","mov" and etc...
                                  'sizeLimit' => 10 * 1024 * 1024, // maximum file size in bytes
                                  'buttonText' => 'Selección',

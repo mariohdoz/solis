@@ -5635,3 +5635,418 @@ Stack trace:
 #24 {main}
 REQUEST_URI=/solis/index.php/cliente/create.html
 ---
+2015/10/02 16:16:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "access/logout"' in /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('access/logout')
+#1 /Applications/MAMP/htdocs/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/solis/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/solis/index.php/cliente/create.html?r=access/logout
+HTTP_REFERER=http://localhost:8888/solis/index.php/cliente/create.html
+---
+2015/10/02 16:23:07 [error] [exception.CException] exception 'CException' with message 'La propiedad "CEmailValidator"."0" no se encuentra definida.' in /Applications/MAMP/htdocs/yii/framework/base/CComponent.php:173
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii/framework/validators/CValidator.php(177): CComponent->__set('0', 'exist')
+#1 /Applications/MAMP/htdocs/yii/framework/base/CModel.php(287): CValidator::createValidator('email', Object(LoginForm), 'username', Array)
+#2 /Applications/MAMP/htdocs/yii/framework/base/CModel.php(260): CModel->createValidators()
+#3 /Applications/MAMP/htdocs/yii/framework/web/helpers/CHtml.php(2436): CModel->getValidators('username')
+#4 /Applications/MAMP/htdocs/yii/framework/web/helpers/CHtml.php(1594): CHtml::activeInputField('email', Object(LoginForm), 'username', Array)
+#5 /Applications/MAMP/htdocs/yii/framework/web/widgets/CActiveForm.php(632): CHtml::activeEmailField(Object(LoginForm), 'username', Array)
+#6 /Applications/MAMP/htdocs/solis/protected/views/site/index.php(35): CActiveForm->emailField(Object(LoginForm), 'username', Array)
+#7 /Applications/MAMP/htdocs/yii/framework/web/CBaseController.php(126): require('/Applications/M...')
+#8 /Applications/MAMP/htdocs/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Applications/M...', Array, true)
+#9 /Applications/MAMP/htdocs/yii/framework/web/CController.php(869): CBaseController->renderFile('/Applications/M...', Array, true)
+#10 /Applications/MAMP/htdocs/yii/framework/web/CController.php(782): CController->renderPartial('index', Array, true)
+#11 /Applications/MAMP/htdocs/solis/protected/controllers/SiteController.php(58): CController->render('index', Array)
+#12 /Applications/MAMP/htdocs/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#13 /Applications/MAMP/htdocs/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#14 /Applications/MAMP/htdocs/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#15 /Applications/MAMP/htdocs/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(282): CController->run('')
+#17 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController(false)
+#18 /Applications/MAMP/htdocs/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#19 /Applications/MAMP/htdocs/solis/index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/solis/index.php
+HTTP_REFERER=http://localhost:8888/solis/index.php/intra/index
+---
+2015/10/02 16:45:41 [error] [exception.CException] exception 'CException' with message 'La propiedad "CActiveForm"."clientOption" no se encuentra definida.' in /Applications/MAMP/htdocs/yii/framework/base/CComponent.php:173
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii/framework/web/CWidgetFactory.php(161): CComponent->__set('clientOption', Array)
+#1 /Applications/MAMP/htdocs/yii/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(SiteController), 'CActiveForm', Array)
+#2 /Applications/MAMP/htdocs/yii/framework/web/CBaseController.php(197): CBaseController->createWidget('CActiveForm', Array)
+#3 /Applications/MAMP/htdocs/solis/protected/views/site/index.php(30): CBaseController->beginWidget('CActiveForm', Array)
+#4 /Applications/MAMP/htdocs/yii/framework/web/CBaseController.php(126): require('/Applications/M...')
+#5 /Applications/MAMP/htdocs/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Applications/M...', Array, true)
+#6 /Applications/MAMP/htdocs/yii/framework/web/CController.php(869): CBaseController->renderFile('/Applications/M...', Array, true)
+#7 /Applications/MAMP/htdocs/yii/framework/web/CController.php(782): CController->renderPartial('index', Array, true)
+#8 /Applications/MAMP/htdocs/solis/protected/controllers/SiteController.php(58): CController->render('index', Array)
+#9 /Applications/MAMP/htdocs/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#10 /Applications/MAMP/htdocs/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Applications/MAMP/htdocs/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#12 /Applications/MAMP/htdocs/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(282): CController->run('')
+#14 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController(false)
+#15 /Applications/MAMP/htdocs/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#16 /Applications/MAMP/htdocs/solis/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/solis/index.php
+HTTP_REFERER=http://localhost:8888/solis/index.php
+---
+2015/10/02 17:24:05 [error] [exception.CException] exception 'CException' with message 'La propiedad "PropiedadForm"."IDPROP" no se encuentra definida.' in /Applications/MAMP/htdocs/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii/framework/web/helpers/CHtml.php(2729): CComponent->__get('IDPROP')
+#1 /Applications/MAMP/htdocs/yii/framework/web/helpers/CHtml.php(1982): CHtml::resolveValue(Object(PropiedadForm), 'IDPROP')
+#2 /Applications/MAMP/htdocs/yii/framework/web/widgets/CActiveForm.php(914): CHtml::activeDropDownList(Object(PropiedadForm), 'IDPROP', Array, Array)
+#3 /Applications/MAMP/htdocs/solis/protected/views/propiedad/select.php(39): CActiveForm->dropDownList(Object(PropiedadForm), 'IDPROP', Array, Array, Array)
+#4 /Applications/MAMP/htdocs/yii/framework/web/CBaseController.php(126): require('/Applications/M...')
+#5 /Applications/MAMP/htdocs/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Applications/M...', Array, true)
+#6 /Applications/MAMP/htdocs/yii/framework/web/CController.php(869): CBaseController->renderFile('/Applications/M...', Array, true)
+#7 /Applications/MAMP/htdocs/yii/framework/web/CController.php(782): CController->renderPartial('select', Array, true)
+#8 /Applications/MAMP/htdocs/solis/protected/controllers/PropiedadController.php(185): CController->render('select', Array)
+#9 /Applications/MAMP/htdocs/yii/framework/web/actions/CInlineAction.php(49): PropiedadController->actionSelect()
+#10 /Applications/MAMP/htdocs/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /Applications/MAMP/htdocs/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 /Applications/MAMP/htdocs/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 /Applications/MAMP/htdocs/yii/framework/web/CController.php(291): CFilterChain->run()
+#17 /Applications/MAMP/htdocs/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(282): CController->run('select')
+#19 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('propiedad/selec...')
+#20 /Applications/MAMP/htdocs/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#21 /Applications/MAMP/htdocs/solis/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/solis/index.php/propiedad/select
+HTTP_REFERER=http://localhost:8888/solis/index.php/intra/index
+---
+2015/10/02 17:26:12 [error] [exception.CException] exception 'CException' with message 'La propiedad "PropiedadForm"."IDPROP" no se encuentra definida.' in /Applications/MAMP/htdocs/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii/framework/web/helpers/CHtml.php(2729): CComponent->__get('IDPROP')
+#1 /Applications/MAMP/htdocs/yii/framework/web/helpers/CHtml.php(1982): CHtml::resolveValue(Object(PropiedadForm), 'IDPROP')
+#2 /Applications/MAMP/htdocs/yii/framework/web/widgets/CActiveForm.php(914): CHtml::activeDropDownList(Object(PropiedadForm), 'IDPROP', Array, Array)
+#3 /Applications/MAMP/htdocs/solis/protected/views/propiedad/select.php(39): CActiveForm->dropDownList(Object(PropiedadForm), 'IDPROP', Array, Array, Array)
+#4 /Applications/MAMP/htdocs/yii/framework/web/CBaseController.php(126): require('/Applications/M...')
+#5 /Applications/MAMP/htdocs/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Applications/M...', Array, true)
+#6 /Applications/MAMP/htdocs/yii/framework/web/CController.php(869): CBaseController->renderFile('/Applications/M...', Array, true)
+#7 /Applications/MAMP/htdocs/yii/framework/web/CController.php(782): CController->renderPartial('select', Array, true)
+#8 /Applications/MAMP/htdocs/solis/protected/controllers/PropiedadController.php(185): CController->render('select', Array)
+#9 /Applications/MAMP/htdocs/yii/framework/web/actions/CInlineAction.php(49): PropiedadController->actionSelect()
+#10 /Applications/MAMP/htdocs/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /Applications/MAMP/htdocs/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 /Applications/MAMP/htdocs/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 /Applications/MAMP/htdocs/yii/framework/web/CController.php(291): CFilterChain->run()
+#17 /Applications/MAMP/htdocs/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(282): CController->run('select')
+#19 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('propiedad/selec...')
+#20 /Applications/MAMP/htdocs/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#21 /Applications/MAMP/htdocs/solis/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/solis/index.php/propiedad/select
+HTTP_REFERER=http://localhost:8888/solis/index.php/intra/index
+---
+2015/10/02 17:26:16 [error] [exception.CException] exception 'CException' with message 'La propiedad "PropiedadForm"."IDPROP" no se encuentra definida.' in /Applications/MAMP/htdocs/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii/framework/web/helpers/CHtml.php(2729): CComponent->__get('IDPROP')
+#1 /Applications/MAMP/htdocs/yii/framework/web/helpers/CHtml.php(1982): CHtml::resolveValue(Object(PropiedadForm), 'IDPROP')
+#2 /Applications/MAMP/htdocs/yii/framework/web/widgets/CActiveForm.php(914): CHtml::activeDropDownList(Object(PropiedadForm), 'IDPROP', Array, Array)
+#3 /Applications/MAMP/htdocs/solis/protected/views/propiedad/select.php(39): CActiveForm->dropDownList(Object(PropiedadForm), 'IDPROP', Array, Array, Array)
+#4 /Applications/MAMP/htdocs/yii/framework/web/CBaseController.php(126): require('/Applications/M...')
+#5 /Applications/MAMP/htdocs/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Applications/M...', Array, true)
+#6 /Applications/MAMP/htdocs/yii/framework/web/CController.php(869): CBaseController->renderFile('/Applications/M...', Array, true)
+#7 /Applications/MAMP/htdocs/yii/framework/web/CController.php(782): CController->renderPartial('select', Array, true)
+#8 /Applications/MAMP/htdocs/solis/protected/controllers/PropiedadController.php(185): CController->render('select', Array)
+#9 /Applications/MAMP/htdocs/yii/framework/web/actions/CInlineAction.php(49): PropiedadController->actionSelect()
+#10 /Applications/MAMP/htdocs/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /Applications/MAMP/htdocs/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 /Applications/MAMP/htdocs/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 /Applications/MAMP/htdocs/yii/framework/web/CController.php(291): CFilterChain->run()
+#17 /Applications/MAMP/htdocs/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(282): CController->run('select')
+#19 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('propiedad/selec...')
+#20 /Applications/MAMP/htdocs/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#21 /Applications/MAMP/htdocs/solis/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/solis/index.php/propiedad/select
+HTTP_REFERER=http://localhost:8888/solis/index.php/intra/index
+---
+2015/10/02 17:27:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "update&id=35" solicitada.' in /Applications/MAMP/htdocs/yii/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii/framework/web/CController.php(270): CController->missingAction('update&id=35')
+#1 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(282): CController->run('update&id=35')
+#2 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('propiedad/updat...')
+#3 /Applications/MAMP/htdocs/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/solis/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/solis/index.php/propiedad/update&id=35.html
+HTTP_REFERER=http://localhost:8888/solis/index.php/Propiedad/Modificar.html
+---
+2015/10/02 17:28:23 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Su solicitud es inválida.' in /Applications/MAMP/htdocs/yii/framework/web/CController.php:336
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /Applications/MAMP/htdocs/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /Applications/MAMP/htdocs/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /Applications/MAMP/htdocs/yii/framework/web/CController.php(291): CFilterChain->run()
+#7 /Applications/MAMP/htdocs/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(282): CController->run('update')
+#9 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('propiedad/updat...')
+#10 /Applications/MAMP/htdocs/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /Applications/MAMP/htdocs/solis/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/solis/index.php/propiedad/update/&id=35.html
+---
+2015/10/02 17:35:39 [error] [exception.CException] exception 'CException' with message 'El alias "ext.EAjaxUpload.EAjaxUpload" es inválido. Asegúrese de que apunta a un archivo PHP existente y que el archivo tiene permisos de lectura.' in /Applications/MAMP/htdocs/yii/framework/YiiBase.php:323
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii/framework/web/CWidgetFactory.php(146): YiiBase::import('ext.EAjaxUpload...', true)
+#1 /Applications/MAMP/htdocs/yii/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(PropiedadController), 'ext.EAjaxUpload...', Array)
+#2 /Applications/MAMP/htdocs/yii/framework/web/CBaseController.php(180): CBaseController->createWidget('ext.EAjaxUpload...', Array)
+#3 /Applications/MAMP/htdocs/solis/protected/views/propiedad/imagen.php(65): CBaseController->widget('ext.EAjaxUpload...', Array)
+#4 /Applications/MAMP/htdocs/yii/framework/web/CBaseController.php(126): require('/Applications/M...')
+#5 /Applications/MAMP/htdocs/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Applications/M...', Array, true)
+#6 /Applications/MAMP/htdocs/yii/framework/web/CController.php(869): CBaseController->renderFile('/Applications/M...', Array, true)
+#7 /Applications/MAMP/htdocs/yii/framework/web/CController.php(782): CController->renderPartial('imagen', Array, true)
+#8 /Applications/MAMP/htdocs/solis/protected/controllers/PropiedadController.php(180): CController->render('imagen', Array)
+#9 [internal function]: PropiedadController->actionImagen('36', '18045248-6')
+#10 /Applications/MAMP/htdocs/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(PropiedadController), Array)
+#11 /Applications/MAMP/htdocs/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(PropiedadController), Object(ReflectionMethod), Array)
+#12 /Applications/MAMP/htdocs/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#13 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#14 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#15 /Applications/MAMP/htdocs/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#16 /Applications/MAMP/htdocs/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#17 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#18 /Applications/MAMP/htdocs/yii/framework/web/CController.php(291): CFilterChain->run()
+#19 /Applications/MAMP/htdocs/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(282): CController->run('imagen')
+#21 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('propiedad/image...')
+#22 /Applications/MAMP/htdocs/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#23 /Applications/MAMP/htdocs/solis/index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/solis/index.php/propiedad/imagen/36.html?rut=18045248-6
+HTTP_REFERER=http://localhost:8888/solis/index.php/propiedad/index
+---
+2015/10/02 17:37:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "upload&id=36" solicitada.' in /Applications/MAMP/htdocs/yii/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii/framework/web/CController.php(270): CController->missingAction('upload&id=36')
+#1 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(282): CController->run('upload&id=36')
+#2 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('propiedad/uploa...')
+#3 /Applications/MAMP/htdocs/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/solis/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/solis/index.php/propiedad/upload&id=36.html?PHPSESSID=b4443d4bfb91594f4ec153eae1c42da1&YII_CSRF_TOKEN=f2b439cd5f6876a332d69e35994dea6d2a013f80&qqfile=2059-10507150_1393756380934301_2967279506105958413_o.jpg
+HTTP_REFERER=http://localhost:8888/solis/index.php/propiedad/imagen/36.html?rut=18045248-6
+---
+2015/10/02 17:37:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "upload&id=36" solicitada.' in /Applications/MAMP/htdocs/yii/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii/framework/web/CController.php(270): CController->missingAction('upload&id=36')
+#1 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(282): CController->run('upload&id=36')
+#2 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('propiedad/uploa...')
+#3 /Applications/MAMP/htdocs/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/solis/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/solis/index.php/propiedad/upload&id=36.html?PHPSESSID=b4443d4bfb91594f4ec153eae1c42da1&YII_CSRF_TOKEN=f2b439cd5f6876a332d69e35994dea6d2a013f80&qqfile=9493-aepewMb_700b.jpg
+HTTP_REFERER=http://localhost:8888/solis/index.php/propiedad/imagen/36.html?rut=18045248-6
+---
+2015/10/02 17:44:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "upload&id=36" solicitada.' in /Applications/MAMP/htdocs/yii/framework/web/CController.php:483
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii/framework/web/CController.php(270): CController->missingAction('upload&id=36')
+#1 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(282): CController->run('upload&id=36')
+#2 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('propiedad/uploa...')
+#3 /Applications/MAMP/htdocs/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /Applications/MAMP/htdocs/solis/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/solis/index.php/propiedad/upload&id=36.html?PHPSESSID=b4443d4bfb91594f4ec153eae1c42da1&YII_CSRF_TOKEN=f2b439cd5f6876a332d69e35994dea6d2a013f80&qqfile=arrow_right.png
+HTTP_REFERER=http://localhost:8888/solis/index.php/propiedad/imagen/36.html?rut=18045248-6
+---
+2015/10/02 17:44:22 [error] [php] Undefined index: filename (/Applications/MAMP/htdocs/solis/protected/controllers/PropiedadController.php:112)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /Applications/MAMP/htdocs/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(133): PropiedadController->runAction()
+#3 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /Applications/MAMP/htdocs/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /Applications/MAMP/htdocs/yii/framework/web/filters/CInlineFilter.php(58): PropiedadController->filterAccessControl()
+#6 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /Applications/MAMP/htdocs/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /Applications/MAMP/htdocs/yii/framework/web/CController.php(265): PropiedadController->runActionWithFilters()
+#9 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(282): PropiedadController->run()
+#10 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /Applications/MAMP/htdocs/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /Applications/MAMP/htdocs/solis/index.php(13): CWebApplication->run()
+REQUEST_URI=/solis/index.php/propiedad/upload/36.html?PHPSESSID=b4443d4bfb91594f4ec153eae1c42da1&YII_CSRF_TOKEN=f2b439cd5f6876a332d69e35994dea6d2a013f80&qqfile=2059-10507150_1393756380934301_2967279506105958413_o.jpg
+in /Applications/MAMP/htdocs/solis/protected/controllers/PropiedadController.php (112)
+in /Applications/MAMP/htdocs/solis/index.php (13)
+2015/10/02 17:44:54 [error] [php] Undefined index: filename (/Applications/MAMP/htdocs/solis/protected/controllers/PropiedadController.php:112)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /Applications/MAMP/htdocs/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(133): PropiedadController->runAction()
+#3 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /Applications/MAMP/htdocs/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /Applications/MAMP/htdocs/yii/framework/web/filters/CInlineFilter.php(58): PropiedadController->filterAccessControl()
+#6 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /Applications/MAMP/htdocs/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /Applications/MAMP/htdocs/yii/framework/web/CController.php(265): PropiedadController->runActionWithFilters()
+#9 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(282): PropiedadController->run()
+#10 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /Applications/MAMP/htdocs/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /Applications/MAMP/htdocs/solis/index.php(13): CWebApplication->run()
+REQUEST_URI=/solis/index.php/propiedad/upload/36.html?PHPSESSID=b4443d4bfb91594f4ec153eae1c42da1&YII_CSRF_TOKEN=f2b439cd5f6876a332d69e35994dea6d2a013f80&qqfile=arrow_left.png
+in /Applications/MAMP/htdocs/solis/protected/controllers/PropiedadController.php (112)
+in /Applications/MAMP/htdocs/solis/index.php (13)
+2015/10/02 17:45:28 [error] [php] Undefined index: filename (/Applications/MAMP/htdocs/solis/protected/controllers/PropiedadController.php:112)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /Applications/MAMP/htdocs/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(133): PropiedadController->runAction()
+#3 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /Applications/MAMP/htdocs/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /Applications/MAMP/htdocs/yii/framework/web/filters/CInlineFilter.php(58): PropiedadController->filterAccessControl()
+#6 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /Applications/MAMP/htdocs/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /Applications/MAMP/htdocs/yii/framework/web/CController.php(265): PropiedadController->runActionWithFilters()
+#9 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(282): PropiedadController->run()
+#10 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /Applications/MAMP/htdocs/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /Applications/MAMP/htdocs/solis/index.php(13): CWebApplication->run()
+REQUEST_URI=/solis/index.php/propiedad/upload/36.html?PHPSESSID=b4443d4bfb91594f4ec153eae1c42da1&YII_CSRF_TOKEN=f2b439cd5f6876a332d69e35994dea6d2a013f80&qqfile=ae0vPrB_460s.jpg
+in /Applications/MAMP/htdocs/solis/protected/controllers/PropiedadController.php (112)
+in /Applications/MAMP/htdocs/solis/index.php (13)
+2015/10/02 17:45:37 [error] [php] Undefined index: filename (/Applications/MAMP/htdocs/solis/protected/controllers/PropiedadController.php:112)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /Applications/MAMP/htdocs/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(133): PropiedadController->runAction()
+#3 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /Applications/MAMP/htdocs/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /Applications/MAMP/htdocs/yii/framework/web/filters/CInlineFilter.php(58): PropiedadController->filterAccessControl()
+#6 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /Applications/MAMP/htdocs/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /Applications/MAMP/htdocs/yii/framework/web/CController.php(265): PropiedadController->runActionWithFilters()
+#9 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(282): PropiedadController->run()
+#10 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /Applications/MAMP/htdocs/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /Applications/MAMP/htdocs/solis/index.php(13): CWebApplication->run()
+REQUEST_URI=/solis/index.php/propiedad/upload/36.html?PHPSESSID=b4443d4bfb91594f4ec153eae1c42da1&YII_CSRF_TOKEN=f2b439cd5f6876a332d69e35994dea6d2a013f80&qqfile=arrow_right.png
+in /Applications/MAMP/htdocs/solis/protected/controllers/PropiedadController.php (112)
+in /Applications/MAMP/htdocs/solis/index.php (13)
+2015/10/02 17:46:47 [error] [php] Undefined index: filename (/Applications/MAMP/htdocs/solis/protected/controllers/PropiedadController.php:112)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /Applications/MAMP/htdocs/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(133): PropiedadController->runAction()
+#3 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /Applications/MAMP/htdocs/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /Applications/MAMP/htdocs/yii/framework/web/filters/CInlineFilter.php(58): PropiedadController->filterAccessControl()
+#6 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /Applications/MAMP/htdocs/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /Applications/MAMP/htdocs/yii/framework/web/CController.php(265): PropiedadController->runActionWithFilters()
+#9 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(282): PropiedadController->run()
+#10 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /Applications/MAMP/htdocs/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /Applications/MAMP/htdocs/solis/index.php(13): CWebApplication->run()
+REQUEST_URI=/solis/index.php/propiedad/upload/36.html?PHPSESSID=b4443d4bfb91594f4ec153eae1c42da1&YII_CSRF_TOKEN=f2b439cd5f6876a332d69e35994dea6d2a013f80&qqfile=banner_bg.jpg
+in /Applications/MAMP/htdocs/solis/protected/controllers/PropiedadController.php (112)
+in /Applications/MAMP/htdocs/solis/index.php (13)
+2015/10/02 17:48:24 [error] [php] Undefined index: filename (/Applications/MAMP/htdocs/solis/protected/controllers/PropiedadController.php:112)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /Applications/MAMP/htdocs/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(133): PropiedadController->runAction()
+#3 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /Applications/MAMP/htdocs/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /Applications/MAMP/htdocs/yii/framework/web/filters/CInlineFilter.php(58): PropiedadController->filterAccessControl()
+#6 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /Applications/MAMP/htdocs/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /Applications/MAMP/htdocs/yii/framework/web/CController.php(265): PropiedadController->runActionWithFilters()
+#9 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(282): PropiedadController->run()
+#10 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /Applications/MAMP/htdocs/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /Applications/MAMP/htdocs/solis/index.php(13): CWebApplication->run()
+REQUEST_URI=/solis/index.php/propiedad/upload/36.html?PHPSESSID=b4443d4bfb91594f4ec153eae1c42da1&YII_CSRF_TOKEN=f2b439cd5f6876a332d69e35994dea6d2a013f80&qqfile=default.gif
+in /Applications/MAMP/htdocs/solis/protected/controllers/PropiedadController.php (112)
+in /Applications/MAMP/htdocs/solis/index.php (13)
+2015/10/02 17:48:35 [error] [php] Undefined index: filename (/Applications/MAMP/htdocs/solis/protected/controllers/PropiedadController.php:112)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /Applications/MAMP/htdocs/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(133): PropiedadController->runAction()
+#3 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /Applications/MAMP/htdocs/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /Applications/MAMP/htdocs/yii/framework/web/filters/CInlineFilter.php(58): PropiedadController->filterAccessControl()
+#6 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /Applications/MAMP/htdocs/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /Applications/MAMP/htdocs/yii/framework/web/CController.php(265): PropiedadController->runActionWithFilters()
+#9 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(282): PropiedadController->run()
+#10 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /Applications/MAMP/htdocs/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /Applications/MAMP/htdocs/solis/index.php(13): CWebApplication->run()
+REQUEST_URI=/solis/index.php/propiedad/upload/36.html?PHPSESSID=b4443d4bfb91594f4ec153eae1c42da1&YII_CSRF_TOKEN=f2b439cd5f6876a332d69e35994dea6d2a013f80&qqfile=9037-logo.png
+in /Applications/MAMP/htdocs/solis/protected/controllers/PropiedadController.php (112)
+in /Applications/MAMP/htdocs/solis/index.php (13)
+2015/10/02 17:50:10 [error] [php] Undefined index: filename (/Applications/MAMP/htdocs/solis/protected/controllers/PropiedadController.php:112)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /Applications/MAMP/htdocs/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(133): PropiedadController->runAction()
+#3 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /Applications/MAMP/htdocs/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /Applications/MAMP/htdocs/yii/framework/web/filters/CInlineFilter.php(58): PropiedadController->filterAccessControl()
+#6 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /Applications/MAMP/htdocs/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /Applications/MAMP/htdocs/yii/framework/web/CController.php(265): PropiedadController->runActionWithFilters()
+#9 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(282): PropiedadController->run()
+#10 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /Applications/MAMP/htdocs/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /Applications/MAMP/htdocs/solis/index.php(13): CWebApplication->run()
+REQUEST_URI=/solis/index.php/propiedad/upload/36.html?PHPSESSID=8d620c6249817df0eeab165da43ab3c0&YII_CSRF_TOKEN=731c259154e429c68bb2ac28ce4768520ddacaf1&qqfile=11136382_10206080052218703_406726075_o.jpg
+in /Applications/MAMP/htdocs/solis/protected/controllers/PropiedadController.php (112)
+in /Applications/MAMP/htdocs/solis/index.php (13)
+2015/10/02 17:52:24 [error] [php] var_dump() expects at least 1 parameter, 0 given (/Applications/MAMP/htdocs/solis/protected/controllers/PropiedadController.php:105)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs()
+#1 /Applications/MAMP/htdocs/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#2 /Applications/MAMP/htdocs/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(133): PropiedadController->runAction()
+#4 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#5 /Applications/MAMP/htdocs/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#6 /Applications/MAMP/htdocs/yii/framework/web/filters/CInlineFilter.php(58): PropiedadController->filterAccessControl()
+#7 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#8 /Applications/MAMP/htdocs/yii/framework/web/CController.php(291): CFilterChain->run()
+#9 /Applications/MAMP/htdocs/yii/framework/web/CController.php(265): PropiedadController->runActionWithFilters()
+#10 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(282): PropiedadController->run()
+#11 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#12 /Applications/MAMP/htdocs/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#13 /Applications/MAMP/htdocs/solis/index.php(13): CWebApplication->run()
+REQUEST_URI=/solis/index.php/propiedad/upload/36.html?PHPSESSID=8d620c6249817df0eeab165da43ab3c0&YII_CSRF_TOKEN=731c259154e429c68bb2ac28ce4768520ddacaf1&qqfile=11136382_10206080052218703_406726075_o.jpg
+in /Applications/MAMP/htdocs/solis/protected/controllers/PropiedadController.php (105)
+in /Applications/MAMP/htdocs/solis/index.php (13)
+2015/10/02 17:52:48 [error] [php] var_dump() expects at least 1 parameter, 0 given (/Applications/MAMP/htdocs/solis/protected/controllers/PropiedadController.php:105)
+Stack trace:
+#0 /Applications/MAMP/htdocs/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs()
+#1 /Applications/MAMP/htdocs/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#2 /Applications/MAMP/htdocs/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(133): PropiedadController->runAction()
+#4 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#5 /Applications/MAMP/htdocs/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#6 /Applications/MAMP/htdocs/yii/framework/web/filters/CInlineFilter.php(58): PropiedadController->filterAccessControl()
+#7 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#8 /Applications/MAMP/htdocs/yii/framework/web/CController.php(291): CFilterChain->run()
+#9 /Applications/MAMP/htdocs/yii/framework/web/CController.php(265): PropiedadController->runActionWithFilters()
+#10 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(282): PropiedadController->run()
+#11 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#12 /Applications/MAMP/htdocs/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#13 /Applications/MAMP/htdocs/solis/index.php(13): CWebApplication->run()
+REQUEST_URI=/solis/index.php/propiedad/upload/36.html?PHPSESSID=8d620c6249817df0eeab165da43ab3c0&YII_CSRF_TOKEN=731c259154e429c68bb2ac28ce4768520ddacaf1&qqfile=2.png
+in /Applications/MAMP/htdocs/solis/protected/controllers/PropiedadController.php (105)
+in /Applications/MAMP/htdocs/solis/index.php (13)

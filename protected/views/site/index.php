@@ -17,13 +17,17 @@
 				<?php if(!Yii::app()->session['activo']) {
 						echo '<li><a class="cd-signin " href="#0">Iniciar Sesión</a></li>';
 					}else {
-						echo '<li><a class="cd-signin " href="index.php/site/logout">Cerrar sesión</a></li>';
+            echo CHtml::link('Cerrar sesión', array('Site/logout'), array('class'=>'cd-signin'));
 					}
 				?>
 			</ul>
 		</nav>
 </header>
-<?php 		$form=$this->beginWidget('CActiveForm');
+<?php 		$form=$this->beginWidget('CActiveForm',array(
+  'id'=>'login-form',
+  'enableAjaxValidation'=>true,
+  'clientOptions'=>array('validateOnSubmit'=>true),
+));
  ?>
 <?php if(!Yii::app()->session['activo']){
 		echo '<div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->

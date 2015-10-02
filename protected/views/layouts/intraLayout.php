@@ -59,8 +59,6 @@ if(!Yii::app()->session['activo'])
             </a>
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
-
-
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -104,7 +102,7 @@ if(!Yii::app()->session['activo'])
                                     <a href="#" class="btn btn-default btn-flat">Configuración</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="?r=access/logout" class="btn btn-default btn-flat">Cerrar Sesión</a>
+                                    <?php echo CHtml::link('Cerrar sesión', array('Site/logout'),array('class'=>'btn btn-default btn-flat', 'confirm' => 'Are you sure?')); ?>
                                 </div>
                             </li>
                         </ul>

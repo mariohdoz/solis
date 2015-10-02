@@ -34,8 +34,10 @@ class Cliente extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('RUTCLIENTE, NOMBRESCLIENTE, APELLIDOSCLIENTE, TELEFONOCLIENTE, correo_cliente, estadoCivil_cliente, profesion_cliente, telefonoCelular_cliente, nroCuenta_cliente, banco_cliente', 'required'),
+			array('RUTCLIENTE, NOMBRESCLIENTE, APELLIDOSCLIENTE, TELEFONOCLIENTE, correo_cliente, estadoCivil_cliente, profesion_cliente, telefonoCelular_cliente, nroCuenta_cliente, banco_cliente', 'required','message'=>'El campo {attribute} es requerido'),
 			array('RUTCLIENTE', 'length', 'max'=>10),
+			array('RUTCLIENTE', 'validando'),
+			array('RUTCLIENTE', 'unique','attributeName'=>'RUTCLIENTE','className'=>'Cliente','message'=>'El propietario ya se encuentra ingresado'),
 			array('NOMBRESCLIENTE, APELLIDOSCLIENTE, DIRECCIONCLIENTE', 'length', 'max'=>50),
 			array('TELEFONOCLIENTE', 'length', 'max'=>12),
 			array('correo_cliente, banco_cliente', 'length','max'=>100),
@@ -45,6 +47,9 @@ class Cliente extends CActiveRecord
 			// @todo Please remove those attributes that should not be searched.
 			array('RUTCLIENTE, NOMBRESCLIENTE, APELLIDOSCLIENTE, TELEFONOCLIENTE, DIRECCIONCLIENTE, CORREOCLIENTE', 'safe', 'on'=>'search'),
 		);
+	}
+	public function validando($attribute, $param){
+
 	}
 
 	/**

@@ -154,6 +154,9 @@ class SiteController extends Controller
 		$model1 = new Solicitud;
 		$model2 = new Propiedad();
 		// if it is ajax validation request
+		var_dump($_POST['ajax']);
+		Yii::app()->end();
+
 		if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
