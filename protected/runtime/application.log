@@ -5412,234 +5412,30 @@ Stack trace:
 #18 {main}
 REQUEST_URI=/nuevo/
 ---
-2015/10/02 22:05:12 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [1049] Unknown database 'prueba'' in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
+2015/10/02 19:07:05 [error] [system.db.CDbCommand] CDbCommand::fetch() falló: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'CORREOADMIN' in 'where clause'. La sentencia SQL ejecutada fue: SELECT * FROM `administrador` `t` WHERE LOWER(CORREOADMIN)=? LIMIT 1.
+in C:\AppServ\www\nuevo\protected\components\UserIdentity.php (21)
+in C:\AppServ\www\nuevo\protected\models\LoginForm.php (52)
+in C:\AppServ\www\nuevo\protected\controllers\SiteController.php (50)
+2015/10/02 19:07:05 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'CORREOADMIN' in 'where clause'. The SQL statement executed was: SELECT * FROM `administrador` `t` WHERE LOWER(CORREOADMIN)=? LIMIT 1' in C:\AppServ\www\yii\framework\db\CDbCommand.php:543
 Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
-#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
-#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
-#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(458): CModule->getComponent('db')
-#4 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
-#5 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(2384): CActiveRecord->getDbConnection()
-#6 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Solicitud))
-#7 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(79): CActiveRecord->getMetaData()
-#8 C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php(40): CActiveRecord->__construct()
-#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
-#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
-#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
-#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#16 C:\xampp\htdocs\nuevo\index.php(13): CApplication->run()
+#0 C:\AppServ\www\yii\framework\db\CDbCommand.php(415): CDbCommand->queryInternal('fetch', Array, Array)
+#1 C:\AppServ\www\yii\framework\db\ar\CActiveRecord.php(1356): CDbCommand->queryRow()
+#2 C:\AppServ\www\yii\framework\db\ar\CActiveRecord.php(1461): CActiveRecord->query(Object(CDbCriteria))
+#3 C:\AppServ\www\nuevo\protected\components\UserIdentity.php(21): CActiveRecord->find('LOWER(CORREOADM...', Array)
+#4 C:\AppServ\www\nuevo\protected\models\LoginForm.php(52): UserIdentity->authenticate()
+#5 C:\AppServ\www\yii\framework\validators\CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#6 C:\AppServ\www\yii\framework\validators\CValidator.php(201): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#7 C:\AppServ\www\yii\framework\base\CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#8 C:\AppServ\www\nuevo\protected\controllers\SiteController.php(50): CModel->validate()
+#9 C:\AppServ\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#10 C:\AppServ\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\AppServ\www\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#12 C:\AppServ\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('')
+#14 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#15 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
 #17 {main}
 REQUEST_URI=/nuevo/
----
-2015/10/02 22:06:06 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [1049] Unknown database 'prueba'' in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
-#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
-#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
-#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(458): CModule->getComponent('db')
-#4 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
-#5 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(2384): CActiveRecord->getDbConnection()
-#6 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Solicitud))
-#7 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(79): CActiveRecord->getMetaData()
-#8 C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php(40): CActiveRecord->__construct()
-#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
-#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
-#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
-#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#16 C:\xampp\htdocs\nuevo\index.php(13): CApplication->run()
-#17 {main}
-REQUEST_URI=/nuevo/
----
-2015/10/02 22:07:44 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [1049] Unknown database 'prueba'' in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
-#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
-#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
-#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(458): CModule->getComponent('db')
-#4 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
-#5 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(2384): CActiveRecord->getDbConnection()
-#6 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Solicitud))
-#7 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(79): CActiveRecord->getMetaData()
-#8 C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php(40): CActiveRecord->__construct()
-#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
-#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
-#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
-#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#16 C:\xampp\htdocs\nuevo\index.php(13): CApplication->run()
-#17 {main}
-REQUEST_URI=/nuevo/
----
-2015/10/02 22:07:46 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [1049] Unknown database 'prueba'' in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
-#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
-#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
-#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(458): CModule->getComponent('db')
-#4 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
-#5 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(2384): CActiveRecord->getDbConnection()
-#6 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Solicitud))
-#7 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(79): CActiveRecord->getMetaData()
-#8 C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php(40): CActiveRecord->__construct()
-#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
-#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
-#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
-#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#16 C:\xampp\htdocs\nuevo\index.php(13): CApplication->run()
-#17 {main}
-REQUEST_URI=/nuevo/
----
-2015/10/02 22:09:06 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [1049] Unknown database 'prueba'' in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
-#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
-#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
-#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(458): CModule->getComponent('db')
-#4 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
-#5 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(2384): CActiveRecord->getDbConnection()
-#6 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Solicitud))
-#7 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(79): CActiveRecord->getMetaData()
-#8 C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php(40): CActiveRecord->__construct()
-#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
-#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
-#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
-#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#16 C:\xampp\htdocs\nuevo\index.php(13): CApplication->run()
-#17 {main}
-REQUEST_URI=/nuevo/
----
-2015/10/02 22:20:33 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [1049] Unknown database 'prueba'' in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
-#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
-#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
-#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(458): CModule->getComponent('db')
-#4 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
-#5 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(2384): CActiveRecord->getDbConnection()
-#6 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Solicitud))
-#7 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(79): CActiveRecord->getMetaData()
-#8 C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php(40): CActiveRecord->__construct()
-#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
-#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
-#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
-#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#16 C:\xampp\htdocs\nuevo\index.php(13): CApplication->run()
-#17 {main}
-REQUEST_URI=/nuevo/
----
-2015/10/02 22:20:34 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [1049] Unknown database 'prueba'' in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
-#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
-#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
-#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(458): CModule->getComponent('db')
-#4 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
-#5 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(2384): CActiveRecord->getDbConnection()
-#6 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Solicitud))
-#7 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(79): CActiveRecord->getMetaData()
-#8 C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php(40): CActiveRecord->__construct()
-#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
-#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
-#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
-#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#16 C:\xampp\htdocs\nuevo\index.php(13): CApplication->run()
-#17 {main}
-REQUEST_URI=/nuevo/
----
-2015/10/02 22:20:41 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [1049] Unknown database 'prueba'' in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
-#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
-#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
-#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(458): CModule->getComponent('db')
-#4 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
-#5 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(2384): CActiveRecord->getDbConnection()
-#6 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Solicitud))
-#7 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(79): CActiveRecord->getMetaData()
-#8 C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php(40): CActiveRecord->__construct()
-#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
-#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
-#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
-#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#16 C:\xampp\htdocs\nuevo\index.php(13): CApplication->run()
-#17 {main}
-REQUEST_URI=/nuevo/
----
-2015/10/02 22:20:43 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [1049] Unknown database 'prueba'' in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
-#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
-#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
-#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(458): CModule->getComponent('db')
-#4 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
-#5 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(2384): CActiveRecord->getDbConnection()
-#6 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Solicitud))
-#7 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(79): CActiveRecord->getMetaData()
-#8 C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php(40): CActiveRecord->__construct()
-#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
-#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
-#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
-#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#16 C:\xampp\htdocs\nuevo\index.php(13): CApplication->run()
-#17 {main}
-REQUEST_URI=/nuevo/
----
-2015/10/02 22:20:46 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [1049] Unknown database 'prueba'' in C:\xampp\htdocs\yii\framework\db\CDbConnection.php:399
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
-#1 C:\xampp\htdocs\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
-#2 C:\xampp\htdocs\yii\framework\base\CModule.php(394): CDbConnection->init()
-#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(458): CModule->getComponent('db')
-#4 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
-#5 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(2384): CActiveRecord->getDbConnection()
-#6 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(Solicitud))
-#7 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(79): CActiveRecord->getMetaData()
-#8 C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php(40): CActiveRecord->__construct()
-#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
-#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
-#11 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
-#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
-#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('')
-#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController(false)
-#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#16 C:\xampp\htdocs\nuevo\index.php(13): CApplication->run()
-#17 {main}
-REQUEST_URI=/nuevo/index.php
----
-2015/10/02 22:29:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "site" solicitada.' in C:\xampp\htdocs\yii\framework\web\CController.php:483
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('site')
-#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('site')
-#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/site')
-#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#4 C:\xampp\htdocs\nuevo\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/nuevo/index.php/site/site.html
-HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+HTTP_REFERER=http://localhost/nuevo/
 ---

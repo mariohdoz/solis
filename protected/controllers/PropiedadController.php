@@ -54,11 +54,11 @@ class PropiedadController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update', 'upload', 'select', 'Modificar','prueba', 'eliminar', 'desa'),
+				'actions'=>array('create','update', 'upload', 'select', 'Modificar','prueba', 'eliminar', 'desa','delete'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -101,7 +101,7 @@ class PropiedadController extends Controller
 	}
 	public function actionUpload($id)
 	{
-		
+
 		$model = new Imagen();
 		Yii::import("ext.EAjaxUpload.qqFileUploader");
     $folder=Yii::app()->request->baseUrl.'/images/propiedades/';// folder for uploaded files
@@ -147,7 +147,12 @@ class PropiedadController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
+		var_dump($id);
+
+		$this->loadModel($id);
+		$model = Propiedad::model()->findByPk($id);
+		$model->activo = false;
+
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
@@ -214,7 +219,7 @@ class PropiedadController extends Controller
 			$model=Propiedad::model()->findByPk($model1->IDPROP);
 			$model->Activo = 0;
 			if($model->save()){
-				$this->redirect('?r=intra/index');
+				$this->redirect('/propiedad/ver');
 			}else{
 				$this->render('select', array('model'=>$model));
 

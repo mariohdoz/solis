@@ -47,7 +47,7 @@ if(!Yii::app()->session['activo'])
         <!-- Logo -->
         <a href="?r=intra/index" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <img class="logo-mini" src="<?php echo Yii::app()->request->baseUrl; ?>/images/LogoLite.png" width="50px" height="50px" />
+            <img class="logo-mini" src="<?php echo Yii::app()->request->baseUrl; ?> /images/LogoLite.png" width="50px" height="50px" />
             <!-- logo for regular state and mobile devices -->
             <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/LogoV2.png" width="135px" height="45px" />
         </a>
@@ -163,7 +163,7 @@ if(!Yii::app()->session['activo'])
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/"><i class="fa fa-plus"></i> Agregar Clientes</a></li>
+                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/cliente/create"><i class="fa fa-plus"></i> Agregar Clientes</a></li>
                         <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/propiedad/ver"><i class="fa fa-exchange"></i> Modificar Clientes</a></li>
                         <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/"><i class="fa fa-close"></i> Eliminar Clientes</a></li>
                         <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/"><i class="fa fa-file-text-o"></i> Listado de Clientes</a></li>

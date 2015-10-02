@@ -91,6 +91,24 @@ CREATE TABLE `factura` (
   `TOTALFACTURA` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+CREATE TABLE `administrador` (
+  `RUTADMIN` varchar(10) NOT NULL,
+  `NOMBRESADMIN` varchar(50) NOT NULL,
+  `APELLIDOSADMIN` varchar(50) NOT NULL,
+  `CONTRAADMIN` varchar(50) NOT NULL,
+  `TELEFONOADMIN` varchar(11) NOT NULL,
+  `CORREOADMIN` varchar(50) NOT NULL,
+  `imagen` varchar(100) DEFAULT 'dist/img/null.png'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+--
+-- Volcado de datos para la tabla `administrador`
+--
+
+INSERT INTO `administrador` (`RUTADMIN`, `NOMBRESADMIN`, `APELLIDOSADMIN`, `CONTRAADMIN`, `TELEFONOADMIN`, `CORREOADMIN`, `imagen`) VALUES
+('18183527-3', 'Mario Hernán Douglas', 'Ossandón Zúñiga', '12345', '85352482', 'mario.hdoz1@gmail.com', 'dist/img/mario.jpg'),
+('18045248-6', 'Alejandro Esteban', 'Tamayo Echav', '12345', '7197785', 'aete.xd@hotmail.com', 'dist/img/avatar5.png');
+
+--
 -- --------------------------------------------------------
 
 --
