@@ -13,7 +13,7 @@
 		<div id="cd-logo"><a href="#0"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/LogoV2.png" width="150px" height="50px" alt="Logo"></a></div>
 		<nav class="main-nav">
 			<ul>
-				<!-- inser more links her e -->
+				<!-- inser more l inks her e -->
 				<?php if(!Yii::app()->session['activo']) {
 						echo '<li><a class="cd-signin " href="#0">Iniciar Sesión</a></li>';
 					}else {
