@@ -47,7 +47,7 @@ if(!Yii::app()->session['activo'])
         <!-- Logo -->
         <a href="?r=intra/index" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <img class="logo-mini" src="/Solycobre/images/LogoLite.png" width="50px" height="50px" />
+            <img class="logo-mini" src="<?php echo Yii::app()->request->baseUrl; ?>/images/LogoLite.png" width="50px" height="50px" />
             <!-- logo for regular state and mobile devices -->
             <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/LogoV2.png" width="135px" height="45px" />
         </a>

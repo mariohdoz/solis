@@ -38,7 +38,7 @@ class SiteController extends Controller
 	{
 		$model  = new LoginForm;
 		$model1 = new Solicitud;
-		$model2 = new Propiedad();
+		$model2 = new Propiedad;
 		// validación de ajax
 		if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
 			echo CActiveForm::validate($model);

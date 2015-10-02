@@ -13,7 +13,7 @@
 		<div id="cd-logo"><a href="#0"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/LogoV2.png" width="150px" height="50px" alt="Logo"></a></div>
 		<nav class="main-nav">
 			<ul>
-				<!-- inser more links here -->
+				<!-- inser more l inks her e -->
 				<?php if(!Yii::app()->session['activo']) {
 						echo '<li><a class="cd-signin " href="#0">Iniciar Sesión</a></li>';
 					}else {
@@ -119,7 +119,7 @@
 				<div class="row">
 					<div class="col-md-3">
 						<blanco>Venta/Arriendo</blanco>
-						<?php echo $form->dropDownList($model2,'SERVICIO',
+						<?php echo $form->dropDownList($model2,'servicio_propiedad',
 							array(
 								'Todas' => 'Todas',
 								'Venta' => 'Venta',
@@ -130,7 +130,7 @@
 					</div>
 					<div class="col-md-3">
 						<blanco>Ciudad</blanco>
-						<?php echo $form->dropDownList($model2,'COMUNAPROPIEDAD',
+						<?php echo $form->dropDownList($model2,'comuna_propiedad',
 							array(
 								'Antofagasta' => 'Antofagasta',
 								'Arica' => 'Arica',
@@ -142,7 +142,7 @@
 					</div>
 					<div class="col-md-3">
 						<blanco>Típo de propiedad</blanco>
-						<?php echo $form->dropDownList($model2,'TIPO',
+						<?php echo $form->dropDownList($model2,'tipo_propiedad',
 							array(
 								'Departamento Habitación' => 'Departamento Habitación',
 								'Local' => 'Local',

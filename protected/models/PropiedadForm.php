@@ -2,38 +2,38 @@
 
 class PropiedadForm extends CFormModel{
 
-    public $IDPROP;
-    public $DIRECCION;
-    public $CANTPIEZA;
-    public $CANTBANO;
-    public $TERRENO;
-    public $TIPO;
-    public $SERVICIO;
-    public $ESTADO;
-    public $DESCRIPCION;
-    public $COMUNAPROPIEDAD;
+    public $id_propiedad;
+    public $direccion_propiedad;
+    public $habitacion_propiedad;
+    public $bano_propiedad;
+    public $terreno_propiedad;
+    public $tipo_propiedad;
+    public $servicio_propiedad;
+    public $estado_propiedad;
+    public $descripcion;
+    public $comuna_propiedad;
 
     public function rules(){
         return array(
-            array("IDPROP","required"),
-            array('IDPROP, RUTCLIENTE, DIRECCION, CANTPIEZA, CANTBANO, TERRENO, TERRENOCONSTRUIDO, TIPO, SERVICIO, ESTADO, DESCRIPCION, COMUNAPROPIEDAD, VALORPROPIEDAD, AMOBLADO', 'safe', 'on'=>'search'),        );
+            array("id_propiedad","required"),
+            array('id_propiedad, RUTCLIENTE, direccion_propiedad, habitacion_propiedad, bano_propiedad, terreno_propiedad_propiedad, TERRENOCONSTRUIDO, tipo_propiedad, servicio_propiedad, estado_propiedad, descripcion, comuna_propiedadPROPIEDAD, VALORPROPIEDAD, AMOBLADO', 'safe', 'on'=>'search'),        );
     }
 
     public function attributeLabels()
     {
         return array(
-            'IDPROP'=>'Id',
+            'id_propiedad'=>'Id',
             'RUTCLIENTE' => 'RUT del propietario',
-            'DIRECCION' => 'Direcci&oacute;n',
-            'CANTPIEZA' => 'N&uacute;mero de habitaciones.',
-            'CANTBANO' => 'N&uacute;mero de baños',
-            'TERRENO' => 'Terreno',
+            'direccion_propiedad' => 'Direcci&oacute;n',
+            'habitacion_propiedad' => 'N&uacute;mero de habitaciones.',
+            'bano_propiedad' => 'N&uacute;mero de baños',
+            'terreno_propiedad' => 'Terreno',
             'TERRENOCONSTRUIDO' => 'Terreno construido',
-            'TIPO' => 'Tipo',
-            'SERVICIO' => 'Servicio',
-            'ESTADO' => 'Estado',
-            'DESCRIPCION' => 'Breve descripci&oacute;n',
-            'COMUNAPROPIEDAD' => 'Comuna donde se ubica',
+            'tipo_propiedad' => 'tipo_propiedad',
+            'servicio_propiedad' => 'servicio_propiedad',
+            'estado_propiedad' => 'estado_propiedad',
+            'descripcion' => 'Breve descripci&oacute;n',
+            'comuna_propiedadPROPIEDAD' => 'Comuna donde se ubica',
 
         );
     }
@@ -43,18 +43,18 @@ class PropiedadForm extends CFormModel{
 
   		$criteria=new CDbCriteria;
 
-  		$criteria->compare('IDPROP',$this->IDPROP);
+  		$criteria->compare('id_propiedad',$this->id_propiedad);
   		$criteria->compare('RUTCLIENTE',$this->RUTCLIENTE,true);
-  		$criteria->compare('DIRECCION',$this->DIRECCION,true);
-  		$criteria->compare('CANTPIEZA',$this->CANTPIEZA);
-  		$criteria->compare('CANTBANO',$this->CANTBANO);
-  		$criteria->compare('TERRENO',$this->TERRENO,true);
+  		$criteria->compare('direccion_propiedad',$this->direccion_propiedad,true);
+  		$criteria->compare('habitacion_propiedad',$this->habitacion_propiedad);
+  		$criteria->compare('bano_propiedad',$this->bano_propiedad);
+  		$criteria->compare('terreno_propiedad',$this->terreno_propiedad,true);
   		$criteria->compare('TERRENOCONSTRUIDO',$this->TERRENOCONSTRUIDO,true);
-  		$criteria->compare('TIPO',$this->TIPO,true);
-  		$criteria->compare('SERVICIO',$this->SERVICIO,true);
-  		$criteria->compare('ESTADO',$this->ESTADO);
-  		$criteria->compare('DESCRIPCION',$this->DESCRIPCION,true);
-  		$criteria->compare('COMUNAPROPIEDAD',$this->COMUNAPROPIEDAD,true);
+  		$criteria->compare('tipo_propiedad',$this->tipo_propiedad,true);
+  		$criteria->compare('servicio_propiedad',$this->servicio_propiedad,true);
+  		$criteria->compare('estado_propiedad',$this->estado_propiedad);
+  		$criteria->compare('descripcion',$this->descripcion,true);
+  		$criteria->compare('comuna_propiedadPROPIEDAD',$this->comuna_propiedadPROPIEDAD,true);
   		$criteria->compare('VALORPROPIEDAD',$this->VALORPROPIEDAD);
   		$criteria->compare('AMOBLADO',$this->AMOBLADO);
 
