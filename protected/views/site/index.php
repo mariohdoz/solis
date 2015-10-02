@@ -140,7 +140,7 @@
 				<div class="row">
 					<div class="col-md-3">
 						<blanco>Venta/Arriendo</blanco>
-						<?php echo $form->dropDownList($model2,'servicio_propiedad',
+						<?php echo $form->dropDownList($model2,'SERVICIO',
 							array(
 								'Todas' => 'Todas',
 								'Venta' => 'Venta',
@@ -151,7 +151,7 @@
 					</div>
 					<div class="col-md-3">
 						<blanco>Ciudad</blanco>
-						<?php echo $form->dropDownList($model2,'comuna_propiedad',
+						<?php echo $form->dropDownList($model2,'COMUNAPROPIEDAD',
 							array(
 								'Antofagasta' => 'Antofagasta',
 								'Arica' => 'Arica',
@@ -163,7 +163,7 @@
 					</div>
 					<div class="col-md-3">
 						<blanco>Típo de propiedad</blanco>
-						<?php echo $form->dropDownList($model2,'tipo_propiedad',
+						<?php echo $form->dropDownList($model2,'TIPO',
 							array(
 								'Departamento Habitación' => 'Departamento Habitación',
 								'Local' => 'Local',

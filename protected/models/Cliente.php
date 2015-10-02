@@ -9,7 +9,12 @@
  * @property string $APELLIDOSCLIENTE
  * @property string $TELEFONOCLIENTE
  * @property string $DIRECCIONCLIENTE
- * @property string $CORREOCLIENTE
+ * @property string $CORREOCLIENTE$correo_cliente
+ * @property string $estadoCivil_cliente
+ * @property integer $profesion_cliente
+ * @property string $telefonoCelular_cliente
+ * @property string $nroCuenta_cliente
+ * @property string $banco_cliente
  */
 class Cliente extends CActiveRecord
 {
@@ -29,11 +34,13 @@ class Cliente extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('RUTCLIENTE, NOMBRESCLIENTE, APELLIDOSCLIENTE, TELEFONOCLIENTE', 'required'),
+			array('RUTCLIENTE, NOMBRESCLIENTE, APELLIDOSCLIENTE, TELEFONOCLIENTE, correo_cliente, estadoCivil_cliente, profesion_cliente, telefonoCelular_cliente, nroCuenta_cliente, banco_cliente', 'required'),
 			array('RUTCLIENTE', 'length', 'max'=>10),
 			array('NOMBRESCLIENTE, APELLIDOSCLIENTE, DIRECCIONCLIENTE', 'length', 'max'=>50),
 			array('TELEFONOCLIENTE', 'length', 'max'=>12),
-			array('CORREOCLIENTE', 'length', 'max'=>75),
+			array('correo_cliente, banco_cliente', 'length','max'=>100),
+			array('estadoCivil_cliente', 'length', 'max'=>8),
+			array('nroCuenta_cliente', 'length', 'max'=>25),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('RUTCLIENTE, NOMBRESCLIENTE, APELLIDOSCLIENTE, TELEFONOCLIENTE, DIRECCIONCLIENTE, CORREOCLIENTE', 'safe', 'on'=>'search'),
@@ -66,7 +73,12 @@ class Cliente extends CActiveRecord
             'APELLIDOSCLIENTE' => 'Apellidos del propietario',
             'TELEFONOCLIENTE' => 'Telefono del propietario',
             'DIRECCIONCLIENTE' => 'Direcci&oacuten del propietario',
-            'CORREOCLIENTE' => 'Correo del propietario',
+						'correo_cliente' => 'Correo del propietario',
+						'estadoCivil_cliente' => 'Estado civil',
+						'profesion_cliente' => 'Profesión',
+						'telefonoCelular_cliente' => 'Teléfono celular',
+						'nroCuenta_cliente' => 'Número de cuenta',
+						'banco_cliente' => 'Banco',
         );
     }
 
@@ -94,7 +106,12 @@ class Cliente extends CActiveRecord
 		$criteria->compare('APELLIDOSCLIENTE',$this->APELLIDOSCLIENTE,true);
 		$criteria->compare('TELEFONOCLIENTE',$this->TELEFONOCLIENTE,true);
 		$criteria->compare('DIRECCIONCLIENTE',$this->DIRECCIONCLIENTE,true);
-		$criteria->compare('CORREOCLIENTE',$this->CORREOCLIENTE,true);
+		$criteria->compare('correo_cliente',$this->correo_cliente,true);
+		$criteria->compare('estadoCivil_cliente',$this->estadoCivil_cliente,true);
+		$criteria->compare('profesion_cliente',$this->profesion_cliente);
+		$criteria->compare('telefonoCelular_cliente',$this->telefonoCelular_cliente,true);
+		$criteria->compare('nroCuenta_cliente',$this->nroCuenta_cliente,true);
+		$criteria->compare('banco_cliente',$this->banco_cliente,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

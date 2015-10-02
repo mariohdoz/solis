@@ -44,7 +44,7 @@ if(!yii::app()->session['activo'])
                                     array('empty' => '(Seleccione tipo de servicio)'));?>
                                 <?php echo $form->error($model,'RUTCLIENTE'); ?>
                                 <div class="center-block">
-                                    <a  href="?r=cliente/create" class="boton">Registrar Nuevo propietario</a>
+                                    <?php echo CHtml::link('Registrar nuevo propietario', array('/cliente/create'), array('class'=>'boton')) ?>
                                 </div>
                             </div><!-- /.form-group -->
                         </div><!-- /.col -->
