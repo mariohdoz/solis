@@ -101,10 +101,9 @@ class PropiedadController extends Controller
 	}
 	public function actionUpload($id)
 	{
-
 		$model = new Imagen();
 		Yii::import("ext.EAjaxUpload.qqFileUploader");
-    $folder=Yii::app()->request->baseUrl.'/images/propiedades/';// folder for uploaded files
+    $folder=Yii::app() -> getBasePath() . "/../images/propiedades/";// folder for uploaded files
     $allowedExtensions = array("jpg","jpeg","gif","png");//array("jpg","jpeg","gif","exe","mov" and etc...
     $sizeLimit = 5 * 3024 * 3024;// maximum file size in bytes
     $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);

@@ -23,7 +23,7 @@ class UserIdentity extends CUserIdentity
 
         if($admin==null)
             $this->errorCode=self::ERROR_USERNAME_INVALID;
-        elseif($this->password!==$admin->CONTRAADMIN)
+        elseif(sha1($this->password)!==$admin->CONTRAADMIN)
             $this->errorCode=self::ERROR_PASSWORD_INVALID;
         else{
 

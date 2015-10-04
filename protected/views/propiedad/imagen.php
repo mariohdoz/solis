@@ -28,26 +28,11 @@
                <div class="col-md-6">
                   <div class="form-group">
                      <br>
-                     <p>
-                        Seleccione las fotos de la propiedad.
-                     </p>
-                     <?php $form=$this->beginWidget('CActiveForm', array(
-                        'id'=>'imagen-form',
-                         'action'=>Yii::app()->createUrl('/propiedad/update/'.$model->IDPROP),
-                         // Please note: When you enable ajax validation, make sure the corresponding
-                         // controller ac tion is handling ajax validation correctly.
-                         // There is a call to performAjaxValidation() commented in generated controller code.
-                         // See class documentation of CActiveForm for details on this.
-                         'enableAjaxValidation'=>false,
-                         'htmlOptions' => array(
-                             'enctype' => 'multipart/form-data',
-                         ),
-                        )); ?>
-                        <?php
-                         $this->widget('ext.EAjaxUpload.EAjaxUpload', array(
+                     <p>Seleccione las imagenes de la propiedad.</p>
+                        <?php $this->widget('ext.EAjaxUpload.EAjaxUpload', array(
                              'id' => 'uploadFile',
                              'config' => array(
-                                 'action' => Yii::app()->createUrl('propiedad/upload/'.$model->IDPROP),
+                                 'action' => Yii::app()->createUrl('propiedad/upload/',array('id'=>$model->IDPROP)),
                                  'allowedExtensions' => array("jpg","jpeg","gif","png"), //array("jpg","jpeg","gif","exe","mov" and etc...
                                  'sizeLimit' => 10 * 1024 * 1024, // maximum file size in bytes
                                  'buttonText' => 'Selección',
@@ -58,13 +43,12 @@
                                      'sizeError' => "{file} is too large, maximum file size is {sizeLimit}.",
                                      'minSizeError' => "{file} is too small, minimum file size is {minSizeLimit}.",
                                      'emptyError' => "{file} is empty, please select files again without it.",
-                                     'onLeave' => "The files are being uploaded, if you leave now the upload will be cancelled."
+                                     'onLeave' => "Los archivos seleccionados se están subiendo al servidor. si usted deja la página la carga será cancelada."
                                  ),
                                  'showMessage' => "js:function(message){ alert(message); }"
                              )
                          ));
                          ?>
-                     <?php $this->endWidget(); ?>
                   </div>
                </div>
             </div>
