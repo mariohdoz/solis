@@ -20,7 +20,6 @@ return array(
 	'import'=>array(
 	        'application.models.*',
 	        'application.components.*',
-	        'application.extensions.coco.*',
 					'application.extensions.EAjaxUpload.*',            // <------
     ),
 
@@ -59,7 +58,7 @@ return array(
 		// database settings are configured in database.php
 		'db'=>array(
             'class'=>'CDbConnection',
-            'connectionString' => 'mysql:host=localhost;dbname=prueba;',
+            'connectionString' => 'mysql:host=localhost;dbname=sun;',
             'emulatePrepare' => true,
             'username' => 'root',
             'password' => '12345',
