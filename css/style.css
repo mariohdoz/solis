@@ -50,7 +50,7 @@
     margin-top: 70px;
   }
 }
-/* --------------------------------
+/* -------------------------------- 
 
 Navigation
 
@@ -178,7 +178,7 @@ Navigation
   }
 }
 
-/* --------------------------------
+/* -------------------------------- 
 
 Intro
 
@@ -260,7 +260,7 @@ Intro
   }
 }
 
-/* --------------------------------
+/* -------------------------------- 
 
 Secondary Fixed Navigation
 
@@ -522,7 +522,7 @@ Secondary Fixed Navigation
   }
 }
 
-/* --------------------------------
+/* -------------------------------- 
 
 Placeholder Sections
 
@@ -2368,6 +2368,62 @@ centrar{
   width: 100% !important;
   height: 100% !important;
 }
+
+.services{
+  padding: 60px 0px;
+}
+.services-box{
+  display: inline-block;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px dashed #dfe0e1;
+  padding-top: 40px;
+}
+.services-box:hover{
+  background: #f2f2f2;
+  cursor: pointer;
+
+  transition: all 1s;
+  -moz-transition: all 1s; /* Firefox 4 */
+  -webkit-transition: all 1s; /* Safari and Chrome */
+  -o-transition: all 1s; /* Opera */
+}
+.services-box:hover i{
+  background: #1abc9c;
+  border-radius: 100px;
+
+  transition: all 1s;
+  -moz-transition: all 1s; /* Firefox 4 */
+  -webkit-transition: all 1s; /* Safari and Chrome */
+  -o-transition: all 1s; /* Opera */
+}
+.icon{
+  padding: 0px;
+  float: left;
+  margin-right: 20px;
+  padding-bottom:30px
+}
+.icon i{
+  width: 70px;
+  height: 70px;
+  background: #1abc9c;
+  color: #ffffff;
+  line-height: 70px;
+  text-align: center;
+  font-size: 44px;
+}
+.service-content{
+text-align: justify;
+}
+.service-content h4{
+  font-size: 18px;
+  font-weight: 900;
+
+}
+.servicios{
+  background: #FFFFFF;
+
+}}
 
 
 

@@ -1,41 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 2.10.3
--- http://www.phpmyadmin.net
---
--- Servidor: localhost
--- Tiempo de generación: 05-10-2015 a las 23:46:03
--- Versión del servidor: 5.0.51
--- Versión de PHP: 5.2.6
-
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
---
--- Base de datos: `prueba`
---
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `administrador`
---
-
-CREATE TABLE `administrador` (
-  `rut_admin` varchar(10) NOT NULL COMMENT 'RUT del administrador',
-  `nombres_admin` varchar(100) NOT NULL COMMENT 'Nombres',
-  `apellidos_admin` varchar(100) NOT NULL COMMENT 'Apellidos',
-  `contrasena_admin` varchar(100) NOT NULL COMMENT 'Contraseña',
-  `correo_admin` varchar(100) NOT NULL COMMENT 'Correo',
-  `telefono_admin` varchar(12) NOT NULL COMMENT 'Telefono',
-  `perfil_admin` varchar(250) NOT NULL COMMENT 'Foto',
-  PRIMARY KEY  (`rut_admin`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Volcar la base de datos para la tabla `administrador`
---
-
-INSERT INTO `administrador` VALUES ('18183527-3', 'Mario Hernán Douglas', 'Ossandón Zúñiga', '8cb2237d0679ca88db6464eac60da96345513964', 'mario.hdoz1@gmail.com', '+56985352482', 'dist/img/mario.jpg');
-
 -- --------------------------------------------------------
 
 --
@@ -43,23 +5,11 @@ INSERT INTO `administrador` VALUES ('18183527-3', 'Mario Hernán Douglas', 'Ossa
 --
 
 CREATE TABLE `arrendatario` (
-  `rut_arrendatario` varchar(25) NOT NULL COMMENT 'RUT del arrendatario',
-  `nombres_arrendatario` varchar(100) NOT NULL COMMENT 'Nombre',
-  `apellidos_arrendatario` varchar(100) NOT NULL COMMENT 'Apellidos',
-  `estadocivil_arrendatario` varchar(8) NOT NULL COMMENT 'Estado civil',
-  `profesion_arrendatario` varchar(250) NOT NULL COMMENT 'Profesión',
-  `correo_arrendatario` varchar(100) NOT NULL COMMENT 'Correo electrónico',
-  `telefonofijo_arrendatario` varchar(12) default NULL COMMENT 'Teléfono fijo',
-  `telefonocelular_arrendatario` varchar(12) NOT NULL COMMENT 'Teléfono celular',
-  `nrocuenta_arrendatario` varchar(25) default NULL COMMENT 'Número de cuenta',
-  `banco_arrendatario` varchar(50) default NULL COMMENT 'Banco',
-  PRIMARY KEY  (`rut_arrendatario`)
+  `RUTARREN` varchar(10) NOT NULL,
+  `NOMBRESARREN` varchar(50) NOT NULL,
+  `APELLIDOSARREN` varchar(50) NOT NULL,
+  `TELEFONOARREN` varchar(12) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Volcar la base de datos para la tabla `arrendatario`
---
-
 
 -- --------------------------------------------------------
 
@@ -68,25 +18,15 @@ CREATE TABLE `arrendatario` (
 --
 
 CREATE TABLE `arriendo` (
-  `id_arriendo` int(11) NOT NULL auto_increment,
-  `id_propiedad` int(11) NOT NULL,
-  `rut_admin` varchar(10) NOT NULL,
-  `rut_arrendatario` varchar(25) default NULL COMMENT 'RUT del arrendatario',
-  `inscripcion_arriendo` date NOT NULL COMMENT 'Fecha de ingreso',
-  `fechapago_arriendo` date NOT NULL COMMENT 'Fecha de pago',
-  `inicio_arriendo` date NOT NULL COMMENT 'Inicio del arriendo',
-  `termino_arriendo` date NOT NULL COMMENT 'Término del arriendo',
-  `valor_arriendo` int(11) NOT NULL COMMENT 'Valor del arriendo',
-  PRIMARY KEY  (`id_arriendo`),
-  KEY `fk_gestiona` (`rut_admin`),
-  KEY `fk_incumbe` (`rut_arrendatario`),
-  KEY `fk_puede` (`id_propiedad`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Volcar la base de datos para la tabla `arriendo`
---
-
+  `IDARRIENDO` int(11) NOT NULL,
+  `IDPROP` int(11) DEFAULT NULL,
+  `RUTADMIN` varchar(10) NOT NULL,
+  `RUTARREN` varchar(10) NOT NULL,
+  `FECHAARRIENDO` date NOT NULL,
+  `FECHAPAGOARRIENDO` date NOT NULL,
+  `VALORARRIENDO` int(11) NOT NULL,
+  `TIEMPODEARRIENDO` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -95,26 +35,28 @@ CREATE TABLE `arriendo` (
 --
 
 CREATE TABLE `cliente` (
-  `rut_cliente` varchar(10) NOT NULL COMMENT 'RUT del cliente',
-  `nombres_cliente` varchar(100) NOT NULL COMMENT 'Nombres',
-  `apellidos_cliente` varchar(100) NOT NULL COMMENT 'Apellidos',
-  `estadocivil_cliente` varchar(10) NOT NULL COMMENT 'Estado civil',
-  `profesion_cliente` varchar(100) default NULL COMMENT 'Profesión',
-  `domicilio_cliente` varchar(150) default NULL COMMENT 'Domicilio ',
-  `correo_cliente` varchar(100) default NULL COMMENT 'Correo electrónico',
-  `telefonofijo_cliente` varchar(12) default NULL COMMENT 'Teléfono fijo',
-  `telefonocelular_cliente` varchar(12) default NULL COMMENT 'Teléfono celular',
-  `nrocuenta_cliente` varchar(25) default NULL COMMENT 'Número de cuenta',
-  `banco_cliente` varchar(50) default NULL COMMENT 'Banco',
-  `activo_cliente` tinyint(1) NOT NULL default '1' COMMENT 'Activo',
-  PRIMARY KEY  (`rut_cliente`)
+  `RUTCLIENTE` varchar(10) NOT NULL,
+  `NOMBRESCLIENTE` varchar(50) NOT NULL,
+  `APELLIDOSCLIENTE` varchar(50) NOT NULL,
+  `TELEFONOCLIENTE` varchar(12) NOT NULL,
+  `DIRECCIONCLIENTE` varchar(50) DEFAULT NULL,
+  `correo_cliente` varchar(100) NOT NULL COMMENT 'Correo electrónico',
+  `estadoCivil_cliente` varchar(8) NOT NULL COMMENT 'Estado civil',
+  `profesion_cliente` int(100) NOT NULL COMMENT 'Profesión',
+  `telefonoCelular_cliente` varchar(12) NOT NULL COMMENT 'Teléfono celular',
+  `nroCuenta_cliente` varchar(25) NOT NULL COMMENT 'Número de cuenta',
+  `banco_cliente` varchar(100) NOT NULL COMMENT 'Banco'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Volcar la base de datos para la tabla `cliente`
+-- Volcado de datos para la tabla `cliente`
 --
 
-INSERT INTO `cliente` VALUES ('18183527-3', 'Mario Hernán Douglas', 'Ossandón Zúñiga', 'Soltero/a', 'Periodismo periodístico ', 'Población Manuel Rodríguez, calle Til-Til 1301', 'mario.hdoz1@gmail.com', '+0255337744', '+56985352482', '18183527', 'Banco estado', 1);
+INSERT INTO `cliente` (`RUTCLIENTE`, `NOMBRESCLIENTE`, `APELLIDOSCLIENTE`, `TELEFONOCLIENTE`, `DIRECCIONCLIENTE`, `correo_cliente`, `estadoCivil_cliente`, `profesion_cliente`, `telefonoCelular_cliente`, `nroCuenta_cliente`, `banco_cliente`) VALUES
+('19206063-k', 'Marcela Andrea', 'Muñoz Campusano', '57238757', 'La torre 1291', '', '', 0, '', '', ''),
+('18183527-3', 'Mario Hernán Douglas', 'Ossandón Zúñiga', '85352482', 'Bobby maguila gorila', '', '', 0, '', '', ''),
+('18045248-6', 'Alejandro', 'Tamayo', '942309423', 'lkasdljkdas', '', '', 0, '', '', ''),
+('18183524-3', 'lkjlkjaslkj', 'adosad', 'lkjllkjwlkja', 'asdasd', '', '', 0, '', '', '');
 
 -- --------------------------------------------------------
 
@@ -123,25 +65,50 @@ INSERT INTO `cliente` VALUES ('18183527-3', 'Mario Hernán Douglas', 'Ossandón 
 --
 
 CREATE TABLE `documento` (
-  `id_documento` int(11) NOT NULL auto_increment,
-  `id_arriendo` int(11) default NULL,
-  `rut_arrendatario` varchar(25) default NULL,
-  `id_propiedad` int(11) default NULL,
-  `tipo_documento` varchar(50) NOT NULL COMMENT 'Tipo de documento',
-  `url_documento` varchar(250) NOT NULL,
-  `digitalizado_documento` tinyint(1) NOT NULL default '1' COMMENT 'Digitalizado',
-  `copiaoriginal_documento` tinyint(1) NOT NULL default '1' COMMENT 'Copia original',
-  PRIMARY KEY  (`id_documento`),
-  KEY `fk_contiene` (`id_arriendo`),
-  KEY `fk_corresponde` (`id_propiedad`),
-  KEY `fk_entrega` (`rut_arrendatario`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `IDDOCU` int(11) NOT NULL,
+  `IDARRIENDO` int(11) NOT NULL,
+  `IDPROP` int(11) DEFAULT NULL,
+  `RUTARREN` varchar(10) DEFAULT NULL,
+  `TIPODOCU` varchar(25) NOT NULL,
+  `UBICACIONDOCU` varchar(50) NOT NULL,
+  `DIGITALIZADO` tinyint(1) NOT NULL,
+  `COPIAORIGINAL` tinyint(1) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
 
 --
--- Volcar la base de datos para la tabla `documento`
+-- Estructura de tabla para la tabla `factura`
 --
 
+CREATE TABLE `factura` (
+  `IDFACTURA` int(11) NOT NULL,
+  `IDPAGO` int(11) NOT NULL,
+  `NUMFACTURA` int(11) NOT NULL,
+  `FECHAFACTURA` date NOT NULL,
+  `SUBTOTALFACTURA` int(11) NOT NULL,
+  `IVAFACTURA` int(11) NOT NULL,
+  `TOTALFACTURA` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+CREATE TABLE `administrador` (
+  `RUTADMIN` varchar(10) NOT NULL,
+  `NOMBRESADMIN` varchar(50) NOT NULL,
+  `APELLIDOSADMIN` varchar(50) NOT NULL,
+  `CONTRAADMIN` varchar(50) NOT NULL,
+  `TELEFONOADMIN` varchar(11) NOT NULL,
+  `CORREOADMIN` varchar(50) NOT NULL,
+  `imagen` varchar(100) DEFAULT 'dist/img/null.png'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+--
+-- Volcado de datos para la tabla `administrador`
+--
+
+INSERT INTO `administrador` (`RUTADMIN`, `NOMBRESADMIN`, `APELLIDOSADMIN`, `CONTRAADMIN`, `TELEFONOADMIN`, `CORREOADMIN`, `imagen`) VALUES
+('18183527-3', 'Mario Hernán Douglas', 'Ossandón Zúñiga', '12345', '85352482', 'mario.hdoz1@gmail.com', 'dist/img/mario.jpg'),
+('18045248-6', 'Alejandro Esteban', 'Tamayo Echav', '12345', '7197785', 'aete.xd@hotmail.com', 'dist/img/avatar5.png');
+
+--
 -- --------------------------------------------------------
 
 --
@@ -149,20 +116,14 @@ CREATE TABLE `documento` (
 --
 
 CREATE TABLE `funcionario` (
-  `rut_funcionario` varchar(25) NOT NULL COMMENT 'RUT del funcionario',
-  `nombres_funcionario` varchar(100) NOT NULL COMMENT 'Nombres',
-  `apellidos_funcionario` varchar(100) NOT NULL COMMENT 'Apellidos',
-  `telefonofijo_funcionario` varchar(12) NOT NULL COMMENT 'Teléfono fijo',
-  `telefonocelular_funcionario` varchar(12) NOT NULL COMMENT 'Teléfono celular',
-  `domicilio_funcionario` varchar(150) NOT NULL COMMENT 'Domicilio',
-  `correo_funcionario` varchar(100) NOT NULL COMMENT 'Correo',
-  PRIMARY KEY  (`rut_funcionario`)
+  `RUTFUNCIONARIO` varchar(10) NOT NULL,
+  `NOMBRESFUNCIONARIOS` varchar(50) NOT NULL,
+  `APELLIDOSFUCIONARIO` varchar(50) NOT NULL,
+  `TELEFONOFUNCIONARIO` varchar(12) NOT NULL,
+  `SECTORFUNCIONARIO` varchar(50) NOT NULL,
+  `DIRECCIONFUNCIONARIO` varchar(50) NOT NULL,
+  `CORREOFUNCIONARIO` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Volcar la base de datos para la tabla `funcionario`
---
-
 
 -- --------------------------------------------------------
 
@@ -171,18 +132,19 @@ CREATE TABLE `funcionario` (
 --
 
 CREATE TABLE `imagen` (
-  `id_imagen` int(11) NOT NULL auto_increment,
-  `id_propiedad` int(11) NOT NULL,
-  `url_imagen` varchar(250) NOT NULL,
-  PRIMARY KEY  (`id_imagen`),
-  KEY `fk_representa` (`id_propiedad`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+  `IDIMAGEN` int(11) NOT NULL,
+  `IDPROP` int(11) NOT NULL,
+  `URLIMAGEN` varchar(100) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 --
--- Volcar la base de datos para la tabla `imagen`
+-- Volcado de datos para la tabla `imagen`
 --
 
-INSERT INTO `imagen` VALUES (1, 3, '11696028_10207312328825535_8886832005836248666_n59.jpg');
+INSERT INTO `imagen` (`IDIMAGEN`, `IDPROP`, `URLIMAGEN`) VALUES
+(22, 35, 'tumblr_nhw47pciPS1s1whmqo7_1280.jpg'),
+(21, 35, '10507150_1393756380934301_2967279506105958413_o.jpg'),
+(20, 35, 'ae0vPrB_460s.jpg');
 
 -- --------------------------------------------------------
 
@@ -191,18 +153,10 @@ INSERT INTO `imagen` VALUES (1, 3, '11696028_10207312328825535_88868320058362486
 --
 
 CREATE TABLE `integra` (
-  `id_integra` int(11) NOT NULL auto_increment,
-  `rut_funcionario` varchar(25) NOT NULL,
-  `id_ot` int(11) NOT NULL,
-  PRIMARY KEY  (`id_integra`),
-  KEY `fk_relationship_8` (`id_ot`),
-  KEY `fk_relationship_9` (`rut_funcionario`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Volcar la base de datos para la tabla `integra`
---
-
+  `IDINTEGRA` int(11) NOT NULL,
+  `IDOT` int(11) NOT NULL,
+  `RUTFUNCIONARIO` varchar(10) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -211,20 +165,14 @@ CREATE TABLE `integra` (
 --
 
 CREATE TABLE `ordentrabajo` (
-  `id_ot` int(11) NOT NULL auto_increment,
-  `rut_admin` varchar(10) NOT NULL,
-  `descripcion_ot` text NOT NULL,
-  `fechaemision_ot` date NOT NULL,
-  `fechaejecucion_ot` date NOT NULL,
-  `estado_ot` tinyint(1) NOT NULL default '1',
-  PRIMARY KEY  (`id_ot`),
-  KEY `fk_crea` (`rut_admin`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Volcar la base de datos para la tabla `ordentrabajo`
---
-
+  `IDOT` int(11) NOT NULL,
+  `RUTADMIN` varchar(10) NOT NULL,
+  `DESCIPCIONOT` varchar(254) NOT NULL,
+  `FECHAEMISIONOT` date NOT NULL,
+  `FECHAEJECUCIONOT` date DEFAULT NULL,
+  `ESTADOOT` tinyint(1) NOT NULL,
+  `FORMULARIOOT` varchar(254) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -233,21 +181,13 @@ CREATE TABLE `ordentrabajo` (
 --
 
 CREATE TABLE `pago` (
-  `id_pago` int(11) NOT NULL auto_increment,
-  `id_arriendo` int(11) default NULL,
-  `rut_arrendatario` varchar(25) default NULL,
-  `fecha_pago` date NOT NULL,
-  `totalpagar_pago` int(11) NOT NULL,
-  `totalpagado_pago` int(11) NOT NULL,
-  PRIMARY KEY  (`id_pago`),
-  KEY `fk_acata` (`id_arriendo`),
-  KEY `fk_origina` (`rut_arrendatario`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Volcar la base de datos para la tabla `pago`
---
-
+  `IDPAGO` int(11) NOT NULL,
+  `RUTARREN` varchar(10) NOT NULL,
+  `IDARRIENDO` int(11) DEFAULT NULL,
+  `FECHAPAGO` date NOT NULL,
+  `TOTALPAGAR` int(11) DEFAULT NULL,
+  `TOTALPAGADO` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -256,33 +196,31 @@ CREATE TABLE `pago` (
 --
 
 CREATE TABLE `propiedad` (
-  `id_propiedad` int(11) NOT NULL auto_increment,
-  `rut_cliente` varchar(10) default NULL COMMENT 'RUT del propietario',
-  `direccion_propiedad` varchar(255) NOT NULL COMMENT 'Dirección',
-  `habitacion_propiedad` int(11) default NULL COMMENT 'Cantidad de piezas',
-  `bano_propiedad` int(11) default NULL COMMENT 'Cantidad de baños',
-  `terreno_propiedad` varchar(50) default NULL COMMENT 'Terreno',
-  `construido_propiedad` varchar(50) default NULL COMMENT 'Terreno construido',
-  `tipo_propiedad` varchar(25) NOT NULL COMMENT 'Tipo de propiedad',
-  `servicio_propiedad` varchar(10) NOT NULL COMMENT 'Tipo de servicio prestado',
-  `estado_propiedad` tinyint(1) default '1' COMMENT 'Estado',
-  `descripcion_propiedad` text COMMENT 'Descripción',
-  `comuna_propiedad` varchar(20) NOT NULL COMMENT 'Comuna donde se encuentra',
-  `amoblado_propiedad` tinyint(1) NOT NULL default '0' COMMENT 'Amoblado',
-  `valor_propiedad` double NOT NULL COMMENT 'Valor',
-  `activo_propiedad` tinyint(1) default '1' COMMENT 'Habilitado',
-  PRIMARY KEY  (`id_propiedad`),
-  KEY `fk_posee` (`rut_cliente`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+  `IDPROP` int(11) NOT NULL COMMENT 'propiedad_id',
+  `RUTCLIENTE` varchar(10) NOT NULL COMMENT 'RUT del propietario',
+  `DIRECCION` varchar(50) NOT NULL COMMENT 'Dirección',
+  `CANTPIEZA` int(11) DEFAULT NULL COMMENT 'Cantidad de piezas',
+  `CANTBANO` int(11) DEFAULT NULL COMMENT 'Cantidad de baños',
+  `TERRENO` varchar(25) NOT NULL COMMENT 'Terreno',
+  `TERRENOCONSTRUIDO` varchar(25) DEFAULT NULL COMMENT 'Terreno construido',
+  `TIPO` varchar(25) NOT NULL COMMENT 'Tipo de propiedad',
+  `SERVICIO` varchar(10) NOT NULL COMMENT 'Tipo de servicio prestado',
+  `ESTADO` tinyint(1) NOT NULL DEFAULT '1' COMMENT 'Estado',
+  `DESCRIPCION` varchar(500) DEFAULT NULL COMMENT 'Descripción',
+  `COMUNAPROPIEDAD` varchar(20) NOT NULL COMMENT 'Comuna donde se encuentra',
+  `VALORPROPIEDAD` int(11) NOT NULL COMMENT 'Valor',
+  `AMOBLADO` tinyint(1) DEFAULT '0' COMMENT 'Amoblado',
+  `Activo` tinyint(1) DEFAULT '1' COMMENT 'deshabilitar'
+) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 
 --
--- Volcar la base de datos para la tabla `propiedad`
+-- Volcado de datos para la tabla `propiedad`
 --
 
-INSERT INTO `propiedad` VALUES (1, '18183527-3', 'asd', 1, 1, '123', '123', 'Casa', 'Venta', 1, '123123123123', 'Antofagasta', 1, 123123, 1);
-INSERT INTO `propiedad` VALUES (2, '18183527-3', 'asd', 1, 1, '123', '123', 'Casa', 'Venta', 1, '123123123123', 'Antofagasta', 1, 123123, 1);
-INSERT INTO `propiedad` VALUES (3, '18183527-3', '1234', 1, 1, '123', '123', 'Casa', 'Venta', 1, '123123', 'Antofagasta', 1, 123, 1);
-INSERT INTO `propiedad` VALUES (4, '18183527-3', 'gdfg', 1, 1, 'dfg', '345', 'Casa', 'Venta', 1, 'dfgghhgdgf', 'Antofagasta', 1, 3453, 1);
+INSERT INTO `propiedad` (`IDPROP`, `RUTCLIENTE`, `DIRECCION`, `CANTPIEZA`, `CANTBANO`, `TERRENO`, `TERRENOCONSTRUIDO`, `TIPO`, `SERVICIO`, `ESTADO`, `DESCRIPCION`, `COMUNAPROPIEDAD`, `VALORPROPIEDAD`, `AMOBLADO`, `Activo`) VALUES
+(35, '18045248-6', '123', 1, 1, '123123', '', 'Casa', 'Venta', 1, 'dasdasdasdasdasd', 'Antofagasta', 123, 1, 0),
+(36, '18045248-6', 'asdasd', 1, 7, 'qweqwe', 'weqwe', 'Casa', 'Venta', 1, 'asdasdasdasdasdasdasd', 'Calama', 123123123, 1, 1),
+(37, '18045248-6', 'dasd', 1, 1, 'asdasd', '', 'Casa', 'Venta', 1, 'asdasdasdasd', 'Antofagasta', 3423423, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -291,28 +229,20 @@ INSERT INTO `propiedad` VALUES (4, '18183527-3', 'gdfg', 1, 1, 'dfg', '345', 'Ca
 --
 
 CREATE TABLE `solicitud` (
-  `id_solicitud` int(11) NOT NULL auto_increment,
-  `rut_cliente` varchar(10) default NULL,
-  `rut_funcionario` varchar(25) default NULL,
-  `nombres_solicitud` varchar(100) default NULL COMMENT 'Nombres',
-  `apellidos_solicitud` varchar(100) default NULL COMMENT 'Apellidos',
-  `servicio_solicitud` varchar(25) NOT NULL COMMENT 'Servicio',
-  `fecha_solicitud` date NOT NULL COMMENT 'Fecha',
-  `fechaejecucion_solicitud` date NOT NULL COMMENT 'Fecha solicitada',
-  `telefono_solicitud` varchar(12) default NULL COMMENT 'Teléfono de contacto',
-  `estado_solicitud` tinyint(1) NOT NULL default '1' COMMENT 'Estado de solicitud',
-  `descripcion_solicitud` text NOT NULL COMMENT 'Descripción',
-  `tipopropiedad_solicitud` varchar(50) NOT NULL COMMENT 'Tipo de propiedad',
-  `correo_solicitud` varchar(100) default NULL COMMENT 'Correo electrónico',
-  PRIMARY KEY  (`id_solicitud`),
-  KEY `fk_elabora` (`rut_funcionario`),
-  KEY `fk_realiza` (`rut_cliente`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Volcar la base de datos para la tabla `solicitud`
---
-
+  `IDSOLICITUD` int(11) NOT NULL,
+  `RUTCLIENTE` varchar(10) NOT NULL,
+  `RUTSOLICITANTE` varchar(10) NOT NULL,
+  `NOMBRESSOLICITANTE` varchar(50) NOT NULL,
+  `APELLIDOSSOLICITANTE` varchar(50) NOT NULL,
+  `SERVICIOSOLICITADO` varchar(25) NOT NULL,
+  `FECHASOLICITUD` date NOT NULL,
+  `FECHASOLICITADA` date NOT NULL,
+  `NUMTELEFONO` int(11) NOT NULL,
+  `ESTADOSOLICITUD` tinyint(1) NOT NULL,
+  `DESCRIPCIONSOLICITUD` varchar(254) NOT NULL,
+  `CORREOCONTACTO` varchar(100) NOT NULL COMMENT 'Correo de contacto',
+  `TIPOPROPIEDAD` varchar(50) NOT NULL COMMENT 'Tipo de propiedad'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -321,18 +251,165 @@ CREATE TABLE `solicitud` (
 --
 
 CREATE TABLE `venta` (
-  `id_venta` int(11) NOT NULL auto_increment,
-  `id_propiedad` int(11) NOT NULL,
-  `rut_admin` varchar(10) default NULL,
-  `nombrescomprador_venta` varchar(100) NOT NULL,
-  `apellidoscomprador_venta` varchar(100) NOT NULL,
-  `rutcomprador_venta` varchar(25) NOT NULL,
-  PRIMARY KEY  (`id_venta`),
-  KEY `fk_acoge` (`id_propiedad`),
-  KEY `fk_concibe` (`rut_admin`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `IDVENTA` int(11) NOT NULL,
+  `RUTADMIN` varchar(10) DEFAULT NULL,
+  `IDPROP` int(11) DEFAULT NULL,
+  `NOMBRECOMPRADOR` varchar(50) NOT NULL,
+  `APELLIDOSCOMPRADOR` varchar(50) NOT NULL,
+  `RUTCOMPRADOR` varchar(10) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Volcar la base de datos para la tabla `venta`
+-- Índices para tablas volcadas
 --
 
+--
+-- Indices de la tabla `administrador`
+--
+ALTER TABLE `administrador`
+  ADD PRIMARY KEY (`RUTADMIN`);
+
+--
+-- Indices de la tabla `arrendatario`
+--
+ALTER TABLE `arrendatario`
+  ADD PRIMARY KEY (`RUTARREN`);
+
+--
+-- Indices de la tabla `arriendo`
+--
+ALTER TABLE `arriendo`
+  ADD PRIMARY KEY (`IDARRIENDO`),
+  ADD KEY `FK_ARRIENDA` (`RUTARREN`),
+  ADD KEY `FK_GESTIONA` (`RUTADMIN`),
+  ADD KEY `FK_PUEDE` (`IDPROP`);
+
+--
+-- Indices de la tabla `cliente`
+--
+ALTER TABLE `cliente`
+  ADD PRIMARY KEY (`RUTCLIENTE`);
+
+--
+-- Indices de la tabla `documento`
+--
+ALTER TABLE `documento`
+  ADD PRIMARY KEY (`IDDOCU`),
+  ADD KEY `FK_ADJUDICA` (`IDPROP`),
+  ADD KEY `FK_CONTIENE` (`IDARRIENDO`),
+  ADD KEY `FK_ENTREGA` (`RUTARREN`);
+
+--
+-- Indices de la tabla `factura`
+--
+ALTER TABLE `factura`
+  ADD PRIMARY KEY (`IDFACTURA`),
+  ADD KEY `FK_GENERA` (`IDPAGO`);
+
+--
+-- Indices de la tabla `funcionario`
+--
+ALTER TABLE `funcionario`
+  ADD PRIMARY KEY (`RUTFUNCIONARIO`);
+
+--
+-- Indices de la tabla `imagen`
+--
+ALTER TABLE `imagen`
+  ADD PRIMARY KEY (`IDIMAGEN`),
+  ADD KEY `FK_REPRESENTA` (`IDPROP`);
+
+--
+-- Indices de la tabla `integra`
+--
+ALTER TABLE `integra`
+  ADD PRIMARY KEY (`IDINTEGRA`),
+  ADD KEY `FK_RELATIONSHIP_13` (`RUTFUNCIONARIO`),
+  ADD KEY `FK_RELATIONSHIP_14` (`IDOT`);
+
+--
+-- Indices de la tabla `ordentrabajo`
+--
+ALTER TABLE `ordentrabajo`
+  ADD PRIMARY KEY (`IDOT`),
+  ADD KEY `FK_CREA` (`RUTADMIN`);
+
+--
+-- Indices de la tabla `pago`
+--
+ALTER TABLE `pago`
+  ADD PRIMARY KEY (`IDPAGO`),
+  ADD KEY `FK_CANCELA` (`RUTARREN`),
+  ADD KEY `FK_OBTIENE` (`IDARRIENDO`);
+
+--
+-- Indices de la tabla `propiedad`
+--
+ALTER TABLE `propiedad`
+  ADD PRIMARY KEY (`IDPROP`),
+  ADD KEY `FK_POSEE` (`RUTCLIENTE`);
+
+--
+-- Indices de la tabla `solicitud`
+--
+ALTER TABLE `solicitud`
+  ADD PRIMARY KEY (`IDSOLICITUD`),
+  ADD KEY `FK_REALIZA` (`RUTCLIENTE`);
+
+--
+-- Indices de la tabla `venta`
+--
+ALTER TABLE `venta`
+  ADD PRIMARY KEY (`IDVENTA`),
+  ADD KEY `FK_ES` (`IDPROP`),
+  ADD KEY `FK_HACE` (`RUTADMIN`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `arriendo`
+--
+ALTER TABLE `arriendo`
+  MODIFY `IDARRIENDO` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `documento`
+--
+ALTER TABLE `documento`
+  MODIFY `IDDOCU` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `factura`
+--
+ALTER TABLE `factura`
+  MODIFY `IDFACTURA` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `imagen`
+--
+ALTER TABLE `imagen`
+  MODIFY `IDIMAGEN` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+--
+-- AUTO_INCREMENT de la tabla `integra`
+--
+ALTER TABLE `integra`
+  MODIFY `IDINTEGRA` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `ordentrabajo`
+--
+ALTER TABLE `ordentrabajo`
+  MODIFY `IDOT` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `propiedad`
+--
+ALTER TABLE `propiedad`
+  MODIFY `IDPROP` int(11) NOT NULL AUTO_INCREMENT COMMENT 'propiedad_id',AUTO_INCREMENT=38;
+--
+-- AUTO_INCREMENT de la tabla `solicitud`
+--
+ALTER TABLE `solicitud`
+  MODIFY `IDSOLICITUD` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `venta`
+--
+ALTER TABLE `venta`
+  MODIFY `IDVENTA` int(11) NOT NULL AUTO_INCREMENT;

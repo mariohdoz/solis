@@ -87,7 +87,7 @@
 			</li>
 			<li>
 				<a href="#cd-placeholder-3">
-					<b>Misión</b>
+					<b>Servicios</b>
 					<span></span><!-- icon -->
 				</a>
 			</li>
@@ -200,11 +200,71 @@
 
 
 	</section> <!-- #cd-placeholder-2 -->
-	<section id="cd-placeholder-3" class="cd-section cd-container">
-		<h1>Misión</h1>
-		<p>
-			texto
-		</p>
+	<section id="cd-placeholder-3" class="cd-section cd-container servicios">
+		<h1>Nuestros Servicios</h1>
+		<div class="services">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="services-box">
+							<span class="icon"><i class="fa fa-money"></i></span><!-- .Icon ends here -->
+
+							<div class="service-content">
+								<p><h4>Compraventa</h4>
+									La corredora de propiedades realiza compras de propiedades para su posterior reventa.
+								</p>
+							</div><!-- .Service-content ends here -->
+						</div><!-- .Services-box ends here -->
+
+						<div class="services-box">
+							<span class="icon"><i class="fa fa-dollar"></i></span><!-- .Icon ends here -->
+
+							<div class="service-content">
+								<p><h4>Tasaciones</h4>
+								La empresa conoce y realiza los procedimientos y los aspectos que influyen en el precio de una propiedad.
+								</p>
+							</div><!-- .Service-content ends here -->
+						</div><!-- .Services-box ends here -->
+						<div class="services-box">
+							<span class="icon"><i class="fa fa-search"></i></span><!-- .Icon ends here -->
+
+							<div class="service-content">
+								<p><h4>Estudio de Títulos</h4>
+								Nuestra empresa se encarga de la búsqueda y validación de la documentación necesaria para la venta o compra de alguna propiedad.
+								</p>
+							</div><!-- .Service-content ends here -->
+						</div><!-- .Services-box ends here -->
+					</div><!-- .Col ends here -->
+
+					<div class="col-md-4">
+						<img class="img-responsive" src="http://i.imgur.com/BFsdxWZ.png" alt="" />
+					</div>
+
+					<div class="col-md-4">
+						<div class="services-box">
+							<span class="icon"><i class="fa fa-building-o"></i></span><!-- .Icon ends here -->
+
+							<div class="service-content">
+								<p><h4>Ampliaciones Menores</h4>
+								La empresa se encarga de administrar construcciones pequeñas (piezas, casas pequeñas, ampliaciones en general.
+								</p>
+							</div><!-- .Service-content ends here -->
+						</div><!-- .Services-box ends here -->
+
+						<div class="services-box">
+							<span class="icon"><i class="fa fa-bug"></i></span><!-- .Icon ends here -->
+
+							<div class="service-content">
+								<p><h4>Servicios de Aseo</h4>
+								Aseos de propiedades: La corredora de propiedades presta servicios de limpiezas, ya sea a empresas como particulares, los cuales se pueden pactar de forma mensual, como en algún caso en particular.
+								</p>
+							</div><!-- .Service-content ends here -->
+						</div><!-- .Services-box ends here -->
+
+					</div><!-- .Col ends here -->
+				</div><!-- .Row ends here -->
+			</div><!-- .Container ends here -->
+		</div><!-- .Services ends here -->
 	</section> <!-- #cd-placeholder-3 -->
 	<section id="cd-placeholder-4" class="cd-section cd-container">
 		<h1>Visión</h1>
