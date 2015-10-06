@@ -64,13 +64,14 @@ class SiteController extends Controller
 		$model  = new BusquedaForm();
 		if (isset($_POST['Propiedad'])) {
 			$model2->attributes = $_POST['Propiedad'];
-			$v                  = $model2->SERVICIO;
+			$v                  = $model2->servicio_propiedad;
 			$v2                 = 'Todas';
 			if ($v == 'Todas') {
 				$criteria         = new CDbCriteria;
-				$criteria->select = 't.*, im.URLIMAGEN as ruta';
-				$criteria->join   = 'LEFT JOIN imagen im ON t.IDPROP = im.IDPROP';
-				$criteria->group  = 't.IDPROP';
+				$criteria->select = 't.*, im.url_imagen as ruta';
+				$criteria->join   = 'LEFT JOIN imagen im ON t.id_propiedad = im.id_propiedad';
+				$criteria->condition = 'estado_propiedad = TRUE AND activo_propiedad = TRUE';
+				$criteria->group  = 't.id_propiedad';
 				$dataProvider     = new CActiveDataProvider('propiedad', array(
 					'criteria' => $criteria,
 					'pagination' => array(
@@ -78,10 +79,15 @@ class SiteController extends Controller
 					)
 				));
 			} else {
+				$criteria = new CDbCriteria;
+				$criteria->select = 't.*, im.url_imagen as ruta';
+				$criteria->condition = 'comuna_propiedad=:comuna AND tipo_propiedad=:tipo AND servicio_propiedad=:servicio AND estado_propiedad = TRUE AND activo_propiedad = TRUE';
+				$criteria->params = array(':comuna'=>comuna_propiedad,':servicio'=>servicio_propiedad,':tipo'=>tipo_propiedad);
 				$dataProvider = new CActiveDataProvider('Propiedad', array(
-					'criteria' => array(
-						'condition' => 'COMUNAPROPIEDAD = "' . $model2->COMUNAPROPIEDAD . '" AND TIPO = "' . $model2->TIPO . '" AND SERVICIO="' . $model2->SERVICIO . '" AND ESTADO = TRUE'
-					)
+					'criteria' => $criteria,
+					'pagination' => array(
+						'pageSize' => 20
+					),
 				));
 			}
 			$this->render('busqueda', array(

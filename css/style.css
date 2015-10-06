@@ -50,7 +50,7 @@
     margin-top: 70px;
   }
 }
-/* -------------------------------- 
+/* --------------------------------
 
 Navigation
 
@@ -178,7 +178,7 @@ Navigation
   }
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
 Intro
 
@@ -260,7 +260,7 @@ Intro
   }
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
 Secondary Fixed Navigation
 
@@ -522,7 +522,7 @@ Secondary Fixed Navigation
   }
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
 Placeholder Sections
 
@@ -2367,4 +2367,125 @@ centrar{
   top: 0; left: 0;
   width: 100% !important;
   height: 100% !important;
+}
+
+
+
+
+/*Estilos Base*/
+.contenedor-img2 {
+    display: inline-block;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    border: #53b7ad 1px solid;
+    border-radius: 5px;
+    width: 405px;
+    height: 305px;
+    float: left;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    cursor: default;
+    background: #fff;
+
+
+}
+.contenedor-img2 .mascara2,.contenedor-img2 .contenido {
+    width: 405px;
+    height: 305px;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0
+}
+.contenedor-img2 img {
+    display: block;
+    position: relative;
+    width: 405px;
+    height: 305px;
+
+}
+.contenedor-img2 h2 {
+
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    font-size: 17px;
+    padding: 10px;
+    background: rgba(83, 183, 173, 0.9);
+    margin: 0px 0 0 0
+}
+.contenedor-img2 p {
+    font-size: 15px;
+    position: relative;
+    color: #fff;
+    background: rgba(83, 183, 173, 0.9);
+    padding: 10px 20px 10px;
+    text-align: center;
+    margin: 190px 0 0 0
+}
+.contenedor-img2 a.link {
+
+
+    display: inline-block;
+    text-decoration: none;
+    padding: 7px 14px;
+    background: #ff5722;
+    color: #fff;
+    text-transform: uppercase;
+    box-shadow: 0 0 1px #000
+}
+.contenedor-img2 a.link:hover {
+    box-shadow: 0 0 5px #000
+}
+
+
+
+
+/*Ejemplo 1*/
+.ejemplo-2 img {
+    transition: all 0.2s linear;
+
+
+}
+.ejemplo-2 .mascara2 {
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+.ejemplo-2 h2 {
+    transform: translateX(-200px);/*Desplazamos a la izquierda*/
+    opacity: 0;
+    transition: all 0.7s ease-in-out;
+}
+.ejemplo-2 p {
+    transform: translateX(200px);/*Desplazamos a la derecha*/
+    opacity: 0;
+    transition: all 0.4s linear;
+}
+.ejemplo-2 a.link{
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+    transform: translateY(1500px)/*Desplazamos para abajo*/
+}
+.ejemplo-2:hover img {
+    transform: scale(1.1);/*Damos un ligero zoom a la imagen*/
+}
+.ejemplo-2:hover .mascara2 {
+    opacity: 1;
+}
+.ejemplo-2:hover h2,
+.ejemplo-2:hover p,
+.ejemplo-2:hover a.link {
+    opacity: 1;
+    transform: translateX(0px);/*Regresamos a las posiciones originales*/
+}
+.ejemplo-2:hover p {
+    transition-delay: 0.1s;
+}
+.ejemplo-2:hover a.link {
+    transition-delay: 0.2s; /*Aplicamos un pequeño retardo para que se muestre al final*/
+    transform: translateY(0px);
 }
