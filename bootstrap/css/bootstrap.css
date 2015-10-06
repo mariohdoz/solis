@@ -1081,9 +1081,7 @@ th {
           box-sizing: border-box;
 }
 html {
-  font-size: 10px;
 
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1277,7 +1275,7 @@ h2,
 }
 h3,
 .h3 {
-  font-size: 24px;
+    font-size: 24px;
 }
 h4,
 .h4 {
@@ -3221,11 +3219,11 @@ fieldset[disabled] .btn-info.active {
   background-color: #fff;
 }
 .btn-warning {
-  font-size: 12px;
+
   display: inline-block;
   padding: 1em 1.8em;
   background-color: rgba(255, 87, 34, 0.9);
-  margin-top: 19px;
+  margin-top: 3px;
   border-radius: .9em;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;

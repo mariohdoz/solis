@@ -1,7 +1,7 @@
 
 .cd-container {
   /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
-  width: 90%;
+  width: 100%;
   max-width: 100%;
   margin: 0 auto;
 }
@@ -774,6 +774,7 @@ xsigin/signup popup
 .cd-user-modal-container {
   position: relative;
   width: 90%;
+  top: 10%;
   max-width: 600px;
   background: #FFF;
   margin: 3em auto 4em;
@@ -2352,6 +2353,7 @@ cite {
 .fade-out { animation: fade-out 1s ease forwards; }
 
 centrar{
+  font-size: 20px;
   text-align: center;
   color: #000000;
   text-shadow: 1px 1px 0 white;
@@ -2367,4 +2369,60 @@ centrar{
   top: 0; left: 0;
   width: 100% !important;
   height: 100% !important;
+}
+
+.services{
+  padding: 60px 0px;
+}
+.services-box{
+  display: inline-block;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px dashed #dfe0e1;
+  padding-top: 40px;
+}
+.services-box:hover{
+  background: #f2f2f2;
+  cursor: pointer;
+
+  transition: all 1s;
+  -moz-transition: all 1s; /* Firefox 4 */
+  -webkit-transition: all 1s; /* Safari and Chrome */
+  -o-transition: all 1s; /* Opera */
+}
+.services-box:hover i{
+  background: #1abc9c;
+  border-radius: 100px;
+
+  transition: all 1s;
+  -moz-transition: all 1s; /* Firefox 4 */
+  -webkit-transition: all 1s; /* Safari and Chrome */
+  -o-transition: all 1s; /* Opera */
+}
+.icon{
+  padding: 0px;
+  float: left;
+  margin-right: 20px;
+  padding-bottom:30px
+}
+.icon i{
+  width: 70px;
+  height: 70px;
+  background: #1abc9c;
+  color: #ffffff;
+  line-height: 70px;
+  text-align: center;
+  font-size: 44px;
+}
+.service-content{
+text-align: justify;
+}
+.service-content h4{
+  font-size: 18px;
+  font-weight: 900;
+
+}
+.servicios{
+  background: #FFFFFF;
+
 }
