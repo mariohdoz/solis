@@ -107,7 +107,7 @@
 	</nav>
 </div> <!-- .cd-secondary-nav -->
 <main class="cd-main-content">
-	<section id="cd-placeholder-1" class="cd-section cd-container">
+	<section id="cd-placeholder-1" class="cd-section cd-container servicios">
     <h1>Buscar Propiedades</h1></br>
 
 			<div class="container-fluid row-centered">
@@ -177,26 +177,25 @@
 
 
 	<section id="cd-placeholder-2" class="cd-section cd-container">
-		<h1>¿Quiénes Sómos?</h1>
-
-		<!-- slider -->
-
-		<figure>
-			<blockquote>
-				<cite>Nosotros</cite>
-				<centrar>La empresa Propiedades sol y cobre es una empresa que se dedica a la venta y arriendo de propiedades tales como: casas, departamentos, locales y hospedaje. También presta servicios como: Obras menores y ampliaciones (pintura, cambio y lavado de alfombras, aseos, búsquedas de propiedades, etc.), y asesorías como: Regularización de Ampliaciones, asesorías de ventas, tasaciones y estudio de título. Actualmente trabaja con particulares y empresas las cuales por nombrar algunas son: Elecda, Komatsu, Mena y Ovalle, a los cuales presta los servicios mencionados anteriormente.</centrar>
-			</blockquote>
-			<blockquote>
-				<cite>Misión</cite>
-				<centrar>Entregar excelencia en servicios de Corretaje de Propiedades, Administración de Condominios, Edificios y Tasaciones de Bienes Raíces y Capacitación. Consolidándonos como una organización joven, moderna, eficiente y eficaz.
-					De nuestra corredora de propiedades en atender las necesidades de nuestros clientes entregando seguridad, información y tranquilidad en el proceso de compra venta o arrendamiento de su propiedad. Esto apoyado en el conocimiento y profesionalismo de nuestro equipo de trabajo y de las políticas de control de gestión de la empresa, entregando como resultado un servicio de alta calidad y adecuada eficiencia en cada etapa de la cadena.</centrar>
-			</blockquote>
-			<blockquote>
-				<cite>Visión</cite>
-				<centrar>“Creemos en un proceso de mejora continua, ser un equipo multidisciplinario profesional y comercialmente consolidado, manteniendo la excelencia en la atención de nuestros clientes. Expandir nuestro mercado a nivel nacional, mediante la captación de asociados y la apertura de nuevos mercados y negocios. Que nuestros clientes se sientan plenamente acompañados y asesorados durante todo el proceso de compra venta o arrendamiento de su propiedad por nosotros como corredores de propiedades, generando así relaciones de largo plazo.”</centrar>
-
-			</blockquote>
-		</figure>
+			<!-- slider -->
+		<div id="slider">
+			<figure>
+				<blockquote>
+					<h1>¿Quiénes Sómos?</h1><span class="icon2"><i class="fa fa-question"></i></span><!-- .Icon ends here -->
+					<h3>La empresa Propiedades sol y cobre es una empresa que se dedica a la venta y arriendo de propiedades tales como: casas, departamentos, locales y hospedaje. También presta servicios como: Obras menores y ampliaciones (pintura, cambio y lavado de alfombras, aseos, búsquedas de propiedades, etc.), y asesorías como: Regularización de Ampliaciones, asesorías de ventas, tasaciones y estudio de título. Actualmente trabaja con particulares y empresas las cuales por nombrar algunas son: Elecda, Komatsu, Mena y Ovalle, a los cuales presta los servicios mencionados anteriormente.</h3>
+				</blockquote>
+				<blockquote>
+					<h1>Misión</h1></i><span class="icon2"><i class="fa fa-crosshairs"></i></span><!-- .Icon ends here -->
+					<h3>“Entregar excelencia en servicios de Corretaje de Propiedades, Administración de Condominios, Edificios y Tasaciones de Bienes Raíces y Capacitación. Consolidándonos como una organización joven, moderna, eficiente y eficaz.
+						atender a nuestros clientes entregando seguridad, información y tranquilidad en el proceso de compra venta o arrendamiento de su propiedad. Esto apoyado en el conocimiento y profesionalismo de nuestro equipo de trabajo y de las políticas de control de gestión de la empresa, entregando como resultado un servicio de alta calidad y adecuada eficiencia en cada etapa de la cadena.”
+					</h3>
+				</blockquote>
+				<blockquote>
+					<h1>Visión</h1><span class="icon2"><i class="fa fa-eye"></i></span><!-- .Icon ends here -->
+					<h3>“Creemos en un proceso de mejora continua, ser un equipo multidisciplinario profesional y comercialmente consolidado, manteniendo la excelencia en la atención de nuestros clientes. Expandir nuestro mercado a nivel nacional, mediante la captación de asociados y la apertura de nuevos mercados y negocios. Que nuestros clientes se sientan plenamente acompañados y asesorados durante todo el proceso de compra venta o arrendamiento de su propiedad por nosotros como corredores de propiedades, generando así relaciones de largo plazo.”</h3>
+				</blockquote>
+			</figure>
+		</div>
 
 
 	</section> <!-- #cd-placeholder-2 -->
