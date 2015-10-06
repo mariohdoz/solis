@@ -112,7 +112,7 @@ INSERT INTO `administrador` (`RUTADMIN`, `NOMBRESADMIN`, `APELLIDOSADMIN`, `CONT
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `funcionario`
+-- Estructura de ta bla para la tabla `funcionario`
 --
 
 CREATE TABLE `funcionario` (
