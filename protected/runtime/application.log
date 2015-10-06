@@ -5729,3 +5729,21 @@ Stack trace:
 REQUEST_URI=/nuevo/index.php/site/busqueda.html?r=site/vista&id=2
 HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
 ---
+2015/10/07 00:46:20 [error] [exception.CException] exception 'CException' with message 'SiteController no ha podido encontrar la vista "vista" solicitada.' in C:\xampp\htdocs\yii\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('vista', Array, true)
+#1 C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php(119): CController->render('vista', Array)
+#2 [internal function]: SiteController->actionVista('1')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('vista')
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/vista')
+#10 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\nuevo\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/nuevo/index.php/site/busqueda.html?r=site/vista&id=1
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
