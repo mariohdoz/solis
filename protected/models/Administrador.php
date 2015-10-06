@@ -4,13 +4,13 @@
  * This is the model class for table "administrador".
  *
  * The followings are the available columns in table 'administrador':
- * @property string $RUTADMIN
- * @property string $NOMBRESADMIN
- * @property string $APELLIDOSADMIN
- * @property string $CONTRAADMIN
- * @property string $TELEFONOADMIN
- * @property string $CORREOADMIN
- * @property string $imagen
+ * @property string $rut_admin
+ * @property string $nombres_admin
+ * @property string $apellidos_admin
+ * @property string $contrasena_admin
+ * @property string $correo_admin
+ * @property string $telefono_admin
+ * @property string $perfil_admin
  */
 class Administrador extends CActiveRecord
 {
@@ -30,14 +30,14 @@ class Administrador extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('RUTADMIN, NOMBRESADMIN, APELLIDOSADMIN, CONTRAADMIN, TELEFONOADMIN, CORREOADMIN, imagen', 'required'),
-			array('RUTADMIN', 'length', 'max'=>10),
-			array('NOMBRESADMIN, APELLIDOSADMIN, CONTRAADMIN, CORREOADMIN', 'length', 'max'=>50),
-			array('TELEFONOADMIN', 'length', 'max'=>11),
-            array('imagen', 'length', 'max'=>100),
+			array('rut_admin, nombres_admin, apellidos_admin, contrasena_admin, correo_admin, telefono_admin, perfil_admin', 'required'),
+			array('rut_admin', 'length', 'max'=>10),
+			array('nombres_admin, apellidos_admin, contrasena_admin, correo_admin', 'length', 'max'=>100),
+			array('telefono_admin', 'length', 'max'=>12),
+			array('perfil_admin', 'length', 'max'=>250),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('RUTADMIN, NOMBRESADMIN, APELLIDOSADMIN, CONTRAADMIN, TELEFONOADMIN, CORREOADMIN, imagen', 'safe', 'on'=>'search'),
+			array('rut_admin, nombres_admin, apellidos_admin, contrasena_admin, correo_admin, telefono_admin, perfil_admin', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,13 +58,13 @@ class Administrador extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'RUTADMIN' => 'Rutadmin',
-			'NOMBRESADMIN' => 'Nombresadmin',
-			'APELLIDOSADMIN' => 'Apellidosadmin',
-			'CONTRAADMIN' => 'Contraadmin',
-			'TELEFONOADMIN' => 'Telefonoadmin',
-			'CORREOADMIN' => 'Correoadmin',
-            'imagen' => 'Imagen'
+			'rut_admin' => 'RUT del administrador',
+			'nombres_admin' => 'Nombres',
+			'apellidos_admin' => 'Apellidos',
+			'contrasena_admin' => 'Contraseña',
+			'correo_admin' => 'Correo',
+			'telefono_admin' => 'Telefono',
+			'perfil_admin' => 'Foto',
 		);
 	}
 
@@ -86,13 +86,13 @@ class Administrador extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('RUTADMIN',$this->RUTADMIN,true);
-		$criteria->compare('NOMBRESADMIN',$this->NOMBRESADMIN,true);
-		$criteria->compare('APELLIDOSADMIN',$this->APELLIDOSADMIN,true);
-		$criteria->compare('CONTRAADMIN',$this->CONTRAADMIN,true);
-		$criteria->compare('TELEFONOADMIN',$this->TELEFONOADMIN,true);
-		$criteria->compare('CORREOADMIN',$this->CORREOADMIN,true);
-        $criteria->compare('imagen',$this->imagen,true);
+		$criteria->compare('rut_admin',$this->rut_admin,true);
+		$criteria->compare('nombres_admin',$this->nombres_admin,true);
+		$criteria->compare('apellidos_admin',$this->apellidos_admin,true);
+		$criteria->compare('contrasena_admin',$this->contrasena_admin,true);
+		$criteria->compare('correo_admin',$this->correo_admin,true);
+		$criteria->compare('telefono_admin',$this->telefono_admin,true);
+		$criteria->compare('perfil_admin',$this->perfil_admin,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

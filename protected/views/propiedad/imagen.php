@@ -32,7 +32,7 @@
                         <?php $this->widget('ext.EAjaxUpload.EAjaxUpload', array(
                              'id' => 'uploadFile',
                              'config' => array(
-                                 'action' => Yii::app()->createUrl('propiedad/upload/',array('id'=>$model->IDPROP)),
+                                 'action' => Yii::app()->createUrl('propiedad/upload/',array('id'=>$model->id_propiedad)),
                                  'allowedExtensions' => array("jpg","jpeg","gif","png"), //array("jpg","jpeg","gif","exe","mov" and etc...
                                  'sizeLimit' => 10 * 1024 * 1024, // maximum file size in bytes
                                  'buttonText' => 'Selección',
@@ -53,9 +53,9 @@
                </div>
             </div>
             <div class="box-footer">
-          			<div class="pull-right">
-          					<div class="row buttons" style="margin-right: 10px ">
-          							<?php echo CHtml::link('Terminar', array('intra/index'), array('class'=>'boton')); ?>
+          			<div class="pull-left">
+          					<div class="row buttons" style="margin-left: 10px ">
+          							<?php echo CHtml::link('Terminar', array('intra/index'), array('class'=>'btn btn-success')); ?>
           					</div>
           			</div>
           	</div>
@@ -78,21 +78,21 @@
 
                         $this->breadcrumbs=array(
                             'Propiedads'=>array('index'),
-                            $model->IDPROP,
+                            $model->id_propiedad,
                         );
                         ?>
                      <?php $this->widget('zii.widgets.CDetailView', array(
                         'data'=>$model,
                         'attributes'=>array(
-                            'TIPO',
-                            'COMUNAPROPIEDAD',
-                            'DIRECCION',
-                            'SERVICIO',
-                            'CANTPIEZA',
-                            'CANTBANO',
-                            'TERRENO',
-                            'TERRENOCONSTRUIDO',
-                            'DESCRIPCION',
+                            'tipo_propiedad',
+                            'comuna_propiedad',
+                            'direccion_propiedad',
+                            'servicio_propiedad',
+                            'habitacion_propiedad',
+                            'bano_propiedad',
+                            'terreno_propiedad',
+                            'construido_propiedad',
+                            'descripcion_propiedad',
                         ),
                         )); ?>
                   </div>
@@ -106,19 +106,22 @@
                         'Propiedads' => array(
                             'index'
                         ),
-                        $model->IDPROP
+                        $model->id_propiedad
                     );
                     ?>
                    <?php
                     $this->widget('zii.widgets.CDetailView', array(
                         'data' => $model2,
                         'attributes' => array(
-                            'RUTCLIENTE',
-                            'NOMBRESCLIENTE',
-                            'APELLIDOSCLIENTE',
-                            'TELEFONOCLIENTE',
-                            'DIRECCIONCLIENTE',
-                            'CORREOCLIENTE'
+                            'rut_cliente',
+                            array(
+                              'header'=>'Nombre completo',
+                              'name'=>'nombres_cliente',
+                              'value'=>$model2->nombres_cliente.' '.$model2->nombres_cliente,
+                            ),
+                            'telefonocelular_cliente',
+                            'domicilio_cliente',
+                            'correo_cliente'
                         )
                     ));
                    ?>

@@ -45,36 +45,35 @@ if(!Yii::app()->session['activo'])
                 }
                 ?>
                 </div>
-
-                <?php echo $form->errorSummary($model); ?>
+                <?php echo $form->errorSummary($model,'<strong>Es necesario arreglar los siguientes errores:</strong><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><div class="alert alert-danger">', '</div>'); ?>
                 <?php $ruta = Yii::app()->request->pathInfo; ?>
                 <div class="row">
                     <div class="col-md-6"> <!-- se trabaja de dos -->
                         <div class="form-group">
-                            <?php echo $form->labelEx($model,'RUTCLIENTE'); ?>
-                            <?php echo $form->textField($model,'RUTCLIENTE', array("class"=>"form-control select2")); ?>
+                            <?php echo $form->labelEx($model,'rut_cliente'); ?>
+                            <?php echo $form->textField($model,'rut_cliente', array("class"=>"form-control select2")); ?>
                         </div>
                         <div class="form-group">
-                            <?php echo $form->labelEx($model,'APELLIDOSCLIENTE'); ?>
-                            <?php echo $form->textField($model,'APELLIDOSCLIENTE', array("class"=>"form-control select2")); ?>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <?php echo $form->labelEx($model,'NOMBRESCLIENTE'); ?>
-                            <?php echo $form->textField($model,'NOMBRESCLIENTE', array("class"=>"form-control select2")); ?>
-                        </div>
-                        <div class="form-group">
-                            <?php echo $form->labelEx($model,'TELEFONOCLIENTE'); ?>
-                            <?php echo $form->textField($model,'TELEFONOCLIENTE', array("class"=>"form-control select2")); ?>
+                            <?php echo $form->labelEx($model,'apellidos_cliente'); ?>
+                            <?php echo $form->textField($model,'apellidos_cliente', array("class"=>"form-control select2")); ?>
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <?php echo $form->labelEx($model,'DIRECCIONCLIENTE'); ?>
-                            <?php echo $form->textField($model,'DIRECCIONCLIENTE', array("class"=>"form-control select2")); ?>
+                            <?php echo $form->labelEx($model,'nombres_cliente'); ?>
+                            <?php echo $form->textField($model,'nombres_cliente', array("class"=>"form-control select2")); ?>
+                        </div>
+                        <div class="form-group">
+                            <?php echo $form->labelEx($model,'telefonofijo_cliente'); ?>
+                            <?php echo $form->textField($model,'telefonofijo_cliente', array("class"=>"form-control select2")); ?>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <?php echo $form->labelEx($model,'domicilio_cliente'); ?>
+                            <?php echo $form->textField($model,'domicilio_cliente', array("class"=>"form-control select2")); ?>
                         </div>
                         <div class="form-group">
                           <?php echo $form->labelEx($model,'correo_cliente'); ?>
@@ -83,37 +82,44 @@ if(!Yii::app()->session['activo'])
                     </div>
 
                     <div class="col-md-6">
-                        <div class="form-group">
-                          <?php echo $form->labelEx($model,'estadoCivil_cliente'); ?>
-                      			<?php echo $form->textField($model,'estadoCivil_cliente',array("class"=>"form-control select2")); ?>
-                        </div>
+                      <div class="form-group">
+                        <?php echo $form->labelEx($model,'telefonocelular_cliente'); ?>
+                        <?php echo $form->textField($model,'telefonocelular_cliente',array("class"=>"form-control select2")); ?>
+                      </div>
                         <div class="form-group">
                           <?php echo $form->labelEx($model,'profesion_cliente'); ?>
                       		<?php echo $form->textField($model,'profesion_cliente',array("class"=>"form-control select2")); ?>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group">
-                          <?php echo $form->labelEx($model,'telefonoCelular_cliente'); ?>
-                      		<?php echo $form->textField($model,'telefonoCelular_cliente',array("class"=>"form-control select2")); ?>
+
+                      <div class="form-group">
+                          <?php echo $form->labelEx($model,'nrocuenta_cliente'); ?>
+                      		<?php echo $form->textField($model,'nrocuenta_cliente',array("class"=>"form-control select2")); ?>
                         </div>
                         <div class="form-group">
-                          <?php echo $form->labelEx($model,'nroCuenta_cliente'); ?>
-                      		<?php echo $form->textField($model,'nroCuenta_cliente',array("class"=>"form-control select2")); ?>
-                        </div>
+                          <?php echo $form->labelEx($model,'estadocivil_cliente') ?>
+                          <?php echo $form->dropDownList($model,'estadocivil_cliente',array(
+                            'Soltero/a'=>'Soltero/a',
+                            'Casado/a'=>'Casado/a',
+                            'Viudo/a'=>'Viudo/a',
+                          ),
+                          array("class"=>"form-control select2")) ?>
+                          </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group">
-                          <?php echo $form->labelEx($model,'banco_cliente'); ?>
-                      		<?php echo $form->textField($model,'banco_cliente',array("class"=>"form-control select2")); ?>
-                        </div>
+                      <div class="form-group">
+                        <?php echo $form->labelEx($model,'banco_cliente'); ?>
+                        <?php echo $form->textField($model,'banco_cliente',array("class"=>"form-control select2")); ?>
+                      </div>
                     </div>
                 </div><!-- /.box-body -->
                 <div class="box-footer">
-                    <div class="pull-right">
-                        <div class="row buttons">
-                            <?php echo CHtml::submitButton('Guardar', array("class"=>"boton2") ); ?>
-                            <?php $this->widget('application.ext.data.EBackButtonWidget'); ?>
+                    <div class="pull-left">
+                      <div class="row buttons" style="margin-left: 10px ">
+                          <?php echo CHtml::submitButton('Guardar', array('class'=>'btn btn-success')); ?>
+                          &nbsp;&nbsp;
+                          <?php $this->widget('application.extensions.data.EBackButtonWidget'); ?>
                         </div>
                         <?php $this->endWidget(); ?>
 

@@ -76,13 +76,15 @@ class ClienteController extends Controller
 		{
 			$model->attributes=$_POST['Cliente'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->RUTCLIENTE));
+        $this->render('vista',array(
+          'model'=>$this->loadModel($model->rut_cliente),
+        ));
 		}
 
 		$this->render('addCliente',array(
 			'model'=>$model,
 		));
-   
+
 
 	}
 

@@ -59,7 +59,7 @@ return array(
 		// database settings are configured in database.php
 		'db'=>array(
             'class'=>'CDbConnection',
-            'connectionString' => 'mysql:host=localhost;dbname=sun;',
+            'connectionString' => 'mysql:host=localhost;dbname=prueba;',
             'emulatePrepare' => true,
             'username' => 'root',
             'password' => '12345',

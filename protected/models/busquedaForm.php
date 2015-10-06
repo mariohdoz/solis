@@ -1,48 +1,45 @@
 <?php
 class busquedaForm extends CFormModel{
-    public $SERVICIO;
-    public $COMUNAPROPIEDAD;
-    public $TIPO;
-    public $DIRECCION;
-    public $CANTPIEZA;
-    public $CANTBANO;
-    public $TERRENO;
-    public $ESTADO;
-    public $DESCRIPCION;
+    public $servicio_propiedad;
+    public $comuna_propiedad;
+    public $tipo_propiedad;
+    public $direccion_propiedad;
+    public $habitacion_propiedad;
+    public $bano_propiedad;
+    public $terreno_propiedad;
+    public $estado_propiedad;
+    public $descripcion_propiedad;
+    public $construido_propiedad;
     public $PRECIOINICIAL;
     public $PRECIOFINAL;
     public $SUPERFICIE;
-    public $BANOS;
-    public $AMOBLADO;
-    public $BUSCAR;
+    public $amoblado_propiedad;
 
 
 
     public function rules(){
         return array(
-            array("TIPO ,SERVICIO, COMUNAPROPIEDAD","required"),
-            array('TIPO ,SERVICIO, COMUNAPROPIEDAD', 'safe', 'on'=>'search'),
+            array("tipo_propiedad ,servicio_propiedad, comuna_propiedad","required"),
+            array('tipo_propiedad , servicio_propiedad, comuna_propiedad', 'safe', 'on'=>'search'),
         );
     }
 
     public function attributeLabels()
     {
         return array(
-            'DIRECCION' => 'Direcci&oacute;n',
-            'CANTPIEZA' => 'N&uacute;mero de habitaciones.',
-            'CANTBANO' => 'N&uacute;mero de baños',
-            'TERRENO' => 'Terreno',
-            'TERRENOCONSTRUIDO' => 'Terreno construido',
-            'TIPO' => 'Tipo',
-            'SERVICIO' => 'Servicio',
-            'ESTADO' => 'Estado',
-            'DESCRIPCION' => 'Breve descripci&oacute;n',
-            'COMUNAPROPIEDAD' => 'Comuna donde se ubica',
+            'direccion_propiedad' => 'Direcci&oacute;n',
+            'habitacion_propiedad' => 'N&uacute;mero de habitaciones.',
+            'bano_propiedad' => 'N&uacute;mero de baños',
+            'terreno_propiedad' => 'Terreno',
+            'construido_propiedad' => 'Terreno construido',
+            'tipo_propiedad' => 'Tipo',
+            'servicio_propiedad' => 'Servicio',
+            'estado_propiedad' => 'Estado',
+            'descripcion_propiedad' => 'Breve descripci&oacute;n',
+            'comuna_propiedad' => 'Comuna donde se ubica',
             'PRECIOINICIAL' => 'Precio',
             'PRECIOFINAL' => 'Hasta',
-            'AMOBLADO' => 'Amoblado',
-            'BUSCAR' => 'Filtrar'
-
+            'amoblado_propiedad' => 'Amoblado',
         );
     }
 

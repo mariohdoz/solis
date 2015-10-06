@@ -93,7 +93,7 @@ class PropiedadController extends Controller
 		{
 			$model->attributes=$_POST['Propiedad'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->IDPROP));
+				$this->redirect(array('view','id'=>$model->id_propiedad));
 		}
 		$this->render('create',array(
 			'model'=>$model,
@@ -101,7 +101,7 @@ class PropiedadController extends Controller
 	}
 	public function actionUpload($id)
 	{
-		$model = new Imagen();
+		$model = new Imagen;
 		Yii::import("ext.EAjaxUpload.qqFileUploader");
     $folder=Yii::app() -> getBasePath() . "/../images/propiedades/";// folder for uploaded files
     $allowedExtensions = array("jpg","jpeg","gif","png");//array("jpg","jpeg","gif","exe","mov" and etc...
@@ -111,8 +111,8 @@ class PropiedadController extends Controller
     $return = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
     $fileSize=filesize($folder.$result['filename']);//GETTING FILE SIZE
 	  $fileName=$result['filename'];//GETTING FILE NAME
-		$model->URLIMAGEN = $fileName;
-		$model->IDPROP = $id;
+		$model->url_imagen = $fileName;
+		$model->id_propiedad = $id;
 		$model->save();
     echo $return;// it's array
 	}
@@ -132,7 +132,7 @@ class PropiedadController extends Controller
 		{
 			$model->attributes=$_POST['Propiedad'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->IDPROP));
+				$this->redirect(array('view','id'=>$model->id_propiedad));
 		}
 		$this->render('update',array(
 			'model'=>$model,
@@ -169,7 +169,7 @@ class PropiedadController extends Controller
 		{
 			$model->attributes=$_POST['Propiedad'];
 			if($model->save())
-				$this->redirect(array('propiedad/imagen', 'id'=>$model->IDPROP, 'rut'=>$model->RUTCLIENTE));
+				$this->redirect(array('propiedad/imagen', 'id'=>$model->id_propiedad, 'rut'=>$model->rut_cliente));
 		}
 	$this->render('gestion',array('model'=>$model,));
 	}
@@ -194,12 +194,12 @@ class PropiedadController extends Controller
 		$model = new Propiedad;
 		$model1 = new PropiedadForm;
 		$model1->attributes=$_POST['PropiedadForm'];
-		$model=Propiedad::model()->findByPk($model1->IDPROP);
+		$model=Propiedad::model()->findByPk($model1->id_propiedad);
 		if($model===null){
 			$this->render('select', array('model'=>$model));
 		}else{
 			$model2 = new Propiedad();
-			$model2=$this->loadModel($model->IDPROP);
+			$model2=$this->loadModel($model->id_propiedad);
 			$this->render('update',array(
 				'model'=>$model2,
 			));
@@ -215,7 +215,7 @@ class PropiedadController extends Controller
 		$model1 = new PropiedadForm();
 		if(isset($_POST['PropiedadForm'])){
 			$model1->attributes = $_POST['PropiedadForm'];
-			$model=Propiedad::model()->findByPk($model1->IDPROP);
+			$model=Propiedad::model()->findByPk($model1->id_propiedad);
 			$model->Activo = 0;
 			if($model->save()){
 				$this->redirect('/propiedad/ver');

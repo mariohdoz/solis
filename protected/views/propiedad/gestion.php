@@ -1,7 +1,4 @@
-<?php
-if(!yii::app()->session['activo'])
-    $this->redirect('?r=site/index');;
-?>
+
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -11,11 +8,8 @@ if(!yii::app()->session['activo'])
                 <small>Registrar propiedad </small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="?r=intra/index">
-                        <i class="fa fa-dashboard"></i>Inicio</a></li>
-                <li class="active">Propiedades</li>
-
-                <li><a href="?r=intra/index">Gestión</a></li>
+                <li><i class="fa fa-dashboard">&nbsp;</i><?php echo CHtml::link('Inicio', array('intra/index')) ?></li>
+                <li class="active"><?php echo CHtml::link('Propiedades', array('/propiedad/ver')) ?></li>
                 <li class="active">Registrar propiedad</li>
             </ol>
         </section>
@@ -39,15 +33,23 @@ if(!yii::app()->session['activo'])
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <?php echo $form->labelEx($model,'RUTCLIENTE'); ?>
-                                <?php echo $form->dropDownList($model,'RUTCLIENTE', CHtml::listData(Cliente::model()->findAll(array('order' => 'RUTCLIENTE')),'RUTCLIENTE','fullname'), array("class"=>"form-control select2"),
+                                <?php echo $form->labelEx($model,'rut_cliente'); ?>
+                                <?php
+                                $criteria = new CDbCriteria();
+                                $criteria->addCondition('activo_cliente = 1');
+                                echo $form->dropDownList($model,'rut_cliente', CHtml::listData(Cliente::model()->findAll($criteria, array('order' => 'rut_cliente')),'rut_cliente','fullname'), array("class"=>"form-control select2"),
                                     array('empty' => '(Seleccione tipo de servicio)'));?>
-                                <?php echo $form->error($model,'RUTCLIENTE'); ?>
-                                <div class="center-block">
-                                    <a  href="?r=cliente/create" class="boton">Registrar Nuevo propietario</a>
-                                </div>
+                                <?php echo $form->error($model,'rut_cliente'); ?>
+
                             </div><!-- /.form-group -->
                         </div><!-- /.col -->
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="center-block">
+                            <?php echo CHtml::Link('Registrar nuevo propietario', array('/cliente/create'), array('class'=>'btn btn-info')); ?>
+                        </div>
+                      </div>
                     </div>
                     <!-- /.row -->
                 </div><!-- /.box-body -->
@@ -62,12 +64,14 @@ if(!yii::app()->session['activo'])
                     <h3 class="box-title">Agregar Propiedad</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                    <?php echo $form->errorSummary($model); ?>
+
+                    <?php echo $form->errorSummary($model,'<strong>Es necesario arreglar los siguientes errores:</strong><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><div class="alert alert-danger">', '</div>'); ?>
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <?php echo $form->labelEx($model,'SERVICIO'); ?>
-                                <?php echo $form->dropDownList($model,'SERVICIO',
+                                <?php echo $form->labelEx($model,'servicio_propiedad'); ?>
+                                <?php echo $form->dropDownList($model,'servicio_propiedad',
                                     array(
                                         'Venta' => 'Venta',
                                         'Arriendo' => 'Arriendo',
@@ -77,8 +81,8 @@ if(!yii::app()->session['activo'])
                                     array('empty' => '(Seleccione tipo de servicio)')); ?>
                             </div><!-- /.form-group -->
                             <div class="form-group">
-                                <?php echo $form->labelEx($model,'TIPO'); ?>
-                                <?php echo $form->dropDownList($model,'TIPO',
+                                <?php echo $form->labelEx($model,'tipo_propiedad'); ?>
+                                <?php echo $form->dropDownList($model,'tipo_propiedad',
                                     array(
                                         'Casa' => 'Casa',
                                         'Departamento Habitación' => 'Departamento Habitación',
@@ -97,8 +101,8 @@ if(!yii::app()->session['activo'])
                         </div><!-- /.col -->
                         <div class="col-md-6">
                           <div class="form-group">
-                              <?php echo $form->labelEx($model,'COMUNAPROPIEDAD'); ?>
-                              <?php echo $form->dropDownList($model,'COMUNAPROPIEDAD',
+                              <?php echo $form->labelEx($model,'comuna_propiedad'); ?>
+                              <?php echo $form->dropDownList($model,'comuna_propiedad',
                                   array(
                                       'Antofagasta' => 'Antofagasta',
                                       'Calama' => 'Calama',
@@ -109,14 +113,14 @@ if(!yii::app()->session['activo'])
                           </div><!-- /.form-group -->
 
                               <div class="form-group">
-                                  <?php echo $form->labelEx($model,'DIRECCION'); ?>
-                                  <?php echo $form->textField($model,'DIRECCION', array("class"=>"form-control select2")); ?>
+                                  <?php echo $form->labelEx($model,'direccion_propiedad'); ?>
+                                  <?php echo $form->textField($model,'direccion_propiedad', array("class"=>"form-control select2")); ?>
                               </div>
                         </div><!-- /.col -->
                         <div class="col-md-6">
                           <div class="form-group">
-                              <?php echo $form->labelEx($model,'CANTPIEZA'); ?>
-                              <?php echo $form->dropDownList($model,'CANTPIEZA',
+                              <?php echo $form->labelEx($model,'habitacion_propiedad'); ?>
+                              <?php echo $form->dropDownList($model,'habitacion_propiedad',
                                   array(
                                       '1' => '1',
                                       '2' => '2',
@@ -132,8 +136,8 @@ if(!yii::app()->session['activo'])
                                   array('empty' => '(Seleccione la cantidad de Habitaciones)')); ?>
                            </div>
                           <div class="form-group">
-                            <?php echo $form->labelEx($model,'CANTBANO'); ?>
-                            <?php echo $form->dropDownList($model,'CANTBANO',
+                            <?php echo $form->labelEx($model,'bano_propiedad'); ?>
+                            <?php echo $form->dropDownList($model,'bano_propiedad',
                                 array(
                                     '1' => '1',
                                     '2' => '2',
@@ -152,37 +156,38 @@ if(!yii::app()->session['activo'])
                         </div>
                         <div class="col-md-6">
                            <div class="form-group">
-                                <?php echo $form->labelEx($model,'TERRENO'); ?>
-                                <?php echo $form->textField($model,'TERRENO', array("class"=>"form-control select2")); ?>
+                                <?php echo $form->labelEx($model,'terreno_propiedad'); ?>
+                                <?php echo $form->textField($model,'terreno_propiedad', array("class"=>"form-control select2")); ?>
                            </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <?php echo $form->labelEx($model,'TERRENOCONSTRUIDO'); ?>
-                                <?php echo $form->textField($model,'TERRENOCONSTRUIDO', array("class"=>"form-control select2")); ?>
+                                <?php echo $form->labelEx($model,'construido_propiedad'); ?>
+                                <?php echo $form->textField($model,'construido_propiedad', array("class"=>"form-control select2")); ?>
                             </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
-                            <?php echo $form->labelEx($model, 'VALORPROPIEDAD');?>
-                            <?php echo $form->textField($model, 'VALORPROPIEDAD', array("class"=>"form-control select2"));?>
+                            <?php echo $form->labelEx($model, 'valor_propiedad');?>
+                            <?php echo $form->textField($model, 'valor_propiedad', array("class"=>"form-control select2"));?>
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-group">
-                            <?php echo $form->labelEx($model, 'AMOBLADO');?><br>
-                            <?php echo $form->checkBox($model, 'AMOBLADO');?>
+                            <?php echo $form->labelEx($model, 'amoblado_propiedad');?><br>
+                            <?php echo $form->checkBox($model, 'amoblado_propiedad');?>
                           </div>
                         </div>
                     </div>
-                    <?php echo $form->labelEx($model,'DESCRIPCION'); ?>
-                    <?php echo $form->textarea($model,'DESCRIPCION', array('rows' => 4, 'class'=> 'form-control description-text ', 'cols'=> 50 )); ?>
+                    <?php echo $form->labelEx($model,'descripcion_propiedad'); ?>
+                    <?php echo $form->textarea($model,'descripcion_propiedad', array('rows' => 4, 'class'=> 'form-control description-text ', 'cols'=> 50 )); ?>
                 </div><!-- /.box-body -->
                 <div class="box-footer">
-                    <div class="pull-right">
-                        <div class="row buttons" style="margin-right: 10px ">
-                            <?php echo CHtml::submitButton('Guardar', array('class'=>'boton2')); ?>
-                            <?php $this->widget('application.ext.data.EBackButtonWidget'); ?>
+                    <div class="pull-left">
+                        <div class="row buttons" style="margin-left: 10px ">
+                            <?php echo CHtml::submitButton('Guardar', array('class'=>'btn btn-success'), array('confirm' => 'Está seguro de ingresar la propiedad?')); ?>
+                            &nbsp;&nbsp;
+                            <?php $this->widget('application.extensions.data.EBackButtonWidget'); ?>
                         </div>
                         <?php $this->endWidget(); ?>
                     </div>

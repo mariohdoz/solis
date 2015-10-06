@@ -4,15 +4,12 @@
  * This is the model class for table "imagen".
  *
  * The followings are the available columns in table 'imagen':
- * @property integer $IDIMAGEN
- * @property integer $IDPROP
- * @property string $URLIMAGEN
- * @property string $ruta
+ * @property integer $id_imagen
+ * @property integer $id_propiedad
+ * @property string $url_imagen
  */
 class Imagen extends CActiveRecord
 {
-	public $ruta;
-
 	/**
 	 * @return string the associated database table name
 	 */
@@ -29,13 +26,12 @@ class Imagen extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('IDPROP, URLIMAGEN', 'required'),
-			array('IDPROP', 'numerical', 'integerOnly'=>true),
-			array('URLIMAGEN', 'length', 'max'=>100),
-            array('URLIMAGEN', 'file','types'=>'jpg, jpeg, png', 'allowEmpty'=>true, 'on'=>'update'),
+			array('id_propiedad, url_imagen', 'required'),
+			array('id_propiedad', 'numerical', 'integerOnly'=>true),
+			array('url_imagen', 'length', 'max'=>250),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('IDIMAGEN, IDPROP, URLIMAGEN', 'safe', 'on'=>'search'),
+			array('id_imagen, id_propiedad, url_imagen', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -47,7 +43,7 @@ class Imagen extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'propiedad'=>array(self::BELONGS_TO,'Propiedad', 'IDPROP'),
+			'propiedad'=>array(self::BELONGS_TO,'Propiedad', 'id_propiedad'),
 		);
 	}
 
@@ -57,9 +53,9 @@ class Imagen extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'IDIMAGEN' => 'Imagen',
-			'IDPROP' => 'Propiedad',
-			'URLIMAGEN' => 'Ruta',
+			'id_imagen' => 'Id Imagen',
+			'id_propiedad' => 'Id Propiedad',
+			'url_imagen' => 'Url Imagen',
 		);
 	}
 
@@ -81,9 +77,9 @@ class Imagen extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('IDIMAGEN',$this->IDIMAGEN);
-		$criteria->compare('IDPROP',$this->IDPROP);
-		$criteria->compare('URLIMAGEN',$this->URLIMAGEN,true);
+		$criteria->compare('id_imagen',$this->id_imagen);
+		$criteria->compare('id_propiedad',$this->id_propiedad);
+		$criteria->compare('url_imagen',$this->url_imagen,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

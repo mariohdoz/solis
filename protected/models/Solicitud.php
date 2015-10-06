@@ -6,6 +6,7 @@
  * The followings are the available columns in table 'solicitud':
  * @property integer $IDSOLICITUD
  * @property string $RUTCLIENTE
+ * @property string $RUTSOLICITANTE
  * @property string $NOMBRESSOLICITANTE
  * @property string $APELLIDOSSOLICITANTE
  * @property string $SERVICIOSOLICITADO
@@ -14,8 +15,8 @@
  * @property integer $NUMTELEFONO
  * @property integer $ESTADOSOLICITUD
  * @property string $DESCRIPCIONSOLICITUD
- * @property string $TIPOPROPIEDAD
  * @property string $CORREOCONTACTO
+ * @property string $TIPOPROPIEDAD
  */
 class Solicitud extends CActiveRecord
 {
@@ -35,17 +36,16 @@ class Solicitud extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('NOMBRESSOLICITANTE, APELLIDOSSOLICITANTE, SERVICIOSOLICITADO, NUMTELEFONO, DESCRIPCIONSOLICITUD, CORREOCONTACTO', 'required'),
+			array('RUTCLIENTE, RUTSOLICITANTE, NOMBRESSOLICITANTE, APELLIDOSSOLICITANTE, SERVICIOSOLICITADO, FECHASOLICITUD, FECHASOLICITADA, NUMTELEFONO, ESTADOSOLICITUD, DESCRIPCIONSOLICITUD, CORREOCONTACTO, TIPOPROPIEDAD', 'required'),
 			array('NUMTELEFONO, ESTADOSOLICITUD', 'numerical', 'integerOnly'=>true),
-			array('RUTCLIENTE', 'length', 'max'=>10),
+			array('RUTCLIENTE, RUTSOLICITANTE', 'length', 'max'=>10),
 			array('NOMBRESSOLICITANTE, APELLIDOSSOLICITANTE, TIPOPROPIEDAD', 'length', 'max'=>50),
 			array('SERVICIOSOLICITADO', 'length', 'max'=>25),
 			array('DESCRIPCIONSOLICITUD', 'length', 'max'=>254),
 			array('CORREOCONTACTO', 'length', 'max'=>100),
-			array('FECHASOLICITUD, FECHASOLICITADA', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('IDSOLICITUD, RUTCLIENTE, NOMBRESSOLICITANTE, APELLIDOSSOLICITANTE, SERVICIOSOLICITADO, FECHASOLICITUD, FECHASOLICITADA, NUMTELEFONO, ESTADOSOLICITUD, DESCRIPCIONSOLICITUD, TIPOPROPIEDAD, CORREOCONTACTO', 'safe', 'on'=>'search'),
+			array('IDSOLICITUD, RUTCLIENTE, RUTSOLICITANTE, NOMBRESSOLICITANTE, APELLIDOSSOLICITANTE, SERVICIOSOLICITADO, FECHASOLICITUD, FECHASOLICITADA, NUMTELEFONO, ESTADOSOLICITUD, DESCRIPCIONSOLICITUD, CORREOCONTACTO, TIPOPROPIEDAD', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,18 +66,19 @@ class Solicitud extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'IDSOLICITUD' => 'Código ',
-			'RUTCLIENTE' => 'RUT de cliente',
-			'NOMBRESSOLICITANTE' => 'Nombres',
-			'APELLIDOSSOLICITANTE' => 'Apellidos',
-			'SERVICIOSOLICITADO' => 'Servicio prestado',
-			'FECHASOLICITUD' => 'Fecha de solicitud',
-			'FECHASOLICITADA' => 'Fecha de ejecución',
-			'NUMTELEFONO' => 'Fono de contacto',
-			'ESTADOSOLICITUD' => 'Estado de solicitud',
-			'DESCRIPCIONSOLICITUD' => 'Descripción',
-			'TIPOPROPIEDAD' => 'Tipo de propiedad',
+			'IDSOLICITUD' => 'Idsolicitud',
+			'RUTCLIENTE' => 'Rutcliente',
+			'RUTSOLICITANTE' => 'Rutsolicitante',
+			'NOMBRESSOLICITANTE' => 'Nombressolicitante',
+			'APELLIDOSSOLICITANTE' => 'Apellidossolicitante',
+			'SERVICIOSOLICITADO' => 'Serviciosolicitado',
+			'FECHASOLICITUD' => 'Fechasolicitud',
+			'FECHASOLICITADA' => 'Fechasolicitada',
+			'NUMTELEFONO' => 'Numtelefono',
+			'ESTADOSOLICITUD' => 'Estadosolicitud',
+			'DESCRIPCIONSOLICITUD' => 'Descripcionsolicitud',
 			'CORREOCONTACTO' => 'Correo de contacto',
+			'TIPOPROPIEDAD' => 'Tipo de propiedad',
 		);
 	}
 
@@ -101,6 +102,7 @@ class Solicitud extends CActiveRecord
 
 		$criteria->compare('IDSOLICITUD',$this->IDSOLICITUD);
 		$criteria->compare('RUTCLIENTE',$this->RUTCLIENTE,true);
+		$criteria->compare('RUTSOLICITANTE',$this->RUTSOLICITANTE,true);
 		$criteria->compare('NOMBRESSOLICITANTE',$this->NOMBRESSOLICITANTE,true);
 		$criteria->compare('APELLIDOSSOLICITANTE',$this->APELLIDOSSOLICITANTE,true);
 		$criteria->compare('SERVICIOSOLICITADO',$this->SERVICIOSOLICITADO,true);
@@ -109,8 +111,8 @@ class Solicitud extends CActiveRecord
 		$criteria->compare('NUMTELEFONO',$this->NUMTELEFONO);
 		$criteria->compare('ESTADOSOLICITUD',$this->ESTADOSOLICITUD);
 		$criteria->compare('DESCRIPCIONSOLICITUD',$this->DESCRIPCIONSOLICITUD,true);
-		$criteria->compare('TIPOPROPIEDAD',$this->TIPOPROPIEDAD,true);
 		$criteria->compare('CORREOCONTACTO',$this->CORREOCONTACTO,true);
+		$criteria->compare('TIPOPROPIEDAD',$this->TIPOPROPIEDAD,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

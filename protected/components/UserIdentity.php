@@ -18,21 +18,21 @@ class UserIdentity extends CUserIdentity
      */
     public function authenticate()
     {
-        $admin=Administrador::model()->find("LOWER(CORREOADMIN)=?", array(strtolower($this->username)));
+        $admin=Administrador::model()->find("LOWER(correo_admin)=?", array(strtolower($this->username)));
 
 
         if($admin==null)
             $this->errorCode=self::ERROR_USERNAME_INVALID;
-        elseif(sha1($this->password)!==$admin->CONTRAADMIN)
+        elseif(sha1($this->password)!==$admin->contrasena_admin)
             $this->errorCode=self::ERROR_PASSWORD_INVALID;
         else{
 
             Yii::app()->session['activo'] = true;
-            Yii::app()->session['admin_nombre']=$admin->NOMBRESADMIN;
-            Yii::app()->session['admin_rut']=$admin->RUTADMIN;
-            Yii::app()->session['admin_img']=$admin->imagen;
-            Yii::app()->session['admin_ape']=$admin->APELLIDOSADMIN;
-            Yii::app()->session['admin_correo']=$admin->CORREOADMIN;
+            Yii::app()->session['admin_nombre']=$admin->nombres_admin;
+            Yii::app()->session['admin_rut']=$admin->rut_admin;
+            Yii::app()->session['admin_img']=$admin->perfil_admin;
+            Yii::app()->session['admin_ape']=$admin->apellidos_admin;
+            Yii::app()->session['admin_correo']=$admin->correo_admin;
 
 
             $this->errorCode=self::ERROR_NONE;
