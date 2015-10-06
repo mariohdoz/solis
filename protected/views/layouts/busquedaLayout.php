@@ -5,8 +5,8 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
       <link rel="import" href="https://www.polymer-project.org/0.5/components/paper-ripple/paper-ripple.html">
-      <link rel="stylesheet" href="/nuevo/css/reset.css"> <!-- CSS reset -->
-      <link rel="stylesheet" href="/nuevo/css/style.css"> <!-- Resource style -->
+      <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/reset.css"> <!-- CSS reset -->
+      <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css"> <!-- Resource style -->
       <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/modernizr.js"></script> <!-- Modernizr -->
       <title>Buscar propiedad</title>
   </head>
@@ -16,7 +16,7 @@
       <nav class="main-nav">
       <ul>
       <!-- inser more links here -->
-      <li><?php echo CHtml::link('Volver', array('site'), array('class'=>'cd-signin'))?></li>
+      <li><?php echo CHtml::link('Volver', array('index'), array('class'=>'cd-signin'))?></li>
       </ul>
       </nav>
     </header>
