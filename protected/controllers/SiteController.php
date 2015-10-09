@@ -67,18 +67,33 @@ class SiteController extends Controller
 			$v                  = $model2->servicio_propiedad;
 			$v2                 = 'Todas';
 			if ($v == 'Todas') {
-				$criteria         = new CDbCriteria;
-				$criteria->select = 't.*';
-				$criteria->join   = 'LEFT JOIN imagen im ON t.id_propiedad = im.id_propiedad';
-				$criteria->condition = 'estado_propiedad = TRUE AND activo_propiedad = TRUE AND tipo_propiedad="'.$model2->tipo_propiedad.'"';
-				$criteria->group  = 't.id_propiedad';
-				$dataProvider     = new CActiveDataProvider('propiedad', array(
-					'criteria' => $criteria,
-					'pagination' => array(
-						'pageSize' => 20
-					)
-				));
-			} else {
+				if($model2->tipo_propiedad != 'Todas'){
+					$criteria         = new CDbCriteria;
+					$criteria->select = 't.*';
+					$criteria->join   = 'LEFT JOIN imagen im ON t.id_propiedad = im.id_propiedad';
+					$criteria->condition = 'estado_propiedad = TRUE AND activo_propiedad = TRUE AND tipo_propiedad="'.$model2->tipo_propiedad.'"';
+					$criteria->group  = 't.id_propiedad';
+					$dataProvider     = new CActiveDataProvider('propiedad', array(
+						'criteria' => $criteria,
+						'pagination' => array(
+							'pageSize' => 20
+						)
+					));
+				}else{
+					$criteria         = new CDbCriteria;
+					$criteria->select = 't.*';
+					$criteria->join   = 'LEFT JOIN imagen im ON t.id_propiedad = im.id_propiedad';
+					$criteria->condition = 'estado_propiedad = TRUE AND activo_propiedad = TRUE';
+					$criteria->group  = 't.id_propiedad';
+					$dataProvider     = new CActiveDataProvider('propiedad', array(
+						'criteria' => $criteria,
+						'pagination' => array(
+							'pageSize' => 20
+						)
+					));
+				}
+		} else {
+			if($model2->tipo_propiedad != 'Todas'){
 				$criteria = new CDbCriteria;
 				$criteria->select = 't.*';
 				$criteria->condition = 'comuna_propiedad="'.$model2->comuna_propiedad.'" AND tipo_propiedad="'.$model2->tipo_propiedad.'" AND servicio_propiedad="'. $model2->servicio_propiedad.'" AND estado_propiedad = TRUE AND activo_propiedad = TRUE';
@@ -88,7 +103,18 @@ class SiteController extends Controller
 						'pageSize' => 20
 					),
 				));
+			}else{
+				$criteria = new CDbCriteria;
+				$criteria->select = 't.*';
+				$criteria->condition = 'comuna_propiedad="'.$model2->comuna_propiedad.'" AND servicio_propiedad="'. $model2->servicio_propiedad.'" AND estado_propiedad = TRUE AND activo_propiedad = TRUE';
+				$dataProvider = new CActiveDataProvider('Propiedad', array(
+					'criteria' => $criteria,
+					'pagination' => array(
+						'pageSize' => 20
+					),
+				));
 			}
+		}
 			$this->render('busqueda', array(
 				'dataProvider' => $dataProvider,
 				'model' => $model

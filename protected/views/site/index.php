@@ -122,10 +122,10 @@
 			)); ?>
 			<div class="row">
 				<div class="col-md-3">
-					<blanco>Venta/Arriendo</blanco>
+					<blanco>Servicio prestado</blanco>
 					<?php echo $form->dropDownList($model2,'servicio_propiedad',
 						array(
-							'Todas' => 'Todas',
+							'Todas' => 'Todo tipo de servicio',
 							'Venta' => 'Venta',
 							'Arriendo' => 'Arriendo',
 						),
@@ -133,21 +133,10 @@
 						array('empty' => '(Tipo de propiedad)')); ?>
 				</div>
 				<div class="col-md-3">
-					<blanco>Ciudad</blanco>
-					<?php echo $form->dropDownList($model2,'comuna_propiedad',
-						array(
-							'Antofagasta' => 'Antofagasta',
-							'Arica' => 'Arica',
-							'Calama' => 'Calama',
-							'Iquique' => 'Iquique',
-						),
-						array("class"=>"form-control select2"),
-						array('empty' => '(Tipo de propiedad)')); ?>
-				</div>
-				<div class="col-md-3">
-					<blanco>Típo de propiedad</blanco>
+          <blanco>Típo de propiedad</blanco>
 					<?php echo $form->dropDownList($model2,'tipo_propiedad',
 						array(
+              'Todas'=>'Todo tipo de propiedad',
 							'Departamento Habitación' => 'Departamento Habitación',
 							'Local' => 'Local',
 							'Casa' => 'Oficina Casa',
@@ -157,6 +146,19 @@
 							'Sitio Recidencial' => 'Sitio Recidencial',
 							'Propiedad de inversión' => 'Propiedad de inversión',
 							'Terreno' => 'Terreno'
+						),
+						array("class"=>"form-control select2"),
+						array('empty' => '(Tipo de propiedad)')); ?>
+
+				</div>
+				<div class="col-md-3">
+          <blanco>Ciudad</blanco>
+					<?php echo $form->dropDownList($model2,'comuna_propiedad',
+						array(
+							'Antofagasta' => 'Antofagasta',
+							'Arica' => 'Arica',
+							'Calama' => 'Calama',
+							'Iquique' => 'Iquique',
 						),
 						array("class"=>"form-control select2"),
 						array('empty' => '(Tipo de propiedad)')); ?>
