@@ -9,7 +9,7 @@
             <li><a href="?r=intra/index">
                     <i class="fa fa-dashboard"></i>Inicio</a></li>
             <li class="active">Propiedades</li>
-            <li><a href="?r=intra/index">Gestión</a></li>
+            <li><a href="?r=intra/index">Eliminar propiedad</a></li>
             <li class="active">Seleccionar propiedad</li>
         </ol>
     </section>
@@ -27,7 +27,7 @@
         <!-- Seleccion de propietario -->
         <div class="box box-default">
             <div class="box-header with-border">
-                <h3 class="box-title">Selección de propietadad</h3>
+                <h3 class="box-title">Eliminar propietadad</h3>
             </div><!-- /.box-header -->
             <div class="box-body">
                 <div class="row">
@@ -35,12 +35,12 @@
                         <div class="form-group">
                           <br>
                             <p>Dirección de la propiedad</p>
-                            <?php echo $form->dropDownList($model,'id_propiedad', CHtml::listData(Propiedad::model()->findAll(array('order' => 'DIRECCION')),'id_propiedad','Cliente' ), array("class"=>"form-control select2"),
+                            <?php echo $form->dropDownList($model,'id_propiedad', CHtml::listData(Propiedad::model()->findAll(array('order' => 'direccion_propiedad')),'id_propiedad','Cliente' ), array("class"=>"form-control select2"),
                                 array('empty' => '(Seleccione tipo de servicio)'));?>
                             <?php echo $form->error($model,'id_propiedad'); ?>
                             <br>
                             <div class="center-block">
-                              <?php echo CHtml::submitButton('Eliminar propiedad', array('confirm'=> 'Are you Sure')); ?>
+                              <?php echo CHtml::submitButton('Eliminar propiedad', array('confirm'=> 'Are you Sure', "class"=>"btn btn-danger")); ?>
                             </div>
                             <?php $this->endWidget(); ?>
                         </div><!-- /.form-group -->

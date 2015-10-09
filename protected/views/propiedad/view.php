@@ -1,3 +1,4 @@
+<div class="content-wrapper">
 <?php
 /* @var $this PropiedadController */
 /* @var $model Propiedad */
@@ -16,22 +17,22 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Propiedad #<?php echo $model->id_propiedad; ?></h1>
+<h1>Propiedad #<?php echo $model->direccion_propiedad; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'id_propiedad',
-		'RUTCLIENTE',
-		'DIRECCION',
-		'CANTPIEZA',
-		'CANTBANO',
-		'TERRENO',
-		'TERRENOCONSTRUIDO',
-		'TIPO',
-		'SERVICIO',
-		'ESTADO',
-		'DESCRIPCION',
-		'COMUNAPROPIEDAD',
+		'rut_cliente',
+		'direccion_propiedad',
+		'habitacion_propiedad',
+		'bano_propiedad',
+		'terreno_propiedad',
+		'construido_propiedad',
+		'tipo_propiedad',
+		'servicio_propiedad',
+		'estado_propiedad',
+		'direccion_propiedad',
+		'comuna_propiedad',
 	),
 )); ?>
+</div>

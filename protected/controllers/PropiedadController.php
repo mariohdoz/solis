@@ -216,7 +216,7 @@ class PropiedadController extends Controller
 		if(isset($_POST['PropiedadForm'])){
 			$model1->attributes = $_POST['PropiedadForm'];
 			$model=Propiedad::model()->findByPk($model1->id_propiedad);
-			$model->Activo = 0;
+			$model->activo_propiedad = 0;
 			if($model->save()){
 				$this->redirect('/propiedad/ver');
 			}else{

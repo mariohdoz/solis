@@ -23,7 +23,7 @@
 <div class="box box-default">
 	<div class="box-header with-border">
 			<h3 class="box-title">Modificar propiedad</h3>
-			<h5>Se encuentra disponible <?php echo $form->checkBox($model, 'ESTADO'); ?></h5>
+			<h5>Se encuentra disponible <?php echo $form->checkBox($model, 'estado_propiedad'); ?></h5>
 	</div><!-- /.box-header -->
 <!-- /.box-header -->
 	<div class="box-body">
@@ -31,8 +31,8 @@
 	   <div class="row">
 	      <div class="col-md-6">
 	         <div class="form-group">
-	            <?php echo $form->labelEx($model,'SERVICIO'); ?>
-	            <?php echo $form->dropDownList($model,'SERVICIO',
+	            <?php echo $form->labelEx($model,'servicio_propiedad'); ?>
+	            <?php echo $form->dropDownList($model,'servicio_propiedad',
 	               array(
 	               		'Venta' => 'Venta',
 	               		'Arriendo' => 'Arriendo',
@@ -43,8 +43,8 @@
 	         </div>
 	         <!-- /.form-group -->
 	         <div class="form-group">
-	            <?php echo $form->labelEx($model,'TIPO'); ?>
-	            <?php echo $form->dropDownList($model,'TIPO',
+	            <?php echo $form->labelEx($model,'tipo_propiedad'); ?>
+	            <?php echo $form->dropDownList($model,'tipo_propiedad',
 	               array(
 	               		'Casa' => 'Casa',
 	               		'Departamento Habitación' => 'Departamento Habitación',
@@ -65,8 +65,8 @@
 	      <!-- /.col -->
 	      <div class="col-md-6">
 	         <div class="form-group">
-	            <?php echo $form->labelEx($model,'COMUNAPROPIEDAD'); ?>
-	            <?php echo $form->dropDownList($model,'COMUNAPROPIEDAD',
+	            <?php echo $form->labelEx($model,'comuna_propiedad'); ?>
+	            <?php echo $form->dropDownList($model,'comuna_propiedad',
 	               array(
 	               		'Antofagasta' => 'Antofagasta',
 	               		'Calama' => 'Calama',
@@ -77,15 +77,15 @@
 	         </div>
 	         <!-- /.form-group -->
 	         <div class="form-group">
-	            <?php echo $form->labelEx($model,'DIRECCION'); ?>
-	            <?php echo $form->textField($model,'DIRECCION', array("class"=>"form-control select2")); ?>
+	            <?php echo $form->labelEx($model,'direccion_propiedad'); ?>
+	            <?php echo $form->textField($model,'direccion_propiedad', array("class"=>"form-control select2")); ?>
 	         </div>
 	      </div>
 	      <!-- /.col -->
 	      <div class="col-md-6">
 	         <div class="form-group">
-	            <?php echo $form->labelEx($model,'CANTBANO'); ?>
-	            <?php echo $form->dropDownList($model,'CANTBANO',
+	            <?php echo $form->labelEx($model,'bano_propiedad'); ?>
+	            <?php echo $form->dropDownList($model,'bano_propiedad',
 	               array(
 	               		'1' => '1',
 	               		'2' => '2',
@@ -101,8 +101,8 @@
 	               array('empty' => '(Seleccione la cantidad de baños)')); ?>
 	         </div>
 	         <div class="form-group">
-	            <?php echo $form->labelEx($model,'CANTPIEZA'); ?>
-	            <?php echo $form->dropDownList($model,'CANTPIEZA',
+	            <?php echo $form->labelEx($model,'habitacion_propiedad'); ?>
+	            <?php echo $form->dropDownList($model,'habitacion_propiedad',
 	               array(
 	               		'1' => '1',
 	               		'2' => '2',
@@ -120,31 +120,31 @@
 	      </div>
 	      <div class="col-md-6">
 	         <div class="form-group">
-	            <?php echo $form->labelEx($model,'TERRENO'); ?>
-	            <?php echo $form->textField($model,'TERRENO', array("class"=>"form-control select2")); ?>
+	            <?php echo $form->labelEx($model,'terreno_propiedad'); ?>
+	            <?php echo $form->textField($model,'terreno_propiedad', array("class"=>"form-control select2")); ?>
 	         </div>
 	      </div>
 	      <div class="col-md-6">
 	         <div class="form-group">
-	            <?php echo $form->labelEx($model,'TERRENOCONSTRUIDO'); ?>
-	            <?php echo $form->textField($model,'TERRENOCONSTRUIDO', array("class"=>"form-control select2")); ?>
+	            <?php echo $form->labelEx($model,'construido_propiedad'); ?>
+	            <?php echo $form->textField($model,'construido_propiedad', array("class"=>"form-control select2")); ?>
 	         </div>
 	      </div>
 	      <div class="col-md-6">
 	         <div class="form-group">
-	            <?php echo $form->labelEx($model, 'VALORPROPIEDAD');?>
-	            <?php echo $form->textField($model, 'VALORPROPIEDAD', array("class"=>"form-control select2"));?>
+	            <?php echo $form->labelEx($model, 'valor_propiedad');?>
+	            <?php echo $form->textField($model, 'valor_propiedad', array("class"=>"form-control select2"));?>
 	         </div>
 	      </div>
 	      <div class="col-md-6">
 	         <div class="form-group">
-	            <?php echo $form->labelEx($model, 'AMOBLADO');?><br>
-	            <?php echo $form->checkBox($model, 'AMOBLADO');?>
+	            <?php echo $form->labelEx($model, 'amoblado_propiedad');?><br>
+	            <?php echo $form->checkBox($model, 'amoblado_propiedad');?>
 	         </div>
 	      </div>
 	   </div>
-	   <?php echo $form->labelEx($model,'DESCRIPCION'); ?>
-	   <?php echo $form->textarea($model,'DESCRIPCION', array('rows' => 4, 'class'=> 'form-control description-text ', 'cols'=> 50 )); ?>
+	   <?php echo $form->labelEx($model,'descripcion_propiedad'); ?>
+	   <?php echo $form->textarea($model,'descripcion_propiedad', array('rows' => 4, 'class'=> 'form-control description-text ', 'cols'=> 50 )); ?>
 	</div>
 	<div class="box-footer">
 			<div class="pull-right">

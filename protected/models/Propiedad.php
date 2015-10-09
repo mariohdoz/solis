@@ -64,7 +64,7 @@ class Propiedad extends CActiveRecord
 		);
 	}
 	public function getCliente(){
-		return $this->DIRECCION.' Propietario '.$this->RUTCLIENTE;
+		return $this->direccion_propiedad.' Propietario '.$this->rut_cliente;
 	}
 
 
