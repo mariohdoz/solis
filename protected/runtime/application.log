@@ -6268,3 +6268,36 @@ Stack trace:
 REQUEST_URI=/nuevo/index.php/site/images/11696028_10207312328825535_8886832005836248666_n59.jpg
 HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html?r=site/vista&id=3
 ---
+2015/10/09 18:02:38 [error] [system.db.CDbCommand] CDbCommand::fetchAll() falló: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'im.url_imagen' in 'field list'. La sentencia SQL ejecutada fue: SELECT t.*, im.url_imagen as ruta FROM `propiedad` `t` WHERE comuna_propiedad=:comuna AND tipo_propiedad=:tipo AND servicio_propiedad=:servicio AND estado_propiedad = TRUE AND activo_propiedad = TRUE LIMIT 20.
+in C:\AppServ\www\nuevo\protected\views\site\busqueda.php (6)
+in C:\AppServ\www\nuevo\protected\controllers\SiteController.php (96)
+in C:\AppServ\www\nuevo\index.php (13)
+2015/10/09 18:02:38 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'im.url_imagen' in 'field list'. The SQL statement executed was: SELECT t.*, im.url_imagen as ruta FROM `propiedad` `t` WHERE comuna_propiedad=:comuna AND tipo_propiedad=:tipo AND servicio_propiedad=:servicio AND estado_propiedad = TRUE AND activo_propiedad = TRUE LIMIT 20' in C:\AppServ\www\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\AppServ\www\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\AppServ\www\yii\framework\db\ar\CActiveRecord.php(1356): CDbCommand->queryAll()
+#2 C:\AppServ\www\yii\framework\db\ar\CActiveRecord.php(1475): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\AppServ\www\yii\framework\web\CActiveDataProvider.php(199): CActiveRecord->findAll(Object(CDbCriteria))
+#4 C:\AppServ\www\yii\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#5 C:\AppServ\www\yii\framework\zii\widgets\CBaseListView.php(125): CDataProvider->getData()
+#6 C:\AppServ\www\yii\framework\zii\widgets\CListView.php(211): CBaseListView->init()
+#7 C:\AppServ\www\yii\framework\web\CBaseController.php(147): CListView->init()
+#8 C:\AppServ\www\yii\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#9 C:\AppServ\www\nuevo\protected\views\site\busqueda.php(6): CBaseController->widget('zii.widgets.CLi...', Array)
+#10 C:\AppServ\www\yii\framework\web\CBaseController.php(126): require('C:\AppServ\www\...')
+#11 C:\AppServ\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\AppServ\www\...', Array, true)
+#12 C:\AppServ\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\AppServ\www\...', Array, true)
+#13 C:\AppServ\www\yii\framework\web\CController.php(782): CController->renderPartial('busqueda', Array, true)
+#14 C:\AppServ\www\nuevo\protected\controllers\SiteController.php(96): CController->render('busqueda', Array)
+#15 C:\AppServ\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionBusqueda()
+#16 C:\AppServ\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#17 C:\AppServ\www\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#18 C:\AppServ\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#19 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('busqueda')
+#20 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/busqueda')
+#21 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#22 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#23 {main}
+REQUEST_URI=/nuevo/index.php/site/busqueda.html
+HTTP_REFERER=http://localhost/nuevo/
+---

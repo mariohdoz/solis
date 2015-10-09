@@ -68,9 +68,9 @@ class SiteController extends Controller
 			$v2                 = 'Todas';
 			if ($v == 'Todas') {
 				$criteria         = new CDbCriteria;
-				$criteria->select = 't.*, im.url_imagen as ruta';
+				$criteria->select = 't.*';
 				$criteria->join   = 'LEFT JOIN imagen im ON t.id_propiedad = im.id_propiedad';
-				$criteria->condition = 'estado_propiedad = TRUE AND activo_propiedad = TRUE';
+				$criteria->condition = 'estado_propiedad = TRUE AND activo_propiedad = TRUE AND tipo_propiedad="'.$model2->tipo_propiedad.'"';
 				$criteria->group  = 't.id_propiedad';
 				$dataProvider     = new CActiveDataProvider('propiedad', array(
 					'criteria' => $criteria,
@@ -80,9 +80,8 @@ class SiteController extends Controller
 				));
 			} else {
 				$criteria = new CDbCriteria;
-				$criteria->select = 't.*, im.url_imagen as ruta';
-				$criteria->condition = 'comuna_propiedad=:comuna AND tipo_propiedad=:tipo AND servicio_propiedad=:servicio AND estado_propiedad = TRUE AND activo_propiedad = TRUE';
-				$criteria->params = array(':comuna'=>comuna_propiedad,':servicio'=>servicio_propiedad,':tipo'=>tipo_propiedad);
+				$criteria->select = 't.*';
+				$criteria->condition = 'comuna_propiedad="'.$model2->comuna_propiedad.'" AND tipo_propiedad="'.$model2->tipo_propiedad.'" AND servicio_propiedad="'. $model2->servicio_propiedad.'" AND estado_propiedad = TRUE AND activo_propiedad = TRUE';
 				$dataProvider = new CActiveDataProvider('Propiedad', array(
 					'criteria' => $criteria,
 					'pagination' => array(

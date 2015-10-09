@@ -150,7 +150,7 @@
 						array(
 							'Departamento Habitación' => 'Departamento Habitación',
 							'Local' => 'Local',
-							'Oficina Casa' => 'Oficina Casa',
+							'Casa' => 'Oficina Casa',
 							'Galpón' => 'Galpón',
 							'Oficina Departamento' => 'Oficina Departamento',
 							'Sitio Comercial' => 'Sitio Comercial',
