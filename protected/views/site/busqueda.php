@@ -1,5 +1,4 @@
 <section class="cd-gallery">
-  <div class="cd-fail-message">No hay resultados</div>
   <ul>
     <?php $this->widget('zii.widgets.CListView', array(
       'dataProvider'=>$dataProvider,

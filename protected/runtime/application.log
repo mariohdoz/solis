@@ -5747,3 +5747,370 @@ Stack trace:
 REQUEST_URI=/nuevo/index.php/site/busqueda.html?r=site/vista&id=1
 HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
 ---
+2015/10/08 03:54:01 [error] [system.db.CDbCommand] CDbCommand::fetchAll() falló: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'DIRECCION' in 'order clause'. La sentencia SQL ejecutada fue: SELECT * FROM `propiedad` `t` ORDER BY DIRECCION.
+in C:\xampp\htdocs\nuevo\protected\views\propiedad\select.php (38)
+in C:\xampp\htdocs\nuevo\protected\controllers\PropiedadController.php (190)
+in C:\xampp\htdocs\nuevo\index.php (13)
+2015/10/08 03:54:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'DIRECCION' in 'order clause'. The SQL statement executed was: SELECT * FROM `propiedad` `t` ORDER BY DIRECCION' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1356): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1475): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\xampp\htdocs\nuevo\protected\views\propiedad\select.php(38): CActiveRecord->findAll(Array)
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('select', Array, true)
+#8 C:\xampp\htdocs\nuevo\protected\controllers\PropiedadController.php(190): CController->render('select', Array)
+#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): PropiedadController->actionSelect()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('select')
+#19 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('propiedad/selec...')
+#20 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#21 C:\xampp\htdocs\nuevo\index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/nuevo/index.php/propiedad/select
+HTTP_REFERER=http://localhost/nuevo/index.php/intra/index
+---
+2015/10/08 03:54:14 [error] [system.db.CDbCommand] CDbCommand::fetchAll() falló: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'DIRECCION' in 'order clause'. La sentencia SQL ejecutada fue: SELECT * FROM `propiedad` `t` ORDER BY DIRECCION.
+in C:\xampp\htdocs\nuevo\protected\views\propiedad\select2.php (38)
+in C:\xampp\htdocs\nuevo\protected\controllers\PropiedadController.php (211)
+in C:\xampp\htdocs\nuevo\index.php (13)
+2015/10/08 03:54:14 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'DIRECCION' in 'order clause'. The SQL statement executed was: SELECT * FROM `propiedad` `t` ORDER BY DIRECCION' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1356): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1475): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\xampp\htdocs\nuevo\protected\views\propiedad\select2.php(38): CActiveRecord->findAll(Array)
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('select2', Array, true)
+#8 C:\xampp\htdocs\nuevo\protected\controllers\PropiedadController.php(211): CController->render('select2', Array)
+#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): PropiedadController->actionEliminar()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('eliminar')
+#19 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('propiedad/elimi...')
+#20 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#21 C:\xampp\htdocs\nuevo\index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/nuevo/index.php/propiedad/eliminar
+HTTP_REFERER=http://localhost/nuevo/index.php/intra/index
+---
+2015/10/08 03:54:19 [error] [exception.CException] exception 'CException' with message 'La propiedad "Propiedad"."ESTADO" no se encuentra definida.' in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('ESTADO')
+#1 C:\xampp\htdocs\yii\framework\base\CComponent.php(612) : eval()'d code(1): CActiveRecord->__get('ESTADO')
+#2 C:\xampp\htdocs\yii\framework\base\CComponent.php(612): eval()
+#3 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CDataColumn.php(142): CComponent->evaluateExpression('$data->ESTADO?Y...', Array)
+#4 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridColumn.php(231): CDataColumn->getDataCellContent(0)
+#5 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridColumn.php(154): CGridColumn->renderDataCellContent(0, Object(Propiedad))
+#6 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(638): CGridColumn->renderDataCell(0)
+#7 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(622): CGridView->renderDataCell(Object(CDataColumn), 0)
+#8 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(578): CGridView->renderTableRow(0)
+#9 C:\xampp\htdocs\yii\framework\zii\widgets\grid\CGridView.php(488): CGridView->renderTableBody()
+#10 C:\xampp\htdocs\yii\framework\zii\widgets\CBaseListView.php(181): CGridView->renderItems()
+#11 [internal function]: CBaseListView->renderSection(Array)
+#12 C:\xampp\htdocs\yii\framework\zii\widgets\CBaseListView.php(164): preg_replace_callback('/{(\\w+)}/', Array, '{summary}\n{item...')
+#13 C:\xampp\htdocs\yii\framework\zii\widgets\CBaseListView.php(149): CBaseListView->renderContent()
+#14 C:\xampp\htdocs\yii\framework\web\CBaseController.php(181): CBaseListView->run()
+#15 C:\xampp\htdocs\nuevo\protected\views\propiedad\index.php(55): CBaseController->widget('zii.widgets.gri...', Array)
+#16 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#17 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#18 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#19 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#20 C:\xampp\htdocs\nuevo\protected\controllers\PropiedadController.php(239): CController->render('index', Array)
+#21 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): PropiedadController->actionVer()
+#22 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#23 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#24 C:\xampp\htdocs\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#25 C:\xampp\htdocs\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#26 C:\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#27 C:\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#28 C:\xampp\htdocs\yii\framework\web\CController.php(291): CFilterChain->run()
+#29 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#30 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('ver')
+#31 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('propiedad/ver')
+#32 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#33 C:\xampp\htdocs\nuevo\index.php(13): CApplication->run()
+#34 {main}
+REQUEST_URI=/nuevo/index.php/propiedad/ver
+HTTP_REFERER=http://localhost/nuevo/index.php/intra/index
+---
+2015/10/09 20:59:17 [error] [exception.CException] exception 'CException' with message 'La propiedad "Propiedad"."IDPROP" no se encuentra definida.' in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('IDPROP')
+#1 C:\xampp\htdocs\nuevo\protected\views\site\_view.php(8): CActiveRecord->__get('IDPROP')
+#2 C:\xampp\htdocs\yii\framework\web\CBaseController.php(130): require('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, false)
+#4 C:\xampp\htdocs\yii\framework\zii\widgets\CListView.php(291): CBaseController->renderFile('C:\\xampp\\htdocs...', Array)
+#5 C:\xampp\htdocs\yii\framework\zii\widgets\CBaseListView.php(181): CListView->renderItems()
+#6 [internal function]: CBaseListView->renderSection(Array)
+#7 C:\xampp\htdocs\yii\framework\zii\widgets\CBaseListView.php(164): preg_replace_callback('/{(\\w+)}/', Array, '{summary}\n{sort...')
+#8 C:\xampp\htdocs\yii\framework\zii\widgets\CBaseListView.php(149): CBaseListView->renderContent()
+#9 C:\xampp\htdocs\yii\framework\web\CBaseController.php(181): CBaseListView->run()
+#10 C:\xampp\htdocs\nuevo\protected\views\site\busqueda.php(7): CBaseController->widget('zii.widgets.CLi...', Array)
+#11 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#12 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#14 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('busqueda', Array, true)
+#15 C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php(96): CController->render('busqueda', Array)
+#16 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionBusqueda()
+#17 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#18 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#19 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('busqueda')
+#21 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/busqueda')
+#22 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#23 C:\xampp\htdocs\nuevo\index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/nuevo/index.php/site/busqueda.html
+HTTP_REFERER=http://localhost/nuevo/
+---
+2015/10/09 21:05:41 [error] [exception.CException] exception 'CException' with message 'SiteController no ha podido encontrar la vista "vista" solicitada.' in C:\xampp\htdocs\yii\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('vista', Array, true)
+#1 C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php(119): CController->render('vista', Array)
+#2 [internal function]: SiteController->actionVista('3')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('vista')
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/vista')
+#10 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\nuevo\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/nuevo/index.php/site/busqueda.html?r=site/vista&id=3
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/10/09 21:05:46 [error] [exception.CException] exception 'CException' with message 'SiteController no ha podido encontrar la vista "vista" solicitada.' in C:\xampp\htdocs\yii\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('vista', Array, true)
+#1 C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php(119): CController->render('vista', Array)
+#2 [internal function]: SiteController->actionVista('3')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('vista')
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/vista')
+#10 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\nuevo\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/nuevo/index.php/site/busqueda.html?r=site/vista&id=3
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/10/09 21:14:13 [error] [php] Undefined variable: data (C:\xampp\htdocs\nuevo\protected\views\site\busqueda.php:57)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): SiteController->renderFile()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(782): SiteController->renderPartial()
+#2 C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php(96): SiteController->render()
+#3 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionBusqueda()
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\nuevo\index.php(13): CWebApplication->run()
+REQUEST_URI=/nuevo/index.php/site/busqueda.html
+in C:\xampp\htdocs\nuevo\protected\views\site\busqueda.php (57)
+in C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php (96)
+in C:\xampp\htdocs\nuevo\index.php (13)
+2015/10/09 21:48:20 [error] [exception.CException] exception 'CException' with message 'SiteController no ha podido encontrar la vista "vista" solicitada.' in C:\xampp\htdocs\yii\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('vista', Array, true)
+#1 C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php(119): CController->render('vista', Array)
+#2 [internal function]: SiteController->actionVista('4')
+#3 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#4 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('vista')
+#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/vista')
+#10 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\nuevo\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/nuevo/index.php/site/busqueda.html?r=site/vista&id=4
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/10/09 22:19:38 [error] [system.db.CDbCommand] CDbCommand::fetchAll() falló: SQLSTATE[42S22]: Column not found: 1054 Unknown column 't.IDPROP' in 'where clause'. La sentencia SQL ejecutada fue: SELECT t.* FROM `propiedad` `t` WHERE t.IDPROP=:ycp0.
+in C:\xampp\htdocs\nuevo\protected\views\site\vista.php (34)
+in C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php (119)
+in C:\xampp\htdocs\nuevo\index.php (13)
+2015/10/09 22:19:38 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42S22]: Column not found: 1054 Unknown column 't.IDPROP' in 'where clause'. The SQL statement executed was: SELECT t.* FROM `propiedad` `t` WHERE t.IDPROP=:ycp0' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1356): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1475): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\xampp\htdocs\yii\framework\web\CActiveDataProvider.php(199): CActiveRecord->findAll(Object(CDbCriteria))
+#4 C:\xampp\htdocs\yii\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#5 C:\xampp\htdocs\yii\framework\zii\widgets\CBaseListView.php(125): CDataProvider->getData()
+#6 C:\xampp\htdocs\yii\framework\zii\widgets\CListView.php(211): CBaseListView->init()
+#7 C:\xampp\htdocs\yii\framework\web\CBaseController.php(147): CListView->init()
+#8 C:\xampp\htdocs\yii\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#9 C:\xampp\htdocs\nuevo\protected\views\site\vista.php(34): CBaseController->widget('zii.widgets.CLi...', Array)
+#10 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#11 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('vista', Array, true)
+#14 C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php(119): CController->render('vista', Array)
+#15 [internal function]: SiteController->actionVista('1')
+#16 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#17 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#18 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#19 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('vista')
+#22 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/vista')
+#23 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#24 C:\xampp\htdocs\nuevo\index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/nuevo/index.php/site/busqueda.html?r=site/vista&id=1
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/10/09 22:22:37 [error] [system.db.CDbCommand] CDbCommand::fetchAll() falló: SQLSTATE[42S22]: Column not found: 1054 Unknown column 't.IDPROP' in 'where clause'. La sentencia SQL ejecutada fue: SELECT t.* FROM `propiedad` `t` WHERE t.IDPROP=:ycp0.
+in C:\xampp\htdocs\nuevo\protected\views\site\vista.php (34)
+in C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php (119)
+in C:\xampp\htdocs\nuevo\index.php (13)
+2015/10/09 22:22:37 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42S22]: Column not found: 1054 Unknown column 't.IDPROP' in 'where clause'. The SQL statement executed was: SELECT t.* FROM `propiedad` `t` WHERE t.IDPROP=:ycp0' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1356): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1475): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\xampp\htdocs\yii\framework\web\CActiveDataProvider.php(199): CActiveRecord->findAll(Object(CDbCriteria))
+#4 C:\xampp\htdocs\yii\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#5 C:\xampp\htdocs\yii\framework\zii\widgets\CBaseListView.php(125): CDataProvider->getData()
+#6 C:\xampp\htdocs\yii\framework\zii\widgets\CListView.php(211): CBaseListView->init()
+#7 C:\xampp\htdocs\yii\framework\web\CBaseController.php(147): CListView->init()
+#8 C:\xampp\htdocs\yii\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#9 C:\xampp\htdocs\nuevo\protected\views\site\vista.php(34): CBaseController->widget('zii.widgets.CLi...', Array)
+#10 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#11 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('vista', Array, true)
+#14 C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php(119): CController->render('vista', Array)
+#15 [internal function]: SiteController->actionVista('1')
+#16 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#17 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#18 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#19 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('vista')
+#22 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/vista')
+#23 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#24 C:\xampp\htdocs\nuevo\index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/nuevo/index.php/site/busqueda.html?r=site/vista&id=1
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/10/09 22:24:18 [error] [system.db.CDbCommand] CDbCommand::fetchAll() falló: SQLSTATE[42S22]: Column not found: 1054 Unknown column 't.IDPROP' in 'where clause'. La sentencia SQL ejecutada fue: SELECT t.* FROM `propiedad` `t` WHERE t.IDPROP=:ycp0.
+in C:\xampp\htdocs\nuevo\protected\views\site\vista.php (34)
+in C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php (119)
+in C:\xampp\htdocs\nuevo\index.php (13)
+2015/10/09 22:24:18 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42S22]: Column not found: 1054 Unknown column 't.IDPROP' in 'where clause'. The SQL statement executed was: SELECT t.* FROM `propiedad` `t` WHERE t.IDPROP=:ycp0' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1356): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1475): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\xampp\htdocs\yii\framework\web\CActiveDataProvider.php(199): CActiveRecord->findAll(Object(CDbCriteria))
+#4 C:\xampp\htdocs\yii\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#5 C:\xampp\htdocs\yii\framework\zii\widgets\CBaseListView.php(125): CDataProvider->getData()
+#6 C:\xampp\htdocs\yii\framework\zii\widgets\CListView.php(211): CBaseListView->init()
+#7 C:\xampp\htdocs\yii\framework\web\CBaseController.php(147): CListView->init()
+#8 C:\xampp\htdocs\yii\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#9 C:\xampp\htdocs\nuevo\protected\views\site\vista.php(34): CBaseController->widget('zii.widgets.CLi...', Array)
+#10 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#11 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('vista', Array, true)
+#14 C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php(119): CController->render('vista', Array)
+#15 [internal function]: SiteController->actionVista('3')
+#16 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#17 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#18 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#19 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('vista')
+#22 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/vista')
+#23 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#24 C:\xampp\htdocs\nuevo\index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/nuevo/index.php/site/busqueda.html?r=site/vista&id=3
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/10/09 22:26:29 [error] [system.db.CDbCommand] CDbCommand::fetchAll() falló: SQLSTATE[42S22]: Column not found: 1054 Unknown column 't.IDPROP' in 'where clause'. La sentencia SQL ejecutada fue: SELECT t.* FROM `propiedad` `t` WHERE t.IDPROP=:ycp0.
+in C:\xampp\htdocs\nuevo\protected\views\site\vista.php (34)
+in C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php (119)
+in C:\xampp\htdocs\nuevo\index.php (13)
+2015/10/09 22:26:29 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42S22]: Column not found: 1054 Unknown column 't.IDPROP' in 'where clause'. The SQL statement executed was: SELECT t.* FROM `propiedad` `t` WHERE t.IDPROP=:ycp0' in C:\xampp\htdocs\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\db\CDbCommand.php(396): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1356): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1475): CActiveRecord->query(Object(CDbCriteria), true)
+#3 C:\xampp\htdocs\yii\framework\web\CActiveDataProvider.php(199): CActiveRecord->findAll(Object(CDbCriteria))
+#4 C:\xampp\htdocs\yii\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#5 C:\xampp\htdocs\yii\framework\zii\widgets\CBaseListView.php(125): CDataProvider->getData()
+#6 C:\xampp\htdocs\yii\framework\zii\widgets\CListView.php(211): CBaseListView->init()
+#7 C:\xampp\htdocs\yii\framework\web\CBaseController.php(147): CListView->init()
+#8 C:\xampp\htdocs\yii\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#9 C:\xampp\htdocs\nuevo\protected\views\site\vista.php(34): CBaseController->widget('zii.widgets.CLi...', Array)
+#10 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#11 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#13 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('vista', Array, true)
+#14 C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php(119): CController->render('vista', Array)
+#15 [internal function]: SiteController->actionVista('1')
+#16 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#17 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#18 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#19 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#20 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('vista')
+#22 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/vista')
+#23 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#24 C:\xampp\htdocs\nuevo\index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/nuevo/index.php/site/busqueda.html?r=site/vista&id=1
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---
+2015/10/09 22:34:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "index.php" solicitada.' in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('index.php')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('index.php')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/index.php/...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/index.php/intra/index
+HTTP_REFERER=http://localhost/nuevo/index.php/site/index.html
+---
+2015/10/09 22:34:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "index.php" solicitada.' in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('index.php')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('index.php')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/index.php/...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/site/index.php/intra/index
+HTTP_REFERER=http://localhost/nuevo/index.php/site/index.html
+---
