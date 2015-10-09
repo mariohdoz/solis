@@ -100,10 +100,10 @@ class SiteController extends Controller
 	{
 		$model    = new Propiedad();
 		$criteria = new CDbCriteria;
-		$criteria->compare('t.IDPROP', $id);
+		$criteria->compare('t.id_propiedad', $id);
 		$criteria->select = 't.*';
 		$criteria2        = new CDbCriteria;
-		$criteria2->compare('t.IDPROP', $id);
+		$criteria2->compare('t.id_propiedad', $id);
 		$criteria2->select = 't.*';
 		$dataProvider      = new CActiveDataProvider('Propiedad', array(
 			'criteria' => $criteria,

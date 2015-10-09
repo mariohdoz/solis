@@ -5,8 +5,8 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('IDPROP')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->IDPROP), array('view', 'id'=>$data->IDPROP)); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('id_propiedad')); ?>:</b>
+	<?php echo CHtml::link(CHtml::encode($data->id_propiedad), array('view', 'id'=>$data->id_propiedad)); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('RUTCLIENTE')); ?>:</b>

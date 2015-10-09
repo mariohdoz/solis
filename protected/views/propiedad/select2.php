@@ -35,9 +35,9 @@
                         <div class="form-group">
                           <br>
                             <p>Dirección de la propiedad</p>
-                            <?php echo $form->dropDownList($model,'IDPROP', CHtml::listData(Propiedad::model()->findAll(array('order' => 'DIRECCION')),'IDPROP','Cliente' ), array("class"=>"form-control select2"),
+                            <?php echo $form->dropDownList($model,'id_propiedad', CHtml::listData(Propiedad::model()->findAll(array('order' => 'DIRECCION')),'id_propiedad','Cliente' ), array("class"=>"form-control select2"),
                                 array('empty' => '(Seleccione tipo de servicio)'));?>
-                            <?php echo $form->error($model,'IDPROP'); ?>
+                            <?php echo $form->error($model,'id_propiedad'); ?>
                             <br>
                             <div class="center-block">
                               <?php echo CHtml::submitButton('Eliminar propiedad', array('confirm'=> 'Are you Sure')); ?>

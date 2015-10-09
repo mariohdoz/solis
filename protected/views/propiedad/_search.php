@@ -12,8 +12,8 @@
 )); ?>
 
 	<div class="row">
-		<?php echo $form->label($model,'IDPROP'); ?>
-		<?php echo $form->textField($model,'IDPROP'); ?>
+		<?php echo $form->label($model,'id_propiedad'); ?>
+		<?php echo $form->textField($model,'id_propiedad'); ?>
 	</div>
 
 	<div class="row">

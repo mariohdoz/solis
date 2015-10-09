@@ -2,7 +2,7 @@
 
 class PropiedadForm extends CFormModel{
 
-    public $IDPROP;
+    public $id_propiedad;
     public $DIRECCION;
     public $CANTPIEZA;
     public $CANTBANO;
@@ -15,14 +15,14 @@ class PropiedadForm extends CFormModel{
 
     public function rules(){
         return array(
-            array("IDPROP","required"),
-            array('IDPROP, RUTCLIENTE, DIRECCION, CANTPIEZA, CANTBANO, TERRENO, TERRENOCONSTRUIDO, TIPO, SERVICIO, ESTADO, DESCRIPCION, COMUNAPROPIEDAD, VALORPROPIEDAD, AMOBLADO', 'safe', 'on'=>'search'),        );
+            array("id_propiedad","required"),
+            array('id_propiedad, RUTCLIENTE, DIRECCION, CANTPIEZA, CANTBANO, TERRENO, TERRENOCONSTRUIDO, TIPO, SERVICIO, ESTADO, DESCRIPCION, COMUNAPROPIEDAD, VALORPROPIEDAD, AMOBLADO', 'safe', 'on'=>'search'),        );
     }
 
     public function attributeLabels()
     {
         return array(
-            'IDPROP'=>'Id',
+            'id_propiedad'=>'Id',
             'RUTCLIENTE' => 'RUT del propietario',
             'DIRECCION' => 'Direcci&oacute;n',
             'CANTPIEZA' => 'N&uacute;mero de habitaciones.',
@@ -43,7 +43,7 @@ class PropiedadForm extends CFormModel{
 
   		$criteria=new CDbCriteria;
 
-  		$criteria->compare('IDPROP',$this->IDPROP);
+  		$criteria->compare('id_propiedad',$this->id_propiedad);
   		$criteria->compare('RUTCLIENTE',$this->RUTCLIENTE,true);
   		$criteria->compare('DIRECCION',$this->DIRECCION,true);
   		$criteria->compare('CANTPIEZA',$this->CANTPIEZA);

@@ -19,7 +19,7 @@ CREATE TABLE `arrendatario` (
 
 CREATE TABLE `arriendo` (
   `IDARRIENDO` int(11) NOT NULL,
-  `IDPROP` int(11) DEFAULT NULL,
+  `id_propiedad` int(11) DEFAULT NULL,
   `RUTADMIN` varchar(10) NOT NULL,
   `RUTARREN` varchar(10) NOT NULL,
   `FECHAARRIENDO` date NOT NULL,
@@ -67,7 +67,7 @@ INSERT INTO `cliente` (`RUTCLIENTE`, `NOMBRESCLIENTE`, `APELLIDOSCLIENTE`, `TELE
 CREATE TABLE `documento` (
   `IDDOCU` int(11) NOT NULL,
   `IDARRIENDO` int(11) NOT NULL,
-  `IDPROP` int(11) DEFAULT NULL,
+  `id_propiedad` int(11) DEFAULT NULL,
   `RUTARREN` varchar(10) DEFAULT NULL,
   `TIPODOCU` varchar(25) NOT NULL,
   `UBICACIONDOCU` varchar(50) NOT NULL,
@@ -133,7 +133,7 @@ CREATE TABLE `funcionario` (
 
 CREATE TABLE `imagen` (
   `IDIMAGEN` int(11) NOT NULL,
-  `IDPROP` int(11) NOT NULL,
+  `id_propiedad` int(11) NOT NULL,
   `URLIMAGEN` varchar(100) NOT NULL
 ) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
@@ -141,7 +141,7 @@ CREATE TABLE `imagen` (
 -- Volcado de datos para la tabla `imagen`
 --
 
-INSERT INTO `imagen` (`IDIMAGEN`, `IDPROP`, `URLIMAGEN`) VALUES
+INSERT INTO `imagen` (`IDIMAGEN`, `id_propiedad`, `URLIMAGEN`) VALUES
 (22, 35, 'tumblr_nhw47pciPS1s1whmqo7_1280.jpg'),
 (21, 35, '10507150_1393756380934301_2967279506105958413_o.jpg'),
 (20, 35, 'ae0vPrB_460s.jpg');
@@ -196,7 +196,7 @@ CREATE TABLE `pago` (
 --
 
 CREATE TABLE `propiedad` (
-  `IDPROP` int(11) NOT NULL COMMENT 'propiedad_id',
+  `id_propiedad` int(11) NOT NULL COMMENT 'propiedad_id',
   `RUTCLIENTE` varchar(10) NOT NULL COMMENT 'RUT del propietario',
   `DIRECCION` varchar(50) NOT NULL COMMENT 'Dirección',
   `CANTPIEZA` int(11) DEFAULT NULL COMMENT 'Cantidad de piezas',
@@ -217,7 +217,7 @@ CREATE TABLE `propiedad` (
 -- Volcado de datos para la tabla `propiedad`
 --
 
-INSERT INTO `propiedad` (`IDPROP`, `RUTCLIENTE`, `DIRECCION`, `CANTPIEZA`, `CANTBANO`, `TERRENO`, `TERRENOCONSTRUIDO`, `TIPO`, `SERVICIO`, `ESTADO`, `DESCRIPCION`, `COMUNAPROPIEDAD`, `VALORPROPIEDAD`, `AMOBLADO`, `Activo`) VALUES
+INSERT INTO `propiedad` (`id_propiedad`, `RUTCLIENTE`, `DIRECCION`, `CANTPIEZA`, `CANTBANO`, `TERRENO`, `TERRENOCONSTRUIDO`, `TIPO`, `SERVICIO`, `ESTADO`, `DESCRIPCION`, `COMUNAPROPIEDAD`, `VALORPROPIEDAD`, `AMOBLADO`, `Activo`) VALUES
 (35, '18045248-6', '123', 1, 1, '123123', '', 'Casa', 'Venta', 1, 'dasdasdasdasdasd', 'Antofagasta', 123, 1, 0),
 (36, '18045248-6', 'asdasd', 1, 7, 'qweqwe', 'weqwe', 'Casa', 'Venta', 1, 'asdasdasdasdasdasdasd', 'Calama', 123123123, 1, 1),
 (37, '18045248-6', 'dasd', 1, 1, 'asdasd', '', 'Casa', 'Venta', 1, 'asdasdasdasd', 'Antofagasta', 3423423, 0, 1);
@@ -253,7 +253,7 @@ CREATE TABLE `solicitud` (
 CREATE TABLE `venta` (
   `IDVENTA` int(11) NOT NULL,
   `RUTADMIN` varchar(10) DEFAULT NULL,
-  `IDPROP` int(11) DEFAULT NULL,
+  `id_propiedad` int(11) DEFAULT NULL,
   `NOMBRECOMPRADOR` varchar(50) NOT NULL,
   `APELLIDOSCOMPRADOR` varchar(50) NOT NULL,
   `RUTCOMPRADOR` varchar(10) NOT NULL
@@ -282,7 +282,7 @@ ALTER TABLE `arriendo`
   ADD PRIMARY KEY (`IDARRIENDO`),
   ADD KEY `FK_ARRIENDA` (`RUTARREN`),
   ADD KEY `FK_GESTIONA` (`RUTADMIN`),
-  ADD KEY `FK_PUEDE` (`IDPROP`);
+  ADD KEY `FK_PUEDE` (`id_propiedad`);
 
 --
 -- Indices de la tabla `cliente`
@@ -295,7 +295,7 @@ ALTER TABLE `cliente`
 --
 ALTER TABLE `documento`
   ADD PRIMARY KEY (`IDDOCU`),
-  ADD KEY `FK_ADJUDICA` (`IDPROP`),
+  ADD KEY `FK_ADJUDICA` (`id_propiedad`),
   ADD KEY `FK_CONTIENE` (`IDARRIENDO`),
   ADD KEY `FK_ENTREGA` (`RUTARREN`);
 
@@ -317,7 +317,7 @@ ALTER TABLE `funcionario`
 --
 ALTER TABLE `imagen`
   ADD PRIMARY KEY (`IDIMAGEN`),
-  ADD KEY `FK_REPRESENTA` (`IDPROP`);
+  ADD KEY `FK_REPRESENTA` (`id_propiedad`);
 
 --
 -- Indices de la tabla `integra`
@@ -346,7 +346,7 @@ ALTER TABLE `pago`
 -- Indices de la tabla `propiedad`
 --
 ALTER TABLE `propiedad`
-  ADD PRIMARY KEY (`IDPROP`),
+  ADD PRIMARY KEY (`id_propiedad`),
   ADD KEY `FK_POSEE` (`RUTCLIENTE`);
 
 --
@@ -361,7 +361,7 @@ ALTER TABLE `solicitud`
 --
 ALTER TABLE `venta`
   ADD PRIMARY KEY (`IDVENTA`),
-  ADD KEY `FK_ES` (`IDPROP`),
+  ADD KEY `FK_ES` (`id_propiedad`),
   ADD KEY `FK_HACE` (`RUTADMIN`);
 
 --
@@ -402,7 +402,7 @@ ALTER TABLE `ordentrabajo`
 -- AUTO_INCREMENT de la tabla `propiedad`
 --
 ALTER TABLE `propiedad`
-  MODIFY `IDPROP` int(11) NOT NULL AUTO_INCREMENT COMMENT 'propiedad_id',AUTO_INCREMENT=38;
+  MODIFY `id_propiedad` int(11) NOT NULL AUTO_INCREMENT COMMENT 'propiedad_id',AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT de la tabla `solicitud`
 --

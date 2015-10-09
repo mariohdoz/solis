@@ -41,7 +41,7 @@ $this->menu=array(
 <?php $this->widget('zii.widgets.grid.CGridView', array(
     'dataProvider'=>$dataProvider,
     'columns'=>array(
-        'IDPROP:number:Id',
+        'id_propiedad:number:Id',
         'RUTCLIENTE:text:Propiedario',
         'DIRECCION:text:Dirección',
         'TIPO:text:Tipo de propiedad',
