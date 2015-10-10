@@ -2,7 +2,7 @@
 /* @var $this SiteController */
 /* @var $data Propiedad */
 ?>
-<section >
+<section  >
 
   <div class=" contenedor-img2 ejemplo-2" >
     <a href="?r=site/vista&id=<?php echo $data->id_propiedad;?>">

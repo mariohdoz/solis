@@ -2506,7 +2506,7 @@ text-align: justify;
   font-size: 17px;
   padding: 10px;
   background: rgba(0, 0, 0, 0.3);
-  margin: 150px 0 0 0
+  margin: 180px 0 0 0
 }
 .contenedor-img2 p {
   font-size: 15px;
@@ -2815,10 +2815,19 @@ fieldset[disabled] .btn-info.active {
   background-color: #fff;
 }
 .btn-warning {
-
+  float: left;
   color: #fff;
   background-color: #ff5722;
   border-color: #d5491f;
+}
+.btn-buscar {
+  color: #fff;
+  background-color: #ff5722;
+  border-color: #d5491f;
+}.btn-buscar:hover {
+  color: #fff;
+  background-color: #ff8e57;
+  border-color: #ff8e57;
 }
 .btn-warning:hover,
 .btn-warning:focus,
@@ -2966,3 +2975,4 @@ fieldset[disabled] .btn-link:focus {
 .btn-block + .btn-block {
   margin-top: 5px;
 }
+
