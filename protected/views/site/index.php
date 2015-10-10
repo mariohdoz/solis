@@ -7,7 +7,7 @@
        $estado = false;
        $url = '?r=access/index';
        $label = 'Iniciar sesión';
-   }
+    }
  ?>
 <header class="cd-header">
 		<div id="cd-logo"><a href="#0"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/LogoV2.png" width="150px" height="50px" alt="Logo"></a></div>
