@@ -71,7 +71,7 @@ class SiteController extends Controller
 					$criteria         = new CDbCriteria;
 					$criteria->select = 't.*';
 					$criteria->join   = 'LEFT JOIN imagen im ON t.id_propiedad = im.id_propiedad';
-					$criteria->condition = 'estado_propiedad = TRUE AND activo_propiedad = TRUE AND tipo_propiedad="'.$model2->tipo_propiedad.'"';
+					$criteria->condition = 'estado_propiedad = TRUE AND activo_propiedad = TRUE AND tipo_propiedad="'.$model2->tipo_propiedad.'" AND comuna_propiedad="'.$model2->comuna_propiedad.'"';
 					$criteria->group  = 't.id_propiedad';
 					$dataProvider     = new CActiveDataProvider('propiedad', array(
 						'criteria' => $criteria,
@@ -83,7 +83,7 @@ class SiteController extends Controller
 					$criteria         = new CDbCriteria;
 					$criteria->select = 't.*';
 					$criteria->join   = 'LEFT JOIN imagen im ON t.id_propiedad = im.id_propiedad';
-					$criteria->condition = 'estado_propiedad = TRUE AND activo_propiedad = TRUE';
+					$criteria->condition = 'estado_propiedad = TRUE AND activo_propiedad = TRUE AND comuna_propiedad="'.$model2->comuna_propiedad.'"';
 					$criteria->group  = 't.id_propiedad';
 					$dataProvider     = new CActiveDataProvider('propiedad', array(
 						'criteria' => $criteria,
