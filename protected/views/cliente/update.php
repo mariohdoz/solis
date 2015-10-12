@@ -4,18 +4,18 @@
 
 $this->breadcrumbs=array(
 	'Clientes'=>array('index'),
-	$model->RUTCLIENTE=>array('view','id'=>$model->RUTCLIENTE),
+	$model->rut_cliente=>array('view','id'=>$model->rut_cliente),
 	'Update',
 );
 
 $this->menu=array(
 	array('label'=>'List Cliente', 'url'=>array('index')),
 	array('label'=>'Create Cliente', 'url'=>array('create')),
-	array('label'=>'View Cliente', 'url'=>array('view', 'id'=>$model->RUTCLIENTE)),
+	array('label'=>'View Cliente', 'url'=>array('view', 'id'=>$model->rut_cliente)),
 	array('label'=>'Manage Cliente', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update Cliente <?php echo $model->RUTCLIENTE; ?></h1>
+<h1>Update Cliente <?php echo $model->rut_cliente; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

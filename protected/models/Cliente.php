@@ -15,6 +15,7 @@
  * @property string $telefonocelular_cliente
  * @property string $nrocuenta_cliente
  * @property string $banco_cliente
+ * @property string $tipocuenta_cliente
  * @property integer $activo_cliente
  */
 class Cliente extends CActiveRecord
@@ -40,14 +41,15 @@ class Cliente extends CActiveRecord
 			array('rut_cliente', 'length', 'max'=>10),
 			array('rut_cliente', 'unique','attributeName'=>'rut_cliente','className'=>'Cliente','message'=>'El propietario ya se encuentra ingresado'),
 			array('nombres_cliente, apellidos_cliente, profesion_cliente, correo_cliente', 'length', 'max'=>100),
-			array('estadocivil_cliente', 'length', 'max'=>10),
+			array('estadocivil_cliente', 'length', 'max'=>8),
 			array('domicilio_cliente', 'length', 'max'=>150),
 			array('telefonofijo_cliente, telefonocelular_cliente', 'length', 'max'=>12),
 			array('nrocuenta_cliente', 'length', 'max'=>25),
 			array('banco_cliente', 'length', 'max'=>50),
+			array('tipocuenta_cliente', 'length', 'max'=>40),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('rut_cliente, nombres_cliente, apellidos_cliente, estadocivil_cliente, profesion_cliente, domicilio_cliente, correo_cliente, telefonofijo_cliente, telefonocelular_cliente, nrocuenta_cliente, banco_cliente, activo_cliente', 'safe', 'on'=>'search'),
+			array('rut_cliente, nombres_cliente, apellidos_cliente, estadocivil_cliente, profesion_cliente, domicilio_cliente, correo_cliente, telefonofijo_cliente, telefonocelular_cliente, nrocuenta_cliente, banco_cliente, tipocuenta_cliente, activo_cliente', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,8 +64,8 @@ class Cliente extends CActiveRecord
 		);
 	}
 	public function getFullName(){
-			return $this->rut_cliente.'  '.$this->nombres_cliente.' '.$this->apellidos_cliente;
-	}
+		return $this->rut_cliente.'  '.$this->nombres_cliente.' '.$this->apellidos_cliente;
+}
 
 	/**
 	 * @return array customized attribute labels (name=>label)
@@ -76,13 +78,14 @@ class Cliente extends CActiveRecord
 			'apellidos_cliente' => 'Apellidos',
 			'estadocivil_cliente' => 'Estado civil',
 			'profesion_cliente' => 'Profesión',
-			'domicilio_cliente' => 'Domicilio ',
+			'domicilio_cliente' => 'domicilio',
 			'correo_cliente' => 'Correo electrónico',
 			'telefonofijo_cliente' => 'Teléfono fijo',
 			'telefonocelular_cliente' => 'Teléfono celular',
 			'nrocuenta_cliente' => 'Número de cuenta',
 			'banco_cliente' => 'Banco',
-			'activo_cliente' => 'Activo',
+			'tipocuenta_cliente' => 'Tipo de cuenta',
+			'activo_cliente' => 'Cliente activo',
 		);
 	}
 
@@ -115,6 +118,7 @@ class Cliente extends CActiveRecord
 		$criteria->compare('telefonocelular_cliente',$this->telefonocelular_cliente,true);
 		$criteria->compare('nrocuenta_cliente',$this->nrocuenta_cliente,true);
 		$criteria->compare('banco_cliente',$this->banco_cliente,true);
+		$criteria->compare('tipocuenta_cliente',$this->tipocuenta_cliente,true);
 		$criteria->compare('activo_cliente',$this->activo_cliente);
 
 		return new CActiveDataProvider($this, array(

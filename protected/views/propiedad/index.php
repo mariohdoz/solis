@@ -42,14 +42,22 @@ $this->menu=array(
     'dataProvider'=>$dataProvider,
     'columns'=>array(
         'id_propiedad:number:Id',
-        'RUTCLIENTE:text:Propiedario',
-        'DIRECCION:text:Dirección',
-        'TIPO:text:Tipo de propiedad',
-        'SERVICIO:text:Servicio prestado',
-        array('header'=>'Estado','name'=>'Estado','value' => '$data->ESTADO?Yii::t(\'app\',\'Disponible\'):Yii::t(\'app\', \'Ocupado\')',
+        'rut_cliente:text:Propiedario',
+        'direccion_propiedad:text:Dirección',
+        'tipo_propiedad:text:Tipo de propiedad',
+        'servicio_propiedad:text:Servicio prestado',
+        array('header'=>'Estado','name'=>'Estado','value' => '$data->estado_propiedad?Yii::t(\'app\',\'Disponible\'):Yii::t(\'app\', \'Ocupado\')',
             'filter' => array('0' => Yii::t('app', 'Ocupado'), '1' => Yii::t('app', 'Disponible')),
             'htmlOptions' => array('style' => "text-align:center;"), ),
-        array('class'=>'CButtonColumn','header'=>'Operaciones'
+        array(
+          'class'=>'CButtonColumn',
+          'header'=>'Operaciones',
+          'template'=>'{ver}{modificar}{eliminar}',
+          'buttons'=>array(
+            'ver'=>array(
+              'label'=>'ver',
+            ),
+          )
         ),
     ),
 ));?>

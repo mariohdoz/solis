@@ -11,6 +11,8 @@
  * @property string $correo_admin
  * @property string $telefono_admin
  * @property string $perfil_admin
+ * @property integer $super_admin
+ * @property integer $activo_admin
  */
 class Administrador extends CActiveRecord
 {
@@ -31,6 +33,7 @@ class Administrador extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('rut_admin, nombres_admin, apellidos_admin, contrasena_admin, correo_admin, telefono_admin, perfil_admin', 'required'),
+			array('super_admin, activo_admin', 'numerical', 'integerOnly'=>true),
 			array('rut_admin', 'length', 'max'=>10),
 			array('nombres_admin, apellidos_admin, contrasena_admin, correo_admin', 'length', 'max'=>100),
 			array('telefono_admin', 'length', 'max'=>12),
@@ -65,6 +68,8 @@ class Administrador extends CActiveRecord
 			'correo_admin' => 'Correo',
 			'telefono_admin' => 'Telefono',
 			'perfil_admin' => 'Foto',
+			'super_admin' => 'Super Admin',
+			'activo_admin' => 'administrador activo',
 		);
 	}
 
@@ -93,6 +98,8 @@ class Administrador extends CActiveRecord
 		$criteria->compare('correo_admin',$this->correo_admin,true);
 		$criteria->compare('telefono_admin',$this->telefono_admin,true);
 		$criteria->compare('perfil_admin',$this->perfil_admin,true);
+		$criteria->compare('super_admin',$this->super_admin);
+		$criteria->compare('activo_admin',$this->activo_admin);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

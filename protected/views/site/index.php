@@ -10,12 +10,12 @@
     }
  ?>
 <header class="cd-header">
-		<div id="cd-logo"><a href="#0"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/LogoV2.png" width="150px" height="50px" alt="Logo"></a></div>
+		<div id="cd-logo"><?php echo CHtml::link('<img src="'.Yii::app()->request->baseUrl.'/images/LogoV2.png" width="150px" height="50px" alt="Logo">',array('index')); ?></div>
 		<nav class="main-nav">
 			<ul>
 				<!-- inser more l inks her e -->
 				<?php if(!Yii::app()->session['activo']) {
-						echo '<li><a class="cd-signin " href="#0">Iniciar Sesión</a></li>';
+						echo '<li><a class="cd-signin " href="#">Iniciar Sesión</a></li>';
 					}else {
             echo CHtml::link('Cerrar sesión', array('Site/logout'), array('class'=>'cd-signin'));
 					}
@@ -272,23 +272,51 @@
 		</p>
 	</section> <!-- #cd-placeholder-4 -->
 	<section id="cd-placeholder-5" class="cd-section cd-container">
+    <?php if(($msgs=Yii::app()->user->getFlashes())!=null): ?>
+      <?php foreach($msgs as $type => $message):?>
+        <div class="alert alert-<?php echo $type;?>">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong><?php echo ucfirst($type)?></strong> <?php echo $message;?>.
+        </div>
+      <?php endforeach;?>
+    <?php endif; ?>
 		<h1>Contáctenos</h1>
 		<form class="cf">
-
+      <?php $form=$this->beginWidget('CActiveForm', array(
+				'id'=>'busqueda-form',
+				'action'=>Yii::app()->createUrl('/site/Solicitud'),
+				// Please note: When you enable ajax validation, make sure the corresponding
+				// controller action is handling ajax validation correctly.
+				// There is a call to performAjaxValidation() commented in generated controller code.
+				// See class documentation of CActiveForm for details on this.
+				'enableAjaxValidation'=>false,
+			)); ?>
 			<div class="half left cf">
-				<input type="text" id="input-name" placeholder="Nombre Completo">
-				<input type="email" id="input-email" placeholder="Correo Eletrónico">
-				<input type="text" id="input-subject" placeholder="Subject">
-				<textarea name="message" type="text" id="input-message" placeholder="Comentarios"></textarea>
-				<input type="submit" value="Enviar" id="input-submit">
+        <?php echo $form->textField($model1,'nombres_solicitud', array("class"=>"full-width has-padding has-border", "placeholder"=>"Nombres")); ?>
+        <?php echo $form->textField($model1,'apellidos_solicitud', array("class"=>"full-width has-padding has-border", "placeholder"=>"Apellidos")); ?>
+        <?php echo $form->dropDownList($model1,'servicio_solicitud',
+                  array(
+                      'Venta' => 'Venta',
+                      'Arriendo' => 'Arriendo',
+                      'Tasación' => 'Tasación',
+                      'Estudio de título' => 'Estudio de título',
+                      'Ampliaciones menores' => 'Ampliaciones menores',
+                      'Aseo de propiedad' => 'Aseo de propiedad',
+                  ),
+                  array("class"=>"full-width has-padding has-border"),
+                  array('empty' => '(Seleccione tipo de servicio)')); ?>
+        <?php echo $form->dateField($model1,'fechaejecucion_solicitud', array("class"=>"full-width has-padding has-border", "placeholder"=>"Fecha solicitada")); ?>
+        <?php echo $form->textField($model1,'telefono_solicitud', array("class"=>"full-width has-padding has-border", "placeholder"=>"Teléfono de contacto")); ?>
+        <?php echo $form->emailField($model1,'correo_solicitud', array("class"=>"full-width has-padding has-border", "placeholder"=>"Correo de contacto")); ?>
+        <?php echo $form->textArea($model1,'descripcion_solicitud', array("class"=>"full-width has-padding has-border", "placeholder"=>"Descripcion")); ?>
+        <?php echo CHtml::submitButton('Enviar'); ?>
 			</div>
+      <?php $this->endWidget(); ?>
 			<div class="half right cf">
 				<div class="google-map">
-
 					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1550.1614112716795!2d-68.9253001374728!3d-22.469416482835825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96ac09cb43a152a5%3A0xd5a4bc040bd6013a!2sLatorre+1291%2C+Calama%2C+Regi%C3%B3n+de+Antofagasta!5e0!3m2!1ses-419!2scl!4v1443819530064" width="600" height="450" frameborder="0" style="border:0"></iframe>
 				</div>
 			</div>
-
 		</form>
 	</section> <!-- #cd-placeholder-5 -->
 </main> <!-- .cd-main-content -->

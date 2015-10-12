@@ -41,4 +41,22 @@ $this->menu=array(
             <!-- Seleccion de propietario -->
             <?php $this->renderPartial('_form', array('model'=>$model)); ?>
         </section><!-- termina la segunda seccion -->
+        <section class='content'>
+          <div class="box box-default">
+            <div class="box-header with-border">
+          			<h3 class="box-title">Modificar imágenes de la propiedad</h3>
+          	</div>
+            <div class="box-body">
+              <div class="row">
+                <?php
+                $ruta = Imagen::model()->findByAttributes(array('id_propiedad'=>$model->id_propiedad,),array('order' => 'id_imagen ASC','limit' => '1',));
+                 echo CHtml::image(Yii::app()->baseUrl."/images/propiedades/".$ruta->url_imagen); ?>
+                 <?php $this->widget('ext.SAImageDisplayer', array(
+                      'image' => 'p274.jpg',
+                      'size' => 'thumb',
+                  )); ?>
+              </div>
+            </div>
+          </div>
+        </section>
     </div>

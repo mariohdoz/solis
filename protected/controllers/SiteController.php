@@ -39,6 +39,9 @@ class SiteController extends Controller
 		$model  = new LoginForm;
 		$model1 = new Solicitud;
 		$model2 = new Propiedad;
+		Yii::app()->user->setFlash('danger','Esto es un error');
+		Yii::app()->user->setFlash('success','Este es un mensaje de éxito');
+		Yii::app()->user->setFlash('info','ésto es pura infromación');
 		// validación de ajax
 		if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
 			echo CActiveForm::validate($model);
@@ -50,6 +53,18 @@ class SiteController extends Controller
 			if ($model->validate() && $model->login())
 				$this->redirect("index.php/intra/index");
 		}
+		if(isset($_POST['Solicitud'])){
+			$model1->attributes = $_POST['Solicitud'];
+			if($model1->nombres_solicitud != '' && $model1->apellidos_solicitud != '' ){
+				if($model1->save()){
+					$this->render('index', array(
+						'model' => $model,
+						'model1' => $model1,
+						'model2' => $model2
+					));
+				}
+			}
+		}
 		// desplegar el login
 		$this->render('index', array(
 			'model' => $model,
@@ -57,6 +72,8 @@ class SiteController extends Controller
 			'model2' => $model2
 		));
 	}
+
+
 	public function actionBusqueda()
 	{
 		$this->layout ='//layouts/busquedaLayout';

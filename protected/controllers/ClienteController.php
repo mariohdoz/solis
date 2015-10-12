@@ -6,11 +6,34 @@ class ClienteController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-    public $layout='//layouts/intraLayout';
+	public $layout='//layouts/intralayout';
 
 	/**
 	 * @return array action filters
 	 */
+	public function actions()
+	{
+		return array(
+			'captcha'=>array(
+					'class'=>'CCaptchaAction',
+					'backColor'=>0xFFFFFF,
+			),
+			'page'=>array(
+					'class'=>'CViewAction',
+			),
+			'upload'=>array(
+					'class' => 'ext.EAjaxupload.EAjaxUpload',
+					'save' => array(
+							'modelClass' => 'EventAttachments',
+							'foreignKey' => 'event_id',
+					),
+					'delete' => array(
+							'modelClass' => 'EventAttachments',
+							'foreignKey' => 'event_id',
+					),
+			)
+		);
+	}
 	public function filters()
 	{
 		return array(
@@ -18,7 +41,6 @@ class ClienteController extends Controller
 			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
-
 	/**
 	 * Specifies the access control rules.
 	 * This method is used by the 'accessControl' filter.
@@ -27,8 +49,12 @@ class ClienteController extends Controller
 	public function accessRules()
 	{
 		return array(
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array(),
+				'users'=>array('*'),
+			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','index','view'),
+				'actions'=>array('create','update','documento','index','view'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -47,7 +73,7 @@ class ClienteController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$this->render('vista',array(
+		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
 	}
@@ -58,34 +84,28 @@ class ClienteController extends Controller
 	 */
 	public function actionCreate()
 	{
-		/**$model=new Cliente();
-    if (isset($_POST['Cliente'])) {
-        $model->attributes = $_POST['Cliente'];
-        if(!Cliente::model()->find('RUTCLIENTE=:RUT', array(':RUT'=>$model->RUTCLIENTE))) {
-            if ($model->save())
-                $this->redirect('?r=propiedad/index');
-        }else{
-            $this->render('addCliente', array('model'=>$model));
-        }
-     }else{
-       $this->render('addCliente', array(
-          'model' => $model,
-       )); */
-    $model=new Cliente;
-    if(isset($_POST['Cliente']))
+		$model=new Cliente;
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+		if(isset($_POST['Cliente']))
 		{
 			$model->attributes=$_POST['Cliente'];
-			if($model->save())
-        $this->render('vista',array(
-          'model'=>$this->loadModel($model->rut_cliente),
-        ));
+			if($model->save()){
+				$this->redirect(array('documento','id'=>$model->rut_cliente));
+			}else{
+				$this->render('create',array(
+					'model'=>$model,
+				));
+			}
+		}else{
+			$this->render('create',array(
+				'model'=>$model,
+			));
 		}
+	}
 
-		$this->render('addCliente',array(
-			'model'=>$model,
-		));
-
-
+	public function actionDocumento($id){
+		$this->render('documento');
 	}
 
 	/**
@@ -104,7 +124,7 @@ class ClienteController extends Controller
 		{
 			$model->attributes=$_POST['Cliente'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->RUTCLIENTE));
+				$this->redirect(array('view','id'=>$model->rut_cliente));
 		}
 
 		$this->render('update',array(

@@ -86,7 +86,6 @@ class PropiedadController extends Controller
 	public function actionCreate()
 	{
 		$model=new Propiedad;
-
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 		if(isset($_POST['Propiedad']))
@@ -99,6 +98,7 @@ class PropiedadController extends Controller
 			'model'=>$model,
 		));
 	}
+	
 	public function actionUpload($id)
 	{
 		$model = new Imagen;
@@ -169,6 +169,7 @@ class PropiedadController extends Controller
 		{
 			$model->attributes=$_POST['Propiedad'];
 			if($model->save())
+				Yii::app()->user->setFlash('success','La propiedad ha sido ingresada correctamente. Por favor añadir imagenes de la propiedad');
 				$this->redirect(array('propiedad/imagen', 'id'=>$model->id_propiedad, 'rut'=>$model->rut_cliente));
 		}
 	$this->render('gestion',array('model'=>$model,));
@@ -179,6 +180,8 @@ class PropiedadController extends Controller
 			$model1=new Imagen();
       $model2 = new Cliente();
       $model2 = Cliente::model()->findByPk($rut);
+			Yii::app()->user->setFlash('success','La propiedad ha sido ingresada correctamente. Por favor añadir imagenes de la propiedad.');
+
       $this->render('imagen',array(
           'model'=>$this->loadModel($id),
           'model2'=>$model2,'model1'=>$model1,

@@ -40,7 +40,6 @@
                                 echo $form->dropDownList($model,'rut_cliente', CHtml::listData(Cliente::model()->findAll($criteria, array('order' => 'rut_cliente')),'rut_cliente','fullname'), array("class"=>"form-control select2"),
                                     array('empty' => '(Seleccione tipo de servicio)'));?>
                                 <?php echo $form->error($model,'rut_cliente'); ?>
-
                             </div><!-- /.form-group -->
                         </div><!-- /.col -->
                     </div>

@@ -1,415 +1,266 @@
--- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `arrendatario`
---
 
-CREATE TABLE `arrendatario` (
-  `RUTARREN` varchar(10) NOT NULL,
-  `NOMBRESARREN` varchar(50) NOT NULL,
-  `APELLIDOSARREN` varchar(50) NOT NULL,
-  `TELEFONOARREN` varchar(12) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*==============================================================*/
+/* Table: administrador                                         */
+/*==============================================================*/
+create table administrador
+(
+   rut_admin            varchar(10) not null,
+   nombres_admin        varchar(100) not null,
+   apellidos_admin      varchar(100) not null,
+   contrasena_admin     varchar(100) not null,
+   correo_admin         varchar(100) not null,
+   telefono_admin       varchar(12) not null,
+   perfil_admin         varchar(250) not null,
+   super_admin          bool,
+   activo_admin         bool,
+   primary key (rut_admin)
+);
 
--- --------------------------------------------------------
+/*==============================================================*/
+/* Table: arrendatario                                          */
+/*==============================================================*/
+create table arrendatario
+(
+   rut_arrendatario     varchar(10) not null,
+   nombres_arrendatario varchar(100) not null,
+   apellidos_arrendatario varchar(100) not null,
+   estadocivil_arrendatario varchar(8) not null,
+   profesion_arrendatario varchar(250) not null,
+   correo_arrendatario  varchar(100) not null,
+   telefonofijo_arrendatario varchar(12),
+   telefonocelular_arrendatario varchar(12) not null,
+   nrocuenta_arrendatario varchar(25),
+   banco_arrendatario   varchar(50),
+   nacionalidad_arrendatario varchar(50) not null,
+   empresa_arrendatario bool not null default 0,
+   primary key (rut_arrendatario)
+);
 
---
--- Estructura de tabla para la tabla `arriendo`
---
+/*==============================================================*/
+/* Table: arriendo                                              */
+/*==============================================================*/
+create table arriendo
+(
+   id_arriendo          int not null auto_increment,
+   id_propiedad         int not null,
+   rut_admin            varchar(10) not null,
+   rut_arrendatario     varchar(10),
+   inscripcion_arriendo date not null,
+   fechapago_arriendo   date not null,
+   inicio_arriendo      date not null,
+   termino_arriendo     date not null,
+   valor_arriendo       int not null,
+   primary key (id_arriendo)
+);
 
-CREATE TABLE `arriendo` (
-  `IDARRIENDO` int(11) NOT NULL,
-  `id_propiedad` int(11) DEFAULT NULL,
-  `RUTADMIN` varchar(10) NOT NULL,
-  `RUTARREN` varchar(10) NOT NULL,
-  `FECHAARRIENDO` date NOT NULL,
-  `FECHAPAGOARRIENDO` date NOT NULL,
-  `VALORARRIENDO` int(11) NOT NULL,
-  `TIEMPODEARRIENDO` varchar(50) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*==============================================================*/
+/* Table: cliente                                               */
+/*==============================================================*/
+create table cliente
+(
+   rut_cliente          varchar(10) not null,
+   nombres_cliente      varchar(100) not null,
+   apellidos_cliente    varchar(100) not null,
+   estadocivil_cliente  varchar(8) not null,
+   profesion_cliente    varchar(100),
+   domicilio_cliente    varchar(150),
+   correo_cliente       varchar(100),
+   telefonofijo_cliente varchar(12),
+   telefonocelular_cliente varchar(12),
+   nrocuenta_cliente    varchar(25),
+   banco_cliente        varchar(50),
+   tipocuenta_cliente   varchar(40),
+   activo_cliente       bool default 1,
+   primary key (rut_cliente)
+);
 
--- --------------------------------------------------------
+/*==============================================================*/
+/* Table: documento                                             */
+/*==============================================================*/
+create table documento
+(
+   id_documento         int not null auto_increment,
+   id_arriendo          int,
+   rut_arrendatario     varchar(10),
+   id_propiedad         int,
+   tipo_documento       varchar(50) not null,
+   url_documento        varchar(250) not null,
+   digitalizado_documento bool not null default 1,
+   copiaoriginal_documento bool not null default 1,
+   primary key (id_documento)
+);
 
---
--- Estructura de tabla para la tabla `cliente`
---
+/*==============================================================*/
+/* Table: funcionario                                           */
+/*==============================================================*/
+create table funcionario
+(
+   rut_funcionario      varchar(10) not null,
+   nombres_funcionario  varchar(100) not null,
+   apellidos_funcionario varchar(100) not null,
+   telefonofijo_funcionario varchar(12) not null,
+   telefonocelular_funcionario varchar(12) not null,
+   domicilio_funcionario varchar(150) not null,
+   correo_funcionario   varchar(100) not null,
+   primary key (rut_funcionario)
+);
 
-CREATE TABLE `cliente` (
-  `RUTCLIENTE` varchar(10) NOT NULL,
-  `NOMBRESCLIENTE` varchar(50) NOT NULL,
-  `APELLIDOSCLIENTE` varchar(50) NOT NULL,
-  `TELEFONOCLIENTE` varchar(12) NOT NULL,
-  `DIRECCIONCLIENTE` varchar(50) DEFAULT NULL,
-  `correo_cliente` varchar(100) NOT NULL COMMENT 'Correo electrónico',
-  `estadoCivil_cliente` varchar(8) NOT NULL COMMENT 'Estado civil',
-  `profesion_cliente` int(100) NOT NULL COMMENT 'Profesión',
-  `telefonoCelular_cliente` varchar(12) NOT NULL COMMENT 'Teléfono celular',
-  `nroCuenta_cliente` varchar(25) NOT NULL COMMENT 'Número de cuenta',
-  `banco_cliente` varchar(100) NOT NULL COMMENT 'Banco'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*==============================================================*/
+/* Table: imagen                                                */
+/*==============================================================*/
+create table imagen
+(
+   id_imagen            int not null auto_increment,
+   id_propiedad         int not null,
+   url_imagen           varchar(250) not null,
+   primary key (id_imagen)
+);
 
---
--- Volcado de datos para la tabla `cliente`
---
+/*==============================================================*/
+/* Table: integra                                               */
+/*==============================================================*/
+create table integra
+(
+   id_integra           int not null auto_increment,
+   rut_funcionario      varchar(10) not null,
+   id_ot                int not null,
+   primary key (id_integra)
+);
 
-INSERT INTO `cliente` (`RUTCLIENTE`, `NOMBRESCLIENTE`, `APELLIDOSCLIENTE`, `TELEFONOCLIENTE`, `DIRECCIONCLIENTE`, `correo_cliente`, `estadoCivil_cliente`, `profesion_cliente`, `telefonoCelular_cliente`, `nroCuenta_cliente`, `banco_cliente`) VALUES
-('19206063-k', 'Marcela Andrea', 'Muñoz Campusano', '57238757', 'La torre 1291', '', '', 0, '', '', ''),
-('18183527-3', 'Mario Hernán Douglas', 'Ossandón Zúñiga', '85352482', 'Bobby maguila gorila', '', '', 0, '', '', ''),
-('18045248-6', 'Alejandro', 'Tamayo', '942309423', 'lkasdljkdas', '', '', 0, '', '', ''),
-('18183524-3', 'lkjlkjaslkj', 'adosad', 'lkjllkjwlkja', 'asdasd', '', '', 0, '', '', '');
+/*==============================================================*/
+/* Table: ordentrabajo                                          */
+/*==============================================================*/
+create table ordentrabajo
+(
+   id_ot                int not null auto_increment,
+   rut_admin            varchar(10) not null,
+   descripcion_ot       text not null,
+   fechaemision_ot      date not null,
+   fechaejecucion_ot    date not null,
+   estado_ot            bool not null default 1,
+   primary key (id_ot)
+);
 
--- --------------------------------------------------------
+/*==============================================================*/
+/* Table: pago                                                  */
+/*==============================================================*/
+create table pago
+(
+   id_pago              int not null auto_increment,
+   id_arriendo          int,
+   rut_arrendatario     varchar(10),
+   fecha_pago           date not null,
+   totalpagar_pago      int not null,
+   totalpagado_pago     int not null,
+   primary key (id_pago)
+);
 
---
--- Estructura de tabla para la tabla `documento`
---
+/*==============================================================*/
+/* Table: propiedad                                             */
+/*==============================================================*/
+create table propiedad
+(
+   id_propiedad         int not null auto_increment,
+   rut_cliente          varchar(10),
+   direccion_propiedad  varchar(255) not null,
+   habitacion_propiedad int,
+   bano_propiedad       int,
+   terreno_propiedad    varchar(50),
+   construido_propiedad varchar(50),
+   tipo_propiedad       varchar(25) not null,
+   servicio_propiedad   varchar(10) not null,
+   estado_propiedad     bool default 1,
+   descripcion          text,
+   comuna_propiedad     varchar(20) not null,
+   amoblado_propiedad   bool not null default 0,
+   valor_propiedad      int not null,
+   activo_propiedad     bool default 1,
+   primary key (id_propiedad)
+);
 
-CREATE TABLE `documento` (
-  `IDDOCU` int(11) NOT NULL,
-  `IDARRIENDO` int(11) NOT NULL,
-  `id_propiedad` int(11) DEFAULT NULL,
-  `RUTARREN` varchar(10) DEFAULT NULL,
-  `TIPODOCU` varchar(25) NOT NULL,
-  `UBICACIONDOCU` varchar(50) NOT NULL,
-  `DIGITALIZADO` tinyint(1) NOT NULL,
-  `COPIAORIGINAL` tinyint(1) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*==============================================================*/
+/* Table: solicitud                                             */
+/*==============================================================*/
+create table solicitud
+(
+   id_solicitud         int not null auto_increment,
+   rut_cliente          varchar(10),
+   rut_funcionario      varchar(10),
+   nombres_solicitud    varchar(100),
+   apellidos_solicitud  varchar(100),
+   servicio_solicitud   varchar(25) not null,
+   fecha_solicitud      date not null,
+   fechaejecucion_solicitud date not null,
+   telefono_solicitud   varchar(12),
+   estado_solicitud     bool not null default 1,
+   descripcion_solicitud text not null,
+   tipopropiedad_solicitud varchar(50) not null,
+   correo_solicitud     varchar(100),
+   primary key (id_solicitud)
+);
 
--- --------------------------------------------------------
+/*==============================================================*/
+/* Table: venta                                                 */
+/*==============================================================*/
+create table venta
+(
+   id_venta             int not null auto_increment,
+   id_propiedad         int not null,
+   rut_admin            varchar(10),
+   nombrescomprador_venta varchar(100) not null,
+   apellidoscomprador_venta varchar(100) not null,
+   rutcomprador_venta   varchar(25) not null,
+   primary key (id_venta)
+);
 
---
--- Estructura de tabla para la tabla `factura`
---
+alter table arriendo add constraint fk_gestiona foreign key (rut_admin)
+      references administrador (rut_admin) on delete restrict on update restrict;
 
-CREATE TABLE `factura` (
-  `IDFACTURA` int(11) NOT NULL,
-  `IDPAGO` int(11) NOT NULL,
-  `NUMFACTURA` int(11) NOT NULL,
-  `FECHAFACTURA` date NOT NULL,
-  `SUBTOTALFACTURA` int(11) NOT NULL,
-  `IVAFACTURA` int(11) NOT NULL,
-  `TOTALFACTURA` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+alter table arriendo add constraint fk_incumbe foreign key (rut_arrendatario)
+      references arrendatario (rut_arrendatario) on delete restrict on update restrict;
 
-CREATE TABLE `administrador` (
-  `RUTADMIN` varchar(10) NOT NULL,
-  `NOMBRESADMIN` varchar(50) NOT NULL,
-  `APELLIDOSADMIN` varchar(50) NOT NULL,
-  `CONTRAADMIN` varchar(50) NOT NULL,
-  `TELEFONOADMIN` varchar(11) NOT NULL,
-  `CORREOADMIN` varchar(50) NOT NULL,
-  `imagen` varchar(100) DEFAULT 'dist/img/null.png'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
---
--- Volcado de datos para la tabla `administrador`
---
+alter table arriendo add constraint fk_puede foreign key (id_propiedad)
+      references propiedad (id_propiedad) on delete restrict on update restrict;
 
-INSERT INTO `administrador` (`RUTADMIN`, `NOMBRESADMIN`, `APELLIDOSADMIN`, `CONTRAADMIN`, `TELEFONOADMIN`, `CORREOADMIN`, `imagen`) VALUES
-('18183527-3', 'Mario Hernán Douglas', 'Ossandón Zúñiga', '12345', '85352482', 'mario.hdoz1@gmail.com', 'dist/img/mario.jpg'),
-('18045248-6', 'Alejandro Esteban', 'Tamayo Echav', '12345', '7197785', 'aete.xd@hotmail.com', 'dist/img/avatar5.png');
+alter table documento add constraint fk_contiene foreign key (id_arriendo)
+      references arriendo (id_arriendo) on delete restrict on update restrict;
 
---
--- --------------------------------------------------------
+alter table documento add constraint fk_corresponde foreign key (id_propiedad)
+      references propiedad (id_propiedad) on delete restrict on update restrict;
 
---
--- Estructura de ta bla para la tabla `funcionario`
---
+alter table documento add constraint fk_entrega foreign key (rut_arrendatario)
+      references arrendatario (rut_arrendatario) on delete restrict on update restrict;
 
-CREATE TABLE `funcionario` (
-  `RUTFUNCIONARIO` varchar(10) NOT NULL,
-  `NOMBRESFUNCIONARIOS` varchar(50) NOT NULL,
-  `APELLIDOSFUCIONARIO` varchar(50) NOT NULL,
-  `TELEFONOFUNCIONARIO` varchar(12) NOT NULL,
-  `SECTORFUNCIONARIO` varchar(50) NOT NULL,
-  `DIRECCIONFUNCIONARIO` varchar(50) NOT NULL,
-  `CORREOFUNCIONARIO` varchar(50) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+alter table imagen add constraint fk_representa foreign key (id_propiedad)
+      references propiedad (id_propiedad) on delete restrict on update restrict;
 
--- --------------------------------------------------------
+alter table integra add constraint fk_relationship_8 foreign key (id_ot)
+      references ordentrabajo (id_ot) on delete restrict on update restrict;
 
---
--- Estructura de tabla para la tabla `imagen`
---
+alter table integra add constraint fk_relationship_9 foreign key (rut_funcionario)
+      references funcionario (rut_funcionario) on delete restrict on update restrict;
 
-CREATE TABLE `imagen` (
-  `IDIMAGEN` int(11) NOT NULL,
-  `id_propiedad` int(11) NOT NULL,
-  `URLIMAGEN` varchar(100) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+alter table ordentrabajo add constraint fk_crea foreign key (rut_admin)
+      references administrador (rut_admin) on delete restrict on update restrict;
 
---
--- Volcado de datos para la tabla `imagen`
---
+alter table pago add constraint fk_acata foreign key (id_arriendo)
+      references arriendo (id_arriendo) on delete restrict on update restrict;
 
-INSERT INTO `imagen` (`IDIMAGEN`, `id_propiedad`, `URLIMAGEN`) VALUES
-(22, 35, 'tumblr_nhw47pciPS1s1whmqo7_1280.jpg'),
-(21, 35, '10507150_1393756380934301_2967279506105958413_o.jpg'),
-(20, 35, 'ae0vPrB_460s.jpg');
+alter table pago add constraint fk_origina foreign key (rut_arrendatario)
+      references arrendatario (rut_arrendatario) on delete restrict on update restrict;
 
--- --------------------------------------------------------
+alter table propiedad add constraint fk_posee foreign key (rut_cliente)
+      references cliente (rut_cliente) on delete restrict on update restrict;
 
---
--- Estructura de tabla para la tabla `integra`
---
+alter table solicitud add constraint fk_elabora foreign key (rut_funcionario)
+      references funcionario (rut_funcionario) on delete restrict on update restrict;
 
-CREATE TABLE `integra` (
-  `IDINTEGRA` int(11) NOT NULL,
-  `IDOT` int(11) NOT NULL,
-  `RUTFUNCIONARIO` varchar(10) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+alter table solicitud add constraint fk_realiza foreign key (rut_cliente)
+      references cliente (rut_cliente) on delete restrict on update restrict;
 
--- --------------------------------------------------------
+alter table venta add constraint fk_acoge foreign key (id_propiedad)
+      references propiedad (id_propiedad) on delete restrict on update restrict;
 
---
--- Estructura de tabla para la tabla `ordentrabajo`
---
-
-CREATE TABLE `ordentrabajo` (
-  `IDOT` int(11) NOT NULL,
-  `RUTADMIN` varchar(10) NOT NULL,
-  `DESCIPCIONOT` varchar(254) NOT NULL,
-  `FECHAEMISIONOT` date NOT NULL,
-  `FECHAEJECUCIONOT` date DEFAULT NULL,
-  `ESTADOOT` tinyint(1) NOT NULL,
-  `FORMULARIOOT` varchar(254) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `pago`
---
-
-CREATE TABLE `pago` (
-  `IDPAGO` int(11) NOT NULL,
-  `RUTARREN` varchar(10) NOT NULL,
-  `IDARRIENDO` int(11) DEFAULT NULL,
-  `FECHAPAGO` date NOT NULL,
-  `TOTALPAGAR` int(11) DEFAULT NULL,
-  `TOTALPAGADO` int(11) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `propiedad`
---
-
-CREATE TABLE `propiedad` (
-  `id_propiedad` int(11) NOT NULL COMMENT 'propiedad_id',
-  `RUTCLIENTE` varchar(10) NOT NULL COMMENT 'RUT del propietario',
-  `DIRECCION` varchar(50) NOT NULL COMMENT 'Dirección',
-  `CANTPIEZA` int(11) DEFAULT NULL COMMENT 'Cantidad de piezas',
-  `CANTBANO` int(11) DEFAULT NULL COMMENT 'Cantidad de baños',
-  `TERRENO` varchar(25) NOT NULL COMMENT 'Terreno',
-  `TERRENOCONSTRUIDO` varchar(25) DEFAULT NULL COMMENT 'Terreno construido',
-  `TIPO` varchar(25) NOT NULL COMMENT 'Tipo de propiedad',
-  `SERVICIO` varchar(10) NOT NULL COMMENT 'Tipo de servicio prestado',
-  `ESTADO` tinyint(1) NOT NULL DEFAULT '1' COMMENT 'Estado',
-  `DESCRIPCION` varchar(500) DEFAULT NULL COMMENT 'Descripción',
-  `COMUNAPROPIEDAD` varchar(20) NOT NULL COMMENT 'Comuna donde se encuentra',
-  `VALORPROPIEDAD` int(11) NOT NULL COMMENT 'Valor',
-  `AMOBLADO` tinyint(1) DEFAULT '0' COMMENT 'Amoblado',
-  `Activo` tinyint(1) DEFAULT '1' COMMENT 'deshabilitar'
-) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `propiedad`
---
-
-INSERT INTO `propiedad` (`id_propiedad`, `RUTCLIENTE`, `DIRECCION`, `CANTPIEZA`, `CANTBANO`, `TERRENO`, `TERRENOCONSTRUIDO`, `TIPO`, `SERVICIO`, `ESTADO`, `DESCRIPCION`, `COMUNAPROPIEDAD`, `VALORPROPIEDAD`, `AMOBLADO`, `Activo`) VALUES
-(35, '18045248-6', '123', 1, 1, '123123', '', 'Casa', 'Venta', 1, 'dasdasdasdasdasd', 'Antofagasta', 123, 1, 0),
-(36, '18045248-6', 'asdasd', 1, 7, 'qweqwe', 'weqwe', 'Casa', 'Venta', 1, 'asdasdasdasdasdasdasd', 'Calama', 123123123, 1, 1),
-(37, '18045248-6', 'dasd', 1, 1, 'asdasd', '', 'Casa', 'Venta', 1, 'asdasdasdasd', 'Antofagasta', 3423423, 0, 1);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `solicitud`
---
-
-CREATE TABLE `solicitud` (
-  `IDSOLICITUD` int(11) NOT NULL,
-  `RUTCLIENTE` varchar(10) NOT NULL,
-  `RUTSOLICITANTE` varchar(10) NOT NULL,
-  `NOMBRESSOLICITANTE` varchar(50) NOT NULL,
-  `APELLIDOSSOLICITANTE` varchar(50) NOT NULL,
-  `SERVICIOSOLICITADO` varchar(25) NOT NULL,
-  `FECHASOLICITUD` date NOT NULL,
-  `FECHASOLICITADA` date NOT NULL,
-  `NUMTELEFONO` int(11) NOT NULL,
-  `ESTADOSOLICITUD` tinyint(1) NOT NULL,
-  `DESCRIPCIONSOLICITUD` varchar(254) NOT NULL,
-  `CORREOCONTACTO` varchar(100) NOT NULL COMMENT 'Correo de contacto',
-  `TIPOPROPIEDAD` varchar(50) NOT NULL COMMENT 'Tipo de propiedad'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `venta`
---
-
-CREATE TABLE `venta` (
-  `IDVENTA` int(11) NOT NULL,
-  `RUTADMIN` varchar(10) DEFAULT NULL,
-  `id_propiedad` int(11) DEFAULT NULL,
-  `NOMBRECOMPRADOR` varchar(50) NOT NULL,
-  `APELLIDOSCOMPRADOR` varchar(50) NOT NULL,
-  `RUTCOMPRADOR` varchar(10) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `administrador`
---
-ALTER TABLE `administrador`
-  ADD PRIMARY KEY (`RUTADMIN`);
-
---
--- Indices de la tabla `arrendatario`
---
-ALTER TABLE `arrendatario`
-  ADD PRIMARY KEY (`RUTARREN`);
-
---
--- Indices de la tabla `arriendo`
---
-ALTER TABLE `arriendo`
-  ADD PRIMARY KEY (`IDARRIENDO`),
-  ADD KEY `FK_ARRIENDA` (`RUTARREN`),
-  ADD KEY `FK_GESTIONA` (`RUTADMIN`),
-  ADD KEY `FK_PUEDE` (`id_propiedad`);
-
---
--- Indices de la tabla `cliente`
---
-ALTER TABLE `cliente`
-  ADD PRIMARY KEY (`RUTCLIENTE`);
-
---
--- Indices de la tabla `documento`
---
-ALTER TABLE `documento`
-  ADD PRIMARY KEY (`IDDOCU`),
-  ADD KEY `FK_ADJUDICA` (`id_propiedad`),
-  ADD KEY `FK_CONTIENE` (`IDARRIENDO`),
-  ADD KEY `FK_ENTREGA` (`RUTARREN`);
-
---
--- Indices de la tabla `factura`
---
-ALTER TABLE `factura`
-  ADD PRIMARY KEY (`IDFACTURA`),
-  ADD KEY `FK_GENERA` (`IDPAGO`);
-
---
--- Indices de la tabla `funcionario`
---
-ALTER TABLE `funcionario`
-  ADD PRIMARY KEY (`RUTFUNCIONARIO`);
-
---
--- Indices de la tabla `imagen`
---
-ALTER TABLE `imagen`
-  ADD PRIMARY KEY (`IDIMAGEN`),
-  ADD KEY `FK_REPRESENTA` (`id_propiedad`);
-
---
--- Indices de la tabla `integra`
---
-ALTER TABLE `integra`
-  ADD PRIMARY KEY (`IDINTEGRA`),
-  ADD KEY `FK_RELATIONSHIP_13` (`RUTFUNCIONARIO`),
-  ADD KEY `FK_RELATIONSHIP_14` (`IDOT`);
-
---
--- Indices de la tabla `ordentrabajo`
---
-ALTER TABLE `ordentrabajo`
-  ADD PRIMARY KEY (`IDOT`),
-  ADD KEY `FK_CREA` (`RUTADMIN`);
-
---
--- Indices de la tabla `pago`
---
-ALTER TABLE `pago`
-  ADD PRIMARY KEY (`IDPAGO`),
-  ADD KEY `FK_CANCELA` (`RUTARREN`),
-  ADD KEY `FK_OBTIENE` (`IDARRIENDO`);
-
---
--- Indices de la tabla `propiedad`
---
-ALTER TABLE `propiedad`
-  ADD PRIMARY KEY (`id_propiedad`),
-  ADD KEY `FK_POSEE` (`RUTCLIENTE`);
-
---
--- Indices de la tabla `solicitud`
---
-ALTER TABLE `solicitud`
-  ADD PRIMARY KEY (`IDSOLICITUD`),
-  ADD KEY `FK_REALIZA` (`RUTCLIENTE`);
-
---
--- Indices de la tabla `venta`
---
-ALTER TABLE `venta`
-  ADD PRIMARY KEY (`IDVENTA`),
-  ADD KEY `FK_ES` (`id_propiedad`),
-  ADD KEY `FK_HACE` (`RUTADMIN`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `arriendo`
---
-ALTER TABLE `arriendo`
-  MODIFY `IDARRIENDO` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `documento`
---
-ALTER TABLE `documento`
-  MODIFY `IDDOCU` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `factura`
---
-ALTER TABLE `factura`
-  MODIFY `IDFACTURA` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `imagen`
---
-ALTER TABLE `imagen`
-  MODIFY `IDIMAGEN` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
---
--- AUTO_INCREMENT de la tabla `integra`
---
-ALTER TABLE `integra`
-  MODIFY `IDINTEGRA` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `ordentrabajo`
---
-ALTER TABLE `ordentrabajo`
-  MODIFY `IDOT` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `propiedad`
---
-ALTER TABLE `propiedad`
-  MODIFY `id_propiedad` int(11) NOT NULL AUTO_INCREMENT COMMENT 'propiedad_id',AUTO_INCREMENT=38;
---
--- AUTO_INCREMENT de la tabla `solicitud`
---
-ALTER TABLE `solicitud`
-  MODIFY `IDSOLICITUD` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `venta`
---
-ALTER TABLE `venta`
-  MODIFY `IDVENTA` int(11) NOT NULL AUTO_INCREMENT;
+alter table venta add constraint fk_concibe foreign key (rut_admin)
+      references administrador (rut_admin) on delete restrict on update restrict;

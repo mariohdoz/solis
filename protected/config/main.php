@@ -36,7 +36,19 @@ return array(
 
 	// application components
 	'components'=>array(
-
+		'widgetFactory'=>array(
+			'widgets'=>array(
+				'SAImageDisplayer'=>array(
+					'baseDir' => 'images',
+					'originalFolderName' => 'propiedades',
+					'sizes' =>array(
+				    'tiny' => array('width' => 40, 'height' => 30),
+				    'big' => array('width' => 640, 'height' => 480),
+				    'thumb' => array('width' => 400, 'height' => 300),
+				   ),
+        ),
+			),
+		),
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
@@ -50,6 +62,8 @@ return array(
 			'urlSuffix'=>'.html',
 			'rules'=>array(
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
+				'<controller:\w+>/<action:\w+>/<id:\d+>/<id2>/<id3:w*{a-zA-z0-9\-]*>'=>'<controller>/<action>',
+				'<controller:\w+>/<action:\w+>/<id:\d+>/<id2>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),

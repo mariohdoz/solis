@@ -26,7 +26,7 @@ if(!Yii::app()->session['activo'])
     <!-- iCheck -->
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/plugins/iCheck/flat/blue.css" rel="stylesheet" type="text/css" />
     <!-- Morris chart -->
-    <<link href="<?php echo Yii::app()->request->baseUrl; ?>/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo Yii::app()->request->baseUrl; ?>/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
     <!-- jvectormap -->
     <link href="<?php echo Yii::app()->request->baseUrl; ?>/plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
     <!-- Date Picker -->
@@ -45,11 +45,7 @@ if(!Yii::app()->session['activo'])
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="?r=intra/index" class="logo">
-            <!-- mini logo for sidebar mini 50x50 pixels -->
-            <!-- logo for regular state and mobile devices -->
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/LogoV2.png" width="135px" height="45px" />
-        </a>
+        <?php echo CHtml::link('<img src="'.Yii::app()->request->baseUrl.'/images/LogoV2.png" width="135px" height="45px" />', array('intra/index'),array('class'=>'logo')); ?>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
             <!-- Sidebar toggle button-->
@@ -173,28 +169,13 @@ if(!Yii::app()->session['activo'])
             <ul class="sidebar-menu">
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-users"></i> <span>Funcionarios</span>
+                        <i class="fa fa-male"></i> <span>Arrendatarios</span>
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-plus"></i> Agregar Funcionarios</a></li>
                         <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-exchange"></i> Modificar Funcionarios</a></li>
                         <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-close"></i> Eliminar Funcionarios</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <!-- 4-->
-            <ul class="sidebar-menu">
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-pencil-square-o"></i> <span>Ordenes de Trabajo</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-plus"></i> Crear Nueva OT</a></li>
-                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-exchange"></i> Modificar OT</a></li>
-                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-close"></i> Eliminar OT</a></li>
-                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-close"></i> Crear reunion</a></li>
                     </ul>
                 </li>
             </ul>
@@ -213,6 +194,45 @@ if(!Yii::app()->session['activo'])
                 </li>
             </ul>
             <!-- 4-->
+            <ul class="sidebar-menu">
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-users"></i> <span>Funcionarios</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-plus"></i> Agregar Funcionarios</a></li>
+                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-exchange"></i> Modificar Funcionarios</a></li>
+                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-close"></i> Eliminar Funcionarios</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="sidebar-menu">
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-pencil-square-o"></i> <span>Ordenes de Trabajo</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-plus"></i> Crear Nueva OT</a></li>
+                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-exchange"></i> Modificar OT</a></li>
+                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-close"></i> Eliminar OT</a></li>
+                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-close"></i> Crear reunion</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="sidebar-menu">
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-file-text-o"></i><span>Solicitud</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-eye"></i> Solicitudes pendientes </a></li>
+                    </ul>
+                </li>
+            </ul>            <!-- 4-->
             <ul class="sidebar-menu">
                 <li>
                     <a href="../widgets.html">

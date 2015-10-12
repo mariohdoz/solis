@@ -23,8 +23,20 @@
          <!-- /.box-header -->
          <div class="box-body">
             <div class="row">
+              <div class="form-group">
+                <?php if(($msgs=Yii::app()->user->getFlashes())!=null): ?>
+                  <?php foreach($msgs as $type => $message):?>
+                    <div class="alert alert-<?php echo $type;?>" style="margin-left: 10px; margin-right: 10px ">
+                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                      <strong>Éxito</strong> <?php echo $message;?>.
+                    </div>
+                  <?php endforeach;?>
+                <?php endif; ?>
+              </div>
+
                <div class="col-md-1">
                </div>
+
                <div class="col-md-6">
                   <div class="form-group">
                      <br>

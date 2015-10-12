@@ -27,7 +27,7 @@ if(!Yii::app()->session['activo'])
                 <div class="icon">
                   <i class="fa fa-users"></i>
                 </div>
-                <a href="?r=cliente/create" class="small-box-footer">Nuevos Clientes<i class="fa fa-arrow-circle-right"></i></a>
+                <a href="?r=cliente/create" class="small-box-footer">Nuevos Clientes&nbsp<i class="fa fa-arrow-circle-right"></i></a>
               </div>
             </div><!-- ./col -->
             <div class="col-lg-3 col-xs-6">
@@ -40,7 +40,7 @@ if(!Yii::app()->session['activo'])
                 <div class="icon">
                   <i class="fa fa-home"></i>
                 </div>
-                <a href="?r=propiedad/index" class="small-box-footer">Nuevas Propiedades <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="?r=propiedad/index" class="small-box-footer">Nuevas Propiedades&nbsp<i class="fa fa-arrow-circle-right"></i></a>
               </div>
             </div><!-- ./col -->
             <div class="col-lg-3 col-xs-6">
@@ -60,13 +60,26 @@ if(!Yii::app()->session['activo'])
               <!-- small box -->
               <div class="small-box bg-red">
                 <div class="inner">
-                  <h3>1</h3>
-                  <p>Ventas</p>
+                  <h3><?php echo Solicitud::model()->count()?></h3>
+                  <p>Solicitudes</p>
                 </div>
                 <div class="icon">
-                  <i class="fa fa-money"></i>
+                  <i class="fa fa-file-text-o"></i>
                 </div>
-                <a href="#" class="small-box-footer">Nuevas ventas <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="#" class="small-box-footer">Solicitudes pendientes &nbsp<i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-red">
+                <div class="inner">
+                  <h3><?php echo Solicitud::model()->count()?></h3>
+                  <p>Órdenes de trabajo</p>
+                </div>
+                <div class="icon">
+                  <i class="fa fa-file-text-o"></i>
+                </div>
+                <a href="#" class="small-box-footer">Órdenes de trabajo pendientes &nbsp<i class="fa fa-arrow-circle-right"></i></a>
               </div>
             </div><!-- ./col -->
           </div><!-- /.

@@ -12,11 +12,11 @@
   </head>
   <body>
     <header class="cd-header2">
-      <div id="cd-logo"><a href="#0"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logoV2.png" width="150px" height="50px" alt="Logo"></a></div>
+      <div id="cd-logo"><?php echo CHtml::link('<img src="'.Yii::app()->request->baseUrl.'/images/LogoV2.png" width="150px" height="50px" alt="Logo">',array('site/index')); ?></div>
       <nav class="main-nav">
       <ul>
       <!-- inser more links here -->
-      <li><?php echo CHtml::link('Volver', array('index'), array('class'=>'cd-signin'))?></li>
+
       </ul>
       </nav>
     </header>
