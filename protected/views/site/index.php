@@ -23,7 +23,7 @@
 			</ul>
 		</nav>
 </header>
-<?php 		$form=$this->beginWidget('CActiveForm',array(
+<?php	$form=$this->beginWidget('CActiveForm',array(
   'id'=>'login-form',
   'enableAjaxValidation'=>true,
   'clientOptions'=>array('validateOnSubmit'=>true),
