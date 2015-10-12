@@ -122,10 +122,10 @@
 			)); ?>
 			<div class="row">
 				<div class="col-md-3">
-					<blanco>Servicio prestado</blanco>
+					<blanco>Venta/Arriendo</blanco>
 					<?php echo $form->dropDownList($model2,'servicio_propiedad',
 						array(
-							'Todas' => 'Todo tipo de servicio',
+							'Todas' => 'Todas',
 							'Venta' => 'Venta',
 							'Arriendo' => 'Arriendo',
 						),
@@ -133,26 +133,7 @@
 						array('empty' => '(Tipo de propiedad)')); ?>
 				</div>
 				<div class="col-md-3">
-          <blanco>Típo de propiedad</blanco>
-					<?php echo $form->dropDownList($model2,'tipo_propiedad',
-						array(
-              'Todas'=>'Todo tipo de propiedad',
-							'Departamento Habitación' => 'Departamento Habitación',
-							'Local' => 'Local',
-							'Casa' => 'Oficina Casa',
-							'Galpón' => 'Galpón',
-							'Oficina Departamento' => 'Oficina Departamento',
-							'Sitio Comercial' => 'Sitio Comercial',
-							'Sitio Recidencial' => 'Sitio Recidencial',
-							'Propiedad de inversión' => 'Propiedad de inversión',
-							'Terreno' => 'Terreno'
-						),
-						array("class"=>"form-control select2"),
-						array('empty' => '(Tipo de propiedad)')); ?>
-
-				</div>
-				<div class="col-md-3">
-          <blanco>Ciudad</blanco>
+					<blanco>Ciudad</blanco>
 					<?php echo $form->dropDownList($model2,'comuna_propiedad',
 						array(
 							'Antofagasta' => 'Antofagasta',
@@ -164,8 +145,25 @@
 						array('empty' => '(Tipo de propiedad)')); ?>
 				</div>
 				<div class="col-md-3">
+					<blanco>Típo de propiedad</blanco>
+					<?php echo $form->dropDownList($model2,'tipo_propiedad',
+						array(
+							'Casa' => 'Casa',
+							'Departamento Habitación' => 'Departamento Habitación',
+							'Local' => 'Local',
+							'Galpón' => 'Galpón',
+							'Oficina Departamento' => 'Oficina Departamento',
+							'Sitio Comercial' => 'Sitio Comercial',
+							'Sitio Recidencial' => 'Sitio Recidencial',
+							'Propiedad de inversión' => 'Propiedad de inversión',
+							'Terreno' => 'Terreno'
+						),
+						array("class"=>"form-control select2"),
+						array('empty' => '(Tipo de propiedad)')); ?>
+				</div>
+				<div class="col-md-3">
 					<label> </label>
-					<?php echo CHtml::submitButton('Buscar', array("class"=>"btn-warning") ); ?>
+					<?php echo CHtml::submitButton('Buscar', array("class"=>"btn btn-buscar") ); ?>
 				</div>
 			</div>
 			<br><br>

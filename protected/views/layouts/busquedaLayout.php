@@ -12,23 +12,18 @@
   </head>
   <body>
     <header class="cd-header2">
-      <div id="cd-logo"><?php echo CHtml::link('<img src="'.Yii::app()->request->baseUrl.'/images/LogoV2.png" width="150px" height="50px" alt="Logo">',array('site/index')); ?></div>
-      <nav class="main-nav">
-      <ul>
-      <!-- inser more links here -->
-
-      </ul>
-      </nav>
+      <div id="cd-logo"><a href="#0"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logoV2.png" width="150px" height="50px" alt="Logo"></a></div>
+     
     </header>
     <main class="cd-main-content">
       <div class="cd-tab-filter-wrapper">
         <div class="cd-tab-filter">
           <ul class="cd-filters">
             <li class="placeholder">
-              <a data-type="all" href="#0">Buscar Propiedades</a> <!-- selected option on mobile -->
+              <a data-type="all" href="#0">Buscar</a> <!-- selected option on mobile -->
             </li>
             <li class="filter">
-              <a class="selected" href="#0" data-type="all">Buscar Propiedades</a>
+              <a class="selected" href="#0" data-type="all">Buscar</a>
             </li>
           </ul> <!-- cd-filters -->
         </div> <!-- cd-tab-filter -->
