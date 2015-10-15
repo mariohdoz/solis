@@ -8,7 +8,7 @@ class IntraController extends CController{
             $this->render('intra');
         }
         else
-        {$this->redirect('?r=site/index');;}
+        {$this->redirect('?r=/site/index');;}
     }
 
     public function actionNuevo(){

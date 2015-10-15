@@ -51,7 +51,7 @@ class SiteController extends Controller
 			$model->attributes = $_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if ($model->validate() && $model->login())
-				$this->redirect("index.php/intra/index");
+				$this->redirect(array("/intra/index"));
 		}
 		if(isset($_POST['Solicitud'])){
 			$model1->attributes = $_POST['Solicitud'];
@@ -202,9 +202,6 @@ class SiteController extends Controller
 		$model1 = new Solicitud;
 		$model2 = new Propiedad();
 		// if it is ajax validation request
-		var_dump($_POST['ajax']);
-		Yii::app()->end();
-
 		if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
@@ -214,7 +211,7 @@ class SiteController extends Controller
 			$model->attributes = $_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if ($model->validate() && $model->login())
-				$this->redirect("index.php?r=intra/index");
+				$this->redirect("/intra/index");
 		}
 		// display the login form
 		$this->render('principal', array(

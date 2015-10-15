@@ -130,7 +130,7 @@ class qqFileUploader {
 
         if($this->allowedExtensions && !in_array(strtolower($ext), $this->allowedExtensions)){
             $these = implode(', ', $this->allowedExtensions);
-            return array('error' => 'File has an invalid extension, it should be one of '. $these . '.');
+            return array('error' => 'El archivo tiene una extención que no está permitida, devería ser una de éstas '. $these . '.');
         }
 
         if(!$replaceOldFile){

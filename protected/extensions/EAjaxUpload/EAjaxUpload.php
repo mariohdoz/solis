@@ -37,7 +37,7 @@
 	public function actionUpload()
 	{
 	        Yii::import("ext.EAjaxUpload.qqFileUploader");
-	        
+
                 $folder='upload/';// folder for uploaded files
                 $allowedExtensions = array("jpg"),//array("jpg","jpeg","gif","exe","mov" and etc...
                 $sizeLimit = 10 * 1024 * 1024;// maximum file size in bytes
@@ -54,7 +54,7 @@ class EAjaxUpload extends CWidget
 	public $postParams=array();
 	public $config=array();
 	public $css=null;
-        
+
         public function run()
         {
 		if(empty($this->config['action']))
@@ -74,7 +74,7 @@ class EAjaxUpload extends CWidget
 
                 unset($this->config['element']);
 
-                echo '<div id="'.$this->id.'"><noscript><p>Please enable JavaScript to use file uploader.</p></noscript></div>';
+                echo '<div id="'.$this->id.'"><noscript><p>Por favor habilite javascript para poder subir archivos al servidor.</p></noscript></div>';
 		$assets = dirname(__FILE__).'/assets';
                 $baseUrl = Yii::app()->assetManager->publish($assets);
 

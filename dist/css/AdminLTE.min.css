@@ -25,6 +25,17 @@ div.flash-notice
     color:#514721;
     border-color:#FFD324;
 }
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
 
 div.flash-success
 {

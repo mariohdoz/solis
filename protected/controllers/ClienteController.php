@@ -91,7 +91,8 @@ class ClienteController extends Controller
 		{
 			$model->attributes=$_POST['Cliente'];
 			if($model->save()){
-				$this->redirect(array('documento','id'=>$model->rut_cliente));
+				$data = explode('-',$model->rut_cliente);
+				$this->redirect(array('documento','id'=>$data[0]));
 			}else{
 				$this->render('create',array(
 					'model'=>$model,
@@ -105,7 +106,24 @@ class ClienteController extends Controller
 	}
 
 	public function actionDocumento($id){
-		$this->render('documento');
+		$evaluate = strrev($id);
+		$multiply = 2;
+		$store = 0;
+		for ($i = 0; $i < strlen($evaluate); $i++) {
+			 $store += $evaluate[$i] * $multiply;
+			 $multiply++;
+			 if ($multiply > 7)
+					 $multiply = 2;
+		}
+		$result = 11 - ($store % 11);
+		if ($result == 10)
+			 $result = 'k';
+		if ($result == 11)
+			 $result = 0;
+		$rut = $id.'-'.$result;
+		$this->render('view',array(
+			'model'=>$this->loadModel($rut),
+		));
 	}
 
 	/**

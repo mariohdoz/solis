@@ -129,7 +129,7 @@
                             array(
                               'header'=>'Nombre completo',
                               'name'=>'nombres_cliente',
-                              'value'=>$model2->nombres_cliente.' '.$model2->nombres_cliente,
+                              'value'=>$model2->nombres_cliente.' '.$model2->apellidos_cliente,
                             ),
                             'telefonocelular_cliente',
                             'domicilio_cliente',
