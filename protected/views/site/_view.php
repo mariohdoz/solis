@@ -4,9 +4,9 @@
 ?>
 <section  >
 
-  <div class=" contenedor-img2 ejemplo-2" >
+  <div class=" contenedor-img2 ejemplo-2 " >
     <a href="?r=site/vista&id=<?php echo $data->id_propiedad;?>">
-      <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/<?php
+      <img class="img-responsive" src="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/<?php
       if(imagen::model()->findByAttributes(array('id_propiedad'=>$data->id_propiedad))){
         $clave = imagen::model()->findByAttributes(
             array(
@@ -22,10 +22,9 @@
       }
       ?>"/>
     </a>
-    <div class="mascara2">
-      <a href="?r=site/vista&id=<?php echo $data->id_propiedad;?>" class="btn btn-warning" >Más Información</a>
+    <div  class="mascara2 ">
+      <a href="?r=site/informacion&id=<?php echo $data->id_propiedad;?>" class="btn btn-success" >Más Información</a>
       <h2>En <?php echo $data->servicio_propiedad; ?> $ <?php echo $data->valor_propiedad; ?></br><?php echo$data->direccion_propiedad ?></h2>
     </div>
 
 </section>
-

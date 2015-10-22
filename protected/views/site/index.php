@@ -92,12 +92,7 @@
 					<span></span><!-- icon -->
 				</a>
 			</li>
-			<li>
-				<a href="#cd-placeholder-4">
-					<b>Visión</b>
-					<span></span><!-- icon -->
-				</a>
-			</li>
+
 			<li>
 				<a href="#cd-placeholder-5">
 					<b>Contáctenos</b>
