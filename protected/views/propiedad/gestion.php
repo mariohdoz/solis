@@ -22,6 +22,10 @@
                 // There is a call to performAjaxValidation() commented in generated controller code.
                 // See class documentation of CActiveForm for details on this.
                 'enableAjaxValidation'=>false,
+                'enableClientValidation'=>true,
+                'clientOptions'=>array(
+                  'validateOnSubmit'=>true,
+                )
             )); ?>
             <!-- Seleccion de propietario -->
             <div class="box box-default">
@@ -46,7 +50,27 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="center-block">
-                            <?php echo CHtml::Link('Registrar nuevo propietario', array('/cliente/create'), array('class'=>'btn btn-info')); ?>
+                          <?php
+                          echo CHtml::Link('Registrar nuevo propietario', array('/cliente/create'), array('class'=>'btn btn-info'));
+                          /** $this->beginWidget('zii.widgets.jui.CJuiDialog',array(
+                            'id' => 'mydialog',
+                            'options'=>array(
+                              'title'=>'Formulario de ingreso de cliente',
+                              'width'=>400,
+                              'height'=>400,
+                              'autoOpen'=>false,
+                              'resizable'=>false,
+                              'modal'=>true,
+                              'ovelay'=>array(
+                                'backgroundColor'=>'#000',
+                                'opacity'=>'0.5'
+                              ),
+                            ),
+                          ));
+                          $model1 = new Cliente;
+                          echo $this->renderPartial('/cliente/_form', array('model'=>$model1));
+$this->endWidget('zii.widgets.jui.CJuiDialog');           echo CHtml::link('open dialog', '#', array('onclick'=>'$("#mydialog").dialog("open"); return false;',));               */
+                            ?>
                         </div>
                       </div>
                     </div>
@@ -184,7 +208,7 @@
                 <div class="box-footer">
                     <div class="pull-left">
                         <div class="row buttons" style="margin-left: 10px ">
-                            <?php echo CHtml::submitButton('Guardar', array('class'=>'btn btn-success'), array('confirm' => 'Está seguro de ingresar la propiedad?')); ?>
+                            <?php echo CHtml::ajaxSubmitButton('Guardar', array('class'=>'btn btn-success'), array('confirm' => 'Está seguro de ingresar la propiedad?')); ?>
                             &nbsp;&nbsp;
                             <?php $this->widget('application.extensions.data.EBackButtonWidget'); ?>
                         </div>

@@ -98,7 +98,7 @@ class PropiedadController extends Controller
 			'model'=>$model,
 		));
 	}
-	
+
 	public function actionUpload($id)
 	{
 		$model = new Imagen;
@@ -163,16 +163,19 @@ class PropiedadController extends Controller
 	public function actionIndex()
 	{
 		$model=new Propiedad;
+		$model1=new Cliente;
+
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 		if(isset($_POST['Propiedad']))
-		{
+		{			
 			$model->attributes=$_POST['Propiedad'];
-			if($model->save())
+			if($model->save()){
 				Yii::app()->user->setFlash('success','La propiedad ha sido ingresada correctamente. Por favor añadir imagenes de la propiedad');
 				$this->redirect(array('propiedad/imagen', 'id'=>$model->id_propiedad, 'rut'=>$model->rut_cliente));
+			}
 		}
-	$this->render('gestion',array('model'=>$model,));
+	$this->render('gestion',array('model'=>$model, 'model1'=>$model1));
 	}
 
   public function actionImagen($id,$rut){

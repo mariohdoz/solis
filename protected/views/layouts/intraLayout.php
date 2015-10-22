@@ -3,7 +3,7 @@
 /* @var $model Cliente */
 /* @var $form CActiveForm */
 if(!Yii::app()->session['activo'])
-    $this->redirect(Yii::app()->request->baseUrl.'site/index');;
+    $this->redirect(Yii::app()->request->baseUrl.'/site/index');;
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">

@@ -48,6 +48,9 @@ $this->menu=array(
           	</div>
             <div class="box-body">
               <div class="row">
+                <?php foreach ($model->imagen as $key => $value) {
+                  echo  CHtml::image(Yii::app()->baseUrl."/images/propiedades/".$value->url_imagen);
+                } ?>
                 <?php
                 $ruta = Imagen::model()->findByAttributes(array('id_propiedad'=>$model->id_propiedad,),array('order' => 'id_imagen ASC','limit' => '1',));
                  echo CHtml::image(Yii::app()->baseUrl."/images/propiedades/".$ruta->url_imagen); ?>
