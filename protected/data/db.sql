@@ -171,7 +171,7 @@ create table propiedad
    tipo_propiedad       varchar(25) not null,
    servicio_propiedad   varchar(10) not null,
    estado_propiedad     bool default 1,
-   descripcion          text,
+   descripcion_propiedad          text,
    comuna_propiedad     varchar(20) not null,
    amoblado_propiedad   bool not null default 0,
    valor_propiedad      int not null,

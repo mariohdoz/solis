@@ -18,12 +18,8 @@ class SiteController extends Controller
 	{
 		return array(
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('index','busqueda','vista', 'error', 'login', 'logout'),
+				'actions'=>array('index','busqueda','vista', 'error', 'login', 'logout','informacion' ),
 				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -138,6 +134,13 @@ class SiteController extends Controller
 			));
 		}
 	}
+
+	public function actionInformacion()
+	{
+		$this->layout ='//layouts/informacionLayout';
+		$this->render('informacion');
+	}
+
 	public function actionVista($id)
 	{
 		$model    = new Propiedad();
