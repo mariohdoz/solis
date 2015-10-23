@@ -4,7 +4,7 @@
 ?>
 <section  >
 
-  <div class=" contenedor-img2 ejemplo-2 " >
+  <div class=" contenedor-img2 ejemplo-2" >
     <a href="?r=site/vista&id=<?php echo $data->id_propiedad;?>">
       <img class="img-responsive" src="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/<?php
       if(imagen::model()->findByAttributes(array('id_propiedad'=>$data->id_propiedad))){
