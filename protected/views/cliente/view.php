@@ -56,7 +56,7 @@ $this->menu=array(
 											array(
 												'header'=>'Estado',
 												'name'=>'activo_cliente',
-												'value'=>$mdoel->activo_cliente1!=1?'Se encuentra activo':'Se encuentra desactivado',
+												'value'=>$model->activo_cliente!=1?'Se encuentra activo':'Se encuentra desactivado',
 											)
 										),
 									)

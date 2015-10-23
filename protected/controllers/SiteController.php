@@ -135,9 +135,10 @@ class SiteController extends Controller
 		}
 	}
 
-	public function actionInformacion()
+	public function actionInformacion($id)
 	{
 		$this->layout ='//layouts/informacionLayout';
+
 		$this->render('informacion');
 	}
 

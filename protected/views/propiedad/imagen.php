@@ -16,66 +16,116 @@
       </ol>
    </section>
    <section class="content">
-      <div class="box box-default">
-         <div class="box-header with-border">
-            <h3 class="box-title">Subir de fotos de propiedad</h3>
-         </div>
-         <!-- /.box-header -->
-         <div class="box-body">
-            <div class="row">
-              <div class="form-group">
-                <?php if(($msgs=Yii::app()->user->getFlashes())!=null): ?>
-                  <?php foreach($msgs as $type => $message):?>
-                    <div class="alert alert-<?php echo $type;?>" style="margin-left: 10px; margin-right: 10px ">
-                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                      <strong>Éxito</strong> <?php echo $message;?>.
-                    </div>
-                  <?php endforeach;?>
-                <?php endif; ?>
-              </div>
-
-               <div class="col-md-1">
-               </div>
-
-               <div class="col-md-6">
-                  <div class="form-group">
-                     <br>
-                     <p>Seleccione las imagenes de la propiedad.</p>
-                        <?php $this->widget('ext.EAjaxUpload.EAjaxUpload', array(
-                             'id' => 'uploadFile',
-                             'config' => array(
-                                 'action' => Yii::app()->createUrl('propiedad/upload/',array('id'=>$model->id_propiedad)),
-                                 'allowedExtensions' => array("jpg","jpeg","gif","png"), //array("jpg","jpeg","gif","exe","mov" and etc...
-                                 'sizeLimit' => 10 * 1024 * 1024, // maximum file size in bytes
-                                 'buttonText' => 'Selección',
-                                 //'minSizeLimit'=>10*1024*1024,// minimum file size in bytes
-                                 //'onComplete'=>"js:function(id, fileName, responseJSON){ alert(fileName); }",
-                                 'messages' => array(
-                                     'typeError' => "{file} posee una extención invalida. se acepta solamente {extensions}.",
-                                     'sizeError' => "{file} is too large, maximum file size is {sizeLimit}.",
-                                     'minSizeError' => "{file} is too small, minimum file size is {minSizeLimit}.",
-                                     'emptyError' => "{file} is empty, please select files again without it.",
-                                     'onLeave' => "Los archivos seleccionados se están subiendo al servidor. si usted deja la página la carga será cancelada."
-                                 ),
-                                 'showMessage' => "js:function(message){ alert(message); }"
-                             )
-                         ));
-                         ?>
-                  </div>
-               </div>
-            </div>
-            <div class="box-footer">
-          			<div class="pull-left">
-          					<div class="row buttons" style="margin-left: 10px ">
-          							<?php echo CHtml::link('Terminar', array('intra/index'), array('class'=>'btn btn-success')); ?>
-          					</div>
-          			</div>
-          	</div>
-         </div>
-         <div class="box-footer">
-         </div>
+     <div class="form-group">
+       <?php if(($msgs=Yii::app()->user->getFlashes())!=null): ?>
+         <?php foreach($msgs as $type => $message):?>
+           <div class="alert alert-<?php echo $type;?>" style="margin-left: 10px; margin-right: 10px ">
+             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+             <strong>Éxito</strong> <?php echo $message;?>.
+           </div>
+         <?php endforeach;?>
+       <?php endif; ?>
+     </div>
+     <div class="row">
+       <section class="col-lg-6">
+          <div class="box box-default">
+             <div class="box-header with-border">
+                <h3 class="box-title">Subir de fotos de propiedad</h3>
+             </div>
+             <!-- /.box-header -->
+             <div class="box-body">
+                <div class="row">
+                   <div class="col-md-1">
+                   </div>
+                   <div class="col-centered">
+                      <div class="form-group">
+                         <br>
+                         <p>Seleccione las imagenes de la propiedad.</p>
+                            <?php $this->widget('ext.EAjaxUpload.EAjaxUpload', array(
+                                 'id' => 'uploadFile',
+                                 'config' => array(
+                                     'action' => Yii::app()->createUrl('propiedad/upload/',array('id'=>$model->id_propiedad)),
+                                     'allowedExtensions' => array("jpg","jpeg","gif","png"), //array("jpg","jpeg","gif","exe","mov" and etc...
+                                     'sizeLimit' => 10 * 1024 * 1024, // maximum file size in bytes
+                                     'buttonText' => 'Selección',
+                                     //'minSizeLimit'=>10*1024*1024,// minimum file size in bytes
+                                     //'onComplete'=>"js:function(id, fileName, responseJSON){ alert(fileName); }",
+                                     'messages' => array(
+                                         'typeError' => "{file} posee una extención invalida. se acepta solamente {extensions}.",
+                                         'sizeError' => "{file} is too large, maximum file size is {sizeLimit}.",
+                                         'minSizeError' => "{file} is too small, minimum file size is {minSizeLimit}.",
+                                         'emptyError' => "{file} is empty, please select files again without it.",
+                                         'onLeave' => "Los archivos seleccionados se están subiendo al servidor. si usted deja la página la carga será cancelada."
+                                     ),
+                                     'showMessage' => "js:function(message){ alert(message); }"
+                                 )
+                             ));
+                             ?>
+                      </div>
+                   </div>
+                </div>
+                <div class="box-footer">
+              			<div class="pull-left">
+              					<div class="row buttons" style="margin-left: 10px ">
+              							<?php echo CHtml::link('Terminar', array('intra/index'), array('class'=>'btn btn-success')); ?>
+              					</div>
+              			</div>
+              	</div>
+             </div>
+             <div class="box-footer">
+             </div>
+          </section>
+          <section class="col-lg-6">
+             <div class="box box-default">
+                <div class="box-header with-border">
+                   <h3 class="box-title">Subir de fotos de propiedad</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                   <div class="row">
+                      <div class="col-md-1">
+                      </div>
+                      <div class="col-centered">
+                         <div class="form-group">
+                            <br>
+                            <p>Seleccione los documentos de la propiedad.</p>
+                               <?php $this->widget('ext.EAjaxUpload.EAjaxUpload', array(
+                                    'id' => 'uploadFile',
+                                    'config' => array(
+                                        'action' => Yii::app()->createUrl('propiedad/docu/',array('id'=>$model->id_propiedad)),
+                                        'allowedExtensions' => array("jpg","jpeg","gif","png"), //array("jpg","jpeg","gif","exe","mov" and etc...
+                                        'sizeLimit' => 10 * 1024 * 1024, // maximum file size in bytes
+                                        'buttonText' => 'Selección',
+                                        //'minSizeLimit'=>10*1024*1024,// minimum file size in bytes
+                                        //'onComplete'=>"js:function(id, fileName, responseJSON){ alert(fileName); }",
+                                        'messages' => array(
+                                            'typeError' => "{file} posee una extención invalida. se acepta solamente {extensions}.",
+                                            'sizeError' => "{file} is too large, maximum file size is {sizeLimit}.",
+                                            'minSizeError' => "{file} is too small, minimum file size is {minSizeLimit}.",
+                                            'emptyError' => "{file} is empty, please select files again without it.",
+                                            'onLeave' => "Los archivos seleccionados se están subiendo al servidor. si usted deja la página la carga será cancelada."
+                                        ),
+                                        'showMessage' => "js:function(message){ alert(message); }"
+                                    )
+                                ));
+                                ?>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="box-footer">
+                 			<div class="pull-left">
+                 					<div class="row buttons" style="margin-left: 10px ">
+                 							<?php echo CHtml::link('Terminar', array('intra/index'), array('class'=>'btn btn-success')); ?>
+                 					</div>
+                 			</div>
+                 	</div>
+                </div>
+                <div class="box-footer">
+                </div>
+             </section>
       </div>
-      <div class="box box-default">
+    </div>
+    <div class="box box-default">
          <div class="box-header with-border">
             <h3 class="box-title">Datos de la propiedad</h3>
          </div>

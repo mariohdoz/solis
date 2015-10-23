@@ -23,7 +23,7 @@
       ?>"/>
     </a>
     <div  class="mascara2 ">
-      <a href="?r=site/informacion&id=<?php echo $data->id_propiedad;?>" class="btn btn-success" >Más Información</a>
+      <?php echo CHtml::link('Más información', array('Site/informacion/'.$data->id_propiedad), array('class'=>'btn btn-success')); ?>
       <h2>En <?php echo $data->servicio_propiedad; ?> $ <?php echo $data->valor_propiedad; ?></br><?php echo$data->direccion_propiedad ?></h2>
     </div>
 
