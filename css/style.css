@@ -2467,4 +2467,8 @@ fieldset[disabled] .btn-link:focus {
 }
 
 .modal-dialog {width:600px;}
-.thumbnail {margin-bottom:6px;}
+.thumbnail {
+
+  margin-bottom:6px;
+
+}
