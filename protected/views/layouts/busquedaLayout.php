@@ -13,6 +13,6 @@
   <body>
     
       <?php echo $content; ?>
-    </main>
+
   </body>
 </html>
