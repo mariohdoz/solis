@@ -74,7 +74,7 @@ class SiteController extends Controller
 	{
 		$this->layout ='//layouts/busquedaLayout';
 		$model2 = new Propiedad();
-		$model  = new BusquedaForm();
+		$model  = new Propiedad();
 		if (isset($_POST['Propiedad'])) {
 			$model2->attributes = $_POST['Propiedad'];
 			$v                  = $model2->servicio_propiedad;
@@ -133,6 +133,29 @@ class SiteController extends Controller
 				'model' => $model
 			));
 		}
+	}
+
+	public function actionFiltrado()
+	{
+		$model = new Propiedad;
+		$model->attributes = $_POST['Propiedad'];
+		$criteria = new CDbCriteria;
+		$criteria->select = 't.*';
+		$criteria->condition = 'comuna_propiedad="'.$model->comuna_propiedad.'" AND tipo_propiedad="'.$model->tipo_propiedad.'" AND servicio_propiedad="'. $model->servicio_propiedad.'"AND bano_propiedad="'. $model->bano_propiedad.'" AND habitacion_propiedad="'.$model->habitacion_propiedad.'" AND amoblado_propiedad='.$model->amoblado_propiedad.' AND activo_propiedad = TRUE AND activo_propiedad = TRUE';
+		$dataProvider = new CActiveDataProvider(
+			'Propiedad', array(
+					'criteria' => $criteria,
+					'pagination' => array(
+					'pageSize' => 20
+				),
+			)
+		);
+		$this->render('busqueda', array(
+			'dataProvider' => $dataProvider,
+			'model' => $model
+		));
+
+
 	}
 
 	public function actionInformacion($id)

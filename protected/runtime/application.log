@@ -8293,3 +8293,19 @@ Stack trace:
 #12 {main}
 REQUEST_URI=/nuevo/cliente/documento/18183527-9
 ---
+2015/10/23 22:17:44 [error] [exception.CException] exception 'CException' with message 'La propiedad "Propiedad"."amobado_propiedad" no se encuentra definida.' in C:\AppServ\www\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\AppServ\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('amobado_propied...')
+#1 C:\AppServ\www\nuevo\protected\controllers\SiteController.php(144): CActiveRecord->__get('amobado_propied...')
+#2 C:\AppServ\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionFiltrado()
+#3 C:\AppServ\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\AppServ\www\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\AppServ\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('filtrado')
+#7 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/filtrado')
+#8 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#9 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/nuevo/index.php/site/filtrado.html
+HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
+---

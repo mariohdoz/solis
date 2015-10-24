@@ -60,16 +60,11 @@
 				<a href="#0" class="cd-close-form">Cerrar</a>
 			</div> <!-- cd-user-modal-container -->
 		</div> <!-- termin el inicio de sesion completo -->
-
-
 <section id="cd-intro">
 	<div id="cd-intro-tagline">
-
 		<div id="container"></div>
-
 	</div> <!-- #cd-intro-tagline -->
 </section> <!-- #cd-intro -->
-
 <div class="cd-secondary-nav">
 	<a href="#0" class="cd-secondary-nav-trigger">Menú<span></span></a> <!-- button visible on small devices -->
 	<nav>
@@ -92,7 +87,6 @@
 					<span></span><!-- icon -->
 				</a>
 			</li>
-
 			<li>
 				<a href="#cd-placeholder-5">
 					<b>Contáctenos</b>
