@@ -28,8 +28,8 @@ $.fn.googlemap = function() {
             + "&gl=es"
             + "&z=" + z.attr('zoom')
             + "&output=embed";
-        z.html("<iframe src='" + src + "' width=" + z.attr('width') + " height="
-            + z.attr('height') + "></iframe>");
+        z.html("<div class='google-map'><iframe  src='" + src + "' width=" + z.attr('width') + " height="
+            + z.attr('height') + "></iframe></div>");
     });
     return src;
 
