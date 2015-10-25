@@ -134,11 +134,13 @@ $this->endWidget('zii.widgets.jui.CJuiDialog');           echo CHtml::link('open
                                   array("class"=>"form-control select2"),
                                   array('empty' => '(Seleccione la comuna)')); ?>
                           </div><!-- /.form-group -->
-
-                              <div class="form-group">
-                                  <?php echo $form->labelEx($model,'direccion_propiedad'); ?>
-                                  <?php echo $form->textField($model,'direccion_propiedad', array("class"=>"form-control select2")); ?>
-                              </div>
+                          <div class="form-group col-md-9">
+                              <?php echo $form->labelEx($model,'direccion_propiedad'); ?>
+                              <?php echo $form->textField($model,'direccion_propiedad', array("class"=>"form-control select2")); ?>
+                          </div><div class="form-group col-md-3">
+                              <?php echo $form->labelEx($model,'numero_propiedad'); ?>
+                              <?php echo $form->textField($model,'numero_propiedad', array("class"=>"form-control select2")); ?>
+                          </div>
                         </div><!-- /.col -->
                         <div class="col-md-6">
                           <div class="form-group">
@@ -208,7 +210,7 @@ $this->endWidget('zii.widgets.jui.CJuiDialog');           echo CHtml::link('open
                 <div class="box-footer">
                     <div class="pull-left">
                         <div class="row buttons" style="margin-left: 10px ">
-                            <?php echo CHtml::ajaxSubmitButton('Guardar', array('class'=>'btn btn-success'), array('confirm' => 'Está seguro de ingresar la propiedad?')); ?>
+                            <?php echo CHtml::SubmitButton('Guardar', array('class'=>'btn btn-success'), array('confirm' => 'Está seguro de ingresar la propiedad?')); ?>
                             &nbsp;&nbsp;
                             <?php $this->widget('application.extensions.data.EBackButtonWidget'); ?>
                         </div>

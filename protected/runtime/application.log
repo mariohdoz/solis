@@ -8309,41 +8309,14 @@ Stack trace:
 REQUEST_URI=/nuevo/index.php/site/filtrado.html
 HTTP_REFERER=http://localhost/nuevo/index.php/site/busqueda.html
 ---
-2015/10/24 21:55:52 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\nuevo\protected\views\site\informacion.php:27)
+2015/10/24 23:13:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "ver" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
 Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): SiteController->renderFile()
-#1 C:\xampp\htdocs\yii\framework\web\CController.php(782): SiteController->renderPartial()
-#2 C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php(165): SiteController->render()
-#3 unknown(0): SiteController->actionInformacion()
-#4 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
-#5 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
-#6 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
-#7 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
-#8 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
-#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
-#10 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#11 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#12 C:\xampp\htdocs\nuevo\index.php(13): CWebApplication->run()
-REQUEST_URI=/nuevo/index.php/Site/informacion/6.html
-in C:\xampp\htdocs\nuevo\protected\views\site\informacion.php (27)
-in C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php (165)
-in C:\xampp\htdocs\nuevo\index.php (13)
-2015/10/24 21:55:59 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\nuevo\protected\views\site\informacion.php:27)
-Stack trace:
-#0 C:\xampp\htdocs\yii\framework\web\CController.php(869): SiteController->renderFile()
-#1 C:\xampp\htdocs\yii\framework\web\CController.php(782): SiteController->renderPartial()
-#2 C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php(165): SiteController->render()
-#3 unknown(0): SiteController->actionInformacion()
-#4 C:\xampp\htdocs\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
-#5 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
-#6 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
-#7 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
-#8 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
-#9 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
-#10 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#11 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
-#12 C:\xampp\htdocs\nuevo\index.php(13): CWebApplication->run()
-REQUEST_URI=/nuevo/index.php/Site/informacion/6.html
-in C:\xampp\htdocs\nuevo\protected\views\site\informacion.php (27)
-in C:\xampp\htdocs\nuevo\protected\controllers\SiteController.php (165)
-in C:\xampp\htdocs\nuevo\index.php (13)
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('ver')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('ver')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cliente/ver')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/cliente/ver
+HTTP_REFERER=http://localhost/nuevo/index.php/intra/index.html
+---
