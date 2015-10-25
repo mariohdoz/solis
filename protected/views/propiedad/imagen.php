@@ -91,7 +91,7 @@
                                     'config' => array(
                                         'action' => Yii::app()->createUrl('propiedad/docu/',array('id'=>$model->id_propiedad)),
                                         'allowedExtensions' => array("jpg","jpeg","gif","png", 'pdf', 'doc', 'docx'), //array("jpg","jpeg","gif","exe","mov" and etc...
-                                        'sizeLimit' => 10 * 1024 * 1024, // maximum file size in bytes
+                                        'sizeLimit' =>25  * 1024 * 1024, // maximum file size in bytes
                                         'buttonText' => 'Selección',
                                         //'minSizeLimit'=>10*1024*1024,// minimum file size in bytes
                                         //'onComplete'=>"js:function(id, fileName, responseJSON){ alert(fileName); }",
