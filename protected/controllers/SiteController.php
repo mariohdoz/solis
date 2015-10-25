@@ -18,7 +18,7 @@ class SiteController extends Controller
 	{
 		return array(
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('index','busqueda','vista', 'error', 'login', 'logout','informacion' ),
+				'actions'=>array('index','busqueda','vista', 'error', 'login', 'logout','informacion', 'test' ),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -69,6 +69,9 @@ class SiteController extends Controller
 		));
 	}
 
+	public function actionTest(){
+		$this->render('test');
+	}
 
 	public function actionBusqueda()
 	{
