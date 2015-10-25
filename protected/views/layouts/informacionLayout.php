@@ -13,29 +13,9 @@
 		<script src='<?php echo Yii::app()->request->baseUrl; ?>/js/mainb.js'></script> <!-- Modernizr -->
 		<title>Sol y Cobre</title>
 	</head>
-	<nav class="navbar navbar-default" role="navigation">
-		<!-- El logotipo y el icono que despliega el menú se agrupan
-             para mostrarlos mejor en los dispositivos móviles -->
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-ex1-collapse">
-				<span class="sr-only">Desplegar navegación</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logoV2.png" width="100px" height="30px"></a>
-		</div>
-
-		<!-- Agrupar los enlaces de navegación, los formularios y cualquier
-             otro elemento que se pueda ocultar al minimizar la barra -->
-		<div class="collapse navbar-collapse navbar-ex1-collapse">
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="#informacion">Informaci&#243;n</a></li>
-			</ul>
-		</div>
-	</nav>
-
+	<header class="cd-header2" >
+	<div id="cd-logo"><a href="#0"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logoV2.png" width="150px" height="50px" alt="Logo"></a></div>
+</header>
 	<body>
 
 

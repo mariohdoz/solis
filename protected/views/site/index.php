@@ -125,9 +125,9 @@
 					<blanco>Ciudad</blanco>
 					<?php echo $form->dropDownList($model2,'comuna_propiedad',
 						array(
+							'Calama' => 'Calama',
 							'Antofagasta' => 'Antofagasta',
 							'Arica' => 'Arica',
-							'Calama' => 'Calama',
 							'Iquique' => 'Iquique',
 						),
 						array("class"=>"form-control select2"),
@@ -290,13 +290,13 @@
                       'Ampliaciones menores' => 'Ampliaciones menores',
                       'Aseo de propiedad' => 'Aseo de propiedad',
                   ),
-                  array("class"=>"full-width has-padding has-border"),
+                  array("class"=>"btn btn-default btn-lg dropdown-toggle"),
                   array('empty' => '(Seleccione tipo de servicio)')); ?>
         <?php echo $form->dateField($model1,'fechaejecucion_solicitud', array("class"=>"full-width has-padding has-border", "placeholder"=>"Fecha solicitada")); ?>
         <?php echo $form->textField($model1,'telefono_solicitud', array("class"=>"full-width has-padding has-border", "placeholder"=>"Teléfono de contacto")); ?>
         <?php echo $form->emailField($model1,'correo_solicitud', array("class"=>"full-width has-padding has-border", "placeholder"=>"Correo de contacto")); ?>
         <?php echo $form->textArea($model1,'descripcion_solicitud', array("class"=>"full-width has-padding has-border", "placeholder"=>"Descripcion")); ?>
-        <?php echo CHtml::submitButton('Enviar'); ?>
+        <?php echo CHtml::submitButton('Enviar', array("class"=>"btn btn-warning btn-lg")); ?>
 			</div>
       <?php $this->endWidget(); ?>
 			<div class="half right cf">
