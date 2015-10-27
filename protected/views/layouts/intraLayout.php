@@ -159,7 +159,7 @@ if(!Yii::app()->session['activo'])
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/cliente/create"><i class="fa fa-user-plus"></i> Agregar Clientes</a></li>
-                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/cliente/ver"><i class="fa fa-exchange"></i> Modificar Clientes</a></li>
+                        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/cliente/select"><i class="fa fa-exchange"></i> Modificar Clientes</a></li>
                         <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/"><i class="fa fa-user-times"></i> Eliminar Clientes</a></li>
                         <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/"><i class="fa fa-file-text-o"></i> Listado de Clientes</a></li>
                     </ul>

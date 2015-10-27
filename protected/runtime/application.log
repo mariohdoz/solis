@@ -8320,3 +8320,77 @@ Stack trace:
 REQUEST_URI=/nuevo/cliente/ver
 HTTP_REFERER=http://localhost/nuevo/index.php/intra/index.html
 ---
+2015/10/26 20:15:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "18183527-3" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('18183527-3')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('18183527-3')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cliente/1818352...')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/cliente/18183527-3.html
+HTTP_REFERER=http://localhost/nuevo/index.php/cliente/modificar.html
+---
+2015/10/26 20:25:21 [error] [php] htmlspecialchars() expects parameter 1 to be string, array given (C:\AppServ\www\yii\framework\web\helpers\CHtml.php:108)
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\helpers\CHtml.php(163): renderAttributes()
+#1 C:\AppServ\www\yii\framework\web\helpers\CHtml.php(480): tag()
+#2 C:\AppServ\www\yii\framework\web\helpers\CHtml.php(515): button()
+#3 C:\AppServ\www\nuevo\protected\views\site\test.php(2): submitButton()
+#4 C:\AppServ\www\yii\framework\web\CBaseController.php(126): require()
+#5 C:\AppServ\www\yii\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#6 C:\AppServ\www\yii\framework\web\CController.php(869): SiteController->renderFile()
+#7 C:\AppServ\www\yii\framework\web\CController.php(782): SiteController->renderPartial()
+#8 C:\AppServ\www\nuevo\protected\controllers\SiteController.php(73): SiteController->render()
+#9 C:\AppServ\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionTest()
+#10 C:\AppServ\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#11 C:\AppServ\www\yii\framework\web\CController.php(286): SiteController->runAction()
+#12 C:\AppServ\www\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#13 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#14 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\AppServ\www\nuevo\index.php(13): CWebApplication->run()
+REQUEST_URI=/nuevo/site/test
+in C:\AppServ\www\nuevo\protected\views\site\test.php (2)
+in C:\AppServ\www\nuevo\protected\controllers\SiteController.php (73)
+in C:\AppServ\www\nuevo\index.php (13)
+2015/10/26 20:31:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "18183527-3" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('18183527-3')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('18183527-3')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cliente/1818352...')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/cliente/18183527-3.html
+HTTP_REFERER=http://localhost/nuevo/index.php/cliente/modificar.html
+---
+2015/10/26 20:41:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "18183527-3" solicitada.' in C:\AppServ\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(270): CController->missingAction('18183527-3')
+#1 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('18183527-3')
+#2 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cliente/1818352...')
+#3 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/nuevo/index.php/cliente/18183527-3.html
+HTTP_REFERER=http://localhost/nuevo/index.php/cliente/modificar.html
+---
+2015/10/26 20:42:26 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Su solicitud es inválida.' in C:\AppServ\www\yii\framework\web\CController.php:336
+Stack trace:
+#0 C:\AppServ\www\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\AppServ\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 C:\AppServ\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\AppServ\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\AppServ\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\AppServ\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\AppServ\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\AppServ\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\AppServ\www\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#9 C:\AppServ\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('cliente/view')
+#10 C:\AppServ\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#11 C:\AppServ\www\nuevo\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/nuevo/index.php/cliente/view.html
+HTTP_REFERER=http://localhost/nuevo/index.php/cliente/modificar.html
+---

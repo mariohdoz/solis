@@ -73,8 +73,9 @@ class ClienteController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$rut=$this->codigo($id);
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=>$this->loadModel($rut),
 		));
 	}
 
@@ -105,8 +106,9 @@ class ClienteController extends Controller
 		}
 	}
 
-	public function actionDocumento($id){
-		$evaluate = strrev($id);
+	public function codigo($var)
+	{
+		$evaluate = strrev($var);
 		$multiply = 2;
 		$store = 0;
 		for ($i = 0; $i < strlen($evaluate); $i++) {
@@ -120,7 +122,12 @@ class ClienteController extends Controller
 			 $result = 'k';
 		if ($result == 11)
 			 $result = 0;
-		$rut = $id.'-'.$result;
+		$rut = $var.'-'.$result;
+		return $rut;
+	}
+
+	public function actionDocumento($id){
+		$rut=$this->codigo($id);
 		$this->render('view',array(
 			'model'=>$this->loadModel($rut),
 		));
@@ -133,26 +140,42 @@ class ClienteController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
-
+		$rut = $this->codigo($id);
+		$model=$this->loadModel($rut);
+		$layout='intralayout';
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
 		if(isset($_POST['Cliente']))
 		{
-			$model->attributes=$_POST['Cliente'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->rut_cliente));
-		}
+		  $model->attributes=$_POST['Cliente'];
 
+		  if($model->save()){
+				$data = explode('-',$model->rut_cliente);
+		    $this->redirect(array('view','id'=>$data[0]));
+			}
+		}
 		$this->render('update',array(
-			'model'=>$model,
+		  'model'=>$model,
 		));
 	}
 
 	public function actionSelect()
 	{
-		
+		$model = new Cliente;
+		$this->render('select', array('model'=>$model));
+	}
+
+	public function actionModificar(){
+		$model = new Cliente();
+		$model->attributes=$_POST['Cliente'];
+		$model = Cliente::model()->findByPk($model->rut_cliente);
+		if($model === null){
+		  $this->render('select', array('model', $model));
+		}else{
+		  $this->render('update',array(
+		    'model'=>$model,
+		  ));
+		}
 	}
 
 	/**

@@ -70,6 +70,7 @@ class SiteController extends Controller
 	}
 
 	public function actionTest(){
+		$model=new Cliente;
 		$this->render('test');
 	}
 
@@ -163,9 +164,10 @@ class SiteController extends Controller
 
 	public function actionInformacion($id)
 	{
+		$model = new Propiedad();
+		$model->loadModel($id);
 		$this->layout ='//layouts/informacionLayout';
-
-		$this->render('informacion');
+		$this->render('informacion', array('model'=>$model));
 	}
 
 	public function actionVista($id)
