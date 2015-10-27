@@ -143,8 +143,6 @@
   <div id="cd-logo"><a href="#0"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logoV2.png" width="150px" height="50px" alt="Logo"></a></div>
 </header>
 <main class="cd-main-content">
-
-
   <section class="cd-gallery">
     <ul>
       <?php $this->widget('zii.widgets.CListView', array(

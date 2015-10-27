@@ -1,6 +1,14 @@
+<?php $form=$this->beginWidget('CActiveForm', array(
+  'id'=>'cliente-form',
+  // Please note: When you enable ajax validation, make sure the corresponding
+  // controller action is handling ajax validation correctly.
+  // There is a call to performAjaxValidation() commented in generated controller code.
+  // See class documentation of CActiveForm for details on this.
+  'enableAjaxValidation'=>false,
+  )); ?>
 <section class="container informacion">
     <div class="col-md-6 ">
-        <div  class='google-map2 ' id='map' streetnumber='2337' streetname='prat'
+        <div  class='google-map2 ' id='map' streetnumber=<?php echo '1301';  ?> streetname=<?php echo 'Tiltil';  ?>
              cityname='calama' statecode='CL' zipcode='0'
              zoom=17 width=500 height=450>
         </div>
@@ -49,3 +57,4 @@
         </div>
     </div>
 </div>
+<?php $this->endWidget(); ?>

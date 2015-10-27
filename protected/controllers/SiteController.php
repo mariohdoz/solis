@@ -71,7 +71,7 @@ class SiteController extends Controller
 
 	public function actionTest(){
 		$model=new Cliente;
-		$this->render('test');
+		$this->render('test', array('model'=>$model));
 	}
 
 	public function actionBusqueda()
@@ -165,7 +165,7 @@ class SiteController extends Controller
 	public function actionInformacion($id)
 	{
 		$model = new Propiedad();
-		$model->loadModel($id);
+		$model = Propiedad::model()->findByPk($model->rut_cliente);
 		$this->layout ='//layouts/informacionLayout';
 		$this->render('informacion', array('model'=>$model));
 	}
