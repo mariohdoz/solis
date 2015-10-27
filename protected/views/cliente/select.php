@@ -26,28 +26,26 @@
             <h3 class="box-title">Modificar propietadad</h3>
         </div><!-- /.box-header -->
         <div class="box-body">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                      <br>
-                        <p>Dirección de la propiedad</p>
-                        <?php echo $form->dropDownList($model,'rut_cliente', CHtml::listData(Cliente::model()->findAll(array('order' => 'rut_cliente')),'rut_cliente','FullName' ), array("class"=>"form-control select2"),
-                            array('empty' => '(Seleccione tipo de servicio)'));?>
-                        <?php echo $form->error($model,'rut_cliente'); ?>
-                        <br>
-                        <div class="center-block">
-                          <?php echo CHtml::submitButton('Modificar cliente',array("class"=>"btn btn-primary")) ?>
-                        </div>
-                        <?php $this->endWidget(); ?>
-                    </div><!-- /.form-group -->
-                </div><!-- /.col -->
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <br>
+                  <p>Dirección de la propiedad</p>
+                <?php echo $form->dropDownList($model,'rut_cliente', CHtml::listData(Cliente::model()->findAll(array('order' => 'rut_cliente')),'rut_cliente','FullName' ), array("class"=>"form-control select2"),
+                    array('empty' => '(Seleccione tipo de servicio)'));?>
+                <?php echo $form->error($model,'rut_cliente'); ?>
+                <div class="center-block">
+                  <?php echo CHtml::submitButton('Modificar cliente', array('confirm'=>'¿Está seguro de realizar los cambios?',"class"=>"btn btn-primary")) ?>
+                </div>
+              </div>
             </div>
-            <!-- /.row -->
-        </div><!-- /.box-body -->
+          </div>
+        </div>
         <div class="box-footer">
             <div class="pull-right">
             </div>
         </div>
       </div>
+      <?php $this->endWidget(); ?>
   </section>
 </div>

@@ -70,6 +70,7 @@ class SiteController extends Controller
 	}
 
 	public function actionTest(){
+		$this->layout ='//layouts/testLayout';
 		$model=new Cliente;
 		$this->render('test', array('model'=>$model));
 	}
