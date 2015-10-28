@@ -1,55 +1,30 @@
-<div class="content-wrapper">
-  <section class="content-header">
-      <h1>
-          Configuración
-          <small>Seleccionar cliente</small>
-      </h1>
-      <ol class="breadcrumb">
-          <li><a href="?r=intra/index"><i class="fa fa-dashboard"></i>Inicio</a></li>
-          <li class="active">Clientes</li>
-          <li><a href="?r=intra/index">Modificar clientes</a></li>
-          <li class="active">Seleccionar cliente</li>
-      </ol>
-  </section>
-  <section class="content">
-    <div class="row row-centered">
-      <section class="col-lg-6">
-        <?php $form=$this->beginWidget('CActiveForm', array(
-          'id'=>'cliente-form',
-          'action'=>Yii::app()->createUrl('//cliente/modificar'),
-          // Please note: When you enable ajax validation, make sure the corresponding
-          // controller action is handling ajax validation correctly.
-          // There is a call to performAjaxValidation() commented in generated controller code.
-          // See class documentation of CActiveForm for details on this.
-          'enableAjaxValidation'=>false,
-          )); ?>
-          <div class="box box-default">
-            <div class="box-header with-border">
-                <h3 class="box-title">Modificar propietadad</h3>
-            </div><!-- /.box-header -->
-            <div class="box-body">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <br>
-                      <p>Dirección de la propiedad</p>
-                    <?php echo $form->dropDownList($model,'rut_cliente', CHtml::listData(Cliente::model()->findAll(array('order' => 'rut_cliente')),'rut_cliente','FullName' ), array("class"=>"form-control select2"),
-                        array('empty' => '(Seleccione tipo de servicio)'));?>
-                    <?php echo $form->error($model,'rut_cliente'); ?>
-                    <div class="center-block">
-                      <?php echo CHtml::submitButton('Modificar cliente', array('confirm'=>'¿Está seguro de realizar los cambios?',"class"=>"btn btn-primary")) ?>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="box-footer">
-                <div class="pull-right">
-                </div>
-            </div>
-          </div>
-          <?php $this->endWidget(); ?>
-      </section>
+<?php
+/* @var $this SiteController */
+/* @var $data Propiedad */
+?>
+<section  >
+
+  <div class=" contenedor-img2 ejemplo-2" >
+    <a href="?r=site/vista&id=<?php echo $data->id_propiedad;?>">
+      <img class="img-responsive" src="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/<?php
+      if(imagen::model()->findByAttributes(array('id_propiedad'=>$data->id_propiedad))){
+        $clave = imagen::model()->findByAttributes(
+            array(
+                'id_propiedad'=>$data->id_propiedad
+            ),
+            array(
+                'order' => 'id_imagen ASC',
+                'limit' => '1',
+            ));
+        echo $clave -> url_imagen;
+      }else{
+        echo 'default.gif';
+      }
+      ?>"/>
+    </a>
+    <div  class="mascara2 ">
+      <?php echo CHtml::link('Más información', array('Site/informacion/'.$data->id_propiedad), array('class'=>'btn btn-success')); ?>
+      <h2>En <?php echo $data->servicio_propiedad; ?> $ <?php echo $data->valor_propiedad; ?></br><?php echo$data->direccion_propiedad ?></h2>
     </div>
-  </section>
-</div>
+
+</section>

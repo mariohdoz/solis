@@ -165,6 +165,12 @@ class ClienteController extends Controller
 		$this->render('select', array('model'=>$model));
 	}
 
+	public function actionEliminar()
+	{
+		$model = new Cliente;
+		$this->render('select2', array('model'=>$model));
+	}
+
 	public function actionModificar(){
 		$model = new Cliente();
 		$model->attributes=$_POST['Cliente'];
