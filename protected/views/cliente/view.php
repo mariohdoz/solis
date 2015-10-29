@@ -26,5 +26,18 @@ $this->menu=array(
 			<li class="active">Registrar Propietario</li>
 		</ol>
 	</section>
+	<section class="content">
 	<?php $this->renderPartial('_vista', array('model'=>$model)); ?>
+	<div class="box-footer">
+		<div class="pull-left">
+			<div class="row buttons" style="margin-left: 10px ">
+				<?php echo CHtml::submitButton('Guardar', array('class'=>'btn btn-success')); ?>
+				&nbsp;&nbsp;
+				<?php $this->widget('application.extensions.data.EBackButtonWidget'); ?>
+			</div>
+		</div>
+	</div>
+</div>
+</div><!-- /.box -->
+</section>
 </div>

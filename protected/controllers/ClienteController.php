@@ -54,7 +54,7 @@ class ClienteController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','documento','index','view'),
+				'actions'=>array('create','update','documento','index','view', 'eliminar'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -171,6 +171,48 @@ class ClienteController extends Controller
 		$this->render('select2', array('model'=>$model));
 	}
 
+	public function actionDesactivar()
+	{
+		$model= new Cliente;
+		$model->attributes=$_POST['Cliente'];
+		$model = Cliente::model()->findByPk($model->rut_cliente);
+		if($model === null){
+			$this->render('select2', array('model', $model));
+		}else{
+			$this->render('documento',array(
+				'model'=>$model,
+			));
+		}
+	}
+
+	public function actionDesa($id)
+	{
+		$rut=$this->codigo($id);
+		$model1 = new Cliente;
+		$cliente = new Cliente;
+		$cliente = $this->loadModel($rut);
+		$criteria = new CDbCriteria();
+		$criteria->addCondition("rut_cliente=:rut");
+		$criteria->params = array(':rut' => $rut);
+		$list = Propiedad::model()->findAll($criteria);
+		foreach($list as $model)
+		{
+		   $model->eliminado_propiedad = 1;
+			 if (!$model->save()) {
+				 Yii::app()->user->setFlash('danger','Esto es un error');
+				 $this->redirect(Yii::app()->request->baseUrl.'/cliente/modificar/');
+			 }
+		}
+		$cliente->activo_cliente = 0;
+		if ($cliente->save()) {
+			Yii::app()->user->setFlash('success','Exitooo!!!!');
+			$this->redirect(Yii::app()->request->baseUrl.'/cliente/index/');
+		}else{
+			Yii::app()->user->setFlash('danger','Error al eliminar el cliente.');
+			$this->redirect(Yii::app()->request->baseUrl.'/cliente/select2/', array('model'=>$model1));
+		}
+	}
+
 	public function actionModificar(){
 		$model = new Cliente();
 		$model->attributes=$_POST['Cliente'];
@@ -203,7 +245,15 @@ class ClienteController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Cliente');
+		$criteria = new CDbCriteria;
+		$criteria->select = 't.*';
+		$criteria->condition = 'activo_cliente='.true.'';
+		$dataProvider = new CActiveDataProvider(
+			'cliente', array(
+					'criteria' => $criteria,
+					'pagination' => false,
+			)
+		);
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));

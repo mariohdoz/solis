@@ -12,9 +12,13 @@
       </ol>
   </section>
   <section class="content">
+    <div class="callout callout-warning">
+      <h4>Está a punto de eliminar un cliente!</h4>
+      <p>Una vez realizada la eliminación del cliente, no volvera a aparecer en el sistema.</p>
+    </div>
     <?php $form=$this->beginWidget('CActiveForm', array(
       'id'=>'cliente-form',
-      'action'=>Yii::app()->createUrl('//cliente/eliminar'),
+      'action'=>Yii::app()->createUrl('//cliente/desactivar'),
       // Please note: When you enable ajax validation, make sure the corresponding
       // controller action is handling ajax validation correctly.
       // There is a call to performAjaxValidation() commented in generated controller code.

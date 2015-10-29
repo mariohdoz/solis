@@ -21,7 +21,10 @@ if(!Yii::app()->session['activo'])
               <!-- small box -->
               <div class="small-box bg-aqua">
                 <div class="inner">
-                  <h3><?php echo Cliente::model()->count()?></h3>
+                  <h3><?php
+                  $criteria = new CDbCriteria;
+                  $criteria->addCondition("activo_cliente=1");
+                   echo Cliente::model()->count($criteria)?></h3>
                   <p>Clientes</p>
                 </div>
                 <div class="icon">
@@ -34,7 +37,10 @@ if(!Yii::app()->session['activo'])
               <!-- small box -->
               <div class="small-box bg-green">
                 <div class="inner">
-                    <h3><?php echo Propiedad::model()->count()?></h3>
+                    <h3><?php
+                    $criteria = new CDbCriteria;
+                    $criteria->addCondition("eliminado_propiedad=0");
+                    echo Propiedad::model()->count($criteria)?></h3>
                   <p>Propiedades</p>
                 </div>
                 <div class="icon">

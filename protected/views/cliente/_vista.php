@@ -1,4 +1,4 @@
-<section class="content">
+
   <div class="box box-default">
     <div class="box-header with-border">
       <h3 class="box-title">Registro de propietario</h3>
@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col-md-6 ">
           <div class="form-group">
-            <h3>Cliente <?php echo $model->rut_cliente; ?></h3>
+            <h3>Cliente <?php echo $model->rut_cliente; ?> y posee <?php echo Propiedad::model()->countByAttributes(array('rut_cliente'=> $model->rut_cliente)); ?> propiedades</h3>
             <?php $this->widget('zii.widgets.CDetailView', array(
                   'data'=>$model,
                   'attributes'=>array(
@@ -62,15 +62,3 @@
           </div>
         </div>
       </div>
-      <div class="box-footer">
-        <div class="pull-left">
-          <div class="row buttons" style="margin-left: 10px ">
-            <?php echo CHtml::submitButton('Guardar', array('class'=>'btn btn-success')); ?>
-            &nbsp;&nbsp;
-            <?php $this->widget('application.extensions.data.EBackButtonWidget'); ?>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div><!-- /.box -->
-</section>

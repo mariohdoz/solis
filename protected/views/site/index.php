@@ -259,14 +259,6 @@
 		</p>
 	</section> <!-- #cd-placeholder-4 -->
 	<section id="cd-placeholder-5" class="cd-section cd-container">
-    <?php if(($msgs=Yii::app()->user->getFlashes())!=null): ?>
-      <?php foreach($msgs as $type => $message):?>
-        <div class="alert alert-<?php echo $type;?>">
-          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <strong><?php echo ucfirst($type)?></strong> <?php echo $message;?>.
-        </div>
-      <?php endforeach;?>
-    <?php endif; ?>
 		<h1>Contáctenos</h1>
 		<form class="cf">
       <?php $form=$this->beginWidget('CActiveForm', array(
