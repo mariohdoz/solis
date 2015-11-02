@@ -35,6 +35,7 @@ if(!Yii::app()->session['activo'])
     </meta>
   <body class="skin-blue sidebar-mini">
     <div class="wrapper">
+      
       <header class="main-header">
         <?php echo CHtml::link('<img src="'.Yii::app()->request->baseUrl.'/images/LogoV2.png" width="135px" height="45px" />', array('intra/index'),array('class'=>'logo')); ?>
         <nav class="navbar navbar-static-top" role="navigation">

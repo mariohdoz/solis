@@ -55,7 +55,7 @@ $this->menu=array(
                 $ruta = Imagen::model()->findByAttributes(array('id_propiedad'=>$model->id_propiedad,),array('order' => 'id_imagen ASC','limit' => '1',));
                  echo CHtml::image(Yii::app()->baseUrl."/images/propiedades/".$ruta->url_imagen); ?>
                  <?php $this->widget('ext.SAImageDisplayer', array(
-                      'image' => 'p274.jpg',
+                      'image' => 'ps2.jpg',
                       'size' => 'thumb',
                   )); ?>
               </div>
