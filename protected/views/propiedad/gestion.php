@@ -33,7 +33,6 @@
                     <h3 class="box-title">Selección del propietario</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                    <?php $ruta = Yii::app()->request->pathInfo; ?>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">

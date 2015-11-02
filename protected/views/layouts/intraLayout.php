@@ -1,33 +1,38 @@
+<?php
+if(!Yii::app()->session['activo'])
+    $this->redirect(Yii::app()->request->baseUrl.'/site/index');;
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">
   <head>
     <meta charset="UTF-8">
-    <title>Intranet administrativo</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.4 -->
-    <link href="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <!-- FontAwesome 4.3.0 -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <!-- Ionicons 2.0.0 -->
-    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
-    <!-- Theme style -->
-    <link href="<?php echo Yii::app()->request->baseUrl; ?>/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
-    <link href="<?php echo Yii::app()->request->baseUrl; ?>/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
-    <!-- iCheck -->
-    <link href="<?php echo Yii::app()->request->baseUrl; ?>/plugins/iCheck/flat/blue.css" rel="stylesheet" type="text/css" />
-    <!-- Morris chart -->
-    <link href="<?php echo Yii::app()->request->baseUrl; ?>/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
-    <!-- jvectormap -->
-    <link href="<?php echo Yii::app()->request->baseUrl; ?>/plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
-    <!-- Date Picker -->
-    <link href="<?php echo Yii::app()->request->baseUrl; ?>/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
-    <!-- Daterange picker -->
-    <link href="<?php echo Yii::app()->request->baseUrl; ?>/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
-    <!-- bootstrap wysihtml5 - text editor -->
-    <link href="<?php echo Yii::app()->request->baseUrl; ?>/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+      <title>Intranet administrativo</title>
+      <!-- Tell the browser to be responsive to screen width -->
+      <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+      <!-- Bootstrap 3.3.4 -->
+      <link href="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+      <!-- FontAwesome 4.3.0 -->
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+      <!-- Ionicons 2.0.0 -->
+      <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+      <!-- Theme style -->
+      <link href="<?php echo Yii::app()->request->baseUrl; ?>/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+      <!-- AdminLTE Skins. Choose a skin from the css/skins
+           folder instead of downloading all of them to reduce the load. -->
+      <link href="<?php echo Yii::app()->request->baseUrl; ?>/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+      <!-- iCheck -->
+      <link href="<?php echo Yii::app()->request->baseUrl; ?>/plugins/iCheck/flat/blue.css" rel="stylesheet" type="text/css" />
+      <!-- Morris chart -->
+      <link href="<?php echo Yii::app()->request->baseUrl; ?>/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
+      <!-- jvectormap -->
+      <link href="<?php echo Yii::app()->request->baseUrl; ?>/plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+      <!-- Date Picker -->
+      <link href="<?php echo Yii::app()->request->baseUrl; ?>/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+      <!-- Daterange picker -->
+      <link href="<?php echo Yii::app()->request->baseUrl; ?>/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+      <!-- bootstrap wysihtml5 - text editor -->
+      <link href="<?php echo Yii::app()->request->baseUrl; ?>/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+    </meta>
   <body class="skin-blue sidebar-mini">
     <div class="wrapper">
       <header class="main-header">
@@ -139,9 +144,9 @@
                   <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-plus"></i> Agregar Funcionarios</a></li>
-                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-exchange"></i> Modificar Funcionarios</a></li>
-                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-close"></i> Eliminar Funcionarios</a></li>
+                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-plus"></i> Agregar arrendatario</a></li>
+                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-exchange"></i> Modificar arrendatario</a></li>
+                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-close"></i> Eliminar arrendatario</a></li>
                 </ul>
               </li>
             </ul>
@@ -152,10 +157,10 @@
                   <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-plus"></i> Nuevo Arriendo</a></li>
-                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-exchange"></i> Modificar Arriendo</a></li>
-                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-close"></i> Eliminar Arriendo</a></li>
-                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-eye"></i>Ver Arriendos</a></li>
+                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/create"><i class="fa fa-plus"></i> Nuevo Arriendo</a></li>
+                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/update"><i class="fa fa-exchange"></i> Modificar Arriendo</a></li>
+                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/delete"><i class="fa fa-close"></i> Eliminar Arriendo</a></li>
+                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/index"><i class="fa fa-eye"></i>Ver Arriendos</a></li>
                 </ul>
               </li>
             </ul>

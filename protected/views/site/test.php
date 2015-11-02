@@ -12,45 +12,31 @@
       </ol>
   </section>
   <section class="content">
-    <div class="row row-centered">
-      <section class="col-lg-6">
-        <?php $form=$this->beginWidget('CActiveForm', array(
-          'id'=>'cliente-form',
-          'action'=>Yii::app()->createUrl('//cliente/modificar'),
-          // Please note: When you enable ajax validation, make sure the corresponding
-          // controller action is handling ajax validation correctly.
-          // There is a call to performAjaxValidation() commented in generated controller code.
-          // See class documentation of CActiveForm for details on this.
-          'enableAjaxValidation'=>false,
-          )); ?>
-          <div class="box box-default">
-            <div class="box-header with-border">
-                <h3 class="box-title">Modificar propietadad</h3>
-            </div><!-- /.box-header -->
-            <div class="box-body">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <br>
-                      <h4>Cliente a modificar</h4>
-                    <?php echo $form->dropDownList($model,'rut_cliente', CHtml::listData(Cliente::model()->findAll(array('order' => 'rut_cliente')),'rut_cliente','FullName' ), array("class"=>"form-control select2"),
-                        array('empty' => '(Seleccione tipo de servicio)'));?>
-                    <?php echo $form->error($model,'rut_cliente'); ?>
-                    <br>
-                    <div class="center-block">
-                      <?php echo CHtml::submitButton('Modificar cliente', array('confirm'=>'¿Está seguro de realizar los cambios?',"class"=>"btn btn-primary")) ?>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="box-footer">
-                <div class="pull-right">
-                </div>
-            </div>
-          </div>
-          <?php $this->endWidget(); ?>
-      </section>
+    <?php $form=$this->beginWidget('CActiveForm', array(
+			'id'=>'arriendo-form',
+			// Please note: When you enable ajax validation, make sure the corresponding
+			// controller action is handling ajax validation correctly.
+			// There is a call to performAjaxValidation() commented in generated controller code.
+			// See class documentation of CActiveForm for details on this.
+			'enableAjaxValidation'=>false,
+		)); ?>
+    <div class="modal fade" id="arrendatario" tabindex="-1" role="dialog" aria-labelledby="myModallabel" aria-hidden="true">
+    	<div class="modal-dialog">
+    		<div class="modal-content">
+    			<div class="modal-header">
+    				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    				<h3 style="text-align: center">Seleccionar arrendatario</h3>
+    			</div>
+    			<div class="modal-body">
+    				<div class="form-horizontal">
+
+    				</div>
+    			</div>
+    		</div>
+    	</div>
     </div>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#arrendatario">Cargar propiedad</button>
+    <?php $this->endWidget(); ?>
+
   </section>
 </div>

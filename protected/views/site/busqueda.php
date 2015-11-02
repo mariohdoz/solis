@@ -1,5 +1,5 @@
 <header class="cd-header2 " >
-    <button type="button" class="btn btn-warning navbar-btn" data-toggle="modal" data-target="#filtrar">Filtrar Resultados</button>
+  <button type="button" class="btn btn-warning navbar-btn" data-toggle="modal" data-target="#filtrar">Filtrar Resultados</button>
   <div class="modal fade" id="filtrar" tabindex="-1" role="dialog" aria-labelledby="myModallabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">

@@ -1,8 +1,4 @@
-<?php
-if(!Yii::app()->session['activo'])
-    $this->redirect('?r=site/index');;
-?>
-    <!-- Content Wrapper. Contains page content -->
+<!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -81,6 +77,32 @@ if(!Yii::app()->session['activo'])
                 <div class="inner">
                   <h3><?php echo Solicitud::model()->count()?></h3>
                   <p>Órdenes de trabajo</p>
+                </div>
+                <div class="icon">
+                  <i class="fa fa-file-text-o"></i>
+                </div>
+                <a href="#" class="small-box-footer">Órdenes de trabajo pendientes &nbsp<i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-yellow">
+                <div class="inner">
+                  <h3><?php echo Solicitud::model()->count()?></h3>
+                  <p>Arriendos</p>
+                </div>
+                <div class="icon">
+                  <i class="fa fa-file-text-o"></i>
+                </div>
+                <a href="#" class="small-box-footer">Órdenes de trabajo pendientes &nbsp<i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-green">
+                <div class="inner">
+                  <h3><?php echo Solicitud::model()->count()?></h3>
+                  <p>Próximos pagos</p>
                 </div>
                 <div class="icon">
                   <i class="fa fa-file-text-o"></i>

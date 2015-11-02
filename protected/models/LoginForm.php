@@ -7,7 +7,7 @@
  */
 class LoginForm extends CFormModel
 {
-	public $username;
+	public $correo;
 	public $password;
 	public $rememberMe;
 
@@ -22,10 +22,10 @@ class LoginForm extends CFormModel
 	{
 		return array(
 			// username and password are required
-			array('username, password', 'required'),
+			array('correo, password', 'required','message'=>'El campo {attribute} no puede estar vacío'),
 			// rememberMe needs to be a boolean
 			array('rememberMe', 'boolean'),
-			array('username','exist','attributeName'=>'correo_admin','className'=>'Administrador', 'message'=>'El correo ingresado no es valido'),
+			array('correo','exist','attributeName'=>'correo_admin','className'=>'Administrador', 'message'=>'El correo ingresado no es valido'),
 			// password needs to be authenticated
 			array('password', 'authenticate'),
 		);
@@ -49,21 +49,21 @@ class LoginForm extends CFormModel
 	{
 		if(!$this->hasErrors())
 		{
-			$this->_identity=new UserIdentity($this->username,$this->password);
+			$this->_identity=new UserIdentity($this->correo,$this->password);
 			if(!$this->_identity->authenticate())
 				$this->addError('password','El usuario o la contraseña es incorrecto.');
 		}
 	}
 
 	/**
-	 * Logs in the user using the given username and password in the model.
+	 * Logs in the user using the given correo and password in the model.
 	 * @return boolean whether login is successful
 	 */
 	public function login()
 	{
 		if($this->_identity===null)
 		{
-			$this->_identity=new UserIdentity($this->username,$this->password);
+			$this->_identity=new UserIdentity($this->correo,$this->password);
 			$this->_identity->authenticate();
 		}
 		if($this->_identity->errorCode===UserIdentity::ERROR_NONE)

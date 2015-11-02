@@ -36,8 +36,8 @@
 					<div class="cd-form">';
 		echo '  <p class="fieldset">
 							<label class="image-replace cd-email" for="signin-email">E-mail</label>';
-							echo $form->emailField($model,'username', array("class"=>"full-width has-padding has-border", "placeholder"=>"Correo electrónico"));
-							echo $form->error($model,'username');
+							echo $form->emailField($model,'correo', array("class"=>"full-width has-padding has-border", "placeholder"=>"Correo electrónico"));
+							echo $form->error($model,'correo');
 							echo '</p>
 						<p class="fieldset">
 							<label class="image-replace cd-password" >Password</label>';
