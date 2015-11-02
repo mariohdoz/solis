@@ -34,8 +34,12 @@ return array(
 		),
 	),
 
-	// application components
+	// application components	
 	'components'=>array(
+		'session'=>array(
+			'class' => 'CDbHttpSession',
+			'timeout'=>600,
+		),
 		'widgetFactory'=>array(
 			'widgets'=>array(
 				'SAImageDisplayer'=>array(

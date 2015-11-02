@@ -21,7 +21,7 @@ $this->menu=array(
 			</div>
 			<div class="modal-body">
 				<div class="form-horizontal">
-
+					
 				</div>
 			</div>
 		</div>
