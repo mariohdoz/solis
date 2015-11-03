@@ -32,7 +32,7 @@ class ArriendoController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','index','view'),
+				'actions'=>array('create','update','index','view','obtener','obtenerpro'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -66,21 +66,88 @@ class ArriendoController extends Controller
 		$model2=new Arrendatario;
 		$model3=new Propiedad;
 
+		$criteria = new CDbCriteria();
+		$criteria->select= 't.rut_arrendatario, t.nombres_arrendatario, t.apellidos_arrendatario';
+
+		$dataProvider=new CActiveDataProvider(Arrendatario::model(), array(
+			'keyAttribute'=>'rut_arrendatario',// IMPORTANTE, para que el CGridView conozca la seleccion
+			'criteria'=>array(
+				//'condition'=>'cualquier condicion where de tu sql iria aqui',
+			),
+			'pagination'=>array(
+				'pageSize'=>5,
+			),
+			'sort'=>array(
+				'defaultOrder'=>array('rut_arrendatario'=>true),
+			),
+		));
+		$criteria = new CDbCriteria();
+		$criteria->condition='activo_propiedad=1 AND eliminado_propiedad=0';
+		$dataProvider2=new CActiveDataProvider(Propiedad::model(), array(
+			'keyAttribute'=>'id_propiedad',// IMPORTANTE, para que el CGridView conozca la seleccion
+			'criteria'=>$criteria,
+			'pagination'=>array(
+				'pageSize'=>5,
+			),
+			'sort'=>array(
+				'defaultOrder'=>array('id_propiedad'=>true),
+			),
+		));
+
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Arriendo']))
 		{
 			$model->attributes=$_POST['Arriendo'];
+			$model->rut_admin = Yii::app()->session['admin_rut'];
+			$model->inscripcion_arriendo = date('Y-m-d');
 			if($model->save())
+			{
 				$this->redirect(array('view','id'=>$model->id_arriendo));
+			}
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
 			'model2'=>$model2,
 			'model3'=>$model3,
+			'dataProvider'=>$dataProvider,
+			'dataProvider2'=>$dataProvider2,
 		));
+	}
+	/* Se crea la función obtener para poder acceder a los datos del arrendatario*/
+	public function actionObtener($id){
+		$rut=$this->codigo($id);
+		$resp = Arrendatario::model()->findAllByAttributes(array('rut_arrendatario'=>$rut));
+		header("Content-type: application/json");
+		echo CJSON::encode($resp);
+	}
+
+	public function actionObtenerpro($id){
+		$resp = Propiedad::model()->findAllByAttributes(array('id_propiedad'=>$id));
+		header("Content-type: application/json");
+		echo CJSON::encode($resp);
+	}
+	/* Se crea la función codigo para poder obtener el rut del funcionario*/
+	public function codigo($var)
+	{
+		$evaluate = strrev($var);
+		$multiply = 2;
+		$store = 0;
+		for ($i = 0; $i < strlen($evaluate); $i++) {
+			 $store += $evaluate[$i] * $multiply;
+			 $multiply++;
+			 if ($multiply > 7)
+					 $multiply = 2;
+		}
+		$result = 11 - ($store % 11);
+		if ($result == 10)
+			 $result = 'k';
+		if ($result == 11)
+			 $result = 0;
+		$rut = $var.'-'.$result;
+		return $rut;
 	}
 
 	/**

@@ -18,7 +18,7 @@ class SiteController extends Controller
 	{
 		return array(
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('index','busqueda','vista', 'error', 'login', 'logout','informacion', 'test' ),
+				'actions'=>array('index','busqueda','vista', 'error', 'login', 'logout','informacion', 'test', 'obtener', 'obtenerpro' ),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -70,10 +70,103 @@ class SiteController extends Controller
 	}
 
 	public function actionTest(){
-		$this->layout ='//layouts/testLayout';
-		$model=new Cliente;
-		$this->render('test', array('model'=>$model));
+		$model=new Arriendo;
+		$model2=new Arrendatario;
+		$model3=new Propiedad;
+
+		$criteria = new CDbCriteria();
+		$criteria->select= 't.rut_arrendatario, t.nombres_arrendatario, t.apellidos_arrendatario';
+
+		$dataProvider=new CActiveDataProvider(Arrendatario::model(), array(
+			'keyAttribute'=>'rut_arrendatario',// IMPORTANTE, para que el CGridView conozca la seleccion
+			'criteria'=>array(
+				//'condition'=>'cualquier condicion where de tu sql iria aqui',
+			),
+			'pagination'=>array(
+				'pageSize'=>5,
+			),
+			'sort'=>array(
+				'defaultOrder'=>array('rut_arrendatario'=>true),
+			),
+		));
+		$criteria = new CDbCriteria();
+		$criteria->condition='activo_propiedad=1 AND eliminado_propiedad=0';
+		$dataProvider2=new CActiveDataProvider(Propiedad::model(), array(
+			'keyAttribute'=>'id_propiedad',// IMPORTANTE, para que el CGridView conozca la seleccion
+			'criteria'=>$criteria,
+			'pagination'=>array(
+				'pageSize'=>5,
+			),
+			'sort'=>array(
+				'defaultOrder'=>array('id_propiedad'=>true),
+			),
+		));
+
+		if(Yii::app()->request->isAjaxRequest){
+			// el update del CGridView Productos hecho en Ajax produce un ajaxRequest sobre el mismo
+			// action que lo invoco por primera vez y el argumento fue pasado mediante {data: xxx} al // momento de hacer el update al CGridView con id 'productos'
+			$rut_arrendatario = $_GET[0];
+			Yii::log("\nAJAX_REQUEST\nPROVOCADO_POR_EL_UPDATE_AL_CGRIDVIEW_PRODUCTOS"
+				."\nidcategoria seleccionada es=".$rut_cliente
+			,"info");
+			// actualizas el criteria del data provider para ajustarlo a lo que se pide:
+			$dataProviderProductos->criteria = array('condition'=>'rut_cliente='.$rut_cliente);
+			// para responderle al request ajax debes hacer un ECHO con el JSON del dataprovider
+			echo CJSON::encode($dataProviderProductos);
+		}
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['Arriendo']))
+		{
+			$model->attributes=$_POST['Arriendo'];
+			if($model->save())
+			{
+				$this->redirect(array('view','id'=>$model->id_arriendo));
+			}
+		}
+
+		$this->render('test',array(
+			'model'=>$model,
+			'model2'=>$model2,
+			'model3'=>$model3,
+			'dataProvider'=>$dataProvider,
+			'dataProvider2'=>$dataProvider2,
+		));
 	}
+	public function actionObtener($id){
+		$rut=$this->codigo($id);
+		$resp = Arrendatario::model()->findAllByAttributes(array('rut_arrendatario'=>$rut));
+		header("Content-type: application/json");
+		echo CJSON::encode($resp);
+	}
+	public function actionObtenerpro($id){
+		$resp = Propiedad::model()->findAllByAttributes(array('id_propiedad'=>$id));
+		header("Content-type: application/json");
+		echo CJSON::encode($resp);
+	}
+	public function codigo($var)
+	{
+		$evaluate = strrev($var);
+		$multiply = 2;
+		$store = 0;
+		for ($i = 0; $i < strlen($evaluate); $i++) {
+			 $store += $evaluate[$i] * $multiply;
+			 $multiply++;
+			 if ($multiply > 7)
+					 $multiply = 2;
+		}
+		$result = 11 - ($store % 11);
+		if ($result == 10)
+			 $result = 'k';
+		if ($result == 11)
+			 $result = 0;
+		$rut = $var.'-'.$result;
+		return $rut;
+	}
+
+
 
 	public function actionBusqueda()
 	{
