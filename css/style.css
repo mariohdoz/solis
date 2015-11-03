@@ -1164,6 +1164,12 @@ xgallery
   display: table;
   clear: both;
 }
+.main-footer {
+  background: #fff;
+  padding: 15px;
+  color: #444;
+  border-top: 1px solid #d2d6de;
+}
 
 .layout { padding: 50px; font-family: Georgia, serif; }
 .layout-slider { margin-bottom: 60px; width: 50%; }

@@ -11,8 +11,10 @@
     <title>Búsqueda de propiedad</title>
   </head>
   <body>
-    
+
       <?php echo $content; ?>
+
+
 
   </body>
 </html>
