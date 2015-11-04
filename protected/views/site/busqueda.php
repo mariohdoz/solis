@@ -152,9 +152,3 @@
     </ul>
   </section>
 
-    <div class="panel panel-default">
-        <div class="panel-body">
-
-        </div>
-        <div class="panel-footer" style="margin-top: 100px; text-align: center"> <strong>Copyright &copy; 2014-2015 <a href="?r=site/index">Propiedades Sol y cobre</a>.</strong> Todos los derechos reservados.</div>
-    </div>
