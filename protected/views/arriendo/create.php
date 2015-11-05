@@ -133,7 +133,7 @@ $this->menu=array(
 		</div>
 	</div>
 </div>
-<div class="modal fade modal-primary" id="propiedad" tabindex="-2" role="dialog" aria-labelledby="myModallabel" aria-hidden="true">
+<div class="modal fade modal-default" id="propiedad" tabindex="-2" role="dialog" aria-labelledby="myModallabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -159,13 +159,7 @@ $this->menu=array(
 								'direccion_propiedad',
 								'numero_propiedad',
 						// via 2: para mostrar detalles al hacer click en un icono.
-								array(
-										'header' => '(fake) Actions',
-										'class' => 'CButtonColumn',
-										'viewButtonImageUrl' => Yii::app()->baseUrl . '/css/gridViewStyle/images/' . 'gr-view.png',
-										'updateButtonImageUrl' => Yii::app()->baseUrl . '/css/gridViewStyle/images/' . 'gr-update.png',
-										'deleteButtonImageUrl' => Yii::app()->baseUrl . '/css/gridViewStyle/images/' . 'gr-delete.png',
-								),
+								
 							),
 						));
 						?>

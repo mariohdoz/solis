@@ -70,6 +70,7 @@ class SiteController extends Controller
 	}
 
 	public function actionTest(){
+		$this->layout= 'testLayout';
 	$model=new Arriendo('search');
 	$model->unsetAttributes();  // clear any default values
 	if(isset($_GET['Arriendo']))

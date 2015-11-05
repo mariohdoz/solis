@@ -211,8 +211,11 @@ class ArriendoController extends Controller
 
 	public function actionSelect()
 	{
-		$criteria=new CDbCriteria;
-		$dataProvider=new CActiveDataProvider('Arriendo');
+		$this->layout= 'testLayout';
+		$model=new Arriendo('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Arriendo']))
+			$model->attributes=$_GET['Arriendo'];
 		$this->render('select',array('model'=>$model));
 	}
 
