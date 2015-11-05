@@ -199,6 +199,14 @@ $this->menu=array(
 			'enableAjaxValidation'=>false,
 		)); ?>
 		<div class="row">
+			<?php if(($msgs=Yii::app()->user->getFlashes())!=null): ?>
+				<?php foreach($msgs as $type => $message):?>
+					<div class="alert alert-<?php echo $type;?>" style="margin-left: 10px; margin-right: 10px ">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<strong>Error</strong> <?php echo $message;?>
+					</div>
+				<?php endforeach;?>
+			<?php endif; ?>
 			<div class="col-md-6">
 				<div class="box box-primary">
 					<div class="box-header with-border">

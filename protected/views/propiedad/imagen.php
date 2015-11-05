@@ -17,7 +17,7 @@
          <?php foreach($msgs as $type => $message):?>
            <div class="alert alert-<?php echo $type;?>" style="margin-left: 10px; margin-right: 10px ">
              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-             <strong>Éxito</strong> <?php echo $message;?>.
+             <strong>$type</strong> <?php echo $message;?>.
            </div>
          <?php endforeach;?>
        <?php endif; ?>

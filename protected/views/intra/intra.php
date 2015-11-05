@@ -76,12 +76,12 @@
               <div class="small-box bg-red">
                 <div class="inner">
                   <h3><?php echo Solicitud::model()->count()?></h3>
-                  <p>Órdenes de trabajo</p>
+                  <p>Arriendos atrasados</p>
                 </div>
                 <div class="icon">
                   <i class="fa fa-file-text-o"></i>
                 </div>
-                <a href="#" class="small-box-footer">Órdenes de trabajo pendientes &nbsp<i class="fa fa-arrow-circle-right"></i></a>
+                <a href="#" class="small-box-footer">Pagos de atrasados &nbsp<i class="fa fa-arrow-circle-right"></i></a>
               </div>
             </div><!-- ./col -->
             <div class="col-lg-3 col-xs-6">
@@ -177,4 +177,3 @@
             </div><!-- /.box -->
         </section>
     </div><!-- /.content-wrapper -->
-  

@@ -23,30 +23,25 @@
 						<div class="box-body">
 							<?php
               $this->widget('zii.widgets.grid.CGridView', array(
-              	'id'=>'arriendo-grid',
-              	'dataProvider'=>$model->search(),
-              	'filter'=>$model,
-              	'columns'=>array(
-              		'fechapago_arriendo',
-              		'id_propiedad',
-              		'rut_admin',
-              		'rut_arrendatario',
-              		'valor_arriendo',
-              		'termino_arriendo',
-              		/*
-              		'inicio_arriendo',
-              		'termino_arriendo',
-              		'valor_arriendo',
-              		*/
-              		array(
-              			'class'=>'CButtonColumn',
-              		),
-              	),
-              ));
+                    'dataProvider' => $model->search(),
+                    'filter' => $model,
+                    'columns' => array(
+                        array(
+                            'name' => 'username',
+                            'type' => 'raw',
+                            'value' => 'CHtml::encode($data->username)'
+                        ),
+                        array(
+                            'name' => 'email',
+                            'type' => 'raw',
+                            'value' => 'CHtml::link(CHtml::encode($data->email), "mailto:".CHtml::encode($data->email))',
+                        ),
+                    ),
+                ));
+
                ?>
 						</div>
 						<div class="box-footer">
-
 						</div>
 					</div>
 				</div>

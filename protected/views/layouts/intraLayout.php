@@ -35,7 +35,7 @@ if(!Yii::app()->session['activo'])
     </meta>
   <body class="skin-blue sidebar-mini">
     <div class="wrapper">
-      
+
       <header class="main-header">
         <?php echo CHtml::link('<img src="'.Yii::app()->request->baseUrl.'/images/LogoV2.png" width="135px" height="45px" />', array('intra/index'),array('class'=>'logo')); ?>
         <nav class="navbar navbar-static-top" role="navigation">
@@ -159,7 +159,7 @@ if(!Yii::app()->session['activo'])
                 </a>
                 <ul class="treeview-menu">
                   <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/create"><i class="fa fa-plus"></i> Nuevo Arriendo</a></li>
-                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/update"><i class="fa fa-exchange"></i> Modificar Arriendo</a></li>
+                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/Select"><i class="fa fa-exchange"></i> Modificar Arriendo</a></li>
                   <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/delete"><i class="fa fa-close"></i> Eliminar Arriendo</a></li>
                   <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/index"><i class="fa fa-eye"></i>Ver Arriendos</a></li>
                 </ul>

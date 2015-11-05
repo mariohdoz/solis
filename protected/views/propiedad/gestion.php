@@ -209,7 +209,7 @@ $this->endWidget('zii.widgets.jui.CJuiDialog');           echo CHtml::link('open
                 <div class="box-footer">
                     <div class="pull-left">
                         <div class="row buttons" style="margin-left: 10px ">
-                            <?php echo CHtml::SubmitButton('Guardar', array('class'=>'btn btn-success'), array('confirm' => 'Está seguro de ingresar la propiedad?')); ?>
+                            <?php echo CHtml::SubmitButton('Guardar', array('class'=>'btn btn-success'), array('confirm' => '¿Está seguro de ingresar la propiedad?')); ?>
                             &nbsp;&nbsp;
                             <?php $this->widget('application.extensions.data.EBackButtonWidget'); ?>
                         </div>

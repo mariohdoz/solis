@@ -34,11 +34,11 @@ return array(
 		),
 	),
 
-	// application components	
+	// application components
 	'components'=>array(
 		'session'=>array(
 			'class' => 'CDbHttpSession',
-			'timeout'=>600,
+			'timeout'=>1200,
 		),
 		'widgetFactory'=>array(
 			'widgets'=>array(

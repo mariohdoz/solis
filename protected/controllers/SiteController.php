@@ -70,71 +70,13 @@ class SiteController extends Controller
 	}
 
 	public function actionTest(){
-		$model=new Arriendo;
-		$model2=new Arrendatario;
-		$model3=new Propiedad;
-
-		$criteria = new CDbCriteria();
-		$criteria->select= 't.rut_arrendatario, t.nombres_arrendatario, t.apellidos_arrendatario';
-
-		$dataProvider=new CActiveDataProvider(Arrendatario::model(), array(
-			'keyAttribute'=>'rut_arrendatario',// IMPORTANTE, para que el CGridView conozca la seleccion
-			'criteria'=>array(
-				//'condition'=>'cualquier condicion where de tu sql iria aqui',
-			),
-			'pagination'=>array(
-				'pageSize'=>5,
-			),
-			'sort'=>array(
-				'defaultOrder'=>array('rut_arrendatario'=>true),
-			),
-		));
-		$criteria = new CDbCriteria();
-		$criteria->condition='activo_propiedad=1 AND eliminado_propiedad=0';
-		$dataProvider2=new CActiveDataProvider(Propiedad::model(), array(
-			'keyAttribute'=>'id_propiedad',// IMPORTANTE, para que el CGridView conozca la seleccion
-			'criteria'=>$criteria,
-			'pagination'=>array(
-				'pageSize'=>5,
-			),
-			'sort'=>array(
-				'defaultOrder'=>array('id_propiedad'=>true),
-			),
-		));
-
-		if(Yii::app()->request->isAjaxRequest){
-			// el update del CGridView Productos hecho en Ajax produce un ajaxRequest sobre el mismo
-			// action que lo invoco por primera vez y el argumento fue pasado mediante {data: xxx} al // momento de hacer el update al CGridView con id 'productos'
-			$rut_arrendatario = $_GET[0];
-			Yii::log("\nAJAX_REQUEST\nPROVOCADO_POR_EL_UPDATE_AL_CGRIDVIEW_PRODUCTOS"
-				."\nidcategoria seleccionada es=".$rut_cliente
-			,"info");
-			// actualizas el criteria del data provider para ajustarlo a lo que se pide:
-			$dataProviderProductos->criteria = array('condition'=>'rut_cliente='.$rut_cliente);
-			// para responderle al request ajax debes hacer un ECHO con el JSON del dataprovider
-			echo CJSON::encode($dataProviderProductos);
-		}
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Arriendo']))
-		{
-			$model->attributes=$_POST['Arriendo'];
-			if($model->save())
-			{
-				$this->redirect(array('view','id'=>$model->id_arriendo));
-			}
-		}
-
-		$this->render('test',array(
-			'model'=>$model,
-			'model2'=>$model2,
-			'model3'=>$model3,
-			'dataProvider'=>$dataProvider,
-			'dataProvider2'=>$dataProvider2,
-		));
+	$model=new Arriendo('search');
+	$model->unsetAttributes();  // clear any default values
+	if(isset($_GET['Arriendo']))
+		$model->attributes=$_GET['Arriendo'];
+	$this->render('test',array('model'=>$model));
 	}
+
 	public function actionObtener($id){
 		$rut=$this->codigo($id);
 		$resp = Arrendatario::model()->findAllByAttributes(array('rut_arrendatario'=>$rut));

@@ -32,7 +32,7 @@ class ArriendoController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','index','view','obtener','obtenerpro'),
+				'actions'=>array('create','update','index','view','obtener','obtenerpro', 'select'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -51,8 +51,13 @@ class ArriendoController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$model=$this->loadModel($id);
+		$model2=new Arrendatario;
+		$model2=Arrendatario::model()->findByPk($model->rut_arrendatario);
+		$model3=new Propiedad;
+		$model3=Propiedad::model()->findByPk($model->id_propiedad);
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=>$model,'model2'=>$model2,'model3'=>$model3
 		));
 	}
 
@@ -66,14 +71,12 @@ class ArriendoController extends Controller
 		$model2=new Arrendatario;
 		$model3=new Propiedad;
 
-		$criteria = new CDbCriteria();
-		$criteria->select= 't.rut_arrendatario, t.nombres_arrendatario, t.apellidos_arrendatario';
+		$criteria2 = new CDbCriteria();
+		$criteria2->condition='activo_arrendatario=1';
 
 		$dataProvider=new CActiveDataProvider(Arrendatario::model(), array(
 			'keyAttribute'=>'rut_arrendatario',// IMPORTANTE, para que el CGridView conozca la seleccion
-			'criteria'=>array(
-				//'condition'=>'cualquier condicion where de tu sql iria aqui',
-			),
+			'criteria'=>$criteria2,
 			'pagination'=>array(
 				'pageSize'=>5,
 			),
@@ -102,9 +105,16 @@ class ArriendoController extends Controller
 			$model->attributes=$_POST['Arriendo'];
 			$model->rut_admin = Yii::app()->session['admin_rut'];
 			$model->inscripcion_arriendo = date('Y-m-d');
-			if($model->save())
-			{
-				$this->redirect(array('view','id'=>$model->id_arriendo));
+			$model3=Propiedad::model()->findByPk($model->id_propiedad);
+			$model2=Arrendatario::model()->findByPk($model->rut_arrendatario);
+			if($model3->activo_propiedad == 1){
+				$model3->activo_propiedad= 0;
+				if($model->save() && $model3->save())
+				{
+					$this->redirect(array('view','id'=>$model->id_arriendo));
+				}
+			}else {
+				Yii::app()->user->setFlash('error','La propiedad ya se encuentra con un servicio prestado.');
 			}
 		}
 
@@ -197,6 +207,13 @@ class ArriendoController extends Controller
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
+	}
+
+	public function actionSelect()
+	{
+		$criteria=new CDbCriteria;
+		$dataProvider=new CActiveDataProvider('Arriendo');
+		$this->render('select',array('model'=>$model));
 	}
 
 	/**
