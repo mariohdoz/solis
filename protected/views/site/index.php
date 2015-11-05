@@ -282,9 +282,12 @@
                       'Ampliaciones menores' => 'Ampliaciones menores',
                       'Aseo de propiedad' => 'Aseo de propiedad',
                   ),
-                  array("class"=>"btn btn-default btn-lg dropdown-toggle"),
+                  array("class"=>"form-control2 "),
                   array('empty' => '(Seleccione tipo de servicio)')); ?>
-        <?php echo $form->dateField($model1,'fechaejecucion_solicitud', array("class"=>"full-width has-padding has-border", "placeholder"=>"Fecha solicitada")); ?>
+        <?php echo $form->dateField($model1,'fechaejecucion_solicitud',
+			array("class"=>"input-group date", "placeholder"=>"Fecha solicitada")); ?>
+		<?php  ?>
+
         <?php echo $form->textField($model1,'telefono_solicitud', array("class"=>"full-width has-padding has-border", "placeholder"=>"Teléfono de contacto")); ?>
         <?php echo $form->emailField($model1,'correo_solicitud', array("class"=>"full-width has-padding has-border", "placeholder"=>"Correo de contacto")); ?>
         <?php echo $form->textArea($model1,'descripcion_solicitud', array("class"=>"full-width has-padding has-border", "placeholder"=>"Descripcion")); ?>

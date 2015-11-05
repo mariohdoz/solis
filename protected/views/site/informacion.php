@@ -6,9 +6,11 @@
   // See class documentation of CActiveForm for details on this.
   'enableAjaxValidation'=>false,
   )); ?>
+
+
 <section class="container informacion">
     <div class="col-md-6 ">
-        <div  class='google-map2 ' id='map' streetnumber=<?php echo '2337';  ?> streetname=<?php echo 'Atacama';  ?>
+        <div  class='google-map2 ' id='map' streetnumber=<?php echo '2337';  ?> streetname=<?php echo 'prat';  ?>
              cityname='calama' statecode='CL' zipcode='0'
              zoom=17 width=500 height=450>
         </div>
@@ -36,28 +38,16 @@
 <section class="container informacion">
     <div class=" col-md-12">
         <h1>Imagenes</h1>
-
-        <div class="col-lg-3 col-sm-4 col-xs-6"><a  href="#"><img class="thumbnail img-responsive" src="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/p4.jpg"></a></div>
-        <div class="col-lg-3 col-sm-4 col-xs-6"><a  href="#"><img class="thumbnail img-responsive" src="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/p4.jpg"></a></div>
-        <div class="col-lg-3 col-sm-4 col-xs-6"><a  href="#"><img class="thumbnail img-responsive" src="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/p2.jpg"></a></div>
-        <div class="col-lg-3 col-sm-4 col-xs-6"><a  href="#"><img class="thumbnail img-responsive" src="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/p2.jpg"></a></div>
-        <div class="col-lg-3 col-sm-4 col-xs-6"><a  href="#"><img class="thumbnail img-responsive" src="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/p3.jpg"></a></div>
-        <div class="col-lg-3 col-sm-4 col-xs-6"><a  href="#"><img class="thumbnail img-responsive" src="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/p3.jpg"></a></div>
-        <div class="col-lg-3 col-sm-4 col-xs-6"><a  href="#"><img class="thumbnail img-responsive" src="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/p3.jpg"></a></div>
-        <div class="col-lg-3 col-sm-4 col-xs-6"><a  href="#"><img class="thumbnail img-responsive" src="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/p3.jpg"></a></div>
+        <div class="col-lg-3 col-sm-4 col-xs-6"><a class="showcase" href="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/p4.jpg" data-rel="lightcase:myCollection:slideshow"><img class="thumbnail img-responsive" src="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/p4.jpg"></a></div>
+        <div class="col-lg-3 col-sm-4 col-xs-6"><a class="showcase" href="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/p4.jpg" data-rel="lightcase:myCollection:slideshow"><img class="thumbnail img-responsive" src="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/p4.jpg"></a></div>
+        <div class="col-lg-3 col-sm-4 col-xs-6"><a class="showcase" href="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/p2.jpg" data-rel="lightcase:myCollection:slideshow"><img class="thumbnail img-responsive" src="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/p2.jpg"></a></div>
+        <div class="col-lg-3 col-sm-4 col-xs-6"><a class="showcase" href="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/p2.jpg" data-rel="lightcase:myCollection:slideshow"><img class="thumbnail img-responsive" src="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/p2.jpg"></a></div>
+        <div class="col-lg-3 col-sm-4 col-xs-6"><a class="showcase" href="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/p3.jpg" data-rel="lightcase:myCollection:slideshow"><img class="thumbnail img-responsive" src="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/p3.jpg"></a></div>
+        <div class="col-lg-3 col-sm-4 col-xs-6"><a class="showcase" href="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/p3.jpg" data-rel="lightcase:myCollection:slideshow"><img class="thumbnail img-responsive" src="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/p3.jpg"></a></div>
+        <div class="col-lg-3 col-sm-4 col-xs-6"><a class="showcase" href="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/p3.jpg" data-rel="lightcase:myCollection:slideshow"><img class="thumbnail img-responsive" src="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/p3.jpg"></a></div>
+        <div class="col-lg-3 col-sm-4 col-xs-6"><a class="showcase" href="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/p3.jpg" data-rel="lightcase:myCollection:slideshow"><img class="thumbnail img-responsive" src="<?php echo Yii::app()->request->baseUrl; ?>/images/propiedades/p3.jpg"></a></div>
 
     </div>
 
 </section>
-<div tabindex="-1" class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
 <?php $this->endWidget(); ?>
