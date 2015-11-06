@@ -70,7 +70,7 @@ class Arrendatario extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'rut_arrendatario' => 'RUT del arrendatario',
+			'rut_arrendatario' => 'RUT',
 			'nombres_arrendatario' => 'Nombres',
 			'apellidos_arrendatario' => 'Apellidos',
 			'estadocivil_arrendatario' => 'Estado civil',

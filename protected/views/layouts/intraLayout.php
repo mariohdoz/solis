@@ -17,6 +17,7 @@ if(!Yii::app()->session['activo'])
       <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
       <!-- Theme style -->
       <link href="<?php echo Yii::app()->request->baseUrl; ?>/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo Yii::app()->request->baseUrl; ?>/dist/css/AdminLTE.css" rel="stylesheet" type="text/css" />
       <!-- AdminLTE Skins. Choose a skin from the css/skins
            folder instead of downloading all of them to reduce the load. -->
       <link href="<?php echo Yii::app()->request->baseUrl; ?>/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
@@ -33,10 +34,20 @@ if(!Yii::app()->session['activo'])
       <!-- bootstrap wysihtml5 - text editor -->
       <link href="<?php echo Yii::app()->request->baseUrl; ?>/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
     </meta>
+  </head>
   <body class="skin-blue sidebar-mini">
     <div class="wrapper">
+
       <header class="main-header">
-        <?php echo CHtml::link('<img src="'.Yii::app()->request->baseUrl.'/images/LogoV2.png" width="135px" height="45px" />', array('intra/index'),array('class'=>'logo')); ?>
+        <a href="intra/index" class="logo">
+          <!-- mini logo for sidebar mini 50x50 pixels -->
+          <span class="logo-mini"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/LogoLite.png" width="50px" height="50px""></span>
+          <!-- logo for regular state and mobile devices -->
+        <!--  <?php/* echo CHtml::link('<img src="'.Yii::app()->request->baseUrl.'/images/LogoV2.png" width="135px" height="45px" />', array('intra/index'),array('class'=>'logo')); */?>-->
+          <span class="logo-lg"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/LogoV2.png" width="135px" height="45px"></span>
+        </a>
+       
+
         <nav class="navbar navbar-static-top" role="navigation">
           <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Toggle navigation</span>
@@ -78,7 +89,7 @@ if(!Yii::app()->session['activo'])
                   </li>
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">Configuración</a>
+                      <a href="<?php echo Yii::app()->request->baseUrl; ?>/perfil/index" class="btn btn-default btn-flat">Configuración</a>
                     </div>
                     <div class="pull-right">
                       <?php echo CHtml::link('Cerrar sesión', array('Site/logout'),array('class'=>'btn btn-default btn-flat', 'confirm' => 'Are you sure?')); ?>
@@ -116,38 +127,10 @@ if(!Yii::app()->session['activo'])
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/propiedad/create"><i class="fa fa-plus"></i> Ingresar nueva propiedad</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/propiedad/index"><i class="fa fa-plus"></i> Ingresar nueva propiedad</a></li>
                 <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/propiedad/select"><i class="fa fa-exchange"></i> Modificar Propiedades</a></li>
                 <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/propiedad/eliminar"><i class="fa fa-close"></i> Eliminar Propiedad</a></li>
                 <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/propiedad/ver"><i class="fa fa-file-text-o"></i> Listado de Propiedades</a></li>
-              </ul>
-            </li>
-          </ul>
-          <ul class="sidebar-menu">
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-pencil-square-o"></i> <span>Arriendos</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/create"><i class="fa fa-plus"></i> Nuevo Arriendo</a></li>
-                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/Select"><i class="fa fa-exchange"></i> Modificar Arriendo</a></li>
-                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/Select2"><i class="fa fa-close"></i> Eliminar Arriendo</a></li>
-                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/index"><i class="fa fa-eye"></i>Ver Arriendos</a></li>
-              </ul>
-            </li>
-          </ul>
-          <ul class="sidebar-menu">
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-money "></i> <span>Ventas</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/venta/create"><i class="fa fa-plus"></i> Nueva venta</a></li>
-                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/venta/Select"><i class="fa fa-exchange"></i> Modificar venta</a></li>
-                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/venta/Select2"><i class="fa fa-close"></i> Eliminar venta</a></li>
-                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/venta/index"><i class="fa fa-eye"></i>Ver ventas</a></li>
               </ul>
             </li>
           </ul>
@@ -178,7 +161,20 @@ if(!Yii::app()->session['activo'])
                 </ul>
               </li>
             </ul>
-
+            <ul class="sidebar-menu">
+              <li class="treeview">
+                <a href="#">
+                  <i class="fa fa-pencil-square-o"></i> <span>Arriendos</span>
+                  <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/create"><i class="fa fa-plus"></i> Nuevo Arriendo</a></li>
+                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/Select"><i class="fa fa-exchange"></i> Modificar Arriendo</a></li>
+                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/delete"><i class="fa fa-close"></i> Eliminar Arriendo</a></li>
+                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/index"><i class="fa fa-eye"></i>Ver Arriendos</a></li>
+                </ul>
+              </li>
+            </ul>
             <ul class="sidebar-menu">
               <li class="treeview">
                 <a href="#">
@@ -250,6 +246,7 @@ if(!Yii::app()->session['activo'])
       </aside>
      <div class="control-sidebar-bg"></div>
     </div>
+
   <!-- jQuery UI 1.11.4 -->
   <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->

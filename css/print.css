@@ -1,0 +1,30 @@
+body{
+    font-family: "courier new";
+}
+.google-map2{
+    width: 300px;
+    height: 450px;
+    float: left;
+    visibility: hidden;
+}
+button{
+    visibility: hidden;
+}
+h4{
+    text-align: left;
+}
+.container h1 {
+    font-size: small;
+}
+.container a{
+    font-size: 0px;
+    color: white;
+}
+.col-lg-3 img{
+    width: 900px;
+}
+ul{
+    text-align: left;
+    position: absolute;
+    width: 100%;
+}

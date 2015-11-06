@@ -13,9 +13,11 @@ li.page, li.next, li.previous {margin:0}
 
 .grid-view table.items
 {
+	font-size: large;
 	border-collapse: collapse;
 	width: 100%;
 	border: 0 none !important;
+
 }
 
 .grid-view table.items th
@@ -71,14 +73,17 @@ tr.odd
 
 .grid-view table.items tr.selected
 {
-	background:#9eec55;
+	background: #53b7ad;
+	color:#fff;
+
+
 }
 
 .grid-view table.items tr:hover td, .grid-view table.items tr:hover td a
 {
-	background:#e58616;
+	background: #3f8a82;
 	color:#fff;
-	font-weight: 700;
+	cursor: pointer;
 }
 
 
@@ -202,7 +207,7 @@ div.demo_box{
 }
 
 div.grid-view {
-	background:#f3f3f3;
+	background: #ffffff;
 	border:1px solid #ccc;
 	-moz-background-clip:border;
 	-moz-background-inline-policy:continuous;

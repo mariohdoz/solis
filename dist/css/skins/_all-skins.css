@@ -1347,7 +1347,7 @@
  * ------------
  */
 .skin-yellow-light .main-header .navbar {
-  background-color: #f39c12;
+  background-color: #53b7ad;
 }
 .skin-yellow-light .main-header .navbar .nav > li > a {
   color: #ffffff;
@@ -1372,7 +1372,7 @@
   color: #fff;
 }
 .skin-yellow-light .main-header .navbar .sidebar-toggle:hover {
-  background-color: #e08e0b;
+  background-color: #3f8a82;
 }
 @media (max-width: 767px) {
   .skin-yellow-light .main-header .navbar .dropdown-menu li.divider {
@@ -1382,19 +1382,19 @@
     color: #fff;
   }
   .skin-yellow-light .main-header .navbar .dropdown-menu li a:hover {
-    background: #e08e0b;
+    background: #53b7ad;
   }
 }
 .skin-yellow-light .main-header .logo {
-  background-color: #f39c12;
+  background-color: #eeeeee;
   color: #ffffff;
   border-bottom: 0px solid transparent;
 }
 .skin-yellow-light .main-header .logo:hover {
-  background-color: #f39a0d;
+  background-color: #e5e5e5;
 }
 .skin-yellow-light .main-header li.user-header {
-  background-color: #f39c12;
+  background-color: #53b7ad;
 }
 .skin-yellow-light .content-header {
   background: transparent;

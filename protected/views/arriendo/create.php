@@ -93,11 +93,10 @@ $this->menu=array(
 <div class="modal fade modal-Default" id="arrendatario" tabindex="-1" role="dialog" aria-labelledby="myModallabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h3 style="text-align: center">Seleccionar arrendatario</h3>
-			</div>
+
 			<div class="modal-body">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 style="text-align: center">Propiedades</h4>
 				<div class="form-horizontal">
 					<?php
 						$this->widget('zii.widgets.grid.CGridView', array(
@@ -111,13 +110,15 @@ $this->menu=array(
 							'cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css',
 							'columns'=>array(
 						// nota que con htmlOptions se puede personalizar el tamano de la columna
-								array('name'=>'rut_arrendatario','htmlOptions'=>array('width'=>'80px')),
+								array('name'=>'rut_arrendatario','htmlOptions'=>array('width'=>'100px')),
 						// nota que aqui no se usa array, sino directamente el nombre de la columna
 								'nombres_arrendatario',
+								'apellidos_arrendatario',
+
 						// via 2: para mostrar detalles al hacer click en un icono.
 								array(
-										'header' => '(fake) Actions',
-										'class' => 'CButtonColumn',
+										'header' => '',
+										'class' => 'CButtonColumn','htmlOptions'=>array('width'=>'100px'),
 										'viewButtonImageUrl' => Yii::app()->baseUrl . '/css/gridViewStyle/images/' . 'gr-view.png',
 										'updateButtonImageUrl' => Yii::app()->baseUrl . '/css/gridViewStyle/images/' . 'gr-update.png',
 										'deleteButtonImageUrl' => Yii::app()->baseUrl . '/css/gridViewStyle/images/' . 'gr-delete.png',
@@ -127,17 +128,20 @@ $this->menu=array(
 						?>
 				</div>
 			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success center-block" data-dismiss="modal">Aceptar</button>
+			</div>
 		</div>
 	</div>
 </div>
 <div class="modal fade modal-default" id="propiedad" tabindex="-2" role="dialog" aria-labelledby="myModallabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h3 style="text-align: center">Seleccionar propiedad</h3>
-			</div>
+
 			<div class="modal-body">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 style="text-align: center">Propiedades</h4>
+				<?php    ?>
 				<div class="form-horizontal">
 					<?php
 						$this->widget('zii.widgets.grid.CGridView', array(
@@ -147,19 +151,22 @@ $this->menu=array(
 							'dataProvider'=>$dataProvider2,
 							'filter' => $model3,
 							'pager' => array('cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css'),
-							'summaryText' => 'Se encontraron {count} arrendatarios activos',
+							'summaryText' => 'Se encontraron {count} propiedades',
 							'cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css',
 							'columns'=>array(
 						// nota que con htmlOptions se puede personalizar el tamano de la columna
 								array('name'=>'id_propiedad','htmlOptions'=>array('width'=>'80px')),
 						// nota que aqui no se usa array, sino directamente el nombre de la columna
 								'direccion_propiedad',
-								'numero_propiedad',
+								'tipo_propiedad',
 						// via 2: para mostrar detalles al hacer click en un icono.
 							),
 						));
 						?>
 				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success center-block" data-dismiss="modal">Aceptar</button>
 			</div>
 		</div>
 	</div>
@@ -172,10 +179,9 @@ $this->menu=array(
 	  </h1>
 	  <ol class="breadcrumb">
 	    <li><a href="?r=intra/index">
-			<i class="fa fa-dashboard"></i>Inicio</a></li>
-			<li class="active">Clientes</li>
-			<li><a href="?r=intra/index">Gestión</a></li>
-			<li class="active">Registrar Propietario</li>
+			<i class="fa fa-home"></i>Inicio</a></li>
+			<li class="active">Arriendos</li>
+			<li class="active">Nuevo Arriendo</li>
 	  </ol>
 	</section>
 	<section class="content">
