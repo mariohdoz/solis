@@ -126,6 +126,34 @@ if(!Yii::app()->session['activo'])
           <ul class="sidebar-menu">
             <li class="treeview">
               <a href="#">
+                <i class="fa fa-pencil-square-o"></i> <span>Arriendos</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/create"><i class="fa fa-plus"></i> Nuevo Arriendo</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/Select"><i class="fa fa-exchange"></i> Modificar Arriendo</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/Select2"><i class="fa fa-close"></i> Eliminar Arriendo</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/index"><i class="fa fa-eye"></i>Ver Arriendos</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="sidebar-menu">
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-money "></i> <span>Ventas</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/venta/create"><i class="fa fa-plus"></i> Nueva venta</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/Select"><i class="fa fa-exchange"></i> Modificar Arriendo</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/Select2"><i class="fa fa-close"></i> Eliminar Arriendo</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/index"><i class="fa fa-eye"></i>Ver Arriendos</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="sidebar-menu">
+            <li class="treeview">
+              <a href="#">
                 <i class="fa fa-user"></i> <span>Clientes</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
@@ -150,20 +178,7 @@ if(!Yii::app()->session['activo'])
                 </ul>
               </li>
             </ul>
-            <ul class="sidebar-menu">
-              <li class="treeview">
-                <a href="#">
-                  <i class="fa fa-pencil-square-o"></i> <span>Arriendos</span>
-                  <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/create"><i class="fa fa-plus"></i> Nuevo Arriendo</a></li>
-                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/Select"><i class="fa fa-exchange"></i> Modificar Arriendo</a></li>
-                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/delete"><i class="fa fa-close"></i> Eliminar Arriendo</a></li>
-                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/index"><i class="fa fa-eye"></i>Ver Arriendos</a></li>
-                </ul>
-              </li>
-            </ul>
+
             <ul class="sidebar-menu">
               <li class="treeview">
                 <a href="#">

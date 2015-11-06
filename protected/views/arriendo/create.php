@@ -1,12 +1,10 @@
 <?php
 /* @var $this ArriendoController */
 /* @var $model Arriendo */
-
 $this->breadcrumbs=array(
 	'Arriendos'=>array('index'),
 	'Create',
 );
-
 $this->menu=array(
 	array('label'=>'List Arriendo', 'url'=>array('index')),
 	array('label'=>'Manage Arriendo', 'url'=>array('admin')),
@@ -55,7 +53,6 @@ $this->menu=array(
 			$("#respuesta").html(jqXHR.responseText);
 		});
 	}
-
 	function obtenerPropiedad(){
 		// no olvides configurar tu CActiveDataProvider con: 'keyAttribute'=>'idcategoria',
 		var id_propiedad = $.fn.yiiGridView.getSelection('propiedad');
@@ -159,7 +156,6 @@ $this->menu=array(
 								'direccion_propiedad',
 								'numero_propiedad',
 						// via 2: para mostrar detalles al hacer click en un icono.
-
 							),
 						));
 						?>
@@ -168,7 +164,6 @@ $this->menu=array(
 		</div>
 	</div>
 </div>
-
 <div class="content-wrapper">
 	<section class="content-header">
 	  <h1>
@@ -288,28 +283,23 @@ $this->menu=array(
 								/* @var $model Arriendo */
 								/* @var $form CActiveForm */
 								?>
-
 								<div class="form">
 									<?php echo $form->errorSummary($model,'<strong>Es necesario arreglar los siguientes errores:</strong><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><div class="alert alert-danger">', '</div>'); ?>
 									<div class="col-md-6">
-
 										<div class="form-group">
 											<?php echo $form->labelEx($model,'fechapago_arriendo'); ?>
 											<?php echo $form->dateField($model,'fechapago_arriendo', array('class'=>'form-control')); ?>
 										</div>
-
 										<div class="form-group">
 											<?php echo $form->labelEx($model,'inicio_arriendo'); ?>
 											<?php echo $form->dateField($model,'inicio_arriendo', array('class'=>'form-control')); ?>
 										</div>
 									</div>
 									<div class="col-md-6">
-
 										<div class="form-group">
 											<?php echo $form->labelEx($model,'termino_arriendo'); ?>
 											<?php echo $form->dateField($model,'termino_arriendo', array('class'=>'form-control')); ?>
 										</div>
-
 										<div class="form-group">
 											<?php echo $form->labelEx($model,'valor_arriendo'); ?>
 											<?php echo $form->textField($model,'valor_arriendo', array('class'=>'form-control', 'placeholder'=>'Ingresar valor pactado con el arrendatario Ej: "500000".')); ?>
@@ -326,7 +316,6 @@ $this->menu=array(
 					</div>
 				</div>
 			</div>
-
 		</div>
 	</section>
 </div>

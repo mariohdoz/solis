@@ -1,14 +1,3 @@
-<?php
-   if(Yii::app()->session['activo']) {
-       $estado = true;
-       $url = '?r=access/logout';
-       $label = 'Cerrar sesión';
-   }else {
-       $estado = false;
-       $url = '?r=access/index';
-       $label = 'Iniciar sesión';
-    }
- ?>
 <header class="cd-header">
 		<div id="cd-logo"><?php echo CHtml::link('<img src="'.Yii::app()->request->baseUrl.'/images/LogoV2.png" width="150px" height="50px" alt="Logo">',array('index')); ?></div>
 		<nav class="main-nav">

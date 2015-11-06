@@ -5,15 +5,12 @@
     alert(selected);
 
   }
-
-
 </script>
-
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
-	    Actualizar
-	    <small>Selección del arriendo que se desea Actualizar.</small>
+	    Eliminar
+	    <small>Selección del arriendo que se desea eliminar.</small>
 	  </h1>
 	  <ol class="breadcrumb">
 	    <li><a href="?r=intra/index">
@@ -55,11 +52,10 @@
                     'class'=>'CButtonColumn',
                     'template'=>'{email}',
                     'buttons'=>array(
-                        'email' => array(
-                            'label'=>'<i class="fa fa-pencil-square-o"></i>',
-                            'url'=>'Yii::app()->createUrl("arriendo/update", array("id"=>$data->id_arriendo))',
-                        ),
-
+                      'email' => array(
+                          'label'=>'<i class="fa fa-trash-o "></i>',
+                          'url'=>'Yii::app()->createUrl("arriendo/eliminar", array("id"=>$data->id_arriendo))',
+                      ),
                     ),
                   ),
                 ),
@@ -73,5 +69,4 @@
       </div>
     </div>
   </section>
-
 </div>

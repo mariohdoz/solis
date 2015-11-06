@@ -22,7 +22,7 @@ $this->menu=array(
 <div class="content-wrapper">
 	<section class="content-header">
 	  <h1>
-	    Configuración
+	    Eliminar
 	    <small>Vista de arriendo de la propiedad de la ficha número <?php echo $model->id_propiedad;?>.</small>
 	  </h1>
 	  <ol class="breadcrumb">
@@ -90,9 +90,7 @@ $this->menu=array(
 							</div>
 						</div>
 						<div class="box-footer">
-							<?php echo CHtml::link('Términar', array('/intra/index'), array('class'=>'btn btn-primary')); ?>
-							<?php echo CHtml::link('Actualizar arriendo', array('/arriendo/update/', 'id'=>$model->id_arriendo), array('class'=>'btn btn-info', 'confirm' => '¿Está seguro de actualizar la propiedad?')); ?>
-							<?php echo CHtml::link('Eliminar arriendo', array(), array('class'=>'btn btn-danger', 'confirm' => '¿Está seguro de eliminar la propiedad?')); ?>
+							<?php echo CHtml::link('Eliminar arriendo', array('#'), array( 'submit'=>array('/arriendo/delete/', "id"=>$model->id_arriendo), 'class'=>'btn btn-danger', 'confirm' => '¿Está seguro de eliminar el arriendo?')); ?>
 						</div>
 					</div>
 				</div>

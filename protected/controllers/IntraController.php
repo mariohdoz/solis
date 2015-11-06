@@ -10,7 +10,7 @@ class IntraController extends CController{
         {$this->redirect(Yii::app()->request->baseUrl.'/site/index');;}
     }
     public function actionNuevo(){
-    	$this->render('nuevo');
+    	$this->render('plantilla');
     }
 
 

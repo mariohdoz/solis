@@ -35,9 +35,6 @@ class SiteController extends Controller
 		$model  = new LoginForm;
 		$model1 = new Solicitud;
 		$model2 = new Propiedad;
-		Yii::app()->user->setFlash('danger','Esto es un error');
-		Yii::app()->user->setFlash('success','Este es un mensaje de éxito');
-		Yii::app()->user->setFlash('info','ésto es pura infromación');
 		// validación de ajax
 		if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
 			echo CActiveForm::validate($model);

@@ -42,7 +42,7 @@
                 <div class="icon">
                   <i class="fa fa-home"></i>
                 </div>
-                <a href="?r=propiedad/index" class="small-box-footer">Nuevas Propiedades&nbsp<i class="fa fa-arrow-circle-right"></i></a>
+                <?php echo CHtml::link('Nuevas Propiedades&nbsp<i class="fa fa-arrow-circle-right"></i>', array('/propiedad/index/'),array('class'=>"small-box-footer")); ?>
               </div>
             </div><!-- ./col -->
             <div class="col-lg-3 col-xs-6">
@@ -88,13 +88,13 @@
               <!-- small box -->
               <div class="small-box bg-yellow">
                 <div class="inner">
-                  <h3><?php echo Solicitud::model()->count()?></h3>
+                  <h3><?php echo Arriendo::model()->count()?></h3>
                   <p>Arriendos</p>
                 </div>
                 <div class="icon">
                   <i class="fa fa-file-text-o"></i>
                 </div>
-                <a href="#" class="small-box-footer">Órdenes de trabajo pendientes &nbsp<i class="fa fa-arrow-circle-right"></i></a>
+                <?php echo CHtml::link('Arriendos actuales&nbsp<i class="fa fa-arrow-circle-right"></i>', array('/arriendo/select/'),array('class'=>"small-box-footer")); ?>
               </div>
             </div><!-- ./col -->
             <div class="col-lg-3 col-xs-6">
