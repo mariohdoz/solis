@@ -1,3 +1,14 @@
+<script type="text/javascript">
+  function obtenerSeleccion(){
+    var selected = $('#arriendo-grid').yiiGridView('getSelection');
+    var action = "<?php echo Yii::app()->request->baseUrl; ?>"+'/arriendo/test/'+selected;
+    alert(selected);
+
+  }
+
+
+</script>
+
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
@@ -26,6 +37,7 @@
                 'id'=>'arriendo-grid',
                 'dataProvider'=>$model->search(),
                 'selectableRows'=>1,
+                'selectionChanged'=>'function(id){ location.href = "'.$this->createUrl('arriendo/view').'/id/"+$.fn.yiiGridView.getSelection(id);}',	// via 1: para mostrar detalles al seleccionar
                 'filter'=>$model,
                 'columns'=>array(
                   'fechapago_arriendo',

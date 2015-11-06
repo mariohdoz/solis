@@ -25,7 +25,7 @@ $this->menu=array(
 		var rut_arrendatario = $.fn.yiiGridView.getSelection('arrendatario');
 		var str = rut_arrendatario+"";
     var res = str.split("-");
-		var action = "<?php echo Yii::app()->request->baseUrl; ?>"+'/site/obtener/'+res[0];
+		var action = "<?php echo Yii::app()->request->baseUrl; ?>"+'/arriendo/obtener/'+res[0];
 		// http://api.jquery.com/category/ajax/shorthand-methods/
 		// http://api.jquery.com/jQuery.getJSON/
 		$.getJSON(action, function(data) {
@@ -59,7 +59,7 @@ $this->menu=array(
 	function obtenerPropiedad(){
 		// no olvides configurar tu CActiveDataProvider con: 'keyAttribute'=>'idcategoria',
 		var id_propiedad = $.fn.yiiGridView.getSelection('propiedad');
-		var action = "<?php echo Yii::app()->request->baseUrl; ?>"+'/site/obtenerpro/'+id_propiedad;
+		var action = "<?php echo Yii::app()->request->baseUrl; ?>"+'/arriendo/obtenerpro/'+id_propiedad;
 		// http://api.jquery.com/category/ajax/shorthand-methods/
 		// http://api.jquery.com/jQuery.getJSON/
 		$.getJSON(action, function(data) {
@@ -159,7 +159,7 @@ $this->menu=array(
 								'direccion_propiedad',
 								'numero_propiedad',
 						// via 2: para mostrar detalles al hacer click en un icono.
-								
+
 							),
 						));
 						?>

@@ -35,7 +35,6 @@ if(!Yii::app()->session['activo'])
     </meta>
   <body class="skin-blue sidebar-mini">
     <div class="wrapper">
-
       <header class="main-header">
         <?php echo CHtml::link('<img src="'.Yii::app()->request->baseUrl.'/images/LogoV2.png" width="135px" height="45px" />', array('intra/index'),array('class'=>'logo')); ?>
         <nav class="navbar navbar-static-top" role="navigation">
@@ -236,7 +235,6 @@ if(!Yii::app()->session['activo'])
       </aside>
      <div class="control-sidebar-bg"></div>
     </div>
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/plugins/jQuery/jQuery-2.1.4.min.js"></script>
   <!-- jQuery UI 1.11.4 -->
   <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
