@@ -32,7 +32,7 @@ function obtenerPropiedad(){
 			$( "Propiedad_rut_cliente" ).prop({
 				disabled: false
 			});
-			$('#Arriendo_id_propiedad').val(propiedad.id_propiedad);
+			$('#Venta_id_propiedad').val(propiedad.id_propiedad);
 			$('#Propiedad_direccion_propiedad').val(propiedad.direccion_propiedad);
 			$('#Propiedad_valor_propiedad').val(propiedad.valor_propiedad);
 			$('#Propiedad_rut_cliente').val(propiedad.rut_cliente);
@@ -98,27 +98,54 @@ function obtenerPropiedad(){
 	  </ol>
   </section>
   <section class="content">
-    <div class="row">
-      <div class="col-md-6">
-				<div class="box box-primary">
-					<div class="box-header with-border">
-            <h3 class="box-title">Título</h3>
-          </div><!-- /.box-header -->
-					<div class="form">
-						<div class="box-body">
-							<h1>Cuerpo</h1>
-						<div class="box-footer">
-							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#arrendatario">Boton</button>
-            </div>
+		<?php $form=$this->beginWidget('CActiveForm', array(
+			'id'=>'venta-form',
+			// Please note: When you enable ajax validation, make sure the corresponding
+			// controller action is handling ajax validation correctly.
+			// There is a call to performAjaxValidation() commented in generated controller code.
+			// See class documentation of CActiveForm for details on this.
+			'enableAjaxValidation'=>false,
+		)); ?>
+		<div class="col-md-6">
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<h3 class="box-title">Selección de la propiedad</h3>
+				</div><!-- /.box-header -->
+				<div class="form">
+					<div class="box-body">
+						<div class="col-xs-6">
+							<div class="form-group">
+								<?php echo $form->labelEx($model,'id_propiedad'); ?>
+								<?php echo $form->textField($model,'id_propiedad',array('class'=>'form-control', 'placeholder'=>'Ingrese el número de ficha de la propiedad o seleccione una.')); ?>
+								<?php echo $form->error($model,'id_propiedad'); ?>
+							</div>
+						</div>
+						<div class="col-xs-6">
+							<div class="form-group">
+								<?php echo $form->labelEx($model3,'rut_cliente'); ?>
+								<?php echo $form->textField($model3,'rut_cliente',array('class'=>'form-control','disabled'=>'true', 'placeholder'=>'RUT del propietario.')); ?>
+								<?php echo $form->error($model3,'rut_cliente'); ?>
+							</div>
+						</div>
+						<div class="col-xs-9">
+							<div class="form-group">
+								<?php echo $form->label($model3,'direccion_propiedad'); ?>
+								<?php echo $form->textField($model3,'direccion_propiedad', array('class'=>'form-control', 'disabled'=>'true')); ?>
+								<?php echo $form->error($model3,'direccion_propiedad'); ?>
+							</div>
+						</div>
+						<div class="col-xs-3">
+							<?php echo $form->label($model3,'valor_propiedad'); ?>
+							<?php echo $form->textField($model3,'valor_propiedad', array('class'=>'form-control', 'disabled'=>'true')); ?>
+							<?php echo $form->error($model3,'valor_propiedad'); ?>
+						</div>
+					</div>
+					<div class="box-footer">
+						<button type="button" class="btn btn-info" data-toggle="modal" data-target="#propiedad">Cargar propiedad</button>
 					</div>
 				</div>
+				<?php $this->endWidget(); ?>
 			</div>
-    </div>
+		</div>
   </section>
 </div>
-
-
-
-<h1>Create Venta</h1>
-
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>

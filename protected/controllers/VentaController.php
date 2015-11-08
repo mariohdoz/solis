@@ -6,7 +6,7 @@ class VentaController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column2';
+	 public $layout='//layouts/intraLayout';
 
 	/**
 	 * @return array action filters
@@ -28,11 +28,11 @@ class VentaController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array(),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('index','view','create','update'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -63,6 +63,33 @@ class VentaController extends Controller
 	public function actionCreate()
 	{
 		$model=new Venta;
+		$model3=new Propiedad;
+
+		$criteria2 = new CDbCriteria();
+		$criteria2->condition='activo_arrendatario=1';
+
+		$dataProvider=new CActiveDataProvider(Arrendatario::model(), array(
+			'keyAttribute'=>'rut_arrendatario',// IMPORTANTE, para que el CGridView conozca la seleccion
+			'criteria'=>$criteria2,
+			'pagination'=>array(
+				'pageSize'=>5,
+			),
+			'sort'=>array(
+				'defaultOrder'=>array('rut_arrendatario'=>true),
+			),
+		));
+		$criteria = new CDbCriteria();
+		$criteria->condition='activo_propiedad=1 AND eliminado_propiedad=0';
+		$dataProvider2=new CActiveDataProvider(Propiedad::model(), array(
+			'keyAttribute'=>'id_propiedad',// IMPORTANTE, para que el CGridView conozca la seleccion
+			'criteria'=>$criteria,
+			'pagination'=>array(
+				'pageSize'=>5,
+			),
+			'sort'=>array(
+				'defaultOrder'=>array('id_propiedad'=>true),
+			),
+		));
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -76,6 +103,9 @@ class VentaController extends Controller
 
 		$this->render('create',array(
 			'model'=>$model,
+			'model3'=>$model3,
+			'dataProvider'=>$dataProvider,
+			'dataProvider2'=>$dataProvider2,
 		));
 	}
 

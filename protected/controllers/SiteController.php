@@ -199,7 +199,7 @@ class SiteController extends Controller
 	public function actionInformacion($id)
 	{
 		$model = new Propiedad();
-		$model = Propiedad::model()->findByPk($model->rut_cliente);
+		$model = Propiedad::model()->findByPk($id);
 		$this->layout ='//layouts/informacionLayout';
 		$this->render('informacion', array('model'=>$model));
 	}
