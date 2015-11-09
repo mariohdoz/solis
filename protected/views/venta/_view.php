@@ -29,5 +29,15 @@
 	<?php echo CHtml::encode($data->rutcomprador_venta); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('comisioncomprador_venta')); ?>:</b>
+	<?php echo CHtml::encode($data->comisioncomprador_venta); ?>
+	<br />
+
+	<?php /*
+	<b><?php echo CHtml::encode($data->getAttributeLabel('comisioncliente_venta_')); ?>:</b>
+	<?php echo CHtml::encode($data->comisioncliente_venta_); ?>
+	<br />
+
+	*/ ?>
 
 </div>

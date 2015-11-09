@@ -288,21 +288,21 @@ $this->menu=array(
 									<div class="col-md-6">
 										<div class="form-group">
 											<?php echo $form->labelEx($model,'fechapago_arriendo'); ?>
-											<?php echo $form->dateField($model,'fechapago_arriendo', array('class'=>'form-control')); ?>
+											<?php echo $form->dateField($model,'fechapago_arriendo', array('class'=>'form-control', 'tabindex'=>1)); ?>
 										</div>
 										<div class="form-group">
 											<?php echo $form->labelEx($model,'inicio_arriendo'); ?>
-											<?php echo $form->dateField($model,'inicio_arriendo', array('class'=>'form-control')); ?>
+											<?php echo $form->dateField($model,'inicio_arriendo', array('class'=>'form-control', 'tabindex'=>3)); ?>
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
 											<?php echo $form->labelEx($model,'termino_arriendo'); ?>
-											<?php echo $form->dateField($model,'termino_arriendo', array('class'=>'form-control')); ?>
+											<?php echo $form->dateField($model,'termino_arriendo', array('class'=>'form-control', 'tabindex'=>2)); ?>
 										</div>
 										<div class="form-group">
 											<?php echo $form->labelEx($model,'valor_arriendo'); ?>
-											<?php echo $form->textField($model,'valor_arriendo', array('class'=>'form-control', 'placeholder'=>'Ingresar valor pactado con el arrendatario Ej: "500000".')); ?>
+											<?php echo $form->textField($model,'valor_arriendo', array('class'=>'form-control', 'placeholder'=>'Ingresar valor pactado con el arrendatario Ej: "500000".', 'tabindex'=>4)); ?>
 										</div>
 									</div>
 								</div><!-- form -->
@@ -310,7 +310,7 @@ $this->menu=array(
 							<!-- código acá -->
 						</div>
 						<div class="box-footer">
-							<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear arriendo' : 'Actualizar arriendo', array('class'=>'btn btn-primary')); ?>
+							<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear arriendo' : 'Actualizar arriendo', array('class'=>'btn btn-primary' , 'tabindex'=>5)); ?>
             </div>
 						<?php $this->endWidget(); ?>
 					</div>

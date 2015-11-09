@@ -97,8 +97,17 @@ class VentaController extends Controller
 		if(isset($_POST['Venta']))
 		{
 			$model->attributes=$_POST['Venta'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_venta));
+			$model->rut_admin = Yii::app()->session['admin_rut'];
+			$model3=Propiedad::model()->findByPk($model->id_propiedad);
+			if($model3->activo_propiedad == 1){
+				$model3->activo_propiedad= 0;
+				if($model->save() && $model3->save())
+				{
+					$this->redirect(array('view','id'=>$model->id_venta));
+				}
+			}else {
+				Yii::app()->user->setFlash('error','La propiedad ya se encuentra con un servicio prestado.');
+			}
 		}
 
 		$this->render('create',array(

@@ -10,6 +10,9 @@
  * @property string $nombrescomprador_venta
  * @property string $apellidoscomprador_venta
  * @property string $rutcomprador_venta
+ * @property integer $comisioncomprador_venta
+ * @property integer $comisioncliente_venta
+ * @property integer $ganancia_venta
  */
 class Venta extends CActiveRecord
 {
@@ -29,14 +32,13 @@ class Venta extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_propiedad, nombrescomprador_venta, apellidoscomprador_venta, rutcomprador_venta', 'required'),
-			array('id_propiedad', 'numerical', 'integerOnly'=>true),
-			array('rut_admin', 'length', 'max'=>10),
+			array('id_propiedad, rut_admin, nombrescomprador_venta, apellidoscomprador_venta, rutcomprador_venta', 'required'),
+			array('id_propiedad, comisioncomprador_venta, comisioncliente_venta, ganancia_venta', 'numerical', 'integerOnly'=>true),
+			array('rut_admin, rutcomprador_venta', 'length', 'max'=>10),
 			array('nombrescomprador_venta, apellidoscomprador_venta', 'length', 'max'=>100),
-			array('rutcomprador_venta', 'length', 'max'=>25),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_venta, id_propiedad, rut_admin, nombrescomprador_venta, apellidoscomprador_venta, rutcomprador_venta', 'safe', 'on'=>'search'),
+			array('id_venta, id_propiedad, rut_admin, nombrescomprador_venta, apellidoscomprador_venta, rutcomprador_venta, comisioncomprador_venta, comisioncliente_venta, ganancia_venta', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,6 +65,9 @@ class Venta extends CActiveRecord
 			'nombrescomprador_venta' => 'Nombres de comprador',
 			'apellidoscomprador_venta' => 'Apellidos del comprador',
 			'rutcomprador_venta' => 'RUT del comprador',
+			'comisioncomprador_venta' => 'Comisión a comprador',
+			'comisioncliente_venta' => 'Comisión a vendedor',
+			'ganancia_venta' => 'Ganancia de la venta',
 		);
 	}
 
@@ -90,6 +95,9 @@ class Venta extends CActiveRecord
 		$criteria->compare('nombrescomprador_venta',$this->nombrescomprador_venta,true);
 		$criteria->compare('apellidoscomprador_venta',$this->apellidoscomprador_venta,true);
 		$criteria->compare('rutcomprador_venta',$this->rutcomprador_venta,true);
+		$criteria->compare('comisioncomprador_venta',$this->comisioncomprador_venta);
+		$criteria->compare('comisioncliente_venta',$this->comisioncliente_venta);
+		$criteria->compare('ganancia_venta',$this->ganancia_venta);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

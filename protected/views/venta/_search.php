@@ -38,7 +38,17 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'rutcomprador_venta'); ?>
-		<?php echo $form->textField($model,'rutcomprador_venta',array('size'=>25,'maxlength'=>25)); ?>
+		<?php echo $form->textField($model,'rutcomprador_venta',array('size'=>10,'maxlength'=>10)); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'comisioncomprador_venta'); ?>
+		<?php echo $form->textField($model,'comisioncomprador_venta'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'comisioncliente_venta_'); ?>
+		<?php echo $form->textField($model,'comisioncliente_venta_'); ?>
 	</div>
 
 	<div class="row buttons">

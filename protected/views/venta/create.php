@@ -12,6 +12,8 @@ $this->menu=array(
 	array('label'=>'Manage Venta', 'url'=>array('admin')),
 );
 ?>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.formatCurrency-1.4.0.js" type="text/javascript"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/i18n/jquery.formatCurrency.es-CL.js" type="text/javascript"></script>
 <script>
 function obtenerPropiedad(){
 	// no olvides configurar tu CActiveDataProvider con: 'keyAttribute'=>'idcategoria',
@@ -32,9 +34,13 @@ function obtenerPropiedad(){
 			$( "Propiedad_rut_cliente" ).prop({
 				disabled: false
 			});
+			ganancia();
 			$('#Venta_id_propiedad').val(propiedad.id_propiedad);
 			$('#Propiedad_direccion_propiedad').val(propiedad.direccion_propiedad);
 			$('#Propiedad_valor_propiedad').val(propiedad.valor_propiedad);
+			$('#Propiedad_valor_propiedad').formatCurrency({region: 'es-CL'
+        , roundToDecimalPlace: -1});
+			ganancia();
 			$('#Propiedad_rut_cliente').val(propiedad.rut_cliente);
 			$( "#Propiedad_valor_propiedad" ).prop({
 				disabled: true
@@ -46,6 +52,26 @@ function obtenerPropiedad(){
 	}).error(function(jqXHR, textStatus, errorThrown) {
 		$("#respuesta").html(jqXHR.responseText);
 	});
+}
+function ganancia(){
+	var id_propiedad = $.fn.yiiGridView.getSelection('propiedad');
+	var action = "<?php echo Yii::app()->request->baseUrl; ?>"+'/arriendo/obtenerpro/'+id_propiedad;
+	$.getJSON(action, function(data) {
+		// limpia la lista
+		$('#respuesta').find("").each(function(){ $(this).remove(); });
+		$.each(data, function(key, propiedad) {
+			var a = $('#Venta_comisioncomprador_venta').val();
+			var b = $('#Venta_comisioncliente_venta').val();
+			var cont = propiedad.valor_propiedad * ((parseInt(a)+parseInt(b))/100);
+			cont = Math.round(cont);
+			$('#Venta_ganancia_venta').val(cont);
+			$('#Venta_ganancia_venta').formatCurrency({region: 'es-CL'
+				, roundToDecimalPlace: -1});
+		});
+	}).error(function(jqXHR, textStatus, errorThrown) {
+		$("#respuesta").html(jqXHR.responseText);
+	});
+
 }
 </script>
 <div class="modal fade modal-default" id="propiedad" tabindex="-2" role="dialog" aria-labelledby="myModallabel" aria-hidden="true">
@@ -82,7 +108,6 @@ function obtenerPropiedad(){
 		</div>
 	</div>
 </div>
-
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
@@ -106,46 +131,124 @@ function obtenerPropiedad(){
 			// See class documentation of CActiveForm for details on this.
 			'enableAjaxValidation'=>false,
 		)); ?>
-		<div class="col-md-6">
-			<div class="box box-primary">
-				<div class="box-header with-border">
-					<h3 class="box-title">Selección de la propiedad</h3>
-				</div><!-- /.box-header -->
-				<div class="form">
-					<div class="box-body">
-						<div class="col-xs-6">
-							<div class="form-group">
-								<?php echo $form->labelEx($model,'id_propiedad'); ?>
-								<?php echo $form->textField($model,'id_propiedad',array('class'=>'form-control', 'placeholder'=>'Ingrese el número de ficha de la propiedad o seleccione una.')); ?>
-								<?php echo $form->error($model,'id_propiedad'); ?>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+						<h3 class="box-title">Selección de la propiedad.</h3>
+					</div><!-- /.box-header -->
+					<div class="form">
+						<div class="box-body">
+							<div class="col-xs-6">
+								<div class="form-group">
+									<?php echo $form->labelEx($model,'id_propiedad'); ?>
+									<?php echo $form->textField($model,'id_propiedad',array('class'=>'form-control', 'placeholder'=>'Ingrese el número de ficha de la propiedad o seleccione una.')); ?>
+									<?php echo $form->error($model,'id_propiedad'); ?>
+								</div>
+							</div>
+							<div class="col-xs-6">
+								<div class="form-group">
+									<?php echo $form->labelEx($model3,'rut_cliente'); ?>
+									<?php echo $form->textField($model3,'rut_cliente',array('class'=>'form-control','disabled'=>'true', 'placeholder'=>'RUT del propietario.')); ?>
+									<?php echo $form->error($model3,'rut_cliente'); ?>
+								</div>
+							</div>
+							<div class="col-xs-8">
+								<div class="form-group">
+									<?php echo $form->label($model3,'direccion_propiedad'); ?>
+									<?php echo $form->textField($model3,'direccion_propiedad', array('class'=>'form-control', 'disabled'=>'true')); ?>
+									<?php echo $form->error($model3,'direccion_propiedad'); ?>
+								</div>
+							</div>
+							<div class="col-xs-4">
+								<?php echo $form->label($model3,'valor_propiedad'); ?>
+								<?php echo $form->textField($model3,'valor_propiedad', array('class'=>'form-control', 'disabled'=>'true', 'onchange'=>"applyFormatCurrency(document.getElementById('Propiedad_valor_propiedad'));"));?>
+								<?php echo $form->error($model3,'valor_propiedad'); ?>
 							</div>
 						</div>
-						<div class="col-xs-6">
-							<div class="form-group">
-								<?php echo $form->labelEx($model3,'rut_cliente'); ?>
-								<?php echo $form->textField($model3,'rut_cliente',array('class'=>'form-control','disabled'=>'true', 'placeholder'=>'RUT del propietario.')); ?>
-								<?php echo $form->error($model3,'rut_cliente'); ?>
-							</div>
+						<div class="box-footer">
+							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#propiedad">Cargar propiedad</button>
 						</div>
-						<div class="col-xs-9">
-							<div class="form-group">
-								<?php echo $form->label($model3,'direccion_propiedad'); ?>
-								<?php echo $form->textField($model3,'direccion_propiedad', array('class'=>'form-control', 'disabled'=>'true')); ?>
-								<?php echo $form->error($model3,'direccion_propiedad'); ?>
-							</div>
-						</div>
-						<div class="col-xs-3">
-							<?php echo $form->label($model3,'valor_propiedad'); ?>
-							<?php echo $form->textField($model3,'valor_propiedad', array('class'=>'form-control', 'disabled'=>'true')); ?>
-							<?php echo $form->error($model3,'valor_propiedad'); ?>
-						</div>
-					</div>
-					<div class="box-footer">
-						<button type="button" class="btn btn-info" data-toggle="modal" data-target="#propiedad">Cargar propiedad</button>
 					</div>
 				</div>
-				<?php $this->endWidget(); ?>
+			</div>
+			<div class="col-md-12">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+						<h3 class="box-title">Datos de la venta.</h3>
+					</div>
+					<div class="form">
+						<div class="box-body">
+							<?php echo $form->errorSummary($model,'<strong>Es necesario arreglar los siguientes errores:</strong><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><div class="alert alert-danger">', '</div>'); ?>
+
+							<div class="col-xs-3">
+								<div class="form-group">
+									<?php echo $form->labelEx($model,'rutcomprador_venta'); ?>
+									<?php echo $form->textField($model,'rutcomprador_venta',array('class'=>'form-control', 'placeholder'=>'Ejemplo: 12345678-9')); ?>
+
+								</div>
+							</div>
+							<div class="col-xs-3">
+								<div class="form-group">
+									<?php echo $form->labelEx($model,'comisioncliente_venta'); ?>
+									<?php echo $form->dropDownList($model,'comisioncliente_venta',
+											array(
+													'1' => '1%',
+													'2' => '2%',
+													'3' => '3%',
+													'4' => '4%',
+
+											),
+											array("class"=>"form-control select2", 'onchange'=>'ganancia()'),
+											array('empty' => '(Seleccione la cantidad de baños)')); ?>
+
+								</div>
+							</div>
+							<div class="col-xs-3">
+								<div class="form-group">
+									<?php echo $form->labelEx($model,'comisioncomprador_venta'); ?>
+									<?php echo $form->dropDownList($model,'comisioncomprador_venta',
+											array(
+													'1' => '1%',
+													'2' => '2%',
+													'3' => '3%',
+													'4' => '4%',
+											),
+											array("class"=>"form-control select2", 'onchange'=>'ganancia()'),
+											array('empty' => '(Seleccione la cantidad de baños)')); ?>
+
+								</div>
+							</div>
+							<div class="col-xs-3">
+								<div class="form-group">
+									<?php echo $form->labelEx($model,'ganancia_venta'); ?>
+									<?php echo $form->textField($model,'ganancia_venta',array('class'=>'form-control', 'disabled'=>'true')); ?>
+
+								</div>
+							</div>
+							<div class="col-xs-6">
+								<div class="form-group">
+									<?php echo $form->labelEx($model,'nombrescomprador_venta'); ?>
+									<?php echo $form->textField($model,'nombrescomprador_venta',array('class'=>'form-control', 'placeholder'=>'Ingrese los nombres del comprador.')); ?>
+
+								</div>
+							</div>
+							<div class="col-xs-6">
+								<div class="form-group">
+									<?php echo $form->labelEx($model,'apellidoscomprador_venta'); ?>
+									<?php echo $form->textField($model,'apellidoscomprador_venta',array('class'=>'form-control', 'placeholder'=>'Ingrese apellidos del comprador.')); ?>
+
+								</div>
+							</div>
+						</div>
+						<div class="box-footer">
+							<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear arriendo' : 'Actualizar arriendo', array('class'=>'btn btn-primary' , 'tabindex'=>5)); ?>
+
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
   </section>
 </div>
+<?php $this->endWidget(); ?>
