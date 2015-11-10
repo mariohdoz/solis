@@ -280,7 +280,7 @@ class SiteController extends Controller
 				$this->redirect("/intra/index");
 		}
 		// display the login form
-		$this->render('principal', array(
+		$this->render('index', array(
 			'model' => $model,
 			'model1' => $model1,
 			'model2' => $model2

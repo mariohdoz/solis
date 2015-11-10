@@ -145,9 +145,9 @@ if(!Yii::app()->session['activo'])
               </a>
               <ul class="treeview-menu">
                 <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/venta/create"><i class="fa fa-plus"></i> Nueva venta</a></li>
-                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/Select"><i class="fa fa-exchange"></i> Modificar Arriendo</a></li>
-                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/Select2"><i class="fa fa-close"></i> Eliminar Arriendo</a></li>
-                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/index"><i class="fa fa-eye"></i>Ver Arriendos</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/venta/Select"><i class="fa fa-exchange"></i> Modificar venta</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/venta/Select2"><i class="fa fa-close"></i> Eliminar venta</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/venta/index"><i class="fa fa-eye"></i>Ver ventas</a></li>
               </ul>
             </li>
           </ul>

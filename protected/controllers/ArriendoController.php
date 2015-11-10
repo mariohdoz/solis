@@ -259,7 +259,7 @@ class ArriendoController extends Controller
 		}else {
 			Yii::app()->user->setFlash('danger','El arriendo no pudo ser eliminado.');
 		}
-		$this->redirect(Yii::app()->request->baseUrl.'/arriendo/admin/');
+		$this->redirect(Yii::app()->request->baseUrl.'/arriendo/index/');
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 
 	}

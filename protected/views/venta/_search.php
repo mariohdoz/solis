@@ -47,8 +47,13 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'comisioncliente_venta_'); ?>
-		<?php echo $form->textField($model,'comisioncliente_venta_'); ?>
+		<?php echo $form->label($model,'comisioncliente_venta'); ?>
+		<?php echo $form->textField($model,'comisioncliente_venta'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'ganancia_venta'); ?>
+		<?php echo $form->textField($model,'ganancia_venta',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 
 	<div class="row buttons">

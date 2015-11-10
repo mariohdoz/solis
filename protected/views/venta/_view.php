@@ -34,8 +34,12 @@
 	<br />
 
 	<?php /*
-	<b><?php echo CHtml::encode($data->getAttributeLabel('comisioncliente_venta_')); ?>:</b>
-	<?php echo CHtml::encode($data->comisioncliente_venta_); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('comisioncliente_venta')); ?>:</b>
+	<?php echo CHtml::encode($data->comisioncliente_venta); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('ganancia_venta')); ?>:</b>
+	<?php echo CHtml::encode($data->ganancia_venta); ?>
 	<br />
 
 	*/ ?>

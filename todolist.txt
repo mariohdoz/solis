@@ -1,6 +1,1 @@
-Site:
-
-Intranet:
-propiedad:  Poder modificar las imagenes.
-            Post ingreso de propiedad ser visualizada de igual manera a como se vería al ser consultada en la busqueda.
-Cliente:    Todo.   
+Al actualizar el arriendo se debe ser capas de liberar la propiedad si es que fue cambiada. además se tiene que cambiar la selección de fecha de pago 

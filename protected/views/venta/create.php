@@ -1,7 +1,6 @@
 <?php
 /* @var $this VentaController */
 /* @var $model Venta */
-
 $this->breadcrumbs=array(
 	'Ventas'=>array('index'),
 	'Create',
@@ -34,7 +33,6 @@ function obtenerPropiedad(){
 			$( "Propiedad_rut_cliente" ).prop({
 				disabled: false
 			});
-			ganancia();
 			$('#Venta_id_propiedad').val(propiedad.id_propiedad);
 			$('#Propiedad_direccion_propiedad').val(propiedad.direccion_propiedad);
 			$('#Propiedad_valor_propiedad').val(propiedad.valor_propiedad);
@@ -71,7 +69,6 @@ function ganancia(){
 	}).error(function(jqXHR, textStatus, errorThrown) {
 		$("#respuesta").html(jqXHR.responseText);
 	});
-
 }
 </script>
 <div class="modal fade modal-default" id="propiedad" tabindex="-2" role="dialog" aria-labelledby="myModallabel" aria-hidden="true">
@@ -109,7 +106,7 @@ function ganancia(){
 	</div>
 </div>
 <div class="content-wrapper">
-  <section class="content-header">
+	<section class="content-header">
     <h1>
 	    Agregar
 	    <small>ingresar una venta.</small>
@@ -123,15 +120,23 @@ function ganancia(){
 	  </ol>
   </section>
   <section class="content">
-		<?php $form=$this->beginWidget('CActiveForm', array(
-			'id'=>'venta-form',
-			// Please note: When you enable ajax validation, make sure the corresponding
-			// controller action is handling ajax validation correctly.
-			// There is a call to performAjaxValidation() commented in generated controller code.
-			// See class documentation of CActiveForm for details on this.
-			'enableAjaxValidation'=>false,
-		)); ?>
-		<div class="row">
+    <div class="row">
+			<?php
+			/* @var $this VentaController */
+			/* @var $model Venta */
+			/* @var $form CActiveForm */
+			?>
+			<?php $form=$this->beginWidget('CActiveForm', array(
+				'id'=>'venta-form',
+				// Please note: When you enable ajax validation, make sure the corresponding
+				// controller action is handling ajax validation correctly.
+				// There is a call to performAjaxValidation() commented in generated controller code.
+				// See class documentation of CActiveForm for details on this.
+				'enableAjaxValidation'=>false,
+			)); ?>
+			<div class="col-md-12">
+				<?php echo $form->errorSummary($model,'<strong>Es necesario arreglar los siguientes errores:</strong><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><div class="alert alert-danger">', '</div>'); ?>
+			</div>
 			<div class="col-md-6">
 				<div class="box box-primary">
 					<div class="box-header with-border">
@@ -175,17 +180,14 @@ function ganancia(){
 			<div class="col-md-12">
 				<div class="box box-primary">
 					<div class="box-header with-border">
-						<h3 class="box-title">Datos de la venta.</h3>
+						<h3 class="box-title">Datos de la venta</h3>
 					</div>
 					<div class="form">
 						<div class="box-body">
-							<?php echo $form->errorSummary($model,'<strong>Es necesario arreglar los siguientes errores:</strong><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><div class="alert alert-danger">', '</div>'); ?>
-
 							<div class="col-xs-3">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'rutcomprador_venta'); ?>
 									<?php echo $form->textField($model,'rutcomprador_venta',array('class'=>'form-control', 'placeholder'=>'Ejemplo: 12345678-9')); ?>
-
 								</div>
 							</div>
 							<div class="col-xs-3">
@@ -197,7 +199,6 @@ function ganancia(){
 													'2' => '2%',
 													'3' => '3%',
 													'4' => '4%',
-
 											),
 											array("class"=>"form-control select2", 'onchange'=>'ganancia()'),
 											array('empty' => '(Seleccione la cantidad de baños)')); ?>
@@ -216,14 +217,12 @@ function ganancia(){
 											),
 											array("class"=>"form-control select2", 'onchange'=>'ganancia()'),
 											array('empty' => '(Seleccione la cantidad de baños)')); ?>
-
 								</div>
 							</div>
 							<div class="col-xs-3">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'ganancia_venta'); ?>
-									<?php echo $form->textField($model,'ganancia_venta',array('class'=>'form-control', 'disabled'=>'true')); ?>
-
+									<?php echo $form->textField($model,'ganancia_venta',array('class'=>'form-control')); ?>
 								</div>
 							</div>
 							<div class="col-xs-6">
@@ -237,18 +236,16 @@ function ganancia(){
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'apellidoscomprador_venta'); ?>
 									<?php echo $form->textField($model,'apellidoscomprador_venta',array('class'=>'form-control', 'placeholder'=>'Ingrese apellidos del comprador.')); ?>
-
 								</div>
 							</div>
 						</div>
 						<div class="box-footer">
-							<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear arriendo' : 'Actualizar arriendo', array('class'=>'btn btn-primary' , 'tabindex'=>5)); ?>
-
+							<?php echo CHtml::submitButton($model->isNewRecord ? 'Registrar venta' : 'Actualizar venta', array('class'=>'btn btn-primary' , 'tabindex'=>5)); ?>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+			<?php $this->endWidget(); ?>
+    </div>
   </section>
 </div>
-<?php $this->endWidget(); ?>

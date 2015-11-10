@@ -12,7 +12,7 @@
  * @property string $rutcomprador_venta
  * @property integer $comisioncomprador_venta
  * @property integer $comisioncliente_venta
- * @property integer $ganancia_venta
+ * @property string $ganancia_venta
  */
 class Venta extends CActiveRecord
 {
@@ -32,10 +32,11 @@ class Venta extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_propiedad, rut_admin, nombrescomprador_venta, apellidoscomprador_venta, rutcomprador_venta', 'required'),
-			array('id_propiedad, comisioncomprador_venta, comisioncliente_venta, ganancia_venta', 'numerical', 'integerOnly'=>true),
+			array('id_propiedad, rut_admin, nombrescomprador_venta, apellidoscomprador_venta, rutcomprador_venta, ganancia_venta', 'required'),
+			array('id_propiedad, comisioncomprador_venta, comisioncliente_venta', 'numerical', 'integerOnly'=>true),
 			array('rut_admin, rutcomprador_venta', 'length', 'max'=>10),
 			array('nombrescomprador_venta, apellidoscomprador_venta', 'length', 'max'=>100),
+			array('ganancia_venta', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_venta, id_propiedad, rut_admin, nombrescomprador_venta, apellidoscomprador_venta, rutcomprador_venta, comisioncomprador_venta, comisioncliente_venta, ganancia_venta', 'safe', 'on'=>'search'),
@@ -60,7 +61,7 @@ class Venta extends CActiveRecord
 	{
 		return array(
 			'id_venta' => 'Id Venta',
-			'id_propiedad' => 'Número de ficha',
+			'id_propiedad' => 'Número de ficha de la propiedad',
 			'rut_admin' => 'RUT del administrador',
 			'nombrescomprador_venta' => 'Nombres de comprador',
 			'apellidoscomprador_venta' => 'Apellidos del comprador',
@@ -97,7 +98,7 @@ class Venta extends CActiveRecord
 		$criteria->compare('rutcomprador_venta',$this->rutcomprador_venta,true);
 		$criteria->compare('comisioncomprador_venta',$this->comisioncomprador_venta);
 		$criteria->compare('comisioncliente_venta',$this->comisioncliente_venta);
-		$criteria->compare('ganancia_venta',$this->ganancia_venta);
+		$criteria->compare('ganancia_venta',$this->ganancia_venta,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

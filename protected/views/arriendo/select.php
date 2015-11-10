@@ -5,10 +5,7 @@
     alert(selected);
 
   }
-
-
 </script>
-
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
@@ -59,7 +56,6 @@
                             'label'=>'<i class="fa fa-pencil-square-o"></i>',
                             'url'=>'Yii::app()->createUrl("arriendo/update", array("id"=>$data->id_arriendo))',
                         ),
-
                     ),
                   ),
                 ),
@@ -73,5 +69,4 @@
       </div>
     </div>
   </section>
-
 </div>

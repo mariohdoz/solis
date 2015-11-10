@@ -199,7 +199,7 @@ $this->endWidget('zii.widgets.jui.CJuiDialog');           echo CHtml::link('open
                         <div class="col-md-6">
                           <div class="form-group">
                             <?php echo $form->labelEx($model, 'amoblado_propiedad');?><br>
-                            <?php echo $form->checkBox($model, 'amoblado_propiedad');?>
+                            <?php echo $form->checkBox($model, 'amoblado_propiedad', array('class'=>'minimal'));?>
                           </div>
                         </div>
                     </div>

@@ -28,7 +28,7 @@ $this->menu=array(
 	  <ol class="breadcrumb">
 	    <li><a href="?r=intra/index">
 			<i class="fa fa-dashboard"></i>Inicio</a></li>
-			<li class="active">Clientes</li>
+			<li class="active">Arriendo</li>
 			<li><a href="?r=intra/index">Gestión</a></li>
 			<li class="active">Registrar Propietario</li>
 	  </ol>
@@ -91,8 +91,13 @@ $this->menu=array(
 						</div>
 						<div class="box-footer">
 							<?php echo CHtml::link('Términar', array('/intra/index'), array('class'=>'btn btn-primary')); ?>
-							<?php echo CHtml::link('Actualizar arriendo', array('/arriendo/update/', 'id'=>$model->id_arriendo), array('class'=>'btn btn-info', 'confirm' => '¿Está seguro de actualizar la propiedad?')); ?>
-							<?php echo CHtml::link('Eliminar arriendo', array(), array('class'=>'btn btn-danger', 'confirm' => '¿Está seguro de eliminar la propiedad?')); ?>
+							<?php echo CHtml::link('Actualizar arriendo', array('/arriendo/update/', 'id'=>$model->id_arriendo), array('class'=>'btn btn-info', 'confirm' => '¿Está seguro de actualizar el arriendo?')); ?>
+							<?php echo CHtml::link("Eliminar arriendo", '#', array(
+							    'submit'=>array('/arriendo/delete', "id"=>$model->id_arriendo),
+									'class'=>'btn btn-danger',
+							    'confirm' => '¿Está seguro de eliminar el arriendo?'
+							    )
+							);?>
 						</div>
 					</div>
 				</div>

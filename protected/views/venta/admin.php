@@ -51,6 +51,11 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'nombrescomprador_venta',
 		'apellidoscomprador_venta',
 		'rutcomprador_venta',
+		/*
+		'comisioncomprador_venta',
+		'comisioncliente_venta',
+		'ganancia_venta',
+		*/
 		array(
 			'class'=>'CButtonColumn',
 		),
