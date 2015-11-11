@@ -1,58 +1,76 @@
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>
-            Configuración
-            <small>Seleccionar propiedad </small>
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="?r=intra/index">
-                    <i class="fa fa-dashboard"></i>Inicio</a></li>
-            <li class="active">Propiedades</li>
-            <li><a href="?r=intra/index">Modificar propiedad</a></li>
-            <li class="active">Seleccionar propiedad</li>
-        </ol>
-    </section>
-    <!-- Main content -->
-    <section class="content">
-      <?php $form=$this->beginWidget('CActiveForm', array(
-        'id'=>'Propiedad-form',
-        'action'=>Yii::app()->createUrl('//Propiedad/Modificar'),
-        // Please note: When you enable ajax validation, make sure the corresponding
-        // controller action is handling ajax validation correctly.
-        // There is a call to performAjaxValidation() commented in generated controller code.
-        // See class documentation of CActiveForm for details on this.
-        'enableAjaxValidation'=>false,
-        )); ?>
-        <!-- Seleccion de propietario -->
-        <div class="box box-default">
-            <div class="box-header with-border">
-                <h3 class="box-title">Modificar propietadad</h3>
-            </div><!-- /.box-header -->
-            <div class="box-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                          <br>
-                            <p>Dirección de la propiedad</p>
-                            <?php echo $form->dropDownList($model,'id_propiedad', CHtml::listData(Propiedad::model()->findAll(array('order' => 'direccion_propiedad')),'id_propiedad','Cliente' ), array("class"=>"form-control select2"),
-                                array('empty' => '(Seleccione tipo de servicio)'));?>
-                            <?php echo $form->error($model,'id_propiedad'); ?>
-                            <br>
-                            <div class="center-block">
-                              <?php echo CHtml::submitButton('Modificar Propiedad', array("class"=>"btn btn-primary")) ?>
-                            </div>
-                            <?php $this->endWidget(); ?>
-                        </div><!-- /.form-group -->
-                    </div><!-- /.col -->
-                </div>
-                <!-- /.row -->
-            </div><!-- /.box-body -->
-            <div class="box-footer">
-                <div class="pull-right">
-                </div>
-            </div>
-        </div><!-- /.box -->
-        <!-- Termino de agregar prop -->
-    </section><!-- termina la segunda seccion -->
+  <section class="content-header">
+    <h1>
+	    Actualizar
+	    <small>Selección de la propiedad que se desea Actualizar.</small>
+	  </h1>
+	  <ol class="breadcrumb">
+	    <li><a href="?r=intra/index">
+			<i class="fa fa-dashboard"></i>Inicio</a></li>
+			<li class="active">propiedad</li>
+			<li><a href="?r=intra/index">Gestión</a></li>
+			<li class="active">Actualizar</li>
+	  </ol>
+  </section>
+  <section class='content'>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box box-primary">
+					<div class="box-header with-border">
+            <h3 class="box-title">Seleccion de propiedad</h3>
+          </div>
+					<div class="form">
+						<div class="box-body">
+              <?php $this->widget('zii.widgets.grid.CGridView', array(
+              	'id'=>'propiedad-grid',
+              	'dataProvider'=>$model->search(),
+              	'filter'=>$model,
+              	'columns'=>array(
+              		'id_propiedad',
+              		'rut_cliente',
+              		'direccion_propiedad',
+              		'numero_propiedad',
+              		'tipo_propiedad',
+              		'comuna_propiedad',
+                  'servicio_propiedad',
+                  array(
+                    'header'=>'Estado',
+                    'name'=>'estado_propiedad',
+                    'value' => '$data->estado_propiedad?Yii::t(\'app\',\'Disponible\'):Yii::t(\'app\', \'Ocupado\')',
+                    'filter' => array('0' => Yii::t('app', 'Ocupado'), '1' => Yii::t('app', 'Disponible')),
+                    'htmlOptions' => array('style' => "text-align:center;"),
+                   ),
+              		/*
+              		'terreno_propiedad',
+              		'construido_propiedad',
+              		'servicio_propiedad',
+              		'estado_propiedad',
+              		'descripcion_propiedad',
+              		'comuna_propiedad',
+              		'amoblado_propiedad',
+              		'valor_propiedad',
+              		'activo_propiedad',
+              		'eliminado_propiedad',
+              		*/
+                  array(
+                    'header'=>'Actualizar',
+                    'class'=>'CButtonColumn',
+                    'template'=>'{email}',
+                    'buttons'=>array(
+                        'email' => array(
+                            'label'=>'<i class="fa fa-pencil-square-o"></i>',
+                            'url'=>'Yii::app()->createUrl("propiedad/update", array("id"=>$data->id_propiedad))',
+                        ),
+                    ),
+                  ),
+              	),
+              )); ?>
+						</div>
+						<div class="box-footer">
+						</div>
+					</div>
+				</div>
+      </div>
+    </div>
+  </section>
 </div>

@@ -116,10 +116,38 @@ if(!Yii::app()->session['activo'])
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/propiedad/index"><i class="fa fa-plus"></i> Ingresar nueva propiedad</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/propiedad/create"><i class="fa fa-plus"></i> Ingresar nueva propiedad</a></li>
                 <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/propiedad/select"><i class="fa fa-exchange"></i> Modificar Propiedades</a></li>
                 <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/propiedad/eliminar"><i class="fa fa-close"></i> Eliminar Propiedad</a></li>
                 <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/propiedad/ver"><i class="fa fa-file-text-o"></i> Listado de Propiedades</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="sidebar-menu">
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-pencil-square-o"></i> <span>Arriendos</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/create"><i class="fa fa-plus"></i> Nuevo Arriendo</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/Select"><i class="fa fa-exchange"></i> Modificar Arriendo</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/Select2"><i class="fa fa-close"></i> Eliminar Arriendo</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/index"><i class="fa fa-eye"></i>Ver Arriendos</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="sidebar-menu">
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-money "></i> <span>Ventas</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/venta/create"><i class="fa fa-plus"></i> Nueva venta</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/venta/Select"><i class="fa fa-exchange"></i> Modificar venta</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/venta/Select2"><i class="fa fa-close"></i> Eliminar venta</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/venta/index"><i class="fa fa-eye"></i>Ver ventas</a></li>
               </ul>
             </li>
           </ul>
@@ -150,20 +178,7 @@ if(!Yii::app()->session['activo'])
                 </ul>
               </li>
             </ul>
-            <ul class="sidebar-menu">
-              <li class="treeview">
-                <a href="#">
-                  <i class="fa fa-pencil-square-o"></i> <span>Arriendos</span>
-                  <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/create"><i class="fa fa-plus"></i> Nuevo Arriendo</a></li>
-                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/update"><i class="fa fa-exchange"></i> Modificar Arriendo</a></li>
-                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/delete"><i class="fa fa-close"></i> Eliminar Arriendo</a></li>
-                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arriendo/index"><i class="fa fa-eye"></i>Ver Arriendos</a></li>
-                </ul>
-              </li>
-            </ul>
+
             <ul class="sidebar-menu">
               <li class="treeview">
                 <a href="#">
@@ -235,7 +250,6 @@ if(!Yii::app()->session['activo'])
       </aside>
      <div class="control-sidebar-bg"></div>
     </div>
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/plugins/jQuery/jQuery-2.1.4.min.js"></script>
   <!-- jQuery UI 1.11.4 -->
   <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->

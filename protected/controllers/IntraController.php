@@ -4,15 +4,13 @@ class IntraController extends CController{
 
     public function actionIndex(){
         if(Yii::app()->session['activo']) {
-
             $this->render('intra');
         }
         else
-        {$this->redirect('?r=/site/index');;}
+        {$this->redirect(Yii::app()->request->baseUrl.'/site/index');;}
     }
-
     public function actionNuevo(){
-    	$this->render(nuevo);
+    	$this->render('plantilla');
     }
 
 

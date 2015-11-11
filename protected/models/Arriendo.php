@@ -13,6 +13,7 @@
  * @property string $inicio_arriendo
  * @property string $termino_arriendo
  * @property integer $valor_arriendo
+ * @property integer $activo_arriendo
  */
 class Arriendo extends CActiveRecord
 {
@@ -33,11 +34,11 @@ class Arriendo extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id_propiedad, rut_admin, inscripcion_arriendo, fechapago_arriendo, inicio_arriendo, termino_arriendo, valor_arriendo', 'required'),
-			array('id_propiedad, valor_arriendo', 'numerical', 'integerOnly'=>true),
+			array('id_propiedad, valor_arriendo, activo_arriendo', 'numerical', 'integerOnly'=>true),
 			array('rut_admin, rut_arrendatario', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_arriendo, id_propiedad, rut_admin, rut_arrendatario, inscripcion_arriendo, fechapago_arriendo, inicio_arriendo, termino_arriendo, valor_arriendo', 'safe', 'on'=>'search'),
+			array('id_arriendo, id_propiedad, rut_admin, rut_arrendatario, inscripcion_arriendo, fechapago_arriendo, inicio_arriendo, termino_arriendo, valor_arriendo, activo_arriendo', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -49,6 +50,8 @@ class Arriendo extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'arrendatario'=>array(self::BELONGS_TO, 'Arrendatario', 'rut_arrendatario'),
+			'propiedad'=>array(self::BELONGS_TO, 'Propiedad', 'id_propiedad'),
 		);
 	}
 
@@ -59,7 +62,7 @@ class Arriendo extends CActiveRecord
 	{
 		return array(
 			'id_arriendo' => 'Id Arriendo',
-			'id_propiedad' => 'Id Propiedad',
+			'id_propiedad' => 'Número de ficha',
 			'rut_admin' => 'Rut Admin',
 			'rut_arrendatario' => 'RUT del arrendatario',
 			'inscripcion_arriendo' => 'Inscripcion Arriendo',
@@ -67,6 +70,7 @@ class Arriendo extends CActiveRecord
 			'inicio_arriendo' => 'Inicio del arriendo',
 			'termino_arriendo' => 'Término del arriendo',
 			'valor_arriendo' => 'Valor pactado de arriendo',
+			'activo_arriendo' => 'Activo Arriendo',
 		);
 	}
 
@@ -97,6 +101,7 @@ class Arriendo extends CActiveRecord
 		$criteria->compare('inicio_arriendo',$this->inicio_arriendo,true);
 		$criteria->compare('termino_arriendo',$this->termino_arriendo,true);
 		$criteria->compare('valor_arriendo',$this->valor_arriendo);
+		$criteria->compare('activo_arriendo',1);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

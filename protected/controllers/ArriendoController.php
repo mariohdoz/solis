@@ -32,11 +32,11 @@ class ArriendoController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','index','view'),
+				'actions'=>array('create','update','index','view','obtener','obtenerpro', 'select', 'select2', 'eliminar'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin',),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -51,8 +51,13 @@ class ArriendoController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$model=$this->loadModel($id);
+		$model2=new Arrendatario;
+		$model2=Arrendatario::model()->findByPk($model->rut_arrendatario);
+		$model3=new Propiedad;
+		$model3=Propiedad::model()->findByPk($model->id_propiedad);
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=>$model,'model2'=>$model2,'model3'=>$model3
 		));
 	}
 
@@ -66,21 +71,102 @@ class ArriendoController extends Controller
 		$model2=new Arrendatario;
 		$model3=new Propiedad;
 
+		$criteria2 = new CDbCriteria();
+		$criteria2->condition='activo_arrendatario=1';
+
+		$dataProvider=new CActiveDataProvider(Arrendatario::model(), array(
+			'keyAttribute'=>'rut_arrendatario',// IMPORTANTE, para que el CGridView conozca la seleccion
+			'criteria'=>$criteria2,
+			'pagination'=>array(
+				'pageSize'=>5,
+			),
+			'sort'=>array(
+				'defaultOrder'=>array('rut_arrendatario'=>true),
+			),
+		));
+		$criteria = new CDbCriteria();
+		$criteria->condition='activo_propiedad=1 AND eliminado_propiedad=0';
+		$dataProvider2=new CActiveDataProvider(Propiedad::model(), array(
+			'keyAttribute'=>'id_propiedad',// IMPORTANTE, para que el CGridView conozca la seleccion
+			'criteria'=>$criteria,
+			'pagination'=>array(
+				'pageSize'=>5,
+			),
+			'sort'=>array(
+				'defaultOrder'=>array('id_propiedad'=>true),
+			),
+		));
+
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Arriendo']))
 		{
 			$model->attributes=$_POST['Arriendo'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_arriendo));
+			$model->rut_admin = Yii::app()->session['admin_rut'];
+			$model->inscripcion_arriendo = date('Y-m-d');
+			if($model->id_propiedad != '' && $model->rut_arrendatario != ''){
+				$model3=Propiedad::model()->findByPk($model->id_propiedad);
+				$model2=Arrendatario::model()->findByPk($model->rut_arrendatario);
+				if($model3->activo_propiedad == 1){
+					$model3->activo_propiedad= 0;
+					if($model->save() && $model3->save())
+					{
+						$this->redirect(array('view','id'=>$model->id_arriendo));
+					}
+				}else {
+					Yii::app()->user->setFlash('error','La propiedad ya se encuentra con un servicio prestado.');
+				}
+			}else {
+				Yii::app()->user->setFlash('error','Debe seleccionar una propiedad y un arrendatario.');
+			}
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
 			'model2'=>$model2,
 			'model3'=>$model3,
+			'dataProvider'=>$dataProvider,
+			'dataProvider2'=>$dataProvider2,
 		));
+	}
+	/* Se crea la función obtener para poder acceder a los datos del arrendatario*/
+	public function actionObtener($id){
+		$rut=$this->codigo($id);
+		$resp = Arrendatario::model()->findAllByAttributes(array('rut_arrendatario'=>$rut));
+		header("Content-type: application/json");
+		echo CJSON::encode($resp);
+	}
+
+	public function actionObtenerpro($id){
+		$resp = Propiedad::model()->findAllByAttributes(array('id_propiedad'=>$id));
+		header("Content-type: application/json");
+		echo CJSON::encode($resp);
+	}
+	/* Se crea la función codigo para poder obtener el rut del funcionario*/
+	public function codigo($var)
+	{
+		$evaluate = strrev($var);
+		$multiply = 2;
+		$store = 0;
+		for ($i = 0; $i < strlen($evaluate); $i++) {
+			 $store += $evaluate[$i] * $multiply;
+			 $multiply++;
+			 if ($multiply > 7)
+					 $multiply = 2;
+		}
+		$result = 11 - ($store % 11);
+		if ($result == 10)
+			 $result = 'k';
+		if ($result == 11)
+			 $result = 0;
+		$rut = $var.'-'.$result;
+		return $rut;
+	}
+
+	public function actionTest($id)
+	{
+		$this->redirect(array('intra/index'));
 	}
 
 	/**
@@ -91,6 +177,12 @@ class ArriendoController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		$variable= $this->loadModel($id);
+		$model2=new Arrendatario;
+		$model3=new Propiedad;
+		$model2=Arrendatario::model()->findByPk($model->rut_arrendatario);
+		$model3=Propiedad::model()->findByPk($model->id_propiedad);
+
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -98,12 +190,59 @@ class ArriendoController extends Controller
 		if(isset($_POST['Arriendo']))
 		{
 			$model->attributes=$_POST['Arriendo'];
-			if($model->save())
+			$model3=Propiedad::model()->findByPk($model->id_propiedad);
+
+			if($model->id_propiedad != $variable->id_propiedad){
+				$model4=new Propiedad;
+				$model4=Propiedad::model()->findByPk($variable->id_propiedad);
+				$model4->activo_propiedad=1;
+				if($model4->save()){
+					Yii::app()->user->setFlash('success','La propiedad enlazada con el arriendo fue modificada.');
+				}else {
+					Yii::app()->user->setFlash('danger','La propiedad enlazada con el arriendo no pudo ser modificada.');
+				}
+			}
+
+			$model3->activo_propiedad =0;
+			if($model->save() && $model3->save()){
+				Yii::app()->user->setFlash('success','El arriendo fue actualizado.');
 				$this->redirect(array('view','id'=>$model->id_arriendo));
+			}else{
+				Yii::app()->user->setFlash('danger','El arriendo no fue actualizado.');
+			}
 		}
+		$criteria2 = new CDbCriteria();
+		$criteria2->condition='activo_arrendatario=1';
+
+		$dataProvider=new CActiveDataProvider(Arrendatario::model(), array(
+			'keyAttribute'=>'rut_arrendatario',// IMPORTANTE, para que el CGridView conozca la seleccion
+			'criteria'=>$criteria2,
+			'pagination'=>array(
+				'pageSize'=>5,
+			),
+			'sort'=>array(
+				'defaultOrder'=>array('rut_arrendatario'=>true),
+			),
+		));
+		$criteria = new CDbCriteria();
+		$criteria->condition='activo_propiedad=1 AND eliminado_propiedad=0';
+		$dataProvider2=new CActiveDataProvider(Propiedad::model(), array(
+			'keyAttribute'=>'id_propiedad',// IMPORTANTE, para que el CGridView conozca la seleccion
+			'criteria'=>$criteria,
+			'pagination'=>array(
+				'pageSize'=>5,
+			),
+			'sort'=>array(
+				'defaultOrder'=>array('id_propiedad'=>true),
+			),
+		));
 
 		$this->render('update',array(
 			'model'=>$model,
+			'model2'=>$model2,
+			'model3'=>$model3,
+			'dataProvider'=>$dataProvider,
+			'dataProvider2'=>$dataProvider2,
 		));
 	}
 
@@ -114,11 +253,19 @@ class ArriendoController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
-
+		$model=$this->loadModel($id);
+		$model2=new Propiedad;
+		$model2 = Propiedad::model()->findByPk($model->id_propiedad);
+		$model2->activo_propiedad =1;
+		$model->activo_arriendo =0;
+		if ($model2->save() && $model->save()) {
+			Yii::app()->user->setFlash('success','El arriendo fue eliminado satisfactoriamente.');
+		}else {
+			Yii::app()->user->setFlash('danger','El arriendo no pudo ser eliminado.');
+		}
+		$this->redirect(Yii::app()->request->baseUrl.'/arriendo/index/');
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+
 	}
 
 	/**
@@ -126,9 +273,42 @@ class ArriendoController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Arriendo');
+		$model=new Arriendo('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Arriendo']))
+			$model->attributes=$_GET['Arriendo'];
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'model'=>$model,
+		));
+	}
+
+	public function actionSelect()
+	{
+		$model=new Arriendo('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Arriendo']))
+			$model->attributes=$_GET['Arriendo'];
+		$this->render('select',array('model'=>$model));
+	}
+
+	public function actionSelect2()
+	{
+		$model=new Arriendo('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Arriendo']))
+			$model->attributes=$_GET['Arriendo'];
+		$this->render('select2',array('model'=>$model));
+	}
+
+	public function actionEliminar($id)
+	{
+		$model=$this->loadModel($id);
+		$model2=new Arrendatario;
+		$model2=Arrendatario::model()->findByPk($model->rut_arrendatario);
+		$model3=new Propiedad;
+		$model3=Propiedad::model()->findByPk($model->id_propiedad);
+		$this->render('eliminar',array(
+			'model'=>$model,'model2'=>$model2,'model3'=>$model3
 		));
 	}
 

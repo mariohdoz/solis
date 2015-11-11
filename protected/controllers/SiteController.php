@@ -18,7 +18,7 @@ class SiteController extends Controller
 	{
 		return array(
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('index','busqueda','vista', 'error', 'login', 'logout','informacion', 'test' ),
+				'actions'=>array('index','busqueda','vista', 'error', 'login', 'logout','informacion', 'test', 'obtener', 'obtenerpro' ),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -35,9 +35,6 @@ class SiteController extends Controller
 		$model  = new LoginForm;
 		$model1 = new Solicitud;
 		$model2 = new Propiedad;
-		Yii::app()->user->setFlash('danger','Esto es un error');
-		Yii::app()->user->setFlash('success','Este es un mensaje de éxito');
-		Yii::app()->user->setFlash('info','ésto es pura infromación');
 		// validación de ajax
 		if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
 			echo CActiveForm::validate($model);
@@ -70,10 +67,46 @@ class SiteController extends Controller
 	}
 
 	public function actionTest(){
-		$this->layout ='//layouts/testLayout';
-		$model=new Cliente;
-		$this->render('test', array('model'=>$model));
+		$this->layout= 'testLayout';
+	$model=new Arriendo('search');
+	$model->unsetAttributes();  // clear any default values
+	if(isset($_GET['Arriendo']))
+		$model->attributes=$_GET['Arriendo'];
+	$this->render('test',array('model'=>$model));
 	}
+
+	public function actionObtener($id){
+		$rut=$this->codigo($id);
+		$resp = Arrendatario::model()->findAllByAttributes(array('rut_arrendatario'=>$rut));
+		header("Content-type: application/json");
+		echo CJSON::encode($resp);
+	}
+	public function actionObtenerpro($id){
+		$resp = Propiedad::model()->findAllByAttributes(array('id_propiedad'=>$id));
+		header("Content-type: application/json");
+		echo CJSON::encode($resp);
+	}
+	public function codigo($var)
+	{
+		$evaluate = strrev($var);
+		$multiply = 2;
+		$store = 0;
+		for ($i = 0; $i < strlen($evaluate); $i++) {
+			 $store += $evaluate[$i] * $multiply;
+			 $multiply++;
+			 if ($multiply > 7)
+					 $multiply = 2;
+		}
+		$result = 11 - ($store % 11);
+		if ($result == 10)
+			 $result = 'k';
+		if ($result == 11)
+			 $result = 0;
+		$rut = $var.'-'.$result;
+		return $rut;
+	}
+
+
 
 	public function actionBusqueda()
 	{
@@ -166,7 +199,7 @@ class SiteController extends Controller
 	public function actionInformacion($id)
 	{
 		$model = new Propiedad();
-		$model = Propiedad::model()->findByPk($model->rut_cliente);
+		$model = Propiedad::model()->findByPk($id);
 		$this->layout ='//layouts/informacionLayout';
 		$this->render('informacion', array('model'=>$model));
 	}
@@ -247,7 +280,7 @@ class SiteController extends Controller
 				$this->redirect("/intra/index");
 		}
 		// display the login form
-		$this->render('principal', array(
+		$this->render('index', array(
 			'model' => $model,
 			'model1' => $model1,
 			'model2' => $model2

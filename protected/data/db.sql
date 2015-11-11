@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 28-10-2015 a las 03:17:48
+-- Tiempo de generación: 11-11-2015 a las 01:32:15
 -- Versión del servidor: 5.0.51
 -- Versión de PHP: 5.2.6
 
@@ -36,7 +36,7 @@ CREATE TABLE `administrador` (
 -- Volcar la base de datos para la tabla `administrador`
 --
 
-INSERT INTO `administrador` VALUES ('18183527-3', 'Mario Hernán Douglas', 'Ossandón Zúñiga', '8cb2237d0679ca88db6464eac60da96345513964', 'mario.hdoz1@gmail.com', '+56985352482', 'dist/img/mario.jpg', 1, 1);
+INSERT INTO `administrador` VALUES ('18183527-3', 'Mario Hernán Douglas', 'Ossandón Zúñiga', '8cb2237d0679ca88db6464eac60da96345513964', 'mario.hdoz1@gmail.com', '+56985352482', 'dist/img/avatar5.png', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -45,18 +45,19 @@ INSERT INTO `administrador` VALUES ('18183527-3', 'Mario Hernán Douglas', 'Ossa
 --
 
 CREATE TABLE `arrendatario` (
-  `rut_arrendatario` varchar(10) NOT NULL,
-  `nombres_arrendatario` varchar(100) NOT NULL,
-  `apellidos_arrendatario` varchar(100) NOT NULL,
-  `estadocivil_arrendatario` varchar(8) NOT NULL,
-  `profesion_arrendatario` varchar(250) NOT NULL,
-  `correo_arrendatario` varchar(100) NOT NULL,
-  `telefonofijo_arrendatario` varchar(12) default NULL,
-  `telefonocelular_arrendatario` varchar(12) NOT NULL,
-  `nrocuenta_arrendatario` varchar(25) default NULL,
-  `banco_arrendatario` varchar(50) default NULL,
-  `nacionalidad_arrendatario` varchar(50) NOT NULL,
-  `empresa_arrendatario` tinyint(1) NOT NULL default '0',
+  `rut_arrendatario` varchar(10) NOT NULL COMMENT 'RUT del arrendatario',
+  `nombres_arrendatario` varchar(100) NOT NULL COMMENT 'Nombres',
+  `apellidos_arrendatario` varchar(100) NOT NULL COMMENT 'Apellidos',
+  `estadocivil_arrendatario` varchar(8) NOT NULL COMMENT 'Estado civil',
+  `profesion_arrendatario` varchar(250) NOT NULL COMMENT 'Profesión',
+  `correo_arrendatario` varchar(100) NOT NULL COMMENT 'Correo electrónico',
+  `telefonofijo_arrendatario` varchar(12) default NULL COMMENT 'Teléfono fijo',
+  `telefonocelular_arrendatario` varchar(12) NOT NULL COMMENT 'Teléfono celular',
+  `nrocuenta_arrendatario` varchar(25) default NULL COMMENT 'Número de cuenta',
+  `banco_arrendatario` varchar(50) default NULL COMMENT 'Banco',
+  `nacionalidad_arrendatario` varchar(50) NOT NULL COMMENT 'Nacionalidad',
+  `empresa_arrendatario` tinyint(1) NOT NULL default '0' COMMENT 'Empresa',
+  `activo_arrendatario` tinyint(1) NOT NULL default '1',
   PRIMARY KEY  (`rut_arrendatario`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -64,6 +65,8 @@ CREATE TABLE `arrendatario` (
 -- Volcar la base de datos para la tabla `arrendatario`
 --
 
+INSERT INTO `arrendatario` VALUES ('19206063-k', 'Marcela Andrea', 'Muñoz Campusano', 'Casada', 'Prevencionista', 'marcela.muñoz@gmail.com', '0255663322', '+56985352482', '19206063', 'Banco estado', 'Chilena', 0, 1);
+INSERT INTO `arrendatario` VALUES ('18183527-3', 'Mario Hernán Douglas', 'Ossandón Zúñiga ', 'Casado', 'Prevencionista', 'marcela.muñoz@gmail.com', '0255663322', '+56985352482', '19206063', 'Banco estado', 'Chilena', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -73,24 +76,32 @@ CREATE TABLE `arrendatario` (
 
 CREATE TABLE `arriendo` (
   `id_arriendo` int(11) NOT NULL auto_increment,
-  `id_propiedad` int(11) NOT NULL,
+  `id_propiedad` int(11) NOT NULL COMMENT 'Número de ficha',
   `rut_admin` varchar(10) NOT NULL,
-  `rut_arrendatario` varchar(10) default NULL,
+  `rut_arrendatario` varchar(10) default NULL COMMENT 'RUT del arrendatario',
   `inscripcion_arriendo` date NOT NULL,
-  `fechapago_arriendo` date NOT NULL,
-  `inicio_arriendo` date NOT NULL,
-  `termino_arriendo` date NOT NULL,
-  `valor_arriendo` int(11) NOT NULL,
+  `fechapago_arriendo` date NOT NULL COMMENT 'Fecha de pago',
+  `inicio_arriendo` date NOT NULL COMMENT 'Inicio del arriendo',
+  `termino_arriendo` date NOT NULL COMMENT 'Término del arriendo',
+  `valor_arriendo` int(11) NOT NULL COMMENT 'Valor pactado de arriendo',
+  `activo_arriendo` tinyint(1) NOT NULL default '1',
   PRIMARY KEY  (`id_arriendo`),
   KEY `fk_gestiona` (`rut_admin`),
   KEY `fk_incumbe` (`rut_arrendatario`),
   KEY `fk_puede` (`id_propiedad`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
 
 --
 -- Volcar la base de datos para la tabla `arriendo`
 --
 
+INSERT INTO `arriendo` VALUES (19, 1, '18183527-3', '19206063-k', '2015-11-04', '2015-11-18', '2015-11-12', '2015-11-11', 123123, 0);
+INSERT INTO `arriendo` VALUES (20, 3, '18183527-3', '19206063-k', '2015-11-04', '2015-11-05', '2015-11-07', '2015-11-06', 12345678, 0);
+INSERT INTO `arriendo` VALUES (21, 3, '18183527-3', '18183527-3', '2015-11-09', '2015-11-09', '2015-11-11', '2015-11-10', 500000, 0);
+INSERT INTO `arriendo` VALUES (22, 4, '18183527-3', '18183527-3', '2015-11-10', '2015-11-12', '2015-11-18', '2015-11-12', 400000, 0);
+INSERT INTO `arriendo` VALUES (23, 5, '18183527-3', '18183527-3', '2015-11-10', '2015-11-12', '2015-11-13', '2015-11-12', 123456, 0);
+INSERT INTO `arriendo` VALUES (24, 3, '18183527-3', '19206063-k', '2015-11-10', '2015-11-06', '2015-11-28', '2015-11-12', 853563463, 0);
+INSERT INTO `arriendo` VALUES (25, 3, '18183527-3', '19206063-k', '2015-11-10', '2015-11-12', '2015-11-13', '2015-11-11', 4562325, 1);
 
 -- --------------------------------------------------------
 
@@ -181,7 +192,7 @@ CREATE TABLE `imagen` (
   `url_imagen` varchar(250) NOT NULL,
   PRIMARY KEY  (`id_imagen`),
   KEY `fk_representa` (`id_propiedad`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Volcar la base de datos para la tabla `imagen`
@@ -193,6 +204,9 @@ INSERT INTO `imagen` VALUES (3, 1, '11696028_10207312328825535_88868320058362486
 INSERT INTO `imagen` VALUES (4, 1, 'a9L9Xn1_700b.jpg');
 INSERT INTO `imagen` VALUES (5, 3, '3.png');
 INSERT INTO `imagen` VALUES (6, 4, '11696028_10207312328825535_8886832005836248666_n41.jpg');
+INSERT INTO `imagen` VALUES (7, 5, '12088267_10153596124417521_1551038505616217429_n.jpg');
+INSERT INTO `imagen` VALUES (8, 5, '12088267_10153596124417521_1551038505616217429_n.jpg');
+INSERT INTO `imagen` VALUES (9, 5, '12088267_10153596124417521_1551038505616217429_n.jpg');
 
 -- --------------------------------------------------------
 
@@ -282,18 +296,21 @@ CREATE TABLE `propiedad` (
   `amoblado_propiedad` tinyint(1) NOT NULL default '0',
   `valor_propiedad` int(11) NOT NULL,
   `activo_propiedad` tinyint(1) default '1',
+  `eliminado_propiedad` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`id_propiedad`),
   KEY `fk_posee` (`rut_cliente`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Volcar la base de datos para la tabla `propiedad`
 --
 
-INSERT INTO `propiedad` VALUES (1, '18183527-3', 'Población Manuel Rodríguez, calle Til Til #1301', 0, 3, 3, '50m²', '45m²', 'Casa', 'Venta', 1, 'Casa amplia wkljfs lorem ipsum ', 'Antofagasta', 1, 90000000, 1);
-INSERT INTO `propiedad` VALUES (2, '18183527-3', 'sdfsf', 0, 1, 3, 'sdfsdf', 'sdfsdf', 'Casa', 'Venta', 1, 'sdfsdfsdfsdf', 'Antofagasta', 1, 4234, 1);
-INSERT INTO `propiedad` VALUES (3, '18183527-3', 'Calle til til Población Manuel Rodríguez ', 1301, 5, 6, '50m²', '45m²', 'Casa', 'Venta', 1, 'jghjghjghjrterui werwrt uyturtyert  utyuyrwer utyut ', 'Antofagasta', 1, 90000000, 1);
-INSERT INTO `propiedad` VALUES (4, '18183527-3', 'Población Manuel Rodríguez, calle Til Til', 1301, 1, 1, '50m²', '45m²', 'Casa', 'Venta', 1, 'asdasd ewwer qweqwe gtgwqwe qweqwsd rwer sd ', 'Antofagasta', 1, 90000000, 1);
+INSERT INTO `propiedad` VALUES (1, '18183527-3', 'Población Manuel Rodríguez, calle Til Til #1301', 0, 3, 3, '50m²', '45m²', 'Casa', 'Venta', 1, 'Casa amplia wkljfs lorem ipsum ', 'Antofagasta', 1, 90000000, 1, 0);
+INSERT INTO `propiedad` VALUES (2, '18183527-3', 'sdfsf', 0, 1, 3, 'sdfsdf', 'sdfsdf', 'Casa', 'Venta', 1, 'sdfsdfsdfsdf', 'Antofagasta', 1, 4234, 1, 0);
+INSERT INTO `propiedad` VALUES (3, '18183527-3', 'Calle til til Población Manuel Rodríguez ', 1301, 5, 6, '50m²', '45m²', 'Casa', 'Venta', 1, 'jghjghjghjrterui werwrt uyturtyert  utyuyrwer utyut ', 'Antofagasta', 1, 90000000, 0, 0);
+INSERT INTO `propiedad` VALUES (4, '18183527-3', 'Población Manuel Rodríguez, calle Til Til', 1301, 1, 1, '50m²', '45m²', 'Casa', 'Venta', 1, 'asdasd ewwer qweqwe gtgwqwe qweqwsd rwer sd ', 'Antofagasta', 1, 90000000, 1, 0);
+INSERT INTO `propiedad` VALUES (5, '18183527-3', 'asdasdasd', 1234, 1, 1, 'asdasd', 'asdasd', 'Casa', 'Venta', 1, 'fsdfsdfsdf', 'Antofagasta', 1, 2147483647, 1, 0);
+INSERT INTO `propiedad` VALUES (6, '18183527-3', 'fdsfsdf', 34234, 1, 1, '123123', '123123', 'Casa', 'Venta', 1, 'dfsdfsdfsdf', 'Antofagasta', 1, 123456789, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -333,15 +350,18 @@ CREATE TABLE `solicitud` (
 
 CREATE TABLE `venta` (
   `id_venta` int(11) NOT NULL auto_increment,
-  `id_propiedad` int(11) NOT NULL,
-  `rut_admin` varchar(10) default NULL,
-  `nombrescomprador_venta` varchar(100) NOT NULL,
-  `apellidoscomprador_venta` varchar(100) NOT NULL,
-  `rutcomprador_venta` varchar(25) NOT NULL,
+  `id_propiedad` int(11) NOT NULL COMMENT 'Número de ficha',
+  `rut_admin` varchar(10) NOT NULL COMMENT 'RUT del administrador',
+  `nombrescomprador_venta` varchar(100) NOT NULL COMMENT 'Nombres de comprador',
+  `apellidoscomprador_venta` varchar(100) NOT NULL COMMENT 'Apellidos del comprador',
+  `rutcomprador_venta` varchar(10) NOT NULL COMMENT 'RUT del comprador',
+  `comisioncomprador_venta` int(11) NOT NULL default '2' COMMENT 'Comisión a comprador',
+  `comisioncliente_venta` int(11) NOT NULL default '2' COMMENT 'Comisión a vendedor',
+  `ganancia_venta` varchar(50) NOT NULL COMMENT 'Ganancia de la venta',
   PRIMARY KEY  (`id_venta`),
   KEY `fk_acoge` (`id_propiedad`),
   KEY `fk_concibe` (`rut_admin`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Volcar la base de datos para la tabla `venta`

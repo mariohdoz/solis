@@ -36,6 +36,10 @@ return array(
 
 	// application components
 	'components'=>array(
+		'session'=>array(
+			'class' => 'CDbHttpSession',
+			'timeout'=>1200,
+		),
 		'widgetFactory'=>array(
 			'widgets'=>array(
 				'SAImageDisplayer'=>array(
@@ -86,19 +90,19 @@ return array(
 			'errorAction'=>YII_DEBUG ? null : 'site/error',
 		),
 
-		//'log'=>array(
-		//'class'=>'CLogRouter',
-		//'routes'=>array(
-		//	array(
-				//	'class'=>'CFileLogRoute',
-			//		'levels'=>'error, warning',
-			//	),
-			//	 uncomment the following to show log messages on web pages
-
+//		'log'=>array(
+//			'class'=>'CLogRouter',
+		//	'routes'=>array(
 	//			array(
-	//				'class'=>'CWebLogRoute',
+		//			'class'=>'CFileLogRoute',
+	//				'levels'=>'error, warning',
 	//			),
-	//		),
-	//	),
+				//	 uncomment the following to show log messages on web pages
+
+		//		array(
+		//			'class'=>'CWebLogRoute',
+		//		),
+		//	),
+		//),
 	),
 );
