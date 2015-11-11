@@ -116,7 +116,7 @@ if(!Yii::app()->session['activo'])
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/propiedad/index"><i class="fa fa-plus"></i> Ingresar nueva propiedad</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/propiedad/create"><i class="fa fa-plus"></i> Ingresar nueva propiedad</a></li>
                 <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/propiedad/select"><i class="fa fa-exchange"></i> Modificar Propiedades</a></li>
                 <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/propiedad/eliminar"><i class="fa fa-close"></i> Eliminar Propiedad</a></li>
                 <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/propiedad/ver"><i class="fa fa-file-text-o"></i> Listado de Propiedades</a></li>

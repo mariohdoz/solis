@@ -105,16 +105,20 @@ class ArriendoController extends Controller
 			$model->attributes=$_POST['Arriendo'];
 			$model->rut_admin = Yii::app()->session['admin_rut'];
 			$model->inscripcion_arriendo = date('Y-m-d');
-			$model3=Propiedad::model()->findByPk($model->id_propiedad);
-			$model2=Arrendatario::model()->findByPk($model->rut_arrendatario);
-			if($model3->activo_propiedad == 1){
-				$model3->activo_propiedad= 0;
-				if($model->save() && $model3->save())
-				{
-					$this->redirect(array('view','id'=>$model->id_arriendo));
+			if($model->id_propiedad != '' && $model->rut_arrendatario != ''){
+				$model3=Propiedad::model()->findByPk($model->id_propiedad);
+				$model2=Arrendatario::model()->findByPk($model->rut_arrendatario);
+				if($model3->activo_propiedad == 1){
+					$model3->activo_propiedad= 0;
+					if($model->save() && $model3->save())
+					{
+						$this->redirect(array('view','id'=>$model->id_arriendo));
+					}
+				}else {
+					Yii::app()->user->setFlash('error','La propiedad ya se encuentra con un servicio prestado.');
 				}
 			}else {
-				Yii::app()->user->setFlash('error','La propiedad ya se encuentra con un servicio prestado.');
+				Yii::app()->user->setFlash('error','Debe seleccionar una propiedad y un arrendatario.');
 			}
 		}
 

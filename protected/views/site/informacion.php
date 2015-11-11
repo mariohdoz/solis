@@ -10,7 +10,7 @@
 
 <section class="container informacion">
     <div class="col-md-6 ">
-        <div  class='google-map2 ' id='map' streetnumber=<?php echo '2337';  ?> streetname=<?php echo 'prat';  ?>
+        <div  class='google-map2 ' id='map' streetnumber=<?php echo '1301';  ?> streetname=<?php echo 'Tiltil';  ?>
              cityname='calama' statecode='CL' zipcode='0'
              zoom=17 width=500 height=450>
         </div>

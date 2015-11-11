@@ -161,14 +161,16 @@ function ganancia(){
 							<div class="col-xs-8">
 								<div class="form-group">
 									<?php echo $form->label($model3,'direccion_propiedad'); ?>
-									<?php echo $form->textField($model3,'direccion_propiedad', array('class'=>'form-control', 'disabled'=>'true')); ?>
+									<?php echo $form->textField($model3,'direccion_propiedad', array('class'=>'form-control', 'disabled'=>'true', 'placeholder'=>'Dirección de la propiedad.')); ?>
 									<?php echo $form->error($model3,'direccion_propiedad'); ?>
 								</div>
 							</div>
 							<div class="col-xs-4">
-								<?php echo $form->label($model3,'valor_propiedad'); ?>
-								<?php echo $form->textField($model3,'valor_propiedad', array('class'=>'form-control', 'disabled'=>'true', 'onchange'=>"applyFormatCurrency(document.getElementById('Propiedad_valor_propiedad'));"));?>
-								<?php echo $form->error($model3,'valor_propiedad'); ?>
+								<div class="form-group">
+									<?php echo $form->label($model3,'valor_propiedad'); ?>
+									<?php echo $form->textField($model3,'valor_propiedad', array('class'=>'form-control', 'disabled'=>'true','placeholder'=>'Valor de la propiedad.' ,'onchange'=>"applyFormatCurrency(document.getElementById('Propiedad_valor_propiedad'));"));?>
+									<?php echo $form->error($model3,'valor_propiedad'); ?>
+								</div>
 							</div>
 						</div>
 						<div class="box-footer">

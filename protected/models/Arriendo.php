@@ -101,7 +101,7 @@ class Arriendo extends CActiveRecord
 		$criteria->compare('inicio_arriendo',$this->inicio_arriendo,true);
 		$criteria->compare('termino_arriendo',$this->termino_arriendo,true);
 		$criteria->compare('valor_arriendo',$this->valor_arriendo);
-		$criteria->compare('activo_arriendo',$this->activo_arriendo);
+		$criteria->compare('activo_arriendo',1);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
