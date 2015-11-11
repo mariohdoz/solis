@@ -71,7 +71,7 @@ class Propiedad extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id_propiedad' => 'Id Propiedad',
+			'id_propiedad' => 'Número de ficha',
 			'rut_cliente' => 'Rut Cliente',
 			'direccion_propiedad' => 'Direccion Propiedad',
 			'numero_propiedad' => 'Número ',

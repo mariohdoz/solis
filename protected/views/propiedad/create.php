@@ -260,8 +260,7 @@ $this->menu=array(
 							</div>
 						</div>
 						<div class="box-footer">
-							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#cliente">Cargar cliente</button>
-							<?php echo CHtml::link('Registrar cliente', array('cliente/create'), array('class'=>'btn btn-warning')); ?>
+							<?php echo CHtml::submitButton('Registrar propiedad', array('class'=>'btn btn-primary')); ?>
 						</div>
 					</div>
 				</div>
@@ -295,7 +294,17 @@ $this->menu=array(
 			rut=rut+"";
 			var a = rut.replace('.','');
 			a = a.replace('.','');
-			alert(a);
+			var res = a.split("-");
+			var action = "<?php echo Yii::app()->request->baseUrl; ?>"+'/propiedad/obtener/'+res[0];
+			$.getJSON(action, function(data) {
+				$.each(data, function(key, cliente) {
+					$('#Cliente_correo_cliente').val(cliente.correo_cliente);
+					$('#Cliente_nombres_cliente').val(cliente.nombres_cliente);
+					$('#Cliente_apellidos_cliente').val(cliente.apellidos_cliente);
+				});
+			}).fail(function() {
+			    console.log( "error" );
+			  })
 		},
 	});
 

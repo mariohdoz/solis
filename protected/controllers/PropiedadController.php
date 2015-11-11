@@ -32,7 +32,7 @@ class PropiedadController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update', 'index','view', 'obtener', 'codigo'),
+				'actions'=>array('create','update', 'index','view', 'obtener', 'codigo', 'upload', 'docu', 'select', 'select2'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -51,9 +51,48 @@ class PropiedadController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$model = $this->loadModel($id);
+		$model1=new Imagen();
+    $model2 = new Cliente();
+    $model2 = Cliente::model()->findByPk($model->rut_cliente);
+		Yii::app()->user->setFlash('success','La propiedad ha sido ingresada correctamente. Por favor subir imágenes de la propiedad.');
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=>$model,
+			'model1'=>$model1,
+			'model2'=>$model2,
 		));
+	}
+
+	public function actionUpload($id)
+	{
+		$model = new Imagen;
+		Yii::import("ext.EAjaxUpload.qqFileUploader");
+    $folder=Yii::app() -> getBasePath() . "/../images/propiedades/";// folder for uploaded files
+    $allowedExtensions = array("jpg","jpeg","gif","png");//array("jpg","jpeg","gif","exe","mov" and etc...
+    $sizeLimit = 5 * 3024 * 3024;// maximum file size in bytes
+    $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
+    $result = $uploader->handleUpload($folder);
+    $return = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
+    $fileSize=filesize($folder.$result['filename']);//GETTING FILE SIZE
+	  $fileName=$result['filename'];//GETTING FILE NAME
+		$model->url_imagen = $fileName;
+		$model->id_propiedad = $id;
+		$model->save();
+    echo $return;// it's array
+	}
+
+	public function actionDocu()
+	{
+		Yii::import("ext.EAjaxUpload.qqFileUploader");
+    $folder=Yii::app() -> getBasePath() . "/../documento/propiedad/";// folder for uploaded files
+    $allowedExtensions = array("jpg","jpeg","gif","png","pdf","doc","docx");//array("jpg","jpeg","gif","exe","mov" and etc...
+		$sizeLimit =25 * 1024 * 1024;// maximum file size in bytes
+    $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
+    $result = $uploader->handleUpload($folder);
+    $return = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
+    $fileSize=filesize($folder.$result['filename']);//GETTING FILE SIZE
+	  $fileName=$result['filename'];//GETTING FILE NAME
+    echo $return;// it's array
 	}
 
 	/**
@@ -70,6 +109,10 @@ class PropiedadController extends Controller
 		if(isset($_POST['Propiedad']))
 		{
 			$model->attributes=$_POST['Propiedad'];
+			$cadena = str_replace('.','',$model->rut_cliente);
+			$model->rut_cliente =$cadena;
+			$valor = intval(preg_replace('/[^0-9]+/', '', $model->valor_propiedad),10);
+			$model->valor_propiedad = $valor;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id_propiedad));
 		}
@@ -98,8 +141,15 @@ class PropiedadController extends Controller
 	{
 		$rut=$this->codigo($id);
 		$resp = Cliente::model()->findAllByAttributes(array('rut_cliente'=>$rut));
-		header("Content-type: application/json");
-		echo CJSON::encode($resp);
+		if ($resp) {
+			header("Content-type: application/json");
+			echo CJSON::encode($resp);
+		}else {
+			$resp = '';
+			header("Content-type: application/json");
+			echo CJSON::encode($resp);
+		}
+
 	}
 
 	public function codigo($var)
@@ -146,6 +196,18 @@ class PropiedadController extends Controller
 		));
 	}
 
+	public function actionSelect()
+	{
+		$model=new Propiedad('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Propiedad']))
+			$model->attributes=$_GET['Propiedad'];
+
+		$this->render('select',array(
+			'model'=>$model,
+		));
+	}
+
 	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
@@ -158,6 +220,11 @@ class PropiedadController extends Controller
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+	}
+
+	public function actionSelect2()
+	{
+
 	}
 
 	/**
