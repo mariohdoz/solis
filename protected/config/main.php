@@ -40,6 +40,19 @@ return array(
 			'class' => 'CDbHttpSession',
 			'timeout'=>1200,
 		),
+		'ePdf' => array(
+			'class'         => 'ext.yii-pdf.EYiiPdf',
+			'params'        => array(
+				'mpdf'     => array(
+					'librarySourcePath' => 'application.vendor.mpdf.*',
+					'constants'         => array(
+						'_MPDF_TEMP_PATH' => Yii::getPathOfAlias('application.runtime'),
+					),
+					'class'=>'mpdf',
+
+				)
+			),
+		),
 		'widgetFactory'=>array(
 			'widgets'=>array(
 				'SAImageDisplayer'=>array(

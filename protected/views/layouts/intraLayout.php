@@ -227,13 +227,20 @@ if(!Yii::app()->session['activo'])
                   </a>
                 </li>
               </ul>
-              <ul class="sidebar-menu">
-                <li>
-                  <a href="../widgets.html">
-                    <i class="fa fa-print"></i> <span>Reportes</span>
-                  </a>
-                </li>
+          <ul class="sidebar-menu">
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-pencil-square-o"></i> <span>Reportes</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/reporte/index"><i class="fa fa-plus"></i> Cotizaciòn</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-exchange"></i> Otra</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-close"></i> Otra</a></li>
+                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-close"></i> Otra</a></li>
               </ul>
+            </li>
+          </ul>
             </section>
           </aside>
           <?php echo $content; ?>
