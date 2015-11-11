@@ -129,7 +129,75 @@ $this->menu=array(
 					</div>
 				</div>
 			</div>
+			<div class="col-md-6">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+            <h3 class="box-title">Subir de fotos de la propiedad</h3>
+          </div>
+					<div class="form">
+						<div class="box-body">
+							<div class="col-md-12">
+								<div class="form-group">
+									<p>Seleccione las imagenes de la propiedad.</p>
+								</div>
+							</div>
+							<div class="col-md-3">
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+		              <?php $this->widget('ext.EAjaxUpload.EAjaxUpload', array(
+		                   'id' => 'uploadFile',
+		                   'config' => array(
+		                       'action' => Yii::app()->createUrl('propiedad/upload/',array('id'=>$model->id_propiedad)),
+		                       'allowedExtensions' => array("jpg","jpeg","gif","png"), //array("jpg","jpeg","gif","exe","mov" and etc...
+		                       'sizeLimit' => 10 * 1024 * 1024, // maximum file size in bytes
+		                       'buttonText' => 'Selección',
+		                       //'minSizeLimit'=>10*1024*1024,// minimum file size in bytes
+		                       //'onComplete'=>"js:function(id, fileName, responseJSON){ alert(fileName); }",
+		                       'messages' => array(
+		                           'typeError' => "{file} posee una extención invalida. se acepta solamente {extensions}.",
+		                           'sizeError' => "{file} is too large, maximum file size is {sizeLimit}.",
+		                           'minSizeError' => "{file} is too small, minimum file size is {minSizeLimit}.",
+		                           'emptyError' => "{file} is empty, please select files again without it.",
+		                           'onLeave' => "Los archivos seleccionados se están subiendo al servidor. si usted deja la página la carga será cancelada."
+		                       ),
+		                       'showMessage' => "js:function(message){ alert(message); }"
+		                   )
+		               ));
+		               ?>
+								</div>
+								<div class="col-md-3">
+								</div>
+							</div>
+					  </div>
+            <div class="box-footer">
+            </div>
+				  </div>
+			  </div>
+			</div>
       <!-- término se container -->
+			<div class="col-md-12">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+            <h3 class="box-title">Imágenes de la propiedad</h3>
+          </div>
+					<div class="form">
+						<div class="box-body">
+
+									<?php foreach ($model->imagen as $key => $value) {
+					          echo '<div class="col-lg-2 col-sm-4 col-xs-6">';
+										echo '<div class="form-group">';
+					          echo '<a class="showcase" href="'.Yii::app()->request->baseUrl.'/images/propiedades/'.$value->url_imagen.'" data-rel="lightcase:myCollection:slideshow">';
+					          echo  CHtml::image(Yii::app()->baseUrl."/images/propiedades/".$value->url_imagen, '',  array('class'=>'thumbnail img-responsive'));
+					          echo '</a></div></div>';
+					        } ?>
+
+					  </div>
+            <div class="box-footer">
+            </div>
+				  </div>
+			  </div>
+      </div>
 			<div class="col-md-12">
 				<div class="box box-primary">
 					<div class="box-header with-border">
@@ -306,6 +374,37 @@ $this->menu=array(
 			    console.log( "error" );
 			  })
 		},
+	});
+
+	$('#Propiedad_rut_cliente').ready(function(){
+		var rut = $('#Propiedad_rut_cliente').val();
+		rut=rut+"";
+		var a = rut.replace('.','');
+		a = a.replace('.','');
+		var res = a.split("-");
+		var action = "<?php echo Yii::app()->request->baseUrl; ?>"+'/propiedad/obtener/'+res[0];
+		$.getJSON(action, function(data) {
+			$.each(data, function(key, cliente) {
+				$('#Cliente_correo_cliente').val(cliente.correo_cliente);
+				$('#Cliente_nombres_cliente').val(cliente.nombres_cliente);
+				$('#Cliente_apellidos_cliente').val(cliente.apellidos_cliente);
+			});
+		}).fail(function() {
+				console.log( "error" );
+			})
+
+	});
+	var max_width = 210; var max_height = 210;
+	$('img').each(function() {
+	  var w = $(this).width();
+	  var h = $(this).height();
+	  var scale = null;
+	  if (w >= h) { if (w > max_width) { scale = 1 / (w / max_width); } }
+	  else { if (h > max_height) { scale = 1 / (h / max_height); } }
+	  if (scale) {
+	      $(this).width(w * scale);
+	      $(this).height(h * scale);
+	  }
 	});
 
 </script>

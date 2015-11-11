@@ -68,11 +68,9 @@ class SiteController extends Controller
 
 	public function actionTest(){
 		$this->layout= 'testLayout';
-	$model=new Arriendo('search');
-	$model->unsetAttributes();  // clear any default values
-	if(isset($_GET['Arriendo']))
-		$model->attributes=$_GET['Arriendo'];
-	$this->render('test',array('model'=>$model));
+		$model = new Propiedad();
+		$model = Propiedad::model()->findByPk(9);
+		$this->render('test',array('model'=>$model));
 	}
 
 	public function actionObtener($id){

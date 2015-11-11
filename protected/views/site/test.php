@@ -21,29 +21,13 @@
           </div>
 					<div class="form">
 						<div class="box-body">
-							<?php
-              $this->widget('zii.widgets.grid.CGridView', array(
-              	'id'=>'arriendo-grid',
-              	'dataProvider'=>$model->search(),
-              	'filter'=>$model,
-              	'columns'=>array(
-              		'fechapago_arriendo',
-              		'id_propiedad',
-              		'rut_admin',
-              		'rut_arrendatario',
-              		'valor_arriendo',
-              		'termino_arriendo',
-              		/*
-              		'inicio_arriendo',
-              		'termino_arriendo',
-              		'valor_arriendo',
-              		*/
-              		array(
-              			'class'=>'CButtonColumn',
-              		),
-              	),
-              ));
-               ?>
+              <h1>Imagenes</h1>
+              <?php foreach ($model->imagen as $key => $value) {
+                echo '<div class="col-lg-3 col-sm-4 col-xs-6">';
+                //echo '<a class="showcase" href="'.Yii::app()->request->baseUrl.'/images/propiedades/'.$value->url_imagen.'" data-rel="lightcase:myCollection:slideshow">';
+                echo  CHtml::image(Yii::app()->baseUrl."/images/propiedades/".$value->url_imagen, '',  array('class'=>'thumbnail img-responsive'));
+                echo '<!--</a>--></div>';
+              } ?>
 						</div>
 						<div class="box-footer">
 
@@ -53,5 +37,23 @@
       </div>
     </div>
   </section>
-
 </div>
+
+<script>
+  var max_width = 230; var max_height = 230;
+  $('img').each(function() {
+    var w = $(this).width();
+    var h = $(this).height();
+    var scale = null;
+    if (w >= h) { if (w > max_width) { scale = 1 / (w / max_width); } }
+    else { if (h > max_height) { scale = 1 / (h / max_height); } }
+    if (scale) {
+        $(this).width(w * scale);
+        $(this).height(h * scale);
+    }
+  });
+
+  $('img').click(function(){
+    alert($(this).attr('src'));
+  });
+</script>

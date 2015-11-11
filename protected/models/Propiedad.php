@@ -40,9 +40,8 @@ class Propiedad extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('direccion_propiedad, tipo_propiedad, numero_propiedad, servicio_propiedad, comuna_propiedad, valor_propiedad', 'required'),
-			array('numero_propiedad, habitacion_propiedad, bano_propiedad, estado_propiedad, amoblado_propiedad,valor_propiedad, activo_propiedad, eliminado_propiedad', 'numerical', 'integerOnly'=>true),
-			array('valor_propiedad', 'numerical'),
+			array('direccion_propiedad, numero_propiedad, tipo_propiedad, servicio_propiedad, comuna_propiedad, valor_propiedad', 'required'),
+			array('numero_propiedad, habitacion_propiedad, bano_propiedad, estado_propiedad, amoblado_propiedad, valor_propiedad, activo_propiedad, eliminado_propiedad', 'numerical', 'integerOnly'=>true),
 			array('rut_cliente, servicio_propiedad', 'length', 'max'=>10),
 			array('direccion_propiedad', 'length', 'max'=>255),
 			array('terreno_propiedad, construido_propiedad', 'length', 'max'=>50),
@@ -78,23 +77,23 @@ class Propiedad extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id_propiedad' => 'N°',
-			'rut_cliente' => 'RUT del propietario',
-			'direccion_propiedad' => 'Dirección',
+			'id_propiedad' => 'Número de ficha',
+			'rut_cliente' => 'Rut Cliente',
+			'direccion_propiedad' => 'Direccion Propiedad',
 			'numero_propiedad' => 'Número ',
-			'habitacion_propiedad' => 'Cantidad de piezas',
-			'bano_propiedad' => 'Cantidad de baños',
-			'terreno_propiedad' => 'Terreno',
-			'construido_propiedad' => 'Terreno construido',
-			'tipo_propiedad' => 'Tipo de propiedad',
-			'servicio_propiedad' => 'Tipo de servicio prestado',
-			'estado_propiedad' => 'Estado',
-			'descripcion_propiedad' => 'Descripción',
-			'comuna_propiedad' => 'Comuna donde se encuentra',
-			'amoblado_propiedad' => 'Amoblado',
-			'valor_propiedad' => 'Valor',
-			'activo_propiedad' => 'Habilitado',
-			'eliminado_propiedad'=> 'Eliminada'
+			'habitacion_propiedad' => 'Habitacion Propiedad',
+			'bano_propiedad' => 'Bano Propiedad',
+			'terreno_propiedad' => 'Terreno Propiedad',
+			'construido_propiedad' => 'Construido Propiedad',
+			'tipo_propiedad' => 'Tipo Propiedad',
+			'servicio_propiedad' => 'Servicio Propiedad',
+			'estado_propiedad' => 'Estado Propiedad',
+			'descripcion_propiedad' => 'Descripcion Propiedad',
+			'comuna_propiedad' => 'Comuna Propiedad',
+			'amoblado_propiedad' => 'Amoblado Propiedad',
+			'valor_propiedad' => 'Valor Propiedad',
+			'activo_propiedad' => 'Activo Propiedad',
+			'eliminado_propiedad' => 'Eliminado Propiedad',
 		);
 	}
 
@@ -132,7 +131,35 @@ class Propiedad extends CActiveRecord
 		$criteria->compare('amoblado_propiedad',$this->amoblado_propiedad);
 		$criteria->compare('valor_propiedad',$this->valor_propiedad);
 		$criteria->compare('activo_propiedad',$this->activo_propiedad);
-		$criteria->compare('eliminado_propiedad',$this->eliminado_propiedad);
+		$criteria->compare('eliminado_propiedad',0);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+	public function libres()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('id_propiedad',$this->id_propiedad);
+		$criteria->compare('rut_cliente',$this->rut_cliente,true);
+		$criteria->compare('direccion_propiedad',$this->direccion_propiedad,true);
+		$criteria->compare('numero_propiedad',$this->numero_propiedad);
+		$criteria->compare('habitacion_propiedad',$this->habitacion_propiedad);
+		$criteria->compare('bano_propiedad',$this->bano_propiedad);
+		$criteria->compare('terreno_propiedad',$this->terreno_propiedad,true);
+		$criteria->compare('construido_propiedad',$this->construido_propiedad,true);
+		$criteria->compare('tipo_propiedad',$this->tipo_propiedad,true);
+		$criteria->compare('servicio_propiedad',$this->servicio_propiedad,true);
+		$criteria->compare('estado_propiedad',$this->estado_propiedad);
+		$criteria->compare('descripcion_propiedad',$this->descripcion_propiedad,true);
+		$criteria->compare('comuna_propiedad',$this->comuna_propiedad,true);
+		$criteria->compare('amoblado_propiedad',$this->amoblado_propiedad);
+		$criteria->compare('valor_propiedad',$this->valor_propiedad);
+		$criteria->compare('activo_propiedad',1);
+		$criteria->compare('eliminado_propiedad',0);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
