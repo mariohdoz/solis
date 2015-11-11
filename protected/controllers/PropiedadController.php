@@ -180,6 +180,7 @@ class PropiedadController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		$model2=new Cliente();
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -187,12 +188,15 @@ class PropiedadController extends Controller
 		if(isset($_POST['Propiedad']))
 		{
 			$model->attributes=$_POST['Propiedad'];
-			if($model->save())
+			if($model->save()){
+				Yii::app()->user->setFlash('success','La propiedad fue actualizada exitozamente.');
 				$this->redirect(array('view','id'=>$model->id_propiedad));
+			}
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
+			'model2'=>$model2,
 		));
 	}
 
@@ -215,18 +219,39 @@ class PropiedadController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
+		$model=$this->loadModel($id);
+		$model->activo_propiedad=0;
+		$model->eliminado_propiedad=1;
+		if($model->save()){
+			if(!isset($_GET['ajax']))
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		}
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+
 	}
 
 	public function actionSelect2()
 	{
+		$model=new Propiedad('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Propiedad']))
+			$model->attributes=$_GET['Propiedad'];
 
+		$this->render('select2',array(
+			'model'=>$model,
+		));
 	}
 
+	public function actionEliminar($id)
+	{
+		$model=$this->loadModel($id);
+		$model3=new cliente;
+		$model3=cliente::model()->findByPk($model->rut_cliente);
+		$this->render('eliminar',array(
+			'model'=>$model, 'model3'=>$model3
+		));
+	}
 	/**
 	 * Lists all models.
 	 */

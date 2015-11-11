@@ -17,7 +17,7 @@
         <script>$('#map').googlemap();</script>
     </div>
     <div class=" col-md-6">
-        <h4>Valor $ <?php echo $model->valor_propiedad; ?> <button type="button" style="float: right" class="btn btn-success " onclick="javascript:window.print()">Imprimir </button></h4>
+        <h4 id='ho'>Valor $ <?php echo CHtml::encode($model->valor_propiedad); ?> <button type="button" style="float: right" class="btn btn-success " onclick="javascript:window.print()">Imprimir </button></h4>
         <ul class="list-group">
             <li class="list-group-item"><i class="fa fa-map-marker"></i> Ubicación: <?php echo $model->direccion_propiedad.' '.$model->numero_propiedad; ?></li>
             <li class="list-group-item"><i class="fa fa-bed"></i> Dormitorios: <?php echo $model->habitacion_propiedad; ?></li>
@@ -43,3 +43,19 @@
     </div>
 </section>
 <?php $this->endWidget(); ?>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.formatCurrency-1.4.0.js" type="text/javascript"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/i18n/jquery.formatCurrency.es-CL.js" type="text/javascript"></script>
+<script>
+var max_width = 230; var max_height = 230;
+$('img').each(function() {
+  var w = $(this).width();
+  var h = $(this).height();
+  var scale = null;
+  if (w >= h) { if (w > max_width) { scale = 1 / (w / max_width); } }
+  else { if (h > max_height) { scale = 1 / (h / max_height); } }
+  if (scale) {
+      $(this).width(w * scale);
+      $(this).height(h * scale);
+  }
+});
+</script>

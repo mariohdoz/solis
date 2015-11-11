@@ -62,8 +62,14 @@ class Propiedad extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'cliente'=>array(self::BELONGS_TO, 'Cliente', 'rut_cliente'),
+			'imagen'=>array(self::HAS_MANY, 'Imagen', 'id_propiedad'),
 		);
 	}
+	public function getCliente(){
+		return $this->direccion_propiedad.' Propietario '.$this->rut_cliente;
+	}
+
 
 	/**
 	 * @return array customized attribute labels (name=>label)
@@ -104,6 +110,34 @@ class Propiedad extends CActiveRecord
 	 * based on the search/filter conditions.
 	 */
 	public function search()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('id_propiedad',$this->id_propiedad);
+		$criteria->compare('rut_cliente',$this->rut_cliente,true);
+		$criteria->compare('direccion_propiedad',$this->direccion_propiedad,true);
+		$criteria->compare('numero_propiedad',$this->numero_propiedad);
+		$criteria->compare('habitacion_propiedad',$this->habitacion_propiedad);
+		$criteria->compare('bano_propiedad',$this->bano_propiedad);
+		$criteria->compare('terreno_propiedad',$this->terreno_propiedad,true);
+		$criteria->compare('construido_propiedad',$this->construido_propiedad,true);
+		$criteria->compare('tipo_propiedad',$this->tipo_propiedad,true);
+		$criteria->compare('servicio_propiedad',$this->servicio_propiedad,true);
+		$criteria->compare('estado_propiedad',$this->estado_propiedad);
+		$criteria->compare('descripcion_propiedad',$this->descripcion_propiedad,true);
+		$criteria->compare('comuna_propiedad',$this->comuna_propiedad,true);
+		$criteria->compare('amoblado_propiedad',$this->amoblado_propiedad);
+		$criteria->compare('valor_propiedad',$this->valor_propiedad);
+		$criteria->compare('activo_propiedad',$this->activo_propiedad);
+		$criteria->compare('eliminado_propiedad',0);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+	public function libres()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
