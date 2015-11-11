@@ -43,8 +43,8 @@
 ?>
 <?php $this->endWidget(); ?>
 
-					<!-- <a href="#0" class="cd-close-form">Close</a> -->
-				</div>		<!-- termina el inicio de sesion -->
+				 	<!-- <a href="#0" class="cd-close-form">Close</a> -->
+				</div>		<!-- te rmina el inicio de sesion -->
 
 				<a href="#0" class="cd-close-form">Cerrar</a>
 			</div> <!-- cd-user-modal-container -->
