@@ -72,8 +72,12 @@ Navigation
     box-shadow: none;
   }
 }
-
+#cd-logo2{
+  float: left;
+  margin: 8px 0 0 5%;
+}
 #cd-logo {
+  visibility: hidden;
   float: left;
   margin: 8px 0 0 5%;
 }
@@ -82,12 +86,14 @@ Navigation
 }
 @media only screen and (min-width: 768px) {
   #cd-logo {
+
     margin: 10px 0 0 5%;
   }
 }
 @media only screen and (min-width: 1170px) {
   #cd-logo.is-hidden {
     /* assign a position fixed and move outside the viewport (on the left) */
+    visibility: visible;
     opacity: 0;
     position: fixed;
     left: -20%;
@@ -676,6 +682,7 @@ header[role=banner]::after {
   display: block;
   height: 50px;
   line-height: 50px;
+  text-decoration: none;
   padding-left: 5%;
   background: #ff5722;
   border-top: 1px solid #960002;
@@ -719,20 +726,28 @@ header[role=banner]::after {
     background: transparent;
   }
   .main-nav a.cd-signin, .main-nav a.cd-signup {
-    font-size: 15px;
+    float: right;
+    font-size: 18px;
     color: #ffffff;
-    padding: .6em 1em;
+    padding: .5em 1em;
     background: #ff5722;
     border: none;
-    border-radius: .9em;
+    border-radius: .5em;
   }
   .main-nav a.cd-signin:hover {
     color: #FFFFFF;
-    padding: .6em 1em;
+    padding: .5em 1em;
     background: #53b7ad;
-    border: none;
-    border-radius: 50em;
+    text-decoration: none;
+
+  }.main-nav a.cd-signin:focus {
+    color: #FFFFFF;
+    padding: .5em 1em;
+    background: #53b7ad;
+    text-decoration: none;
+
   }
+
 
 }
 
@@ -776,7 +791,7 @@ xsigin/signup popup
   position: relative;
   width: 90%;
   top: 10%;
-  max-width: 600px;
+  max-width: 400px;
   background: #FFF;
   margin: 3em auto 4em;
   cursor: auto;
@@ -2321,13 +2336,16 @@ fieldset[disabled] .btn-info.active {
 }
 
 .btn-buscar {
+  margin-top: 5px;
+  padding: .8em 1em;
   color: #fff;
   background-color: #ff5722;
   border-color: #d5491f;
 }.btn-buscar:hover {
+   padding: .8em 1em;
   color: #fff;
-  background-color: #ff8e57;
-  border-color: #ff8e57;
+  background-color: #d5491f;
+  border-color: #d5491f;
 }
 .btn-warning:hover,
 .btn-warning:focus,

@@ -1,10 +1,10 @@
-<header class="cd-header">
+<header id="cd-placeholder-4" class="cd-header">
 		<div id="cd-logo"><?php echo CHtml::link('<img src="'.Yii::app()->request->baseUrl.'/images/LogoV2.png" width="150px" height="50px" alt="Logo">',array('index')); ?></div>
 		<nav class="main-nav">
 			<ul>
 				<!-- inser more l inks her e -->
 				<?php if(!Yii::app()->session['activo']) {
-						echo '<li><a class="cd-signin " href="#">Iniciar Sesión</a></li>';
+						echo '<a class="cd-signin " href="#"><i class="fa fa-user"></i> | Iniciar Sesión</a>';
 					}else {
             echo CHtml::link('Cerrar sesión', array('Site/logout'), array('class'=>'cd-signin'));
 					}
@@ -82,6 +82,12 @@
 					<span></span><!-- icon -->
 				</a>
 			</li>
+			<li>
+				<a href="#cd-placeholder-4">
+					<b>Ingresar</b>
+					<span></span><!-- icon -->
+				</a>
+			</li>
 		</ul>
 	</nav>
 </div> <!-- .cd-secondary-nav -->
@@ -141,7 +147,7 @@
 				</div>
 				<div class="col-md-3">
 					<label> </label>
-					<?php echo CHtml::submitButton('Buscar', array("class"=>"btn btn-buscar") ); ?>
+					<?php echo CHtml::submitButton('Buscar', array("class"=>" btn-buscar") ); ?>
 				</div>
 			</div>
 			<br><br>
@@ -292,6 +298,11 @@
 	</section> <!-- #cd-placeholder-5 -->
 </main> <!-- .cd-main-content -->
 
+<!-- Preloads, super old-school -->
+<div style="display:none;">
+	<img src="http://www.braksoftware.com/codepen/bruce/v1/join-our-team-button-over-large.png" />
+	<img src="http://www.braksoftware.com/codepen/bruce/v1/join-our-team-button-over-medium.png" />
+</div>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-2.1.1.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/main.js"></script> <!-- Resource jQuery -->
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/modernizr.js"></script> <!-- Resource jQuery -->

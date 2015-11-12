@@ -14,5 +14,6 @@
 		<title>Sol y Cobre</title>
 	</head>
 	<body> 	<?php echo $content; ?>
+
 	</body>
 </html>

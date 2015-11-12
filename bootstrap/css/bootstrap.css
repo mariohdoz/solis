@@ -3236,7 +3236,7 @@ fieldset[disabled] .btn-info.active {
   background-color: #fff;
 }
 .btn-warning {
-
+float: left;
   display: inline-block;
   padding: 1em 1.8em;
   background-color: rgba(255, 87, 34, 0.9);

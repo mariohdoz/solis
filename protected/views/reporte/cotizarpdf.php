@@ -23,7 +23,14 @@
     <td width="50%">
         <span class="logo-lg"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/LogoV2.png" width="150px" height="50px"></span>
     </td>
-    <td width="50%" class="aBDP" style="text-align: right">11 de noviembre de 2015, Calama</td>
+    <td width="50%" class="aBDP" style="text-align: right">
+      <?php echo //Establecer la información local en castellano de España
+      setlocale(LC_TIME,"es_ES.UTF-8");
+
+      echo strftime("Calama %A %d de %B de %Y ");
+
+      ?>
+    </td>
   </tr></table>
   </htmlpageheader>
 
