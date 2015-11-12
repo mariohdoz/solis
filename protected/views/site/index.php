@@ -94,6 +94,7 @@
 <main class="cd-main-content">
 	<section id="cd-placeholder-1" class="cd-section cd-container servicios">
     <h1>Buscar Propiedades</h1></br>
+
 		<div class="container-fluid ">
 			<?php $form=$this->beginWidget('CActiveForm', array(
 				'id'=>'busqueda-form',

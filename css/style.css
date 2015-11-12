@@ -890,6 +890,7 @@ xsigin/signup popup
 }
 .cd-form label.cd-email {
   background-image: url("../images/cd-icon-email.svg");
+
 }
 .cd-form label.cd-password {
   background-image: url("../images/cd-icon-password.svg");
@@ -898,6 +899,7 @@ xsigin/signup popup
   margin: 0;
   padding: 0;
   border-radius: 0.25em;
+
 }
 .cd-form input.full-width {
   width: 100%;
@@ -2544,3 +2546,4 @@ fieldset[disabled] .btn-link:focus {
   padding:5px;
   background-color:#DDDDDD;
 }
+
