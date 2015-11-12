@@ -55,7 +55,7 @@
 	</div> <!-- #cd-intro-tagline -->
 </section> <!-- #cd-intro -->
 <div class="cd-secondary-nav">
-	<a href="#0" class="cd-secondary-nav-trigger">Menú<span></span></a> <!-- button visible o  n small devices -->
+	<a href="#0" class="cd-secondary-nav-trigger">Menú<span></span></a> <!-- button visible on small devices -->
 	<nav>
 		<ul>
 			<li>
