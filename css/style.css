@@ -746,6 +746,27 @@ header[role=banner]::after {
     background: #53b7ad;
     text-decoration: none;
 
+  }.main-nav a.cd-signin2, .main-nav a.cd-signup {
+    float: right;
+    font-size: 18px;
+    color: #ffffff;
+    padding: .5em 1em;
+    background: #d60002;
+    border: none;
+    border-radius: .5em;
+  }
+  .main-nav a.cd-signin2:hover {
+    color: #FFFFFF;
+    padding: .5em 1em;
+    background: #9c0002;
+    text-decoration: none;
+
+  }.main-nav a.cd-signin2:focus {
+    color: #FFFFFF;
+    padding: .5em 1em;
+    background: #9c0002;
+    text-decoration: none;
+
   }
 
 

@@ -6,7 +6,7 @@
 				<?php if(!Yii::app()->session['activo']) {
 						echo '<a class="cd-signin " href="#"><i class="fa fa-user"></i> | Iniciar Sesión</a>';
 					}else {
-            echo CHtml::link('Cerrar sesión', array('Site/logout'), array('class'=>'cd-signin'));
+            echo CHtml::link('<i class="fa fa-times"></i> |Cerrar sesión', array('Site/logout'), array('class'=>'cd-signin2'));
 					}
 				?>
 			</ul>
