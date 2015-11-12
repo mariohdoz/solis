@@ -1,13 +1,13 @@
 <div class="content-wrapper">
     <section class="content-header">
         <h1>
-            Configuración
+            ConfiguraciÃ³n
             <small>Perfil de usuario.</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="?r=intra/index">
                     <i class="fa fa-dashboard"></i>Inicio</a></li>
-            <li class="active">Configuración Usuario</li>
+            <li class="active">ConfiguraciÃ³n Usuario</li>
         </ol>
     </section>
     <section class="content">
@@ -56,13 +56,14 @@
                                     'template'=>'{email}',
                                     'buttons'=>array(
                                         'email' => array(
-                                            'label'=>' <a href="#" class="btn btn-google-plus">Cotizar</a>',
-                                            'url'=>'"generarpdf", array("id"=>$data->id_propiedad))'
+                                            'label'=>'<i class="btn btn-google-plus">Cotizar</i>',
+                                            'url'=>'Yii::app()->createUrl("reporte/generarpdf", array("id"=>$data->id_propiedad))'
+
                                         ),
                                     ),
                                 ),
                         ))); ?>
-                        <?php echo CHtml::link(CHtml::image(Yii::app()->baseUrl."/images/pdf.jpg","PDF",array("title"=>"Exportar a PDF")),array("generarpdf")); ?>
+
                     </div><!-- /.box-body -->
                     <div class="box-footer">
                         The footer of the box
