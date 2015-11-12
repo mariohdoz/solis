@@ -52,7 +52,7 @@
                     'class'=>'CButtonColumn',
                     'template'=>'{email}',
                     'buttons'=>array(
-                      'email' => array(
+                      'eliminar' => array(
                           'label'=>'<i class="fa fa-trash-o "></i>',
                           'url'=>'Yii::app()->createUrl("arriendo/eliminar", array("id"=>$data->id_arriendo))',
                       ),

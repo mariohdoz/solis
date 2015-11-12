@@ -43,20 +43,22 @@ $this->menu=array(
 	)); ?>
 	<section class="content">
 		<div class="row">
-			<?php if(($msgs=Yii::app()->user->getFlashes())!=null): ?>
-				<?php foreach($msgs as $type => $message):?>
-					<div class="callout callout-<?php echo $type;?>">
-						<h4><?php
-							if($type == 'danger'){
-								echo 'Error';
-							}elseif ($type == 'success'){
-								echo 'Éxito';
-							};
-						 ?> !</h4>
-						<p><?php echo $message;?></p>
-					</div>
-				<?php endforeach;?>
-			<?php endif; ?>
+			<div class="col-md-12">
+				<?php if(($msgs=Yii::app()->user->getFlashes())!=null): ?>
+					<?php foreach($msgs as $type => $message):?>
+						<div class="callout callout-<?php echo $type;?>">
+							<h4><?php
+								if($type == 'danger'){
+									echo 'Error';
+								}elseif ($type == 'success'){
+									echo 'Éxito';
+								};
+							 ?> !</h4>
+							<p><?php echo $message;?></p>
+						</div>
+					<?php endforeach;?>
+				<?php endif; ?>
+			</div>
 			<div class="col-md-12">
 				<div class="box box-primary">
 					<div class="box-header with-border">
@@ -160,3 +162,9 @@ $this->menu=array(
 		</div>
 	</section>
 </div>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.formatCurrency-1.4.0.js" type="text/javascript"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/i18n/jquery.formatCurrency.es-CL.js" type="text/javascript"></script>
+<script>
+	$('#Arriendo_valor_arriendo').formatCurrency({region: 'es-CL'
+		, roundToDecimalPlace: -1});
+</script>

@@ -255,14 +255,14 @@ $this->menu=array(
 									<?php echo $form->error($model3,'rut_cliente'); ?>
 								</div>
 							</div>
-							<div class="col-xs-9">
+							<div class="col-xs-8">
 								<div class="form-group">
 									<?php echo $form->label($model3,'direccion_propiedad'); ?>
 									<?php echo $form->textField($model3,'direccion_propiedad', array('class'=>'form-control', 'disabled'=>'true')); ?>
 									<?php echo $form->error($model3,'direccion_propiedad'); ?>
 								</div>
 							</div>
-							<div class="col-xs-3">
+							<div class="col-xs-4">
 								<?php echo $form->label($model3,'valor_propiedad'); ?>
 								<?php echo $form->textField($model3,'valor_propiedad', array('class'=>'form-control', 'disabled'=>'true')); ?>
 								<?php echo $form->error($model3,'valor_propiedad'); ?>
@@ -293,7 +293,41 @@ $this->menu=array(
 									<div class="col-md-6">
 										<div class="form-group">
 											<?php echo $form->labelEx($model,'fechapago_arriendo'); ?>
-											<?php echo $form->dateField($model,'fechapago_arriendo', array('class'=>'form-control')); ?>
+											<?php echo $form->dropDownList($model,'fechapago_arriendo',
+													array(
+															'1' => '1',
+															'2' => '2',
+															'3' => '3',
+															'4' => '4',
+															'5' => '5',
+															'6' => '6',
+															'7' => '7',
+															'8' => '8',
+															'9' => '9',
+															'10' => '10',
+															'11' => '11',
+															'12' => '12',
+															'13' => '13',
+															'14' => '14',
+															'15' => '15',
+															'16' => '16',
+															'17' => '17',
+															'18' => '18',
+															'19' => '19',
+															'20' => '20',
+															'21' => '21',
+															'22' => '22',
+															'23' => '23',
+															'24' => '24',
+															'25' => '25',
+															'26' => '26',
+															'27' => '27',
+															'28' => '28',
+															'29' => '29',
+															'30' => '30',
+															'31' => '31',
+													),
+													array("class"=>"form-control select2", 'empty' => 'Seleccione el día de pago', 'tabindex'=>3)); ?>
 										</div>
 										<div class="form-group">
 											<?php echo $form->labelEx($model,'inicio_arriendo'); ?>
@@ -324,3 +358,11 @@ $this->menu=array(
 		</div>
 	</section>
 </div>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.formatCurrency-1.4.0.js" type="text/javascript"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/i18n/jquery.formatCurrency.es-CL.js" type="text/javascript"></script>
+<script>
+	$('#Arriendo_valor_arriendo').formatCurrency({region: 'es-CL'
+		, roundToDecimalPlace: -1});
+		$('#Propiedad_valor_propiedad').formatCurrency({region: 'es-CL'
+			, roundToDecimalPlace: -1});
+</script>

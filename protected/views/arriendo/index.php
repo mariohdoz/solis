@@ -27,20 +27,22 @@ $this->menu=array(
 	</section>
 	<section class="content">
 		<div class="row">
-			<?php if(($msgs=Yii::app()->user->getFlashes())!=null): ?>
-				<?php foreach($msgs as $type => $message):?>
-					<div class="callout callout-<?php echo $type;?>">
-						<h4><?php
-							if($type == 'danger'){
-								echo 'Error';
-							}elseif ($type == 'success'){
-								echo 'Éxito';
-							};
-						 ?> !</h4>
-						<p><?php echo $message;?></p>
-					</div>
-				<?php endforeach;?>
-			<?php endif; ?>
+			<div class="col-md-12">
+				<?php if(($msgs=Yii::app()->user->getFlashes())!=null): ?>
+					<?php foreach($msgs as $type => $message):?>
+						<div class="callout callout-<?php echo $type;?>">
+							<h4><?php
+								if($type == 'danger'){
+									echo 'Error';
+								}elseif ($type == 'success'){
+									echo 'Éxito';
+								};
+							 ?> !</h4>
+							<p><?php echo $message;?></p>
+						</div>
+					<?php endforeach;?>
+				<?php endif; ?>
+			</div>
 			<div class="col-md-12">
 				<div class="box box-primary">
 					<div class="box-header with-border">
@@ -65,8 +67,22 @@ $this->menu=array(
 									'valor_arriendo',
 									*/
 									array(
-										'class'=>'CButtonColumn',
-									),
+                    'class'=>'CButtonColumn',
+                    'buttons'=>array(
+                      'modificar' => array(
+                          'label'=>'<i class="fa fa-trash-o "></i>',
+                          'url'=>'Yii::app()->createUrl("arriendo/eliminar", array("id"=>$data->id_arriendo))',
+                      ),
+											'modificar' => array(
+													'label'=>'<i class="fa fa-pencil-square-o"></i>',
+													'url'=>'Yii::app()->createUrl("arriendo/update", array("id"=>$data->id_arriendo))',
+											),
+											'ver' => array(
+                          'label'=>'<i class="fa fa-eye "></i>',
+                          'url'=>'Yii::app()->createUrl("arriendo/view", array("id"=>$data->id_arriendo))',
+                      ),
+                    ),
+                  ),
 								),
 							)); ?>
 

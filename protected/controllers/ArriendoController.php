@@ -32,7 +32,7 @@ class ArriendoController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','index','view','obtener','obtenerpro', 'select', 'select2', 'eliminar'),
+				'actions'=>array('create','update','index','view','obtener','obtenerpro', 'select', 'select2', 'eliminar', 'arrendatario'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -78,7 +78,7 @@ class ArriendoController extends Controller
 			'keyAttribute'=>'rut_arrendatario',// IMPORTANTE, para que el CGridView conozca la seleccion
 			'criteria'=>$criteria2,
 			'pagination'=>array(
-				'pageSize'=>5,
+				'pageSize'=>15,
 			),
 			'sort'=>array(
 				'defaultOrder'=>array('rut_arrendatario'=>true),
@@ -90,7 +90,7 @@ class ArriendoController extends Controller
 			'keyAttribute'=>'id_propiedad',// IMPORTANTE, para que el CGridView conozca la seleccion
 			'criteria'=>$criteria,
 			'pagination'=>array(
-				'pageSize'=>5,
+				'pageSize'=>15,
 			),
 			'sort'=>array(
 				'defaultOrder'=>array('id_propiedad'=>true),
@@ -105,9 +105,13 @@ class ArriendoController extends Controller
 			$model->attributes=$_POST['Arriendo'];
 			$model->rut_admin = Yii::app()->session['admin_rut'];
 			$model->inscripcion_arriendo = date('Y-m-d');
+			$rut= str_replace('.','',$model->rut_arrendatario);
+			$model->rut_arrendatario = $rut;
 			if($model->id_propiedad != '' && $model->rut_arrendatario != ''){
 				$model3=Propiedad::model()->findByPk($model->id_propiedad);
 				$model2=Arrendatario::model()->findByPk($model->rut_arrendatario);
+				$valor = intval(preg_replace('/[^0-9]+/', '', $model->valor_arriendo),10);
+				$model->valor_arriendo = $valor;
 				if($model3->activo_propiedad == 1){
 					$model3->activo_propiedad= 0;
 					if($model->save() && $model3->save())
@@ -142,6 +146,20 @@ class ArriendoController extends Controller
 		$resp = Propiedad::model()->findAllByAttributes(array('id_propiedad'=>$id));
 		header("Content-type: application/json");
 		echo CJSON::encode($resp);
+	}
+	public function actionArrendatario($id)
+	{
+		$rut=$this->codigo($id);
+		$resp = Arrendatario::model()->findAllByAttributes(array('rut_arrendatario'=>$rut));
+		if ($resp) {
+			header("Content-type: application/json");
+			echo CJSON::encode($resp);
+		}else {
+			$resp = '';
+			header("Content-type: application/json");
+			echo CJSON::encode($resp);
+		}
+
 	}
 	/* Se crea la función codigo para poder obtener el rut del funcionario*/
 	public function codigo($var)
@@ -190,25 +208,29 @@ class ArriendoController extends Controller
 		if(isset($_POST['Arriendo']))
 		{
 			$model->attributes=$_POST['Arriendo'];
-			$model3=Propiedad::model()->findByPk($model->id_propiedad);
-
-			if($model->id_propiedad != $variable->id_propiedad){
-				$model4=new Propiedad;
-				$model4=Propiedad::model()->findByPk($variable->id_propiedad);
-				$model4->activo_propiedad=1;
-				if($model4->save()){
-					Yii::app()->user->setFlash('success','La propiedad enlazada con el arriendo fue modificada.');
-				}else {
-					Yii::app()->user->setFlash('danger','La propiedad enlazada con el arriendo no pudo ser modificada.');
+			if($model->id_propiedad != '' && $model->rut_arrendatario != ''){
+				$model3=Propiedad::model()->findByPk($model->id_propiedad);
+				if($model->id_propiedad != $variable->id_propiedad){
+					$model4=new Propiedad;
+					$model4=Propiedad::model()->findByPk($variable->id_propiedad);
+					$model4->activo_propiedad=1;
+					if($model4->save()){
+						Yii::app()->user->setFlash('success','La propiedad enlazada con el arriendo fue modificada.');
+					}else {
+						Yii::app()->user->setFlash('danger','La propiedad enlazada con el arriendo no pudo ser modificada.');
+					}
 				}
-			}
-
-			$model3->activo_propiedad =0;
-			if($model->save() && $model3->save()){
-				Yii::app()->user->setFlash('success','El arriendo fue actualizado.');
-				$this->redirect(array('view','id'=>$model->id_arriendo));
-			}else{
-				Yii::app()->user->setFlash('danger','El arriendo no fue actualizado.');
+				$rut= str_replace('.','',$model->rut_arrendatario);
+				$model->rut_arrendatario = $rut;
+				$model3->activo_propiedad =0;
+				$valor = intval(preg_replace('/[^0-9]+/', '', $model->valor_arriendo),10);
+				$model->valor_arriendo = $valor;
+				if($model->save() && $model3->save()){
+					Yii::app()->user->setFlash('success','El arriendo fue actualizado.');
+					$this->redirect(array('view','id'=>$model->id_arriendo));
+				}else{
+					Yii::app()->user->setFlash('danger','El arriendo no fue actualizado.');
+				}
 			}
 		}
 		$criteria2 = new CDbCriteria();

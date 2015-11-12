@@ -9,7 +9,7 @@
  * @property string $rut_admin
  * @property string $rut_arrendatario
  * @property string $inscripcion_arriendo
- * @property string $fechapago_arriendo
+ * @property integer $fechapago_arriendo
  * @property string $inicio_arriendo
  * @property string $termino_arriendo
  * @property integer $valor_arriendo
@@ -33,8 +33,8 @@ class Arriendo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_propiedad, rut_admin, inscripcion_arriendo, fechapago_arriendo, inicio_arriendo, termino_arriendo, valor_arriendo', 'required'),
-			array('id_propiedad, valor_arriendo, activo_arriendo', 'numerical', 'integerOnly'=>true),
+			array('id_propiedad, rut_admin, inscripcion_arriendo, inicio_arriendo, termino_arriendo, valor_arriendo', 'required'),
+			array('id_propiedad, fechapago_arriendo, valor_arriendo, activo_arriendo', 'numerical', 'integerOnly'=>true),
 			array('rut_admin, rut_arrendatario', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -50,8 +50,6 @@ class Arriendo extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'arrendatario'=>array(self::BELONGS_TO, 'Arrendatario', 'rut_arrendatario'),
-			'propiedad'=>array(self::BELONGS_TO, 'Propiedad', 'id_propiedad'),
 		);
 	}
 
@@ -97,7 +95,7 @@ class Arriendo extends CActiveRecord
 		$criteria->compare('rut_admin',$this->rut_admin,true);
 		$criteria->compare('rut_arrendatario',$this->rut_arrendatario,true);
 		$criteria->compare('inscripcion_arriendo',$this->inscripcion_arriendo,true);
-		$criteria->compare('fechapago_arriendo',$this->fechapago_arriendo,true);
+		$criteria->compare('fechapago_arriendo',$this->fechapago_arriendo);
 		$criteria->compare('inicio_arriendo',$this->inicio_arriendo,true);
 		$criteria->compare('termino_arriendo',$this->termino_arriendo,true);
 		$criteria->compare('valor_arriendo',$this->valor_arriendo);

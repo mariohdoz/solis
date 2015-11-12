@@ -10,6 +10,10 @@ $this->menu=array(
 	array('label'=>'Manage Arriendo', 'url'=>array('admin')),
 );
 ?>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.formatCurrency-1.4.0.js" type="text/javascript"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/i18n/jquery.formatCurrency.es-CL.js" type="text/javascript"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.Rut.min.js" type="text/javascript"></script>
+
 <script>
 	/*
 		MUY IMPORTANTE:
@@ -75,6 +79,8 @@ $this->menu=array(
 					$('#Arriendo_id_propiedad').val(propiedad.id_propiedad);
 					$('#Propiedad_direccion_propiedad').val(propiedad.direccion_propiedad);
 					$('#Propiedad_valor_propiedad').val(propiedad.valor_propiedad);
+					$('#Propiedad_valor_propiedad').formatCurrency({region: 'es-CL'
+		        , roundToDecimalPlace: -1});
 					$('#Propiedad_rut_cliente').val(propiedad.rut_cliente);
 					$( "#Propiedad_valor_propiedad" ).prop({
 						disabled: true
@@ -96,7 +102,7 @@ $this->menu=array(
 
 			<div class="modal-body">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 style="text-align: center">Propiedades</h4>
+				<h4 style="text-align: center">Arrendatario</h4>
 				<div class="form-horizontal">
 					<?php
 						$this->widget('zii.widgets.grid.CGridView', array(
@@ -159,6 +165,8 @@ $this->menu=array(
 						// nota que aqui no se usa array, sino directamente el nombre de la columna
 								'direccion_propiedad',
 								'tipo_propiedad',
+								'comuna_propiedad',
+								'servicio_propiedad'
 						// via 2: para mostrar detalles al hacer click en un icono.
 							),
 						));
@@ -250,19 +258,19 @@ $this->menu=array(
 							</div>
 							<div class="col-xs-6">
 								<div class="form-group">
-									<?php echo $form->labelEx($model3,'rut_cliente'); ?>
+									<label for="Propiedad_rut_cliente">RUT del propietario</label>
 									<?php echo $form->textField($model3,'rut_cliente',array('class'=>'form-control','disabled'=>'true', 'placeholder'=>'RUT del propietario.')); ?>
 									<?php echo $form->error($model3,'rut_cliente'); ?>
 								</div>
 							</div>
-							<div class="col-xs-9">
+							<div class="col-xs-8">
 								<div class="form-group">
 									<?php echo $form->label($model3,'direccion_propiedad'); ?>
 									<?php echo $form->textField($model3,'direccion_propiedad', array('class'=>'form-control', 'disabled'=>'true')); ?>
 									<?php echo $form->error($model3,'direccion_propiedad'); ?>
 								</div>
 							</div>
-							<div class="col-xs-3">
+							<div class="col-xs-4">
 								<?php echo $form->label($model3,'valor_propiedad'); ?>
 								<?php echo $form->textField($model3,'valor_propiedad', array('class'=>'form-control', 'disabled'=>'true')); ?>
 								<?php echo $form->error($model3,'valor_propiedad'); ?>
@@ -293,12 +301,46 @@ $this->menu=array(
 									<?php echo $form->errorSummary($model,'<strong>Es necesario arreglar los siguientes errores:</strong><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><div class="alert alert-danger">', '</div>'); ?>
 									<div class="col-md-6">
 										<div class="form-group">
-											<?php echo $form->labelEx($model,'fechapago_arriendo'); ?>
-											<?php echo $form->dateField($model,'fechapago_arriendo', array('class'=>'form-control', 'tabindex'=>1)); ?>
+											<?php echo $form->labelEx($model,'inicio_arriendo'); ?>
+											<?php echo $form->dateField($model,'inicio_arriendo', array('class'=>'form-control', 'tabindex'=>1)); ?>
 										</div>
 										<div class="form-group">
-											<?php echo $form->labelEx($model,'inicio_arriendo'); ?>
-											<?php echo $form->dateField($model,'inicio_arriendo', array('class'=>'form-control', 'tabindex'=>3)); ?>
+											<?php echo $form->labelEx($model,'fechapago_arriendo'); ?>
+											<?php echo $form->dropDownList($model,'fechapago_arriendo',
+													array(
+															'1' => '1',
+															'2' => '2',
+															'3' => '3',
+															'4' => '4',
+															'5' => '5',
+															'6' => '6',
+															'7' => '7',
+															'8' => '8',
+															'9' => '9',
+															'10' => '10',
+															'11' => '11',
+															'12' => '12',
+															'13' => '13',
+															'14' => '14',
+															'15' => '15',
+															'16' => '16',
+															'17' => '17',
+															'18' => '18',
+															'19' => '19',
+															'20' => '20',
+															'21' => '21',
+															'22' => '22',
+															'23' => '23',
+															'24' => '24',
+															'25' => '25',
+															'26' => '26',
+															'27' => '27',
+															'28' => '28',
+															'29' => '29',
+															'30' => '30',
+															'31' => '31',
+													),
+													array("class"=>"form-control select2", 'empty' => 'Seleccione el día de pago', 'tabindex'=>3)); ?>
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -325,3 +367,40 @@ $this->menu=array(
 		</div>
 	</section>
 </div>
+
+<script>
+	$("#Arriendo_valor_arriendo").click(function(){
+		$('#Arriendo_valor_arriendo').val('');
+	});
+	$("#Arriendo_valor_arriendo").blur(function(){
+		$('#Arriendo_valor_arriendo').formatCurrency({region: 'es-CL'
+			, roundToDecimalPlace: -1});
+	});
+	$("#Arriendo_rut_arrendatario").click(function(){
+		$("#Arriendo_rut_arrendatario").val('');
+	})
+	$("#Arriendo_rut_arrendatario").Rut({
+		on_error: function(){
+			alert('El RUT ingresado es incorrecto.');
+			$('#Arrendatario_nombres_arrendatario').val('');
+			$('#Arrendatario_apellidos_arrendatario').val('');
+		},
+		on_success: function(){
+			var rut = $('#Arriendo_rut_arrendatario').val();
+			rut=rut+"";
+			var a = rut.replace('.','');
+			a = a.replace('.','');
+			var res = a.split("-");
+			var action = "<?php echo Yii::app()->request->baseUrl; ?>"+'/arriendo/arrendatario/'+res[0];
+			$.getJSON(action, function(data) {
+				$.each(data, function(key, cliente) {
+					$('#Arrendatario_nombres_arrendatario').val(cliente.nombres_arrendatario);
+					$('#Arrendatario_apellidos_arrendatario').val(cliente.apellidos_arrendatario);
+				});
+			}).fail(function() {
+			    console.log( "error" );
+			  })
+		},
+
+	})
+</script>

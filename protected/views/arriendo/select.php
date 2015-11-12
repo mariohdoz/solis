@@ -52,7 +52,7 @@
                     'class'=>'CButtonColumn',
                     'template'=>'{email}',
                     'buttons'=>array(
-                        'email' => array(
+                        'modificar' => array(
                             'label'=>'<i class="fa fa-pencil-square-o"></i>',
                             'url'=>'Yii::app()->createUrl("arriendo/update", array("id"=>$data->id_arriendo))',
                         ),
