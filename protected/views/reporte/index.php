@@ -1,19 +1,19 @@
 <div class="content-wrapper">
     <section class="content-header">
         <h1>
-            Configuración
-            <small>Perfil de usuario.</small>
+            Reportes
+            <small>Cotización.</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="?r=intra/index">
                     <i class="fa fa-dashboard"></i>Inicio</a></li>
-            <li class="active">Configuración Usuario</li>
+            <li class="active">Cotización</li>
         </ol>
     </section>
     <section class="content">
         <?php $form=$this->beginWidget('CActiveForm', array(
             'id'=>'admin-form',
-            // Pleas e note: When you enable ajax validation, make sure the corresponding
+            // Please note: When you enable ajax validation, make sure the corresponding
             // controller action is handling ajax validation correctly.
             // There is a call to performAjaxValidation() commented in generated controller code.
             // See class documentation of CActiveForm for details on this.
@@ -21,9 +21,9 @@
         )); ?>
         <div class="row">
             <div class="col-md-12">
-                <div class="box box-solid box-primary">
+                <div class="box box-solid box-default">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Default Box Example</h3>
+                        <h3 class="box-title"></h3>
                         <div class="box-tools pull-right">
                             <!-- Buttons, labels, and many other things can be placed here! -->
                             <!-- Here is a label for example -->
@@ -58,15 +58,14 @@
                                         'email' => array(
                                             'label'=>'<i class="btn btn-google-plus">Cotizar</i>',
                                             'url'=>'Yii::app()->createUrl("reporte/generarpdf", array("id"=>$data->id_propiedad))'
-
                                         ),
                                     ),
                                 ),
                         ))); ?>
 
-                    </div><!-- /.box-body -->
+                                         </div><!-- /.box-body -->
                     <div class="box-footer">
-                        The footer of the box
+
                     </div><!-- box-footer -->
                 </div><!-- /.box -->
             </div>
@@ -77,4 +76,3 @@
         <?php $this->endWidget(); ?>
     </section>
 </div>
-

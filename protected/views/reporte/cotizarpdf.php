@@ -5,8 +5,17 @@
   <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css"> <!-- Resource style -->
 </head>
 <body>
-
+<?php $form=$this->beginWidget('CActiveForm', array(
+    'id'=>'admin-form',
+  // Please note: When you enable ajax validation, make sure the corresponding
+  // controller action is handling ajax validation correctly.
+  // There is a call to per    formAjaxValidation() commented in generated controller code.
+  // See class documentation of CActiveForm for details on this.
+    'enableAjaxValidation'=>false,
+)); ?>
 <style>
+
+
 
 </style>
   <htmlpageheader name="myheader">
@@ -14,7 +23,7 @@
     <td width="50%">
         <span class="logo-lg"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/LogoV2.png" width="150px" height="50px"></span>
     </td>
-    <td width="50%" class="aBDP" style="text-align: '.' center" >11 de Noviembre de 2015 ,Calama </td>
+    <td width="50%" class="aBDP" style="text-align: right">11 de noviembre de 2015, Calama</td>
   </tr></table>
   </htmlpageheader>
 
@@ -26,17 +35,15 @@
 
   <sethtmlpageheader name="myheader" value="on" show-this-page="1" />
   <sethtmlpagefooter name="myfooter" value="on" />
-
-
-<h1>Cotización</h1>
+<h1>Cotización <?php echo $model->servicio_propiedad ?></h1>
 <div class="tabla" >
   <table >
     <tr>
       <td >
-        ARRIENDO DE PROPIEDAD
+        PROPIEDAD
       </td>
       <td>
-        P. UNITARIO
+        Valor de Arriendo
       </td>
       <td>
         TOTAL
@@ -44,51 +51,84 @@
     </tr>
     <tr>
       <td >
-        <?php echo $model->direccion_propiedad;?>
+       <?php echo $model->direccion_propiedad ?>
       </td>
       <td>
-        Row 1
+        $<?php echo $model->valor_propiedad ?>
       </td>
       <td>
-        Row 1
+        $<?php echo $model->valor_propiedad ?>
+      </td>
+
+    </tr>
+    <tr>
+      <td>
+        Mes de garantía
       </td>
       <td>
-        Row 1
+        $<?php echo $model->valor_propiedad ?>
+      </td>
+      <td>
+        $<?php echo $model->valor_propiedad ?>
       </td>
     </tr>
     <tr>
-      <td >
-        Row 2
+      <td>
+        Comisión por administración
       </td>
       <td>
-        Row 2
+
       </td>
       <td>
-        Row 2
-      </td>
-      <td>
-        Row 2
+        $ 125000
       </td>
     </tr>
     <tr>
-      <td >
-        Row 3
+      <td>
+
       </td>
       <td>
-        Row 3
+
       </td>
       <td>
-        Row 3
-      </td>
-      <td>
-        Row 3
+        $ 675000
       </td>
     </tr>
   </table>
 </div>
+<table style="margin-top: 50px">
+  <tr>
+    <td><b>Dirección: </b></td>
+      <td><?php echo $model->direccion_propiedad.'#'.$model->numero_propiedad; ?></td>
+  </tr>
+  <tr>
+    <td><b>Cantidad de dormitorios: </b></td>
+      <td><?php echo $model->habitacion_propiedad; ?></td>
+  </tr><tr>
+    <td><b>Cantidad de baños: </b></td>
+      <td><?php echo $model->bano_propiedad; ?></td>
+  </tr><tr>
+    <td><b>Metros Totales: </b></td>
+      <td><?php echo $model->terreno_propiedad; ?></td>
+  </tr><tr>
+    <td><b>Metros Construídos: </b></td>
+      <td><?php echo $model->construido_propiedad; ?></td>
+  </tr><tr>
+    <td><b>Típo de propiedad: </b></td>
+      <td><?php echo $model->tipo_propiedad; ?></td>
+  </tr><tr>
+    <td><b>Estado de la propiedad: </b></td>
+      <td> En <?php echo $model->servicio_propiedad; ?></td>
+  </tr><tr>
+    <td><b>Propiedad amoblada: </b></td>
+      <td><?php if($model->amoblado_propiedad){ echo 'Si';}else{echo 'No';} ?></td>
+  </tr>
+  <tr>
+    <td><b>Descripción: </b></td>
+      <td><?php echo $model->descripcion_propiedad; ?></td>
+  </tr>
 
-<div style="text-align: center"><?php echo $data->servicio_propiedad; ?></div>
-
-
+</table>
+<?php $this->endWidget(); ?>
 </body>
 </html>

@@ -39,7 +39,6 @@ return array(
 		'session'=>array(
 			'class' => 'CDbHttpSession',
 			'timeout'=>1200,
-
 		),
 		'ePdf' => array(
 			'class'         => 'ext.yii-pdf.EYiiPdf',
