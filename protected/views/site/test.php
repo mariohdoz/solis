@@ -23,10 +23,8 @@
 						<div class="box-body">
               <h1>Imagenes</h1>
               <?php foreach ($model->imagen as $key => $value) {
-                echo '<div class="col-lg-3 col-sm-4 col-xs-6">';
                 //echo '<a class="showcase" href="'.Yii::app()->request->baseUrl.'/images/propiedades/'.$value->url_imagen.'" data-rel="lightcase:myCollection:slideshow">';
                 echo  CHtml::image(Yii::app()->baseUrl."/images/propiedades/".$value->url_imagen, '',  array('class'=>'thumbnail img-responsive'));
-                echo '<!--</a>--></div>';
               } ?>
 						</div>
 						<div class="box-footer">

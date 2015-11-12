@@ -191,7 +191,7 @@ class PropiedadController extends Controller
 		{
 			$model->attributes=$_POST['Propiedad'];
 			if($model->save()){
-				Yii::app()->user->setFlash('success','La propiedad fue actualizada exitozamente.');
+				Yii::app()->user->setFlash('success','La propiedad fue actualizada exitosamente.');
 				$this->redirect(array('view','id'=>$model->id_propiedad));
 			}
 		}
