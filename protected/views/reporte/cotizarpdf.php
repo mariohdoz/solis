@@ -161,6 +161,12 @@ el costo de el mes de arriendo es $<?php  echo  number_format($model->valor_prop
       <p>Banco Estado  N° 021-7-090293-1</p>
       <p> Dirección : PASAJE LATORRE N° 1291 VILLA CHICA</p>
     </div>
+      <div class="datos">
+      <p> SANDRA CAMPUSANO ARAYA
+        12.582.393-9</p>
+        <p>PROPIEDADES SOL Y COBRE CALAMA</p>
+
+      </div>
 
 <?php $this->endWidget(); ?>
 </body>
