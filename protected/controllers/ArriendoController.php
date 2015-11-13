@@ -108,18 +108,23 @@ class ArriendoController extends Controller
 			$rut= str_replace('.','',$model->rut_arrendatario);
 			$model->rut_arrendatario = $rut;
 			if($model->id_propiedad != '' && $model->rut_arrendatario != ''){
-				$model3=Propiedad::model()->findByPk($model->id_propiedad);
-				$model2=Arrendatario::model()->findByPk($model->rut_arrendatario);
-				$valor = intval(preg_replace('/[^0-9]+/', '', $model->valor_arriendo),10);
-				$model->valor_arriendo = $valor;
-				if($model3->activo_propiedad == 1){
-					$model3->activo_propiedad= 0;
-					if($model->save() && $model3->save())
-					{
-						$this->redirect(array('view','id'=>$model->id_arriendo));
+				if ($model->inicio_arriendo < $model->termino_arriendo ) {
+
+					$model3=Propiedad::model()->findByPk($model->id_propiedad);
+					$model2=Arrendatario::model()->findByPk($model->rut_arrendatario);
+					$valor = intval(preg_replace('/[^0-9]+/', '', $model->valor_arriendo),10);
+					$model->valor_arriendo = $valor;
+					if($model3->activo_propiedad == 1){
+						$model3->activo_propiedad= 0;
+						if($model->save() && $model3->save())
+						{
+							$this->redirect(array('view','id'=>$model->id_arriendo));
+						}
+					}else {
+						Yii::app()->user->setFlash('error','La propiedad ya se encuentra con un servicio prestado.');
 					}
 				}else {
-					Yii::app()->user->setFlash('error','La propiedad ya se encuentra con un servicio prestado.');
+					Yii::app()->user->setFlash('error','La fecha de inicio debe ser menor a la de termino.');
 				}
 			}else {
 				Yii::app()->user->setFlash('error','Debe seleccionar una propiedad y un arrendatario.');

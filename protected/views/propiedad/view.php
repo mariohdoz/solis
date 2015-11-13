@@ -159,13 +159,13 @@ $this->menu=array(
 					<div class="form">
 						<div class="box-body">
 							<?php echo $form->errorSummary($model,'<strong>Es necesario arreglar los siguientes errores:</strong><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><div class="alert alert-danger">', '</div>'); ?>
-							<div class="col-xs-3">
+							<div class="col-xs-3 col-md-3 col-lg-3  ">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'id_propiedad'); ?>
                   <?php echo $form->textField($model,'id_propiedad', array("class"=>"form-control select2", 'placeholder'=>'Ingrese la dirección de la propiedad', 'disabled' => 'true')); ?>
 								</div>
 							</div>
-							<div class="col-xs-3">
+							<div class="col-xs-3 col-md-3 col-lg-3  ">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'servicio_propiedad'); ?>
                   <?php echo $form->dropDownList($model,'servicio_propiedad',
@@ -176,7 +176,7 @@ $this->menu=array(
                       array("class"=>"form-control select2", 'empty' => 'Seleccione tipo de servicio', 'disabled' => 'true')); ?>
 								</div>
 							</div>
-							<div class="col-xs-3">
+							<div class="col-xs-3 col-md-3 col-lg-3  ">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'tipo_propiedad'); ?>
                   <?php echo $form->dropDownList($model,'tipo_propiedad',
@@ -195,7 +195,7 @@ $this->menu=array(
                       array("class"=>"form-control select2", 'empty' => 'Seleccione el tipo de propiedad', 'disabled' => 'true')); ?>
 								</div>
 							</div>
-							<div class="col-xs-3">
+							<div class="col-xs-3 col-md-3 col-lg-3  ">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'comuna_propiedad'); ?>
                   <?php echo $form->dropDownList($model,'comuna_propiedad',
@@ -207,19 +207,19 @@ $this->menu=array(
                       array("class"=>"form-control select2",  'empty' => 'Seleccione la comuna de la propiedad', 'disabled' => 'true')); ?>
 								</div>
 							</div>
-							<div class="col-xs-3">
+							<div class="col-xs-3 col-md-3 col-lg-3  ">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'direccion_propiedad'); ?>
                   <?php echo $form->textField($model,'direccion_propiedad', array("class"=>"form-control select2", 'placeholder'=>'Ingrese la dirección de la propiedad', 'disabled' => 'true')); ?>
 								</div>
 							</div>
-							<div class="col-xs-3">
+							<div class="col-xs-3 col-md-3 col-lg-3  ">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'numero_propiedad'); ?>
                   <?php echo $form->textField($model,'numero_propiedad', array("class"=>"form-control select2", 'placeholder'=>'Ingrese el número de direccion', 'disabled' => 'true')); ?>
 								</div>
 							</div>
-							<div class="col-xs-3">
+							<div class="col-xs-3 col-md-3 col-lg-3  ">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'habitacion_propiedad'); ?>
                   <?php echo $form->dropDownList($model,'habitacion_propiedad',
@@ -237,7 +237,7 @@ $this->menu=array(
                       array("class"=>"form-control select2", 'empty' => 'Cantidad de Habitaciones', 'disabled' => 'true')); ?>
 								</div>
 							</div>
-							<div class="col-xs-3">
+							<div class="col-xs-3 col-md-3 col-lg-3  ">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'bano_propiedad'); ?>
                   <?php echo $form->dropDownList($model,'bano_propiedad',
@@ -255,25 +255,25 @@ $this->menu=array(
                       array("class"=>"form-control select2", 'empty' => 'Cantidad de baños', 'disabled' => 'true')); ?>
 								</div>
 							</div>
-							<div class="col-xs-3">
+							<div class="col-xs-3 col-md-3 col-lg-3  ">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'terreno_propiedad'); ?>
                   <?php echo $form->textField($model,'terreno_propiedad', array("class"=>"form-control select2", 'placeholder'=>'Ingrese el tamaño del terreno', 'disabled' => 'true')); ?>
 								</div>
 							</div>
-							<div class="col-xs-3">
+							<div class="col-xs-3 col-md-3 col-lg-3  ">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'construido_propiedad'); ?>
                   <?php echo $form->textField($model,'construido_propiedad', array("class"=>"form-control select2", 'placeholder'=>'Ingrese el tamaño del terreno construido', 'disabled' => 'true')); ?>
 								</div>
 							</div>
-							<div class="col-xs-3">
+							<div class="col-xs-3 col-md-3 col-lg-3  ">
 								<div class="form-group">
 									<?php echo $form->labelEx($model, 'valor_propiedad');?>
                   <?php echo $form->textField($model, 'valor_propiedad', array("class"=>"form-control select2", 'placeholder'=>'Ejemplo: 123456', 'disabled' => 'true'));?>
 								</div>
 							</div>
-							<div class="col-xs-3">
+							<div class="col-xs-3 col-md-3 col-lg-3  ">
 								<div class="form-group">
 									<label for="Propiedad_amoblado_propiedad">Propiedad amoblada</label><br>
                   <?php echo $form->checkBox($model, 'amoblado_propiedad', array('class'=>'minimal', 'disabled' => 'true'));?>

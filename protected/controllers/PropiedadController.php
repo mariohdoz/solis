@@ -57,7 +57,7 @@ class PropiedadController extends Controller
 		$model1=new Imagen();
     $model2 = new Cliente();
     $model2 = Cliente::model()->findByPk($model->rut_cliente);
-		Yii::app()->user->setFlash('success','La propiedad ha sido ingresada correctamente. Por favor subir imágenes de la propiedad.');
+		Yii::app()->user->setFlash('success','La propiedad ha sido ingresada correctamente. Por favor subir imágenes de la propiedad');
 		$this->render('view',array(
 			'model'=>$model,
 			'model1'=>$model1,
@@ -259,9 +259,13 @@ class PropiedadController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Propiedad');
+		$model=new Propiedad('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Propiedad']))
+			$model->attributes=$_GET['Propiedad'];
+
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'model'=>$model,
 		));
 	}
 

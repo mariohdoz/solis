@@ -242,7 +242,7 @@ class VentaController extends Controller
 		}
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 	}
 
 	/**
@@ -250,9 +250,13 @@ class VentaController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Venta');
+		$model=new Venta('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Venta']))
+			$model->attributes=$_GET['Venta'];
+
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'model'=>$model,
 		));
 	}
 

@@ -49,12 +49,12 @@
                   'valor_arriendo',
                   */
                   array(
+                    'header'=>'Actualizar',
                     'class'=>'CButtonColumn',
-                    'template'=>'{email}',
                     'buttons'=>array(
-                        'modificar' => array(
+                        'email' => array(
                             'label'=>'<i class="fa fa-pencil-square-o"></i>',
-                            'url'=>'Yii::app()->createUrl("arriendo/update", array("id"=>$data->id_arriendo))',
+                            'url'=>'Yii::app()->createUrl("propiedad/update", array("id"=>$data->id_propiedad))',
                         ),
                     ),
                   ),
