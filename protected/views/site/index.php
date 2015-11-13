@@ -6,7 +6,7 @@
 				<?php if(!Yii::app()->session['activo']) {
 						echo '<a class="cd-signin " href="#"><i class="fa fa-user"></i> | Iniciar Sesión</a>';
 					}else {
-            echo CHtml::link('Cerrar sesión', array('Site/logout'), array('class'=>'cd-signin'));
+            echo CHtml::link('<i class="fa fa-times"></i> |Cerrar sesión', array('Site/logout'), array('class'=>'cd-signin2'));
 					}
 				?>
 			</ul>
@@ -94,6 +94,7 @@
 <main class="cd-main-content">
 	<section id="cd-placeholder-1" class="cd-section cd-container servicios">
     <h1>Buscar Propiedades</h1></br>
+
 		<div class="container-fluid ">
 			<?php $form=$this->beginWidget('CActiveForm', array(
 				'id'=>'busqueda-form',

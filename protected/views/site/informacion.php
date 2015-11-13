@@ -17,7 +17,7 @@
         <script>$('#map').googlemap();</script>
     </div>
     <div class=" col-md-6">
-        <h4 id='ho'>Valor $ <?php echo CHtml::encode($model->valor_propiedad); ?> <button type="button" style="float: right" class="btn btn-success " onclick="javascript:window.print()">Imprimir </button></h4>
+        <h4 id='ho'>Valor  <?php echo $model->servicio_propiedad; ?> $<?php  echo  number_format($model->valor_propiedad, 0, ",", "."); ?> <button type="button" style="float: right" class="btn btn-success " onclick="javascript:window.print()">Imprimir </button></h4>
         <ul class="list-group">
             <li class="list-group-item"><i class="fa fa-map-marker"></i> Ubicación: <?php echo $model->direccion_propiedad.' '.$model->numero_propiedad; ?></li>
             <li class="list-group-item"><i class="fa fa-bed"></i> Dormitorios: <?php echo $model->habitacion_propiedad; ?></li>

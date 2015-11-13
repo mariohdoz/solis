@@ -21,8 +21,11 @@
   <htmlpageheader name="myheader">
   <table width="100%"><tr>
     <td width="50%">
-        <span class="logo-lg"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/LogoV2.png" width="150px" height="50px"></span>
+        <span class="logo-lg"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/LogoV2.png" width="180px" height="70px"></span>
     </td>
+      <td width="250px" style="text-align: center">
+        <h2>Cotización <?php echo  $model->servicio_propiedad ?></h2>
+      </td>
     <td width="50%" class="aBDP" style="text-align: right">
       <?php echo //Establecer la información local en castellano de España
       setlocale(LC_TIME,"es_ES.UTF-8");
@@ -42,18 +45,23 @@
 
   <sethtmlpageheader name="myheader" value="on" show-this-page="1" />
   <sethtmlpagefooter name="myfooter" value="on" />
-<h1>Cotización <?php echo $model->servicio_propiedad ?></h1>
+
+<div><p>N O T A :
+  Los valores son expresados en pesos chilenos, el valor total incluye IVA.
+el costo de el mes de arriendo es $<?php  echo  number_format($model->valor_propiedad, 0, ",", "."); ?> p/p Incluyendo gastos comúnes. Se enviarán fotos de respaldo de la propiedad</p></div>
+
+
 <div class="tabla" >
   <table >
     <tr>
-      <td >
+      <td class="titulotabla" >
         PROPIEDAD
       </td>
-      <td>
-        Valor de Arriendo
+      <td class="titulotabla">
+        Valor de la propiedad
       </td>
-      <td>
-        TOTAL
+      <td class="titulotabla" style="text-align: center;font-size: large">
+        Total
       </td>
     </tr>
     <tr>
@@ -61,10 +69,9 @@
        <?php echo $model->direccion_propiedad ?>
       </td>
       <td>
-        $<?php echo $model->valor_propiedad ?>
-      </td>
-      <td>
-        $<?php echo $model->valor_propiedad ?>
+        $<?php
+        echo  number_format($model->valor_propiedad, 0, ",", ".");
+        ?>
       </td>
 
     </tr>
@@ -72,22 +79,18 @@
       <td>
         Mes de garantía
       </td>
+
       <td>
-        $<?php echo $model->valor_propiedad ?>
-      </td>
-      <td>
-        $<?php echo $model->valor_propiedad ?>
+        $<?php  echo  number_format($model->valor_propiedad, 0, ",", "."); ?>
       </td>
     </tr>
     <tr>
       <td>
         Comisión por administración
       </td>
-      <td>
 
-      </td>
       <td>
-        $ 125000
+        $ 125.000
       </td>
     </tr>
     <tr>
@@ -97,45 +100,74 @@
       <td>
 
       </td>
-      <td>
-        $ 675000
+      <td style="text-align: center;font-size: medium"> $
+        <?php
+        $comision = '125000';
+        $valor= ($model->valor_propiedad);
+        $result= $comision+$valor+$valor;
+        echo  number_format($result, 0, ",", ".");
+        ?>
       </td>
     </tr>
   </table>
 </div>
-<table style="margin-top: 50px">
-  <tr>
-    <td><b>Dirección: </b></td>
-      <td><?php echo $model->direccion_propiedad.'#'.$model->numero_propiedad; ?></td>
-  </tr>
-  <tr>
-    <td><b>Cantidad de dormitorios: </b></td>
-      <td><?php echo $model->habitacion_propiedad; ?></td>
-  </tr><tr>
-    <td><b>Cantidad de baños: </b></td>
-      <td><?php echo $model->bano_propiedad; ?></td>
-  </tr><tr>
-    <td><b>Metros Totales: </b></td>
-      <td><?php echo $model->terreno_propiedad; ?></td>
-  </tr><tr>
-    <td><b>Metros Construídos: </b></td>
-      <td><?php echo $model->construido_propiedad; ?></td>
-  </tr><tr>
-    <td><b>Típo de propiedad: </b></td>
-      <td><?php echo $model->tipo_propiedad; ?></td>
-  </tr><tr>
-    <td><b>Estado de la propiedad: </b></td>
-      <td> En <?php echo $model->servicio_propiedad; ?></td>
-  </tr><tr>
-    <td><b>Propiedad amoblada: </b></td>
-      <td><?php if($model->amoblado_propiedad){ echo 'Si';}else{echo 'No';} ?></td>
-  </tr>
-  <tr>
-    <td><b>Descripción: </b></td>
-      <td><?php echo $model->descripcion_propiedad; ?></td>
-  </tr>
+<h3>Datos de la propiedad</h3>
+<div style="border-top: 1px solid #000000;text-align: center;">
+<table style="margin-top: 20px">
 
+  <tr>
+    <td><b>Dirección </b></td>
+      <td> :<?php echo $model->direccion_propiedad.'#'.$model->numero_propiedad; ?></td>
+  </tr>
+  <tr>
+    <td><b>Cantidad de dormitorios </b></td>
+      <td> :<?php echo $model->habitacion_propiedad; ?></td>
+  </tr><tr>
+    <td><b>Cantidad de baños </b></td>
+      <td> :<?php echo $model->bano_propiedad; ?></td>
+  </tr><tr>
+    <td><b>Metros Totales </b></td>
+      <td> :<?php echo $model->terreno_propiedad; ?></td>
+  </tr><tr>
+    <td><b>Metros Construídos </b></td>
+      <td> :<?php echo $model->construido_propiedad; ?></td>
+  </tr><tr>
+    <td><b>Típo de propiedad </b></td>
+      <td> :<?php echo $model->tipo_propiedad; ?></td>
+  </tr><tr>
+    <td><b>Propiedad amoblada </b></td>
+      <td> :<?php if($model->amoblado_propiedad){ echo 'Si';}else{echo 'No';} ?></td>
+  </tr>
+  <tr>
+    <td><b>Descripción </b></td>
+      <td>:<?php echo $model->descripcion_propiedad; ?></td>
+  </tr>
 </table>
+  </div>
+
+<br>
+<br>
+<br>
+<br>
+    <div class="datos">
+      <p> CONDICIONES GENERALES</p>
+      <p>Plazo de entrega :	A Convenir -  Entrega Inmediata</p>
+    </div>
+
+    <div class="datos">
+      <p> DATOS DE ORDEN DE PAGO</p>
+      <p> Sandra Marisol Campusano Araya</p>
+      <p> Cuenta Vista o Chequera  Electrónica</p>
+      <p>Banco Estado  N° 021-7-090293-1</p>
+      <p> Dirección : PASAJE LATORRE N° 1291 VILLA CHICA</p>
+    </div>
+      <div class="datos">
+      <p> SANDRA CAMPUSANO ARAYA
+        12.582.393-9</p>
+        <p>PROPIEDADES SOL Y COBRE CALAMA</p>
+
+      </div>
+
 <?php $this->endWidget(); ?>
 </body>
 </html>

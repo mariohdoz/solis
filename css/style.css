@@ -746,6 +746,27 @@ header[role=banner]::after {
     background: #53b7ad;
     text-decoration: none;
 
+  }.main-nav a.cd-signin2, .main-nav a.cd-signup {
+    float: right;
+    font-size: 18px;
+    color: #ffffff;
+    padding: .5em 1em;
+    background: #d60002;
+    border: none;
+    border-radius: .5em;
+  }
+  .main-nav a.cd-signin2:hover {
+    color: #FFFFFF;
+    padding: .5em 1em;
+    background: #9c0002;
+    text-decoration: none;
+
+  }.main-nav a.cd-signin2:focus {
+    color: #FFFFFF;
+    padding: .5em 1em;
+    background: #9c0002;
+    text-decoration: none;
+
   }
 
 
@@ -792,10 +813,10 @@ xsigin/signup popup
   width: 90%;
   top: 10%;
   max-width: 400px;
-  background: #FFF;
+  background: #edeff1;
   margin: 3em auto 4em;
   cursor: auto;
-  border-radius: 0.25em;
+  border-radius: 6px;
   -webkit-transform: translateY(-30px);
   -moz-transform: translateY(-30px);
   -ms-transform: translateY(-30px);
@@ -890,6 +911,7 @@ xsigin/signup popup
 }
 .cd-form label.cd-email {
   background-image: url("../images/cd-icon-email.svg");
+
 }
 .cd-form label.cd-password {
   background-image: url("../images/cd-icon-password.svg");
@@ -897,7 +919,8 @@ xsigin/signup popup
 .cd-form input {
   margin: 0;
   padding: 0;
-  border-radius: 0.25em;
+  border-radius: 6px;
+
 }
 .cd-form input.full-width {
   width: 100%;
@@ -906,7 +929,7 @@ xsigin/signup popup
   padding: 12px 20px 12px 50px;
 }
 .cd-form input.has-border {
-  border: 1px solid #d2d8d8;
+
   -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
@@ -2544,3 +2567,4 @@ fieldset[disabled] .btn-link:focus {
   padding:5px;
   background-color:#DDDDDD;
 }
+
