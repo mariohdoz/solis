@@ -326,7 +326,6 @@ $this->menu=array(
 								?>
 						</div>
             <div class="box-footer">
-              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#arrendatario">Boton</button>
             </div>
 				  </div>
 			  </div>

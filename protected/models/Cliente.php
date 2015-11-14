@@ -38,11 +38,10 @@ class Cliente extends CActiveRecord
 		return array(
 			array('rut_cliente, nombres_cliente, apellidos_cliente, estadocivil_cliente', 'required'),
 			array('activo_cliente', 'numerical', 'integerOnly'=>true),
-			array('rut_cliente', 'length', 'max'=>10),
+			array('rut_cliente, estadocivil_cliente', 'length', 'max'=>10),
 			array('rut_cliente', 'ValidateRut'),
 			array('rut_cliente', 'unique','attributeName'=>'rut_cliente','className'=>'Cliente','message'=>'El propietario ya se encuentra ingresado'),
 			array('nombres_cliente, apellidos_cliente, profesion_cliente, correo_cliente', 'length', 'max'=>100),
-			array('estadocivil_cliente', 'length', 'max'=>10),
 			array('domicilio_cliente', 'length', 'max'=>150),
 			array('telefonofijo_cliente, telefonocelular_cliente', 'length', 'max'=>12),
 			array('nrocuenta_cliente', 'length', 'max'=>25),
@@ -57,38 +56,37 @@ class Cliente extends CActiveRecord
 	/**
 	 * @return array relational rules.
 	 */
-	public function relations()
-	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
-		return array(
-			'propiedad'=>array(self::HAS_MANY, 'Propiedad', 'rut_cliente'),
-		);
-	}
-	public function getFullName(){
-		return $this->rut_cliente.'  '.$this->nombres_cliente.' '.$this->apellidos_cliente;
-	}
-	public function ValidateRut($attribute, $param){
-		$data = explode('-', $this->rut_cliente);
-		$evaluate = strrev($data[0]);
-		$multiply = 2;
-		$store = 0;
-		for ($i = 0; $i < strlen($evaluate); $i++) {
-			 $store += $evaluate[$i] * $multiply;
-			 $multiply++;
-			 if ($multiply > 7)
-					 $multiply = 2;
-		}
-		isset($data[1]) ? $verifyCode = strtolower($data[1]) : $verifyCode = '';
-		$result = 11 - ($store % 11);
-		if ($result == 10)
-			 $result = 'k';
-		if ($result == 11)
-			 $result = 0;
-		if ($verifyCode != $result)
-			 $this->addError('rut', 'Rut inválido.');
-	}
-
+	 public function relations()
+ 	{
+ 		// NOTE: you may need to adjust the relation name and the related
+ 		// class name for the relations automatically generated below.
+ 		return array(
+ 			'propiedad'=>array(self::HAS_MANY, 'Propiedad', 'rut_cliente'),
+ 		);
+ 	}
+ 	public function getFullName(){
+ 		return $this->rut_cliente.'  '.$this->nombres_cliente.' '.$this->apellidos_cliente;
+ 	}
+ 	public function ValidateRut($attribute, $param){
+ 		$data = explode('-', $this->rut_cliente);
+ 		$evaluate = strrev($data[0]);
+ 		$multiply = 2;
+ 		$store = 0;
+ 		for ($i = 0; $i < strlen($evaluate); $i++) {
+ 			 $store += $evaluate[$i] * $multiply;
+ 			 $multiply++;
+ 			 if ($multiply > 7)
+ 					 $multiply = 2;
+ 		}
+ 		isset($data[1]) ? $verifyCode = strtolower($data[1]) : $verifyCode = '';
+ 		$result = 11 - ($store % 11);
+ 		if ($result == 10)
+ 			 $result = 'k';
+ 		if ($result == 11)
+ 			 $result = 0;
+ 		if ($verifyCode != $result)
+ 			 $this->addError('rut', 'Rut inválido.');
+ 	}
 
 	/**
 	 * @return array customized attribute labels (name=>label)
@@ -142,7 +140,7 @@ class Cliente extends CActiveRecord
 		$criteria->compare('nrocuenta_cliente',$this->nrocuenta_cliente,true);
 		$criteria->compare('banco_cliente',$this->banco_cliente,true);
 		$criteria->compare('tipocuenta_cliente',$this->tipocuenta_cliente,true);
-		$criteria->compare('activo_cliente',$this->activo_cliente);
+		$criteria->compare('activo_cliente',1);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
