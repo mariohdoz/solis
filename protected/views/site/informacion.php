@@ -6,18 +6,55 @@
   // See class documentation of CActiveForm for details on this.
   'enableAjaxValidation'=>false,
   )); ?>
+<style type="text/css">
 
+    #map_canvas {
+        width:529px;
+        height:400px;
+    }
+
+</style>
+<script type="text/javascript">
+    function initialize(address) {
+        var geoCoder = new google.maps.Geocoder(address)
+        var request = {address:'<?php echo $model->comuna_propiedad.' '.$model->direccion_propiedad; ?>'};
+        geoCoder.geocode(request, function(result, status){
+            var latlng = new google.maps.LatLng(result[0].geometry.location.lat(), result[0].geometry.location.lng());
+            var myOptions = {
+                zoom: 16,
+                center: latlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+
+            var marker = new google.maps.Marker({
+                position:latlng,map:map,title:'<?php echo $model->comuna_propiedad.' '.$model->direccion_propiedad; ?>',
+                map: map,
+                draggable: true,
+                animation: google.maps.Animation.DROP
+            });
+
+        })
+    }
+</script>
+
+<script>
+    $(document).ready(function(){
+        initialize('Calama');
+        $('#search').bind('click',function(){
+            initialize($('#address').val());
+        })
+    })
+</script>
 
 <section class="container informacion">
     <div class="col-md-6 ">
-        <div  class='google-map2 ' id='map' streetnumber=<?php echo '1301';  ?> streetname=<?php echo 'Tiltil';  ?>
-             cityname='calama' statecode='CL' zipcode='0'
-             zoom=17 width=500 height=450>
-        </div>
-        <script>$('#map').googlemap();</script>
+
+            <div class="google-map2 " id="map_canvas"></div>
+
     </div>
     <div class=" col-md-6">
-        <h4 id='ho'>Valor  <?php echo $model->servicio_propiedad; ?> $<?php  echo  number_format($model->valor_propiedad, 0, ",", "."); ?> <button type="button" style="float: right" class="btn btn-success " onclick="javascript:window.print()">Imprimir </button></h4>
+        <h4 id='ho'>Valor  <?php echo $model->servicio_propiedad; ?> $ <?php  echo  number_format($model->valor_propiedad, 0, ",", "."); ?> <button type="button" style="float: right" class="btn btn-success " onclick="javascript:window.print()">Imprimir </button></h4>
         <ul class="list-group">
             <li class="list-group-item"><i class="fa fa-map-marker"></i> Ubicación: <?php echo $model->direccion_propiedad.' '.$model->numero_propiedad; ?></li>
             <li class="list-group-item"><i class="fa fa-bed"></i> Dormitorios: <?php echo $model->habitacion_propiedad; ?></li>

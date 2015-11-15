@@ -727,7 +727,7 @@ header[role=banner]::after {
   }
   .main-nav a.cd-signin, .main-nav a.cd-signup {
     float: right;
-    font-size: 18px;
+    font-size: 14px;
     color: #ffffff;
     padding: .5em 1em;
     background: #ff5722;
@@ -748,7 +748,7 @@ header[role=banner]::after {
 
   }.main-nav a.cd-signin2, .main-nav a.cd-signup {
     float: right;
-    font-size: 18px;
+    font-size: 14px;
     color: #ffffff;
     padding: .5em 1em;
     background: #d60002;

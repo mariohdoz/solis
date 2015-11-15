@@ -16,6 +16,8 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/lightcase.css">
 		<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/lightcase.js"></script>
 		<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.events.touch.js"></script>
+		<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+		<link rel="shortcut icon" href='<?php echo Yii::app()->request->baseUrl; ?>/images/favicon.ico'/>
 		<title>Sol y Cobre</title>
 	</head>
 	<header class="cd-header2" >
