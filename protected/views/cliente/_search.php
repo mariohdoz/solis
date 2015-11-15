@@ -28,7 +28,7 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'estadocivil_cliente'); ?>
-		<?php echo $form->textField($model,'estadocivil_cliente',array('size'=>8,'maxlength'=>8)); ?>
+		<?php echo $form->textField($model,'estadocivil_cliente',array('size'=>10,'maxlength'=>10)); ?>
 	</div>
 
 	<div class="row">
