@@ -32,6 +32,8 @@
               <?php
               $this->widget('zii.widgets.grid.CGridView', array(
                 'id'=>'arriendo-grid',
+                'itemsCssClass' => 'table table-hover',
+                'htmlOptions' => array('class' => 'table-responsive'),
                 'dataProvider'=>$model->search(),
                 'selectableRows'=>1,
                 //'selectionChanged'=>'function(id){ location.href = "'.$this->createUrl('arriendo/test').'/"+$.fn.yiiGridView.getSelection(id);}',	// via 1: para mostrar detalles al seleccionar

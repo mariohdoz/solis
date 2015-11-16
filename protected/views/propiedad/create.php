@@ -42,13 +42,13 @@ $this->menu=array(
 					<?php
 						$this->widget('zii.widgets.grid.CGridView', array(
 							'id'=>'cliente',
+							'itemsCssClass' => 'table table-hover',
+							'htmlOptions' => array('class' => 'table-responsive'),
 							'selectableRows'=>1,
 							'selectionChanged'=>'obtenerCliente',	// via 1: para mostrar detalles al seleccionar
 							'dataProvider'=>$model2->search(),
 							'filter' => $model2,
-							'pager' => array('cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css'),
 							'summaryText' => 'Se encontraron {count} arrendatarios activos',
-							'cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css',
 							'columns'=>array(
 						// nota que con htmlOptions se puede personalizar el tamano de la columna
 								array('name'=>'rut_cliente','htmlOptions'=>array('width'=>'80px')),
@@ -60,6 +60,9 @@ $this->menu=array(
 						));
 						?>
 				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success center-block" data-dismiss="modal">Aceptar</button>
 			</div>
 		</div>
 	</div>

@@ -102,6 +102,9 @@ function ganancia(){
 						?>
 				</div>
 			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success center-block" data-dismiss="modal">Aceptar</button>
+			</div>
 		</div>
 	</div>
 </div>

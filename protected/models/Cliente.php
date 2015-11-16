@@ -67,6 +67,10 @@ class Cliente extends CActiveRecord
  	public function getFullName(){
  		return $this->rut_cliente.'  '.$this->nombres_cliente.' '.$this->apellidos_cliente;
  	}
+	public function getRut(){
+		$data = explode('-', $this->rut_cliente);
+		return $data[0];
+	}
  	public function ValidateRut($attribute, $param){
  		$data = explode('-', $this->rut_cliente);
  		$evaluate = strrev($data[0]);

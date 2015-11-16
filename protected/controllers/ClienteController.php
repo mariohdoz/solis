@@ -28,11 +28,11 @@ class ClienteController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array(),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update', 'index','view', 'select', 'select2', 'eliminar'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -123,6 +123,15 @@ class ClienteController extends Controller
 		));
 	}
 
+	public function actionSelect()
+	{
+		$model=new Cliente('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Cliente']))
+			$model->attributes=$_GET['Cliente'];
+		$this->render('select',array('model'=>$model));
+	}
+
 	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
@@ -136,6 +145,20 @@ class ClienteController extends Controller
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
+	public function actionSelect2()
+	{
+		$model=new Cliente('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Cliente']))
+			$model->attributes=$_GET['Cliente'];
+		$this->render('select2',array('model'=>$model));
+	}
+	 public function actionEliminar($id)
+	 {
+		 $rut = $this->codigo($id);
+		 $model = $this->loadModel($rut);
+		 $this->render('delete', array('model'=> $model));
+	 }
 
 	/**
 	 * Lists all models.

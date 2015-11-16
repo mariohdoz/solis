@@ -23,6 +23,8 @@
 						<div class="box-body">
               <?php $this->widget('zii.widgets.grid.CGridView', array(
               	'id'=>'propiedad-grid',
+                'itemsCssClass' => 'table table-hover',
+                'htmlOptions' => array('class' => 'table-responsive'),
               	'dataProvider'=>$model->search(),
               	'filter'=>$model,
               	'columns'=>array(

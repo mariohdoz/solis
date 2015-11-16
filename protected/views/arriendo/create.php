@@ -107,13 +107,13 @@ $this->menu=array(
 					<?php
 						$this->widget('zii.widgets.grid.CGridView', array(
 							'id'=>'arrendatario',
+							'itemsCssClass' => 'table table-hover',
+							'htmlOptions' => array('class' => 'table-responsive'),
 							'selectableRows'=>1,
 							'selectionChanged'=>'obtenerSeleccion',	// via 1: para mostrar detalles al seleccionar
 							'dataProvider'=>$dataProvider,
 							'filter' => $model2,
-							'pager' => array('cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css'),
 							'summaryText' => 'Se encontraron {count} arrendatarios activos',
-							'cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css',
 							'columns'=>array(
 						// nota que con htmlOptions se puede personalizar el tamano de la columna
 								array('name'=>'rut_arrendatario','htmlOptions'=>array('width'=>'100px')),
@@ -152,13 +152,13 @@ $this->menu=array(
 					<?php
 						$this->widget('zii.widgets.grid.CGridView', array(
 							'id'=>'propiedad',
+							'itemsCssClass' => 'table table-hover',
+							'htmlOptions' => array('class' => 'table-responsive'),
 							'selectableRows'=>1,
 							'selectionChanged'=>'obtenerPropiedad',	// via 1: para mostrar detalles al seleccionar
 							'dataProvider'=>$dataProvider2,
 							'filter' => $model3,
-							'pager' => array('cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css'),
 							'summaryText' => 'Se encontraron {count} propiedades',
-							'cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css',
 							'columns'=>array(
 						// nota que con htmlOptions se puede personalizar el tamano de la columna
 								array('name'=>'id_propiedad','htmlOptions'=>array('width'=>'80px')),
