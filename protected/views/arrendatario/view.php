@@ -109,10 +109,9 @@ $this->menu=array(
 									}
 								}else {
 									echo '<div class="col-xs-12 col-md-12 col-lg-12"">';
-										echo '<h3>No tiene ningún arriendo activo</h3>';
+										echo '<h3>No tiene ningún documento ingresado</h3>';
 									echo '</div>';
 									echo '<div class="col-xs-12 col-md-6 col-lg-4"">';
-										echo 	CHtml::link('Registrar arriendo', array('/arrendatario/create'), array('class'=>'btn btn-primary'));
 									echo '</div>';
 								}
 							?>
@@ -215,7 +214,7 @@ $this->menu=array(
 							<?php echo CHtml::link('Generar ficha de arrendatario', array('/intra/index'), array('class'=>'btn btn-primary')); ?>
 							<?php echo CHtml::link('Actualizar arrendatario', array('/arrendatario/update/', 'id'=>$model->rut), array('class'=>'btn btn-info', 'confirm' => '¿Está seguro de actualizar el arrendatario?')); ?>
 							<?php echo CHtml::link("Eliminar arrendatario", '#', array(
-									'submit'=>array('/arrendatario/delete', "id"=>$model->rut),
+									'submit'=>array('/arrendatario/eliminar', "id"=>$model->rut),
 									'class'=>'btn btn-danger',
 									'confirm' => '¿Está seguro de eliminar el arrendatario?'
 									)

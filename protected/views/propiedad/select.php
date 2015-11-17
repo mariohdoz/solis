@@ -38,7 +38,7 @@
                   array(
                     'header'=>'Estado',
                     'name'=>'estado_propiedad',
-                    'value' => '$data->estado_propiedad?Yii::t(\'app\',\'Disponible\'):Yii::t(\'app\', \'Ocupado\')',
+                    'value' => '$data->activo_propiedad?Yii::t(\'app\',\'Disponible\'):Yii::t(\'app\', \'Ocupado\')',
                     'filter' => array('0' => Yii::t('app', 'Ocupado'), '1' => Yii::t('app', 'Disponible')),
                     'htmlOptions' => array('style' => "text-align:center;"),
                    ),

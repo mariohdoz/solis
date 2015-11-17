@@ -111,7 +111,7 @@ $this->menu=array(
 							'htmlOptions' => array('class' => 'table-responsive'),
 							'selectableRows'=>1,
 							'selectionChanged'=>'obtenerSeleccion',	// via 1: para mostrar detalles al seleccionar
-							'dataProvider'=>$dataProvider,
+							'dataProvider'=>$model2->search(),
 							'filter' => $model2,
 							'summaryText' => 'Se encontraron {count} arrendatarios activos',
 							'columns'=>array(

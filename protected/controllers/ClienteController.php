@@ -163,18 +163,18 @@ class ClienteController extends Controller
 					 $arriendo->activo_arriendo =0;
 					 if (!$arriendo->save()) {
 						 Yii::app()->user->setFlash('danger','El arriendo '.$arriendo->id_arriendo.' no ha podido ser eliminado.');
-						 $this->redirect(Yii::app()->request->baseUrl.'/cliente/modificar/');
+						 $this->redirect(Yii::app()->request->baseUrl.'/cliente/index/');
 					 }
 				}
 				$model->eliminado_propiedad = 1;
 				if (!$model->save()) {
 				 Yii::app()->user->setFlash('danger','La Propiedad'.$model->id_propiedad.' No ha podido ser eliminada.');
-				 $this->redirect(Yii::app()->request->baseUrl.'/cliente/modificar/');
+				 $this->redirect(Yii::app()->request->baseUrl.'/cliente/index/');
 				}
 			}
 		}else {
 			Yii::app()->user->setFlash('danger','El cliente no ha podido ser eliminado.');
-			$this->redirect(Yii::app()->request->baseUrl.'/cliente/modificar/');
+			$this->redirect(Yii::app()->request->baseUrl.'/cliente/index/');
 		}
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))

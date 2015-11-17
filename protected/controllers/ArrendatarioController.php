@@ -179,11 +179,38 @@ class ArrendatarioController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
-
+		$rut=$this->codigo($id);
+		$model=	$this->loadModel($rut);
+		$model->activo_arrendatario=0;
+		if ($model->save()) {
+			$criteria = new CDbCriteria();
+	    $criteria->addCondition("rut_arrendatario=:rut");
+	    $criteria->params = array(':rut' => $rut);
+	    $list = Arriendo::model()->findAll($criteria);
+			foreach ($list as $key => $value) {
+				$value->activo_arriendo=0;
+				$propiedad=Propiedad::model()->findByPk($value->id_propiedad);
+				$propiedad->activo_propiedad =1;
+				if ($value->save() xor $propiedad->save()) {
+					Yii::app()->user->setFlash('danger','El arriendo '.$value->id_arriendo.' y su propiedad '.$propiedad->id_propiedad.' No puedieron modificarse.');
+	        $this->redirect(Yii::app()->request->baseUrl.'/arrendatario/index/');
+				}
+			}
+			if(!isset($_GET['ajax'])){
+	      Yii::app()->user->setFlash('success','El arrendatario '.$model->rut_arrendatario.' y todas sus dependencias fueron eliminadas.');
+	      $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+	    }
+		}else {
+			Yii::app()->user->setFlash('danger','La arrendatario '.$model->rut_arrendatario.' no ha podido ser eliminado.');
+			$this->redirect(Yii::app()->request->baseUrl.'/arrendatario/index/');
+		}
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+	}
+
+	public function actionEliminar($id)
+	{
+		$rut=$this->codigo($id);
+		$this->render('eliminar', array('model'=>$this->loadModel($rut)));
 	}
 
 	public function actionSelect2()

@@ -63,7 +63,7 @@
                     'buttons'=>array(
                         'Eliminar' => array(
                             'label'=>'<i class="fa fa-trash-o"></i>',
-                            'url'=>'Yii::app()->createUrl("cliente/eliminar", array("id"=>$data->rut))',
+                            'url'=>'Yii::app()->createUrl("arrendatario/eliminar", array("id"=>$data->rut))',
                         ),
                     ),
                   ),
@@ -71,7 +71,6 @@
               )); ?>
 					  </div>
             <div class="box-footer">
-              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#arrendatario">Boton</button>
             </div>
 				  </div>
 			  </div>
