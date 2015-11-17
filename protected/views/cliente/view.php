@@ -132,7 +132,7 @@ $this->menu=array(
 						<?php echo CHtml::link('Términar', array('/intra/index'), array('class'=>'btn btn-primary')); ?>
 						<?php echo CHtml::link('Actualizar cliente', array('/cliente/update/', 'id'=>$model->rut), array('class'=>'btn btn-info', 'confirm' => '¿Está seguro de actualizar el cliente?')); ?>
 						<?php echo CHtml::link("Eliminar cliente", '#', array(
-								'submit'=>array('/arriendo/delete', "id"=>$model->rut),
+								'submit'=>array('/cliente/delete', "id"=>$model->rut),
 								'class'=>'btn btn-danger',
 								'confirm' => '¿Está seguro de eliminar el cliente?'
 								)
@@ -149,13 +149,19 @@ $this->menu=array(
 				<div class="form">
 					<div class="box-body">
 						<?php
-						foreach ($model->propiedad as $key => $value) {
-						echo '<div class="col-xs-12 col-md-6 col-lg-4"">';
-							echo '<ul class="nav nav-pills nav-stacked">';
-								echo '<li>'.CHtml::link('<i class="fa fa-home"></i>Número de ficha de la propiedad '.$value->id_propiedad, array('propiedad/view/', 'id'=>$value->id_propiedad)).'</li>';
-							echo '</ul>';
-						echo '</div>';
-						}
+							if ($model->propiedad != null) {
+								foreach ($model->propiedad as $key => $value) {
+									echo '<div class="col-xs-12 col-md-6 col-lg-4"">';
+										echo '<ul class="nav nav-pills nav-stacked">';
+											echo '<li>'.CHtml::link('<i class="fa fa-home"></i>Número de ficha de la propiedad '.$value->id_propiedad, array('propiedad/view/', 'id'=>$value->id_propiedad)).'</li>';
+										echo '</ul>';
+									echo '</div>';
+								}
+							}else{
+								echo '<div class="col-xs-12 col-md-6 col-lg-4"">';
+									echo '<h3>No posee ninguna propiedad</h3>';
+								echo '</div>';
+							}
 						 ?>
 					 </ul>
 

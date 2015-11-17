@@ -38,9 +38,10 @@ class Solicitud extends CActiveRecord
 		return array(
 			array('servicio_solicitud, fecha_solicitud, fechaejecucion_solicitud, descripcion_solicitud, tipopropiedad_solicitud', 'required'),
 			array('estado_solicitud', 'numerical', 'integerOnly'=>true),
-			array('rut_cliente', 'length', 'max'=>10),
-			array('rut_funcionario, servicio_solicitud', 'length', 'max'=>25),
+			array('rut_cliente, rut_funcionario', 'length', 'max'=>10),
+			array('rut_cliente, rut_funcionario', 'ValidateRut'),
 			array('nombres_solicitud, apellidos_solicitud, correo_solicitud', 'length', 'max'=>100),
+			array('servicio_solicitud', 'length', 'max'=>25),
 			array('telefono_solicitud', 'length', 'max'=>12),
 			array('tipopropiedad_solicitud', 'length', 'max'=>50),
 			// The following rule is used by search().
@@ -48,6 +49,54 @@ class Solicitud extends CActiveRecord
 			array('id_solicitud, rut_cliente, rut_funcionario, nombres_solicitud, apellidos_solicitud, servicio_solicitud, fecha_solicitud, fechaejecucion_solicitud, telefono_solicitud, estado_solicitud, descripcion_solicitud, tipopropiedad_solicitud, correo_solicitud', 'safe', 'on'=>'search'),
 		);
 	}
+	public function getRut(){
+		$data = explode('-', $this->rut_cliente);
+		return $data[0];
+	}
+ 	public function ValidateRut($attribute, $param){
+ 		$data = explode('-', $this->rut_cliente);
+ 		$evaluate = strrev($data[0]);
+ 		$multiply = 2;
+ 		$store = 0;
+ 		for ($i = 0; $i < strlen($evaluate); $i++) {
+ 			 $store += $evaluate[$i] * $multiply;
+ 			 $multiply++;
+ 			 if ($multiply > 7)
+ 					 $multiply = 2;
+ 		}
+ 		isset($data[1]) ? $verifyCode = strtolower($data[1]) : $verifyCode = '';
+ 		$result = 11 - ($store % 11);
+ 		if ($result == 10)
+ 			 $result = 'k';
+ 		if ($result == 11)
+ 			 $result = 0;
+ 		if ($verifyCode != $result)
+ 			 $this->addError('rut', 'Rut inválido.');
+ 	}
+	public function getRutFuncionario(){
+		$data = explode('-', $this->rut_funcionario);
+		return $data[0];
+	}
+ 	public function ValidateRutFuncionario($attribute, $param){
+ 		$data = explode('-', $this->rut_funcionario);
+ 		$evaluate = strrev($data[0]);
+ 		$multiply = 2;
+ 		$store = 0;
+ 		for ($i = 0; $i < strlen($evaluate); $i++) {
+ 			 $store += $evaluate[$i] * $multiply;
+ 			 $multiply++;
+ 			 if ($multiply > 7)
+ 					 $multiply = 2;
+ 		}
+ 		isset($data[1]) ? $verifyCode = strtolower($data[1]) : $verifyCode = '';
+ 		$result = 11 - ($store % 11);
+ 		if ($result == 10)
+ 			 $result = 'k';
+ 		if ($result == 11)
+ 			 $result = 0;
+ 		if ($verifyCode != $result)
+ 			 $this->addError('rut', 'Rut inválido.');
+ 	}
 
 	/**
 	 * @return array relational rules.
@@ -69,16 +118,16 @@ class Solicitud extends CActiveRecord
 			'id_solicitud' => 'Id Solicitud',
 			'rut_cliente' => 'Rut Cliente',
 			'rut_funcionario' => 'Rut Funcionario',
-			'nombres_solicitud' => 'Nombres',
-			'apellidos_solicitud' => 'Apellidos',
-			'servicio_solicitud' => 'Servicio',
-			'fecha_solicitud' => 'Fecha',
-			'fechaejecucion_solicitud' => 'Fecha solicitada',
-			'telefono_solicitud' => 'Teléfono de contacto',
-			'estado_solicitud' => 'Estado de solicitud',
-			'descripcion_solicitud' => 'Descripción',
-			'tipopropiedad_solicitud' => 'Tipo de propiedad',
-			'correo_solicitud' => 'Correo electrónico',
+			'nombres_solicitud' => 'Nombres Solicitud',
+			'apellidos_solicitud' => 'Apellidos Solicitud',
+			'servicio_solicitud' => 'Servicio Solicitud',
+			'fecha_solicitud' => 'Fecha Solicitud',
+			'fechaejecucion_solicitud' => 'Fechaejecucion Solicitud',
+			'telefono_solicitud' => 'Telefono Solicitud',
+			'estado_solicitud' => 'Estado Solicitud',
+			'descripcion_solicitud' => 'Descripcion Solicitud',
+			'tipopropiedad_solicitud' => 'Tipopropiedad Solicitud',
+			'correo_solicitud' => 'Correo Solicitud',
 		);
 	}
 

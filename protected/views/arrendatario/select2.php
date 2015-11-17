@@ -1,15 +1,15 @@
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
-	    Actualizar
-	    <small>Selección de arrendatario a actualizar.</small>
+	    Configuración
+	    <small>Texto aquí.</small>
 	  </h1>
 	  <ol class="breadcrumb">
 	    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/intra/index">
 			<i class="fa fa-dashboard"></i>Inicio</a></li>
-			<li class="active">Arrendatario</li>
+			<li class="active">algo</li>
 			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/intra/index">Gestión</a></li>
-			<li class="active">Selección</li>
+			<li class="active">acción</li>
 	  </ol>
   </section>
   <section class="content">
@@ -18,7 +18,7 @@
       <div class="col-md-12">
 				<div class="box box-primary">
 					<div class="box-header with-border">
-            <h3 class="box-title">Listado de arrendatarios</h3>
+            <h3 class="box-title">Título</h3>
           </div>
 					<div class="form">
 						<div class="box-body">
@@ -56,29 +56,22 @@
               		'empresa_arrendatario',
               		'activo_arrendatario',
               		*/
-									array(
-                    'header'=>'Actualizar',
+                  array(
+                    'header'=>'Eliminar',
                     'class'=>'CButtonColumn',
-                    'template'=>'{buscar}  {actualizar}  {eliminar}',
+                    'template'=>'{Eliminar}',
                     'buttons'=>array(
-											'eliminar' => array(
-													'label'=>'<i class="fa fa-trash-o"></i>',
-													'url'=>'Yii::app()->createUrl("arrendatario/eliminar", array("id"=>$data->rut))',
-											),
-                      'actualizar' => array(
-                          'label'=>'<i class="fa fa-pencil-square-o"></i>',
-                          'url'=>'Yii::app()->createUrl("arrendatario/update", array("id"=>$data->rut))',
-                      ),
-											'buscar' => array(
-													'label'=>'<i class="fa fa-eye"></i>',
-													'url'=>'Yii::app()->createUrl("arrendatario/view", array("id"=>$data->rut))',
-											),
+                        'Eliminar' => array(
+                            'label'=>'<i class="fa fa-trash-o"></i>',
+                            'url'=>'Yii::app()->createUrl("cliente/eliminar", array("id"=>$data->rut))',
+                        ),
                     ),
                   ),
               	),
               )); ?>
 					  </div>
             <div class="box-footer">
+              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#arrendatario">Boton</button>
             </div>
 				  </div>
 			  </div>

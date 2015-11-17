@@ -39,8 +39,10 @@ class Arrendatario extends CActiveRecord
 			array('rut_arrendatario, nombres_arrendatario, apellidos_arrendatario, estadocivil_arrendatario, profesion_arrendatario, correo_arrendatario, telefonocelular_arrendatario, nacionalidad_arrendatario', 'required'),
 			array('empresa_arrendatario, activo_arrendatario', 'numerical', 'integerOnly'=>true),
 			array('rut_arrendatario', 'length', 'max'=>10),
+			array('rut_arrendatario', 'ValidateRut'),
+			array('rut_arrendatario', 'unique','attributeName'=>'rut_arrendatario','className'=>'Arrendatario','message'=>'El arrendatario ya se encuentra ingresado'),
 			array('nombres_arrendatario, apellidos_arrendatario, correo_arrendatario', 'length', 'max'=>100),
-			array('estadocivil_arrendatario', 'length', 'max'=>8),
+			array('estadocivil_arrendatario', 'length', 'max'=>10),
 			array('profesion_arrendatario', 'length', 'max'=>250),
 			array('telefonofijo_arrendatario, telefonocelular_arrendatario', 'length', 'max'=>12),
 			array('nrocuenta_arrendatario', 'length', 'max'=>25),
@@ -60,8 +62,34 @@ class Arrendatario extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'arriendo'=>array(self::HAS_MANY, 'Arriendo', 'rut_arrendatario'),
+			'documento'=>array(self::HAS_MANY, 'Documento', 'rut_arrendatario'),
+			'pago'=>array(self::HAS_MANY, 'Pago', 'rut_arrendatario'),
 		);
 	}
+	public function getRut(){
+		$data = explode('-', $this->rut_arrendatario);
+		return $data[0];
+	}
+ 	public function ValidateRut($attribute, $param){
+ 		$data = explode('-', $this->rut_arrendatario);
+ 		$evaluate = strrev($data[0]);
+ 		$multiply = 2;
+ 		$store = 0;
+ 		for ($i = 0; $i < strlen($evaluate); $i++) {
+ 			 $store += $evaluate[$i] * $multiply;
+ 			 $multiply++;
+ 			 if ($multiply > 7)
+ 					 $multiply = 2;
+ 		}
+ 		isset($data[1]) ? $verifyCode = strtolower($data[1]) : $verifyCode = '';
+ 		$result = 11 - ($store % 11);
+ 		if ($result == 10)
+ 			 $result = 'k';
+ 		if ($result == 11)
+ 			 $result = 0;
+ 		if ($verifyCode != $result)
+ 			 $this->addError('rut', 'Rut inválido.');
+ 	}
 
 	/**
 	 * @return array customized attribute labels (name=>label)

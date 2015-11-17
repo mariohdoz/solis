@@ -182,9 +182,10 @@ if(!Yii::app()->session['activo'])
                   <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-plus"></i> Agregar arrendatario</a></li>
-                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-exchange"></i> Modificar arrendatario</a></li>
-                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-close"></i> Eliminar arrendatario</a></li>
+                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arrendatario/create"><i class="fa fa-user-plus"></i> Agregar arrendatario</a></li>
+                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arrendatario/select"><i class="fa fa-exchange"></i> Modificar arrendatario</a></li>
+                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arrendatario/select2"><i class="fa fa-user-times"></i> Eliminar arrendatario</a></li>
+                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/arrendatario/index"><i class="fa fa-file-text-o"></i> Listado de arrendatario</a></li>
                 </ul>
               </li>
             </ul>

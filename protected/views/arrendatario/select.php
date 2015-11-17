@@ -56,23 +56,15 @@
               		'empresa_arrendatario',
               		'activo_arrendatario',
               		*/
-									array(
+                  array(
                     'header'=>'Actualizar',
                     'class'=>'CButtonColumn',
-                    'template'=>'{buscar}  {actualizar}  {eliminar}',
+                    'template'=>'{actualizar}',
                     'buttons'=>array(
-											'eliminar' => array(
-													'label'=>'<i class="fa fa-trash-o"></i>',
-													'url'=>'Yii::app()->createUrl("arrendatario/eliminar", array("id"=>$data->rut))',
-											),
-                      'actualizar' => array(
-                          'label'=>'<i class="fa fa-pencil-square-o"></i>',
-                          'url'=>'Yii::app()->createUrl("arrendatario/update", array("id"=>$data->rut))',
-                      ),
-											'buscar' => array(
-													'label'=>'<i class="fa fa-eye"></i>',
-													'url'=>'Yii::app()->createUrl("arrendatario/view", array("id"=>$data->rut))',
-											),
+                        'actualizar' => array(
+                            'label'=>'<i class="fa fa-pencil-square-o"></i>',
+                            'url'=>'Yii::app()->createUrl("arrendatario/update", array("id"=>$data->rut))',
+                        ),
                     ),
                   ),
               	),

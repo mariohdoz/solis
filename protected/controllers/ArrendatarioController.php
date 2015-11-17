@@ -28,11 +28,11 @@ class ArrendatarioController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array(),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','index','view', 'codigo', 'docu', 'download', 'select', 'select2'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -51,10 +51,42 @@ class ArrendatarioController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$model2=new Documento();
+		$rut=$this->codigo($id);
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=>$this->loadModel($rut),
+			'model2'=>$model2,
 		));
 	}
+	public function actionDocu($id)
+	{
+		$rut = $this->codigo($id);
+		$model=new Documento();
+		Yii::import("ext.EAjaxUpload.qqFileUploader");
+    $folder=Yii::app() -> getBasePath() . "/../documento/propiedad/";// folder for uploaded files
+    $allowedExtensions = array("jpg","jpeg","gif","png","pdf","doc","docx");//array("jpg","jpeg","gif","exe","mov" and etc...
+		$sizeLimit =25 * 1024 * 1024;// maximum file size in bytes
+    $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
+    $result = $uploader->handleUpload($folder);
+    $return = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
+    $fileSize=filesize($folder.$result['filename']);//GETTING FILE SIZE
+	  $fileName=$result['filename'];//GETTING FILE NAME
+		$model->rut_arrendatario=$rut;
+		$model->url_documento = $fileName;
+		$model->save();
+    echo $return;// it's array
+	}
+
+	function actionDownload($type)
+	{
+	  $filecontent=file_get_contents(Yii::app()->getBasePath()."/../documento/propiedad/".$type);
+	  header("Content-Type: text/plain");
+	  header("Content-disposition: attachment; filename=$type");
+	  header("Pragma: no-cache");
+	  echo $filecontent;
+	  exit;
+	}
+
 
 	/**
 	 * Creates a new model.
@@ -70,13 +102,36 @@ class ArrendatarioController extends Controller
 		if(isset($_POST['Arrendatario']))
 		{
 			$model->attributes=$_POST['Arrendatario'];
+			$rut= str_replace('.','',$model->rut_arrendatario);
+			$model->rut_arrendatario = $rut;
+			$data = explode('-', $model->rut_arrendatario);
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->rut_arrendatario));
+				$this->redirect(array('view','id'=>$data[0]));
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
 		));
+	}
+
+	public function codigo($var)
+	{
+		$evaluate = strrev($var);
+		$multiply = 2;
+		$store = 0;
+		for ($i = 0; $i < strlen($evaluate); $i++) {
+			 $store += $evaluate[$i] * $multiply;
+			 $multiply++;
+			 if ($multiply > 7)
+					 $multiply = 2;
+		}
+		$result = 11 - ($store % 11);
+		if ($result == 10)
+			 $result = 'k';
+		if ($result == 11)
+			 $result = 0;
+		$rut = $var.'-'.$result;
+		return $rut;
 	}
 
 	/**
@@ -86,7 +141,8 @@ class ArrendatarioController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
+		$rut=$this->codigo($id);
+		$model=$this->loadModel($rut);
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -94,11 +150,24 @@ class ArrendatarioController extends Controller
 		if(isset($_POST['Arrendatario']))
 		{
 			$model->attributes=$_POST['Arrendatario'];
+			$data = explode('-', $model->rut_arrendatario);
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->rut_arrendatario));
+				$this->redirect(array('view','id'=>$data[0]));
 		}
 
 		$this->render('update',array(
+			'model'=>$model,
+		));
+	}
+
+	public function actionSelect()
+	{
+		$model=new Arrendatario('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Arrendatario']))
+			$model->attributes=$_GET['Arrendatario'];
+
+		$this->render('select',array(
 			'model'=>$model,
 		));
 	}
@@ -117,14 +186,28 @@ class ArrendatarioController extends Controller
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
+	public function actionSelect2()
+	{
+		$model=new Arrendatario('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Arrendatario']))
+			$model->attributes=$_GET['Arrendatario'];
+		$this->render('select2',array(
+			'model'=>$model,
+		));
+	}
+
 	/**
 	 * Lists all models.
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Arrendatario');
+		$model=new Arrendatario('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Arrendatario']))
+			$model->attributes=$_GET['Arrendatario'];
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'model'=>$model,
 		));
 	}
 

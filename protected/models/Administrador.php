@@ -35,6 +35,9 @@ class Administrador extends CActiveRecord
 			array('rut_admin, nombres_admin, apellidos_admin, contrasena_admin, correo_admin, telefono_admin, perfil_admin', 'required'),
 			array('super_admin, activo_admin', 'numerical', 'integerOnly'=>true),
 			array('rut_admin', 'length', 'max'=>10),
+			array('rut_admin', 'ValidateRut'),
+			array('rut_admin', 'unique','attributeName'=>'rut_admin','className'=>'Administrador','message'=>'El administrador ya se encuentra ingresado'),
+			array('correo_admin', 'unique','attributeName'=>'correo_admin','className'=>'Administrador','message'=>'El correo  ya se encuentra ingresado'),
 			array('nombres_admin, apellidos_admin, contrasena_admin, correo_admin', 'length', 'max'=>100),
 			array('telefono_admin', 'length', 'max'=>12),
 			array('perfil_admin', 'length', 'max'=>250),
@@ -43,6 +46,30 @@ class Administrador extends CActiveRecord
 			array('rut_admin, nombres_admin, apellidos_admin, contrasena_admin, correo_admin, telefono_admin, perfil_admin', 'safe', 'on'=>'search'),
 		);
 	}
+	public function getRut(){
+		$data = explode('-', $this->rut_admin);
+		return $data[0];
+	}
+ 	public function ValidateRut($attribute, $param){
+ 		$data = explode('-', $this->rut_admin);
+ 		$evaluate = strrev($data[0]);
+ 		$multiply = 2;
+ 		$store = 0;
+ 		for ($i = 0; $i < strlen($evaluate); $i++) {
+ 			 $store += $evaluate[$i] * $multiply;
+ 			 $multiply++;
+ 			 if ($multiply > 7)
+ 					 $multiply = 2;
+ 		}
+ 		isset($data[1]) ? $verifyCode = strtolower($data[1]) : $verifyCode = '';
+ 		$result = 11 - ($store % 11);
+ 		if ($result == 10)
+ 			 $result = 'k';
+ 		if ($result == 11)
+ 			 $result = 0;
+ 		if ($verifyCode != $result)
+ 			 $this->addError('rut', 'Rut inválido.');
+ 	}
 
 	/**
 	 * @return array relational rules.
