@@ -32,7 +32,12 @@ $this->menu=array(
   <section class="content">
     <div class="row">
       <!-- Inicio se container -->
-
+      <div class="col-md-12">
+        <div class="callout callout-danger">
+          <h4>Está a punto de eliminar el cliente <?php echo  CHtml::encode($model->rut_cliente); ?>!</h4>
+          <p>Si elimina el cliente, también se eliminarán las propiedades y servicios prestados por estas.</p>
+        </div>
+      </div>
       <!-- término se container -->
 			<?php $form=$this->beginWidget('CActiveForm', array(
 				'id'=>'cliente-form',
@@ -106,12 +111,7 @@ $this->menu=array(
 							<div class="col-xs-12 col-md-6 col-lg-4">
 								 <div class="form-group">
 											<?php echo $form->labelEx($model,'estadocivil_cliente') ?>
-											<?php echo $form->dropDownList($model,'estadocivil_cliente',array(
-												'Soltero/a'=>'Soltero/a',
-												'Casado/a'=>'Casado/a',
-												'Viudo/a'=>'Viudo/a',
-											),
-											array("class"=>"form-control select2", 'disabled'=>'true')) ?>
+											<?php echo $form->textField($model,'estadocivil_cliente',	array("class"=>"form-control select2", 'disabled'=>'true')) ?>
 								</div>
 							</div>
 							<div class="col-xs-12 col-md-6 col-lg-4">
@@ -129,10 +129,8 @@ $this->menu=array(
 
 				  </div>
 					<div class="box-footer">
-						<?php echo CHtml::link('Términar', array('/intra/index'), array('class'=>'btn btn-primary')); ?>
-						<?php echo CHtml::link('Actualizar cliente', array('/cliente/update/', 'id'=>$model->rut), array('class'=>'btn btn-info', 'confirm' => '¿Está seguro de actualizar el cliente?')); ?>
 						<?php echo CHtml::link("Eliminar cliente", '#', array(
-								'submit'=>array('/arriendo/delete', "id"=>$model->rut),
+								'submit'=>array('/Cliente/delete', "id"=>$model->rut),
 								'class'=>'btn btn-danger',
 								'confirm' => '¿Está seguro de eliminar el cliente?'
 								)

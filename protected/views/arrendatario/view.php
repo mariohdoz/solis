@@ -33,5 +33,6 @@ $this->menu=array(
 		'banco_arrendatario',
 		'nacionalidad_arrendatario',
 		'empresa_arrendatario',
+		'activo_arrendatario',
 	),
 )); ?>

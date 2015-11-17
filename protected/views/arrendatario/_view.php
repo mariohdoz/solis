@@ -54,6 +54,10 @@
 	<?php echo CHtml::encode($data->empresa_arrendatario); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('activo_arrendatario')); ?>:</b>
+	<?php echo CHtml::encode($data->activo_arrendatario); ?>
+	<br />
+
 	*/ ?>
 
 </div>

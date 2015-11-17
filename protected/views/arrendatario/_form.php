@@ -91,6 +91,12 @@
 		<?php echo $form->error($model,'empresa_arrendatario'); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->labelEx($model,'activo_arrendatario'); ?>
+		<?php echo $form->textField($model,'activo_arrendatario'); ?>
+		<?php echo $form->error($model,'activo_arrendatario'); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

@@ -48,22 +48,14 @@
                 		'activo_cliente',
                 		*/
                     array(
-                      'header'=>'Actualizar',
+                      'header'=>'Eliminar',
                       'class'=>'CButtonColumn',
-                      'template'=>'{actualizar}{eliminar}{buscar}',
+                      'template'=>'{Eliminar}',
                       'buttons'=>array(
-												'eliminar' => array(
-														'label'=>'<i class="fa fa-eye">Ver</i>',
-														'url'=>'Yii::app()->createUrl("cliente/eliminar", array("id"=>$data->rut))',
-												),
-												'buscar' => array(
-														'label'=>'<i class="fa fa-trash-o"></i>',
-														'url'=>'Yii::app()->createUrl("cliente/eliminar", array("id"=>$data->rut))',
-												),
-                        'actualizar' => array(
-                            'label'=>'<i class="fa fa-pencil-square-o"></i>',
-                            'url'=>'Yii::app()->createUrl("cliente/update", array("id"=>$data->rut))',
-                        ),
+                          'Eliminar' => array(
+                              'label'=>'<i class="fa fa-trash-o"></i>',
+                              'url'=>'Yii::app()->createUrl("cliente/eliminar", array("id"=>$data->rut))',
+                          ),
                       ),
                     ),
                 	),

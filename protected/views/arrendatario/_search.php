@@ -71,6 +71,11 @@
 		<?php echo $form->textField($model,'empresa_arrendatario'); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->label($model,'activo_arrendatario'); ?>
+		<?php echo $form->textField($model,'activo_arrendatario'); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>
 	</div>

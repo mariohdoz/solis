@@ -58,6 +58,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'banco_arrendatario',
 		'nacionalidad_arrendatario',
 		'empresa_arrendatario',
+		'activo_arrendatario',
 		*/
 		array(
 			'class'=>'CButtonColumn',

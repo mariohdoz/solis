@@ -60,7 +60,6 @@ class Arrendatario extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'arriendo'=>array(self::HAS_MANY, 'Arriendo', 'rut_arrendatario'),
-
 		);
 	}
 
@@ -70,7 +69,7 @@ class Arrendatario extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'rut_arrendatario' => 'RUT',
+			'rut_arrendatario' => 'RUT del arrendatario',
 			'nombres_arrendatario' => 'Nombres',
 			'apellidos_arrendatario' => 'Apellidos',
 			'estadocivil_arrendatario' => 'Estado civil',
@@ -116,7 +115,7 @@ class Arrendatario extends CActiveRecord
 		$criteria->compare('banco_arrendatario',$this->banco_arrendatario,true);
 		$criteria->compare('nacionalidad_arrendatario',$this->nacionalidad_arrendatario,true);
 		$criteria->compare('empresa_arrendatario',$this->empresa_arrendatario);
-		$criteria->compare('activo_arrendatario',$this->activo_arrendatario);
+		$criteria->compare('activo_arrendatario',1);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

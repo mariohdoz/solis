@@ -24,7 +24,7 @@
 					<div class="col-xs-12 col-md-6 col-lg-4">
 						 <div class="form-group">
 						  <?php echo $form->labelEx($model,'rut_cliente'); ?>
-							<?php echo $form->textField($model,'rut_cliente', array("class"=>"form-control select2")); ?>
+							<?php echo $form->textField($model,'rut_cliente', array("class"=>"form-control select2", $model->isNewRecord ? '' : 'disabled'=>true)); ?>
 						</div>
 					</div>
 					<div class="col-xs-12 col-md-6 col-lg-4">

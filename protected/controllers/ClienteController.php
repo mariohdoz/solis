@@ -106,7 +106,9 @@ class ClienteController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
+		$rut= $this->codigo($id);
+		$model=$this->loadModel($rut);
+
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -114,8 +116,11 @@ class ClienteController extends Controller
 		if(isset($_POST['Cliente']))
 		{
 			$model->attributes=$_POST['Cliente'];
+			$rut= str_replace('.','',$model->rut_cliente);
+			$model->rut_cliente = $rut;
+			$data = explode('-', $model->rut_cliente);
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->rut_cliente));
+				$this->redirect(array('view','id'=>$data[0]));
 		}
 
 		$this->render('update',array(
@@ -139,11 +144,41 @@ class ClienteController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
-
+		$rut=$this->codigo($id);
+		$cliente =$this->loadModel($rut);
+		$cliente->activo_cliente=0;
+		if ($cliente->save()) {
+			$criteria = new CDbCriteria();
+			$criteria->addCondition("rut_cliente=:rut");
+			$criteria->params = array(':rut' => $rut);
+			$list = Propiedad::model()->findAll($criteria);
+			foreach($list as $model)
+			{
+				$criteria = new CDbCriteria();
+				$criteria->addCondition("id_propiedad=:id");
+				$criteria->params = array(':id' => $model->id_propiedad);
+				$lista = Arriendo::model()->findAll($criteria);
+				foreach($lista as $arriendo)
+				{
+					 $arriendo->activo_arriendo =0;
+					 if (!$arriendo->save()) {
+						 Yii::app()->user->setFlash('danger','El arriendo '.$arriendo->id_arriendo.' no ha podido ser eliminado.');
+						 $this->redirect(Yii::app()->request->baseUrl.'/cliente/modificar/');
+					 }
+				}
+				$model->eliminado_propiedad = 1;
+				if (!$model->save()) {
+				 Yii::app()->user->setFlash('danger','La Propiedad'.$model->id_propiedad.' No ha podido ser eliminada.');
+				 $this->redirect(Yii::app()->request->baseUrl.'/cliente/modificar/');
+				}
+			}
+		}else {
+			Yii::app()->user->setFlash('danger','El cliente no ha podido ser eliminado.');
+			$this->redirect(Yii::app()->request->baseUrl.'/cliente/modificar/');
+		}
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 	}
 	public function actionSelect2()
 	{
@@ -165,9 +200,13 @@ class ClienteController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Cliente');
+		$model=new Cliente('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Cliente']))
+			$model->attributes=$_GET['Cliente'];
+
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'model'=>$model,
 		));
 	}
 
