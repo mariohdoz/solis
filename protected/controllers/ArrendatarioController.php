@@ -51,6 +51,12 @@ class ArrendatarioController extends Controller
 	 */
 	public function actionView($id)
 	{
+		if(Yii::app()->user->hasFlash('success')){
+			$msgs=Yii::app()->user->getFlashes();
+			foreach ($msgs as $key => $value) {
+				Yii::app()->user->setFlash($key,$value);
+			}
+		}
 		$model2=new Documento();
 		$rut=$this->codigo($id);
 		$this->render('view',array(
@@ -105,8 +111,9 @@ class ArrendatarioController extends Controller
 			$rut= str_replace('.','',$model->rut_arrendatario);
 			$model->rut_arrendatario = $rut;
 			$data = explode('-', $model->rut_arrendatario);
-			if($model->save())
-				$this->redirect(array('view','id'=>$data[0]));
+			if($model->save()){
+				Yii::app()->user->setFlash('success','El arrendatario fue ingresado correctamente.');
+				$this->redirect(array('view','id'=>$data[0]));}
 		}
 
 		$this->render('create',array(

@@ -51,6 +51,12 @@ class ArriendoController extends Controller
 	 */
 	public function actionView($id)
 	{
+		if(Yii::app()->user->hasFlash('success')){
+			$msgs=Yii::app()->user->getFlashes();
+			foreach ($msgs as $key => $value) {
+				Yii::app()->user->setFlash($key,$value);
+			}
+		}
 		$model=$this->loadModel($id);
 		$model2=new Arrendatario;
 		$model2=Arrendatario::model()->findByPk($model->rut_arrendatario);
@@ -118,6 +124,7 @@ class ArriendoController extends Controller
 						$model3->activo_propiedad= 0;
 						if($model->save() && $model3->save())
 						{
+							Yii::app()->user->setFlash('success','El arriendo fue ingresado correctamente.');
 							$this->redirect(array('view','id'=>$model->id_arriendo));
 						}
 					}else {

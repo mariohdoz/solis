@@ -51,6 +51,12 @@ class ClienteController extends Controller
 	 */
 	public function actionView($id)
 	{
+		if(Yii::app()->user->hasFlash('success')){
+			$msgs=Yii::app()->user->getFlashes();
+			foreach ($msgs as $key => $value) {
+				Yii::app()->user->setFlash($key,$value);
+			}
+		}
 		$rut = $this->codigo($id);
 		$this->render('view',array(
 			'model'=>$this->loadModel($rut),
@@ -72,8 +78,10 @@ class ClienteController extends Controller
 			$rut= str_replace('.','',$model->rut_cliente);
 			$model->rut_cliente = $rut;
 			$data = explode('-', $model->rut_cliente);
-			if($model->save())
+			if($model->save()){
+				Yii::app()->user->setFlash('success','El cliente fue ingresado correctamente.');
 				$this->redirect(array('view','id'=>$data[0]));
+			}
 		}
 		$this->render('create',array(
 			'model'=>$model,

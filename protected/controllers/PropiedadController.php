@@ -53,11 +53,16 @@ class PropiedadController extends Controller
 
 	public function actionView($id)
 	{
+		if(Yii::app()->user->hasFlash('success')){
+			$msgs=Yii::app()->user->getFlashes();
+			foreach ($msgs as $key => $value) {
+				Yii::app()->user->setFlash($key,$value);
+			}
+		}
 		$model = $this->loadModel($id);
 		$model1=new Imagen();
     $model2 = new Cliente();
     $model2 = Cliente::model()->findByPk($model->rut_cliente);
-		Yii::app()->user->setFlash('success','La propiedad ha sido ingresada correctamente. Por favor subir imágenes de la propiedad');
 		$this->render('view',array(
 			'model'=>$model,
 			'model1'=>$model1,
@@ -115,8 +120,10 @@ class PropiedadController extends Controller
 			$model->rut_cliente =$cadena;
 			$valor = intval(preg_replace('/[^0-9]+/', '', $model->valor_propiedad),10);
 			$model->valor_propiedad = $valor;
-			if($model->save())
+			if($model->save()){
+			Yii::app()->user->setFlash('success','La propiedad ha sido ingresada correctamente. Por favor subir imágenes de la propiedad');
 				$this->redirect(array('view','id'=>$model->id_propiedad));
+			}
 		}
 		$criteria = new CDbCriteria();
 		$criteria->condition='activo_cliente =1';

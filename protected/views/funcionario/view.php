@@ -14,6 +14,22 @@
   </section>
   <section class="content">
     <div class="row">
+      <div class="col-md-12">
+				<?php if(($msgs=Yii::app()->user->getFlashes())!=null): ?>
+         <?php foreach($msgs as $type => $message):?>
+           <div class="alert alert-<?php echo $type;?>" style="margin-left: 10px; margin-right: 10px ">
+             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+             <strong><?php
+							 if($type == 'danger'){
+								 echo 'Error';
+							 }elseif ($type == 'success'){
+								 echo 'Éxito';
+							 };
+							?> !</strong> <?php echo $message;?>.
+           </div>
+         <?php endforeach;?>
+       <?php endif; ?>
+			</div>
       <!-- Inicio se container -->
 			<?php $form=$this->beginWidget('CActiveForm', array(
 				'id'=>'funcionario-form',

@@ -51,6 +51,12 @@ class VentaController extends Controller
 	 */
 	public function actionView($id)
 	{
+		if(Yii::app()->user->hasFlash('success')){
+			$msgs=Yii::app()->user->getFlashes();
+			foreach ($msgs as $key => $value) {
+				Yii::app()->user->setFlash($key,$value);
+			}
+		}
 		$model=$this->loadModel($id);
 		$model3=new Propiedad;
 		$model3=Propiedad::model()->findByPk($model->id_propiedad);
@@ -136,7 +142,7 @@ class VentaController extends Controller
 					$model->ganancia_venta = $valor;
 					if($model->save() && $model3->save())
 					{
-						Yii::app()->user->setFlash('success','La venta fue registrada exitosamente.');
+						Yii::app()->user->setFlash('success','La venta fue ingresada correctamente.');
 						$this->redirect(array('view','id'=>$model->id_venta));
 					}
 				}else {
