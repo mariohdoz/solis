@@ -197,9 +197,10 @@ if(!Yii::app()->session['activo'])
                   <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-plus"></i> Agregar Funcionarios</a></li>
-                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-exchange"></i> Modificar Funcionarios</a></li>
-                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-close"></i> Eliminar Funcionarios</a></li>
+                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/funcionario/create"><i class="fa fa-user-plus"></i> Agregar funcionario</a></li>
+                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/funcionario/select"><i class="fa fa-exchange"></i> Modificar funcionario</a></li>
+                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/funcionario/select2"><i class="fa fa-user-times"></i> Eliminar funcionario</a></li>
+                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/funcionario/index"><i class="fa fa-file-text-o"></i> Listado de funcionario</a></li>
                 </ul>
               </li>
             </ul>

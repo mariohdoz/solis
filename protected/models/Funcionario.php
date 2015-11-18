@@ -11,6 +11,8 @@
  * @property string $telefonocelular_funcionario
  * @property string $domicilio_funcionario
  * @property string $correo_funcionario
+ * @property integer $activo_funcionario
+
  */
 class Funcionario extends CActiveRecord
 {
@@ -31,16 +33,17 @@ class Funcionario extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('rut_funcionario, nombres_funcionario, apellidos_funcionario, telefonofijo_funcionario, telefonocelular_funcionario, domicilio_funcionario, correo_funcionario', 'required'),
+			array('activo_funcionario', 'numerical', 'integerOnly'=>true),
 			array('rut_funcionario', 'length', 'max'=>10),
 			array('rut_funcionario', 'ValidateRut'),
-			array('rut_funcionario', 'unique','attributeName'=>'rut_funcionario','className'=>'Cliente','message'=>'El funcionario ya se encuentra ingresado'),
+			array('rut_funcionario', 'unique','attributeName'=>'rut_funcionario','className'=>'Funcionario','message'=>'El RUT del funcionario ya se encuentra ingresado'),
 			array('correo_funcionario', 'unique','attributeName'=>'correo_funcionario','className'=>'Funcionario','message'=>'El correo ya se encuentra ingresado'),
 			array('nombres_funcionario, apellidos_funcionario, correo_funcionario', 'length', 'max'=>100),
 			array('telefonofijo_funcionario, telefonocelular_funcionario', 'length', 'max'=>12),
 			array('domicilio_funcionario', 'length', 'max'=>150),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('rut_funcionario, nombres_funcionario, apellidos_funcionario, telefonofijo_funcionario, telefonocelular_funcionario, domicilio_funcionario, correo_funcionario', 'safe', 'on'=>'search'),
+			array('rut_funcionario, nombres_funcionario, apellidos_funcionario, telefonofijo_funcionario, telefonocelular_funcionario, domicilio_funcionario, correo_funcionario, activo_funcionario', 'safe', 'on'=>'search'),
 		);
 	}
 	public function getRut(){
@@ -85,13 +88,14 @@ class Funcionario extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'rut_funcionario' => 'Rut Funcionario',
-			'nombres_funcionario' => 'Nombres Funcionario',
-			'apellidos_funcionario' => 'Apellidos Funcionario',
-			'telefonofijo_funcionario' => 'Telefonofijo Funcionario',
-			'telefonocelular_funcionario' => 'Telefonocelular Funcionario',
-			'domicilio_funcionario' => 'Domicilio Funcionario',
-			'correo_funcionario' => 'Correo Funcionario',
+			'rut_funcionario' => 'Rut del Funcionario',
+			'nombres_funcionario' => 'Nombres',
+			'apellidos_funcionario' => 'Apellidos',
+			'telefonofijo_funcionario' => 'Teléfono fijo',
+			'telefonocelular_funcionario' => 'Teléfono celular',
+			'domicilio_funcionario' => 'Domicilio',
+			'correo_funcionario' => 'Correo electrónico',
+			'activo_funcionario' => 'Activo Funcionario',
 		);
 	}
 
@@ -120,6 +124,8 @@ class Funcionario extends CActiveRecord
 		$criteria->compare('telefonocelular_funcionario',$this->telefonocelular_funcionario,true);
 		$criteria->compare('domicilio_funcionario',$this->domicilio_funcionario,true);
 		$criteria->compare('correo_funcionario',$this->correo_funcionario,true);
+		$criteria->compare('activo_funcionario',1);
+
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
