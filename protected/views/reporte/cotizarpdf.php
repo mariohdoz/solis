@@ -1,5 +1,3 @@
-
-
 <html>
 <head>
   <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css"> <!-- Resource style -->
@@ -27,11 +25,8 @@
         <h2>Cotización <?php echo  $model->servicio_propiedad ?></h2>
       </td>
     <td width="50%" class="aBDP" style="text-align: right">
-      <?php echo //Establecer la información local en castellano de España
-      setlocale(LC_TIME,"es_ES.UTF-8");
-
-      echo strftime("Calama %A %d de %B de %Y ");
-
+      <?php
+      setlocale(LC_TIME, 'Spanish_Chile'); Echo iconv('ISO-8859-1', 'UTF-8', strftime('Calama, %A %d de %B de %Y '))
       ?>
     </td>
   </tr></table>
