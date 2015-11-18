@@ -19,7 +19,7 @@ Class ReporteController extends Controller
         $model =Propiedad::model()->findByPk($id); //Consulta para buscar todos los registros
         $mPDF1 = Yii::app()->ePdf->mpdf('utf8_encode()','A4-L','','',15,15,35,25,9,9,'L'); //Esto lo pueden configurar como quieren, para eso deben de entrar en la web de MPDF para ver todo lo que permite.
         $mPDF1->useOnlyCoreFonts = true;
-        $mPDF1->SetTitle("Cotizaci�n - Reporte");
+        $mPDF1->SetTitle("Cotización - Reporte");
         $mPDF1->SetAuthor("Propiedades Sol y Cobre");
         $mPDF1->SetWatermarkText("");
         $mPDF1->showWatermarkText = true;

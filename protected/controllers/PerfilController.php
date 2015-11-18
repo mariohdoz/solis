@@ -8,14 +8,27 @@
 
 Class PerfilController extends Controller
 {
-
     public function actionIndex(){
+        $model=new Administrador('search');
         $this->layout='//layouts/intraLayout';
-        $model=CActiveRecord::model("Administrador")->findAll();
-        $wea="asdadsasd";
-        $this->render("index",array("model"=>$model,"wea"=>$wea));
+        $model->unsetAttributes();
+        if(isset($_GET['Administrador']))
+            $model->attributes=$_GET['Administrador'];
+
+        $this->render("index",array("model"=>$model));
 
     }
+    public function actionconfig($id)
+    {
+
+        $model = new Administrador();
+        $model = Administrador::model()->findByPk($id);
+        $this->layout ='//layouts/intraLayout';
+        $this->render('index', array('model'=>$model));
+
+    }
+
+
     public function accessRules()
     {
         return array(
@@ -37,7 +50,16 @@ Class PerfilController extends Controller
         );
     }
 
+    public function actionAdmin($id)
+    {
+        $model =Administrador::model()->findByPk($id);
 
+        $model->unsetAttributes();
+        if(isset($_GET['Administrador']))
+            $model->attributes=$_GET['Administrador'];
+
+        $this->render("index",array("model"=>$model));
+    }
 
     protected function performAjaxValidation($model)
     {
