@@ -42,7 +42,6 @@
                                 'tipo_propiedad',
                                 'servicio_propiedad',
 
-
                                 /*
                                 'TERRENOCONSTRUIDO',
                                 'TIPO',

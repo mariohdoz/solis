@@ -21,6 +21,7 @@
  * @property integer $valor_propiedad
  * @property integer $activo_propiedad
  * @property integer $eliminado_propiedad
+ * @property integer $ingreso_propiedad
  */
 class Propiedad extends CActiveRecord
 {
@@ -94,6 +95,7 @@ class Propiedad extends CActiveRecord
 			'valor_propiedad' => 'Valor Propiedad',
 			'activo_propiedad' => 'Activo Propiedad',
 			'eliminado_propiedad' => 'Eliminado Propiedad',
+			'ingreso_propiedad' => 'Fecha de ingreso',
 		);
 	}
 
@@ -132,6 +134,7 @@ class Propiedad extends CActiveRecord
 		$criteria->compare('valor_propiedad',$this->valor_propiedad);
 		$criteria->compare('activo_propiedad',$this->activo_propiedad);
 		$criteria->compare('eliminado_propiedad',0);
+		$criteria->compare('ingreso_propiedad',$this->ingreso_propiedad);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -160,6 +163,7 @@ class Propiedad extends CActiveRecord
 		$criteria->compare('valor_propiedad',$this->valor_propiedad);
 		$criteria->compare('activo_propiedad',1);
 		$criteria->compare('eliminado_propiedad',0);
+		$criteria->compare('ingreso_propiedad',$this->ingreso_propiedad);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
