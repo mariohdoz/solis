@@ -5,6 +5,7 @@
     <file url="file://$PROJECT_DIR$/js/mainb.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/protected/config/main.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/protected/controllers/ReporteController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/protected/views/cliente/ficha.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/protected/views/perfil/index.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/protected/views/reporte/cotizarpdf.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/protected/views/reporte/index.php" charset="UTF-8" />

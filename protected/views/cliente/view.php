@@ -129,7 +129,11 @@ $this->menu=array(
 
 				  </div>
 					<div class="box-footer">
-						<?php echo CHtml::link('Términar', array('/intra/index'), array('class'=>'btn btn-primary')); ?>
+						<?php echo CHtml::link("Generar Ficha", '#', array(
+								'submit'=>array('/cliente/generarpdf', "id"=>$model->rut),
+								'class'=>'btn btn-info',
+							)
+						);?>
 						<?php echo CHtml::link('Actualizar cliente', array('/cliente/update/', 'id'=>$model->rut), array('class'=>'btn btn-info', 'confirm' => '¿Está seguro de actualizar el cliente?')); ?>
 						<?php echo CHtml::link("Eliminar cliente", '#', array(
 								'submit'=>array('/cliente/delete', "id"=>$model->rut),
