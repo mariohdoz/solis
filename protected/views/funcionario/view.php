@@ -1,3 +1,47 @@
+
+<div class="modal fade modal-Default" id="contrasena" tabindex="-1" role="dialog" aria-labelledby="myModallabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 style="text-align: center">Cambio de contraseña</h4>
+				<div class="form-horizontal">
+          <?php $form=$this->beginWidget('CActiveForm', array(
+            'id'=>'contrasena-form',
+            'action'=>Yii::app()->request->baseUrl.'/funcionario/contra/'.$model->rut,
+            // Please note: When you enable ajax validation, make sure the corresponding
+            // controller action is handling ajax validation correctly.
+            // There is a call to performAjaxValidation() commented in generated controller code.
+            // See class documentation of CActiveForm for details on this.
+            'enableAjaxValidation'=>false,
+          )); ?>
+          <div class="col-md-12">
+            <?php echo $form->errorSummary($model,'<strong>Es necesario arreglar los siguientes errores:</strong><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><div class="alert alert-danger">', '</div>'); ?>
+          </div>
+          <div class="col-md-12">
+          <div class="col-xs-12 col-md-6 col-lg-12">
+   				 <div class="form-group">
+   				 	<?php echo $form->labelEx($model,'contrasena_funcionario'); ?>
+   			 		<?php echo $form->passwordField($model,'contrasena_funcionario',array('class'=>'form-control', 'placeholder'=>'Constraseña del funcionario',)); ?>
+   				 </div>
+   			 </div><br>
+     			 <div class="col-xs-12 col-md-6 col-lg-12">
+     				 <div class="form-group" id="box">
+     				 	<?php echo $form->labelEx($model,'repeat_pass'); ?>
+     			 		<?php echo $form->passwordField($model,'repeat_pass',array('class'=>'form-control', 'placeholder'=>'Repetir contraseña', )); ?>
+     				 </div>
+  				</div>
+        </div>
+				</div>
+			</div>
+			<div class="modal-footer">
+        <?php echo CHtml::submitButton('Actualizar contraseña', array('class'=>'btn btn-success center-block')); ?>
+			</div>
+		</div>
+	</div>
+</div>
+<?php $this->endWidget(); ?>
+
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
@@ -20,7 +64,7 @@
            <div class="alert alert-<?php echo $type;?>" style="margin-left: 10px; margin-right: 10px ">
              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
              <strong><?php
-							 if($type == 'danger'){
+							 if($type == 'error'){
 								 echo 'Error';
 							 }elseif ($type == 'success'){
 								 echo 'Éxito';
@@ -93,7 +137,7 @@
 			 				 </div>
 						</div>
 						<div class="box-footer">
-							<?php echo CHtml::link('Generar ficha de funcionario', array('/intra/index'), array('class'=>'btn btn-primary')); ?>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#contrasena">Cambiar contraseña</button>
 							<?php echo CHtml::link('Actualizar funcionario', array('/funcionario/update/', 'id'=>$model->rut), array('class'=>'btn btn-info', 'confirm' => '¿Está seguro de actualizar el funcionario?')); ?>
 							<?php echo CHtml::link("Eliminar funcionario", '#', array(
 									'submit'=>array('/funcionario/eliminar', "id"=>$model->rut),
@@ -109,3 +153,25 @@
     </div>
   </section>
 </div>
+<script>
+  $('#Funcionario_contrasena_funcionario').ready(function(){
+    $('#Funcionario_contrasena_funcionario').val('');
+  });
+	$("#Funcionario_repeat_pass").keyup(function(){
+		if ($("#Funcionario_repeat_pass").val()!== $('#Funcionario_contrasena_funcionario').val() ) {
+			if (!$("#box").hasClass('has-error')) {
+				$("#box").toggleClass(' has-error');
+			}
+			if ($("#box").hasClass('has-success')) {
+				$("#box").toggleClass('has-success');
+			}
+		}else {
+			if ($("#box").hasClass('has-error')) {
+				$("#box").toggleClass(' has-error');
+			}
+			if (!$("#box").hasClass('has-success')) {
+				$("#box").toggleClass('has-success');
+			}
+		}
+	});
+</script>

@@ -99,7 +99,6 @@ $this->menu=array(
 <div class="modal fade modal-Default" id="arrendatario" tabindex="-1" role="dialog" aria-labelledby="myModallabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
-
 			<div class="modal-body">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				<h4 style="text-align: center">Arrendatario</h4>
@@ -120,7 +119,6 @@ $this->menu=array(
 						// nota que aqui no se usa array, sino directamente el nombre de la columna
 								'nombres_arrendatario',
 								'apellidos_arrendatario',
-
 						// via 2: para mostrar detalles al hacer click en un icono.
 								array(
 										'header' => '',

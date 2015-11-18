@@ -46,4 +46,22 @@ $("#Funcionario_rut_funcionario").Rut({
 $("#Funcionario_rut_funcionario").click(function(){
 	$("#Funcionario_rut_funcionario").val('');
 })
+
+$("#Funcionario_repeat_pass").keyup(function(){
+	if ($("#Funcionario_repeat_pass").val()!== $('#Funcionario_contrasena_funcionario').val() ) {
+		if (!$("#box").hasClass('has-error')) {
+			$("#box").toggleClass(' has-error');
+		}
+		if ($("#box").hasClass('has-success')) {
+			$("#box").toggleClass('has-success');
+		}
+	}else {
+		if ($("#box").hasClass('has-error')) {
+			$("#box").toggleClass(' has-error');
+		}
+		if (!$("#box").hasClass('has-success')) {
+			$("#box").toggleClass('has-success');
+		}
+	}
+});
 </script>

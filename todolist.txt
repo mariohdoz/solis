@@ -1,1 +1,3 @@
-Al actualizar el arriendo se debe ser capas de liberar la propiedad si es que fue cambiada. además se tiene que cambiar la selección de fecha de pago 
+Al actualizar el arriendo se debe ser capas de liberar la propiedad si es que fue cambiada. además se tiene que cambiar la selección de fecha de pago
+
+Visitas por Propiedad

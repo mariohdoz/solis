@@ -54,18 +54,32 @@
 					 <?php echo $form->textField($model,'telefonocelular_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Ejemplo +56912345678')); ?>
 				 </div>
 			 </div>
-				 <div class="col-xs-12 col-md-6 col-lg-4">
- 					 <div class="form-group">
-						 <?php echo $form->labelEx($model,'correo_funcionario'); ?>
-				 		<?php echo $form->textField($model,'correo_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Correo del funcionario')); ?>
- 					 </div>
- 				 </div>
-				 <div class="col-xs-12 col-md-6 col-lg-4">
- 					 <div class="form-group">
-						 <?php echo $form->labelEx($model,'domicilio_funcionario'); ?>
-				 		<?php echo $form->textField($model,'domicilio_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Dirección del domicilio')); ?>
- 					 </div>
- 				 </div>
+			 <div class="col-xs-12 col-md-6 col-lg-4">
+				 <div class="form-group">
+					 <?php echo $form->labelEx($model,'domicilio_funcionario'); ?>
+					<?php echo $form->textField($model,'domicilio_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Dirección del domicilio')); ?>
+				 </div>
+			 </div>
+			 <div class="col-xs-12 col-md-6 col-lg-4">
+				 <div class="form-group">
+				 	<?php echo $form->labelEx($model,'correo_funcionario'); ?>
+			 		<?php echo $form->textField($model,'correo_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Correo del funcionario')); ?>
+				 </div>
+			 </div>
+			 <?php if($model->isNewRecord): ?>
+			 <div class="col-xs-12 col-md-6 col-lg-4">
+				 <div class="form-group">
+				 	<?php echo $form->labelEx($model,'contrasena_funcionario'); ?>
+			 		<?php echo $form->passwordField($model,'contrasena_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Constraseña del funcionario', $model->isNewRecord ? '' : 'disabled'=>true,)); ?>
+				 </div>
+			 </div>
+			 <div class="col-xs-12 col-md-6 col-lg-4">
+				 <div class="form-group" id="box">
+				 	<?php echo $form->labelEx($model,'repeat_pass'); ?>
+			 		<?php echo $form->passwordField($model,'repeat_pass',array('class'=>'form-control select2', 'placeholder'=>'Repetir contraseña', $model->isNewRecord ? '' : 'disabled'=>true, )); ?>
+				 </div>
+			 </div>
+			 <?php endIf; ?>
 			</div>
 			<div class="box-footer">
 				<?php echo CHtml::submitButton($model->isNewRecord ? 'Registrar funcionario' : 'Actualizar funcionario', array('class'=>'btn btn-primary', 'placeholder'=>'')); ?>

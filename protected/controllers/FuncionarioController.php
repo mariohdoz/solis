@@ -1,5 +1,6 @@
 <?php
-
+//var_dump($model);
+//yii::app()->end();
 class FuncionarioController extends Controller
 {
 	/**
@@ -28,11 +29,11 @@ class FuncionarioController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array(),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','index','view','contra'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -63,13 +64,36 @@ class FuncionarioController extends Controller
 		));
 	}
 
+	public function actionContra($id)
+	{
+		$rut=$this->codigo($id);
+		$model=$this->loadModel($rut);
+		if (isset($_POST['Funcionario'])) {
+			$model->attributes=$_POST['Funcionario'];
+			if ($model->repeat_pass != '') {
+				if ($model->contrasena_funcionario == $model->repeat_pass) {
+					if ($model->save()) {
+						Yii::app()->user->setFlash('success','La contraseña del funcionario fue actualizada');
+					}else {
+						Yii::app()->user->setFlash('error','La contraseña del funcionario no fue actualizada');
+					}
+				}else {
+					Yii::app()->user->setFlash('error','Las contraseñas no coinciden');
+				}
+			}else {
+				Yii::app()->user->setFlash('error','debe repetir la contraseña');
+			}
+		}
+		$this->redirect(array('view','id'=>$id));
+	}
+
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate()
 	{
-		$model=new w;
+		$model=new Funcionario('create');
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -80,9 +104,13 @@ class FuncionarioController extends Controller
 			$rut= str_replace('.','',$model->rut_funcionario);
 			$model->rut_funcionario = $rut;
 			$data = explode('-', $model->rut_funcionario);
-			if($model->save()){
-				Yii::app()->user->setFlash('success','El funcionario fue ingresado correctamente.');
-				$this->redirect(array('view','id'=>$data[0]));
+			if ($model->contrasena_funcionario == $model->repeat_pass) {
+				if($model->save()){
+					Yii::app()->user->setFlash('success','El funcionario fue ingresado correctamente.');
+					$this->redirect(array('view','id'=>$data[0]));
+				}
+			}else {
+				Yii::app()->user->setFlash('error','Las contraseñas no coinciden.');
 			}
 		}
 
@@ -117,7 +145,8 @@ class FuncionarioController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
+		$rut=$this->codigo($id);
+		$model=$this->loadModel($rut);
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -125,13 +154,19 @@ class FuncionarioController extends Controller
 		if(isset($_POST['Funcionario']))
 		{
 			$model->attributes=$_POST['Funcionario'];
+			$data = explode('-', $model->rut_funcionario);
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->rut_funcionario));
+				$this->redirect(array('view','id'=>$data[0]));
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
 		));
+	}
+
+	public function actionSelect()
+	{
+
 	}
 
 	/**
@@ -146,6 +181,10 @@ class FuncionarioController extends Controller
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+	}
+	public function actionSelect2()
+	{
+
 	}
 
 	/**
