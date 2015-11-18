@@ -37,6 +37,8 @@ $this->menu=array(
 						<div class="box-body">
 							<?php $this->widget('zii.widgets.grid.CGridView', array(
 								'id'=>'venta-grid',
+								'itemsCssClass' => 'table table-hover',
+								'htmlOptions' => array('class' => 'table-responsive'),
 								'dataProvider'=>$model->search(),
 								'filter'=>$model,
 								'columns'=>array(
@@ -52,9 +54,22 @@ $this->menu=array(
 									'ganancia_venta',
 									*/
 									array(
-										header=>'Acciones',
-										'class'=>'CButtonColumn',
-									),
+                    'class'=>'CButtonColumn',
+                    'buttons'=>array(
+                      'modificar' => array(
+                          'label'=>'<i class="fa fa-trash-o "></i>',
+                          'url'=>'Yii::app()->createUrl("venta/eliminar", array("id"=>$data->id_venta))',
+                      ),
+											'modificar' => array(
+													'label'=>'<i class="fa fa-pencil-square-o"></i>',
+													'url'=>'Yii::app()->createUrl("venta/update", array("id"=>$data->id_venta))',
+											),
+											'ver' => array(
+                          'label'=>'<i class="fa fa-eye "></i>',
+                          'url'=>'Yii::app()->createUrl("venta/view", array("id"=>$data->id_venta))',
+                      ),
+                    ),
+                  ),
 								),
 							)); ?>
 					  </div>

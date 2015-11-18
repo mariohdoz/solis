@@ -1,31 +1,3 @@
-<?php
-/* @var $this PropiedadController */
-/* @var $model Propiedad */
-
-$this->breadcrumbs=array(
-	'Propiedads'=>array('index'),
-	'Manage',
-);
-
-$this->menu=array(
-	array('label'=>'List Propiedad', 'url'=>array('index')),
-	array('label'=>'Create Propiedad', 'url'=>array('create')),
-);
-
-Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-	$('.search-form').toggle();
-	return false;
-});
-$('.search-form form').submit(function(){
-	$('#propiedad-grid').yiiGridView('update', {
-		data: $(this).serialize()
-	});
-	return false;
-});
-");
-?>
-
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
@@ -106,6 +78,8 @@ $('.search-form form').submit(function(){
 						<div class="box-body">
 							<?php $this->widget('zii.widgets.grid.CGridView', array(
 								'id'=>'propiedad-grid',
+								'itemsCssClass' => 'table table-hover',
+								'htmlOptions' => array('class' => 'table-responsive'),
 								'dataProvider'=>$model->search(),
 								'filter'=>$model,
 								'columns'=>array(
