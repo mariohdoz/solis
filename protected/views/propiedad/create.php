@@ -98,28 +98,28 @@ $this->menu=array(
 					</div><!-- /.box-header -->
 					<div class="form">
 						<div class="box-body">
-							<div class="col-xs-6">
+							<div class="col-xs-12 col-md-6 col-lg-6">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'rut_cliente'); ?>
 									<?php echo $form->textField($model,'rut_cliente',array('class'=>'form-control', 'placeholder'=>'RUT del propietario.')); ?>
 									<?php echo $form->error($model,'rut_cliente'); ?>
 								</div>
 							</div>
-							<div class="col-xs-6">
+							<div class="col-xs-12 col-md-6 col-lg-6">
 								<div class="form-group">
 									<?php echo $form->labelEx($model2,'correo_cliente'); ?>
 									<?php echo $form->textField($model2,'correo_cliente',array('class'=>'form-control','disabled'=>'true', 'placeholder'=>'Correo del propietario.')); ?>
 									<?php echo $form->error($model2,'correo_cliente'); ?>
 								</div>
 							</div>
-							<div class="col-xs-6">
+							<div class="col-xs-12 col-md-6 col-lg-6">
 								<div class="form-group">
 									<?php echo $form->label($model2,'nombres_cliente'); ?>
 									<?php echo $form->textField($model2,'nombres_cliente', array('class'=>'form-control', 'disabled'=>'true', 'placeholder'=>'Nombres del propietario.')); ?>
 									<?php echo $form->error($model2,'nombres_cliente'); ?>
 								</div>
 							</div>
-							<div class="col-xs-6">
+							<div class="col-xs-12 col-md-6 col-lg-6">
 								<?php echo $form->label($model2,'apellidos_cliente'); ?>
 								<?php echo $form->textField($model2,'apellidos_cliente', array('class'=>'form-control', 'disabled'=>'true','placeholder'=>'Apellidos del propietario.'));?>
 								<?php echo $form->error($model2,'apellidos_cliente'); ?>
@@ -141,7 +141,7 @@ $this->menu=array(
 					<div class="form">
 						<div class="box-body">
 							<?php echo $form->errorSummary($model,'<strong>Es necesario arreglar los siguientes errores:</strong><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><div class="alert alert-danger">', '</div>'); ?>
-							<div class="col-xs-6">
+							<div class="col-xs-12 col-md-6 col-lg-6">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'servicio_propiedad'); ?>
                   <?php echo $form->dropDownList($model,'servicio_propiedad',
@@ -152,7 +152,7 @@ $this->menu=array(
                       array("class"=>"form-control select2", 'empty' => 'Seleccione tipo de servicio')); ?>
 								</div>
 							</div>
-							<div class="col-xs-6">
+							<div class="col-xs-12 col-md-6 col-lg-6">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'tipo_propiedad'); ?>
                   <?php echo $form->dropDownList($model,'tipo_propiedad',
@@ -171,7 +171,7 @@ $this->menu=array(
                       array("class"=>"form-control select2", 'empty' => 'Seleccione el tipo de propiedad')); ?>
 								</div>
 							</div>
-							<div class="col-xs-6">
+							<div class="col-xs-12 col-md-6 col-lg-6">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'comuna_propiedad'); ?>
                   <?php echo $form->dropDownList($model,'comuna_propiedad',
@@ -183,19 +183,19 @@ $this->menu=array(
                       array("class"=>"form-control select2",  'empty' => 'Seleccione la comuna de la propiedad')); ?>
 								</div>
 							</div>
-							<div class="col-xs-4">
+							<div class="col-xs-8 col-md-4 col-lg-4">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'direccion_propiedad'); ?>
                   <?php echo $form->textField($model,'direccion_propiedad', array("class"=>"form-control select2", 'placeholder'=>'Ingrese la dirección de la propiedad')); ?>
 								</div>
 							</div>
-							<div class="col-xs-2">
+							<div class="col-xs-4 col-md-2 col-lg-2">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'numero_propiedad'); ?>
                   <?php echo $form->textField($model,'numero_propiedad', array("class"=>"form-control select2", 'placeholder'=>'Ingrese el número de direccion')); ?>
 								</div>
 							</div>
-							<div class="col-xs-6">
+							<div class="col-xs-12 col-md-6 col-lg-6">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'habitacion_propiedad'); ?>
                   <?php echo $form->dropDownList($model,'habitacion_propiedad',
@@ -213,7 +213,7 @@ $this->menu=array(
                       array("class"=>"form-control select2", 'empty' => 'Cantidad de Habitaciones')); ?>
 								</div>
 							</div>
-							<div class="col-xs-6">
+							<div class="col-xs-12 col-md-6 col-lg-6">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'bano_propiedad'); ?>
                   <?php echo $form->dropDownList($model,'bano_propiedad',
@@ -231,25 +231,25 @@ $this->menu=array(
                       array("class"=>"form-control select2", 'empty' => 'Cantidad de baños')); ?>
 								</div>
 							</div>
-							<div class="col-xs-6">
+							<div class="col-xs-12 col-md-6 col-lg-6">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'terreno_propiedad'); ?>
                   <?php echo $form->textField($model,'terreno_propiedad', array("class"=>"form-control select2", 'placeholder'=>'Ingrese el tamaño del terreno')); ?>
 								</div>
 							</div>
-							<div class="col-xs-6">
+							<div class="col-xs-12 col-md-6 col-lg-6">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'construido_propiedad'); ?>
                   <?php echo $form->textField($model,'construido_propiedad', array("class"=>"form-control select2", 'placeholder'=>'Ingrese el tamaño del terreno construido')); ?>
 								</div>
 							</div>
-							<div class="col-xs-6">
+							<div class="col-xs-12 col-md-6 col-lg-6">
 								<div class="form-group">
 									<?php echo $form->labelEx($model, 'valor_propiedad');?>
                   <?php echo $form->textField($model, 'valor_propiedad', array("class"=>"form-control select2", 'placeholder'=>'Ejemplo: 123456','onchange'=>"applyFormatCurrency(document.getElementById('Propiedad_valor_propiedad'));"));?>
 								</div>
 							</div>
-							<div class="col-xs-6">
+							<div class="col-xs-12 col-md-6 col-lg-6">
 								<div class="form-group">
 									<label for="Propiedad_amoblado_propiedad">Propiedad amoblada</label><br>
                   <?php echo $form->checkBox($model, 'amoblado_propiedad', array('class'=>'minimal'));?>
