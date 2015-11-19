@@ -320,10 +320,10 @@ class PropiedadController extends Controller
 	}
 
 
-	public function actionGenerarPdf($id)
+	public function actionGenerarPdf()
 	{
-		$model =Cliente::model()->findByPk($id); //Consulta para buscar todos los registros
-		$mPDF1 = Yii::app()->ePdf->mpdf('utf8_encode()','A4-P','','',15,15,35,25,9,9,'P'); //Esto lo pueden configurar como quieren, para eso deben de entrar en la web de MPDF para ver todo lo que permite.
+		$model =Propiedad::model()->findAll(); //Consulta para buscar todos los registros
+		$mPDF1 = Yii::app()->ePdf->mpdf('utf8_encode()','A4-L','','',15,15,35,25,9,9,'L'); //Esto lo pueden configurar como quieren, para eso deben de entrar en la web de MPDF para ver todo lo que permite.
 		$mPDF1->useOnlyCoreFonts = true;
 		$mPDF1->SetTitle("Propiedad - Reporte");
 		$mPDF1->SetAuthor("Propiedades Sol y Cobre");

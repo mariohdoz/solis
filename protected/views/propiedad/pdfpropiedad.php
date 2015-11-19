@@ -22,7 +22,7 @@
                 <span class="logo-lg"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/LogoV2.png" width="200px" height="70px"></span>
             </td>
             <td width="250px" style="text-align: center">
-                <h2>Ficha Propietario</h2>
+                <h2>Lista de propiedades ingresadas al sistema</h2>
             </td>
             <td width="50%" class="aBDP" style="text-align: right">
                 <?php
@@ -42,7 +42,53 @@
 <sethtmlpageheader name="myheader" value="on" show-this-page="1" />
 <sethtmlpagefooter name="myfooter" value="on" />
 
-<?php echo $model->direccion_propiedad ?>
+<div class="tabla" >
+    <table >
+        <tr>
+            <td class="titulotabla" >
+                PROPIEDAD
+            </td>
+            <td class="titulotabla">
+                COMUNA
+            </td>
+            <td class="titulotabla">
+                ESTADO
+            </td>
+            <td class="titulotabla">
+                PROPIEDAD AMOBLADA
+            </td>
+            <td class="titulotabla">
+                FECHA DE INGRESO
+            </td>
+            <td class="titulotabla">
+                VALOR
+            </td>
+        </tr>
+
+            <?php
+            foreach ($model as $key=>$value){
+                echo $value->id_propiedad;
+                echo "<tr><td>$value->direccion_propiedad</td>";
+                echo "<td>$value->comuna_propiedad</td>";
+                echo  "<td>$value->servicio_propiedad</td>";
+                echo  "<td>$value->amoblado_propiedad</td>";
+                echo  "<td>$value->ingreso_propiedad</td>";
+
+                $peso= number_format($value->valor_propiedad, 0, ",", ".");
+                echo  "<td style='text-align: right'>$ $peso</td>";
+
+
+                echo "</tr>";
+            }
+            ?>
+
+
+
+
+
+    </table>
+</div>
+
 
 <?php $this->endWidget(); ?>
 </body>

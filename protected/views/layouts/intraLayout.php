@@ -19,7 +19,7 @@ if(!Yii::app()->session['activo'])
       <!-- Ionicons 2.0.0 -->
       <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
       <!-- Theme style -->
-      <link href="<?php echo Yii::app()->request->baseUrl; ?>/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+
       <link href="<?php echo Yii::app()->request->baseUrl; ?>/dist/css/AdminLTE.css" rel="stylesheet" type="text/css" />
 
       <!-- AdminLTE Skins. Choose a skin from the css/skins
