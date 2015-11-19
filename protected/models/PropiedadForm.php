@@ -24,15 +24,15 @@ class PropiedadForm extends CFormModel{
         return array(
             'id_propiedad'=>'Id',
             'rut_cliente' => 'RUT del propietario',
-            'direccion_propiedad' => 'Direcci&oacute;n',
-            'habitacion_propiedad' => 'N&uacute;mero de habitaciones.',
-            'bano_propiedad' => 'N&uacute;mero de baños',
+            'direccion_propiedad' => 'Dirección',
+            'habitacion_propiedad' => 'Número de habitaciones.',
+            'bano_propiedad' => 'Número de baños',
             'terreno_propiedad' => 'Terreno',
             'construido_propiedad' => 'Terreno construido',
             'tipo_propiedad' => 'Tipo',
             'servicio_propiedad' => 'Servicio',
             'estado_propiedad' => 'Estado',
-            'descripcion_propiedad' => 'Breve descripci&oacute;n',
+            'descripcion_propiedad' => 'Breve descripción',
             'comuna_propiedad' => 'Comuna donde se ubica',
 
         );

@@ -4204,6 +4204,8 @@ table.text-center th {
   }
   .table-responsive {
     overflow: auto;
+  }.table-responsive:hover {
+    background: #3f8a82;
   }
   .table-responsive > .table tr th,
   .table-responsive > .table tr td {

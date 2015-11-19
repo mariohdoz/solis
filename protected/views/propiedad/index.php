@@ -86,7 +86,6 @@
 									'id_propiedad',
               		'rut_cliente',
               		'direccion_propiedad',
-              		'numero_propiedad',
               		'tipo_propiedad',
               		'comuna_propiedad',
                   'servicio_propiedad',

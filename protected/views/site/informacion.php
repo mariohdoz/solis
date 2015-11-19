@@ -70,7 +70,7 @@
 </section>
 <section class="container informacion">
     <div class=" col-md-12">
-        <h1>Imagenes</h1>
+        <h1>Imáenes</h1>
         <?php foreach ($model->imagen as $key => $value) {
           echo '<div class="col-lg-3 col-sm-4 col-xs-6">';
           echo '<a class="showcase" href="'.Yii::app()->request->baseUrl.'/images/propiedades/'.$value->url_imagen.'" data-rel="lightcase:myCollection:slideshow">';

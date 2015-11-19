@@ -3,6 +3,7 @@
 .rounded {-moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px;}
 
 
+
 /* GridView */
 .grid-view-loading
 {
@@ -13,11 +14,15 @@ li.page, li.next, li.previous {margin:0}
 
 .grid-view table.items
 {
+	overflow: auto;
 	font-size: large;
 	border-collapse: collapse;
 	width: 100%;
 	border: 0 none !important;
 
+}
+.grid-view{
+	overflow: auto;
 }
 
 .grid-view table.items th
@@ -37,7 +42,7 @@ li.page, li.next, li.previous {margin:0}
 
 .grid-view table.items th a
 {
-	color: #555;
+	color: #2d2d2d;
 	font-weight: bold;
 	text-decoration: none;
 }
@@ -81,8 +86,8 @@ tr.odd
 
 .grid-view table.items tr:hover td, .grid-view table.items tr:hover td a
 {
-	background: #3f8a82;
-	color:#fff;
+	background: rgba(209, 209, 209, 0.9);
+
 	cursor: pointer;
 }
 
