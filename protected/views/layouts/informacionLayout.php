@@ -22,7 +22,7 @@
 	</head>
 	<header class="cd-header2" >
 	<div id="cd-logo2"><a href="#0"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logoV2.png" width="150px" height="50px" alt="Logo"></a></div>
-</header>
+	</header>
 	<body>
 
 

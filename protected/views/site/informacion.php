@@ -6,14 +6,7 @@
   // See class documentation of CActiveForm for details on this.
   'enableAjaxValidation'=>false,
   )); ?>
-<style type="text/css">
 
-    #map_canvas {
-        width:529px;
-        height:400px;
-    }
-
-</style>
 <script type="text/javascript">
     function initialize(address) {
         var geoCoder = new google.maps.Geocoder(address)
@@ -26,6 +19,7 @@
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+
 
             var marker = new google.maps.Marker({
                 position:latlng,map:map,title:'<?php echo $model->comuna_propiedad.' '.$model->direccion_propiedad; ?>',
@@ -49,9 +43,7 @@
 
 <section class="container informacion">
     <div class="col-md-6 ">
-
-            <div class="google-map2 " id="map_canvas"></div>
-
+            <div class="google-map2" id="map_canvas" ></div>
     </div>
     <div class=" col-md-6">
         <h4 id='ho'>Valor  <?php echo $model->servicio_propiedad; ?> $ <?php  echo  number_format($model->valor_propiedad, 0, ",", "."); ?> <button type="button" style="float: right" class="btn btn-success " onclick="javascript:window.print()">Imprimir </button></h4>

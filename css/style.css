@@ -1903,12 +1903,21 @@ centrar{
 }
 .google-map iframe {
   position: absolute;
-  top: 0; left: 0;
+  top: 20px; left: 0;
   width: 100% !important;
-  height: 100% !important;
-}.google-map2{
-   top: 20px;
+  height: 90% !important;
+  border: 5px solid #ffffff;
 }
+
+.google-map2{
+  margin-top: 10px;
+  position: relative;
+  padding-bottom: 75%;
+  height: 0;
+  overflow: hidden;
+  border: 5px solid #ffffff;
+}
+
 
 
 .services{
@@ -2714,4 +2723,6 @@ footer {
 .colors > li:nth-child(5) {
   background-color: #bdc3c7;
 }
+
+
 

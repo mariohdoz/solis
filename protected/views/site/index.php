@@ -256,8 +256,8 @@
 	</section> <!-- #cd-placeholder-4 -->
 	<section id="cd-placeholder-5" class="cd-section cd-container">
 		<h1>Contáctenos</h1>
-		<form class="cf">
-      <?php $form=$this->beginWidget('CActiveForm', array(
+
+			<?php $form=$this->beginWidget('CActiveForm', array(
 				'id'=>'busqueda-form',
 				'action'=>Yii::app()->createUrl('/site/Solicitud'),
 				// Please note: When you enable ajax validation, make sure the corresponding
@@ -266,36 +266,57 @@
 				// See class documentation of CActiveForm for details on this.
 				'enableAjaxValidation'=>false,
 			)); ?>
-			<div class="half left cf">
-        <?php echo $form->textField($model1,'nombres_solicitud', array("class"=>"full-width has-padding has-border", "placeholder"=>"Nombres")); ?>
-        <?php echo $form->textField($model1,'apellidos_solicitud', array("class"=>"full-width has-padding has-border", "placeholder"=>"Apellidos")); ?>
-        <?php echo $form->dropDownList($model1,'servicio_solicitud',
-                  array(
-                      'Venta' => 'Venta',
-                      'Arriendo' => 'Arriendo',
-                      'Tasación' => 'Tasación',
-                      'Estudio de título' => 'Estudio de título',
-                      'Ampliaciones menores' => 'Ampliaciones menores',
-                      'Aseo de propiedad' => 'Aseo de propiedad',
-                  ),
-                  array("class"=>"form-control2 "),
-                  array('empty' => '(Seleccione tipo de servicio)')); ?>
-        <?php echo $form->dateField($model1,'fechaejecucion_solicitud',
-			array("class"=>"input-group date", "placeholder"=>"Fecha solicitada")); ?>
-		<?php  ?>
-
-        <?php echo $form->textField($model1,'telefono_solicitud', array("class"=>"full-width has-padding has-border", "placeholder"=>"Teléfono de contacto")); ?>
-        <?php echo $form->emailField($model1,'correo_solicitud', array("class"=>"full-width has-padding has-border", "placeholder"=>"Correo de contacto")); ?>
-        <?php echo $form->textArea($model1,'descripcion_solicitud', array("class"=>"full-width has-padding has-border", "placeholder"=>"Descripcion")); ?>
-        <?php echo CHtml::submitButton('Enviar', array("class"=>"btn btn-warning btn-lg")); ?>
+		<div class="col-md-12">
+			<div class="form-horizontal col-md-4">
+				<form role="form">
+					<div class="form-group">
+						<label style="float: left">Nombres</label>
+						<?php echo $form->textField($model1,'nombres_solicitud', array("class"=>"form-control2", "placeholder"=>"Nombres")); ?>
+					</div>
+					<div  class="form-group">
+						<label style="float: left">Apellidos</label>
+						<?php echo $form->textField($model1,'apellidos_solicitud', array("class"=>"form-control2", "placeholder"=>"Apellidos")); ?>
+					</div>
+					<div class="form-group">
+						<label style="float: left">Servicio a solicitar</label>
+						<?php echo $form->dropDownList($model1,'servicio_solicitud',
+							array(
+								'Venta' => 'Venta',
+								'Arriendo' => 'Arriendo',
+								'Tasación' => 'Tasación',
+								'Estudio de título' => 'Estudio de título',
+								'Ampliaciones menores' => 'Ampliaciones menores',
+								'Aseo de propiedad' => 'Aseo de propiedad',
+							),
+							array("class"=>"form-control2 "),
+							array('empty' => '(Seleccione tipo de servicio)')); ?>
+					</div>
+					<div  class="form-group">
+						<label style="float: left">Teléfono de contacto</label>
+						<?php echo $form->textField($model1,'telefono_solicitud', array("class"=>"form-control2", "placeholder"=>"Teléfono de contacto")); ?>
+					</div>
+					<div  class="form-group">
+						<label style="float: left">Correo electrónico</label>
+						<?php echo $form->emailField($model1,'correo_solicitud', array("class"=>"form-control2", "placeholder"=>"Correo de contacto")); ?>
+					</div>
+					<div  class="form-group">
+						<label style="float: left">Comentario</label>
+						<?php echo $form->textArea($model1,'descripcion_solicitud',array("rows"=>"3"), array("class"=>"form-control2", "placeholder"=>"Comentario")); ?>
+					</div>
+					<div  class="form-group">
+						<input type="submit" class="btn btn-buscar" value="Enviar">
+						<input type="reset" class="btn btn-default" value="Limpiar">
+					</div>
 			</div>
-      <?php $this->endWidget(); ?>
-			<div class="half right cf">
-				<div class="google-map">
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1550.1614112716795!2d-68.9253001374728!3d-22.469416482835825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96ac09cb43a152a5%3A0xd5a4bc040bd6013a!2sLatorre+1291%2C+Calama%2C+Regi%C3%B3n+de+Antofagasta!5e0!3m2!1ses-419!2scl!4v1443819530064" width="600" height="450" frameborder="0" style="border:0"></iframe>
-				</div>
+			</form>
+					<div class="form-horizontal col-md-8">
+						<div class="google-map">
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.9261630980636!2d-68.92730228543036!3d-22.469408828058047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96ac09cb682b12fb%3A0x1ee576cc2844eb60!2sPropiedades+Sol+y+Cobre!5e0!3m2!1ses-419!2scl!4v1447907073915"  allowfullscreen></iframe>
+					</div>
+					</div>
 			</div>
-		</form>
+		</div>
+		<?php $this->endWidget(); ?>
 	</section> <!-- #cd-placeholder-5 -->
 </main> <!-- .cd-main-content -->
 
@@ -307,3 +328,4 @@
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-2.1.1.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/main.js"></script> <!-- Resource jQuery -->
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/modernizr.js"></script> <!-- Resource jQuery -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>

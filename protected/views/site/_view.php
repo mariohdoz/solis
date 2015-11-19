@@ -23,8 +23,9 @@
             ?>"/>
         </a>
         <div  class="mascara2 ">
-            <?php echo CHtml::link('M&aacute;s informaci&oacute;n', array('Site/informacion/'.$data->id_propiedad), array('class'=>'btn btn-success')); ?>
-            <h2>En <?php echo $data->servicio_propiedad; ?> $ <?php echo $data->valor_propiedad; ?></br><?php echo$data->direccion_propiedad ?></h2>
+            <?php echo CHtml::link('M&aacute;s informaci&oacute;n', array('Site/informacion/'.$data->id_propiedad), array('class'=>'btn btn-success btn-block')); ?>
+            <h2>En <?php echo $data->servicio_propiedad; ?> $ <?php echo  number_format($data->valor_propiedad, 0, ",", "."); ?>
+                </br><?php echo$data->direccion_propiedad ?></h2>
         </div>
 
 </section>

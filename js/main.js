@@ -392,3 +392,4 @@ $(document).ready(function(){
 		$(".text-color").css("color", newColor);
 	});
 });
+

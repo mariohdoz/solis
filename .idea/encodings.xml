@@ -10,5 +10,6 @@
     <file url="file://$PROJECT_DIR$/protected/views/propiedad/pdfpropiedad.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/protected/views/reporte/cotizarpdf.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/protected/views/reporte/index.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/protected/views/site/_view.php" charset="windows-1252" />
   </component>
 </project>
