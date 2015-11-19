@@ -39,23 +39,3 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'model'=>$model,
 )); ?>
 </div><!-- search-form -->
-
-<?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'funcionario-grid',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
-	'columns'=>array(
-		'rut_funcionario',
-		'nombres_funcionario',
-		'apellidos_funcionario',
-		'telefonofijo_funcionario',
-		'telefonocelular_funcionario',
-		'domicilio_funcionario',
-		/*
-		'correo_funcionario',
-		*/
-		array(
-			'class'=>'CButtonColumn',
-		),
-	),
-)); ?>

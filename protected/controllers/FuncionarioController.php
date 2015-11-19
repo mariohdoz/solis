@@ -33,7 +33,7 @@ class FuncionarioController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','index','view','contra'),
+				'actions'=>array('create','update','index','view','contra', 'eliminar', 'select', 'select2'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -166,7 +166,25 @@ class FuncionarioController extends Controller
 
 	public function actionSelect()
 	{
+		$model=new Funcionario('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Funcionario']))
+			$model->attributes=$_GET['Funcionario'];
 
+		$this->render('select',array(
+			'model'=>$model,
+		));
+	}
+	public function actionSelect2()
+	{
+		$model=new Funcionario('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Funcionario']))
+			$model->attributes=$_GET['Funcionario'];
+
+		$this->render('select2',array(
+			'model'=>$model,
+		));
 	}
 
 	/**
@@ -176,15 +194,24 @@ class FuncionarioController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
-
+		$rut=$this->codigo($id);
+		$model=$this->loadModel($rut);
+		$model->eliminado_funcionario=1;
+		if ($model->save()) {
+			Yii::app()->user->setFlash('success','El funcionario fue eliminado correctamente.');
+		}else {
+			Yii::app()->user->setFlash('error','El funcionario no pudo ser eliminada.');
+		}
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	}
-	public function actionSelect2()
-	{
 
+		if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+	}
+
+	public function actionEliminar($id)
+	{
+		$rut=$this->codigo($id);
+		$this->render('delete', array('model'=>$this->loadModel($rut)));
 	}
 
 	/**
@@ -192,9 +219,13 @@ class FuncionarioController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Funcionario');
+		$model=new Funcionario('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Funcionario']))
+			$model->attributes=$_GET['Funcionario'];
+
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'model'=>$model,
 		));
 	}
 

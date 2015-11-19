@@ -13,7 +13,8 @@
  * @property string $correo_funcionario
  * @property string $contrasena_funcionario
  * @property integer $activo_funcionario
-
+ * @property string $cargo_funcionario
+ * @property integer $eliminado_funcionario
  */
 class Funcionario extends CActiveRecord
 {
@@ -35,20 +36,20 @@ class Funcionario extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('rut_funcionario, nombres_funcionario, apellidos_funcionario, telefonofijo_funcionario, telefonocelular_funcionario, domicilio_funcionario, correo_funcionario,contrasena_funcionario', 'required'),
-			array('activo_funcionario', 'numerical', 'integerOnly'=>true),
+			array('activo_funcionario, eliminado_funcionario', 'numerical', 'integerOnly'=>true),
 			array('rut_funcionario', 'length', 'max'=>10),
 			array('contrasena_funcionario, repeat_pass', 'length', 'max'=>255),
 			array('rut_funcionario', 'ValidateRut'),
 			array('repeat_pass','required','on'=>'create','message'=>'Debe repetir la contraseña'),
 			array('rut_funcionario', 'unique','attributeName'=>'rut_funcionario','className'=>'Funcionario','message'=>'El RUT del funcionario ya se encuentra ingresado'),
 			array('correo_funcionario', 'unique','attributeName'=>'correo_funcionario','className'=>'Funcionario','message'=>'El correo ya se encuentra ingresado'),
-			array('nombres_funcionario, apellidos_funcionario, correo_funcionario', 'length', 'max'=>100),
+			array('nombres_funcionario, apellidos_funcionario, correo_funcionario, cargo_funcionario', 'length', 'max'=>100),
 			array('telefonofijo_funcionario, telefonocelular_funcionario', 'length', 'max'=>12),
 			array('domicilio_funcionario', 'length', 'max'=>150),
 			array('repeat_pass','compare','compareAttribute'=>'contrasena_funcionario','message'=>'Las contrasñas no coinciden','on'=>'create'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('rut_funcionario, nombres_funcionario, apellidos_funcionario, telefonofijo_funcionario, telefonocelular_funcionario, domicilio_funcionario, correo_funcionario, activo_funcionario, contrasena_funcionario', 'safe', 'on'=>'search'),
+			array('rut_funcionario, nombres_funcionario, apellidos_funcionario, telefonofijo_funcionario, telefonocelular_funcionario, domicilio_funcionario, correo_funcionario, activo_funcionario, contrasena_funcionario, cargo_funcionario, eliminado_funcionario', 'safe', 'on'=>'search'),
 		);
 	}
 	public function getRut(){
@@ -106,7 +107,11 @@ class Funcionario extends CActiveRecord
 			'correo_funcionario' => 'Correo electrónico',
 			'activo_funcionario' => 'Activo Funcionario',
 			'contrasena_funcionario' => 'Contraseña ',
-			'repeat_pass'=>'Repetir contraseña'
+			'repeat_pass'=>'Repetir contraseña',
+			'cargo_funcionario' => 'Cargo del funcionario',
+			'eliminado_funcionario' => 'Eliminado Funcionario',
+
+
 		);
 	}
 
@@ -135,9 +140,10 @@ class Funcionario extends CActiveRecord
 		$criteria->compare('telefonocelular_funcionario',$this->telefonocelular_funcionario,true);
 		$criteria->compare('domicilio_funcionario',$this->domicilio_funcionario,true);
 		$criteria->compare('correo_funcionario',$this->correo_funcionario,true);
-		$criteria->compare('activo_funcionario',1);
+		$criteria->compare('activo_funcionario',$this->activo_funcionario);
 		$criteria->compare('contrasena_funcionario',$this->contrasena_funcionario,true);
-
+		$criteria->compare('cargo_funcionario',$this->cargo_funcionario,true);
+		$criteria->compare('eliminado_funcionario',0);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

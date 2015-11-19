@@ -66,6 +66,7 @@
 			 		<?php echo $form->textField($model,'correo_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Correo del funcionario')); ?>
 				 </div>
 			 </div>
+
 			 <?php if($model->isNewRecord): ?>
 			 <div class="col-xs-12 col-md-6 col-lg-4">
 				 <div class="form-group">
@@ -80,6 +81,12 @@
 				 </div>
 			 </div>
 			 <?php endIf; ?>
+			 <div class="col-xs-12 col-md-6 col-lg-4">
+				 <div class="form-group">
+				 	<?php echo $form->labelEx($model,'cargo_funcionario'); ?>
+			 		<?php echo $form->textField($model,'cargo_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Cargo del funcionario')); ?>
+				 </div>
+			 </div>
 			</div>
 			<div class="box-footer">
 				<?php echo CHtml::submitButton($model->isNewRecord ? 'Registrar funcionario' : 'Actualizar funcionario', array('class'=>'btn btn-primary', 'placeholder'=>'')); ?>

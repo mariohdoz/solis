@@ -14,6 +14,20 @@
   </section>
   <section class="content">
     <div class="row">
+      <?php if(($msgs=Yii::app()->user->getFlashes())!=null): ?>
+       <?php foreach($msgs as $type => $message):?>
+         <div class="alert alert-<?php echo $type;?>" style="margin-left: 10px; margin-right: 10px ">
+           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+           <strong><?php
+             if($type == 'error'){
+               echo 'Error';
+             }elseif ($type == 'success'){
+               echo 'Éxito';
+             };
+            ?> !</strong> <?php echo $message;?>.
+         </div>
+       <?php endforeach;?>
+     <?php endif; ?>
       <!-- Inicio se container -->
       <div class="col-md-12">
 				<div class="box box-primary">
@@ -24,6 +38,8 @@
 						<div class="box-body">
               <?php $this->widget('zii.widgets.grid.CGridView', array(
               	'id'=>'funcionario-grid',
+                'itemsCssClass' => 'table table-hover',
+                'htmlOptions' => array('class' => 'table-responsive'),
               	'dataProvider'=>$model->search(),
               	'filter'=>$model,
               	'columns'=>array(
@@ -33,12 +49,30 @@
               		'telefonofijo_funcionario',
               		'telefonocelular_funcionario',
                   'correo_funcionario',
+                  'cargo_funcionario',
               		/*
-              		'correo_funcionario',
+              		'contrasena_funcionario',
+              		'activo_funcionario',
               		*/
-              		array(
-              			'class'=>'CButtonColumn',
-              		),
+                  array(
+                    'header'=>'Actualizar',
+                    'class'=>'CButtonColumn',
+                    'template'=>'{buscar}  {actualizar}  {eliminar}',
+                    'buttons'=>array(
+											'eliminar' => array(
+													'label'=>'<i class="fa fa-trash-o"></i>',
+													'url'=>'Yii::app()->createUrl("funcionario/eliminar", array("id"=>$data->rut))',
+											),
+                      'actualizar' => array(
+                          'label'=>'<i class="fa fa-pencil-square-o"></i>',
+                          'url'=>'Yii::app()->createUrl("funcionario/update", array("id"=>$data->rut))',
+                      ),
+											'buscar' => array(
+													'label'=>'<i class="fa fa-eye"></i>',
+													'url'=>'Yii::app()->createUrl("funcionario/view", array("id"=>$data->rut))',
+											),
+                    ),
+                  ),
               	),
               )); ?>
 					  </div>

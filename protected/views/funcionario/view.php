@@ -51,9 +51,9 @@
 	  <ol class="breadcrumb">
 	    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/intra/index">
 			<i class="fa fa-dashboard"></i>Inicio</a></li>
-			<li class="active">algo</li>
+			<li class="active">Funcionario</li>
 			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/intra/index">Gestión</a></li>
-			<li class="active">acción</li>
+			<li class="active">Visualizar</li>
 	  </ol>
   </section>
   <section class="content">
@@ -135,6 +135,12 @@
 							 		<?php echo $form->textField($model,'domicilio_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Dirección del domicilio', 'disabled'=>true)); ?>
 			 					 </div>
 			 				 </div>
+							 <div class="col-xs-12 col-md-6 col-lg-4">
+								 <div class="form-group">
+								 	<?php echo $form->labelEx($model,'cargo_funcionario'); ?>
+							 		<?php echo $form->textField($model,'cargo_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Cargo del funcionario', 'disabled'=>true)); ?>
+								 </div>
+							 </div>
 						</div>
 						<div class="box-footer">
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#contrasena">Cambiar contraseña</button>
@@ -144,7 +150,8 @@
 									'class'=>'btn btn-danger',
 									'confirm' => '¿Está seguro de eliminar el funcionario?'
 									)
-							);?>						</div>
+							);?>
+						</div>
 					</div>
 				</div>
 			</div>
