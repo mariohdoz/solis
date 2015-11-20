@@ -2,7 +2,7 @@
   <section class="content-header">
     <h1>
 	    Configuración
-	    <small>Vista de arriendo de la propiedad de la ficha número <?php echo $model->id_propiedad;?>.</small>
+	    <small>Vista de arriendo de la propiedad de la ficha número .</small>
 	  </h1>
 	  <ol class="breadcrumb">
 	    <li><a href="?r=intra/index">
@@ -21,11 +21,43 @@
           </div>
 					<div class="form">
 						<div class="box-body">
-              <h1>Imagenes</h1>
-              <?php foreach ($model->imagen as $key => $value) {
-                //echo '<a class="showcase" href="'.Yii::app()->request->baseUrl.'/images/propiedades/'.$value->url_imagen.'" data-rel="lightcase:myCollection:slideshow">';
-                echo  CHtml::image(Yii::app()->baseUrl."/images/propiedades/".$value->url_imagen, '',  array('class'=>'thumbnail img-responsive'));
-              } ?>
+              <?php $this->widget('zii.widgets.grid.CGridView', array(
+								'id'=>'arriendo-grid',
+								'itemsCssClass' => 'table table-hover',
+								'htmlOptions' => array('class' => 'table-responsive'),
+								'dataProvider'=>$model->search2(),
+								'filter'=>$model,
+								'columns'=>array(
+									'id_arriendo',
+									'id_propiedad',
+									'rut_admin',
+									'rut_arrendatario',
+									'inscripcion_arriendo',
+									'fechapago_arriendo',
+									/*
+									'inicio_arriendo',
+									'termino_arriendo',
+									'valor_arriendo',
+									*/
+									array(
+                    'class'=>'CButtonColumn',
+                    'buttons'=>array(
+                      'modificar' => array(
+                          'label'=>'<i class="fa fa-trash-o "></i>',
+                          'url'=>'Yii::app()->createUrl("arriendo/eliminar", array("id"=>$data->id_arriendo))',
+                      ),
+											'modificar' => array(
+													'label'=>'<i class="fa fa-pencil-square-o"></i>',
+													'url'=>'Yii::app()->createUrl("arriendo/update", array("id"=>$data->id_arriendo))',
+											),
+											'ver' => array(
+                          'label'=>'<i class="fa fa-eye "></i>',
+                          'url'=>'Yii::app()->createUrl("arriendo/view", array("id"=>$data->id_arriendo))',
+                      ),
+                    ),
+                  ),
+								),
+							)); ?>
 						</div>
 						<div class="box-footer">
 
@@ -36,22 +68,3 @@
     </div>
   </section>
 </div>
-
-<script>
-  var max_width = 230; var max_height = 230;
-  $('img').each(function() {
-    var w = $(this).width();
-    var h = $(this).height();
-    var scale = null;
-    if (w >= h) { if (w > max_width) { scale = 1 / (w / max_width); } }
-    else { if (h > max_height) { scale = 1 / (h / max_height); } }
-    if (scale) {
-        $(this).width(w * scale);
-        $(this).height(h * scale);
-    }
-  });
-
-  $('img').click(function(){
-    alert($(this).attr('src'));
-  });
-</script>

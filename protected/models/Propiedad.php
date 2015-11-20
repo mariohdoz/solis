@@ -41,7 +41,7 @@ class Propiedad extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('direccion_propiedad, numero_propiedad, tipo_propiedad, servicio_propiedad, comuna_propiedad, valor_propiedad', 'required'),
+			array('direccion_propiedad, tipo_propiedad, servicio_propiedad, comuna_propiedad, valor_propiedad', 'required'),
 			array('numero_propiedad, habitacion_propiedad, bano_propiedad, estado_propiedad, amoblado_propiedad, valor_propiedad, activo_propiedad, eliminado_propiedad', 'numerical', 'integerOnly'=>true),
 			array('rut_cliente, servicio_propiedad', 'length', 'max'=>10),
 			array('direccion_propiedad', 'length', 'max'=>255),

@@ -75,7 +75,7 @@
               <!-- small box -->
               <div class="small-box bg-red">
                 <div class="inner">
-                  <h3><?php echo Solicitud::model()->count()?></h3>
+                  <h3><?php echo CHtml::encode($atraso)?></h3>
                   <p>Arriendos atrasados</p>
                 </div>
                 <div class="icon">
@@ -101,7 +101,7 @@
               <!-- small box -->
               <div class="small-box bg-green">
                 <div class="inner">
-                  <h3><?php echo Solicitud::model()->count()?></h3>
+                  <h3><?php echo CHtml::encode($proximo)?></h3>
                   <p>Próximos pagos</p>
                 </div>
                 <div class="icon">

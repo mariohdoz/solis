@@ -67,23 +67,26 @@ class SiteController extends Controller
 	}
 
 	public function actionTest(){
-		$this->layout= 'testLayout';
-		$model = new Propiedad();
-		$model = Propiedad::model()->findByPk(9);
-		$this->render('test',array('model'=>$model));
+		/**$fecha = date('Y-m-j');
+		$nuevafecha = strtotime ( '-6 day' , strtotime ( $fecha ) ) ;
+		$nuevafecha = date ( 'j' , $nuevafecha );
+		$nuevafecha2 = strtotime ( '+5 day' , strtotime ( $fecha ) ) ;
+		$nuevafecha1 = date ( 'j' , $nuevafecha2 );
+		$model=Arriendo::model()->findAllByAttributes(array('activo_arriendo'=>1),
+		'inicio_arriendo<CURDATE() AND termino_arriendo>CURDATE()AND fechapago_arriendo >= DATE_FORMAT( DATE_SUB( CURDATE( ) , INTERVAL 5 DAY ) ,  "%d" )
+		AND fechapago_arriendo <= DATE_FORMAT( DATE_ADD( CURDATE( ) , INTERVAL 5 DAY ) ,  "%d" )
+		AND id_arriendo NOT IN (
+		  SELECT id_arriendo
+		  FROM pago
+		  WHERE mes_pago = DATE_FORMAT( NOW( ) ,  "%m" ))' //AND id_arriendo NOT IN (SELECT id_arriendo FROM pago WHERE mes_pago = Date_format(now(),"%m"))
+		);*/
+		$model=new Arriendo('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Arriendo']))
+			$model->attributes=$_GET['Arriendo'];
+		$this->render('test', array('model'=>$model));
 	}
 
-	public function actionObtener($id){
-		$rut=$this->codigo($id);
-		$resp = Arrendatario::model()->findAllByAttributes(array('rut_arrendatario'=>$rut));
-		header("Content-type: application/json");
-		echo CJSON::encode($resp);
-	}
-	public function actionObtenerpro($id){
-		$resp = Propiedad::model()->findAllByAttributes(array('id_propiedad'=>$id));
-		header("Content-type: application/json");
-		echo CJSON::encode($resp);
-	}
 	public function codigo($var)
 	{
 		$evaluate = strrev($var);

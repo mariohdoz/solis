@@ -194,11 +194,6 @@ class ArriendoController extends Controller
 		return $rut;
 	}
 
-	public function actionTest($id)
-	{
-		$this->redirect(array('intra/index'));
-	}
-
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.

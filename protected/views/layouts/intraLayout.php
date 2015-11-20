@@ -230,10 +230,17 @@ if(!Yii::app()->session['activo'])
                 </li>
               </ul>            <!-- 4-->
               <ul class="sidebar-menu">
-                <li>
-                  <a href="../widgets.html">
+                <li class="treeview">
+                  <a href="#">
                     <i class="fa fa-credit-card"></i> <span>Pagos</span>
+                    <i class="fa fa-angle-left pull-right"></i>
                   </a>
+                  <ul class="treeview-menu">
+                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/pago/select"><i class="fa fa-exchange"></i> Agregar pago</a></li>
+                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/pago/create"><i class="fa fa-user-plus"></i> Modificar pago</a></li>
+                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/pago/select2"><i class="fa fa-user-times"></i> Eliminar pago</a></li>
+                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/pago/index"><i class="fa fa-file-text-o"></i> Listado de pago</a></li>
+                  </ul>
                 </li>
               </ul>
               <ul class="sidebar-menu">
