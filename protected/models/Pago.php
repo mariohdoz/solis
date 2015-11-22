@@ -7,13 +7,16 @@
  * @property integer $id_pago
  * @property integer $id_arriendo
  * @property string $fecha_pago
- * @property integer $mes_pago
+ * @property string $mes_pago
  * @property integer $totalpagar_pago
  * @property integer $totalpagado_pago
  * @property integer $activo_pago
  */
 class Pago extends CActiveRecord
 {
+	public $ano;
+	public $mes;
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -31,7 +34,10 @@ class Pago extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('fecha_pago, mes_pago, totalpagar_pago, totalpagado_pago', 'required'),
-			array('id_arriendo, mes_pago, totalpagar_pago, totalpagado_pago, activo_pago', 'numerical', 'integerOnly'=>true),
+			array('id_arriendo, totalpagar_pago, totalpagado_pago, activo_pago, ano, mes', 'numerical', 'integerOnly'=>true),
+			array('ano,mes', 'required', 'message'=>'Debe escoger el año y el mes del pago'),
+			array('mes_pago', 'length', 'max'=>7),
+
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_pago, id_arriendo, fecha_pago, mes_pago, totalpagar_pago, totalpagado_pago, activo_pago', 'safe', 'on'=>'search'),
@@ -60,9 +66,11 @@ class Pago extends CActiveRecord
 			'id_arriendo' => 'Id Arriendo',
 			'fecha_pago' => 'Fecha Pago',
 			'mes_pago' => 'Mes de pago',
-			'totalpagar_pago' => 'Totalpagar Pago',
-			'totalpagado_pago' => 'Totalpagado Pago',
+			'totalpagar_pago' => 'Total a pagar',
+			'totalpagado_pago' => 'Total pagado',
 			'activo_pago' => 'Pago concluido',
+			'mes'=>'Mes correspondiente al pago',
+			'ano'=>'Año correspondiente al pago',
 		);
 	}
 
@@ -87,7 +95,7 @@ class Pago extends CActiveRecord
 		$criteria->compare('id_pago',$this->id_pago);
 		$criteria->compare('id_arriendo',$this->id_arriendo);
 		$criteria->compare('fecha_pago',$this->fecha_pago,true);
-		$criteria->compare('mes_pago',$this->mes_pago);
+		$criteria->compare('mes_pago',$this->mes_pago,true);
 		$criteria->compare('totalpagar_pago',$this->totalpagar_pago);
 		$criteria->compare('totalpagado_pago',$this->totalpagado_pago);
 		$criteria->compare('activo_pago',$this->activo_pago);

@@ -106,7 +106,7 @@ if(!Yii::app()->session['activo'])
             <div class="pull-left image">
               <img src="<?php echo Yii::app()->request->baseUrl; ?>/<?php echo Yii::app()->session['admin_img']; ?>" class="img-circle" alt="User Image" />
             </div>
-            <div class="pull-left info" style='display: initial'>
+            <div id='pull_left_info' class="pull-left info" style='display: initial !important;'>
               <p><?php
                 $nombre=Yii::app()->session['admin_nombre'];
                 $ap=Yii::app()->session['admin_ape'];
@@ -311,10 +311,3 @@ if(!Yii::app()->session['activo'])
   <!-- AdminLTE for demo purposes -->
   </body>
 </html>
-<?php
-Yii::app()->clientScript->registerScript(
-    'myHideEffect',
-    '$(".info").animate({opacity: 1.0}, 3000).fadeOut("slow");',
-    CClientScript::POS_READY
-);
-?>
