@@ -255,6 +255,8 @@ th {
   .table {
     border-collapse: collapse !important;
   }
+
+  .table-hover{}
   .table td,
   .table th {
     background-color: #fff !important;
@@ -2271,6 +2273,8 @@ th {
   max-width: 100%;
   margin-bottom: 20px;
 }
+
+
 .table > thead > tr > th,
 .table > tbody > tr > th,
 .table > tfoot > tr > th,
@@ -2448,6 +2452,7 @@ table th[class*="col-"] {
 .table-responsive {
   min-height: .01%;
   overflow-x: auto;
+
 }
 @media screen and (max-width: 767px) {
   .table-responsive {
