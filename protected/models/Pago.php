@@ -14,9 +14,6 @@
  */
 class Pago extends CActiveRecord
 {
-	public $ano;
-	public $mes;
-
 	/**
 	 * @return string the associated database table name
 	 */
@@ -34,10 +31,8 @@ class Pago extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('fecha_pago, mes_pago, totalpagar_pago, totalpagado_pago', 'required'),
-			array('id_arriendo, totalpagar_pago, totalpagado_pago, activo_pago, ano, mes', 'numerical', 'integerOnly'=>true),
-			array('ano,mes', 'required', 'message'=>'Debe escoger el año y el mes del pago'),
+			array('id_arriendo, totalpagar_pago, totalpagado_pago, activo_pago', 'numerical', 'integerOnly'=>true),
 			array('mes_pago', 'length', 'max'=>7),
-
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_pago, id_arriendo, fecha_pago, mes_pago, totalpagar_pago, totalpagado_pago, activo_pago', 'safe', 'on'=>'search'),
@@ -52,7 +47,7 @@ class Pago extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'pago'=>array(self::BELONGS_TO, 'Arriendo', 'id_ariendo'),
+			'arriendo'=>array(self::BELONGS_TO, 'Arriendo', 'id_ariendo'),
 		);
 	}
 
@@ -69,8 +64,7 @@ class Pago extends CActiveRecord
 			'totalpagar_pago' => 'Total a pagar',
 			'totalpagado_pago' => 'Total pagado',
 			'activo_pago' => 'Pago concluido',
-			'mes'=>'Mes correspondiente al pago',
-			'ano'=>'Año correspondiente al pago',
+
 		);
 	}
 

@@ -43,7 +43,7 @@ class IntraController extends CController{
         AND id_arriendo NOT IN (
         SELECT id_arriendo
         FROM pago
-        WHERE mes_pago = DATE_FORMAT( NOW( ) ,  "%m" ))' //AND id_arriendo NOT IN (SELECT id_arriendo FROM pago WHERE mes_pago = Date_format(now(),"%m"))
+        WHERE mes_pago = DATE_FORMAT( NOW( ) ,  "%m-20%y" ))' //AND id_arriendo NOT IN (SELECT id_arriendo FROM pago WHERE mes_pago = Date_format(now(),"%m"))
       );
       $count2=count($proximo);
 
@@ -55,7 +55,7 @@ class IntraController extends CController{
     		AND id_arriendo NOT IN (
   		  SELECT id_arriendo
   		  FROM pago
-  		  WHERE mes_pago = DATE_FORMAT( NOW( ) ,  "%m" ))' //AND id_arriendo NOT IN (SELECT id_arriendo FROM pago WHERE mes_pago = Date_format(now(),"%m"))
+  		  WHERE mes_pago = DATE_FORMAT( NOW( ) ,  "%m-20%y" ))' //AND id_arriendo NOT IN (SELECT id_arriendo FROM pago WHERE mes_pago = Date_format(now(),"%m"))
   		);
       $count=count($atraso);
 

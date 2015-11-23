@@ -115,7 +115,6 @@ class ArriendoController extends Controller
 			$model->rut_arrendatario = $rut;
 			if($model->id_propiedad != '' && $model->rut_arrendatario != ''){
 				if ($model->inicio_arriendo < $model->termino_arriendo ) {
-
 					$model3=Propiedad::model()->findByPk($model->id_propiedad);
 					$model2=Arrendatario::model()->findByPk($model->rut_arrendatario);
 					$valor = intval(preg_replace('/[^0-9]+/', '', $model->valor_arriendo),10);
@@ -124,6 +123,36 @@ class ArriendoController extends Controller
 						$model3->activo_propiedad= 0;
 						if($model->save() && $model3->save())
 						{
+							$pago=new Pago();
+							$pago->id_arriendo=$model->id_arriendo;
+							$pago->fecha_pago=date('Y-m-j');
+							$pago->totalpagar_pago=0;
+							$pago->totalpagado_pago=0;
+							$pago->mes=date('m');
+							$pago->ano=date('Y');
+							$data = explode('-', $model->inicio_arriendo);
+							$pago->mes_pago=$data[1].'-'.$data[0];
+							$pago->save();
+							$inicio = new DateTime($model->inicio_arriendo);
+							$fin = new DateTime($model->termino_arriendo);
+							$meses = round(($fin->format('U') - $inicio->format('U')) / (30*60*60*24));
+							$nuevafecha =$model->inicio_arriendo;
+							$array[0]=$nuevafecha;
+							for ($i=0; $i < $meses ; $i++) {
+								$pago=new Pago();
+								$pago->id_arriendo=$model->id_arriendo;
+								$pago->fecha_pago=date('Y-m-j');
+								$pago->totalpagar_pago=0;
+								$pago->totalpagado_pago=0;
+								$pago->mes=date('m');
+								$pago->ano=date('Y');
+								$nuevafecha = strtotime ( '+1 month' , strtotime ( $nuevafecha ) ) ;
+								$nuevafecha = date ( 'Y-m-j' , $nuevafecha );
+								$data = explode('-', $nuevafecha);
+								$array[$i+1]=$data[1].'-'.$data[0];
+								$pago->mes_pago=$data[1].'-'.$data[0];
+								$pago->save();
+							}
 							Yii::app()->user->setFlash('success','El arriendo fue ingresado correctamente.');
 							$this->redirect(array('view','id'=>$model->id_arriendo));
 						}
@@ -233,6 +262,39 @@ class ArriendoController extends Controller
 				$valor = intval(preg_replace('/[^0-9]+/', '', $model->valor_arriendo),10);
 				$model->valor_arriendo = $valor;
 				if($model->save() && $model3->save()){
+					if($variable->inicio_arriendo!=$model->inicio_arriendo || $variable->termino_arriendo!=$model->termino_arriendo ){
+						Pago::model()->deleteAll('id_arriendo = '.$model->id_arriendo.'');
+						$pago=new Pago();
+						$pago->id_arriendo=$model->id_arriendo;
+						$pago->fecha_pago=date('Y-m-j');
+						$pago->totalpagar_pago=0;
+						$pago->totalpagado_pago=0;
+						$pago->mes=date('m');
+						$pago->ano=date('Y');
+						$data = explode('-', $model->inicio_arriendo);
+						$pago->mes_pago=$data[1].'-'.$data[0];
+						$pago->save();
+						$inicio = new DateTime($model->inicio_arriendo);
+						$fin = new DateTime($model->termino_arriendo);
+						$meses = round(($fin->format('U') - $inicio->format('U')) / (30*60*60*24));
+						$nuevafecha =$model->inicio_arriendo;
+						$array[0]=$nuevafecha;
+						for ($i=0; $i < $meses ; $i++) {
+							$pago=new Pago();
+							$pago->id_arriendo=$model->id_arriendo;
+							$pago->fecha_pago=date('Y-m-j');
+							$pago->totalpagar_pago=0;
+							$pago->totalpagado_pago=0;
+							$pago->mes=date('m');
+							$pago->ano=date('Y');
+							$nuevafecha = strtotime ( '+1 month' , strtotime ( $nuevafecha ) ) ;
+							$nuevafecha = date ( 'Y-m-j' , $nuevafecha );
+							$data = explode('-', $nuevafecha);
+							$array[$i+1]=$data[1].'-'.$data[0];
+							$pago->mes_pago=$data[1].'-'.$data[0];
+							$pago->save();
+						}
+					}
 					Yii::app()->user->setFlash('success','El arriendo fue actualizado.');
 					$this->redirect(array('view','id'=>$model->id_arriendo));
 				}else{

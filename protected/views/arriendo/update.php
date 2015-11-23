@@ -281,6 +281,7 @@ $this->menu=array(
             <h3 class="box-title">Datos del arriendo</h3>
           </div><!-- /.box-header -->
 					<div class="form">
+
 						<div class="box-body">
 							<div class="form-group">
 								<?php
@@ -291,6 +292,10 @@ $this->menu=array(
 								<div class="form">
 									<?php echo $form->errorSummary($model,'<strong>Es necesario arreglar los siguientes errores:</strong><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><div class="alert alert-danger">', '</div>'); ?>
 									<div class="col-md-6">
+										<div class="form-group">
+											<?php echo $form->labelEx($model,'inicio_arriendo'); ?>
+											<?php echo $form->dateField($model,'inicio_arriendo', array('class'=>'form-control', 'tabindex'=>1)); ?>
+										</div>
 										<div class="form-group">
 											<?php echo $form->labelEx($model,'fechapago_arriendo'); ?>
 											<?php echo $form->dropDownList($model,'fechapago_arriendo',
@@ -329,19 +334,15 @@ $this->menu=array(
 													),
 													array("class"=>"form-control select2", 'empty' => 'Seleccione el día de pago', 'tabindex'=>3)); ?>
 										</div>
-										<div class="form-group">
-											<?php echo $form->labelEx($model,'inicio_arriendo'); ?>
-											<?php echo $form->dateField($model,'inicio_arriendo', array('class'=>'form-control')); ?>
-										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
 											<?php echo $form->labelEx($model,'termino_arriendo'); ?>
-											<?php echo $form->dateField($model,'termino_arriendo', array('class'=>'form-control')); ?>
+											<?php echo $form->dateField($model,'termino_arriendo', array('class'=>'form-control', 'tabindex'=>2)); ?>
 										</div>
 										<div class="form-group">
 											<?php echo $form->labelEx($model,'valor_arriendo'); ?>
-											<?php echo $form->textField($model,'valor_arriendo', array('class'=>'form-control', 'placeholder'=>'Ingresar valor pactado con el arrendatario Ej: "500000".')); ?>
+											<?php echo $form->textField($model,'valor_arriendo', array('class'=>'form-control', 'placeholder'=>'Ingresar valor pactado con el arrendatario Ej: "500000".', 'tabindex'=>4)); ?>
 										</div>
 									</div>
 								</div><!-- form -->
@@ -349,7 +350,7 @@ $this->menu=array(
 							<!-- código acá -->
 						</div>
 						<div class="box-footer">
-							<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear arriendo' : 'Actualizar arriendo', array('class'=>'btn btn-primary', 'confirm' => '¿Está seguro de realizar cambios?')); ?>
+							<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear arriendo' : 'Actualizar arriendo', array('class'=>'btn btn-primary' , 'tabindex'=>5)); ?>
             </div>
 						<?php $this->endWidget(); ?>
 					</div>

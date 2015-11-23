@@ -81,7 +81,7 @@
                 <div class="icon">
                   <i class="fa fa-file-text-o"></i>
                 </div>
-                <a href="#" class="small-box-footer">Pagos de atrasados &nbsp<i class="fa fa-arrow-circle-right"></i></a>
+                <?php echo CHtml::link('Pagos de atrasados &nbsp<i class="fa fa-arrow-circle-right"></i>', array('/pago/atrasado'), array('class'=>"small-box-footer")); ?>
               </div>
             </div><!-- ./col -->
             <div class="col-lg-3 col-xs-6">
@@ -107,7 +107,7 @@
                 <div class="icon">
                   <i class="fa fa-file-text-o"></i>
                 </div>
-                <a href="#" class="small-box-footer">Órdenes de trabajo pendientes &nbsp<i class="fa fa-arrow-circle-right"></i></a>
+                <?php echo CHtml::link('Órdenes de trabajo pendientes &nbsp<i class="fa fa-arrow-circle-right"></i>', array('/pago/atrasado'), array('class'=>"small-box-footer")); ?>
               </div>
             </div><!-- ./col -->
           </div><!-- /.

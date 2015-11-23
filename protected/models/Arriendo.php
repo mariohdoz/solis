@@ -50,6 +50,7 @@ class Arriendo extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'pago'=>array(self::HAS_MANY, 'Pago', 'id_arriendo', 'order'=>'id_pago ASC'),
 		);
 	}
 
@@ -153,6 +154,35 @@ class Arriendo extends CActiveRecord
 		$criteria->compare('valor_arriendo',$this->valor_arriendo);
 		$criteria->compare('activo_arriendo',1);
 		$criteria->condition ='(inicio_arriendo < CURDATE( ) AND termino_arriendo > CURDATE( ))';
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+
+	public function atrasado()
+	{
+		// Busqueda con los arriendos activos en el tiempo correspondiente del inicio al término de éste.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('id_arriendo',$this->id_arriendo);
+		$criteria->compare('id_propiedad',$this->id_propiedad);
+		$criteria->compare('rut_admin',$this->rut_admin,true);
+		$criteria->compare('rut_arrendatario',$this->rut_arrendatario,true);
+		$criteria->compare('inscripcion_arriendo',$this->inscripcion_arriendo,true);
+		$criteria->compare('fechapago_arriendo',$this->fechapago_arriendo);
+		$criteria->compare('inicio_arriendo',$this->inicio_arriendo,true);
+		$criteria->compare('termino_arriendo',$this->termino_arriendo,true);
+		$criteria->compare('valor_arriendo',$this->valor_arriendo);
+		$criteria->compare('activo_arriendo',1);
+		$criteria->condition ='inicio_arriendo<CURDATE()
+		 AND termino_arriendo>CURDATE()
+		 AND fechapago_arriendo < DATE_FORMAT( CURDATE( ) ,  "%d" )
+		 AND id_arriendo NOT IN (
+		 SELECT id_arriendo
+		 FROM pago
+		 WHERE mes_pago = DATE_FORMAT( NOW( ), "%m-20%y"))';
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

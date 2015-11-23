@@ -67,24 +67,47 @@ class SiteController extends Controller
 	}
 
 	public function actionTest(){
-		/**$fecha = date('Y-m-j');
-		$nuevafecha = strtotime ( '-6 day' , strtotime ( $fecha ) ) ;
-		$nuevafecha = date ( 'j' , $nuevafecha );
-		$nuevafecha2 = strtotime ( '+5 day' , strtotime ( $fecha ) ) ;
-		$nuevafecha1 = date ( 'j' , $nuevafecha2 );
-		$model=Arriendo::model()->findAllByAttributes(array('activo_arriendo'=>1),
-		'inicio_arriendo<CURDATE() AND termino_arriendo>CURDATE()AND fechapago_arriendo >= DATE_FORMAT( DATE_SUB( CURDATE( ) , INTERVAL 5 DAY ) ,  "%d" )
-		AND fechapago_arriendo <= DATE_FORMAT( DATE_ADD( CURDATE( ) , INTERVAL 5 DAY ) ,  "%d" )
-		AND id_arriendo NOT IN (
-		  SELECT id_arriendo
-		  FROM pago
-		  WHERE mes_pago = DATE_FORMAT( NOW( ) ,  "%m" ))' //AND id_arriendo NOT IN (SELECT id_arriendo FROM pago WHERE mes_pago = Date_format(now(),"%m"))
-		);*/
-		$model=new Arriendo('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Arriendo']))
-			$model->attributes=$_GET['Arriendo'];
-		$this->render('test', array('model'=>$model));
+		$arriendo = Arriendo::model()->findByPk(41);
+		Pago::model()->deleteAll('id_arriendo = '.$arriendo->id_arriendo.'');
+		$pago=new Pago();
+		$pago->id_arriendo=$arriendo->id_arriendo;
+		$pago->fecha_pago=date('Y-m-j');
+		$pago->totalpagar_pago=0;
+		$pago->totalpagado_pago=0;
+		$pago->mes=date('m');
+		$pago->ano=date('Y');
+		$data = explode('-', $arriendo->inicio_arriendo);
+		$pago->mes_pago=$data[1].'-'.$data[0];
+		$pago->save();
+		echo $arriendo->inicio_arriendo.' '.$arriendo->termino_arriendo.'<br>';
+		$inicio = new DateTime($arriendo->inicio_arriendo);
+		$fin = new DateTime($arriendo->termino_arriendo);
+		$meses = round(($fin->format('U') - $inicio->format('U')) / (30*60*60*24));
+		$fecha = date('Y-m-j');
+		$nuevafecha =$arriendo->inicio_arriendo;
+		$array[0]=$nuevafecha;
+		echo $nuevafecha.'<br>';
+		for ($i=0; $i < $meses ; $i++) {
+			$pago=new Pago();
+			$pago->id_arriendo=$arriendo->id_arriendo;
+			$pago->fecha_pago=date('Y-m-j');
+			$pago->totalpagar_pago=0;
+			$pago->totalpagado_pago=0;
+			$pago->mes=date('m');
+			$pago->ano=date('Y');
+			$nuevafecha = strtotime ( '+1 month' , strtotime ( $nuevafecha ) ) ;
+			$nuevafecha = date ( 'Y-m-j' , $nuevafecha );
+			$data = explode('-', $nuevafecha);
+			$array[$i+1]=$data[1].'-'.$data[0];
+			$pago->mes_pago=$data[1].'-'.$data[0];
+			//$pago->save();
+			echo $pago->id_pago.' ';
+			echo $nuevafecha.'<br>';
+
+		}
+
+
+		$this->render('test', array('arriendo'=>$arriendo));
 	}
 
 	public function codigo($var)

@@ -21,43 +21,7 @@
           </div>
 					<div class="form">
 						<div class="box-body">
-              <?php $this->widget('zii.widgets.grid.CGridView', array(
-								'id'=>'arriendo-grid',
-								'itemsCssClass' => 'table table-hover',
-								'htmlOptions' => array('class' => 'table-responsive'),
-								'dataProvider'=>$model->search2(),
-								'filter'=>$model,
-								'columns'=>array(
-									'id_arriendo',
-									'id_propiedad',
-									'rut_admin',
-									'rut_arrendatario',
-									'inscripcion_arriendo',
-									'fechapago_arriendo',
-									/*
-									'inicio_arriendo',
-									'termino_arriendo',
-									'valor_arriendo',
-									*/
-									array(
-                    'class'=>'CButtonColumn',
-                    'buttons'=>array(
-                      'modificar' => array(
-                          'label'=>'<i class="fa fa-trash-o "></i>',
-                          'url'=>'Yii::app()->createUrl("arriendo/eliminar", array("id"=>$data->id_arriendo))',
-                      ),
-											'modificar' => array(
-													'label'=>'<i class="fa fa-pencil-square-o"></i>',
-													'url'=>'Yii::app()->createUrl("arriendo/update", array("id"=>$data->id_arriendo))',
-											),
-											'ver' => array(
-                          'label'=>'<i class="fa fa-eye "></i>',
-                          'url'=>'Yii::app()->createUrl("arriendo/view", array("id"=>$data->id_arriendo))',
-                      ),
-                    ),
-                  ),
-								),
-							)); ?>
+              
 						</div>
 						<div class="box-footer">
 

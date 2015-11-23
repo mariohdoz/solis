@@ -1,8 +1,8 @@
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
-	    Registrar pago
-	    <small>Seleccionar arriendo para realizar pago.</small>
+	    Pagos atrasado
+	    <small>Lista de propiedades con pagos atrasados.</small>
 	  </h1>
 	  <ol class="breadcrumb">
 	    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/intra/index">
@@ -27,7 +27,7 @@
                 'id'=>'arriendo-grid',
                 'itemsCssClass' => 'table table-hover',
                 'htmlOptions' => array('class' => 'table-responsive'),
-                'dataProvider'=>$model->Busqueda(),
+                'dataProvider'=>$model->atrasado(),
                 'selectableRows'=>1,
                 'filter'=>$model,
                 'columns'=>array(
@@ -49,7 +49,7 @@
                     'buttons'=>array(
                         'actualizar' => array(
                             'label'=>'<i class="fa fa-money"></i>',
-                            'url'=>'Yii::app()->createUrl("pago/listado", array("id"=>$data->id_arriendo))',
+                            'url'=>'Yii::app()->createUrl("pago/fecha", array("id"=>$data->id_arriendo, "m"=>date("m"), a=>date("y")))',
                         ),
                     ),
                   ),

@@ -1,31 +1,42 @@
-<?php
-/* @var $this PagoController */
-/* @var $model Pago */
+<div class="content-wrapper">
+  <section class="content-header">
+    <h1>
+	    Visualización
+	    <small>Visualización del pago.</small>
+	  </h1>
+	  <ol class="breadcrumb">
+	    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/intra/index">
+			<i class="fa fa-dashboard"></i>Inicio</a></li>
+			<li class="active">Pago</li>
+			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/intra/index">Gestión</a></li>
+			<li class="active">Vizualización de pagos</li>
+	  </ol>
+  </section>
+  <section class="content">
+    <div class="row">
+      <!-- Inicio se container -->
+      <div class="col-md-6">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+            <h3 class="box-title">Título</h3>
+          </div>
+					<div class="form">
+						<div class="box-body">
+							<h1>Cuerpo</h1>
+					  </div>
+            <div class="box-footer">
+              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#arrendatario">Boton</button>
+            </div>
+				  </div>
+			  </div>
+      </div>
 
-$this->breadcrumbs=array(
-	'Pagos'=>array('index'),
-	$model->id_pago,
-);
+      <?php
+        
+          $this->renderPartial('_view', array('model'=>$value,'arriendo'=>$arriendo,));
 
-$this->menu=array(
-	array('label'=>'List Pago', 'url'=>array('index')),
-	array('label'=>'Create Pago', 'url'=>array('create')),
-	array('label'=>'Update Pago', 'url'=>array('update', 'id'=>$model->id_pago)),
-	array('label'=>'Delete Pago', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id_pago),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Pago', 'url'=>array('admin')),
-);
-?>
-
-<h1>View Pago #<?php echo $model->id_pago; ?></h1>
-
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id_pago',
-		'id_arriendo',
-		'fecha_pago',
-		'mes_pago',
-		'totalpagar_pago',
-		'totalpagado_pago',
-	),
-)); ?>
+      ?>
+      <!-- término se container -->
+    </div>
+  </section>
+</div>

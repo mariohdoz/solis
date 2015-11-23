@@ -32,7 +32,7 @@ class PagoController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','index','view','select', 'fecha'),
+				'actions'=>array('create','update','index','view','select', 'fecha', 'atrasado', 'listado', 'limpiar'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -51,60 +51,47 @@ class PagoController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
+		$arriendo = Arriendo::model()->findByPk($id);
+		$this->render('admin', array('arriendo'=>$arriendo));
 	}
 
-	public function actionFecha($id, $m, $a)
+	public function actionAtrasado()
 	{
-		/**$model= Pago::model()->findByAttributes(array('activo_pago'=>1),
-			'mes_pago = DATE_FORMAT( NOW( ) ,  "%m" )'
-		);*/
-		if(Yii::app()->user->hasFlash('success')){
-			$msgs=Yii::app()->user->getFlashes();
-			foreach ($msgs as $key => $value) {
-				Yii::app()->user->setFlash($key,$value);
-			}
-		}
-		$fecha = date('y');
-		$anos = $fecha-5;
+		$model=new Arriendo('atrasado');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Pago']))
+			$model->attributes=$_GET['Pago'];
 
-		$model = new Pago;
-		$arriendo= Arriendo::model()->findByPk($id);
-		$arrendatario= Arrendatario::model()->findByPk($arriendo->rut_arrendatario);
-		$propiedad= Propiedad::model()->findByPk($arriendo->id_propiedad);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Pago']))
-		{
-			$model->attributes=$_POST['Pago'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_pago));
-		}
-		$fecha = $m.'-'.$a;
-		$model->mes = $m;
-		$model->ano = $a;
-
-		if(Pago::model()->findByAttributes(array('mes_pago'=>$fecha, 'id_arriendo'=>$id))){
-			$model=Pago::model()->findByAttributes(array('mes_pago'=>$fecha, 'id_arriendo'=>$id));
-			$model->totalpagar_pago=0;
-			$data = explode('-', $model->mes_pago);
-			$model->mes = $data[0];
-			$model->ano= $data[1];
-		}
-		$model->mes_pago = $fecha;
-
-		$this->render('create',array(
+		$this->render('atrasado',array(
 			'model'=>$model,
-			'arriendo'=>$arriendo,
-			'arrendatario'=>$arrendatario,
-			'propiedad'=>$propiedad,
-			'anos'=>$anos
 		));
 	}
+
+	public function actionListado($id)
+	{
+		$arriendo = Arriendo::model()->findByPk($id);
+
+		$this->render('admin', array('arriendo'=>$arriendo));
+	}
+
+	public function actionLimpiar($id)
+	{
+		$model=$this->loadModel($id);
+		$arriendo = Arriendo::model()->findByPk($model->id_arriendo);
+		$model->totalpagado_pago=0;
+		$model->totalpagar_pago = $arriendo->valor_arriendo;
+		$model->activo_pago=1;
+		if($model->save())
+		{
+			Yii::app()->user->setFlash('success','El pago fue modificado.');
+			$this->redirect(array('view','id'=>$arriendo->id_arriendo));
+		}else {
+			Yii::app()->user->setFlash('error','El pago no pudo ser modificado.');
+			$this->redirect(array('view','id'=>$arriendo->id_arriendo));
+		}
+	}
+
+
 
 	/**
 	 * Creates a new model.
@@ -132,36 +119,43 @@ class PagoController extends Controller
 		{
 			$model->attributes=$_POST['Pago'];
 			$model->fecha_pago=date('Y-m-d');
-			$model->mes_pago = $model->mes.'-'.$model->ano;
+			$model->mes_pago = date('m').'-'.date('Y');
 			$valor = intval(preg_replace('/[^0-9]+/', '', $model->totalpagar_pago),10);
 			$model->totalpagar_pago = $valor;
 			if ($model->totalpagado_pago==null) {
 				$model->totalpagado_pago=$valor;
 			}
 			$model->id_arriendo= $id;
-			if($model->save())
-			{
-				$this->redirect(array('view','id'=>$model->id_pago));
+			if ($model->totalpagado_pago <= $arriendo->valor_arriendo) {
+				var_dump($model->totalpagado_pago.' '.$arriendo->valor_arriendo.' '.($model->totalpagado_pago == $arriendo->valor_arriendo));
+				if($model->totalpagado_pago == $arriendo->valor_arriendo)
+					$model->activo_pago =0;
+				if($model->save())
+				{
+					$this->redirect(array('view','id'=>$model->id_pago));
+				}else {
+					$this->render('create',array(
+						'model'=>$model,
+						'arriendo'=>$arriendo,
+						'arrendatario'=>$arrendatario,
+						'propiedad'=>$propiedad,
+						'anos'=>$anos
+					));
+				}
 			}else {
-				$this->render('create',array(
-					'model'=>$model,
-					'arriendo'=>$arriendo,
-					'arrendatario'=>$arrendatario,
-					'propiedad'=>$propiedad,
-					'anos'=>$anos
-				));
+				Yii::app()->user->setFlash('error','El pago del arriendo supera la deuda.');
+				$this->redirect(array('fecha','id'=>$model->id_arriendo));
 			}
-
 		}
 
 		$fecha = date('m-20y');
+		$model->mes_pago=$fecha;
 		if(Pago::model()->findByAttributes(array('mes_pago'=>$fecha, 'id_arriendo'=>$id))){
 			$model=Pago::model()->findByAttributes(array('mes_pago'=>$fecha, 'id_arriendo'=>$id));
 			$model->totalpagar_pago=$model->totalpagado_pago-$Arriendo->valor_arriendo;
 			$data = explode('-', $model->mes_pago);
-			$model->mes = $data[0];
-			$model->ano= $data[1];
 		}
+
 		$this->render('create',array(
 			'model'=>$model,
 			'arriendo'=>$arriendo,
@@ -170,6 +164,7 @@ class PagoController extends Controller
 			'anos'=>$anos
 		));
 	}
+
 	public function actionSelect()
 	{
 		$model=new Arriendo('search');
@@ -189,6 +184,10 @@ class PagoController extends Controller
 	{
 		$model=$this->loadModel($id);
 		$arriendo= Arriendo::model()->findByPk($model->id_arriendo);
+		$arrendatario= Arrendatario::model()->findByPk($arriendo->rut_arrendatario);
+		$propiedad= Propiedad::model()->findByPk($arriendo->id_propiedad);
+		$fecha = date('y');
+		$anos = $fecha-5;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -197,7 +196,6 @@ class PagoController extends Controller
 		{
 			$model->attributes=$_POST['Pago'];
 			$model->fecha_pago=date('Y-m-d');
-			$model->mes_pago = $model->mes.'-'.$model->ano;
 			$valor = intval(preg_replace('/[^0-9]+/', '', $model->totalpagar_pago),10);
 			$model->totalpagar_pago = $valor;
 			if ($model->totalpagado_pago==null) {
@@ -207,26 +205,28 @@ class PagoController extends Controller
 			}
 			$model->totalpagar_pago=$arriendo->valor_arriendo-$model->totalpagado_pago;
 			if ($model->totalpagado_pago <= $arriendo->valor_arriendo) {
+				if($model->totalpagado_pago == $arriendo->valor_arriendo)
+					$model->activo_pago =0;
 				if($model->save())
 				{
-					$this->redirect(array('view','id'=>$model->id_pago));
+					Yii::app()->user->setFlash('success','El pago fue realizado.');
+					$this->redirect(array('view','id'=>$arriendo->id_arriendo));
 				}else {
-					$data = explode('-', $model->mes_pago);
-					$model->mes = $data[0];
-					$model->ano= $data[1];
-					$this->redirect(array('fecha','id'=>$model->id_arriendo, 'm'=>$model->mes, 'a'=>$model->ano) );
+					Yii::app()->user->setFlash('error','El pago no pudo ser realizado.');
+					$this->redirect(array('fecha','id'=>$model->id_arriendo));
 				}
 			}else {
 				Yii::app()->user->setFlash('error','El pago del arriendo supera la deuda.');
-				$data = explode('-', $model->mes_pago);
-				$model->mes = $data[0];
-				$model->ano= $data[1];
-				$this->redirect(array('fecha','id'=>$model->id_arriendo, 'm'=>$model->mes, 'a'=>$model->ano) );
+				$this->redirect(array('fecha','id'=>$model->id_arriendo));
 			}
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
+			'arriendo'=>$arriendo,
+			'arrendatario'=>$arrendatario,
+			'propiedad'=>$propiedad,
+			'anos'=>$anos,
 		));
 	}
 

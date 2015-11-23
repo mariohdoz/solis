@@ -4,3 +4,12 @@ Visitas por Propiedad
 
 
 Enviar correos al cliente al vender o arrendar propiedad.
+
+
+
+
+
+Crear arriendo cree automáticamente los pagos con:
+  mes_pago,
+  id_arriendo,
+  pagado_pago =0,
