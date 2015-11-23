@@ -116,14 +116,25 @@ class PropiedadController extends Controller
 		if(isset($_POST['Propiedad']))
 		{
 			$model->attributes=$_POST['Propiedad'];
-			$cadena = str_replace('.','',$model->rut_cliente);
-			$model->rut_cliente =$cadena;
-			$valor = intval(preg_replace('/[^0-9]+/', '', $model->valor_propiedad),10);
-			$model->valor_propiedad = $valor;
-			if($model->save()){
-			Yii::app()->user->setFlash('success','La propiedad ha sido ingresada correctamente. Por favor subir imágenes de la propiedad');
-				$this->redirect(array('view','id'=>$model->id_propiedad));
+			if($model->rut_cliente!='' && strlen($model->rut_cliente)>7){
+				$cadena = str_replace('.','',$model->rut_cliente);
+				$model->rut_cliente =$cadena;
+				$valor = intval(preg_replace('/[^0-9]+/', '', $model->valor_propiedad),10);
+				$model->valor_propiedad = $valor;
+				$model->ingreso_propiedad = date('Y-m-j');
+				if($model->save()){
+				Yii::app()->user->setFlash('success','La propiedad ha sido ingresada correctamente. Por favor subir imágenes de la propiedad');
+					$this->redirect(array('view','id'=>$model->id_propiedad));
+				}
+			}else {
+				Yii::app()->user->setFlash('danger','Seleccione un cliente para poder continuar');
+				$this->render('create',array(
+					'model'=>$model,
+					'model2'=>$model2,
+					'dataProvider'=>$dataProvider,
+				));
 			}
+			Yii::app()->end();	
 		}
 		$criteria = new CDbCriteria();
 		$criteria->condition='activo_cliente =1';

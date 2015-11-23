@@ -21,7 +21,8 @@
  * @property integer $valor_propiedad
  * @property integer $activo_propiedad
  * @property integer $eliminado_propiedad
- * @property integer $ingreso_propiedad
+ * @property integer $comision_propiedad
+ * @property string $ingreso_propiedad
  */
 class Propiedad extends CActiveRecord
 {
@@ -42,16 +43,16 @@ class Propiedad extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('direccion_propiedad, tipo_propiedad, servicio_propiedad, comuna_propiedad, valor_propiedad', 'required'),
-			array('numero_propiedad, habitacion_propiedad, bano_propiedad, estado_propiedad, amoblado_propiedad, valor_propiedad, activo_propiedad, eliminado_propiedad', 'numerical', 'integerOnly'=>true),
+			array('numero_propiedad, habitacion_propiedad, bano_propiedad, estado_propiedad, amoblado_propiedad, valor_propiedad, activo_propiedad, eliminado_propiedad, comision_propiedad', 'numerical', 'integerOnly'=>true),
 			array('rut_cliente, servicio_propiedad', 'length', 'max'=>10),
 			array('direccion_propiedad', 'length', 'max'=>255),
 			array('terreno_propiedad, construido_propiedad', 'length', 'max'=>50),
 			array('tipo_propiedad', 'length', 'max'=>25),
 			array('comuna_propiedad', 'length', 'max'=>20),
-			array('descripcion_propiedad', 'safe'),
+			array('descripcion_propiedad, ingreso_propiedad', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_propiedad, rut_cliente, direccion_propiedad, numero_propiedad, habitacion_propiedad, bano_propiedad, terreno_propiedad, construido_propiedad, tipo_propiedad, servicio_propiedad, estado_propiedad, descripcion_propiedad, comuna_propiedad, amoblado_propiedad, valor_propiedad, activo_propiedad, eliminado_propiedad', 'safe', 'on'=>'search'),
+			array('id_propiedad, rut_cliente, direccion_propiedad, numero_propiedad, habitacion_propiedad, bano_propiedad, terreno_propiedad, construido_propiedad, tipo_propiedad, servicio_propiedad, estado_propiedad, descripcion_propiedad, comuna_propiedad, amoblado_propiedad, valor_propiedad, activo_propiedad, eliminado_propiedad, comision_propiedad, ingreso_propiedad', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -80,7 +81,7 @@ class Propiedad extends CActiveRecord
 		return array(
 			'id_propiedad' => 'Número de ficha',
 			'rut_cliente' => 'Rut Cliente',
-			'direccion_propiedad' => 'Direccion',
+			'direccion_propiedad' => 'Dirección',
 			'numero_propiedad' => 'Número ',
 			'habitacion_propiedad' => 'N° de Habitaciones',
 			'bano_propiedad' => 'N° de Baños ',
@@ -89,12 +90,13 @@ class Propiedad extends CActiveRecord
 			'tipo_propiedad' => 'Tipo',
 			'servicio_propiedad' => 'Servicio ',
 			'estado_propiedad' => 'Estado ',
-			'descripcion_propiedad' => 'Descripcion',
+			'descripcion_propiedad' => 'Descripción',
 			'comuna_propiedad' => 'Comuna',
 			'amoblado_propiedad' => 'Amoblado',
 			'valor_propiedad' => 'Precio',
 			'activo_propiedad' => 'Activa',
 			'eliminado_propiedad' => 'Eliminada',
+			'comision_propiedad' => 'Comisión ',
 			'ingreso_propiedad' => 'Fecha de ingreso',
 		);
 	}
@@ -134,7 +136,10 @@ class Propiedad extends CActiveRecord
 		$criteria->compare('valor_propiedad',$this->valor_propiedad);
 		$criteria->compare('activo_propiedad',$this->activo_propiedad);
 		$criteria->compare('eliminado_propiedad',0);
-		$criteria->compare('ingreso_propiedad',$this->ingreso_propiedad);
+		$criteria->compare('comision_propiedad',$this->comision_propiedad);
+		$criteria->compare('ingreso_propiedad',$this->ingreso_propiedad,true);
+
+
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

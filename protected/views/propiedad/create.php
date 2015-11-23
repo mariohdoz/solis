@@ -82,6 +82,22 @@ $this->menu=array(
   </section>
   <section class="content">
     <div class="row">
+			<div class="col-md-12">
+				<?php if(($msgs=Yii::app()->user->getFlashes())!=null): ?>
+         <?php foreach($msgs as $type => $message):?>
+           <div class="alert alert-<?php echo $type;?>" style="margin-left: 10px; margin-right: 10px ">
+             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+             <strong><?php
+							 if($type == 'danger'){
+								 echo 'Error';
+							 }elseif ($type == 'success'){
+								 echo 'Éxito';
+							 };
+							?> !</strong> <?php echo $message;?>.
+           </div>
+         <?php endforeach;?>
+       <?php endif; ?>
+			</div>
 			<?php $form=$this->beginWidget('CActiveForm', array(
 				'id'=>'propiedad-form',
 				// Please note: When you enable ajax validation, make sure the corresponding
@@ -243,13 +259,48 @@ $this->menu=array(
                   <?php echo $form->textField($model,'construido_propiedad', array("class"=>"form-control select2", 'placeholder'=>'Ingrese el tamaño del terreno construido')); ?>
 								</div>
 							</div>
-							<div class="col-xs-12 col-md-6 col-lg-6">
+							<div class="col-xs-12 col-md-3 col-lg-3">
 								<div class="form-group">
 									<?php echo $form->labelEx($model, 'valor_propiedad');?>
                   <?php echo $form->textField($model, 'valor_propiedad', array("class"=>"form-control select2", 'placeholder'=>'Ejemplo: 123456','onchange'=>"applyFormatCurrency(document.getElementById('Propiedad_valor_propiedad'));"));?>
 								</div>
 							</div>
-							<div class="col-xs-12 col-md-6 col-lg-6">
+							<div class="col-xs-12 col-md-3 col-lg-3">
+								<div class="form-group">
+									<?php echo $form->labelEx($model, 'comision_propiedad');?>
+									<?php echo $form->dropDownList($model,'comision_propiedad',
+											array(
+													'1' => '1%',
+													'2' => '2%',
+													'3' => '3%',
+													'4' => '4%',
+													'5' => '5%',
+													'6' => '6%',
+													'7' => '7%',
+													'8' => '8%',
+													'9' => '9%',
+													'10' => '10%',
+													'11' => '11%',
+													'12' => '12%',
+													'13' => '13%',
+													'14' => '14%',
+													'15' => '15%',
+													'16' => '16%',
+													'17' => '17%',
+													'18' => '18%',
+													'19' => '19%',
+													'20' => '20%',
+											),
+											array("class"=>"form-control select2")); ?>
+								</div>
+							</div>
+							<div class="col-xs-12 col-md-3 col-lg-3">
+								<div class="form-group">
+									<label for="end">Ganancia de comisión</label>
+									<input class="form-control" name="Pago[end]" id="end" type="text" disabled="true">
+								</div>
+							</div>
+							<div class="col-xs-12 col-md-3 col-lg-3">
 								<div class="form-group">
 									<label for="Propiedad_amoblado_propiedad">Propiedad amoblada</label><br>
                   <?php echo $form->checkBox($model, 'amoblado_propiedad', array('class'=>'minimal'));?>
@@ -290,7 +341,6 @@ $this->menu=array(
 	});
 	$('#Propiedad_rut_cliente').Rut({
 		on_error: function(){
-
 		},
 		on_success: function(){
 			var rut = $('#Propiedad_rut_cliente').val();
@@ -310,5 +360,30 @@ $this->menu=array(
 			  })
 		},
 	});
-
+	$('#Propiedad_valor_propiedad').blur(function(){
+		valor();
+	});
+	$('#Propiedad_valor_propiedad').click(function(){
+		$('#Propiedad_valor_propiedad').val('');
+	});
+	$('#Propiedad_valor_propiedad').keyup(function () {
+	if (isNaN($("#Propiedad_valor_propiedad").val())) {
+	alert('Porfavor ingresar solamente números');
+	}
+});
+	$('#Propiedad_comision_propiedad').change(function(){
+		valor();
+	});
+	function valor(){
+		var a = $('#Propiedad_comision_propiedad').val();
+		a=a.replace(/[^\d]/, '');
+		a=parseInt(a.replace(".",""));
+		var b = $('#Propiedad_valor_propiedad').val();
+		b=b.replace(/[^\d]/, '');
+		b=parseInt(b.replace(".",""));
+		var c = (a/100)*b;
+		$('#end').val(c);
+		$('#end').formatCurrency({region: 'es-CL'
+			, roundToDecimalPlace: -0});
+	}
 </script>

@@ -150,7 +150,7 @@ $("#Pago_totalpagar_pago").val('');
 });
 $("#Pago_totalpagar_pago").keyup(function () {
 if (isNaN($("#Pago_totalpagar_pago").val())) {
-	alert('Porfavor ingresar solamente números');
+alert('Porfavor ingresar solamente números');
 }
 });
 function valor(){
@@ -165,39 +165,39 @@ a=parseInt(a.replace(".",""));
 b=parseInt(b.replace(".",""));
 c=parseInt(c.replace(".",""));
 if (a+b<=c) {
-	$('#fin').val(a+b);
-	$('#fin').formatCurrency({region: 'es-CL'
-			, roundToDecimalPlace: -1});
-	var d = c-(a+b);
-	$('#end').val(d);
-	$('#end').formatCurrency({region: 'es-CL'
-			, roundToDecimalPlace: -1});
-	}else if ($('#Pago_totalpagado_pago').val()=='') {
-		$('#fin').val($('#Pago_totalpagar_pago').val());
-		$('#fin').formatCurrency({region: 'es-CL'
-			, roundToDecimalPlace: -1});
-	}else if($('#Pago_totalpagar_pago').val()==''){
-		$('#fin').val($('#Pago_totalpagado_pago').val());
-		$('#fin').formatCurrency({region: 'es-CL'
-			, roundToDecimalPlace: -1});
-	}
-	$('#Pago_totalpagado_pago').formatCurrency({region: 'es-CL'
-		, roundToDecimalPlace: -1});
-	$('#Pago_totalpagar_pago').formatCurrency({region: 'es-CL'
-		, roundToDecimalPlace: -1});
+$('#fin').val(a+b);
+$('#fin').formatCurrency({region: 'es-CL'
+, roundToDecimalPlace: -1});
+var d = c-(a+b);
+$('#end').val(d);
+$('#end').formatCurrency({region: 'es-CL'
+, roundToDecimalPlace: -1});
+}else if ($('#Pago_totalpagado_pago').val()=='') {
+$('#fin').val($('#Pago_totalpagar_pago').val());
+$('#fin').formatCurrency({region: 'es-CL'
+, roundToDecimalPlace: -1});
+}else if($('#Pago_totalpagar_pago').val()==''){
+$('#fin').val($('#Pago_totalpagado_pago').val());
+$('#fin').formatCurrency({region: 'es-CL'
+, roundToDecimalPlace: -1});
+}
+$('#Pago_totalpagado_pago').formatCurrency({region: 'es-CL'
+, roundToDecimalPlace: -1});
+$('#Pago_totalpagar_pago').formatCurrency({region: 'es-CL'
+, roundToDecimalPlace: -1});
 }
 if (a+b>c) {
-	b=c-a;
-	$('#fin').val(b);
-	$('#fin').formatCurrency({region: 'es-CL'
-			, roundToDecimalPlace: -1});
-	alert('El monto a pagar de '+$('#Pago_totalpagar_pago').val()+' es mayor que la deuda actual de '+$('#fin').val());
-	$('#fin').val(0);
-	$('#fin').formatCurrency({region: 'es-CL'
-			, roundToDecimalPlace: -1});
-	$('#Pago_totalpagar_pago').val(0);
-	$('#Pago_totalpagar_pago').formatCurrency({region: 'es-CL'
-			, roundToDecimalPlace: -1});
+b=c-a;
+$('#fin').val(b);
+$('#fin').formatCurrency({region: 'es-CL'
+, roundToDecimalPlace: -1});
+alert('El monto a pagar de '+$('#Pago_totalpagar_pago').val()+' es mayor que la deuda actual de '+$('#fin').val());
+$('#fin').val(0);
+$('#fin').formatCurrency({region: 'es-CL'
+, roundToDecimalPlace: -1});
+$('#Pago_totalpagar_pago').val(0);
+$('#Pago_totalpagar_pago').formatCurrency({region: 'es-CL'
+, roundToDecimalPlace: -1});
 }
 }
 </script>

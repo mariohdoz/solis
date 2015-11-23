@@ -308,13 +308,48 @@ $this->menu=array(
                   <?php echo $form->textField($model,'construido_propiedad', array("class"=>"form-control select2", 'placeholder'=>'Ingrese el tamaño del terreno construido')); ?>
 								</div>
 							</div>
-							<div class="col-xs-6">
+							<div class="col-xs-12 col-md-3 col-lg-3">
 								<div class="form-group">
 									<?php echo $form->labelEx($model, 'valor_propiedad');?>
                   <?php echo $form->textField($model, 'valor_propiedad', array("class"=>"form-control select2", 'placeholder'=>'Ejemplo: 123456','onchange'=>"applyFormatCurrency(document.getElementById('Propiedad_valor_propiedad'));"));?>
 								</div>
 							</div>
-							<div class="col-xs-6">
+							<div class="col-xs-12 col-md-3 col-lg-3">
+								<div class="form-group">
+									<?php echo $form->labelEx($model, 'comision_propiedad');?>
+									<?php echo $form->dropDownList($model,'comision_propiedad',
+											array(
+													'1' => '1%',
+													'2' => '2%',
+													'3' => '3%',
+													'4' => '4%',
+													'5' => '5%',
+													'6' => '6%',
+													'7' => '7%',
+													'8' => '8%',
+													'9' => '9%',
+													'10' => '10%',
+													'11' => '11%',
+													'12' => '12%',
+													'13' => '13%',
+													'14' => '14%',
+													'15' => '15%',
+													'16' => '16%',
+													'17' => '17%',
+													'18' => '18%',
+													'19' => '19%',
+													'20' => '20%',
+											),
+											array("class"=>"form-control select2")); ?>
+								</div>
+							</div>
+							<div class="col-xs-12 col-md-3 col-lg-3">
+								<div class="form-group">
+									<label for="end">Ganancia de comisión</label>
+									<input class="form-control" name="Pago[end]" id="end" type="text" disabled="true">
+								</div>
+							</div>
+							<div class="col-xs-12 col-md-3 col-lg-3">
 								<div class="form-group">
 									<label for="Propiedad_amoblado_propiedad">Propiedad amoblada</label><br>
                   <?php echo $form->checkBox($model, 'amoblado_propiedad', array('class'=>'minimal'));?>
@@ -355,7 +390,6 @@ $this->menu=array(
 	});
 	$('#Propiedad_rut_cliente').Rut({
 		on_error: function(){
-
 		},
 		on_success: function(){
 			var rut = $('#Propiedad_rut_cliente').val();
@@ -375,36 +409,30 @@ $this->menu=array(
 			  })
 		},
 	});
-
-	$('#Propiedad_rut_cliente').ready(function(){
-		var rut = $('#Propiedad_rut_cliente').val();
-		rut=rut+"";
-		var a = rut.replace('.','');
-		a = a.replace('.','');
-		var res = a.split("-");
-		var action = "<?php echo Yii::app()->request->baseUrl; ?>"+'/propiedad/obtener/'+res[0];
-		$.getJSON(action, function(data) {
-			$.each(data, function(key, cliente) {
-				$('#Cliente_correo_cliente').val(cliente.correo_cliente);
-				$('#Cliente_nombres_cliente').val(cliente.nombres_cliente);
-				$('#Cliente_apellidos_cliente').val(cliente.apellidos_cliente);
-			});
-		}).fail(function() {
-				console.log( "error" );
-			})
-
+	$('#Propiedad_valor_propiedad').blur(function(){
+		valor();
 	});
-	var max_width = 210; var max_height = 210;
-	$('img').each(function() {
-	  var w = $(this).width();
-	  var h = $(this).height();
-	  var scale = null;
-	  if (w >= h) { if (w > max_width) { scale = 1 / (w / max_width); } }
-	  else { if (h > max_height) { scale = 1 / (h / max_height); } }
-	  if (scale) {
-	      $(this).width(w * scale);
-	      $(this).height(h * scale);
-	  }
+	$('#Propiedad_valor_propiedad').click(function(){
+		$('#Propiedad_valor_propiedad').val('');
 	});
-
+	$('#Propiedad_valor_propiedad').keyup(function () {
+	if (isNaN($("#Propiedad_valor_propiedad").val())) {
+	alert('Porfavor ingresar solamente números');
+	}
+});
+	$('#Propiedad_comision_propiedad').change(function(){
+		valor();
+	});
+	function valor(){
+		var a = $('#Propiedad_comision_propiedad').val();
+		a=a.replace(/[^\d]/, '');
+		a=parseInt(a.replace(".",""));
+		var b = $('#Propiedad_valor_propiedad').val();
+		b=b.replace(/[^\d]/, '');
+		b=parseInt(b.replace(".",""));
+		var c = (a/100)*b;
+		$('#end').val(c);
+		$('#end').formatCurrency({region: 'es-CL'
+			, roundToDecimalPlace: -0});
+	}
 </script>

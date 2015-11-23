@@ -105,6 +105,7 @@ $this->menu=array(
 						<div class="box-body">
 							<?php $this->widget('zii.widgets.CDetailView', array(
 								 'data'=>$model2,
+								 'htmlOptions' => array('class' => 'table-striped table-condensed table-responsive table table-hover'),
 								 'attributes'=>array(
 										 'rut_arrendatario',
 										 array(
@@ -131,6 +132,7 @@ $this->menu=array(
 						<div class="box-body">
 							<?php $this->widget('zii.widgets.CDetailView', array(
 								 'data'=>$model3,
+								 'htmlOptions' => array('class' => 'table-striped table-condensed table-responsive table table-hover'),
 								 'attributes'=>array(
 										 'id_propiedad',
 										 array('header' => 'Propiedatio',
