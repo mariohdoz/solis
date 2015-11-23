@@ -48,7 +48,7 @@
     <div class=" col-md-6">
         <h4 id='ho'>Valor  <?php echo $model->servicio_propiedad; ?> $ <?php  echo  number_format($model->valor_propiedad, 0, ",", "."); ?> <button type="button" style="float: right" class="btn btn-success " onclick="javascript:window.print()">Imprimir </button></h4>
         <ul class="list-group">
-            <li class="list-group-item"><i class="fa fa-map-marker"></i> Ubicación: <?php echo $model->direccion_propiedad.' '.$model->numero_propiedad; ?></li>
+            <li class="list-group-item"><i class="fa fa-map-marker"></i> Ubicación: <?php echo $model->direccion_propiedad.', '.$model->comuna_propiedad;; ?></li>
             <li class="list-group-item"><i class="fa fa-bed"></i> Dormitorios: <?php echo $model->habitacion_propiedad; ?></li>
             <li class="list-group-item"><a  href="#"><img class="" width="12" height="14" src="<?php echo Yii::app()->request->baseUrl; ?>/images/bano.png"></a> Baños: <?php echo $model->bano_propiedad; ?></li>
             <li class="list-group-item"><i class="fa fa-object-ungroup"></i> &#x33a1; Totales: <?php echo $model->terreno_propiedad; ?></li>
@@ -62,11 +62,11 @@
 </section>
 <section class="container informacion">
     <div class=" col-md-12">
-        <h1>Imáenes</h1>
+        <h1>Imágenes</h1>
         <?php foreach ($model->imagen as $key => $value) {
-          echo '<div class="col-lg-3 col-sm-4 col-xs-6">';
+          echo '<div class="col-lg-2 col-sm-4 col-xs-6 thumb">';
           echo '<a class="showcase" href="'.Yii::app()->request->baseUrl.'/images/propiedades/'.$value->url_imagen.'" data-rel="lightcase:myCollection:slideshow">';
-          echo  CHtml::image(Yii::app()->baseUrl."/images/propiedades/".$value->url_imagen, '',  array('class'=>'thumbnail img-responsive'));
+          echo  CHtml::image(Yii::app()->baseUrl."/images/propiedades/".$value->url_imagen, '',  array('class'=>'imagenes'));
           echo '</a></div>';
         } ?>
     </div>
@@ -75,7 +75,7 @@
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.formatCurrency-1.4.0.js" type="text/javascript"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/i18n/jquery.formatCurrency.es-CL.js" type="text/javascript"></script>
 <script>
-var max_width = 230; var max_height = 230;
+var max_width = 130; var max_height = 130;
 $('img').each(function() {
   var w = $(this).width();
   var h = $(this).height();

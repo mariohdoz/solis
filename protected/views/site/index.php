@@ -4,7 +4,7 @@
 			<ul>
 				<!-- inser more l inks her e -->
 				<?php if(!Yii::app()->session['activo']) {
-						echo '<a class="cd-signin " href="#"><i class="fa fa-user"></i> | Iniciar Sesión</a>';
+						echo '<a class="cd-signin" href="#"><i class="fa fa-user"></i> | Iniciar Sesión</a>';
 					}else {
             echo CHtml::link('<i class="fa fa-times"></i> | Cerrar sesión', array('Site/logout'), array('class'=>'cd-signin2'));
 					}
@@ -328,4 +328,3 @@
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-2.1.1.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/main.js"></script> <!-- Resource jQuery -->
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/modernizr.js"></script> <!-- Resource jQuery -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>

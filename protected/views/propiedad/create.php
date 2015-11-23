@@ -48,10 +48,10 @@ $this->menu=array(
 							'selectionChanged'=>'obtenerCliente',	// via 1: para mostrar detalles al seleccionar
 							'dataProvider'=>$model2->search(),
 							'filter' => $model2,
-							'summaryText' => 'Se encontraron {count} arrendatarios activos',
+							'summaryText' => 'Se encontraron {count} Clientes activos',
 							'columns'=>array(
 						// nota que con htmlOptions se puede personalizar el tamano de la columna
-								array('name'=>'rut_cliente','htmlOptions'=>array('width'=>'80px')),
+								array('name'=>'rut_cliente','htmlOptions'=>array('width'=>'90px')),
 						// nota que aqui no se usa array, sino directamente el nombre de la columna
 								'nombres_cliente',
 								'apellidos_cliente',
@@ -142,8 +142,8 @@ $this->menu=array(
 							</div>
 						</div>
 						<div class="box-footer">
-							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#cliente">Cargar cliente</button>
-							<?php echo CHtml::link('Registrar cliente', array('cliente/create'), array('class'=>'btn btn-warning')); ?>
+							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#cliente"><i class="fa fa-spinner"> &nbsp;&nbsp;Cargar cliente</i></button>
+							<?php echo CHtml::link('<i class="fa fa-plus"></i> &nbsp;&nbsp;Nuevo Cliente ', array('cliente/create'), array('class'=>'btn btn-success')); ?>
 						</div>
 					</div>
 				</div>
@@ -159,6 +159,8 @@ $this->menu=array(
 							<?php echo $form->errorSummary($model,'<strong>Es necesario arreglar los siguientes errores:</strong><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><div class="alert alert-danger">', '</div>'); ?>
 							<div class="col-xs-12 col-md-6 col-lg-6">
 								<div class="form-group">
+
+
 									<?php echo $form->labelEx($model,'servicio_propiedad'); ?>
                   <?php echo $form->dropDownList($model,'servicio_propiedad',
                       array(
