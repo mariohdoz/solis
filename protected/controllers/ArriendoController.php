@@ -74,34 +74,11 @@ class ArriendoController extends Controller
 	public function actionCreate()
 	{
 		$model=new Arriendo;
-		$model2=new Arrendatario;
-		$model3=new Propiedad;
-
-		$criteria2 = new CDbCriteria();
-		$criteria2->condition='activo_arrendatario=1';
-
-		$dataProvider=new CActiveDataProvider(Arrendatario::model(), array(
-			'keyAttribute'=>'rut_arrendatario',// IMPORTANTE, para que el CGridView conozca la seleccion
-			'criteria'=>$criteria2,
-			'pagination'=>array(
-				'pageSize'=>15,
-			),
-			'sort'=>array(
-				'defaultOrder'=>array('rut_arrendatario'=>true),
-			),
-		));
-		$criteria = new CDbCriteria();
-		$criteria->condition='activo_propiedad=1 AND eliminado_propiedad=0';
-		$dataProvider2=new CActiveDataProvider(Propiedad::model(), array(
-			'keyAttribute'=>'id_propiedad',// IMPORTANTE, para que el CGridView conozca la seleccion
-			'criteria'=>$criteria,
-			'pagination'=>array(
-				'pageSize'=>15,
-			),
-			'sort'=>array(
-				'defaultOrder'=>array('id_propiedad'=>true),
-			),
-		));
+		$arrendatario=new Arrendatario('search');
+		$propiedad=new Propiedad('disponible');
+		$propiedad->unsetAttributes();  // clear any default values
+		if(isset($_GET['Propiedad']))
+			$propiedad->attributes=$_GET['Propiedad'];
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -115,18 +92,17 @@ class ArriendoController extends Controller
 			$model->rut_arrendatario = $rut;
 			if($model->id_propiedad != '' && $model->rut_arrendatario != ''){
 				if ($model->inicio_arriendo < $model->termino_arriendo ) {
-					$model3=Propiedad::model()->findByPk($model->id_propiedad);
-					$model2=Arrendatario::model()->findByPk($model->rut_arrendatario);
+					$propiedad=Propiedad::model()->findByPk($model->id_propiedad);
+					$arrendatario=Arrendatario::model()->findByPk($model->rut_arrendatario);
 					$valor = intval(preg_replace('/[^0-9]+/', '', $model->valor_arriendo),10);
 					$model->valor_arriendo = $valor;
-					if($model3->activo_propiedad == 1){
-						$model3->activo_propiedad= 0;
-						if($model->save() && $model3->save())
+					if($propiedad->activo_propiedad == 1){
+						$propiedad->activo_propiedad= 0;
+						if($model->save() && $propiedad->save())
 						{
 							$pago=new Pago();
 							$pago->id_arriendo=$model->id_arriendo;
 							$pago->fecha_pago=date('Y-m-j');
-							$pago->totalpagar_pago=0;
 							$pago->totalpagado_pago=0;
 							$pago->mes=date('m');
 							$pago->ano=date('Y');
@@ -142,7 +118,6 @@ class ArriendoController extends Controller
 								$pago=new Pago();
 								$pago->id_arriendo=$model->id_arriendo;
 								$pago->fecha_pago=date('Y-m-j');
-								$pago->totalpagar_pago=0;
 								$pago->totalpagado_pago=0;
 								$pago->mes=date('m');
 								$pago->ano=date('Y');
@@ -169,10 +144,8 @@ class ArriendoController extends Controller
 
 		$this->render('create',array(
 			'model'=>$model,
-			'model2'=>$model2,
-			'model3'=>$model3,
-			'dataProvider'=>$dataProvider,
-			'dataProvider2'=>$dataProvider2,
+			'model2'=>$arrendatario,
+			'model3'=>$propiedad,
 		));
 	}
 	/* Se crea la función obtener para poder acceder a los datos del arrendatario*/
@@ -267,7 +240,6 @@ class ArriendoController extends Controller
 						$pago=new Pago();
 						$pago->id_arriendo=$model->id_arriendo;
 						$pago->fecha_pago=date('Y-m-j');
-						$pago->totalpagar_pago=0;
 						$pago->totalpagado_pago=0;
 						$pago->mes=date('m');
 						$pago->ano=date('Y');
@@ -283,7 +255,6 @@ class ArriendoController extends Controller
 							$pago=new Pago();
 							$pago->id_arriendo=$model->id_arriendo;
 							$pago->fecha_pago=date('Y-m-j');
-							$pago->totalpagar_pago=0;
 							$pago->totalpagado_pago=0;
 							$pago->mes=date('m');
 							$pago->ano=date('Y');

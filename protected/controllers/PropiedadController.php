@@ -88,8 +88,9 @@ class PropiedadController extends Controller
     echo $return;// it's array
 	}
 
-	public function actionDocu()
+	public function actionDocu($id)
 	{
+		$model = new Documento;
 		Yii::import("ext.EAjaxUpload.qqFileUploader");
     $folder=Yii::app() -> getBasePath() . "/../documento/propiedad/";// folder for uploaded files
     $allowedExtensions = array("jpg","jpeg","gif","png","pdf","doc","docx");//array("jpg","jpeg","gif","exe","mov" and etc...
@@ -99,6 +100,9 @@ class PropiedadController extends Controller
     $return = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
     $fileSize=filesize($folder.$result['filename']);//GETTING FILE SIZE
 	  $fileName=$result['filename'];//GETTING FILE NAME
+		$model->url_documento = $fileName;
+		$model->id_propiedad = $id;
+		$model->save();
     echo $return;// it's array
 	}
 
@@ -134,7 +138,7 @@ class PropiedadController extends Controller
 					'dataProvider'=>$dataProvider,
 				));
 			}
-			Yii::app()->end();	
+			Yii::app()->end();
 		}
 		$criteria = new CDbCriteria();
 		$criteria->condition='activo_cliente =1';
@@ -243,12 +247,38 @@ class PropiedadController extends Controller
 		$model->activo_propiedad=0;
 		$model->eliminado_propiedad=1;
 		if($model->save()){
-			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			if($model->arriendo!=null)
+			{
+				foreach ($model->arriendo as $key => $arriendo) {
+					$arriendo->activo_arriendo =0;
+					if ($arriendo->save()) {
+						foreach ($arriendo->pago as $arriendo => $pago) {
+							$pago->activo_pago =0;
+							$pago->save();
+						}
+					}
+				}
+			}
+			if ($model->imagen != null) {
+				foreach ($model->imagen as $key => $value) {
+					$file=YiiBase::getPathOfAlias("webroot")."/images/propiedades/".$value->url_imagen;
+					$do = unlink($file);
+					$value->delete();
+				}
+			}
+			if ($model->documento != null) {
+				foreach ($model->documento as $key => $value) {
+					$file=YiiBase::getPathOfAlias("webroot")."/documento/propiedad/".$value->url_documento;
+					$do = unlink($file);
+					$value->delete();
+				}
+			}
+			if(!isset($_GET['ajax'])){
+				Yii::app()->user->setFlash('success','Se elimino correctamente la propiedad, servicios prestados y todos sus documentos e imagenes');
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+			}
 		}
-
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-
 	}
 
 	public function actionSelect2()

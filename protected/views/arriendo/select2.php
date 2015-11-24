@@ -39,25 +39,26 @@
                 //'selectionChanged'=>'function(id){ location.href = "'.$this->createUrl('arriendo/test').'/"+$.fn.yiiGridView.getSelection(id);}',	// via 1: para mostrar detalles al seleccionar
                 'filter'=>$model,
                 'columns'=>array(
-                  'fechapago_arriendo',
-                  'id_propiedad',
-                  'rut_admin',
-                  'rut_arrendatario',
-                  'valor_arriendo',
-                  'termino_arriendo',
-                  /*
-                  'inicio_arriendo',
-                  'termino_arriendo',
-                  'valor_arriendo',
-                  */
+                  'id_arriendo',
+									'id_propiedad',
+									'rut_arrendatario',
+									'fechapago_arriendo',
+									/*
+									'inscripcion_arriendo',
+									'rut_admin',
+									'inicio_arriendo',
+									'termino_arriendo',
+									'valor_arriendo',
+									*/
                   array(
+                    'header'=>'Eliminar',
                     'class'=>'CButtonColumn',
-                    'template'=>'{email}',
+                    'template'=>'{Eliminar}',
                     'buttons'=>array(
-                      'eliminar' => array(
-                          'label'=>'<i class="fa fa-trash-o "></i>',
-                          'url'=>'Yii::app()->createUrl("arriendo/eliminar", array("id"=>$data->id_arriendo))',
-                      ),
+                        'Eliminar' => array(
+                            'label'=>'<i class="fa fa-trash-o"></i>',
+                            'url'=>'Yii::app()->createUrl("arriendo/eliminar", array("id"=>$data->id_arriendo))',
+                        ),
                     ),
                   ),
                 ),

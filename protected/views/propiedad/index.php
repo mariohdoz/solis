@@ -91,8 +91,8 @@
                   'servicio_propiedad',
 									array(
                     'header'=>'Estado',
-                    'name'=>'estado_propiedad',
-                    'value' => '$data->estado_propiedad?Yii::t(\'app\',\'Disponible\'):Yii::t(\'app\', \'Ocupado\')',
+                    'name'=>'activo_propiedad',
+                    'value' => '$data->activo_propiedad?Yii::t(\'app\',\'Disponible\'):Yii::t(\'app\', \'Ocupado\')',
                     'filter' => array('0' => Yii::t('app', 'Ocupado'), '1' => Yii::t('app', 'Disponible')),
                     'htmlOptions' => array('style' => "text-align:center;"),
                    ),
@@ -101,7 +101,7 @@
 									'construido_propiedad',
 									'tipo_propiedad',
 									'servicio_propiedad',
-									'estado_propiedad',
+									'activo_propiedad',
 									'descripcion_propiedad',
 									'comuna_propiedad',
 									'amoblado_propiedad',
@@ -109,10 +109,25 @@
 									'activo_propiedad',
 									'eliminado_propiedad',
 									*/
-									array(
-										'header'=>'Acciones',
-										'class'=>'CButtonColumn',
-									),
+                  array(
+                    'header'=>'Actualizar',
+                    'class'=>'CButtonColumn',
+                    'template'=>'{buscar}  {actualizar}  {eliminar}',
+                    'buttons'=>array(
+											'eliminar' => array(
+													'label'=>'<i class="fa fa-trash-o"></i>',
+													'url'=>'Yii::app()->createUrl("propiedad/eliminar", array("id"=>$data->id_propiedad))',
+											),
+                      'actualizar' => array(
+                          'label'=>'<i class="fa fa-pencil-square-o"></i>',
+                          'url'=>'Yii::app()->createUrl("propiedad/update", array("id"=>$data->id_propiedad))',
+                      ),
+											'buscar' => array(
+													'label'=>'<i class="fa fa-eye"></i>',
+													'url'=>'Yii::app()->createUrl("propiedad/view", array("id"=>$data->id_propiedad))',
+											),
+                    ),
+                  ),
 								),
 							)); ?>
 

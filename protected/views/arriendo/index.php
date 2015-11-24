@@ -59,30 +59,32 @@ $this->menu=array(
 								'columns'=>array(
 									'id_arriendo',
 									'id_propiedad',
-									'rut_admin',
 									'rut_arrendatario',
-									'inscripcion_arriendo',
 									'fechapago_arriendo',
 									/*
+									'inscripcion_arriendo',
+									'rut_admin',
 									'inicio_arriendo',
 									'termino_arriendo',
 									'valor_arriendo',
 									*/
 									array(
+                    'header'=>'Actualizar',
                     'class'=>'CButtonColumn',
+                    'template'=>'{buscar}  {actualizar}  {eliminar}',
                     'buttons'=>array(
-                      'modificar' => array(
-                          'label'=>'<i class="fa fa-trash-o "></i>',
-                          'url'=>'Yii::app()->createUrl("arriendo/eliminar", array("id"=>$data->id_arriendo))',
-                      ),
-											'modificar' => array(
-													'label'=>'<i class="fa fa-pencil-square-o"></i>',
-													'url'=>'Yii::app()->createUrl("arriendo/update", array("id"=>$data->id_arriendo))',
+											'eliminar' => array(
+													'label'=>'<i class="fa fa-trash-o"></i>',
+													'url'=>'Yii::app()->createUrl("arriendo/eliminar", array("id"=>$data->id_arriendo))',
 											),
-											'ver' => array(
-                          'label'=>'<i class="fa fa-eye "></i>',
-                          'url'=>'Yii::app()->createUrl("arriendo/view", array("id"=>$data->id_arriendo))',
+                      'actualizar' => array(
+                          'label'=>'<i class="fa fa-pencil-square-o"></i>',
+                          'url'=>'Yii::app()->createUrl("arriendo/update", array("id"=>$data->id_arriendo))',
                       ),
+											'buscar' => array(
+													'label'=>'<i class="fa fa-eye"></i>',
+													'url'=>'Yii::app()->createUrl("arriendo/view", array("id"=>$data->id_arriendo))',
+											),
                     ),
                   ),
 								),

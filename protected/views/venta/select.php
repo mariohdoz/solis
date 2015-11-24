@@ -48,12 +48,13 @@
               		'ganancia_venta',
               		*/
                   array(
+                    'header'=>'Actualizar',
                     'class'=>'CButtonColumn',
-                    'template'=>'{email}',
+                    'template'=>'{actualizar}',
                     'buttons'=>array(
-                        'email' => array(
+                        'actualizar' => array(
                             'label'=>'<i class="fa fa-pencil-square-o"></i>',
-                            'url'=>'Yii::app()->createUrl("venta/update", array("id"=>$data->id_venta))',
+                            'url'=>'Yii::app()->createUrl("arrendatario/update", array("id"=>$data->rut))',
                         ),
                     ),
                   ),

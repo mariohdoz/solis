@@ -153,10 +153,10 @@ $this->menu=array(
 							'itemsCssClass' => 'table table-hover',
 							'htmlOptions' => array('class' => 'table-responsive'),
 							'selectableRows'=>1,
-							'selectionChanged'=>'obtenerPropiedad',	// via 1: para mostrar detalles al seleccionar
-							'dataProvider'=>$dataProvider2,
+							'dataProvider'=>$model3->disponible(),
 							'filter' => $model3,
 							'summaryText' => 'Se encontraron {count} propiedades',
+							'selectionChanged'=>'obtenerPropiedad',	// via 1: para mostrar detalles al seleccionar
 							'columns'=>array(
 						// nota que con htmlOptions se puede personalizar el tamano de la columna
 								array('name'=>'id_propiedad','htmlOptions'=>array('width'=>'80px')),
@@ -164,8 +164,9 @@ $this->menu=array(
 								'direccion_propiedad',
 								'tipo_propiedad',
 								'comuna_propiedad',
-								'servicio_propiedad'
+								'servicio_propiedad',
 						// via 2: para mostrar detalles al hacer click en un icono.
+
 							),
 						));
 						?>

@@ -31,9 +31,11 @@
 		<?php echo $form->textField($model,'mes_pago'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'totalpagar_pago'); ?>
-		<?php echo $form->textField($model,'totalpagar_pago'); ?>
+	<div class="col-xs-12 col-md-3 col-lg-3">
+		<div class="form-group">
+			<label for="Pago_totalpagar_pago" class="required">Total a pagar</label>
+			<input class="form-control" name="Pago[Pago_totalpagar_pago]" id="Pago_totalpagar_pago" type="text"  value="<?php echo CHtml::encode($arriendo->valor_arriendo);?>"disabled="">
+		</div>
 	</div>
 
 	<div class="row">

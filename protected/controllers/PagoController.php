@@ -79,7 +79,7 @@ class PagoController extends Controller
 		$model=$this->loadModel($id);
 		$arriendo = Arriendo::model()->findByPk($model->id_arriendo);
 		$model->totalpagado_pago=0;
-		$model->totalpagar_pago = $arriendo->valor_arriendo;
+	 $arriendo->valor_arriendo;
 		$model->activo_pago=1;
 		if($model->save())
 		{
@@ -120,8 +120,6 @@ class PagoController extends Controller
 			$model->attributes=$_POST['Pago'];
 			$model->fecha_pago=date('Y-m-d');
 			$model->mes_pago = date('m').'-'.date('Y');
-			$valor = intval(preg_replace('/[^0-9]+/', '', $model->totalpagar_pago),10);
-			$model->totalpagar_pago = $valor;
 			if ($model->totalpagado_pago==null) {
 				$model->totalpagado_pago=$valor;
 			}
@@ -152,7 +150,6 @@ class PagoController extends Controller
 		$model->mes_pago=$fecha;
 		if(Pago::model()->findByAttributes(array('mes_pago'=>$fecha, 'id_arriendo'=>$id))){
 			$model=Pago::model()->findByAttributes(array('mes_pago'=>$fecha, 'id_arriendo'=>$id));
-			$model->totalpagar_pago=$model->totalpagado_pago-$Arriendo->valor_arriendo;
 			$data = explode('-', $model->mes_pago);
 		}
 
@@ -196,14 +193,11 @@ class PagoController extends Controller
 		{
 			$model->attributes=$_POST['Pago'];
 			$model->fecha_pago=date('Y-m-d');
-			$valor = intval(preg_replace('/[^0-9]+/', '', $model->totalpagar_pago),10);
-			$model->totalpagar_pago = $valor;
 			if ($model->totalpagado_pago==null) {
 				$model->totalpagado_pago=$valor;
 			}else {
-				$model->totalpagado_pago=$model->totalpagado_pago+$model->totalpagar_pago;
+				$model->totalpagado_pago=$model->totalpagado_pago+$arriendo->valor_arriendo;
 			}
-			$model->totalpagar_pago=$arriendo->valor_arriendo-$model->totalpagado_pago;
 			if ($model->totalpagado_pago <= $arriendo->valor_arriendo) {
 				if($model->totalpagado_pago == $arriendo->valor_arriendo)
 					$model->activo_pago =0;

@@ -51,8 +51,8 @@
 				</div>
 				<div class="col-xs-12 col-md-3 col-lg-3">
 					<div class="form-group">
-						<?php echo $form->labelEx($model,'totalpagar_pago'); ?>
-						<?php echo $form->textField($model,'totalpagar_pago', array('class'=>'form-control')); ?>
+						<label for="Pago_totalpagar_pago" class="required">Total a pagar</label>
+						<input class="form-control" name="Pago[Pago_totalpagar_pago]" id="Pago_totalpagar_pago" type="text"  value="<?php echo CHtml::encode($arriendo->valor_arriendo);?>">
 					</div>
 				</div>
 				<div class="col-xs-12 col-md-3 col-lg-3">

@@ -9,14 +9,13 @@ class PropiedadForm extends CFormModel{
     public $terreno_propiedad;
     public $tipo_propiedad;
     public $servicio_propiedad;
-    public $estado_propiedad;
     public $descripcion_propiedad;
     public $comuna_propiedad;
 
     public function rules(){
         return array(
             array("id_propiedad","required"),
-            array('id_propiedad, rut_cliente, direccion_propiedad, habitacion_propiedad, bano_propiedad, terreno_propiedad, construido_propiedad, tipo_propiedad, servicio_propiedad, estado_propiedad, descripcion_propiedad, comuna_propiedad, valor_propiedad, amoblado_propiedad', 'safe', 'on'=>'search'),        );
+            array('id_propiedad, rut_cliente, direccion_propiedad, habitacion_propiedad, bano_propiedad, terreno_propiedad, construido_propiedad, tipo_propiedad, servicio_propiedad, descripcion_propiedad, comuna_propiedad, valor_propiedad, amoblado_propiedad', 'safe', 'on'=>'search'),        );
     }
 
     public function attributeLabels()
@@ -31,7 +30,6 @@ class PropiedadForm extends CFormModel{
             'construido_propiedad' => 'Terreno construido',
             'tipo_propiedad' => 'Tipo',
             'servicio_propiedad' => 'Servicio',
-            'estado_propiedad' => 'Estado',
             'descripcion_propiedad' => 'Breve descripción',
             'comuna_propiedad' => 'Comuna donde se ubica',
 
@@ -52,7 +50,6 @@ class PropiedadForm extends CFormModel{
   		$criteria->compare('construido_propiedad',$this->construido_propiedad,true);
   		$criteria->compare('tipo_propiedad',$this->tipo_propiedad,true);
   		$criteria->compare('servicio_propiedad',$this->servicio_propiedad,true);
-  		$criteria->compare('estado_propiedad',$this->estado_propiedad);
   		$criteria->compare('descripcion_propiedad',$this->descripcion_propiedad,true);
   		$criteria->compare('comuna_propiedad',$this->comuna_propiedad,true);
   		$criteria->compare('valor_propiedad',$this->valor_propiedad);

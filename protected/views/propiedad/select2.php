@@ -37,7 +37,7 @@
                   'servicio_propiedad',
                   array(
                     'header'=>'Estado',
-                    'name'=>'estado_propiedad',
+                    'name'=>'activo_propiedad',
                     'value' => '$data->activo_propiedad?Yii::t(\'app\',\'Disponible\'):Yii::t(\'app\', \'Ocupado\')',
                     'filter' => array('0' => Yii::t('app', 'Ocupado'), '1' => Yii::t('app', 'Disponible')),
                     'htmlOptions' => array('style' => "text-align:center;"),

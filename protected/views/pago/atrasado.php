@@ -49,7 +49,7 @@
                     'buttons'=>array(
                         'actualizar' => array(
                             'label'=>'<i class="fa fa-money"></i>',
-                            'url'=>'Yii::app()->createUrl("pago/fecha", array("id"=>$data->id_arriendo, "m"=>date("m"), a=>date("y")))',
+                            'url'=>'Yii::app()->createUrl("pago/listado", array("id"=>$data->id_arriendo))',
                         ),
                     ),
                   ),

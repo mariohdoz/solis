@@ -67,69 +67,80 @@ class SiteController extends Controller
 	}
 
 	public function actionTest(){
-		$arriendo = Arriendo::model()->findByPk(41);
-		Pago::model()->deleteAll('id_arriendo = '.$arriendo->id_arriendo.'');
-		$pago=new Pago();
-		$pago->id_arriendo=$arriendo->id_arriendo;
-		$pago->fecha_pago=date('Y-m-j');
-		$pago->totalpagar_pago=0;
-		$pago->totalpagado_pago=0;
-		$pago->mes=date('m');
-		$pago->ano=date('Y');
-		$data = explode('-', $arriendo->inicio_arriendo);
-		$pago->mes_pago=$data[1].'-'.$data[0];
-		$pago->save();
-		echo $arriendo->inicio_arriendo.' '.$arriendo->termino_arriendo.'<br>';
-		$inicio = new DateTime($arriendo->inicio_arriendo);
-		$fin = new DateTime($arriendo->termino_arriendo);
-		$meses = round(($fin->format('U') - $inicio->format('U')) / (30*60*60*24));
-		$fecha = date('Y-m-j');
-		$nuevafecha =$arriendo->inicio_arriendo;
-		$array[0]=$nuevafecha;
-		echo $nuevafecha.'<br>';
-		for ($i=0; $i < $meses ; $i++) {
-			$pago=new Pago();
-			$pago->id_arriendo=$arriendo->id_arriendo;
-			$pago->fecha_pago=date('Y-m-j');
-			$pago->totalpagar_pago=0;
-			$pago->totalpagado_pago=0;
-			$pago->mes=date('m');
-			$pago->ano=date('Y');
-			$nuevafecha = strtotime ( '+1 month' , strtotime ( $nuevafecha ) ) ;
-			$nuevafecha = date ( 'Y-m-j' , $nuevafecha );
-			$data = explode('-', $nuevafecha);
-			$array[$i+1]=$data[1].'-'.$data[0];
-			$pago->mes_pago=$data[1].'-'.$data[0];
-			//$pago->save();
-			echo $pago->id_pago.' ';
-			echo $nuevafecha.'<br>';
 
+		$model=new Arriendo;
+		$arrendatario=new Arrendatario('search');
+		$propiedad=new Propiedad('disponible');
+		$propiedad->unsetAttributes();  // clear any default values
+		if(isset($_GET['Propiedad']))
+			$propiedad->attributes=$_GET['Propiedad'];
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['Arriendo']))
+		{
+			$model->attributes=$_POST['Arriendo'];
+			$model->rut_admin = Yii::app()->session['admin_rut'];
+			$model->inscripcion_arriendo = date('Y-m-d');
+			$rut= str_replace('.','',$model->rut_arrendatario);
+			$model->rut_arrendatario = $rut;
+			if($model->id_propiedad != '' && $model->rut_arrendatario != ''){
+				if ($model->inicio_arriendo < $model->termino_arriendo ) {
+					$propiedad=Propiedad::model()->findByPk($model->id_propiedad);
+					$arrendatario=Arrendatario::model()->findByPk($model->rut_arrendatario);
+					$valor = intval(preg_replace('/[^0-9]+/', '', $model->valor_arriendo),10);
+					$model->valor_arriendo = $valor;
+					if($propiedad->activo_propiedad == 1){
+						$propiedad->activo_propiedad= 0;
+						if($model->save() && $propiedad->save())
+						{
+							$pago=new Pago();
+							$pago->id_arriendo=$model->id_arriendo;
+							$pago->fecha_pago=date('Y-m-j');
+							$pago->totalpagado_pago=0;
+							$pago->mes=date('m');
+							$pago->ano=date('Y');
+							$data = explode('-', $model->inicio_arriendo);
+							$pago->mes_pago=$data[1].'-'.$data[0];
+							$pago->save();
+							$inicio = new DateTime($model->inicio_arriendo);
+							$fin = new DateTime($model->termino_arriendo);
+							$meses = round(($fin->format('U') - $inicio->format('U')) / (30*60*60*24));
+							$nuevafecha =$model->inicio_arriendo;
+							$array[0]=$nuevafecha;
+							for ($i=0; $i < $meses ; $i++) {
+								$pago=new Pago();
+								$pago->id_arriendo=$model->id_arriendo;
+								$pago->fecha_pago=date('Y-m-j');
+								$pago->totalpagado_pago=0;
+								$pago->mes=date('m');
+								$pago->ano=date('Y');
+								$nuevafecha = strtotime ( '+1 month' , strtotime ( $nuevafecha ) ) ;
+								$nuevafecha = date ( 'Y-m-j' , $nuevafecha );
+								$data = explode('-', $nuevafecha);
+								$array[$i+1]=$data[1].'-'.$data[0];
+								$pago->mes_pago=$data[1].'-'.$data[0];
+								$pago->save();
+							}
+							Yii::app()->user->setFlash('success','El arriendo fue ingresado correctamente.');
+							$this->redirect(array('view','id'=>$model->id_arriendo));
+						}
+					}else {
+						Yii::app()->user->setFlash('error','La propiedad ya se encuentra con un servicio prestado.');
+					}
+				}else {
+					Yii::app()->user->setFlash('error','La fecha de inicio debe ser menor a la de termino.');
+				}
+			}else {
+				Yii::app()->user->setFlash('error','Debe seleccionar una propiedad y un arrendatario.');
+			}
 		}
+		$this->render('test',array(
+			'model'=>$propiedad,
+		));
 
-
-		$this->render('test', array('arriendo'=>$arriendo));
 	}
-
-	public function codigo($var)
-	{
-		$evaluate = strrev($var);
-		$multiply = 2;
-		$store = 0;
-		for ($i = 0; $i < strlen($evaluate); $i++) {
-			 $store += $evaluate[$i] * $multiply;
-			 $multiply++;
-			 if ($multiply > 7)
-					 $multiply = 2;
-		}
-		$result = 11 - ($store % 11);
-		if ($result == 10)
-			 $result = 'k';
-		if ($result == 11)
-			 $result = 0;
-		$rut = $var.'-'.$result;
-		return $rut;
-	}
-
 
 
 	public function actionBusqueda()
@@ -146,7 +157,7 @@ class SiteController extends Controller
 					$criteria         = new CDbCriteria;
 					$criteria->select = 't.*';
 					$criteria->join   = 'LEFT JOIN imagen im ON t.id_propiedad = im.id_propiedad';
-					$criteria->condition = 'estado_propiedad = TRUE AND activo_propiedad = TRUE AND tipo_propiedad="'.$model2->tipo_propiedad.'" AND comuna_propiedad="'.$model2->comuna_propiedad.'"';
+					$criteria->condition = 'eliminado_propiedad = false AND activo_propiedad = TRUE AND tipo_propiedad="'.$model2->tipo_propiedad.'" AND comuna_propiedad="'.$model2->comuna_propiedad.'"';
 					$criteria->group  = 't.id_propiedad';
 					$dataProvider     = new CActiveDataProvider('propiedad', array(
 						'criteria' => $criteria,
@@ -158,7 +169,7 @@ class SiteController extends Controller
 					$criteria         = new CDbCriteria;
 					$criteria->select = 't.*';
 					$criteria->join   = 'LEFT JOIN imagen im ON t.id_propiedad = im.id_propiedad';
-					$criteria->condition = 'estado_propiedad = TRUE AND activo_propiedad = TRUE AND comuna_propiedad="'.$model2->comuna_propiedad.'"';
+					$criteria->condition = 'eliminado_propiedad = false AND activo_propiedad = TRUE AND comuna_propiedad="'.$model2->comuna_propiedad.'"';
 					$criteria->group  = 't.id_propiedad';
 					$dataProvider     = new CActiveDataProvider('propiedad', array(
 						'criteria' => $criteria,
@@ -171,7 +182,7 @@ class SiteController extends Controller
 			if($model2->tipo_propiedad != 'Todas'){
 				$criteria = new CDbCriteria;
 				$criteria->select = 't.*';
-				$criteria->condition = 'comuna_propiedad="'.$model2->comuna_propiedad.'" AND tipo_propiedad="'.$model2->tipo_propiedad.'" AND servicio_propiedad="'. $model2->servicio_propiedad.'" AND estado_propiedad = TRUE AND activo_propiedad = TRUE';
+				$criteria->condition = 'comuna_propiedad="'.$model2->comuna_propiedad.'" AND tipo_propiedad="'.$model2->tipo_propiedad.'" AND servicio_propiedad="'. $model2->servicio_propiedad.'" AND eliminado_propiedad = false AND activo_propiedad = TRUE';
 				$dataProvider = new CActiveDataProvider('Propiedad', array(
 					'criteria' => $criteria,
 					'pagination' => array(
@@ -181,7 +192,7 @@ class SiteController extends Controller
 			}else{
 				$criteria = new CDbCriteria;
 				$criteria->select = 't.*';
-				$criteria->condition = 'comuna_propiedad="'.$model2->comuna_propiedad.'" AND servicio_propiedad="'. $model2->servicio_propiedad.'" AND estado_propiedad = TRUE AND activo_propiedad = TRUE';
+				$criteria->condition = 'comuna_propiedad="'.$model2->comuna_propiedad.'" AND servicio_propiedad="'. $model2->servicio_propiedad.'" AND eliminado_propiedad = false AND activo_propiedad = TRUE';
 				$dataProvider = new CActiveDataProvider('Propiedad', array(
 					'criteria' => $criteria,
 					'pagination' => array(

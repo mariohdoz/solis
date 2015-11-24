@@ -61,10 +61,6 @@
 		<?php echo $form->textField($model,'servicio_propiedad',array('size'=>10,'maxlength'=>10)); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'estado_propiedad'); ?>
-		<?php echo $form->textField($model,'estado_propiedad'); ?>
-	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'descripcion_propiedad'); ?>

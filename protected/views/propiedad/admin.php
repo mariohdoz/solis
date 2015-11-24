@@ -29,7 +29,6 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'construido_propiedad',
 		'tipo_propiedad',
 		'servicio_propiedad',
-		'estado_propiedad',
 		'descripcion_propiedad',
 		'comuna_propiedad',
 		'amoblado_propiedad',

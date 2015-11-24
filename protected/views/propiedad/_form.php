@@ -73,11 +73,6 @@
 		<?php echo $form->error($model,'servicio_propiedad'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'estado_propiedad'); ?>
-		<?php echo $form->textField($model,'estado_propiedad'); ?>
-		<?php echo $form->error($model,'estado_propiedad'); ?>
-	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'descripcion_propiedad'); ?>

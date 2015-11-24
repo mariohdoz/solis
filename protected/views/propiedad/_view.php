@@ -46,10 +46,6 @@
 	<?php echo CHtml::encode($data->servicio_propiedad); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('estado_propiedad')); ?>:</b>
-	<?php echo CHtml::encode($data->estado_propiedad); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('descripcion_propiedad')); ?>:</b>
 	<?php echo CHtml::encode($data->descripcion_propiedad); ?>
 	<br />

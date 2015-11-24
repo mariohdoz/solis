@@ -363,7 +363,7 @@ $this->menu=array(
 							</div>
 						</div>
 						<div class="box-footer">
-							<?php echo CHtml::submitButton('Registrar propiedad', array('class'=>'btn btn-primary')); ?>
+							<?php echo CHtml::submitButton('Actualizar propiedad', array('class'=>'btn btn-primary')); ?>
 						</div>
 					</div>
 				</div>

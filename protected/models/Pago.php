@@ -8,7 +8,6 @@
  * @property integer $id_arriendo
  * @property string $fecha_pago
  * @property string $mes_pago
- * @property integer $totalpagar_pago
  * @property integer $totalpagado_pago
  * @property integer $activo_pago
  */
@@ -30,12 +29,12 @@ class Pago extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('fecha_pago, mes_pago, totalpagar_pago, totalpagado_pago', 'required'),
-			array('id_arriendo, totalpagar_pago, totalpagado_pago, activo_pago', 'numerical', 'integerOnly'=>true),
+			array('fecha_pago, mes_pago, totalpagado_pago', 'required'),
+			array('id_arriendo, totalpagado_pago, activo_pago', 'numerical', 'integerOnly'=>true),
 			array('mes_pago', 'length', 'max'=>7),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_pago, id_arriendo, fecha_pago, mes_pago, totalpagar_pago, totalpagado_pago, activo_pago', 'safe', 'on'=>'search'),
+			array('id_pago, id_arriendo, fecha_pago, mes_pago, totalpagado_pago, activo_pago', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -61,7 +60,6 @@ class Pago extends CActiveRecord
 			'id_arriendo' => 'Id Arriendo',
 			'fecha_pago' => 'Fecha Pago',
 			'mes_pago' => 'Mes de pago',
-			'totalpagar_pago' => 'Total a pagar',
 			'totalpagado_pago' => 'Total pagado',
 			'activo_pago' => 'Pago concluido',
 
@@ -90,7 +88,6 @@ class Pago extends CActiveRecord
 		$criteria->compare('id_arriendo',$this->id_arriendo);
 		$criteria->compare('fecha_pago',$this->fecha_pago,true);
 		$criteria->compare('mes_pago',$this->mes_pago,true);
-		$criteria->compare('totalpagar_pago',$this->totalpagar_pago);
 		$criteria->compare('totalpagado_pago',$this->totalpagado_pago);
 		$criteria->compare('activo_pago',$this->activo_pago);
 

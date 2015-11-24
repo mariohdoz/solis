@@ -61,7 +61,7 @@ class Arriendo extends CActiveRecord
 	{
 		return array(
 			'id_arriendo' => 'Id Arriendo',
-			'id_propiedad' => 'Número de ficha',
+			'id_propiedad' => 'N° propiedad',
 			'rut_admin' => 'Rut Admin',
 			'rut_arrendatario' => 'RUT del arrendatario',
 			'inscripcion_arriendo' => 'Inscripcion Arriendo',

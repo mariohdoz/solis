@@ -54,20 +54,22 @@ $this->menu=array(
 									'ganancia_venta',
 									*/
 									array(
+                    'header'=>'Actualizar',
                     'class'=>'CButtonColumn',
+                    'template'=>'{buscar}  {actualizar}  {eliminar}',
                     'buttons'=>array(
-                      'modificar' => array(
-                          'label'=>'<i class="fa fa-trash-o "></i>',
-                          'url'=>'Yii::app()->createUrl("venta/eliminar", array("id"=>$data->id_venta))',
-                      ),
-											'modificar' => array(
-													'label'=>'<i class="fa fa-pencil-square-o"></i>',
-													'url'=>'Yii::app()->createUrl("venta/update", array("id"=>$data->id_venta))',
+											'eliminar' => array(
+													'label'=>'<i class="fa fa-trash-o"></i>',
+													'url'=>'Yii::app()->createUrl("venta/eliminar", array("id"=>$data->id_venta))',
 											),
-											'ver' => array(
-                          'label'=>'<i class="fa fa-eye "></i>',
-                          'url'=>'Yii::app()->createUrl("venta/view", array("id"=>$data->id_venta))',
+                      'actualizar' => array(
+                          'label'=>'<i class="fa fa-pencil-square-o"></i>',
+                          'url'=>'Yii::app()->createUrl("venta/update", array("id"=>$data->id_venta))',
                       ),
+											'buscar' => array(
+													'label'=>'<i class="fa fa-eye"></i>',
+													'url'=>'Yii::app()->createUrl("venta/view", array("id"=>$data->id_venta))',
+											),
                     ),
                   ),
 								),
