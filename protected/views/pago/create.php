@@ -97,7 +97,6 @@
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/i18n/jquery.formatCurrency.es-CL.js" type="text/javascript"></script>
 <script>
  $(document).ready(function() {
-   $('#cambiar_fecha').attr("href", "<?php echo Yii::app()->request->baseUrl; ?>/pago/fecha/<?php echo $arriendo->id_arriendo?>.html?m="+$('#Pago_mes').val()+'&a='+$('#Pago_ano').val());
    if ($('#Pago_totalpagado_pago').val()=='') {
      $('#Pago_totalpagado_pago').val('0');
    }
@@ -134,12 +133,6 @@
     a = $('#Arriendo_termino_arriendo').val();
     b = a.split("-").reverse().join("/");
     $('#Arriendo_termino_arriendo').val(b);
-  });
-  $('#Pago_mes').change(function(){
-    $('#cambiar_fecha').attr("href", "<?php echo Yii::app()->request->baseUrl; ?>/pago/fecha/<?php echo $arriendo->id_arriendo?>.html?m="+$('#Pago_mes').val()+'&a='+$('#Pago_ano').val());
-  });
-  $('#Pago_ano').change(function(){
-    $('#cambiar_fecha').attr("href", "<?php echo Yii::app()->request->baseUrl; ?>/pago/fecha/<?php echo $arriendo->id_arriendo?>.html?m="+$('#Pago_mes').val()+'&a='+$('#Pago_ano').val());
   });
   $('#Pago_totalpagado_pago').blur(function(){
     valor();

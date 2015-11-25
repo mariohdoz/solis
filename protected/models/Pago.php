@@ -20,6 +20,7 @@ class Pago extends CActiveRecord
 	{
 		return 'pago';
 	}
+	public $totalpagar_pago;
 
 	/**
 	 * @return array validation rules for model attributes.
@@ -30,7 +31,7 @@ class Pago extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('fecha_pago, mes_pago, totalpagado_pago', 'required'),
-			array('id_arriendo, totalpagado_pago, activo_pago', 'numerical', 'integerOnly'=>true),
+			array('id_arriendo, totalpagado_pago, activo_pago, totalpagar_pago', 'numerical', 'integerOnly'=>true),
 			array('mes_pago', 'length', 'max'=>7),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -62,7 +63,7 @@ class Pago extends CActiveRecord
 			'mes_pago' => 'Mes de pago',
 			'totalpagado_pago' => 'Total pagado',
 			'activo_pago' => 'Pago concluido',
-
+			'totalpagar_pago'=>'Total a pagar',
 		);
 	}
 

@@ -29,41 +29,48 @@
           </div>
 					<div class="form">
 						<div class="box-body">
-              <?php
-              $this->widget('zii.widgets.grid.CGridView', array(
-                'id'=>'arriendo-grid',
-                'itemsCssClass' => 'table table-hover',
-                'htmlOptions' => array('class' => 'table-responsive'),
-                'dataProvider'=>$model->search(),
-                'selectableRows'=>1,
-                //'selectionChanged'=>'function(id){ location.href = "'.$this->createUrl('arriendo/test').'/"+$.fn.yiiGridView.getSelection(id);}',	// via 1: para mostrar detalles al seleccionar
-                'filter'=>$model,
-                'columns'=>array(
-                  'id_arriendo',
+              <?php $this->widget('zii.widgets.grid.CGridView', array(
+								'id'=>'arriendo-grid',
+								'itemsCssClass' => 'table table-hover',
+								'htmlOptions' => array('class' => 'table-responsive'),
+								'dataProvider'=>$model->historico(),
+								'filter'=>$model,
+								'columns'=>array(
 									'id_propiedad',
 									'rut_arrendatario',
 									'fechapago_arriendo',
-									/*
-									'inscripcion_arriendo',
-									'rut_admin',
 									'inicio_arriendo',
 									'termino_arriendo',
+									array(
+	                  'header'=>'Valor de arriendo',
+										'htmlOptions'=>array('width'=>'10'),
+	                  'name'=>'valor_arriendo',
+	                  'value'=>'Yii::app()->numberFormatter->format("¤#,##0", $data->valor_arriendo, "$ ")',
+                  ),
+									array(
+										'header'=>'Estado',
+										'name'=>'activo_arriendo',
+										'value' => '$data->activo_arriendo?Yii::t(\'app\',\'Activo\'):Yii::t(\'app\', \'Terminado\')',
+										'filter' => array('0' => Yii::t('app', 'Terminado'), '1' => Yii::t('app', 'Activo')),
+										'htmlOptions' => array('style' => "text-align:center;"),
+									 ),									/*
+									'inscripcion_arriendo',
+									'rut_admin',
 									'valor_arriendo',
 									*/
-                  array(
-                    'header'=>'Eliminar',
+									array(
+                    'header'=>'Actualizar',
                     'class'=>'CButtonColumn',
-                    'template'=>'{Eliminar}',
+                    'template'=>'{eliminar}',
                     'buttons'=>array(
-                        'Eliminar' => array(
-                            'label'=>'<i class="fa fa-trash-o"></i>',
-                            'url'=>'Yii::app()->createUrl("arriendo/eliminar", array("id"=>$data->id_arriendo))',
-                        ),
+											'eliminar' => array(
+													'label'=>'<i class="fa fa-trash-o"></i>',
+													'url'=>'Yii::app()->createUrl("arriendo/eliminar", array("id"=>$data->id_arriendo))',
+											),
                     ),
                   ),
-                ),
-              ));
-               ?>
+								),
+							)); ?>
 						</div>
 						<div class="box-footer">
 						</div>

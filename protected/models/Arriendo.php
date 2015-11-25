@@ -39,6 +39,10 @@ class Arriendo extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_arriendo, id_propiedad, rut_admin, rut_arrendatario, inscripcion_arriendo, fechapago_arriendo, inicio_arriendo, termino_arriendo, valor_arriendo, activo_arriendo', 'safe', 'on'=>'search'),
+			array('id_arriendo, id_propiedad, rut_admin, rut_arrendatario, inscripcion_arriendo, fechapago_arriendo, inicio_arriendo, termino_arriendo, valor_arriendo, activo_arriendo', 'safe', 'on'=>'search2'),
+			array('id_arriendo, id_propiedad, rut_admin, rut_arrendatario, inscripcion_arriendo, fechapago_arriendo, inicio_arriendo, termino_arriendo, valor_arriendo, activo_arriendo', 'safe', 'on'=>'historico'),
+			array('id_arriendo, id_propiedad, rut_admin, rut_arrendatario, inscripcion_arriendo, fechapago_arriendo, inicio_arriendo, termino_arriendo, valor_arriendo, activo_arriendo', 'safe', 'on'=>'busqueda'),
+			array('id_arriendo, id_propiedad, rut_admin, rut_arrendatario, inscripcion_arriendo, fechapago_arriendo, inicio_arriendo, termino_arriendo, valor_arriendo, activo_arriendo', 'safe', 'on'=>'atrasado'),
 		);
 	}
 
@@ -188,6 +192,28 @@ class Arriendo extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	public function historico()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('id_arriendo',$this->id_arriendo);
+		$criteria->compare('id_propiedad',$this->id_propiedad);
+		$criteria->compare('rut_admin',$this->rut_admin,true);
+		$criteria->compare('rut_arrendatario',$this->rut_arrendatario,true);
+		$criteria->compare('inscripcion_arriendo',$this->inscripcion_arriendo,true);
+		$criteria->compare('fechapago_arriendo',$this->fechapago_arriendo);
+		$criteria->compare('inicio_arriendo',$this->inicio_arriendo,true);
+		$criteria->compare('termino_arriendo',$this->termino_arriendo,true);
+		$criteria->compare('valor_arriendo',$this->valor_arriendo);
+		$criteria->compare('activo_arriendo',$this->activo_arriendo);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!

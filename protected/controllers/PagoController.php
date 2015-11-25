@@ -79,13 +79,14 @@ class PagoController extends Controller
 		$model=$this->loadModel($id);
 		$arriendo = Arriendo::model()->findByPk($model->id_arriendo);
 		$model->totalpagado_pago=0;
-	 $arriendo->valor_arriendo;
+	 	$arriendo->valor_arriendo;
 		$model->activo_pago=1;
 		if($model->save())
 		{
 			Yii::app()->user->setFlash('success','El pago fue modificado.');
 			$this->redirect(array('view','id'=>$arriendo->id_arriendo));
 		}else {
+			var_dump($model->getErrors());
 			Yii::app()->user->setFlash('error','El pago no pudo ser modificado.');
 			$this->redirect(array('view','id'=>$arriendo->id_arriendo));
 		}
@@ -193,25 +194,28 @@ class PagoController extends Controller
 		{
 			$model->attributes=$_POST['Pago'];
 			$model->fecha_pago=date('Y-m-d');
-			if ($model->totalpagado_pago==null) {
-				$model->totalpagado_pago=$valor;
-			}else {
-				$model->totalpagado_pago=$model->totalpagado_pago+$arriendo->valor_arriendo;
-			}
 			if ($model->totalpagado_pago <= $arriendo->valor_arriendo) {
-				if($model->totalpagado_pago == $arriendo->valor_arriendo)
+				$var = intval(preg_replace('/[^0-9]+/', '', $model->totalpagar_pago), 10);
+				$model->totalpagar_pago=$var;
+				$model->totalpagado_pago=$model->totalpagar_pago+$model->totalpagado_pago;
+				if($model->totalpagado_pago == $arriendo->valor_arriendo){
 					$model->activo_pago =0;
+				}
 				if($model->save())
 				{
 					Yii::app()->user->setFlash('success','El pago fue realizado.');
 					$this->redirect(array('view','id'=>$arriendo->id_arriendo));
 				}else {
+					var_dump($model->getErrors());
+
 					Yii::app()->user->setFlash('error','El pago no pudo ser realizado.');
-					$this->redirect(array('fecha','id'=>$model->id_arriendo));
+					$this->redirect(array('view','id'=>$model->id_arriendo));
 				}
 			}else {
+				var_dump($model->getErrors());
+
 				Yii::app()->user->setFlash('error','El pago del arriendo supera la deuda.');
-				$this->redirect(array('fecha','id'=>$model->id_arriendo));
+				$this->redirect(array('view','id'=>$model->id_arriendo));
 			}
 		}
 

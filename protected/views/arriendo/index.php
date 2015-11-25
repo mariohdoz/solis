@@ -15,7 +15,7 @@ $this->menu=array(
 	<section class="content-header">
 		<h1>
 	    Listado de arriendos
-	    <small>Vista de los listados de los arriendo.</small>
+	    <small>Vista de los listados de los arriendo historico.</small>
 	  </h1>
 	  <ol class="breadcrumb">
 	    <li><a href="?r=intra/index">
@@ -54,18 +54,29 @@ $this->menu=array(
 								'id'=>'arriendo-grid',
 								'itemsCssClass' => 'table table-hover',
 								'htmlOptions' => array('class' => 'table-responsive'),
-								'dataProvider'=>$model->search(),
+								'dataProvider'=>$model->historico(),
 								'filter'=>$model,
 								'columns'=>array(
-									'id_arriendo',
 									'id_propiedad',
 									'rut_arrendatario',
 									'fechapago_arriendo',
-									/*
-									'inscripcion_arriendo',
-									'rut_admin',
 									'inicio_arriendo',
 									'termino_arriendo',
+									array(
+	                  'header'=>'Valor de arriendo',
+										'htmlOptions'=>array('width'=>'10'),
+	                  'name'=>'valor_arriendo',
+	                  'value'=>'Yii::app()->numberFormatter->format("¤#,##0", $data->valor_arriendo, "$ ")',
+                  ),
+									array(
+										'header'=>'Estado',
+										'name'=>'activo_arriendo',
+										'value' => '$data->activo_arriendo?Yii::t(\'app\',\'Activo\'):Yii::t(\'app\', \'Terminado\')',
+										'filter' => array('0' => Yii::t('app', 'Terminado'), '1' => Yii::t('app', 'Activo')),
+										'htmlOptions' => array('style' => "text-align:center;"),
+									 ),									/*
+									'inscripcion_arriendo',
+									'rut_admin',
 									'valor_arriendo',
 									*/
 									array(

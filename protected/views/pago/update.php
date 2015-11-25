@@ -95,7 +95,6 @@
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/i18n/jquery.formatCurrency.es-CL.js" type="text/javascript"></script>
 <script>
 $(document).ready(function() {
-$('#cambiar_fecha').attr("href", "<?php echo Yii::app()->request->baseUrl; ?>/pago/fecha/<?php echo $arriendo->id_arriendo?>.html?m="+$('#Pago_mes').val()+'&a='+$('#Pago_ano').val());
 if ($('#Pago_totalpagado_pago').val()=='') {
 $('#Pago_totalpagado_pago').val('0');
 }
@@ -110,8 +109,6 @@ a=parseInt(a.replace(".",""));
 var b = $('#Arriendo_valor_arriendo').val();
 b=b.replace(/[^\d]/, '');
 b=parseInt(b.replace(".",""));
-
-
 $('#end').val(b-a);
 $('#end').formatCurrency({region: 'es-CL'
 , roundToDecimalPlace: -1});
@@ -133,12 +130,6 @@ a = $('#Arriendo_termino_arriendo').val();
 b = a.split("-").reverse().join("/");
 $('#Arriendo_termino_arriendo').val(b);
 });
-$('#Pago_mes').change(function(){
-$('#cambiar_fecha').attr("href", "<?php echo Yii::app()->request->baseUrl; ?>/pago/fecha/<?php echo $arriendo->id_arriendo?>.html?m="+$('#Pago_mes').val()+'&a='+$('#Pago_ano').val());
-});
-$('#Pago_ano').change(function(){
-$('#cambiar_fecha').attr("href", "<?php echo Yii::app()->request->baseUrl; ?>/pago/fecha/<?php echo $arriendo->id_arriendo?>.html?m="+$('#Pago_mes').val()+'&a='+$('#Pago_ano').val());
-});
 $('#Pago_totalpagado_pago').blur(function(){
 valor();
 });
@@ -151,7 +142,14 @@ $("#Pago_totalpagar_pago").val('');
 $("#Pago_totalpagar_pago").keyup(function () {
 if (isNaN($("#Pago_totalpagar_pago").val())) {
 alert('Porfavor ingresar solamente números');
+$("#Pago_totalpagar_pago").val('');
+}else{
+  valo();
 }
+});
+$("#Pago_totalpagar_pago").blur(function(){
+  $("#Pago_totalpagar_pago").formatCurrency({region: 'es-CL'
+  , roundToDecimalPlace: -1});
 });
 function valor(){
 if ($('#Pago_totalpagado_pago').val()!='' && $('#Pago_totalpagar_pago').val()!='') {
@@ -199,5 +197,52 @@ $('#Pago_totalpagar_pago').val(0);
 $('#Pago_totalpagar_pago').formatCurrency({region: 'es-CL'
 , roundToDecimalPlace: -1});
 }
+}
+function valo(){
+  if ($('#Pago_totalpagado_pago').val()!='' && $('#Pago_totalpagar_pago').val()!='') {
+  var a = $('#Pago_totalpagado_pago').val();
+  var b = $('#Pago_totalpagar_pago').val();
+  var c = $('#Arriendo_valor_arriendo').val();
+  a=a.replace(/[^\d]/, '');
+  b=b.replace(/[^\d]/, '');
+  c=c.replace(/[^\d]/, '');
+  a=parseInt(a.replace(".",""));
+  b=parseInt(b.replace(".",""));
+  c=parseInt(c.replace(".",""));
+  if (a+b<=c) {
+  $('#fin').val(a+b);
+  $('#fin').formatCurrency({region: 'es-CL'
+  , roundToDecimalPlace: -1});
+  var d = c-(a+b);
+  $('#end').val(d);
+  $('#end').formatCurrency({region: 'es-CL'
+  , roundToDecimalPlace: -1});
+  }else if ($('#Pago_totalpagado_pago').val()=='') {
+  $('#fin').val($('#Pago_totalpagar_pago').val());
+  $('#fin').formatCurrency({region: 'es-CL'
+  , roundToDecimalPlace: -1});
+  }else if($('#Pago_totalpagar_pago').val()==''){
+  $('#fin').val($('#Pago_totalpagado_pago').val());
+  $('#fin').formatCurrency({region: 'es-CL'
+  , roundToDecimalPlace: -1});
+  }
+  $('#Pago_totalpagado_pago').formatCurrency({region: 'es-CL'
+  , roundToDecimalPlace: -1});
+
+  if (a+b>c) {
+  b=c-a;
+  $('#fin').val(b);
+  $('#fin').formatCurrency({region: 'es-CL'
+  , roundToDecimalPlace: -1});
+  alert('El monto a pagar de '+$('#Pago_totalpagar_pago').val()+' es mayor que la deuda actual de '+$('#fin').val());
+  $('#fin').val(0);
+  $('#fin').formatCurrency({region: 'es-CL'
+  , roundToDecimalPlace: -1});
+  $('#Pago_totalpagar_pago').val(0);
+  $('#Pago_totalpagar_pago').formatCurrency({region: 'es-CL'
+  , roundToDecimalPlace: -1});
+  }
+}
+
 }
 </script>

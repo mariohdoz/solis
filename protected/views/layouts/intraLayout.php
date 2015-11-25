@@ -88,7 +88,9 @@ if(!Yii::app()->session['activo'])
                   </li>
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="<?php echo Yii::app()->createUrl('perfil/index/',array('id'=>$nombre=Yii::app()->session['admin_rut'])); ?>" class="btn btn-default btn-flat">Configuración</a>
+                      <?php
+                      $data = explode('-', Yii::app()->session['admin_rut']);
+                       echo CHtml::link('Configuración', array('/perfil/index/', 'id'=>$data[0]), array('class'=>"btn btn-default btn-flat")); ?>
                     </div>
                     <div class="pull-right">
                       <?php echo CHtml::link('Cerrar sesión', array('Site/logout'),array('class'=>'btn btn-default btn-flat', 'confirm' => '¿Está seguro  de cerrar la sesión?')); ?>

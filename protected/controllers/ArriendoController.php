@@ -335,7 +335,7 @@ class ArriendoController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$model=new Arriendo('search');
+		$model=new Arriendo('historico');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Arriendo']))
 			$model->attributes=$_GET['Arriendo'];

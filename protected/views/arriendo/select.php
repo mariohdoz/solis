@@ -29,46 +29,50 @@
           </div>
 					<div class="form">
 						<div class="box-body">
-              <?php
-              $this->widget('zii.widgets.grid.CGridView', array(
-                'id'=>'arriendo-grid',
-                'itemsCssClass' => 'table table-hover',
-                'htmlOptions' => array('class' => 'table-responsive'),
-                'dataProvider'=>$model->search(),
-                'selectableRows'=>1,
-                //'selectionChanged'=>'function(id){ location.href = "'.$this->createUrl('arriendo/test').'/"+$.fn.yiiGridView.getSelection(id);}',	// via 1: para mostrar detalles al seleccionar
-                'filter'=>$model,
-                'columns'=>array(
-                  'id_propiedad',
-                  'rut_arrendatario',
-                  'fechapago_arriendo',
-                  'valor_arriendo',
-                  /*
-                  'inicio_arriendo',
-                  'termino_arriendo',
-                  'valor_arriendo',
-                  'rut_admin',
-                  */
-                  array(
+              <?php $this->widget('zii.widgets.grid.CGridView', array(
+								'id'=>'arriendo-grid',
+								'itemsCssClass' => 'table table-hover',
+								'htmlOptions' => array('class' => 'table-responsive'),
+								'dataProvider'=>$model->historico(),
+								'filter'=>$model,
+								'columns'=>array(
+									'id_propiedad',
+									'rut_arrendatario',
+									'fechapago_arriendo',
+									'inicio_arriendo',
+									'termino_arriendo',
+									array(
+	                  'header'=>'Valor de arriendo',
+										'htmlOptions'=>array('width'=>'10'),
+	                  'name'=>'valor_arriendo',
+	                  'value'=>'Yii::app()->numberFormatter->format("¤#,##0", $data->valor_arriendo, "$ ")',
+                  ),
+									array(
+										'header'=>'Estado',
+										'name'=>'activo_arriendo',
+										'value' => '$data->activo_arriendo?Yii::t(\'app\',\'Activo\'):Yii::t(\'app\', \'Terminado\')',
+										'filter' => array('0' => Yii::t('app', 'Terminado'), '1' => Yii::t('app', 'Activo')),
+										'htmlOptions' => array('style' => "text-align:center;"),
+									 ),									/*
+									'inscripcion_arriendo',
+									'rut_admin',
+									'valor_arriendo',
+									*/
+									array(
+                    'header'=>'Actualizar',
                     'class'=>'CButtonColumn',
+                    'template'=>'{actualizar}',
                     'buttons'=>array(
-                      'modificar' => array(
-                          'label'=>'<i class="fa fa-trash-o "></i>',
-                          'url'=>'Yii::app()->createUrl("arriendo/eliminar", array("id"=>$data->id_arriendo))',
+											
+                      'actualizar' => array(
+                          'label'=>'<i class="fa fa-pencil-square-o"></i>',
+                          'url'=>'Yii::app()->createUrl("arriendo/update", array("id"=>$data->id_arriendo))',
                       ),
-											'modificar' => array(
-													'label'=>'<i class="fa fa-pencil-square-o"></i>',
-													'url'=>'Yii::app()->createUrl("arriendo/update", array("id"=>$data->id_arriendo))',
-											),
-											'ver' => array(
-                          'label'=>'<i class="fa fa-eye "></i>',
-                          'url'=>'Yii::app()->createUrl("arriendo/view", array("id"=>$data->id_arriendo))',
-                      ),
+
                     ),
                   ),
-                ),
-              ));
-               ?>
+								),
+							)); ?>
 						</div>
 						<div class="box-footer">
 						</div>

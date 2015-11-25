@@ -7,3 +7,9 @@ Enviar correos al cliente al vender o arrendar propiedad.
 Historial de arriendo
 
 Agregar ganancia del arriendo en base a la comsión por parte de la administración
+
+
+
+Jano: CRUD de administrador el cual debe permitir modificar el perfil del usuario.
+      Reportes de ganancias generadas en el mes (Arriendo y ventas).
+      arreglar inicio de sesión para que funcionarios puedan ingresar y ser derivados a otro layout para que tengan acceso solo a los contoller y action permitidos.

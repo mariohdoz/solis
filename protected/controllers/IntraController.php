@@ -38,13 +38,13 @@ class IntraController extends CController{
 	{
 		$model = new Administrador();
 		$model = Administrador::model()->findByPk($id);
-		$this->layout ='//layouts/intraLayout';
 		$this->render('/../perfil/index', array('model'=>$model));
 	}
 
 
   public function actionIndex(){
-
+    $rut=Yii::app()->session['admin_rut'];
+    $model=Administrador::model()->findByPk($rut);
     if(Yii::app()->session['activo']) {
       $proximo=Arriendo::model()->findAllByAttributes(array('activo_arriendo'=>1),
        'inicio_arriendo<CURDATE()
@@ -75,10 +75,4 @@ class IntraController extends CController{
     }
 
 
-  public function actionNuevo(){
-    $this->render('plantilla');
-  }
-
 }
-
-

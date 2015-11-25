@@ -8,13 +8,49 @@
 
 Class PerfilController extends Controller
 {
-    public function actionIndex(){
-        $model=new Administrador('search');
-        $this->layout='//layouts/intraLayout';
-        $model->unsetAttributes();
-        if(isset($_GET['Administrador']))
-            $model->attributes=$_GET['Administrador'];
 
+  public function accessRules()
+  {
+      return array(
+          array('allow',  // allow all users to perform 'index' and 'view' actions
+              'actions'=>array(),
+              'users'=>array('*'),
+          ),
+          array('allow', // allow authenticated user to perform 'create' and 'update' actions
+              'actions'=>array('create','update','index','view','obtener','obtenerpro', 'select'),
+              'users'=>array('@'),
+          ),
+          array('allow', // allow admin user to perform 'admin' and 'delete' actions
+              'actions'=>array('admin','delete'),
+              'users'=>array('admin'),
+          ),
+          array('deny',  // deny all users
+              'users'=>array('*'),
+          ),
+      );
+  }
+  public function codigo($var)
+	{
+		$evaluate = strrev($var);
+		$multiply = 2;
+		$store = 0;
+		for ($i = 0; $i < strlen($evaluate); $i++) {
+			 $store += $evaluate[$i] * $multiply;
+			 $multiply++;
+			 if ($multiply > 7)
+					 $multiply = 2;
+		}
+		$result = 11 - ($store % 11);
+		if ($result == 10)
+			 $result = 'k';
+		if ($result == 11)
+			 $result = 0;
+		$rut = $var.'-'.$result;
+		return $rut;
+	}
+    public function actionIndex($id){
+      $rut = $this->codigo($id);
+      $admin = Administrador::model()->findByPk($rut);  
         $this->render("index",array("model"=>$model));
 
     }
@@ -35,26 +71,7 @@ Class PerfilController extends Controller
         return $model;
     }
 
-    public function accessRules()
-    {
-        return array(
-            array('allow',  // allow all users to perform 'index' and 'view' actions
-                'actions'=>array(),
-                'users'=>array('*'),
-            ),
-            array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions'=>array('create','update','index','view','obtener','obtenerpro', 'select'),
-                'users'=>array('@'),
-            ),
-            array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions'=>array('admin','delete'),
-                'users'=>array('admin'),
-            ),
-            array('deny',  // deny all users
-                'users'=>array('*'),
-            ),
-        );
-    }
+
 
     public function actionAdmin($id)
     {
@@ -95,4 +112,3 @@ Class PerfilController extends Controller
     }
 
 }
-
