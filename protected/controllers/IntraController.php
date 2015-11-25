@@ -4,6 +4,7 @@ class IntraController extends CController{
 
   public $layout='//layouts/intraLayout';
 
+
   public function filters()
 	{
 		return array(
@@ -32,6 +33,15 @@ class IntraController extends CController{
 			),
 		);
 	}
+
+	public function actionConfig($id)
+	{
+		$model = new Administrador();
+		$model = Administrador::model()->findByPk($id);
+		$this->layout ='//layouts/intraLayout';
+		$this->render('/../perfil/index', array('model'=>$model));
+	}
+
 
   public function actionIndex(){
 
@@ -64,8 +74,11 @@ class IntraController extends CController{
       {$this->redirect(Yii::app()->request->baseUrl.'/site/index');;}
     }
 
+
   public function actionNuevo(){
     $this->render('plantilla');
   }
 
 }
+
+

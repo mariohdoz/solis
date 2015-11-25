@@ -4212,3 +4212,13 @@ table.text-center th {
     white-space: normal!important;
   }
 }
+@media screen and (max-width: 800px) {
+
+  .imagen {
+
+    overflow: hidden;
+    width: 2000px;
+    height: 200px;
+
+  }
+}

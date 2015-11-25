@@ -49,15 +49,16 @@ h1{
     vertical-align: middle;
     border: 1px solid #000000;
     border-width: 1px 1px 1px 1px;
-    text-align: left;
+
     padding: 5px;
     font-size: 12px;
     font-family: Trebuchet MS;
 }
 .titulotabla{
     font-weight: bold;
-    background: #ff5722;
-    color: #FFFFFF;
+    background: #f2f2f2;
+    color: #2d2d2d;
+    text-align: center;
 }
 .datos{
     margin-top: 50px;

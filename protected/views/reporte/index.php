@@ -21,7 +21,7 @@
         )); ?>
         <div class="row">
             <div class="col-md-12">
-                <div class="box box-solid box-default">
+                <div class="box box-default">
                     <div class="box-header with-border">
                         <h3 class="box-title"></h3>
                         <div class="box-tools pull-right">
@@ -33,6 +33,7 @@
                     <div class="box-body">
                         <?php $this->widget('zii.widgets.grid.CGridView', array(
                             'id'=>'propiedad-grid',
+                            'pager' => array('cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css'),
                             'dataProvider'=>$model->search(),
                             'filter'=>$model,
                             'columns'=>array(

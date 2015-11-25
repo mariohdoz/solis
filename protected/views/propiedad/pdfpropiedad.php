@@ -55,13 +55,16 @@
                 ESTADO
             </td>
             <td class="titulotabla">
-                PROPIEDAD AMOBLADA
+                AMOBLADA
             </td>
             <td class="titulotabla">
                 FECHA DE INGRESO
             </td>
             <td class="titulotabla">
                 VALOR
+            </td>
+            <td class="titulotabla">
+               COMISIÓN
             </td>
         </tr>
 
@@ -71,13 +74,13 @@
                 echo "<tr><td>$value->direccion_propiedad</td>";
                 echo "<td>$value->comuna_propiedad</td>";
                 echo  "<td>$value->servicio_propiedad</td>";
-                echo  "<td>$value->amoblado_propiedad</td>";
+                ?>
+                 <td><?php if($model->amoblado_propiedad){ echo 'Si';}else{echo 'No';} ?></td>
+                <?php
                 echo  "<td>$value->ingreso_propiedad</td>";
-
                 $peso= number_format($value->valor_propiedad, 0, ",", ".");
                 echo  "<td style='text-align: right'>$ $peso</td>";
-
-
+                echo  "<td>$value->comision_propiedad %</td>";
                 echo "</tr>";
             }
             ?>

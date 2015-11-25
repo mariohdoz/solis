@@ -18,7 +18,7 @@ Class PerfilController extends Controller
         $this->render("index",array("model"=>$model));
 
     }
-    public function actionconfig($id)
+    public function actionConfig($id)
     {
 
         $model = new Administrador();
@@ -27,7 +27,13 @@ Class PerfilController extends Controller
         $this->render('index', array('model'=>$model));
 
     }
-
+    public function loadModel($id)
+    {
+        $model=Administrador::model()->findByPk($id);
+        if($model===null)
+            throw new CHttpException(404,'The requested page does not exist.');
+        return $model;
+    }
 
     public function accessRules()
     {
@@ -69,4 +75,24 @@ Class PerfilController extends Controller
             Yii::app()->end();
         }
     }
+
+    public function actionUpload($id)
+    {
+        $model = new Imagen;
+        Yii::import("ext.EAjaxUpload.qqFileUploader");
+        $folder=Yii::app() -> getBasePath() . "/../images/propiedades/";// folder for uploaded files
+        $allowedExtensions = array("jpg","jpeg","gif","png");//array("jpg","jpeg","gif","exe","mov" and etc...
+        $sizeLimit = 5 * 3024 * 3024;// maximum file size in bytes
+        $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
+        $result = $uploader->handleUpload($folder);
+        $return = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
+        $fileSize=filesize($folder.$result['filename']);//GETTING FILE SIZE
+        $fileName=$result['filename'];//GETTING FILE NAME
+        $model->url_imagen = $fileName;
+        $model->id_propiedad = $id;
+        $model->save();
+        echo $return;// it's array
+    }
+
 }
+

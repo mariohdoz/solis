@@ -94,8 +94,7 @@ function ganancia(){
 						// nota que con htmlOptions se puede personalizar el tamano de la columna
 								array('name'=>'id_propiedad','htmlOptions'=>array('width'=>'80px')),
 						// nota que aqui no se usa array, sino directamente el nombre de la columna
-								'direccion_propiedad',
-								'numero_propiedad',
+								'direccion_propiedad'
 						// via 2: para mostrar detalles al hacer click en un icono.
 							),
 						));
