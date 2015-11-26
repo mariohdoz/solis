@@ -12,12 +12,14 @@
 			</ul>
 		</nav>
 </header>
-<?php	$form=$this->beginWidget('CActiveForm',array(
-  'id'=>'login-form',
-  'enableAjaxValidation'=>true,
-  'clientOptions'=>array('validateOnSubmit'=>true),
-));
- ?>
+<?php $form=$this->beginWidget('CActiveForm', array(
+	'id'=>'login-form',
+	// Please note: When you enable ajax validation, make sure the corresponding
+	// controller action is handling ajax validation correctly.
+	// There is a call to performAjaxValidation() commented in generated controller code.
+	// See class documentation of CActiveForm for details on this.
+
+)); ?>
 <?php if(!Yii::app()->session['activo']){
 		echo '<div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
 			<div class="cd-user-modal-container"> <!-- this is the container wrapper -->
@@ -257,15 +259,16 @@
 	<section id="cd-placeholder-5" class="cd-section cd-container">
 		<h1>Contáctenos</h1>
 
-			<?php $form=$this->beginWidget('CActiveForm', array(
-				'id'=>'Solicitud-form',
-				'action'=>Yii::app()->createUrl('/site/Solicitud'),
-				// Please note: When you enable ajax validation, make sure the corresponding
-				// controller action is handling ajax validation correctly.
-				// There is a call to performAjaxValidation() commented in generated controller code.
-				// See class documentation of CActiveForm for details on this.
-				'enableAjaxValidation'=>false,
-			)); ?>
+		<?php $form=$this->beginWidget('CActiveForm', array(
+			'id'=>'solicitud-form',
+			// Please note: When you enable ajax validation, make sure the corresponding
+			// controller action is handling ajax validation correctly.
+			// There is a call to performAjaxValidation() commented in generated controller code.
+			// See class documentation of CActiveForm for details on this.
+			'enableAjaxValidation'=>true,
+			'clientOptions'=>array('validateOnSubmit'=>true),
+		)); ?>
+
 		<div class="col-md-12">
 			<div class="form-horizontal col-md-4">
 				<form role="form">
@@ -290,6 +293,7 @@
 							),
 							array("class"=>"form-control2 "),
 							array('empty' => '(Seleccione tipo de servicio)')); ?>
+              <?php echo $form->error($model1,'servicio_solicitud'); ?>
 					</div>
 					<div  class="form-group">
 						<label style="float: left">Teléfono de contacto</label>
@@ -302,10 +306,11 @@
 					<div  class="form-group">
 						<label style="float: left">Comentario</label>
 						<?php echo $form->textArea($model1,'descripcion_solicitud',array("rows"=>"3"), array("class"=>"form-control2", "placeholder"=>"Comentario")); ?>
+            <?php echo $form->error($model1,'descripcion_solicitud'); ?>
+
 					</div>
 					<div  class="form-group">
-						<input type="submit" class="btn btn-buscar" value="Enviar">
-						<input type="reset" class="btn btn-default" value="Limpiar">
+            <?php echo CHtml::submitButton('Enviar', array('class' =>'btn btn-buscar' , )); ?>
 					</div>
 			</div>
 			</form>

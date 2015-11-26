@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 24-11-2015 a las 18:48:00
+-- Tiempo de generación: 26-11-2015 a las 20:33:31
 -- Versión del servidor: 5.0.51
 -- Versión de PHP: 5.2.6
 
@@ -36,7 +36,7 @@ CREATE TABLE `administrador` (
 -- Volcar la base de datos para la tabla `administrador`
 --
 
-INSERT INTO `administrador` VALUES ('18183527-3', 'Mario Hernán Douglas', 'Ossandón Zúñiga', '8cb2237d0679ca88db6464eac60da96345513964', 'mario.hdoz1@gmail.com', '+56985352482', 'dist/img/avatar5.png', 1, 1);
+INSERT INTO `administrador` VALUES ('18183527-3', 'Mario Hernán Douglas', 'Ossandón Zúñiga', '5e9795e3f3ab55e7790a6283507c085db0d764fc', 'mario.hdoz1@gmail.com', '+56985352482', 'dist/img/avatar5.png', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -90,13 +90,13 @@ CREATE TABLE `arriendo` (
   KEY `fk_gestiona` (`rut_admin`),
   KEY `fk_incumbe` (`rut_arrendatario`),
   KEY `fk_puede` (`id_propiedad`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=42 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=47 ;
 
 --
 -- Volcar la base de datos para la tabla `arriendo`
 --
 
-INSERT INTO `arriendo` VALUES (41, 16, '18183527-3', '18183527-3', '2015-11-22', 2, '2015-09-01', '2016-04-02', 745000, 1);
+INSERT INTO `arriendo` VALUES (46, 16, '18183527-3', '18183527-3', '2015-11-26', 2, '2015-06-02', '2016-05-02', 750000, 1);
 
 -- --------------------------------------------------------
 
@@ -148,7 +148,7 @@ CREATE TABLE `documento` (
   KEY `fk_corresponde` (`id_propiedad`),
   KEY `fk_entrega` (`rut_arrendatario`),
   KEY `fk_cliente` (`rut_cliente`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
 
 --
 -- Volcar la base de datos para la tabla `documento`
@@ -193,7 +193,7 @@ CREATE TABLE `imagen` (
   `url_imagen` varchar(250) NOT NULL,
   PRIMARY KEY  (`id_imagen`),
   KEY `fk_representa` (`id_propiedad`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=56 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=60 ;
 
 --
 -- Volcar la base de datos para la tabla `imagen`
@@ -252,25 +252,29 @@ CREATE TABLE `pago` (
   `id_pago` int(11) NOT NULL auto_increment,
   `id_arriendo` int(11) default NULL,
   `fecha_pago` date NOT NULL,
-  `mes_pago` varchar(7) NOT NULL COMMENT 'Mes de pago',
+  `mes_pago` varchar(10) NOT NULL COMMENT 'Mes de pago',
   `totalpagado_pago` int(11) NOT NULL,
   `activo_pago` tinyint(1) NOT NULL default '1' COMMENT 'Pago concluido',
   PRIMARY KEY  (`id_pago`),
   KEY `fk_acata` (`id_arriendo`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=135 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=160 ;
 
 --
 -- Volcar la base de datos para la tabla `pago`
 --
 
-INSERT INTO `pago` VALUES (134, 41, '2015-11-22', '04-2016', 0, 1);
-INSERT INTO `pago` VALUES (133, 41, '2015-11-22', '03-2016', 0, 1);
-INSERT INTO `pago` VALUES (132, 41, '2015-11-22', '02-2016', 0, 1);
-INSERT INTO `pago` VALUES (131, 41, '2015-11-22', '01-2016', 0, 1);
-INSERT INTO `pago` VALUES (130, 41, '2015-11-22', '12-2015', 0, 1);
-INSERT INTO `pago` VALUES (129, 41, '2015-11-22', '11-2010', 0, 1);
-INSERT INTO `pago` VALUES (128, 41, '2015-11-22', '10-2015', 0, 1);
-INSERT INTO `pago` VALUES (127, 41, '2015-11-24', '09-2015', 745000, 0);
+INSERT INTO `pago` VALUES (159, 46, '2015-11-26', '02-05-2016', 0, 1);
+INSERT INTO `pago` VALUES (158, 46, '2015-11-26', '2-04-2016', 0, 1);
+INSERT INTO `pago` VALUES (157, 46, '2015-11-26', '2-03-2016', 0, 1);
+INSERT INTO `pago` VALUES (156, 46, '2015-11-26', '2-02-2016', 0, 1);
+INSERT INTO `pago` VALUES (155, 46, '2015-11-26', '2-01-2016', 0, 1);
+INSERT INTO `pago` VALUES (154, 46, '2015-11-26', '2-12-2015', 0, 1);
+INSERT INTO `pago` VALUES (153, 46, '2015-11-26', '2-11-2015', 0, 1);
+INSERT INTO `pago` VALUES (152, 46, '2015-11-26', '2-10-2015', 0, 1);
+INSERT INTO `pago` VALUES (151, 46, '2015-11-26', '2-09-2015', 0, 1);
+INSERT INTO `pago` VALUES (150, 46, '2015-11-26', '2-08-2015', 0, 1);
+INSERT INTO `pago` VALUES (149, 46, '2015-11-26', '2-07-2015', 0, 1);
+INSERT INTO `pago` VALUES (148, 46, '2015-11-26', '2-06-2015', 750000, 0);
 
 -- --------------------------------------------------------
 
@@ -299,17 +303,15 @@ CREATE TABLE `propiedad` (
   `ingreso_propiedad` date NOT NULL default '2015-01-01' COMMENT 'Fecha de ingreso',
   PRIMARY KEY  (`id_propiedad`),
   KEY `fk_posee` (`rut_cliente`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
 
 --
 -- Volcar la base de datos para la tabla `propiedad`
 --
 
-INSERT INTO `propiedad` VALUES (12, '18045248-6', 'Aconcagua', 3007, 2, 1, '', '', 'Departamento Habitación', 'Venta', 'comedor y cocina juntas, walking closet, terraza,incluye gastos comunes', 'Calama', 1, 700000, 0, 1, 0, '2015-01-01');
-INSERT INTO `propiedad` VALUES (11, '18045248-6', 'Prat', 2337, 3, 3, '637 mt2', '139,5 mt2', 'Casa', 'Venta', 'Casa ubicada Sector Topater calle alejandrina Olivares, seguridad las 24 horas, ', 'Calama', 1, 5000000, 1, 0, 0, '2015-01-01');
+INSERT INTO `propiedad` VALUES (12, '18045248-6', 'Aconcagua', 3007, 2, 1, '', '', 'Departamento Habitación', 'Venta', 'comedor y cocina juntas, walking closet, terraza,incluye gastos comunes', 'Calama', 1, 700000, 0, 0, 1, '2015-01-01');
 INSERT INTO `propiedad` VALUES (10, '18045248-6', 'Aconcagua ', 3009, 5, 2, '40m2', '35', 'Casa', 'Venta', 'Casa esquina  en  la  ciudad de  Calama  de  un  piso ', 'Calama', 0, 150000000, 1, 0, 0, '2015-01-01');
 INSERT INTO `propiedad` VALUES (16, '19206063-k', 'Balmaceda #3242', NULL, 9, 9, '40.m2', '45m²', 'Propiedad de inversión', 'Venta', 'Mall plaza Calama', 'Calama', 1, 789456123, 0, 0, 1, '2015-01-01');
-INSERT INTO `propiedad` VALUES (17, '', 'Calle Tiltil 1301 Población Manuel Rodríguez', NULL, 5, 5, '500', '450', 'Casa', 'Venta', 'Lorem ipsum dolor sit amet, epicurei expetendis ex sea. Id prima gloriatur cum, posse dolores mediocritatem vim an, nullam animal consectetuer te vel. Sit id mazim debet. Ne mazim aeterno quaeque eos, posse offendit an mel.\r\n\r\nQuodsi viderer sententiae has eu, eam cu cibo regione corpora. Mea inani aeque id. Sea scripserit adversarium ea, cu utinam inimicus percipitur sed. Assum admodum eu usu, eius populo evertitur has at, insolens theophrastus vis ea. Diam copiosae necessitatibus ex sed, ei facete cetero tincidunt est, no ius facilis explicari.\r\n\r\nVirtute discere utroque in nam, est cu alii primis verterem, ad ipsum dicta splendide sit. Munere cotidieque ne nam. Duo no nisl partem maiorum, eu doming denique cum. In apeirian iracundia cum, ea mel idque dissentiunt.\r\n\r\nEi congue recusabo sapientem eum, prima scribentur ius ut. Ius ut persius efficiendi, quod veritus est id. Purto deserunt ea eos. Tantas lobortis evertitur pro ex.\r\n\r\nId regione torquatos vituperatoribus nam, quo dicit nobis ea. Ne option platonem cum, sit fuisset aliquando conceptam in. Nonumy primis nam id, nisl atomorum ex usu. Mundi tation reprimique te eos. At offendit pertinax eum. Ea doctus cotidieque mea.', 'Calama', 1, 750000, 1, 0, 15, '2015-11-23');
 INSERT INTO `propiedad` VALUES (18, '18183527-3', 'Calle Til Til 1301 Población Manuel Rodríguez', NULL, 4, 5, '50m²', '45m²', 'Casa', 'Venta', 'Lorem ipsum dolor sit amet, epicurei expetendis ex sea. Id prima gloriatur cum, posse dolores mediocritatem vim an, nullam animal consectetuer te vel. Sit id mazim debet. Ne mazim aeterno quaeque eos, posse offendit an mel.\r\n\r\nQuodsi viderer sententiae has eu, eam cu cibo regione corpora. Mea inani aeque id. Sea scripserit adversarium ea, cu utinam inimicus percipitur sed. Assum admodum eu usu, eius populo evertitur has at, insolens theophrastus vis ea. Diam copiosae necessitatibus ex sed, ei facete cetero tincidunt est, no ius facilis explicari.\r\n\r\nVirtute discere utroque in nam, est cu alii primis verterem, ad ipsum dicta splendide sit. Munere cotidieque ne nam. Duo no nisl partem maiorum, eu doming denique cum. In apeirian iracundia cum, ea mel idque dissentiunt.\r\n\r\nEi congue recusabo sapientem eum, prima scribentur ius ut. Ius ut persius efficiendi, quod veritus est id. Purto deserunt ea eos. Tantas lobortis evertitur pro ex.\r\n\r\nId regione torquatos vituperatoribus nam, quo dicit nobis ea. Ne option platonem cum, sit fuisset aliquando conceptam in. Nonumy primis nam id, nisl atomorum ex usu. Mundi tation reprimique te eos. At offendit pertinax eum. Ea doctus cotidieque mea.', 'Antofagasta', 1, 750000, 1, 0, 15, '2015-11-23');
 
 -- --------------------------------------------------------
@@ -325,12 +327,12 @@ CREATE TABLE `solicitud` (
   `nombres_solicitud` varchar(100) default NULL,
   `apellidos_solicitud` varchar(100) default NULL,
   `servicio_solicitud` varchar(25) NOT NULL,
-  `fecha_solicitud` date NOT NULL,
-  `fechaejecucion_solicitud` date NOT NULL,
+  `fecha_solicitud` date default NULL,
+  `fechaejecucion_solicitud` date default NULL,
   `telefono_solicitud` varchar(12) default NULL,
   `estado_solicitud` tinyint(1) NOT NULL default '1',
   `descripcion_solicitud` text NOT NULL,
-  `tipopropiedad_solicitud` varchar(50) NOT NULL,
+  `tipopropiedad_solicitud` varchar(50) default NULL,
   `correo_solicitud` varchar(100) default NULL,
   PRIMARY KEY  (`id_solicitud`),
   KEY `fk_elabora` (`rut_funcionario`),

@@ -155,7 +155,7 @@
 		$('#Administrador_contrasena_Administrador').val('');
 	});
 	$("#Administrador_repeat_pass").keyup(function(){
-		if ($("#Administrador_repeat_pass").val()!== $('#Administrador_contrasena_Administrador').val() ) {
+		if ($("#Administrador_repeat_pass").val()!== $('#Administrador_contrasena_admin').val() ) {
 			if (!$("#box").hasClass('has-error')) {
 				$("#box").toggleClass(' has-error');
 			}

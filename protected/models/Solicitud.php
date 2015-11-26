@@ -36,10 +36,12 @@ class Solicitud extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('servicio_solicitud, fecha_solicitud, fechaejecucion_solicitud, descripcion_solicitud, tipopropiedad_solicitud', 'required'),
+			array('servicio_solicitud, descripcion_solicitud', 'required'),
 			array('estado_solicitud', 'numerical', 'integerOnly'=>true),
 			array('rut_cliente, rut_funcionario', 'length', 'max'=>10),
 			array('rut_cliente, rut_funcionario', 'ValidateRut'),
+			array('fecha_solicitud, fechaejecucion_solicitud', 'safe'),
+
 			array('nombres_solicitud, apellidos_solicitud, correo_solicitud', 'length', 'max'=>100),
 			array('servicio_solicitud', 'length', 'max'=>25),
 			array('telefono_solicitud', 'length', 'max'=>12),

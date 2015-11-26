@@ -67,80 +67,24 @@ class SiteController extends Controller
 	}
 
 	public function actionTest(){
-
-		$model=new Arriendo;
-		$arrendatario=new Arrendatario('search');
-		$propiedad=new Propiedad('disponible');
-		$propiedad->unsetAttributes();  // clear any default values
-		if(isset($_GET['Propiedad']))
-			$propiedad->attributes=$_GET['Propiedad'];
+		$model=new Solicitud;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
-		if(isset($_POST['Arriendo']))
+		if(isset($_POST['Solicitud']))
 		{
-			$model->attributes=$_POST['Arriendo'];
-			$model->rut_admin = Yii::app()->session['admin_rut'];
-			$model->inscripcion_arriendo = date('Y-m-d');
-			$rut= str_replace('.','',$model->rut_arrendatario);
-			$model->rut_arrendatario = $rut;
-			if($model->id_propiedad != '' && $model->rut_arrendatario != ''){
-				if ($model->inicio_arriendo < $model->termino_arriendo ) {
-					$propiedad=Propiedad::model()->findByPk($model->id_propiedad);
-					$arrendatario=Arrendatario::model()->findByPk($model->rut_arrendatario);
-					$valor = intval(preg_replace('/[^0-9]+/', '', $model->valor_arriendo),10);
-					$model->valor_arriendo = $valor;
-					if($propiedad->activo_propiedad == 1){
-						$propiedad->activo_propiedad= 0;
-						if($model->save() && $propiedad->save())
-						{
-							$pago=new Pago();
-							$pago->id_arriendo=$model->id_arriendo;
-							$pago->fecha_pago=date('Y-m-j');
-							$pago->totalpagado_pago=0;
-							$pago->mes=date('m');
-							$pago->ano=date('Y');
-							$data = explode('-', $model->inicio_arriendo);
-							$pago->mes_pago=$data[1].'-'.$data[0];
-							$pago->save();
-							$inicio = new DateTime($model->inicio_arriendo);
-							$fin = new DateTime($model->termino_arriendo);
-							$meses = round(($fin->format('U') - $inicio->format('U')) / (30*60*60*24));
-							$nuevafecha =$model->inicio_arriendo;
-							$array[0]=$nuevafecha;
-							for ($i=0; $i < $meses ; $i++) {
-								$pago=new Pago();
-								$pago->id_arriendo=$model->id_arriendo;
-								$pago->fecha_pago=date('Y-m-j');
-								$pago->totalpagado_pago=0;
-								$pago->mes=date('m');
-								$pago->ano=date('Y');
-								$nuevafecha = strtotime ( '+1 month' , strtotime ( $nuevafecha ) ) ;
-								$nuevafecha = date ( 'Y-m-j' , $nuevafecha );
-								$data = explode('-', $nuevafecha);
-								$array[$i+1]=$data[1].'-'.$data[0];
-								$pago->mes_pago=$data[1].'-'.$data[0];
-								$pago->save();
-							}
-							Yii::app()->user->setFlash('success','El arriendo fue ingresado correctamente.');
-							$this->redirect(array('view','id'=>$model->id_arriendo));
-						}
-					}else {
-						Yii::app()->user->setFlash('error','La propiedad ya se encuentra con un servicio prestado.');
-					}
-				}else {
-					Yii::app()->user->setFlash('error','La fecha de inicio debe ser menor a la de termino.');
-				}
-			}else {
-				Yii::app()->user->setFlash('error','Debe seleccionar una propiedad y un arrendatario.');
-			}
+			$model->attributes=$_POST['Solicitud'];
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->id_solicitud));
 		}
 		$this->render('test',array(
-			'model'=>$propiedad,
+			'model'=>$model,
 		));
 
 	}
+
+
 
 
 	public function actionBusqueda()
@@ -329,5 +273,18 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		Yii::app()->session->destroy();
 		$this->redirect(Yii::app()->homeUrl);
+	}
+	protected function performAjaxValidation($model)
+	{
+		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
+		{
+			echo CActiveForm::validate($model);
+			Yii::app()->end();
+		}
+		if(isset($_POST['ajax']) && $_POST['ajax']==='solicitud-form')
+		{
+			echo CActiveForm::validate($model);
+			Yii::app()->end();
+		}
 	}
 }

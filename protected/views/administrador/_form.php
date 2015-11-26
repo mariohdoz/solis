@@ -47,28 +47,6 @@
 								));
 								?>
 							</div>
-							<script>
-
-								$("#Administrador_repeat_pass").keyup(function(){
-									if ($("#Administrador_repeat_pass").val()!== $('#Administrador_contrasena_Administrador').val() ) {
-										if (!$("#box").hasClass('has-error')) {
-											$("#box").toggleClass(' has-error');
-										}
-										if ($("#box").hasClass('has-success')) {
-											$("#box").toggleClass('has-success');
-										}
-									}else {
-										if ($("#box").hasClass('has-error')) {
-											$("#box").toggleClass(' has-error');
-										}
-										if (!$("#box").hasClass('has-success')) {
-											$("#box").toggleClass('has-success');
-										}
-									}
-								});
-							</script>
-
-
 						</div>
 						<div class="col-md-10">
 							<div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
