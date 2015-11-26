@@ -104,10 +104,8 @@ class ArriendoController extends Controller
 							$pago->id_arriendo=$model->id_arriendo;
 							$pago->fecha_pago=date('Y-m-j');
 							$pago->totalpagado_pago=0;
-							$pago->mes=date('m');
-							$pago->ano=date('Y');
 							$data = explode('-', $model->inicio_arriendo);
-							$pago->mes_pago=$data[1].'-'.$data[0];
+							$pago->mes_pago=$model->fechapago_arriendo.'-'.$data[1].'-'.$data[0];
 							$pago->save();
 							$inicio = new DateTime($model->inicio_arriendo);
 							$fin = new DateTime($model->termino_arriendo);
@@ -119,13 +117,11 @@ class ArriendoController extends Controller
 								$pago->id_arriendo=$model->id_arriendo;
 								$pago->fecha_pago=date('Y-m-j');
 								$pago->totalpagado_pago=0;
-								$pago->mes=date('m');
-								$pago->ano=date('Y');
 								$nuevafecha = strtotime ( '+1 month' , strtotime ( $nuevafecha ) ) ;
 								$nuevafecha = date ( 'Y-m-j' , $nuevafecha );
 								$data = explode('-', $nuevafecha);
 								$array[$i+1]=$data[1].'-'.$data[0];
-								$pago->mes_pago=$data[1].'-'.$data[0];
+								$pago->mes_pago=$model->fechapago_arriendo.'-'.$data[1].'-'.$data[0];
 								$pago->save();
 							}
 							Yii::app()->user->setFlash('success','El arriendo fue ingresado correctamente.');
@@ -244,7 +240,7 @@ class ArriendoController extends Controller
 						$pago->mes=date('m');
 						$pago->ano=date('Y');
 						$data = explode('-', $model->inicio_arriendo);
-						$pago->mes_pago=$data[1].'-'.$data[0];
+						$pago->mes_pago=$model->fechapago_arriendo.'-'.$data[1].'-'.$data[0];
 						$pago->save();
 						$inicio = new DateTime($model->inicio_arriendo);
 						$fin = new DateTime($model->termino_arriendo);
@@ -262,7 +258,7 @@ class ArriendoController extends Controller
 							$nuevafecha = date ( 'Y-m-j' , $nuevafecha );
 							$data = explode('-', $nuevafecha);
 							$array[$i+1]=$data[1].'-'.$data[0];
-							$pago->mes_pago=$data[1].'-'.$data[0];
+							$pago->mes_pago=$model->fechapago_arriendo.'-'.$data[1].'-'.$data[0];
 							$pago->save();
 						}
 					}
@@ -315,12 +311,17 @@ class ArriendoController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$model=$this->loadModel($id);
-		$model2=new Propiedad;
-		$model2 = Propiedad::model()->findByPk($model->id_propiedad);
-		$model2->activo_propiedad =1;
-		$model->activo_arriendo =0;
-		if ($model2->save() && $model->save()) {
+		$arriendo=$this->loadModel($id);
+		$propiedad=new Propiedad;
+		$propiedad = Propiedad::model()->findByPk($arriendo->id_propiedad);
+		$propiedad->activo_propiedad =1;
+		$arriendo->activo_arriendo =0;
+
+		if ($propiedad->save() && $arriendo->save()) {
+			foreach ($arriendo->pago as $arriendo => $pago) {
+				$pago->activo_pago =0;
+				$pago->save();
+			}
 			Yii::app()->user->setFlash('success','El arriendo fue eliminado satisfactoriamente.');
 		}else {
 			Yii::app()->user->setFlash('danger','El arriendo no pudo ser eliminado.');

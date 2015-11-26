@@ -41,9 +41,9 @@
 					$data= explode('-',$a);
 					$datb= explode('-',$b);
 					if($value->activo_pago==1){
-						if(($data[0]>$datb[0] && $data[1]>$datb[1]) || ($data[0]>$datb[0] && $data[1]==$datb[1]) ){
+						if(($data[0]>$datb[1] && $data[1]>$datb[2]) || ($data[0]>$datb[1] && $data[1]==$datb[2]) ){
 							echo 'box-danger';
-						}elseif (($data[0]==$datb[0] && $data[1]==$datb[1]) && $arriendo->fechapago_arriendo <= $data[0]  ) {
+						}elseif (($data[0]==$datb[1] && $data[1]==$datb[2]) && $arriendo->fechapago_arriendo <= $data[0]  ) {
 							echo 'box-warning';
 						}else{
 								echo 'box-primary';
@@ -54,7 +54,7 @@
 
 					 ?>">
 						<div class="box-header with-border">
-	            <h3 class="box-title">Fecha de pago <?php echo CHtml::encode($arriendo->fechapago_arriendo	).'-'.CHtml::encode($value->mes_pago	); ?></h3>
+	            <h3 class="box-title">Fecha de pago <?php echo CHtml::encode($value->mes_pago	); ?></h3>
 	          </div>
 						<div class="form">
 							<div class="box-body">
@@ -81,7 +81,7 @@
                 <?php
                 $b =$value->mes_pago;
                 $datb= explode('-',$b);
-                 echo CHtml::link('Administrar pago', array('/pago/update/', 'id'=>$value->id_pago, 'm'=>$datb[0] , 'a'=>$datb[1]), array('class'=>"btn btn-primary", $value->activo_pago? '':'disabled'=>true,)); ?>
+                 echo CHtml::link('Administrar pago', array('/pago/update/', 'id'=>$value->id_pago, 'm'=>$datb[1] , 'a'=>$datb[2]), array('class'=>"btn btn-primary", $value->activo_pago? '':'disabled'=>true,)); ?>
                  <?php echo CHtml::link('Reiniciar valores del pago', array('/pago/limpiar/', 'id'=>$value->id_pago), array('class'=>"btn btn-danger",  'confirm' => '¿Está seguro de reiniciar los valores del pago?')); ?>
 	            </div>
 					  </div>

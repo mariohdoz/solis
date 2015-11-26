@@ -21,7 +21,7 @@
 <div class="col-md-12">
 	<div class="box box-primary">
 		<div class="box-header with-border">
-			<h3 class="box-title">Datos del pago correspondiente a la fecha <?php echo CHtml::encode($arriendo->fechapago_arriendo	).'-'.CHtml::encode($model->mes_pago); ?></h3>
+			<h3 class="box-title">Datos del pago correspondiente a la fecha <?php echo CHtml::encode($model->mes_pago); ?></h3>
 		</div>
 		<div class="form">
 			<div class="box-body">

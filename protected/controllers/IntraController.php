@@ -59,13 +59,14 @@ class IntraController extends CController{
 
 
       $atraso=Arriendo::model()->findAllByAttributes(array('activo_arriendo'=>1),
-    	 'inicio_arriendo<CURDATE()
+    	 '(inicio_arriendo<CURDATE()
         AND termino_arriendo>CURDATE()
-    		AND fechapago_arriendo < DATE_FORMAT( CURDATE( ) ,  "%d" )
-    		AND id_arriendo NOT IN (
-  		  SELECT id_arriendo
-  		  FROM pago
-  		  WHERE mes_pago = DATE_FORMAT( NOW( ) ,  "%m-20%y" ))' //AND id_arriendo NOT IN (SELECT id_arriendo FROM pago WHERE mes_pago = Date_format(now(),"%m"))
+        AND fechapago_arriendo < DATE_FORMAT( CURDATE( ) , "%d" )
+        AND id_arriendo IN (
+        SELECT id_arriendo
+        FROM pago
+        WHERE activo_pago =1
+        AND STR_TO_DATE( mes_pago,  "%d-%m-%Y" ) <= DATE_FORMAT( NOW( ) ,  "%Y-%m-%j" ) ))' //AND id_arriendo NOT IN (SELECT id_arriendo FROM pago WHERE mes_pago = Date_format(now(),"%m"))
   		);
       $count=count($atraso);
 
