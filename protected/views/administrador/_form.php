@@ -48,7 +48,7 @@
 								?>
 							</div>
 							<script>
-								
+
 								$("#Administrador_repeat_pass").keyup(function(){
 									if ($("#Administrador_repeat_pass").val()!== $('#Administrador_contrasena_Administrador').val() ) {
 										if (!$("#box").hasClass('has-error')) {
