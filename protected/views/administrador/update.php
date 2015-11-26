@@ -16,6 +16,25 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update Administrador <?php echo $model->rut_admin; ?></h1>
-
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<div class="content-wrapper">
+	<section class="content-header">
+		<h1>
+			Actualizar
+			<small>Actualizar el arrendatario <?php echo CHtml::encode($model->rut_admin); ?>.</small>
+		</h1>
+		<ol class="breadcrumb">
+			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/intra/index">
+					<i class="fa fa-dashboard"></i>Inicio</a></li>
+			<li class="active">Administrador</li>
+			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/intra/index">Gestión</a></li>
+			<li class="active">Actualizar</li>
+		</ol>
+	</section>
+	<section class="content">
+		<div class="row">
+			<!-- Inicio se container -->
+			<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+			<!-- término se container -->
+		</div>
+	</section>
+</div>

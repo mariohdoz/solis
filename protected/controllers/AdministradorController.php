@@ -6,7 +6,7 @@ class AdministradorController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column2';
+	public $layout='//layouts/intraLayout';
 
 	/**
 	 * @return array action filters
@@ -28,11 +28,11 @@ class AdministradorController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array(),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','index','view'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -51,10 +51,31 @@ class AdministradorController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$rut=$this->codigo($id);
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=>$this->loadModel($rut),
 		));
 	}
+	public function codigo($var)
+	{
+		$evaluate = strrev($var);
+		$multiply = 2;
+		$store = 0;
+		for ($i = 0; $i < strlen($evaluate); $i++) {
+			$store += $evaluate[$i] * $multiply;
+			$multiply++;
+			if ($multiply > 7)
+				$multiply = 2;
+		}
+		$result = 11 - ($store % 11);
+		if ($result == 10)
+			$result = 'k';
+		if ($result == 11)
+			$result = 0;
+		$rut = $var.'-'.$result;
+		return $rut;
+	}
+
 
 	/**
 	 * Creates a new model.
@@ -86,7 +107,10 @@ class AdministradorController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
+
+		$rut=$this->codigo($id);
+
+		$model=$this->loadModel($rut);
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -95,7 +119,7 @@ class AdministradorController extends Controller
 		{
 			$model->attributes=$_POST['Administrador'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->rut_admin));
+				$this->redirect(array('view','id'=>$id));
 		}
 
 		$this->render('update',array(
@@ -169,5 +193,28 @@ class AdministradorController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
+	}
+
+	public function actionContra($id)
+	{
+		$rut=$this->codigo($id);
+		$model=$this->loadModel($rut);
+		if (isset($_POST['Administrador'])) {
+			$model->attributes=$_POST['Administrador'];
+			if ($model->repeat_pass != '') {
+				if ($model->contrasena_admin == $model->repeat_pass) {
+					if ($model->save()) {
+						Yii::app()->user->setFlash('success','La contraseña fue actualizada');
+					}else {
+						Yii::app()->user->setFlash('error','La contraseña  no fue actualizada');
+					}
+				}else {
+					Yii::app()->user->setFlash('error','Las contraseñas no coinciden');
+				}
+			}else {
+				Yii::app()->user->setFlash('error','debe repetir la contraseña');
+			}
+		}
+		$this->redirect(array('view','id'=>$id));
 	}
 }

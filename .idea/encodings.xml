@@ -4,11 +4,15 @@
     <file url="file://$PROJECT_DIR$/css/print.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/js/mainb.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/protected/config/main.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/protected/controllers/AdministradorController.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/protected/controllers/PerfilController.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/protected/controllers/ReporteController.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/protected/models/ContactForm.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/protected/models/Imagen.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/protected/models/Users.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/protected/views/administrador/_form.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/protected/views/administrador/update.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/protected/views/administrador/view.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/protected/views/arrendatario/_search.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/protected/views/arrendatario/_view.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/protected/views/arrendatario/admin.php" charset="UTF-8" />

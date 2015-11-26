@@ -90,7 +90,7 @@ if(!Yii::app()->session['activo'])
                     <div class="pull-left">
                       <?php
                       $data = explode('-', Yii::app()->session['admin_rut']);
-                       echo CHtml::link('Configuración', array('/perfil/index/', 'id'=>$data[0]), array('class'=>"btn btn-default btn-flat")); ?>
+                       echo CHtml::link('Configuración', array('/administrador/view/', 'id'=>$data[0]), array('class'=>"btn btn-default btn-flat")); ?>
                     </div>
                     <div class="pull-right">
                       <?php echo CHtml::link('Cerrar sesión', array('Site/logout'),array('class'=>'btn btn-default btn-flat', 'confirm' => '¿Está seguro  de cerrar la sesión?')); ?>

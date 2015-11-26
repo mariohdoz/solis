@@ -16,6 +16,7 @@
  */
 class Administrador extends CActiveRecord
 {
+	public $repeat_pass;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -35,12 +36,15 @@ class Administrador extends CActiveRecord
 			array('rut_admin, nombres_admin, apellidos_admin, contrasena_admin, correo_admin, telefono_admin, perfil_admin', 'required'),
 			array('super_admin, activo_admin', 'numerical', 'integerOnly'=>true),
 			array('rut_admin', 'length', 'max'=>10),
+			array('contrasena_admin, repeat_pass', 'length', 'max'=>255),
 			array('rut_admin', 'ValidateRut'),
+			array('repeat_pass','required','on'=>'create','message'=>'Debe repetir la contraseña'),
 			array('rut_admin', 'unique','attributeName'=>'rut_admin','className'=>'Administrador','message'=>'El administrador ya se encuentra ingresado'),
 			array('correo_admin', 'unique','attributeName'=>'correo_admin','className'=>'Administrador','message'=>'El correo  ya se encuentra ingresado'),
 			array('nombres_admin, apellidos_admin, contrasena_admin, correo_admin', 'length', 'max'=>100),
 			array('telefono_admin', 'length', 'max'=>12),
 			array('perfil_admin', 'length', 'max'=>250),
+			array('repeat_pass','compare','compareAttribute'=>'contrasena_admin','message'=>'Las contrasñas no coinciden','on'=>'create'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('rut_admin, nombres_admin, apellidos_admin, contrasena_admin, correo_admin, telefono_admin, perfil_admin', 'safe', 'on'=>'search'),
@@ -70,6 +74,10 @@ class Administrador extends CActiveRecord
  		if ($verifyCode != $result)
  			 $this->addError('rut', 'Rut inválido.');
  	}
+	protected function beforeSave() {
+		$this->contrasena_admin = sha1($this->contrasena_admin);
+		return parent::beforeSave();
+	}
 
 	/**
 	 * @return array relational rules.
@@ -96,6 +104,7 @@ class Administrador extends CActiveRecord
 			'telefono_admin' => 'Telefono',
 			'perfil_admin' => 'Foto',
 			'super_admin' => 'Super Admin',
+			'repeat_pass'=>'Repetir contraseña',
 			'activo_admin' => 'administrador activo',
 		);
 	}
