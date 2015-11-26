@@ -205,6 +205,7 @@ class PropiedadController extends Controller
 	{
 		$model=$this->loadModel($id);
 		$model2=new Cliente();
+		$model2= Cliente::model()->findByPk($model->rut_cliente);
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);

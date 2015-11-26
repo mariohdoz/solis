@@ -258,7 +258,7 @@
 		<h1>Contáctenos</h1>
 
 			<?php $form=$this->beginWidget('CActiveForm', array(
-				'id'=>'busqueda-form',
+				'id'=>'Solicitud-form',
 				'action'=>Yii::app()->createUrl('/site/Solicitud'),
 				// Please note: When you enable ajax validation, make sure the corresponding
 				// controller action is handling ajax validation correctly.

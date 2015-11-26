@@ -32,7 +32,7 @@ class Pago extends CActiveRecord
 		return array(
 			array('fecha_pago, mes_pago, totalpagado_pago', 'required'),
 			array('id_arriendo, totalpagado_pago, activo_pago, totalpagar_pago', 'numerical', 'integerOnly'=>true),
-			array('mes_pago', 'length', 'max'=>7),
+			array('mes_pago', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_pago, id_arriendo, fecha_pago, mes_pago, totalpagado_pago, activo_pago', 'safe', 'on'=>'search'),

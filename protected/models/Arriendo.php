@@ -111,36 +111,6 @@ class Arriendo extends CActiveRecord
 		));
 	}
 
-	public function search2()
-	{
-		// @todo Please modify the following code to remove attributes that should not be searched.
-
-		$criteria=new CDbCriteria;
-
-		$criteria->compare('id_arriendo',$this->id_arriendo);
-		$criteria->compare('id_propiedad',$this->id_propiedad);
-		$criteria->compare('rut_admin',$this->rut_admin,true);
-		$criteria->compare('rut_arrendatario',$this->rut_arrendatario,true);
-		$criteria->compare('inscripcion_arriendo',$this->inscripcion_arriendo,true);
-		$criteria->compare('fechapago_arriendo',$this->fechapago_arriendo);
-		$criteria->compare('inicio_arriendo',$this->inicio_arriendo,true);
-		$criteria->compare('termino_arriendo',$this->termino_arriendo,true);
-		$criteria->compare('valor_arriendo',$this->valor_arriendo);
-		$criteria->compare('activo_arriendo',1);
-		$criteria->condition ='(inicio_arriendo < CURDATE( ) AND termino_arriendo > CURDATE( ))
-		AND fechapago_arriendo >= DATE_FORMAT( DATE_SUB( CURDATE( ) , INTERVAL 5 DAY ) ,  "%d" )
-		AND fechapago_arriendo <= DATE_FORMAT( DATE_ADD( CURDATE( ) , INTERVAL 5 DAY ) ,  "%d" )
-		AND id_arriendo NOT IN (
-		  SELECT id_arriendo
-		  FROM pago
-		  WHERE mes_pago = DATE_FORMAT( NOW( ) ,  "%m" ) AND pago_activo =1
-		)';
-
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
-	}
-
 	public function Busqueda()
 	{
 		// Busqueda con los arriendos activos en el tiempo correspondiente del inicio al término de éste.
@@ -186,7 +156,8 @@ class Arriendo extends CActiveRecord
 		 AND id_arriendo NOT IN (
 		 SELECT id_arriendo
 		 FROM pago
-		 WHERE mes_pago = DATE_FORMAT( NOW( ), "%m-20%y"))';
+		 WHERE activo_pago =1
+		 AND STR_TO_DATE( mes_pago,  "%d-%m-%Y" ) <= DATE_FORMAT( NOW( ) ,  "%Y-%m-%j" ))';
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
