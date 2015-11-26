@@ -115,7 +115,8 @@ Class PerfilController extends Controller
 
     public function actionUpdate($id)
     {
-       $model= Administrador::model()->findByPk($id);
+      $rut = $this->codigo($id);
+       $model= Administrador::model()->findByPk($rut);
         if(isset($_POST["Administrador"]))
         {
             $model->attributes=$_POST[Administrador];
@@ -128,4 +129,3 @@ Class PerfilController extends Controller
     }
 
 }
-
