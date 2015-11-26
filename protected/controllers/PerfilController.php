@@ -50,8 +50,9 @@ Class PerfilController extends Controller
 	}
     public function actionIndex($id){
       $rut = $this->codigo($id);
-      $admin = Administrador::model()->findByPk($rut);  
-        $this->render("index",array("model"=>$model));
+      $admin = Administrador::model()->findByPk($rut);
+        $this->layout ='//layouts/intraLayout';
+        $this->render("index",array("model"=>$admin));
 
     }
     public function actionConfig($id)
@@ -111,4 +112,20 @@ Class PerfilController extends Controller
         echo $return;// it's array
     }
 
+
+    public function actionUpdate($id)
+    {
+       $model= Administrador::model()->findByPk($id);
+        if(isset($_POST["Administrador"]))
+        {
+            $model->attributes=$_POST[Administrador];
+            if($model->save())
+            {
+                $this->redirect(array("index"));
+            }
+        }
+        $this->render("update", array("model"=>$model));
+    }
+
 }
+

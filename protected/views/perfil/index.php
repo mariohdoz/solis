@@ -24,26 +24,22 @@
             <div class="col-md-12">
                 <div class="box  box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Perfil de usuario   <?php echo $model->rut_admin; ?></h3>
+                        <h3 class="box-title">Perfil de usuario : </h3><b> <?php echo $model->nombres_admin, $model->apellidos_admin ?></b>
                         <div class="box-tools pull-right">
-                            <?php echo CHtml::link("<i class='fa fa-pencil'></i>&nbsp;&nbsp;Editar ", '#', array(
-                                    'submit'=>array('/propiedad/generarpdf'),
-                                    'class'=>'btn btn-primary',
-                                )
-                            );?>
+                            <input class="btn btn-primary" type="button" value="Editar" onclick="habilitar()"/>
 
                         </div><!-- /.box-tools -->
                     </div><!-- /.box-header -->
                     <div class="box-body" >
                         <div class="col-md-2">
                             <div class="center-block imagen">
-                                <img src="<?php echo Yii::app()->request->baseUrl; ?>/<?php echo Yii::app()->session['admin_img']; ?>"  class="img-thumbnail" alt="Imagen de usuario" />
+                                <img src="<?php echo Yii::app()->request->baseUrl; ?>/<?php echo $model->perfil_admin ?>"  class="img-thumbnail" alt="Imagen de usuario" />
                                 </br>
                                 </br>
                                 <?php $this->widget('ext.EAjaxUpload.EAjaxUpload', array(
                                     'id' => 'uploadFile',
                                     'config' => array(
-                                        'action' => Yii::app()->createUrl('propiedad/upload/',array('id'=>$model->rut_admin)),
+                                        'action' => Yii::app()->createUrl('perfil/upload/',array('id'=>$model->rut_admin)),
                                         'allowedExtensions' => array("jpg","jpeg","gif","png"), //array("jpg","jpeg","gif","exe","mov" and etc...
                                         'sizeLimit' => 10 * 1024 * 1024, // maximum file size in bytes
                                         'buttonText' => 'Selección',
@@ -90,27 +86,47 @@
                                     }
                                 });
                             </script>
+
+                            <script>
+                                function habilitar(){
+                                    document.getElementById('uno').disabled=false;
+                                    document.getElementById('dos').disabled=false;
+                                    document.getElementById('tres').disabled=false;
+                                    document.getElementById('cuatro').disabled=false;
+                                    document.getElementById('cinco').disabled=false;
+                                    document.getElementById('seis').disabled=false;
+                                    document.getElementById('siete').disabled=false;
+                                }
+                            </script>
                         </div>
                         <div class="col-md-10">
                             <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
                                 <span class="input-group-addon" id="basic-addon1">Nombres: </span>
-                                <?php echo $form->textField($model,'nombres_admin',array('class'=>'form-control','disabled'=>'true', 'placeholder'=>Yii::app()->session['admin_nombre'])); ?>
+                                <?php echo $form->textField($model,'nombres_admin',array('class'=>'form-control','disabled'=>'true','tabindex'=>2,'id'=>'uno' )); ?>
                             </div>
                             <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
                                 <span class="input-group-addon" id="basic-addon1">Apellidos: </span>
-                                <?php echo $form->textField($model,'nombres_admin',array('class'=>'form-control','disabled'=>'true', 'placeholder'=>Yii::app()->session['admin_ape'])); ?>
+                                <?php echo $form->textField($model,'apellidos_admin',array('class'=>'form-control','disabled'=>'true','tabindex'=>2,'id'=>'dos' )); ?>
                             </div>
                             <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
                                 <span class="input-group-addon" id="basic-addon1"><i class="fa fa-lock"></i></span>
-                                <?php echo $form->textField($model,'nombres_admin', array('class'=>'form-control','disabled'=>'true', 'placeholder'=>Yii::app()->session['admin_ape'], 'tabindex'=>3)); ?>
+                                <?php echo $form->passwordField($model,'contrasena_admin', array('class'=>'form-control','disabled'=>'true', 'tabindex'=>3,'id'=>'tres')); ?>
                             </div>
                             <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
                                 <span class="input-group-addon" id="basic-addon1"><i class="fa fa-lock"></i></span>
-                                <?php echo $form->textField($model,'nombres_admin', array('class'=>'form-control','disabled'=>'true', 'tabindex'=>4)); ?>
+                                <?php echo $form->textField($model,'nombres_admin', array('class'=>'form-control','disabled'=>'true', 'tabindex'=>4, 'placeholder'=>'Ingrese la nueva contraseña','id'=>'cuatro')); ?>
                             </div>
                             <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
                                 <span class="input-group-addon" id="basic-addon1"><i class="fa fa-lock"></i></span>
-                                <?php echo $form->textField($model,'apellidos_admin', array('class'=>'form-control','disabled'=>'true', 'tabindex'=>5)); ?>
+                                <?php echo $form->textField($model,'apellidos_admin', array('class'=>'form-control','disabled'=>'true', 'tabindex'=>5, 'placeholder'=>'Repita la nueva contraseña','id'=>'cinco')); ?>
+                            </div>
+                            <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-at"></i></span>
+                                <?php echo $form->textField($model,'correo_admin', array('class'=>'form-control','disabled'=>'true', 'tabindex'=>5, 'placeholder'=>'Repita la nueva contraseña','id'=>'seis')); ?>
+                            </div>
+                            <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-phone"></i></span>
+                                <?php echo $form->textField($model,'telefono_admin', array('class'=>'form-control','disabled'=>'true', 'tabindex'=>5, 'placeholder'=>'Repita la nueva contraseña','id'=>'siete')); ?>
                             </div>
                         </div>
 
@@ -118,11 +134,12 @@
 
                     </div><!-- /.box-body -->
                     <div class="box-footer">
-                        <?php echo CHtml::link("Guardar &nbsp;&nbsp;<i class='fa fa-save'></i>", '#', array(
-                                'submit'=>array('/propiedad/generarpdf'),
-                                'class'=>'btn btn-success',
-                            )
-                        );?>
+                        <?php
+                        $data = explode('-',$model->rut_admin);
+
+                        echo CHtml::link("Actualzar", array("update",'id'=>$data[0]), array('class'=>'btn btn-primary')); ?>
+
+
                     </div><!-- box-footer -->
                 </div><!-- /.box -->
             </div>
