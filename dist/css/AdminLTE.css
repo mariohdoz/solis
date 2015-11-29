@@ -3852,10 +3852,11 @@ table.text-center th {
 .alert-info,
 .label-info,
 .modal-info .modal-body {
-  background-color: #00c0ef !important;
+  background-color:#E0F2F1 !important;
+
 }
 .bg-blue {
-  background-color: #0073b7 !important;
+  background-color: #BDBDBD !important;
 }
 .bg-light-blue,
 .label-primary,
@@ -3867,7 +3868,7 @@ table.text-center th {
 .alert-success,
 .label-success,
 .modal-success .modal-body {
-  background-color: #00a65a !important;
+  background-color: #AEEA00 !important;
 }
 .bg-navy {
   background-color: #001f3f !important;
@@ -3882,7 +3883,7 @@ table.text-center th {
   background-color: #01ff70 !important;
 }
 .bg-orange {
-  background-color: #ff851b !important;
+  background-color: #FF5722 !important;
 }
 .bg-fuchsia {
   background-color: #f012be !important;
