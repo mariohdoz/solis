@@ -151,4 +151,18 @@
       )); ?>
     </ul>
   </section>
+    </main>
+  <footer id="footer">
+      <div >
+          <ul class="soc-media-ul">
+              <li><a href="http://twitter.com/AlexDevero" class="fa fa-twitter" target="_blank"></a></li>
+              <li><a href="https://plus.google.com/u/0/+AlexDevero" class="fa  fa-facebook" target="_blank"></a></li>
+              <li><a href="mailto:solycobre@gmail.com" class="fa fa-envelope"></a></li>
+
+          </ul>
+          Tratar con :Sandra Campusano Araya<BR>
+          PROPIEDADES SOL Y COBRE CALAMA © 2015<br>
+          Dirección : PASAJE LATORRE N° 1291 VILLA CHICA
+      </div>
+  </footer>
 

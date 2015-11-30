@@ -162,7 +162,7 @@
 </div> <!-- .cd-secondary-nav -->
 <main class="cd-main-content">
 
-	<section id="services" class="sec-services">
+	<section id="cd-placeholder-2" class="sec-services">
 		<div class="container">
 			<h1>¿Quiénes Somos?</h1>
 			<p>La empresa Propiedades sol y cobre es una empresa que se dedica a la venta y arriendo de propiedades tales como: casas, departamentos, locales y hospedaje. También presta servicios como: Obras menores y ampliaciones (pintura, cambio y lavado de alfombras, aseos, búsquedas de propiedades, etc.), y asesorías como: Regularización de Ampliaciones, asesorías de ventas, tasaciones y estudio de título. Actualmente trabaja con particulares y empresas las cuales por nombrar algunas son: Elecda, Komatsu, Mena y Ovalle, a los cuales presta los servicios mencionados anteriormente.</p>
@@ -344,4 +344,4 @@
 </div>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-2.1.1.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/main.js"></script> <!-- Resource jQuery -->
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/modernizr.js"></script> <!-- Resource jQuery -->
+
