@@ -254,9 +254,7 @@
                 texto
             </p>
         </section> <!-- #cd-placeholder-4 -->
-	<section id="cd-placeholder-5" class="cd-section cd-container">
-		<h1>Contáctenos</h1>
-
+	<section id="cd-placeholder-5"  >
 		<?php $form=$this->beginWidget('CActiveForm', array(
 			'id'=>'solicitud-form',
 			// Please note: When you enable ajax validation, make sure the corresponding
@@ -266,68 +264,51 @@
 			'enableAjaxValidation'=>true,
 			'clientOptions'=>array('validateOnSubmit'=>true),
 		)); ?>
+		<h1>Contáctenos</h1>
 
-		<div class="col-md-12">
-			<div class="form-horizontal col-md-4">
-				<form role="form">
-					<div class="form-group">
-						<label style="float: left">Nombres</label>
-						<?php echo $form->textField($model1,'nombres_solicitud', array("class"=>"form-control2", "placeholder"=>"Nombres")); ?>
-					</div>
-					<div  class="form-group">
-						<label style="float: left">Apellidos</label>
-						<?php echo $form->textField($model1,'apellidos_solicitud', array("class"=>"form-control2", "placeholder"=>"Apellidos")); ?>
-					</div>
-					<div class="form-group">
-						<label style="float: left">Servicio a solicitar</label>
-						<?php echo $form->dropDownList($model1,'servicio_solicitud',
-							array(
-								'Venta' => 'Venta',
-								'Arriendo' => 'Arriendo',
-								'Tasación' => 'Tasación',
-								'Estudio de título' => 'Estudio de título',
-								'Ampliaciones menores' => 'Ampliaciones menores',
-								'Aseo de propiedad' => 'Aseo de propiedad',
-							),
-							array("class"=>"form-control2 "),
-							array('empty' => '(Seleccione tipo de servicio)')); ?>
-						<?php echo $form->error($model1,'servicio_solicitud'); ?>
-					</div>
-					<div  class="form-group">
-						<label style="float: left">Teléfono de contacto</label>
-						<?php echo $form->textField($model1,'telefono_solicitud', array("class"=>"form-control2", "placeholder"=>"Teléfono de contacto")); ?>
-					</div>
-					<div  class="form-group">
-						<label style="float: left">Correo electrónico</label>
-						<?php echo $form->emailField($model1,'correo_solicitud', array("class"=>"form-control2", "placeholder"=>"Correo de contacto")); ?>
-					</div>
-					<div  class="form-group">
-						<label style="float: left">Comentario</label>
-						<?php echo $form->textArea($model1,'descripcion_solicitud',array("rows"=>"3"), array("class"=>"form-control2", "placeholder"=>"Comentario")); ?>
-						<?php echo $form->error($model1,'descripcion_solicitud'); ?>
+		<form class="contact">
+			<div class="half left cf">
 
-					</div>
-					<div  class="form-group">
-						<?php echo CHtml::submitButton('Enviar', array('class' =>'btn btn-buscar' , )); ?>
-					</div>
+				<?php echo $form->textField($model1,'nombres_solicitud', array("placeholder"=>"Nombres ")); ?>
+				<?php echo $form->textField($model1,'apellidos_solicitud', array("placeholder"=>"Apellidos")); ?>
+				<?php echo $form->dropDownList($model1,'servicio_solicitud',
+					array(
+						'servico a solicitar'=>'Servicio a Solicitar',
+						'Venta' => 'Venta',
+						'Arriendo' => 'Arriendo',
+						'Tasación' => 'Tasación',
+						'Estudio de título' => 'Estudio de título',
+						'Ampliaciones menores' => 'Ampliaciones menores',
+						'Aseo de propiedad' => 'Aseo de propiedad',
+					),
+					array("class"=>"form-control2"),
+					array('empty' => '(Seleccione tipo de servicio)')); ?>
+				<?php echo $form->error($model1,'servicio_solicitud'); ?>
+				<?php echo $form->textField($model1,'telefono_solicitud', array( "placeholder"=>"Teléfono de contacto")); ?>
+				<?php echo $form->emailField($model1,'correo_solicitud', array( "placeholder"=>"Correo de electrónico. ej: abc@gmail.com")); ?>
+
 			</div>
-			</form>
-			<div class="form-horizontal col-md-8">
-				<div class="google-map">
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.9261630980636!2d-68.92730228543036!3d-22.469408828058047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96ac09cb682b12fb%3A0x1ee576cc2844eb60!2sPropiedades+Sol+y+Cobre!5e0!3m2!1ses-419!2scl!4v1447907073915"  allowfullscreen></iframe>
-				</div>
+			<div class="half right cf">
+				<?php echo $form->textArea($model1,'descripcion_solicitud', array( "placeholder"=>"Escriba su petición o comentario aquí")); ?>
+				<?php echo $form->error($model1,'descripcion_solicitud'); ?>
 			</div>
-		</div>
-		</div>
-		<?php $this->endWidget(); ?>
+			<?php echo CHtml::submitButton('Enviar', array('class' =>'btn btn-enviar' )); ?>
+			<?php $this->endWidget(); ?>
+		</form>
 	</section> <!-- #cd-placeholder-5 -->
+	<section >
+
+			<div class="google-map" >
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.9261630980636!2d-68.92730228543036!3d-22.469408828058047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96ac09cb682b12fb%3A0x1ee576cc2844eb60!2sPropiedades+Sol+y+Cobre!5e0!3m2!1ses-419!2scl!4v1447907073915" width="100%" height="300px"   allowfullscreen></iframe>
+			</div>
+	</section>
 
 </main> <!-- .cd-main-content -->
 <footer id="footer">
 	<div >
 		<ul class="soc-media-ul">
-			<li><a href="http://twitter.com/AlexDevero" class="fa fa-twitter" target="_blank"></a></li>
-			<li><a href="https://plus.google.com/u/0/+AlexDevero" class="fa  fa-facebook" target="_blank"></a></li>
+			<li><a href="http://twitter.com/" class="fa fa-twitter" target="_blank"></a></li>
+			<li><a href="https://www.facebook.com/propiedadessolycobre?fref=ts" class="fa  fa-facebook" target="_blank"></a></li>
 			<li><a href="mailto:solycobre@gmail.com" class="fa fa-envelope"></a></li>
 
 		</ul>

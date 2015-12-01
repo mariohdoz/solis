@@ -10,7 +10,6 @@
 		<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/reset.css"> <!-- CSS reset -->
 		<link href="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/css/bootstrap.css" rel="stylesheet">
 		<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css"> <!-- Resource style -->
-		<script src='<?php echo Yii::app()->request->baseUrl; ?>/js/modernizr.js'></script> <!-- Modern izr -->
 		<link rel="shortcut icon" href='<?php echo Yii::app()->request->baseUrl; ?>/images/favicon.ico'/>
 		<title>Sol y Cobre</title>
 	</head>

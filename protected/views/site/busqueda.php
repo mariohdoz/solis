@@ -152,6 +152,7 @@
     </ul>
   </section>
     </main>
+
   <footer id="footer">
       <div >
           <ul class="soc-media-ul">
