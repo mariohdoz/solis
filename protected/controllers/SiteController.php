@@ -70,11 +70,23 @@ class SiteController extends Controller
 		$telefono = $_POST['telefono_solicitud'];
 		$correo = $_POST['correo_solicitud'];
 		$descripcion = $_POST['descripcion_solicitud'];
-
-		echo $nombres;
-	}
+		$model=new Solicitud;
+		$model->nombres_solicitud =$nombres ;
+		$model->apellidos_solicitud =$apellidos ;
+		$model->servicio_solicitud =$servicio ;
+		$model->telefono_solicitud =$telefono ;
+		$model->correo_solicitud = $correo;
+		$model->descripcion_solicitud = $descripcion;
+		$model->fecha_solicitud =date('Y-m-j') ;
+		if ($model->save()) {
+			echo 1;
+		}else {
+			echo 0;
+		}	}
 
 	public function actionTest(){
+		$this->layout='//layouts/testLayout';
+
 		$model  = new LoginForm;
 		$model1 = new Solicitud;
 		$model2 = new Propiedad;
@@ -93,7 +105,6 @@ class SiteController extends Controller
 		if(isset($_POST['Solicitud'])){
 			$model1->attributes = $_POST['Solicitud'];
 			if($model1->nombres_solicitud != '' && $model1->apellidos_solicitud != '' ){
-				var_dump($model1->getErrors());
 				if($model1->save()){
 
 				}

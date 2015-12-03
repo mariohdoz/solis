@@ -266,41 +266,36 @@
 			// controller action is handling ajax validation correctly.
 			// There is a call to performAjaxValidation() commented in generated controller code.
 			// See class documentation of CActiveForm for details on this.
-			'enableAjaxValidation'=>true,
-			'clientOptions'=>array('validateOnSubmit'=>true),
+			'enableAjaxValidation'=>false,
+			'htmlOptions' => array('onsubmit' => 'return false;',),
 		)); ?>
 		<h1>Contáctenos</h1>
+		<div class="col-md-12">
+			<p id='co' class="text-success">
 
-		<form class="contact" id="contactForm">
+			</p>
+		</div>
+
 			<div class="half left cf">
-
-				<?php echo $form->textField($model1,'nombres_solicitud', array("placeholder"=>"Nombres ")); ?>
-				<?php echo $form->textField($model1,'apellidos_solicitud', array("placeholder"=>"Apellidos")); ?>
-				<?php echo $form->dropDownList($model1,'servicio_solicitud',
-					array(
-						'servico a solicitar'=>'Servicio a Solicitar',
-						'Venta' => 'Venta',
-						'Arriendo' => 'Arriendo',
-						'Tasación' => 'Tasación',
-						'Estudio de título' => 'Estudio de título',
-						'Ampliaciones menores' => 'Ampliaciones menores',
-						'Aseo de propiedad' => 'Aseo de propiedad',
-					),
-					array("class"=>"form-control2"),
-					array('empty' => '(Seleccione tipo de servicio)')); ?>
-				<?php echo $form->error($model1,'servicio_solicitud'); ?>
-				<?php echo $form->textField($model1,'telefono_solicitud', array( "placeholder"=>"Teléfono de contacto")); ?>
-				<?php echo $form->emailField($model1,'correo_solicitud', array( "placeholder"=>"Correo de electrónico. ej: abc@gmail.com")); ?>
-
+				<input placeholder="Nombres " required="required" name="Solicitud[nombres_solicitud]" id="Solicitud_nombres_solicitud" type="text" maxlength="100">
+				<input placeholder="Apellidos" required="required" name="Solicitud[apellidos_solicitud]" id="Solicitud_apellidos_solicitud" type="text" maxlength="100">
+				<select class="form-control2" name="Solicitud[servicio_solicitud]" id="Solicitud_servicio_solicitud">
+					<option value="servico a solicitar">Servicio a Solicitar</option>
+					<option value="Venta">Venta</option>
+					<option value="Arriendo">Arriendo</option>
+					<option value="Tasación">Tasación</option>
+					<option value="Estudio de título">Estudio de título</option>
+					<option value="Ampliaciones menores">Ampliaciones menores</option>
+					<option value="Aseo de propiedad">Aseo de propiedad</option>
+				</select>
+				<input placeholder="Teléfono de contacto" required="required" name="Solicitud[telefono_solicitud]" id="Solicitud_telefono_solicitud" type="text" maxlength="12">				<?php echo $form->textField($model1,'telefono_solicitud', array( "placeholder"=>"Teléfono de contacto", 'required'=>'required')); ?>
+				<input placeholder="Correo de electrónico. ej: abc@gmail.com" required="required" name="Solicitud[correo_solicitud]" id="Solicitud_correo_solicitud" type="email" maxlength="100">
 			</div>
 			<div class="half right cf">
-				<?php echo $form->textArea($model1,'descripcion_solicitud', array( "placeholder"=>"Escriba su petición o comentario aquí", 'row'=>60)); ?>
-				<?php echo $form->error($model1,'descripcion_solicitud'); ?>
+				<textarea placeholder="Escriba su petición o comentario aquí" row="60" name="Solicitud[descripcion_solicitud]" id="Solicitud_descripcion_solicitud"></textarea>
 			</div>
-			<button type="button" id="validate" class="btn btn-enviar">Prueba</button>
-			<?php echo CHtml::submitButton('Enviar', array('class' =>'btn btn-enviar' )); ?>
+			<button type="submit" id="validate" class="btn btn-enviar">Prueba</button>
 			<?php $this->endWidget(); ?>
-		</form>
 	</section> <!-- #cd-placeholder-5 -->
 </main> <!-- .cd-main-content -->
 
@@ -313,28 +308,39 @@
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/modernizr.js"></script> <!-- Resource jQuery -->
 <script>
 	$('#validate').click(function(){
-		var nombre = $('#Solicitud_nombres_solicitud').val();
-		var apellido = $('#Solicitud_apellidos_solicitud').val();
-		var servicio = $('#Solicitud_servicio_solicitud').val();
-		var telefono = $('#Solicitud_telefono_solicitud').val();
-		var correo = $('#Solicitud_correo_solicitud').val();
-		var descripcion = $('#Solicitud_descripcion_solicitud').val();
-		$.ajax({
-		  type: "POST",
-			url: "<?php echo Yii::app()->request->baseUrl; ?>/site/aja",
-		  data:
-		    {
-		      nombres_solicitud: nombre,
-		      apellidos_solicitud: apellido,
-		      servico_solicitud: servicio,
-		      telefono_solicitud: telefono,
-		      correo_solicitud: correo,
-		      descripcion_solicitud:descripcion
-		    },
-		  success: function(result)
-		  {
-		    alert(result);
-		  }
-		});
+		if ($('#Solicitud_nombres_solicitud').val()!='' && $('#Solicitud_apellidos_solicitud').val()!='' &&  $('#Solicitud_servicio_solicitud').val()!='' && $('#Solicitud_telefono_solicitud').val()!=''&& $('#Solicitud_correo_solicitud').val()!='' && $('#Solicitud_descripcion_solicitud').val()!='') {
+			var nombre = $('#Solicitud_nombres_solicitud').val();
+			var apellido = $('#Solicitud_apellidos_solicitud').val();
+			var servicio = $('#Solicitud_servicio_solicitud').val();
+			var telefono = $('#Solicitud_telefono_solicitud').val();
+			var correo = $('#Solicitud_correo_solicitud').val();
+			var descripcion = $('#Solicitud_descripcion_solicitud').val();
+			$.ajax({
+			  type: "POST",
+				url: "<?php echo Yii::app()->request->baseUrl; ?>/site/aja",
+			  data:
+			    {
+			      nombres_solicitud: nombre,
+			      apellidos_solicitud: apellido,
+			      servico_solicitud: servicio,
+			      telefono_solicitud: telefono,
+			      correo_solicitud: correo,
+			      descripcion_solicitud:descripcion
+			    },
+			  success: function(result)
+			  {
+			    if (result) {
+						$('#co').text('');
+			    	$('#co').text('Solicitud registrada');
+			    }else {
+						$('#co').text('');
+						$('#co').text('Solicitud registrada');
+			    }
+			  }
+			});
+		}
 	});
+	function tufuncion(){
+		return false;
+	}
 </script>

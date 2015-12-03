@@ -50,7 +50,7 @@
     margin-top: 70px;
   }
 }
-/* -------------------------------- 
+/* --------------------------------
 
 Navigation
 
@@ -184,7 +184,7 @@ Navigation
   }
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
 Intro
 
@@ -352,7 +352,7 @@ div#content p:last-child {
   }
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
 Secondary Fixed Navigation
 
@@ -614,7 +614,7 @@ Secondary Fixed Navigation
   }
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
 Placeholder Sections
 
@@ -2185,7 +2185,7 @@ centrar{
   transition-delay: 0.1s;
 }
 .ejemplo-2:hover a.link {
-  transition-delay: 0.2s; /*Aplicamos un pequeño retardo para que se muestre al final*/
+  transition-delay: 0.2s; /*Aplicamos un pequeï¿½o retardo para que se muestre al final*/
   transform: translateY(0px);
 }
 
@@ -2931,4 +2931,46 @@ footer {
 
 .cf:after {
   clear: both;
+}
+#error-msg{
+  position:absolute;
+   bottom:-75px;
+   bottom: -115px\9; /* IE Specific */
+   right:55px;
+   width:250px;
+   padding:15px;
+   background:#fefefe;
+   font-size:.875em;
+   border-radius:5px;
+   box-shadow:0 1px 3px #ccc;
+   border:1px solid #ddd;
+}
+#error-msg h4{
+  margin:0 0 10px 0;
+    padding:0;
+    font-weight:normal;
+}
+
+#error-msg::before{
+  content: "\25B2";
+    position:absolute;
+    top:-12px;
+    left:45%;
+    font-size:14px;
+    line-height:14px;
+    color:#ddd;
+    text-shadow:none;
+    display:block;
+}
+.invalid {
+
+    padding-left:22px;
+    line-height:24px;
+    color:#ec3f41;
+}
+.valid {
+
+    padding-left:22px;
+    line-height:24px;
+    color:#3a7d34;
 }

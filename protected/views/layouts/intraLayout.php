@@ -112,10 +112,11 @@ if(!Yii::app()->session['activo'])
               <p><?php
                 $nombre=Yii::app()->session['admin_nombre'];
                 $ap=Yii::app()->session['admin_ape'];
+                $appe=explode(" ", $ap);
                 $primer=explode(" ", $nombre);
                 echo $primer[0];
                 echo " ";
-                echo $ap;
+                echo $appe[0];
               ?></p>
               <a href="#"><i class="fa fa-circle text-success"></i> Conectado</a>
             </div>
