@@ -12,92 +12,125 @@
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>true,
-    'clientOptions'=>array(
-      'validateOnSubmit'=>true,
-     ),
+	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+<div class="col-md-6">
+	<div class="box box-primary">
+		<div class="box-header with-border">
+			<h3 class="box-title">Datos de la Solicitud</h3>
+		</div>
+		<div class="form">
+			<div class="box-body">
+				<div class="col-lg-3 col-md-6 col-xs-12">
+					<div class="form-group">
+						<div class="col-lg-3 col-md-6 col-xs-12">
+							<div class="form-group">
+								<?php echo $form->label(  $solicitud, 'rut_cliente'); ?>
+								<?php echo $form->textField( $solicitud, 'rut_cliente' , array('class'=>'form-control','disabled' => true  )); ?>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6 col-xs-12">
+							<div class="form-group">
+								<?php echo $form->label(  $cliente, 'nombres_cliente'); ?>
+								<?php echo $form->textField( $cliente, 'nombres_cliente' , array('class'=>'form-control','disabled' => true  )); ?>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6 col-xs-12">
+							<div class="form-group">
+								<?php echo $form->label(  $cliente, 'apellidos_cliente'); ?>
+								<?php echo $form->textField( $cliente, 'apellidos_cliente' , array('class'=>'form-control','disabled' => true  )); ?>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6 col-xs-12">
+							<div class="form-group">
+								<?php echo $form->label(  $solicitud, 'rut_funcionario'); ?>
+								<?php echo $form->textField( $solicitud, 'rut_funcionario' , array('class'=>'form-control','disabled' => true  )); ?>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6 col-xs-12">
+							<div class="form-group">
+								<?php echo $form->label(  $funcionario, 'nombres_funcionario'); ?>
+								<?php echo $form->textField( $funcionario, 'nombres_funcionario' , array('class'=>'form-control','disabled' => true  )); ?>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6 col-xs-12">
+							<div class="form-group">
+								<?php echo $form->label(  $funcionario, 'apellidos_funcionario'); ?>
+								<?php echo $form->textField( $funcionario, 'apellidos_funcionario' , array('class'=>'form-control','disabled' => true  )); ?>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6 col-xs-12">
+							<div class="form-group">
+								<?php echo $form->label(  $solicitud, 'nombres_solicitud'); ?>
+								<?php echo $form->textField( $solicitud, 'nombres_solicitud' , array('class'=>'form-control','disabled' => true  )); ?>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6 col-xs-12">
+							<div class="form-group">
+								<?php echo $form->label(  $solicitud, 'apellidos_solicitud'); ?>
+								<?php echo $form->textField( $solicitud, 'apellidos_solicitud' , array('class'=>'form-control','disabled' => true  )); ?>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6 col-xs-12">
+							<div class="form-group">
+								<?php echo $form->label(  $solicitud, 'telefono_solicitud'); ?>
+								<?php echo $form->textField( $solicitud, 'telefono_solicitud' , array('class'=>'form-control','disabled' => true  )); ?>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6 col-xs-12">
+							<div class="form-group">
+								<?php echo $form->label(  $solicitud, 'correo_solicitud'); ?>
+								<?php echo $form->textField( $solicitud, 'correo_solicitud' , array('class'=>'form-control','disabled' => true  )); ?>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6 col-xs-12">
+							<div class="form-group">
+								<?php echo $form->label(  $solicitud, 'servicio_solicitud'); ?>
+								<?php echo $form->textField( $solicitud, 'servicio_solicitud' , array('class'=>'form-control','disabled' => true  )); ?>
+							</div>
+						</div>
 
-	<?php echo $form->errorSummary($model); ?>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'rut_cliente'); ?>
-		<?php echo $form->textField($model,'rut_cliente',array('size'=>10,'maxlength'=>10)); ?>
-		<?php echo $form->error($model,'rut_cliente'); ?>
+						<div class="col-lg-3 col-md-6 col-xs-12">
+							<div class="form-group">
+								<?php echo $form->label(  $solicitud, 'fecha_solicitud'); ?>
+								<?php echo $form->textField( $solicitud, 'fecha_solicitud' , array('class'=>'form-control','disabled' => true  )); ?>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6 col-xs-12">
+							<div class="form-group">
+								<?php echo $form->label(  $solicitud, 'fechaejecucion_solicitud'); ?>
+								<?php echo $form->textField( $solicitud, 'fechaejecucion_solicitud' , array('class'=>'form-control','disabled' => true  )); ?>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6 col-xs-12">
+							<div class="form-group">
+								<?php echo $form->label(  $solicitud, 'estado_solicitud'); ?>
+								<?php echo $form->textField( $solicitud, 'estado_solicitud' , array('class'=>'form-control','disabled' => true, 'value'=>$solicitud->estado_solicitud? 'Pendiente':'Terminada', )); ?>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-6 col-xs-12">
+							<div class="form-group">
+								<?php echo $form->label(  $solicitud, 'tipopropiedad_solicitud'); ?>
+								<?php echo $form->textField( $solicitud, 'tipopropiedad_solicitud' , array('class'=>'form-control','disabled' => true  )); ?>
+							</div>
+						</div>
+						<div class="col-lg-12 col-md-12 col-xs-12">
+							<div class="form-group">
+								<?php echo $form->label(  $solicitud, 'descripcion_solicitud'); ?>
+								<?php echo $form->textArea( $solicitud, 'descripcion_solicitud' , array('rows' => 4,'class'=>'form-control','disabled' => true  )); ?>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="box-footer">
+				<button type="button" class="btn btn-info" data-toggle="modal" data-target="#arrendatario">Boton</button>
+			</div>
+		</div>
 	</div>
+</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'rut_funcionario'); ?>
-		<?php echo $form->textField($model,'rut_funcionario',array('size'=>10,'maxlength'=>10)); ?>
-		<?php echo $form->error($model,'rut_funcionario'); ?>
-	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'nombres_solicitud'); ?>
-		<?php echo $form->textField($model,'nombres_solicitud',array('size'=>60,'maxlength'=>100)); ?>
-		<?php echo $form->error($model,'nombres_solicitud'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'apellidos_solicitud'); ?>
-		<?php echo $form->textField($model,'apellidos_solicitud',array('size'=>60,'maxlength'=>100)); ?>
-		<?php echo $form->error($model,'apellidos_solicitud'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'servicio_solicitud'); ?>
-		<?php echo $form->textField($model,'servicio_solicitud',array('size'=>25,'maxlength'=>25)); ?>
-		<?php echo $form->error($model,'servicio_solicitud'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'fecha_solicitud'); ?>
-		<?php echo $form->textField($model,'fecha_solicitud'); ?>
-		<?php echo $form->error($model,'fecha_solicitud'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'fechaejecucion_solicitud'); ?>
-		<?php echo $form->textField($model,'fechaejecucion_solicitud'); ?>
-		<?php echo $form->error($model,'fechaejecucion_solicitud'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'telefono_solicitud'); ?>
-		<?php echo $form->textField($model,'telefono_solicitud',array('size'=>12,'maxlength'=>12)); ?>
-		<?php echo $form->error($model,'telefono_solicitud'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'estado_solicitud'); ?>
-		<?php echo $form->textField($model,'estado_solicitud'); ?>
-		<?php echo $form->error($model,'estado_solicitud'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'descripcion_solicitud'); ?>
-		<?php echo $form->textArea($model,'descripcion_solicitud',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'descripcion_solicitud'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'tipopropiedad_solicitud'); ?>
-		<?php echo $form->textField($model,'tipopropiedad_solicitud',array('size'=>50,'maxlength'=>50)); ?>
-		<?php echo $form->error($model,'tipopropiedad_solicitud'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'correo_solicitud'); ?>
-		<?php echo $form->textField($model,'correo_solicitud',array('size'=>60,'maxlength'=>100)); ?>
-		<?php echo $form->error($model,'correo_solicitud'); ?>
-	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Enviar', array('class' =>'btn btn-buscar' , )); ?>
-	</div>
 
 <?php $this->endWidget(); ?>
-
-</div><!-- form -->

@@ -22,7 +22,12 @@
           </div>
 					<div class="form">
 						<div class="box-body">
-							<h1>Cuerpo</h1>
+              <div class="col-lg-3 col-md-6 col-xs-12">
+                <div class="form-group">
+                  <?php echo $form->labelEx($model , ''); ?>
+                  <?php echo $form->textField($model , '' , array('class'=>'form-control','disabled' => true  )); ?>
+                </div>
+              </div>
 					  </div>
             <div class="box-footer">
               <button type="button" class="btn btn-info" data-toggle="modal" data-target="#arrendatario">Boton</button>

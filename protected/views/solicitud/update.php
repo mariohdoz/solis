@@ -1,21 +1,22 @@
-<?php
-/* @var $this SolicitudController */
-/* @var $model Solicitud */
-
-$this->breadcrumbs=array(
-	'Solicituds'=>array('index'),
-	$model->id_solicitud=>array('view','id'=>$model->id_solicitud),
-	'Update',
-);
-
-$this->menu=array(
-	array('label'=>'List Solicitud', 'url'=>array('index')),
-	array('label'=>'Create Solicitud', 'url'=>array('create')),
-	array('label'=>'View Solicitud', 'url'=>array('view', 'id'=>$model->id_solicitud)),
-	array('label'=>'Manage Solicitud', 'url'=>array('admin')),
-);
-?>
-
-<h1>Update Solicitud <?php echo $model->id_solicitud; ?></h1>
-
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<div class="content-wrapper">
+  <section class="content-header">
+    <h1>
+	    Configuración
+	    <small>Texto aquí.</small>
+	  </h1>
+	  <ol class="breadcrumb">
+	    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/intra/index">
+			<i class="fa fa-dashboard"></i>Inicio</a></li>
+			<li class="active">algo</li>
+			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/intra/index">Gestión</a></li>
+			<li class="active">acción</li>
+	  </ol>
+  </section>
+  <section class="content">
+    <div class="row">
+      <!-- Inicio se container -->
+      <?php $this->renderPartial('_form', array('solicitud'=>$model, 'cliente'=>$cliente, 'funcionario'=>$funcionario)); ?>
+      <!-- término se container -->
+    </div>
+  </section>
+</div>

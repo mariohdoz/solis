@@ -172,8 +172,6 @@ if(!Yii::app()->session['activo'])
               <ul class="treeview-menu">
                 <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/pago/select"><i class="fa fa-money"></i> Administrar pagos </a></li>
                 <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/pago/atrasado"><i class="fa fa-money"></i> arriendos atrasados</a></li>
-                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/pago/select2"><i class="fa fa-money"></i> Eliminar pagos</a></li>
-                <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/pago/index"><i class="fa fa-money"></i> Listado de pago</a></li>
               </ul>
             </li>
           </ul>
@@ -241,7 +239,7 @@ if(!Yii::app()->session['activo'])
                     <i class="fa fa-angle-left pull-right"></i>
                   </a>
                   <ul class="treeview-menu">
-                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-eye"></i> Solicitudes pendientes </a></li>
+                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/solicitud/index"><i class="fa fa-eye"></i> Solicitudes pendientes </a></li>
                   </ul>
                 </li>
               </ul>            <!-- 4-->

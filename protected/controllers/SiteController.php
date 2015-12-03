@@ -49,12 +49,9 @@ class SiteController extends Controller
 		if(isset($_POST['Solicitud'])){
 			$model1->attributes = $_POST['Solicitud'];
 			if($model1->nombres_solicitud != '' && $model1->apellidos_solicitud != '' ){
+				$model1->fecha_solicitud = date('Y-m-j');
 				if($model1->save()){
-					$this->render('index', array(
-						'model' => $model,
-						'model1' => $model1,
-						'model2' => $model2
-					));
+					Yii::app()->user->setFlash('text-success','Solicitud enviada correctamente, proximamente será contactado por la administración.');
 				}
 			}
 		}
@@ -67,19 +64,35 @@ class SiteController extends Controller
 	}
 
 	public function actionTest(){
-		$model=new Solicitud;
+		$model  = new LoginForm;
+		$model1 = new Solicitud;
+		$model2 = new Propiedad;
+		// validación de ajax
 
-		// Uncomment the following line if AJAX validation is needed
+		if (isset($_POST['LoginForm'])) {
+			$model->attributes = $_POST['LoginForm'];
+			// validate user input and redirect to the previous page if valid
+			if ($model->validate() && $model->login())
+				$this->redirect(array("/intra/index"));
+		}
+		$this->performAjaxValidation($model1);
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['Solicitud']))
-		{
-			$model->attributes=$_POST['Solicitud'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_solicitud));
+
+		if(isset($_POST['Solicitud'])){
+			$model1->attributes = $_POST['Solicitud'];
+			if($model1->nombres_solicitud != '' && $model1->apellidos_solicitud != '' ){
+				var_dump($model1->getErrors());
+				if($model1->save()){
+
+				}
+			}
 		}
-		$this->render('test',array(
-			'model'=>$model,
+		// desplegar el login
+		$this->render('test', array(
+			'model' => $model,
+			'model1' => $model1,
+			'model2' => $model2
 		));
 
 	}
@@ -274,6 +287,7 @@ class SiteController extends Controller
 		Yii::app()->session->destroy();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+
 	protected function performAjaxValidation($model)
 	{
 		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')

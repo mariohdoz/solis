@@ -49,6 +49,8 @@ class Solicitud extends CActiveRecord
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_solicitud, rut_cliente, rut_funcionario, nombres_solicitud, apellidos_solicitud, servicio_solicitud, fecha_solicitud, fechaejecucion_solicitud, telefono_solicitud, estado_solicitud, descripcion_solicitud, tipopropiedad_solicitud, correo_solicitud', 'safe', 'on'=>'search'),
+			array('id_solicitud, rut_cliente, rut_funcionario, nombres_solicitud, apellidos_solicitud, servicio_solicitud, fecha_solicitud, fechaejecucion_solicitud, telefono_solicitud, estado_solicitud, descripcion_solicitud, tipopropiedad_solicitud, correo_solicitud, nombres_cliente', 'safe', 'on'=>'index'),
+
 		);
 	}
 	public function getRut(){
@@ -120,16 +122,16 @@ class Solicitud extends CActiveRecord
 			'id_solicitud' => 'Id Solicitud',
 			'rut_cliente' => 'Rut Cliente',
 			'rut_funcionario' => 'Rut Funcionario',
-			'nombres_solicitud' => 'Nombres Solicitud',
-			'apellidos_solicitud' => 'Apellidos Solicitud',
-			'servicio_solicitud' => 'Servicio Solicitud',
-			'fecha_solicitud' => 'Fecha Solicitud',
+			'nombres_solicitud' => 'Nombres solicitante',
+			'apellidos_solicitud' => 'Apellidos solicitante',
+			'servicio_solicitud' => 'Servicio solicitante',
+			'fecha_solicitud' => 'Fecha de solicitud',
 			'fechaejecucion_solicitud' => 'Fechaejecucion Solicitud',
-			'telefono_solicitud' => 'Telefono Solicitud',
-			'estado_solicitud' => 'Estado Solicitud',
-			'descripcion_solicitud' => 'Descripcion Solicitud',
-			'tipopropiedad_solicitud' => 'Tipopropiedad Solicitud',
-			'correo_solicitud' => 'Correo Solicitud',
+			'telefono_solicitud' => 'Telefono solicitante',
+			'estado_solicitud' => 'Estado de Solicitud',
+			'descripcion_solicitud' => 'Descripcion',
+			'tipopropiedad_solicitud' => 'Tipo de propiedad',
+			'correo_solicitud' => 'Correo solicitante',
 		);
 	}
 
@@ -146,6 +148,32 @@ class Solicitud extends CActiveRecord
 	 * based on the search/filter conditions.
 	 */
 	public function search()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$Criteria->join = 'LEFT JOIN funcionario ON funcionario.rut_funcionario = t.rut_funcionario';
+		$Criteria->join = 'LEFT JOIN cliente ON cliente.rut_cliente = t.rut_cliente';
+		$criteria->compare('id_solicitud',$this->id_solicitud);
+		$criteria->compare('rut_cliente',$this->rut_cliente,true);
+		$criteria->compare('rut_funcionario',$this->rut_funcionario,true);
+		$criteria->compare('nombres_solicitud',$this->nombres_solicitud,true);
+		$criteria->compare('apellidos_solicitud',$this->apellidos_solicitud,true);
+		$criteria->compare('servicio_solicitud',$this->servicio_solicitud,true);
+		$criteria->compare('fecha_solicitud',$this->fecha_solicitud,true);
+		$criteria->compare('fechaejecucion_solicitud',$this->fechaejecucion_solicitud,true);
+		$criteria->compare('telefono_solicitud',$this->telefono_solicitud,true);
+		$criteria->compare('estado_solicitud',$this->estado_solicitud);
+		$criteria->compare('descripcion_solicitud',$this->descripcion_solicitud,true);
+		$criteria->compare('tipopropiedad_solicitud',$this->tipopropiedad_solicitud,true);
+		$criteria->compare('correo_solicitud',$this->correo_solicitud,true);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+	public function index()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 

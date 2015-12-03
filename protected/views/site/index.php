@@ -18,7 +18,10 @@
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
-
+  'enableClientValidation'=>true,
+  'clientOptions'=>array(
+      'validateOnSubmit'=>true,
+  )
 )); ?>
 <?php if(!Yii::app()->session['activo']){
 		echo '<div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
@@ -28,11 +31,12 @@
 		echo '  <p class="fieldset">
 							<label class="image-replace cd-email" for="signin-email">E-mail</label>';
 							echo $form->emailField($model,'correo', array("class"=>"full-width has-padding has-border", "placeholder"=>"Correo electrónico"));
-							echo $form->error($model,'correo');
+
 							echo '</p>
 						<p class="fieldset">
 							<label class="image-replace cd-password" >Password</label>';
 							echo $form->passwordField($model,'password',array( "class"=>"full-width has-padding has-border", "placeholder"=>"Constraseña"));
+              echo $form->error($model,'correo');
 				      echo $form->error($model,'password');
 						echo'</p>
 
@@ -257,6 +261,22 @@
 		</p>
 	</section> <!-- #cd-placeholder-4 -->
 	<section id="cd-placeholder-5" class="cd-section cd-container">
+		<div class="col-md-12">
+			<?php if(($msgs=Yii::app()->user->getFlashes())!=null): ?>
+				<?php foreach($msgs as $type => $message):?>
+					<div class="callout callout-<?php echo $type;?>">
+						<p class="text-success"><?php
+							if($type == 'danger'){
+								echo 'Error';
+							}elseif ($type == 'text-success'){
+								echo 'Éxito';
+							};
+						 ?> !</p>
+						<p class="text-success"><?php echo $message;?></p>
+					</div>
+				<?php endforeach;?>
+			<?php endif; ?>
+		</div>
 		<h1>Contáctenos</h1>
 
 		<?php $form=$this->beginWidget('CActiveForm', array(
@@ -265,8 +285,11 @@
 			// controller action is handling ajax validation correctly.
 			// There is a call to performAjaxValidation() commented in generated controller code.
 			// See class documentation of CActiveForm for details on this.
-			'enableAjaxValidation'=>true,
-			'clientOptions'=>array('validateOnSubmit'=>true),
+      'enableClientValidation'=>true,
+			'clientOptions'=>array(
+      'validateOnSubmit'=>true,
+     ),
+
 		)); ?>
 
 		<div class="col-md-12">
@@ -330,6 +353,5 @@
 	<img src="http://www.braksoftware.com/codepen/bruce/v1/join-our-team-button-over-large.png" />
 	<img src="http://www.braksoftware.com/codepen/bruce/v1/join-our-team-button-over-medium.png" />
 </div>
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-2.1.1.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/main.js"></script> <!-- Resource jQuery -->
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/modernizr.js"></script> <!-- Resource jQuery -->
