@@ -15,7 +15,7 @@
             <div class="row">
             <div class="col-lg-3 col-xs-6">
               <!-- small box -->
-              <div class="small-box bg-aqua">
+              <div class="small-box bg-orange">
                 <div class="inner">
                   <h3><?php
                   $criteria = new CDbCriteria;
@@ -31,7 +31,7 @@
             </div><!-- ./col -->
             <div class="col-lg-3 col-xs-6">
               <!-- small box -->
-              <div class="small-box bg-green">
+              <div class="small-box bg-orange">
                 <div class="inner">
                     <h3><?php
                     $criteria = new CDbCriteria;
@@ -47,7 +47,7 @@
             </div><!-- ./col -->
             <div class="col-lg-3 col-xs-6">
               <!-- small box -->
-              <div class="small-box bg-yellow">
+              <div class="small-box bg-orange">
                 <div class="inner">
                   <h3>5</h3>
                   <p>Próximas Citas</p>
@@ -60,7 +60,7 @@
             </div><!-- ./col -->
             <div class="col-lg-3 col-xs-6">
               <!-- small box -->
-              <div class="small-box bg-red">
+              <div class="small-box bg-orange">
                 <div class="inner">
                   <h3><?php echo Solicitud::model()->count()?></h3>
                   <p>Solicitudes</p>
@@ -73,7 +73,7 @@
             </div><!-- ./col -->
             <div class="col-lg-3 col-xs-6">
               <!-- small box -->
-              <div class="small-box bg-red">
+              <div class="small-box bg-green">
                 <div class="inner">
                   <h3><?php echo CHtml::encode($atraso)?></h3>
                   <p>Arriendos atrasados</p>
@@ -86,7 +86,7 @@
             </div><!-- ./col -->
             <div class="col-lg-3 col-xs-6">
               <!-- small box -->
-              <div class="small-box bg-yellow">
+              <div class="small-box bg-green">
                 <div class="inner">
                   <h3><?php echo Arriendo::model()->count()?></h3>
                   <p>Arriendos</p>

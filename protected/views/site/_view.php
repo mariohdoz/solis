@@ -18,7 +18,7 @@
                     ));
                 echo $clave -> url_imagen;
             }else{
-                echo 'default.gif';
+                echo '../default.jpg';
             }
             ?>"/>
         </a>
