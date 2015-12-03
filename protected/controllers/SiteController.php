@@ -98,7 +98,6 @@ class SiteController extends Controller
 			if ($model->validate() && $model->login())
 				$this->redirect(array("/intra/index"));
 		}
-		$this->performAjaxValidation($model1);
 		$this->performAjaxValidation($model);
 
 
@@ -313,11 +312,6 @@ class SiteController extends Controller
 	protected function performAjaxValidation($model)
 	{
 		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
-		if(isset($_POST['ajax']) && $_POST['ajax']==='solicitud-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

@@ -266,14 +266,14 @@
 			// controller action is handling ajax validation correctly.
 			// There is a call to performAjaxValidation() commented in generated controller code.
 			// See class documentation of CActiveForm for details on this.
-			'enableAjaxValidation'=>false,
+			'enableAjaxValidation'=>true,
 			'htmlOptions' => array('onsubmit' => 'return false;',),
 		)); ?>
 		<h1>Contáctenos</h1>
 		<div class="col-md-12">
-			<p id='co' class="text-success">
-
-			</p>
+			<div id='co' class="col-md-12" style="display:none;">
+				<div class="alert alert-success" ><strong>¡Bien hecho!</strong> Has leído correctamente este mensaje tan importante.</div>
+			</div>
 		</div>
 
 			<div class="half left cf">
@@ -293,9 +293,11 @@
 			</div>
 			<div class="half right cf">
 				<textarea placeholder="Escriba su petición o comentario aquí" row="60" name="Solicitud[descripcion_solicitud]" id="Solicitud_descripcion_solicitud"></textarea>
+				<?php echo $form->error($model1,'descripcion_solicitud'); ?>
 			</div>
 			<button type="submit" id="validate" class="btn btn-enviar">Prueba</button>
 			<?php $this->endWidget(); ?>
+
 	</section> <!-- #cd-placeholder-5 -->
 </main> <!-- .cd-main-content -->
 
@@ -305,7 +307,6 @@
 	<img src="http://www.braksoftware.com/codepen/bruce/v1/join-our-team-button-over-medium.png" />
 </div>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/main.js"></script> <!-- Resource jQuery -->
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/modernizr.js"></script> <!-- Resource jQuery -->
 <script>
 	$('#validate').click(function(){
 		if ($('#Solicitud_nombres_solicitud').val()!='' && $('#Solicitud_apellidos_solicitud').val()!='' &&  $('#Solicitud_servicio_solicitud').val()!='' && $('#Solicitud_telefono_solicitud').val()!=''&& $('#Solicitud_correo_solicitud').val()!='' && $('#Solicitud_descripcion_solicitud').val()!='') {
@@ -330,8 +331,7 @@
 			  success: function(result)
 			  {
 			    if (result) {
-						$('#co').text('');
-			    	$('#co').text('Solicitud registrada');
+			    	$('#co').show("slow");
 			    }else {
 						$('#co').text('');
 						$('#co').text('Solicitud registrada');
@@ -340,7 +340,4 @@
 			});
 		}
 	});
-	function tufuncion(){
-		return false;
-	}
 </script>
