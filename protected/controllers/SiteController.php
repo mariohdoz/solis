@@ -18,7 +18,7 @@ class SiteController extends Controller
 	{
 		return array(
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('index','busqueda','vista', 'error', 'login', 'logout','informacion', 'test', 'obtener', 'obtenerpro' ),
+				'actions'=>array('index','busqueda','vista', 'error', 'login', 'logout','informacion', 'test', 'aja' ),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -61,6 +61,17 @@ class SiteController extends Controller
 			'model1' => $model1,
 			'model2' => $model2
 		));
+	}
+	public function actionAja()
+	{
+		$nombres = $_POST['nombres_solicitud'];
+		$apellidos = $_POST['apellidos_solicitud'];
+		$servicio = $_POST['servico_solicitud'];
+		$telefono = $_POST['telefono_solicitud'];
+		$correo = $_POST['correo_solicitud'];
+		$descripcion = $_POST['descripcion_solicitud'];
+
+		echo $nombres;
 	}
 
 	public function actionTest(){

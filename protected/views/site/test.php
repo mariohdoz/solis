@@ -260,73 +260,47 @@
 		</p>
 	</section> <!-- #cd-placeholder-4 -->
 	<section id="cd-placeholder-5" class="cd-section cd-container">
-		<h1>Contáctenos</h1>
-
 		<?php $form=$this->beginWidget('CActiveForm', array(
 			'id'=>'solicitud-form',
 			// Please note: When you enable ajax validation, make sure the corresponding
 			// controller action is handling ajax validation correctly.
 			// There is a call to performAjaxValidation() commented in generated controller code.
 			// See class documentation of CActiveForm for details on this.
-      'enableClientValidation'=>true,
-      'clientOptions'=>array(
-          'validateOnSubmit'=>true,
-      )
+			'enableAjaxValidation'=>true,
+			'clientOptions'=>array('validateOnSubmit'=>true),
 		)); ?>
+		<h1>Contáctenos</h1>
 
-		<div class="col-md-12">
-			<div class="form-horizontal col-md-4">
-				<form role="form">
-					<div class="form-group">
-						<label style="float: left">Nombres</label>
-						<?php echo $form->textField($model1,'nombres_solicitud', array("class"=>"form-control2", "placeholder"=>"Nombres")); ?>
-					</div>
-					<div  class="form-group">
-						<label style="float: left">Apellidos</label>
-						<?php echo $form->textField($model1,'apellidos_solicitud', array("class"=>"form-control2", "placeholder"=>"Apellidos")); ?>
-					</div>
-					<div class="form-group">
-						<label style="float: left">Servicio a solicitar</label>
-						<?php echo $form->dropDownList($model1,'servicio_solicitud',
-							array(
-								'Venta' => 'Venta',
-								'Arriendo' => 'Arriendo',
-								'Tasación' => 'Tasación',
-								'Estudio de título' => 'Estudio de título',
-								'Ampliaciones menores' => 'Ampliaciones menores',
-								'Aseo de propiedad' => 'Aseo de propiedad',
-							),
-							array("class"=>"form-control2 "),
-							array('empty' => '(Seleccione tipo de servicio)')); ?>
-              <?php echo $form->error($model1,'servicio_solicitud'); ?>
-					</div>
-					<div  class="form-group">
-						<label style="float: left">Teléfono de contacto</label>
-						<?php echo $form->textField($model1,'telefono_solicitud', array("class"=>"form-control2", "placeholder"=>"Teléfono de contacto")); ?>
-					</div>
-					<div  class="form-group">
-						<label style="float: left">Correo electrónico</label>
-						<?php echo $form->emailField($model1,'correo_solicitud', array("class"=>"form-control2", "placeholder"=>"Correo de contacto")); ?>
-					</div>
-					<div  class="form-group">
-						<label style="float: left">Comentario</label>
-						<?php echo $form->textArea($model1,'descripcion_solicitud',array("rows"=>"3"), array("class"=>"form-control2", "placeholder"=>"Comentario")); ?>
-            <?php echo $form->error($model1,'descripcion_solicitud'); ?>
+		<form class="contact" id="contactForm">
+			<div class="half left cf">
 
-					</div>
-					<div  class="form-group">
-            <?php echo CHtml::submitButton('Enviar', array('class' =>'btn btn-buscar' , )); ?>
-					</div>
+				<?php echo $form->textField($model1,'nombres_solicitud', array("placeholder"=>"Nombres ")); ?>
+				<?php echo $form->textField($model1,'apellidos_solicitud', array("placeholder"=>"Apellidos")); ?>
+				<?php echo $form->dropDownList($model1,'servicio_solicitud',
+					array(
+						'servico a solicitar'=>'Servicio a Solicitar',
+						'Venta' => 'Venta',
+						'Arriendo' => 'Arriendo',
+						'Tasación' => 'Tasación',
+						'Estudio de título' => 'Estudio de título',
+						'Ampliaciones menores' => 'Ampliaciones menores',
+						'Aseo de propiedad' => 'Aseo de propiedad',
+					),
+					array("class"=>"form-control2"),
+					array('empty' => '(Seleccione tipo de servicio)')); ?>
+				<?php echo $form->error($model1,'servicio_solicitud'); ?>
+				<?php echo $form->textField($model1,'telefono_solicitud', array( "placeholder"=>"Teléfono de contacto")); ?>
+				<?php echo $form->emailField($model1,'correo_solicitud', array( "placeholder"=>"Correo de electrónico. ej: abc@gmail.com")); ?>
+
 			</div>
-			</form>
-					<div class="form-horizontal col-md-8">
-						<div class="google-map">
-						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.9261630980636!2d-68.92730228543036!3d-22.469408828058047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96ac09cb682b12fb%3A0x1ee576cc2844eb60!2sPropiedades+Sol+y+Cobre!5e0!3m2!1ses-419!2scl!4v1447907073915"  allowfullscreen></iframe>
-					</div>
-					</div>
+			<div class="half right cf">
+				<?php echo $form->textArea($model1,'descripcion_solicitud', array( "placeholder"=>"Escriba su petición o comentario aquí", 'row'=>60)); ?>
+				<?php echo $form->error($model1,'descripcion_solicitud'); ?>
 			</div>
-		</div>
-		<?php $this->endWidget(); ?>
+			<button type="button" id="validate" class="btn btn-enviar">Prueba</button>
+			<?php echo CHtml::submitButton('Enviar', array('class' =>'btn btn-enviar' )); ?>
+			<?php $this->endWidget(); ?>
+		</form>
 	</section> <!-- #cd-placeholder-5 -->
 </main> <!-- .cd-main-content -->
 
@@ -337,3 +311,30 @@
 </div>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/main.js"></script> <!-- Resource jQuery -->
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/modernizr.js"></script> <!-- Resource jQuery -->
+<script>
+	$('#validate').click(function(){
+		var nombre = $('#Solicitud_nombres_solicitud').val();
+		var apellido = $('#Solicitud_apellidos_solicitud').val();
+		var servicio = $('#Solicitud_servicio_solicitud').val();
+		var telefono = $('#Solicitud_telefono_solicitud').val();
+		var correo = $('#Solicitud_correo_solicitud').val();
+		var descripcion = $('#Solicitud_descripcion_solicitud').val();
+		$.ajax({
+		  type: "POST",
+			url: "<?php echo Yii::app()->request->baseUrl; ?>/site/aja",
+		  data:
+		    {
+		      nombres_solicitud: nombre,
+		      apellidos_solicitud: apellido,
+		      servico_solicitud: servicio,
+		      telefono_solicitud: telefono,
+		      correo_solicitud: correo,
+		      descripcion_solicitud:descripcion
+		    },
+		  success: function(result)
+		  {
+		    alert(result);
+		  }
+		});
+	});
+</script>

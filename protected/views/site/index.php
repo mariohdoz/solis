@@ -289,7 +289,7 @@
 
 			</div>
 			<div class="half right cf">
-				<?php echo $form->textArea($model1,'descripcion_solicitud', array( "placeholder"=>"Escriba su petición o comentario aquí")); ?>
+				<?php echo $form->textArea($model1,'descripcion_solicitud', array( "placeholder"=>"Escriba su petición o comentario aquí", 'row'=>60)); ?>
 				<?php echo $form->error($model1,'descripcion_solicitud'); ?>
 			</div>
 			<?php echo CHtml::submitButton('Enviar', array('class' =>'btn btn-enviar' )); ?>
@@ -325,4 +325,3 @@
 </div>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-2.1.1.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/main.js"></script> <!-- Resource jQuery -->
-
