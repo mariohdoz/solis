@@ -356,7 +356,7 @@ INSERT INTO `solicitud` VALUES (20, NULL, NULL, 'Mario Hernán Douglas ', 'Ossan
 -- Estructura de tabla para la tabla `venta`
 -- 
 
-CREATE TABLE `venta` (
+CREATE TABLE `venta`(
   `id_venta` int(11) NOT NULL auto_increment,
   `id_propiedad` int(11) NOT NULL COMMENT 'Número de ficha',
   `rut_admin` varchar(10) NOT NULL COMMENT 'RUT del administrador',
