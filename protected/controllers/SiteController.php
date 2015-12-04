@@ -85,37 +85,13 @@ class SiteController extends Controller
 		}	}
 
 	public function actionTest(){
-		$this->layout='//layouts/testLayout';
-
-		$model  = new LoginForm;
-		$model1 = new Solicitud;
-		$model2 = new Propiedad;
-		// validación de ajax
-
-		if (isset($_POST['LoginForm'])) {
-			$model->attributes = $_POST['LoginForm'];
-			// validate user input and redirect to the previous page if valid
-			if ($model->validate() && $model->login())
-				$this->redirect(array("/intra/index"));
-		}
-		$this->performAjaxValidation($model);
-
-
-		if(isset($_POST['Solicitud'])){
-			$model1->attributes = $_POST['Solicitud'];
-			if($model1->nombres_solicitud != '' && $model1->apellidos_solicitud != '' ){
-				if($model1->save()){
-
-				}
-			}
-		}
-		// desplegar el login
-		$this->render('test', array(
-			'model' => $model,
-			'model1' => $model1,
-			'model2' => $model2
+		$cliente = new Solicitud('clie');
+		$cliente->unsetAttributes();  // clear any default values
+		if(isset($_GET['Solicitud']))
+			$cliente->attributes=$_GET['Solicitud'];
+		$this->render('test',array(
+			'cliente'=>$cliente,
 		));
-
 	}
 
 

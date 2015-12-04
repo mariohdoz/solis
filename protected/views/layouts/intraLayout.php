@@ -220,6 +220,17 @@ if(!Yii::app()->session['activo'])
               </li>
             </ul>
             <ul class="sidebar-menu">
+              <li class="treeview">
+                <a href="#">
+                  <i class="fa fa-file-text-o"></i><span>Solicitud</span>
+                  <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/solicitud/index"><i class="fa fa-eye"></i> Solicitudes pendientes </a></li>
+                </ul>
+              </li>
+            </ul>            <!-- 4-->
+            <ul class="sidebar-menu">
                 <li class="treeview">
                   <a href="#">
                     <i class="fa fa-pencil-square-o"></i> <span>Ordenes de Trabajo</span>
@@ -231,25 +242,6 @@ if(!Yii::app()->session['activo'])
                     <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-close"></i> Eliminar OT</a></li>
                     <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-close"></i> Crear reunion</a></li>
                   </ul>
-                </li>
-              </ul>
-              <ul class="sidebar-menu">
-                <li class="treeview">
-                  <a href="#">
-                    <i class="fa fa-file-text-o"></i><span>Solicitud</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/solicitud/index"><i class="fa fa-eye"></i> Solicitudes pendientes </a></li>
-                  </ul>
-                </li>
-              </ul>            <!-- 4-->
-
-              <ul class="sidebar-menu">
-                <li>
-                  <a href="../widgets.html">
-                    <i class="fa fa-folder"></i> <span>Documentos</span>
-                  </a>
                 </li>
               </ul>
               <ul class="sidebar-menu">

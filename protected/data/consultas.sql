@@ -9,3 +9,19 @@ AND id_arriendo NOT IN (
   FROM pago
   WHERE mes_pago = DATE_FORMAT( NOW( ) ,  "%m" )
 )
+
+SELECT *
+FROM solicitud
+WHERE rut_funcionario IS NOT NULL
+LIMIT 0 , 30
+
+SELECT *
+FROM  `solicitud`
+WHERE rut_cliente IS NOT NULL
+LIMIT 0 , 30
+
+SELECT *
+FROM  `solicitud`
+WHERE rut_cliente IS NULL
+AND rut_funcionario IS NULL
+LIMIT 0 , 30

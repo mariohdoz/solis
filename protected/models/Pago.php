@@ -10,6 +10,7 @@
  * @property string $mes_pago
  * @property integer $totalpagado_pago
  * @property integer $activo_pago
+ * @property integer $id_ot
  */
 class Pago extends CActiveRecord
 {
@@ -31,11 +32,11 @@ class Pago extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('fecha_pago, mes_pago, totalpagado_pago', 'required'),
-			array('id_arriendo, totalpagado_pago, activo_pago, totalpagar_pago', 'numerical', 'integerOnly'=>true),
+			array('id_arriendo, totalpagado_pago, activo_pago, totalpagar_pago,id_ot', 'numerical', 'integerOnly'=>true),
 			array('mes_pago', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_pago, id_arriendo, fecha_pago, mes_pago, totalpagado_pago, activo_pago', 'safe', 'on'=>'search'),
+			array('id_pago, id_arriendo, fecha_pago, mes_pago, totalpagado_pago, activo_pago, id_ot', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -91,6 +92,25 @@ class Pago extends CActiveRecord
 		$criteria->compare('mes_pago',$this->mes_pago,true);
 		$criteria->compare('totalpagado_pago',$this->totalpagado_pago);
 		$criteria->compare('activo_pago',$this->activo_pago);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+	public function ot()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->condition='id_ot IS NOT NULL';
+		$criteria->compare('id_pago',$this->id_pago);
+		$criteria->compare('id_arriendo',$this->id_arriendo);
+		$criteria->compare('fecha_pago',$this->fecha_pago,true);
+		$criteria->compare('mes_pago',$this->mes_pago,true);
+		$criteria->compare('totalpagado_pago',$this->totalpagado_pago);
+		$criteria->compare('activo_pago',$this->activo_pago);
+		$criteria->compare('id_ot',$this->id_ot);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

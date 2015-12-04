@@ -2,14 +2,14 @@
   <section class="content-header">
     <h1>
 	    Configuración
-	    <small>Texto aquí.</small>
+	    <small>Actualización de la Solicitud n° <?php echo CHtml::encode($model->id_solicitud); ?>.</small>
 	  </h1>
 	  <ol class="breadcrumb">
 	    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/intra/index">
 			<i class="fa fa-dashboard"></i>Inicio</a></li>
-			<li class="active">algo</li>
+			<li class="active">Solicitud</li>
 			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/intra/index">Gestión</a></li>
-			<li class="active">acción</li>
+			<li class="active">Actualizar</li>
 	  </ol>
   </section>
   <section class="content">

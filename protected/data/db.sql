@@ -1,23 +1,23 @@
 -- phpMyAdmin SQL Dump
 -- version 2.10.3
 -- http://www.phpmyadmin.net
--- 
+--
 -- Servidor: localhost
--- Tiempo de generación: 03-12-2015 a las 12:30:27
+-- Tiempo de generación: 04-12-2015 a las 14:03:50
 -- Versión del servidor: 5.0.51
 -- Versión de PHP: 5.2.6
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
--- 
+--
 -- Base de datos: `sun`
--- 
+--
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Estructura de tabla para la tabla `administrador`
--- 
+--
 
 CREATE TABLE `administrador` (
   `rut_admin` varchar(10) NOT NULL,
@@ -32,17 +32,17 @@ CREATE TABLE `administrador` (
   PRIMARY KEY  (`rut_admin`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- 
+--
 -- Volcar la base de datos para la tabla `administrador`
--- 
+--
 
 INSERT INTO `administrador` VALUES ('18183527-3', 'Mario Hernán Douglas', 'Ossandón Zúñiga', '8cb2237d0679ca88db6464eac60da96345513964', 'mario.hdoz1@gmail.com', '+56985352482', 'dist/img/avatar5.png', 1, 1);
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Estructura de tabla para la tabla `arrendatario`
--- 
+--
 
 CREATE TABLE `arrendatario` (
   `rut_arrendatario` varchar(10) NOT NULL COMMENT 'RUT del arrendatario',
@@ -61,9 +61,9 @@ CREATE TABLE `arrendatario` (
   PRIMARY KEY  (`rut_arrendatario`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- 
+--
 -- Volcar la base de datos para la tabla `arrendatario`
--- 
+--
 
 INSERT INTO `arrendatario` VALUES ('19206063-k', 'Marcela Andrea', 'Muñoz Campusano', 'Soltero/a', 'Prevencionista', 'marcela@gmail.com', '0255663322', '+56985352482', '19206063', 'Banco estado', 'Chilena', 0, 1);
 INSERT INTO `arrendatario` VALUES ('18183527-3', 'Mario Hernán Douglas', 'Ossandón Zúñiga ', 'Casado', 'Prevencionista', 'marcela.muñoz@gmail.com', '0255663322', '+56985352482', '19206063', 'Banco estado', 'Chilena', 0, 1);
@@ -71,9 +71,9 @@ INSERT INTO `arrendatario` VALUES ('11111111-1', 'Mario Hernán Douglas', 'Ossan
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Estructura de tabla para la tabla `arriendo`
--- 
+--
 
 CREATE TABLE `arriendo` (
   `id_arriendo` int(11) NOT NULL auto_increment,
@@ -90,19 +90,20 @@ CREATE TABLE `arriendo` (
   KEY `fk_gestiona` (`rut_admin`),
   KEY `fk_incumbe` (`rut_arrendatario`),
   KEY `fk_puede` (`id_propiedad`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=47 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=48 ;
 
--- 
+--
 -- Volcar la base de datos para la tabla `arriendo`
--- 
+--
 
+INSERT INTO `arriendo` VALUES (47, 10, '18183527-3', '19206063-k', '2015-12-04', 1, '2015-12-03', '2016-07-01', 850000, 1);
 INSERT INTO `arriendo` VALUES (46, 16, '18183527-3', '18183527-3', '2015-11-26', 2, '2015-06-02', '2016-05-02', 750000, 1);
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Estructura de tabla para la tabla `cliente`
--- 
+--
 
 CREATE TABLE `cliente` (
   `rut_cliente` varchar(10) NOT NULL COMMENT 'RUT del cliente',
@@ -121,9 +122,9 @@ CREATE TABLE `cliente` (
   PRIMARY KEY  (`rut_cliente`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- 
+--
 -- Volcar la base de datos para la tabla `cliente`
--- 
+--
 
 INSERT INTO `cliente` VALUES ('19206063-k', 'Marcela Andrea', 'Muñoz Campusano', 'Viudo/a', 'Periodismo periodístico ', 'Población Manuel Rodríguez, calle Til-Til 1301', 'mario.hdoz1@gmail.com', '+0255337744', '+56985352482', '18183527', 'Banco estado', 'Soltero/a', 1);
 INSERT INTO `cliente` VALUES ('18045248-6', 'Alejandro Esteban', 'Tamayo Echavarrìa', 'Soltero/a', 'Ingenierìa en informàtica', 'Av. Prat 2337', 'aete.xd@hotmail.com', '055896266', '71977092', '18045248', 'banco Estado', 'Casado/a', 1);
@@ -131,9 +132,9 @@ INSERT INTO `cliente` VALUES ('18183527-3', 'Mario Hernán Douglas', 'Ossandón 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Estructura de tabla para la tabla `documento`
--- 
+--
 
 CREATE TABLE `documento` (
   `id_documento` int(11) NOT NULL auto_increment COMMENT 'Id del documento',
@@ -150,16 +151,16 @@ CREATE TABLE `documento` (
   KEY `fk_cliente` (`rut_cliente`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
 
--- 
+--
 -- Volcar la base de datos para la tabla `documento`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Estructura de tabla para la tabla `funcionario`
--- 
+--
 
 CREATE TABLE `funcionario` (
   `rut_funcionario` varchar(10) NOT NULL,
@@ -176,17 +177,17 @@ CREATE TABLE `funcionario` (
   PRIMARY KEY  (`rut_funcionario`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- 
+--
 -- Volcar la base de datos para la tabla `funcionario`
--- 
+--
 
 INSERT INTO `funcionario` VALUES ('18183527-3', 'Mario Hernán Douglas', 'Ossandón Zúñiga', '+56985352482', '+5502457787', 'Total asd aopwoejp dapsodop', 'mario.hdoz1@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', 1, 0, 'Aseo');
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Estructura de tabla para la tabla `imagen`
--- 
+--
 
 CREATE TABLE `imagen` (
   `id_imagen` int(11) NOT NULL auto_increment,
@@ -194,18 +195,22 @@ CREATE TABLE `imagen` (
   `url_imagen` varchar(250) NOT NULL,
   PRIMARY KEY  (`id_imagen`),
   KEY `fk_representa` (`id_propiedad`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=60 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=64 ;
 
--- 
+--
 -- Volcar la base de datos para la tabla `imagen`
--- 
+--
 
+INSERT INTO `imagen` VALUES (62, 12, 'A._S._Bradford_House.JPG');
+INSERT INTO `imagen` VALUES (61, 12, 'house-07.jpg');
+INSERT INTO `imagen` VALUES (60, 12, 'house-05.jpg');
+INSERT INTO `imagen` VALUES (63, 12, 'house-01.jpg');
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Estructura de tabla para la tabla `integra`
--- 
+--
 
 CREATE TABLE `integra` (
   `id_integra` int(11) NOT NULL auto_increment,
@@ -216,16 +221,16 @@ CREATE TABLE `integra` (
   KEY `fk_relationship_9` (`rut_funcionario`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
--- 
+--
 -- Volcar la base de datos para la tabla `integra`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Estructura de tabla para la tabla `ordentrabajo`
--- 
+--
 
 CREATE TABLE `ordentrabajo` (
   `id_ot` int(11) NOT NULL auto_increment,
@@ -234,20 +239,25 @@ CREATE TABLE `ordentrabajo` (
   `fechaemision_ot` date NOT NULL,
   `fechaejecucion_ot` date NOT NULL,
   `estado_ot` tinyint(1) NOT NULL default '1',
+  `inicio_ot` date NOT NULL COMMENT 'Fecha de inicio',
+  `servicio_ot` varchar(50) NOT NULL COMMENT 'Servicio a realizar',
+  `observacion_ot` text NOT NULL COMMENT 'Observaciones',
+  `totalpagar_ot` int(11) NOT NULL COMMENT 'Total a pagar',
+  `formapago_ot` int(11) NOT NULL COMMENT 'Forma de pago',
   PRIMARY KEY  (`id_ot`),
   KEY `fk_crea` (`rut_admin`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
--- 
+--
 -- Volcar la base de datos para la tabla `ordentrabajo`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Estructura de tabla para la tabla `pago`
--- 
+--
 
 CREATE TABLE `pago` (
   `id_pago` int(11) NOT NULL auto_increment,
@@ -256,32 +266,41 @@ CREATE TABLE `pago` (
   `mes_pago` varchar(10) NOT NULL COMMENT 'Mes de pago',
   `totalpagado_pago` int(11) NOT NULL,
   `activo_pago` tinyint(1) NOT NULL default '1' COMMENT 'Pago concluido',
+  `id_ot` int(11) default NULL,
   PRIMARY KEY  (`id_pago`),
   KEY `fk_acata` (`id_arriendo`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=160 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=168 ;
 
--- 
+--
 -- Volcar la base de datos para la tabla `pago`
--- 
+--
 
-INSERT INTO `pago` VALUES (159, 46, '2015-11-26', '02-05-2016', 0, 1);
-INSERT INTO `pago` VALUES (158, 46, '2015-11-26', '2-04-2016', 0, 1);
-INSERT INTO `pago` VALUES (157, 46, '2015-11-26', '2-03-2016', 0, 1);
-INSERT INTO `pago` VALUES (156, 46, '2015-11-26', '2-02-2016', 0, 1);
-INSERT INTO `pago` VALUES (155, 46, '2015-11-26', '2-01-2016', 0, 1);
-INSERT INTO `pago` VALUES (154, 46, '2015-11-26', '2-12-2015', 0, 1);
-INSERT INTO `pago` VALUES (153, 46, '2015-11-26', '2-11-2015', 0, 1);
-INSERT INTO `pago` VALUES (152, 46, '2015-11-26', '2-10-2015', 0, 1);
-INSERT INTO `pago` VALUES (151, 46, '2015-11-26', '2-09-2015', 0, 1);
-INSERT INTO `pago` VALUES (150, 46, '2015-11-26', '2-08-2015', 0, 1);
-INSERT INTO `pago` VALUES (149, 46, '2015-11-26', '2-07-2015', 0, 1);
-INSERT INTO `pago` VALUES (148, 46, '2015-11-26', '2-06-2015', 0, 1);
+INSERT INTO `pago` VALUES (166, 47, '2015-12-04', '1-06-2016', 0, 1, 0);
+INSERT INTO `pago` VALUES (165, 47, '2015-12-04', '1-05-2016', 0, 1, 0);
+INSERT INTO `pago` VALUES (164, 47, '2015-12-04', '1-04-2016', 0, 1, 0);
+INSERT INTO `pago` VALUES (163, 47, '2015-12-04', '1-03-2016', 0, 1, 0);
+INSERT INTO `pago` VALUES (162, 47, '2015-12-04', '1-02-2016', 0, 1, 0);
+INSERT INTO `pago` VALUES (161, 47, '2015-12-04', '1-01-2016', 0, 1, 0);
+INSERT INTO `pago` VALUES (160, 47, '2015-12-04', '1-12-2015', 0, 1, 0);
+INSERT INTO `pago` VALUES (159, 46, '2015-11-26', '02-05-2016', 0, 1, 0);
+INSERT INTO `pago` VALUES (158, 46, '2015-11-26', '2-04-2016', 0, 1, 0);
+INSERT INTO `pago` VALUES (157, 46, '2015-11-26', '2-03-2016', 0, 1, 0);
+INSERT INTO `pago` VALUES (156, 46, '2015-11-26', '2-02-2016', 0, 1, 0);
+INSERT INTO `pago` VALUES (155, 46, '2015-11-26', '2-01-2016', 0, 1, 0);
+INSERT INTO `pago` VALUES (154, 46, '2015-11-26', '2-12-2015', 0, 1, 0);
+INSERT INTO `pago` VALUES (153, 46, '2015-11-26', '2-11-2015', 0, 1, 0);
+INSERT INTO `pago` VALUES (152, 46, '2015-11-26', '2-10-2015', 0, 1, 0);
+INSERT INTO `pago` VALUES (151, 46, '2015-11-26', '2-09-2015', 0, 1, 0);
+INSERT INTO `pago` VALUES (150, 46, '2015-11-26', '2-08-2015', 0, 1, 0);
+INSERT INTO `pago` VALUES (149, 46, '2015-11-26', '2-07-2015', 0, 1, 0);
+INSERT INTO `pago` VALUES (148, 46, '2015-11-26', '2-06-2015', 0, 1, 0);
+INSERT INTO `pago` VALUES (167, 47, '2015-12-04', '1-07-2016', 0, 1, 0);
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Estructura de tabla para la tabla `propiedad`
--- 
+--
 
 CREATE TABLE `propiedad` (
   `id_propiedad` int(11) NOT NULL auto_increment,
@@ -306,20 +325,20 @@ CREATE TABLE `propiedad` (
   KEY `fk_posee` (`rut_cliente`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
 
--- 
+--
 -- Volcar la base de datos para la tabla `propiedad`
--- 
+--
 
 INSERT INTO `propiedad` VALUES (12, '18045248-6', 'Aconcagua', 3007, 2, 1, '', '', 'Departamento Habitación', 'Venta', 'comedor y cocina juntas, walking closet, terraza,incluye gastos comunes', 'Calama', 1, 700000, 0, 0, 1, '2015-01-01');
-INSERT INTO `propiedad` VALUES (10, '18045248-6', 'Aconcagua ', 3009, 5, 2, '40m2', '35', 'Casa', 'Venta', 'Casa esquina  en  la  ciudad de  Calama  de  un  piso ', 'Calama', 0, 150000000, 1, 0, 0, '2015-01-01');
+INSERT INTO `propiedad` VALUES (10, '18045248-6', 'Aconcagua ', 3009, 5, 2, '40m2', '35', 'Casa', 'Venta', 'Casa esquina  en  la  ciudad de  Calama  de  un  piso ', 'Calama', 0, 150000000, 0, 0, 0, '2015-01-01');
 INSERT INTO `propiedad` VALUES (16, '19206063-k', 'Balmaceda #3242', NULL, 9, 9, '40.m2', '45m²', 'Propiedad de inversión', 'Venta', 'Mall plaza Calama', 'Calama', 1, 789456123, 0, 0, 1, '2015-01-01');
 INSERT INTO `propiedad` VALUES (18, '18183527-3', 'Calle Til Til 1301 Población Manuel Rodríguez', NULL, 4, 5, '50m²', '45m²', 'Casa', 'Venta', 'Lorem ipsum dolor sit amet, epicurei expetendis ex sea. Id prima gloriatur cum, posse dolores mediocritatem vim an, nullam animal consectetuer te vel. Sit id mazim debet. Ne mazim aeterno quaeque eos, posse offendit an mel.\r\n\r\nQuodsi viderer sententiae has eu, eam cu cibo regione corpora. Mea inani aeque id. Sea scripserit adversarium ea, cu utinam inimicus percipitur sed. Assum admodum eu usu, eius populo evertitur has at, insolens theophrastus vis ea. Diam copiosae necessitatibus ex sed, ei facete cetero tincidunt est, no ius facilis explicari.\r\n\r\nVirtute discere utroque in nam, est cu alii primis verterem, ad ipsum dicta splendide sit. Munere cotidieque ne nam. Duo no nisl partem maiorum, eu doming denique cum. In apeirian iracundia cum, ea mel idque dissentiunt.\r\n\r\nEi congue recusabo sapientem eum, prima scribentur ius ut. Ius ut persius efficiendi, quod veritus est id. Purto deserunt ea eos. Tantas lobortis evertitur pro ex.\r\n\r\nId regione torquatos vituperatoribus nam, quo dicit nobis ea. Ne option platonem cum, sit fuisset aliquando conceptam in. Nonumy primis nam id, nisl atomorum ex usu. Mundi tation reprimique te eos. At offendit pertinax eum. Ea doctus cotidieque mea.', 'Antofagasta', 1, 750000, 1, 0, 15, '2015-11-23');
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Estructura de tabla para la tabla `solicitud`
--- 
+--
 
 CREATE TABLE `solicitud` (
   `id_solicitud` int(11) NOT NULL auto_increment,
@@ -338,25 +357,53 @@ CREATE TABLE `solicitud` (
   PRIMARY KEY  (`id_solicitud`),
   KEY `fk_elabora` (`rut_funcionario`),
   KEY `fk_realiza` (`rut_cliente`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=56 ;
 
--- 
+--
 -- Volcar la base de datos para la tabla `solicitud`
--- 
+--
 
-INSERT INTO `solicitud` VALUES (19, NULL, NULL, 'Mario Hernán Douglas ', 'Ossandón Zúñiga', 'Aseo de propiedad', '2015-11-28', NULL, '+56985352482', 1, 'dasdasdasdsdfasdasdadfsdgsdfsad sdfsfsdfdf', NULL, 'Mario.hdoz1@gmail.com');
 INSERT INTO `solicitud` VALUES (23, NULL, '18183527-3', NULL, NULL, 'Venta', '2015-11-29', '2015-11-30', NULL, 1, 'ewoijd wodqwo oi woqiwe ur jasdlk dioqjweioqwieoqw nasdlkasdj woihd qowewoehwqo hosdowdqwodiqwiheqoweihqwej w oee qowieqwihrefd lakflwejwelrj  rwoehrw al dj wioeh qwoidh q', 'Casa', NULL);
 INSERT INTO `solicitud` VALUES (21, NULL, NULL, 'sdfsdfsdf', 'Ossandón Zúñiga', 'Tasación', '2015-11-28', NULL, '+56985352482', 1, 'dasdasdasdsdfasdasdadfsdgsdfsad sdfsfsdfdf', NULL, 'Mario.hdoz1@gmail.com');
-INSERT INTO `solicitud` VALUES (22, '19206063-k', NULL, NULL, NULL, 'Arriendo', '2015-11-29', '2015-11-30', NULL, 1, 'Deseo lkdjaslkjd asldkj wwoiefpacm pofsadj asdwalkej alkjdsldj ps doapwjepawjeasd asdlkja lskdj alj aoijojas asd jsadlkajs dlkjlwkjeawlejalkjlaskjdl kajsdlkj alskdjasd lkasdj lajsdl jaslkdj alskdjwpojqwdnasd ', 'Casa', NULL);
 INSERT INTO `solicitud` VALUES (20, NULL, NULL, 'Mario Hernán Douglas ', 'Ossandón Zúñiga', 'Aseo de propiedad', '2015-11-28', NULL, '+56985352482', 1, 'dasdasdasdsdfasdasdadfsdgsdfsad sdfsfsdfdf', NULL, 'Mario.hdoz1@gmail.com');
+INSERT INTO `solicitud` VALUES (26, NULL, NULL, 'Mario Hernán Douglas ', 'Ossandón Zúñiga', 'Arriendo', '2015-12-03', NULL, '+56985352482', 1, 'asdalskjdlkasjdalksj alksjda lsjd alskjd asjd oasjd oijas', NULL, 'Mario.hdoz1@gmail.com');
+INSERT INTO `solicitud` VALUES (27, NULL, NULL, 'Mario Hernán Douglas ', 'Ossandón Zúñiga', 'Arriendo', '2015-12-03', NULL, '+56985352482', 1, 'asdalskjdlkasjdalksj alksjda lsjd alskjd asjd oasjd oijas', NULL, 'Mario.hdoz1@gmail.com');
+INSERT INTO `solicitud` VALUES (28, NULL, NULL, 'Mario Hernán Douglas ', 'Ossandón Zúñiga', 'Arriendo', '2015-12-03', NULL, '+56985352482', 1, 'dsasdaljsd alskdj alksjda lskjd aldjawoijdskjd a', NULL, 'Mario.hdoz1@gmail.com');
+INSERT INTO `solicitud` VALUES (29, NULL, NULL, 'Mario Hernán Douglas ', 'Ossandón Zúñiga', 'Arriendo', '2015-12-03', NULL, '+56985352482', 1, 'dlaksjdlakjsdla alksjd lakjsd ', NULL, 'Mario.hdoz1@gmail.com');
+INSERT INTO `solicitud` VALUES (30, NULL, NULL, 'asdasd', 'asdasd', 'Venta', '2015-12-03', NULL, 'asdad', 1, 'asdasd ads asda wdawdasd awawd', NULL, 'asdasd@gmail.com');
+INSERT INTO `solicitud` VALUES (31, NULL, NULL, 'asdasd', 'asdasd', 'Venta', NULL, NULL, 'asdad', 1, 'asdasd ads asda wdawdasd awawd', NULL, 'asdasd@gmail.com');
+INSERT INTO `solicitud` VALUES (32, NULL, NULL, 'asdasd', 'asdasd', 'Venta', NULL, NULL, 'asdad', 1, 'asdasd ads asda wdawdasd awawd', NULL, 'asdasd@gmail.com');
+INSERT INTO `solicitud` VALUES (33, NULL, NULL, 'asdasd', 'asdasd', 'Venta', '2015-12-03', NULL, 'asdad', 1, 'asdasd ads asda wdawdasd awawd', NULL, 'asdasd@gmail.com');
+INSERT INTO `solicitud` VALUES (34, NULL, NULL, 'asdasd', 'asdasd', 'Venta', NULL, NULL, 'asdad', 1, 'asdasd ads asda wdawdasd awawd', NULL, 'asdasd@gmail.com');
+INSERT INTO `solicitud` VALUES (35, NULL, NULL, 'asdasd', 'asdasd', 'Venta', NULL, NULL, 'asdad', 1, 'asdasd ads asda wdawdasd awawd', NULL, 'asdasd@gmail.com');
+INSERT INTO `solicitud` VALUES (36, NULL, NULL, 'asdasd', 'asdasd', 'Venta', '2015-12-03', NULL, 'asdad', 1, 'asdasd ads asda wdawdasd awawd', NULL, 'asdasd@gmail.com');
+INSERT INTO `solicitud` VALUES (37, NULL, NULL, 'asdasd', 'asdasd', 'Venta', NULL, NULL, 'asdad', 1, 'asdasd ads asda wdawdasd awawd', NULL, 'asdasd@gmail.com');
+INSERT INTO `solicitud` VALUES (38, NULL, NULL, 'asdasd', 'asdasd', 'Venta', NULL, NULL, 'asdad', 1, 'asdasd ads asda wdawdasd awawd', NULL, 'asdasd@gmail.com');
+INSERT INTO `solicitud` VALUES (39, NULL, NULL, 'asdasd', 'asdasd', 'Venta', '2015-12-03', NULL, 'asdad', 1, 'asdasd ads asda wdawdasd awawd', NULL, 'asdasd@gmail.com');
+INSERT INTO `solicitud` VALUES (40, NULL, NULL, 'asdasd', 'asdasd', 'Venta', NULL, NULL, 'asdad', 1, 'asdasd ads asda wdawdasd awawd', NULL, 'asdasd@gmail.com');
+INSERT INTO `solicitud` VALUES (41, NULL, NULL, 'asdasd', 'asdasd', 'Venta', NULL, NULL, 'asdad', 1, 'asdasd ads asda wdawdasd awawd', NULL, 'asdasd@gmail.com');
+INSERT INTO `solicitud` VALUES (42, NULL, NULL, 'Mario Hernán Douglas ', 'Ossandón Zúñiga', 'Venta', '2015-12-03', NULL, ' wweqweq', 1, 'dsfsdfsdf', NULL, 'qweqwe@g.vom');
+INSERT INTO `solicitud` VALUES (43, NULL, NULL, 'Mario Hernán Douglas ', 'Ossandón Zúñiga', 'Venta', '2015-12-03', NULL, ' wweqweq', 1, 'dsfsdfsdf', NULL, 'qweqwe@g.vom');
+INSERT INTO `solicitud` VALUES (44, NULL, NULL, 'Mario Hernán Douglas ', 'Ossandón', 'Arriendo', '2015-12-03', NULL, '+56985352482', 1, 'asdasdasdasdasdasd', NULL, 'Mario.hdoz1@gmail.com');
+INSERT INTO `solicitud` VALUES (45, NULL, NULL, 'Mario Hernán Douglas ', 'Ossandón Zúñiga', 'Arriendo', '2015-12-03', NULL, '+56985352482', 1, 'dasd asd ', NULL, 'Mario.hdoz1@gmail.com');
+INSERT INTO `solicitud` VALUES (46, NULL, NULL, 'Mario Hernán Douglas ', 'Ossandón Zúñiga', 'Arriendo', '2015-12-03', NULL, '+56985352482', 1, 'daslkdjalksd asd a', NULL, 'Mario.hdoz1@gmail.com');
+INSERT INTO `solicitud` VALUES (47, NULL, NULL, 'Mario Hernán Douglas ', 'Ossandón Zúñiga', 'Arriendo', '2015-12-03', NULL, '+56985352482', 1, 'dsasda', NULL, 'Mario.hdoz1@gmail.com');
+INSERT INTO `solicitud` VALUES (48, NULL, NULL, 'Mario Hernán Douglas ', 'Ossandón Zúñiga', 'Arriendo', '2015-12-03', NULL, '+56985352482', 1, 'asdasd', NULL, 'Mario.hdoz1@gmail.com');
+INSERT INTO `solicitud` VALUES (49, NULL, NULL, 'Mario Hernán Douglas ', 'Ossandón Zúñiga', 'Arriendo', '2015-12-03', NULL, '+56985352482', 1, 'asdlñjalksdjlakjsd', NULL, 'Mario.hdoz1@gmail.com');
+INSERT INTO `solicitud` VALUES (50, NULL, NULL, 'Mario Hernán Douglas ', 'Ossandón Zúñiga', 'Arriendo', '2015-12-03', NULL, '+56985352482', 1, 'adad', NULL, 'Mario.hdoz1@gmail.com');
+INSERT INTO `solicitud` VALUES (51, NULL, NULL, 'Mario Hernán Douglas ', 'Ossandón Zúñiga', 'Arriendo', '2015-12-03', NULL, '+56985352482', 1, 'asdasd', NULL, 'Mario.hdoz1@gmail.com');
+INSERT INTO `solicitud` VALUES (52, NULL, NULL, 'Mario Hernán Douglas ', 'Ossandón Zúñiga', 'Arriendo', '2015-12-03', NULL, '+56985352482', 1, 'asdasd', NULL, 'Mario.hdoz1@gmail.com');
+INSERT INTO `solicitud` VALUES (53, NULL, NULL, 'Mario Hernán Douglas ', 'Ossandón Zúñiga', 'Arriendo', '2015-12-03', NULL, '+56985352482', 1, 'asdasd', NULL, 'Mario.hdoz1@gmail.com');
+INSERT INTO `solicitud` VALUES (54, NULL, NULL, 'Mario Hernán Douglas ', 'Ossandón Zúñiga', 'Arriendo', '2015-12-03', NULL, '+56985352482', 1, 'dasldalsda', NULL, 'Mario.hdoz1@gmail.com');
+INSERT INTO `solicitud` VALUES (55, NULL, NULL, 'Mario Hernán Douglas ', 'Ossandón Zúñiga', 'Arriendo', '2015-12-03', NULL, '+56985352482', 1, 'dasdasd', NULL, 'Mario.hdoz1@gmail.com');
 
 -- --------------------------------------------------------
 
--- 
+--
 -- Estructura de tabla para la tabla `venta`
--- 
+--
 
-CREATE TABLE `venta`(
+CREATE TABLE `venta` (
   `id_venta` int(11) NOT NULL auto_increment,
   `id_propiedad` int(11) NOT NULL COMMENT 'Número de ficha',
   `rut_admin` varchar(10) NOT NULL COMMENT 'RUT del administrador',
@@ -371,7 +418,6 @@ CREATE TABLE `venta`(
   KEY `fk_concibe` (`rut_admin`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
--- 
+--
 -- Volcar la base de datos para la tabla `venta`
--- 
-
+--

@@ -159,8 +159,6 @@ $this->menu=array(
 							<?php echo $form->errorSummary($model,'<strong>Es necesario arreglar los siguientes errores:</strong><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><div class="alert alert-danger">', '</div>'); ?>
 							<div class="col-xs-12 col-md-6 col-lg-6">
 								<div class="form-group">
-
-
 									<?php echo $form->labelEx($model,'servicio_propiedad'); ?>
                   <?php echo $form->dropDownList($model,'servicio_propiedad',
                       array(
