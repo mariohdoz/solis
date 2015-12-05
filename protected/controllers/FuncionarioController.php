@@ -64,6 +64,20 @@ class FuncionarioController extends Controller
 		));
 	}
 
+	public function actionObtener($id)
+	{
+		$rut=$this->codigo($id);
+		$resp = Funcionario::model()->findAllByAttributes(array('rut_funcionario'=>$rut));
+		if ($resp) {
+			header("Content-type: application/json");
+			echo CJSON::encode($resp);
+		}else {
+			$resp = '';
+			header("Content-type: application/json");
+			echo CJSON::encode($resp);
+		}
+	}
+
 	public function actionContra($id)
 	{
 		$rut=$this->codigo($id);

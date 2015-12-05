@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 04-12-2015 a las 14:03:50
+-- Tiempo de generación: 05-12-2015 a las 02:11:15
 -- Versión del servidor: 5.0.51
 -- Versión de PHP: 5.2.6
 
@@ -96,8 +96,6 @@ CREATE TABLE `arriendo` (
 -- Volcar la base de datos para la tabla `arriendo`
 --
 
-INSERT INTO `arriendo` VALUES (47, 10, '18183527-3', '19206063-k', '2015-12-04', 1, '2015-12-03', '2016-07-01', 850000, 1);
-INSERT INTO `arriendo` VALUES (46, 16, '18183527-3', '18183527-3', '2015-11-26', 2, '2015-06-02', '2016-05-02', 750000, 1);
 
 -- --------------------------------------------------------
 
@@ -195,16 +193,16 @@ CREATE TABLE `imagen` (
   `url_imagen` varchar(250) NOT NULL,
   PRIMARY KEY  (`id_imagen`),
   KEY `fk_representa` (`id_propiedad`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=64 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=68 ;
 
 --
 -- Volcar la base de datos para la tabla `imagen`
 --
 
-INSERT INTO `imagen` VALUES (62, 12, 'A._S._Bradford_House.JPG');
-INSERT INTO `imagen` VALUES (61, 12, 'house-07.jpg');
-INSERT INTO `imagen` VALUES (60, 12, 'house-05.jpg');
-INSERT INTO `imagen` VALUES (63, 12, 'house-01.jpg');
+INSERT INTO `imagen` VALUES (67, 16, 'A._S._Bradford_House.JPG');
+INSERT INTO `imagen` VALUES (66, 16, 'house-01.jpg');
+INSERT INTO `imagen` VALUES (65, 16, 'house-05.jpg');
+INSERT INTO `imagen` VALUES (64, 16, 'house-07.jpg');
 
 -- --------------------------------------------------------
 
@@ -219,12 +217,14 @@ CREATE TABLE `integra` (
   PRIMARY KEY  (`id_integra`),
   KEY `fk_relationship_8` (`id_ot`),
   KEY `fk_relationship_9` (`rut_funcionario`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Volcar la base de datos para la tabla `integra`
 --
 
+INSERT INTO `integra` VALUES (4, '18183527-3', 20);
+INSERT INTO `integra` VALUES (3, '18183527-3', 19);
 
 -- --------------------------------------------------------
 
@@ -243,15 +243,19 @@ CREATE TABLE `ordentrabajo` (
   `servicio_ot` varchar(50) NOT NULL COMMENT 'Servicio a realizar',
   `observacion_ot` text NOT NULL COMMENT 'Observaciones',
   `totalpagar_ot` int(11) NOT NULL COMMENT 'Total a pagar',
-  `formapago_ot` int(11) NOT NULL COMMENT 'Forma de pago',
+  `formapago_ot` varchar(50) NOT NULL COMMENT 'Forma de pago',
   PRIMARY KEY  (`id_ot`),
   KEY `fk_crea` (`rut_admin`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
 
 --
 -- Volcar la base de datos para la tabla `ordentrabajo`
 --
 
+INSERT INTO `ordentrabajo` VALUES (20, '18183527-3', 'kasdlkjasldjl', '2015-12-05', '2015-12-06', 1, '2015-12-06', 'Aseo', 'LASKJDALKSDJASD', 23000, 'Efectivo');
+INSERT INTO `ordentrabajo` VALUES (19, '18183527-3', 'sdfsdf', '2015-12-05', '2015-12-05', 1, '2015-12-04', 'sdf', 'sdfsdf', 324234, 'ssdfsdf');
+INSERT INTO `ordentrabajo` VALUES (17, '18183527-3', 'adasd', '2015-12-04', '2015-12-05', 1, '2015-12-04', 'Arriendo', 'asdasd', 850000, 'Efectivo');
+INSERT INTO `ordentrabajo` VALUES (18, '18183527-3', 'adasd', '2015-12-04', '2015-12-05', 1, '2015-12-04', 'Arriendo', 'asdasd', 850000, 'Efectivo');
 
 -- --------------------------------------------------------
 
@@ -268,33 +272,14 @@ CREATE TABLE `pago` (
   `activo_pago` tinyint(1) NOT NULL default '1' COMMENT 'Pago concluido',
   `id_ot` int(11) default NULL,
   PRIMARY KEY  (`id_pago`),
-  KEY `fk_acata` (`id_arriendo`)
+  KEY `fk_acata` (`id_arriendo`),
+  KEY `fk_relationship_18` (`id_ot`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=168 ;
 
 --
 -- Volcar la base de datos para la tabla `pago`
 --
 
-INSERT INTO `pago` VALUES (166, 47, '2015-12-04', '1-06-2016', 0, 1, 0);
-INSERT INTO `pago` VALUES (165, 47, '2015-12-04', '1-05-2016', 0, 1, 0);
-INSERT INTO `pago` VALUES (164, 47, '2015-12-04', '1-04-2016', 0, 1, 0);
-INSERT INTO `pago` VALUES (163, 47, '2015-12-04', '1-03-2016', 0, 1, 0);
-INSERT INTO `pago` VALUES (162, 47, '2015-12-04', '1-02-2016', 0, 1, 0);
-INSERT INTO `pago` VALUES (161, 47, '2015-12-04', '1-01-2016', 0, 1, 0);
-INSERT INTO `pago` VALUES (160, 47, '2015-12-04', '1-12-2015', 0, 1, 0);
-INSERT INTO `pago` VALUES (159, 46, '2015-11-26', '02-05-2016', 0, 1, 0);
-INSERT INTO `pago` VALUES (158, 46, '2015-11-26', '2-04-2016', 0, 1, 0);
-INSERT INTO `pago` VALUES (157, 46, '2015-11-26', '2-03-2016', 0, 1, 0);
-INSERT INTO `pago` VALUES (156, 46, '2015-11-26', '2-02-2016', 0, 1, 0);
-INSERT INTO `pago` VALUES (155, 46, '2015-11-26', '2-01-2016', 0, 1, 0);
-INSERT INTO `pago` VALUES (154, 46, '2015-11-26', '2-12-2015', 0, 1, 0);
-INSERT INTO `pago` VALUES (153, 46, '2015-11-26', '2-11-2015', 0, 1, 0);
-INSERT INTO `pago` VALUES (152, 46, '2015-11-26', '2-10-2015', 0, 1, 0);
-INSERT INTO `pago` VALUES (151, 46, '2015-11-26', '2-09-2015', 0, 1, 0);
-INSERT INTO `pago` VALUES (150, 46, '2015-11-26', '2-08-2015', 0, 1, 0);
-INSERT INTO `pago` VALUES (149, 46, '2015-11-26', '2-07-2015', 0, 1, 0);
-INSERT INTO `pago` VALUES (148, 46, '2015-11-26', '2-06-2015', 0, 1, 0);
-INSERT INTO `pago` VALUES (167, 47, '2015-12-04', '1-07-2016', 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -329,9 +314,9 @@ CREATE TABLE `propiedad` (
 -- Volcar la base de datos para la tabla `propiedad`
 --
 
-INSERT INTO `propiedad` VALUES (12, '18045248-6', 'Aconcagua', 3007, 2, 1, '', '', 'Departamento Habitación', 'Venta', 'comedor y cocina juntas, walking closet, terraza,incluye gastos comunes', 'Calama', 1, 700000, 0, 0, 1, '2015-01-01');
-INSERT INTO `propiedad` VALUES (10, '18045248-6', 'Aconcagua ', 3009, 5, 2, '40m2', '35', 'Casa', 'Venta', 'Casa esquina  en  la  ciudad de  Calama  de  un  piso ', 'Calama', 0, 150000000, 0, 0, 0, '2015-01-01');
-INSERT INTO `propiedad` VALUES (16, '19206063-k', 'Balmaceda #3242', NULL, 9, 9, '40.m2', '45m²', 'Propiedad de inversión', 'Venta', 'Mall plaza Calama', 'Calama', 1, 789456123, 0, 0, 1, '2015-01-01');
+INSERT INTO `propiedad` VALUES (12, '18045248-6', 'Aconcagua', 3007, 2, 1, '', '', 'Departamento Habitación', 'Venta', 'comedor y cocina juntas, walking closet, terraza,incluye gastos comunes', 'Calama', 1, 700000, 1, 0, 1, '2015-01-01');
+INSERT INTO `propiedad` VALUES (10, '18045248-6', 'Aconcagua ', 3009, 5, 2, '40m2', '35', 'Casa', 'Venta', 'Casa esquina  en  la  ciudad de  Calama  de  un  piso ', 'Calama', 0, 150000000, 1, 0, 0, '2015-01-01');
+INSERT INTO `propiedad` VALUES (16, '19206063-k', 'Balmaceda #3242', NULL, 9, 9, '40.m2', '45m²', 'Propiedad de inversión', 'Venta', 'Mall plaza Calama', 'Calama', 1, 789456123, 1, 0, 1, '2015-01-01');
 INSERT INTO `propiedad` VALUES (18, '18183527-3', 'Calle Til Til 1301 Población Manuel Rodríguez', NULL, 4, 5, '50m²', '45m²', 'Casa', 'Venta', 'Lorem ipsum dolor sit amet, epicurei expetendis ex sea. Id prima gloriatur cum, posse dolores mediocritatem vim an, nullam animal consectetuer te vel. Sit id mazim debet. Ne mazim aeterno quaeque eos, posse offendit an mel.\r\n\r\nQuodsi viderer sententiae has eu, eam cu cibo regione corpora. Mea inani aeque id. Sea scripserit adversarium ea, cu utinam inimicus percipitur sed. Assum admodum eu usu, eius populo evertitur has at, insolens theophrastus vis ea. Diam copiosae necessitatibus ex sed, ei facete cetero tincidunt est, no ius facilis explicari.\r\n\r\nVirtute discere utroque in nam, est cu alii primis verterem, ad ipsum dicta splendide sit. Munere cotidieque ne nam. Duo no nisl partem maiorum, eu doming denique cum. In apeirian iracundia cum, ea mel idque dissentiunt.\r\n\r\nEi congue recusabo sapientem eum, prima scribentur ius ut. Ius ut persius efficiendi, quod veritus est id. Purto deserunt ea eos. Tantas lobortis evertitur pro ex.\r\n\r\nId regione torquatos vituperatoribus nam, quo dicit nobis ea. Ne option platonem cum, sit fuisset aliquando conceptam in. Nonumy primis nam id, nisl atomorum ex usu. Mundi tation reprimique te eos. At offendit pertinax eum. Ea doctus cotidieque mea.', 'Antofagasta', 1, 750000, 1, 0, 15, '2015-11-23');
 
 -- --------------------------------------------------------

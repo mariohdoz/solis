@@ -6,7 +6,7 @@ class OrdentrabajoController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column2';
+	public $layout='//layouts/intraLayout';
 
 	/**
 	 * @return array action filters
@@ -28,11 +28,11 @@ class OrdentrabajoController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array(),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','index','view'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -49,10 +49,27 @@ class OrdentrabajoController extends Controller
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
+	 public function actionSelect()
+	 {
+		$orden = new Ordentrabajo('search');
+		$orden->unsetAttributes();  // clear any default values
+		if(isset($_GET['Ordentrabajo']))
+			$orden->attributes=$_GET['Ordentrabajo'];
+		$this->render('select',array(
+		'model'=>$orden,
+		));
+	 }
 	public function actionView($id)
 	{
+		$orden = $this->loadModel($id);
+		$integra = Integra::model()->findByAttributes(
+		  array('id_ot'=>$id)
+		);
+		$funcionario = Funcionario::model()->findByPk($integra->rut_funcionario);
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=>$orden,
+			'integra'=>$integra,
+			'funcionario'=>$funcionario,
 		));
 	}
 
@@ -62,20 +79,35 @@ class OrdentrabajoController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Ordentrabajo;
+		$orden=new Ordentrabajo;
+		$integra= new Integra;
+		$funcionario= new Funcionario;
+		$formulario= new Funcionario('libre');
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		// $this->performAjaxValidation($orden);
 
 		if(isset($_POST['Ordentrabajo']))
 		{
-			$model->attributes=$_POST['Ordentrabajo'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_ot));
+			$orden->attributes=$_POST['Ordentrabajo'];
+			$valor = intval(preg_replace('/[^0-9]+/', '', $orden->totalpagar_ot),10);
+			$orden->totalpagar_ot=$valor;
+			$integra->rut_funcionario=$orden->rut_funcionario;
+			$orden->rut_admin=Yii::app()->session['admin_rut'];
+			$orden->fechaemision_ot=date('Y-m-j');
+			if($orden->save()){
+				$integra->id_ot=$orden->id_ot;
+				if ($integra->save()) {
+					$this->redirect(array('view','id'=>$orden->id_ot));
+				}
+			}
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+			'model'=>$orden,
+			'integra'=>$integra,
+			'funcionario'=>$funcionario,
+			'formulario'=>$formulario,
 		));
 	}
 

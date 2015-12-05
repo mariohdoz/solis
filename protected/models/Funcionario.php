@@ -49,7 +49,8 @@ class Funcionario extends CActiveRecord
 			array('repeat_pass','compare','compareAttribute'=>'contrasena_funcionario','message'=>'Las contrasñas no coinciden','on'=>'create'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('rut_funcionario, nombres_funcionario, apellidos_funcionario, telefonofijo_funcionario, telefonocelular_funcionario, domicilio_funcionario, correo_funcionario, activo_funcionario, contrasena_funcionario, cargo_funcionario, eliminado_funcionario', 'safe', 'on'=>'search'),
+			array('rut_funcionario, nombres_funcionario, apellidos_funcionario, telefonofijo_funcionario, telefonocelular_funcionario, domicilio_funcionario, correo_funcionario, activo_funcionario, cargo_funcionario, eliminado_funcionario', 'safe', 'on'=>'search'),
+			array('rut_funcionario, nombres_funcionario, apellidos_funcionario, telefonofijo_funcionario, telefonocelular_funcionario, domicilio_funcionario, correo_funcionario, activo_funcionario, cargo_funcionario, eliminado_funcionario', 'safe', 'on'=>'libre'),
 		);
 	}
 	public function getRut(){
@@ -89,6 +90,7 @@ class Funcionario extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'integra'=>array(self::HAS_MANY, 'Integra', 'rut_funcionario'),
 		);
 	}
 
@@ -141,6 +143,28 @@ class Funcionario extends CActiveRecord
 		$criteria->compare('domicilio_funcionario',$this->domicilio_funcionario,true);
 		$criteria->compare('correo_funcionario',$this->correo_funcionario,true);
 		$criteria->compare('activo_funcionario',$this->activo_funcionario);
+		$criteria->compare('contrasena_funcionario',$this->contrasena_funcionario,true);
+		$criteria->compare('cargo_funcionario',$this->cargo_funcionario,true);
+		$criteria->compare('eliminado_funcionario',0);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+	public function libre()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('rut_funcionario',$this->rut_funcionario,true);
+		$criteria->compare('nombres_funcionario',$this->nombres_funcionario,true);
+		$criteria->compare('apellidos_funcionario',$this->apellidos_funcionario,true);
+		$criteria->compare('telefonofijo_funcionario',$this->telefonofijo_funcionario,true);
+		$criteria->compare('telefonocelular_funcionario',$this->telefonocelular_funcionario,true);
+		$criteria->compare('domicilio_funcionario',$this->domicilio_funcionario,true);
+		$criteria->compare('correo_funcionario',$this->correo_funcionario,true);
+		$criteria->compare('activo_funcionario',1);
 		$criteria->compare('contrasena_funcionario',$this->contrasena_funcionario,true);
 		$criteria->compare('cargo_funcionario',$this->cargo_funcionario,true);
 		$criteria->compare('eliminado_funcionario',0);

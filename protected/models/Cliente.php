@@ -62,6 +62,7 @@ class Cliente extends CActiveRecord
  		// class name for the relations automatically generated below.
  		return array(
  			'propiedad'=>array(self::HAS_MANY, 'Propiedad', 'rut_cliente'),
+			'solicitud'=>array(self::HAS_MANY, 'Solicitud', 'rut_cliente'),
  		);
  	}
  	public function getFullName(){

@@ -178,7 +178,37 @@ class ClienteController extends Controller
 				if (!$model->save()) {
 				 Yii::app()->user->setFlash('danger','La Propiedad'.$model->id_propiedad.' No ha podido ser eliminada.');
 				 $this->redirect(Yii::app()->request->baseUrl.'/cliente/index/');
-				}
+			 }else{
+				 if($model->arriendo!=null)
+	 			{
+	 				foreach ($model->arriendo as $key => $arriendo) {
+	 					$arriendo->activo_arriendo =0;
+	 					if ($arriendo->save()) {
+	 						foreach ($arriendo->pago as $arriendo => $pago) {
+	 							$pago->activo_pago =0;
+	 							$pago->save();
+	 						}
+	 					}
+	 				}
+	 			}
+	 			if ($model->imagen != null) {
+	 				foreach ($model->imagen as $key => $value) {
+	 					$file=YiiBase::getPathOfAlias("webroot")."/images/propiedades/".$value->url_imagen;
+	 					$do = unlink($file);
+	 					$value->delete();
+	 				}
+	 			}
+	 			if ($model->documento != null) {
+	 				foreach ($model->documento as $key => $value) {
+	 					$file=YiiBase::getPathOfAlias("webroot")."/documento/propiedad/".$value->url_documento;
+	 					$do = unlink($file);
+	 					$value->delete();
+	 				}
+	 			}
+			 }
+			 foreach ($model->solicitud as $key => $value) {
+			 	$value->delete();
+			 }
 			}
 		}else {
 			Yii::app()->user->setFlash('danger','El cliente no ha podido ser eliminado.');

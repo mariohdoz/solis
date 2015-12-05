@@ -210,7 +210,7 @@ $this->menu=array(
                        array(
                          'header'=>'Nombre completo',
                          'name'=>'nombres_cliente',
-                         'value'=>$model3->nombres_cliente.' '.$model2->apellidos_cliente,
+                         'value'=>$model3->nombres_cliente.' '.$model3->apellidos_cliente,
                        ),
                        'telefonocelular_cliente',
                        'domicilio_cliente',

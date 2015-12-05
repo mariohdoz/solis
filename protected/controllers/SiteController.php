@@ -85,12 +85,12 @@ class SiteController extends Controller
 		}	}
 
 	public function actionTest(){
-		$cliente = new Solicitud('clie');
-		$cliente->unsetAttributes();  // clear any default values
-		if(isset($_GET['Solicitud']))
-			$cliente->attributes=$_GET['Solicitud'];
+		$propiedad=new Propiedad('disponible');
+		$propiedad->unsetAttributes();  // clear any default values
+		if(isset($_GET['Propiedad']))
+			$propiedad->attributes=$_GET['Propiedad'];
 		$this->render('test',array(
-			'cliente'=>$cliente,
+			'model3'=>$propiedad,
 		));
 	}
 
@@ -255,20 +255,28 @@ class SiteController extends Controller
 	{
 		$model  = new LoginForm;
 		$model1 = new Solicitud;
-		$model2 = new Propiedad();
-		// if it is ajax validation request
+		$model2 = new Propiedad;
+		// validación de ajax
 		if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
-		// collect user input data
 		if (isset($_POST['LoginForm'])) {
 			$model->attributes = $_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if ($model->validate() && $model->login())
-				$this->redirect("/intra/index");
+				$this->redirect(array("/intra/index"));
 		}
-		// display the login form
+		if(isset($_POST['Solicitud'])){
+			$model1->attributes = $_POST['Solicitud'];
+			if($model1->nombres_solicitud != '' && $model1->apellidos_solicitud != '' ){
+				$model1->fecha_solicitud = date('Y-m-j');
+				if($model1->save()){
+					Yii::app()->user->setFlash('text-success','Solicitud enviada correctamente, proximamente será contactado por la administración.');
+				}
+			}
+		}
+		// desplegar el login
 		$this->render('index', array(
 			'model' => $model,
 			'model1' => $model1,

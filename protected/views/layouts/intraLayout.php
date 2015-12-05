@@ -237,10 +237,10 @@ if(!Yii::app()->session['activo'])
                     <i class="fa fa-angle-left pull-right"></i>
                   </a>
                   <ul class="treeview-menu">
-                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-plus"></i> Crear Nueva OT</a></li>
-                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-exchange"></i> Modificar OT</a></li>
-                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-close"></i> Eliminar OT</a></li>
-                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-close"></i> Crear reunion</a></li>
+                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/Ordentrabajo/create"><i class="fa fa-plus"></i> Crear Nueva OT</a></li>
+                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/Ordentrabajo/select"><i class="fa fa-exchange"></i> Modificar OT</a></li>
+                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/Ordentrabajo/select2"><i class="fa fa-close"></i> Eliminar OT</a></li>
+                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/Ordentrabajo/index"><i class="fa fa-close"></i> Crear reunion</a></li>
                   </ul>
                 </li>
               </ul>

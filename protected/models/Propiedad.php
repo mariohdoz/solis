@@ -169,7 +169,10 @@ class Propiedad extends CActiveRecord
 		$criteria->compare('valor_propiedad',$this->valor_propiedad);
 		$criteria->compare('activo_propiedad',1);
 		$criteria->compare('eliminado_propiedad',0);
-		$criteria->compare('ingreso_propiedad',$this->ingreso_propiedad);
+		$criteria->compare('comision_propiedad',$this->comision_propiedad);
+		$criteria->compare('ingreso_propiedad',$this->ingreso_propiedad,true);
+
+
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

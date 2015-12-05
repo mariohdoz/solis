@@ -14,13 +14,14 @@
  * @property string $servicio_ot
  * @property string $observacion_ot
  * @property integer $totalpagar_ot
- * @property integer $formapago_ot
+ * @property string $formapago_ot
  */
 class Ordentrabajo extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
+	public $rut_funcionario;
 	public function tableName()
 	{
 		return 'ordentrabajo';
@@ -35,9 +36,9 @@ class Ordentrabajo extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('rut_admin, descripcion_ot, fechaemision_ot, fechaejecucion_ot, inicio_ot, servicio_ot, observacion_ot, totalpagar_ot, formapago_ot', 'required'),
-			array('estado_ot, totalpagar_ot, formapago_ot', 'numerical', 'integerOnly'=>true),
-			array('rut_admin', 'length', 'max'=>10),
-			array('servicio_ot', 'length', 'max'=>50),
+			array('estado_ot, totalpagar_ot', 'numerical', 'integerOnly'=>true),
+			array('rut_admin, rut_funcionario', 'length', 'max'=>10),
+			array('servicio_ot, formapago_ot', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_ot, rut_admin, descripcion_ot, fechaemision_ot, fechaejecucion_ot, estado_ot, inicio_ot, servicio_ot, observacion_ot, totalpagar_ot, formapago_ot', 'safe', 'on'=>'search'),
@@ -52,6 +53,7 @@ class Ordentrabajo extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'integra'=>array(self::HAS_MANY, 'Integra', 'id_ot'),
 		);
 	}
 
@@ -63,15 +65,16 @@ class Ordentrabajo extends CActiveRecord
 		return array(
 			'id_ot' => 'Id Ot',
 			'rut_admin' => 'Rut Admin',
-			'descripcion_ot' => 'Descripcion Ot',
-			'fechaemision_ot' => 'Fechaemision Ot',
-			'fechaejecucion_ot' => 'Fechaejecucion Ot',
-			'estado_ot' => 'Estado Ot',
+			'descripcion_ot' => 'Descripción del trabajo a realizar',
+			'fechaemision_ot' => 'Fecha de emisión',
+			'fechaejecucion_ot' => 'Fecha de término',
+			'estado_ot' => 'Estado',
 			'inicio_ot' => 'Fecha de inicio',
 			'servicio_ot' => 'Servicio a realizar',
 			'observacion_ot' => 'Observaciones',
 			'totalpagar_ot' => 'Total a pagar',
 			'formapago_ot' => 'Forma de pago',
+			'rut_funcionario'=> 'RUT del funcionario',
 		);
 	}
 
@@ -109,6 +112,8 @@ class Ordentrabajo extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+	
 
 	/**
 	 * Returns the static model of the specified AR class.
