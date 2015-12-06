@@ -1,3 +1,57 @@
+<script>
+	function obtenerCliente(){
+		var rut = $.fn.yiiGridView.getSelection('cliente');
+		var str = rut+"";
+		var res = str.split("-");
+		var action = "<?php echo Yii::app()->request->baseUrl; ?>"+'/propiedad/obtener/'+res[0];
+		$.getJSON(action, function(data) {
+			$.each(data, function(key, cliente) {
+				$('#Propiedad_rut_cliente').val(cliente.rut_cliente);
+				$('#Cliente_correo_cliente').val(cliente.correo_cliente);
+				$('#Cliente_nombres_cliente').val(cliente.nombres_cliente);
+				$('#Cliente_apellidos_cliente').val(cliente.apellidos_cliente);
+			});
+		}).error(function(jqXHR, textStatus, errorThrown) {
+			$("#respuesta").html(jqXHR.responseText);
+		});
+	}
+</script>
+<div class="modal-default" id="cliente" tabindex="-2" role="dialog" aria-labelledby="myModallabel" aria-hidden="false">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h3 style="text-align: center">Seleccionar Cliente</h3>
+			</div>
+			<div class="modal-body">
+				<div class="form-horizontal">
+					<?php
+						$this->widget('zii.widgets.grid.CGridView', array(
+							'id'=>'clientddde',
+							'itemsCssClass' => 'table table-hover',
+							'htmlOptions' => array('class' => 'table-responsive'),
+							'selectableRows'=>1,
+							'dataProvider'=>$cliente->search(),
+							'filter' => $cliente,
+							'summaryText' => 'Se encontraron {count} Clientes activos',
+							'columns'=>array(
+						// nota que con htmlOptions se puede personalizar el tamano de la columna
+								array('name'=>'rut_cliente','htmlOptions'=>array('width'=>'90px')),
+						// nota que aqui no se usa array, sino directamente el nombre de la columna
+								'nombres_cliente',
+								'apellidos_cliente',
+						// via 2: para mostrar detalles al hacer click en un icono.
+							),
+						));
+						?>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success center-block" data-dismiss="modal">Aceptar</button>
+			</div>
+		</div>
+	</div>
+</div>
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
@@ -36,62 +90,30 @@
           </div>
 					<div class="form">
 						<div class="box-body">
-              <?php $this->widget('zii.widgets.grid.CGridView', array(
-								'id'=>'propiedad-grid',
-								'itemsCssClass' => 'table table-hover',
-								'htmlOptions' => array('class' => 'table-responsive'),
-								'dataProvider'=>$model3->Disponible(),
-								'filter'=>$model3,
-								'columns'=>array(
-									'id_propiedad',
-              		'rut_cliente',
-              		'direccion_propiedad',
-              		'tipo_propiedad',
-              		'comuna_propiedad',
-                  'servicio_propiedad',
-									array(
-                    'header'=>'Estado',
-                    'name'=>'activo_propiedad',
-                    'value' => '$data->activo_propiedad?Yii::t(\'app\',\'Disponible\'):Yii::t(\'app\', \'Ocupado\')',
-                    'filter' => array('0' => Yii::t('app', 'Ocupado'), '1' => Yii::t('app', 'Disponible')),
-                    'htmlOptions' => array('style' => "text-align:center;"),
-                   ),
-									/*
-									'terreno_propiedad',
-									'construido_propiedad',
-									'tipo_propiedad',
-									'servicio_propiedad',
-									'activo_propiedad',
-									'descripcion_propiedad',
-									'comuna_propiedad',
-									'amoblado_propiedad',
-									'valor_propiedad',
-									'activo_propiedad',
-									'eliminado_propiedad',
-									*/
-                  array(
-                    'header'=>'Actualizar',
-                    'class'=>'CButtonColumn',
-                    'template'=>'{buscar}  {actualizar}  {eliminar}',
-                    'buttons'=>array(
-											'eliminar' => array(
-													'label'=>'<i class="fa fa-trash-o"></i>',
-													'url'=>'Yii::app()->createUrl("propiedad/eliminar", array("id"=>$data->id_propiedad))',
-											),
-                      'actualizar' => array(
-                          'label'=>'<i class="fa fa-pencil-square-o"></i>',
-                          'url'=>'Yii::app()->createUrl("propiedad/update", array("id"=>$data->id_propiedad))',
-                      ),
-											'buscar' => array(
-													'label'=>'<i class="fa fa-eye"></i>',
-													'url'=>'Yii::app()->createUrl("propiedad/view", array("id"=>$data->id_propiedad))',
-											),
-                    ),
-                  ),
-								),
-							)); ?>
+              <?php
+    						$this->widget('zii.widgets.grid.CGridView', array(
+    							'id'=>'cliente',
+    							'itemsCssClass' => 'table table-hover',
+    							'htmlOptions' => array('class' => 'table-responsive'),
+    							'selectableRows'=>1,
+    							'selectionChanged'=>'obtenerCliente',	// via 1: para mostrar detalles al seleccionar
+    							'dataProvider'=>$cliente1->search(),
+    							'filter' => $cliente1,
+    							'summaryText' => 'Se encontraron {count} Clientes activos',
+    							'columns'=>array(
+    						// nota que con htmlOptions se puede personalizar el tamano de la columna
+    								array('name'=>'rut_cliente','htmlOptions'=>array('width'=>'90px')),
+    						// nota que aqui no se usa array, sino directamente el nombre de la columna
+    								'nombres_cliente',
+    								'apellidos_cliente',
+    						// via 2: para mostrar detalles al hacer click en un icono.
+    							),
+    						));
+    						?>
 					  </div>
             <div class="box-footer">
+							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#cliente"><i class="fa fa-spinner"> &nbsp;&nbsp;Cargar cliente</i></button>
+
             </div>
 				  </div>
 			  </div>

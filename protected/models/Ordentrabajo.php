@@ -35,15 +35,36 @@ class Ordentrabajo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('rut_admin, descripcion_ot, fechaemision_ot, fechaejecucion_ot, inicio_ot, servicio_ot, observacion_ot, totalpagar_ot, formapago_ot', 'required'),
+			array('rut_admin, descripcion_ot, fechaemision_ot, fechaejecucion_ot, inicio_ot, servicio_ot, observacion_ot, totalpagar_ot, rut_funcionario, formapago_ot', 'required'),
 			array('estado_ot, totalpagar_ot', 'numerical', 'integerOnly'=>true),
 			array('rut_admin, rut_funcionario', 'length', 'max'=>10),
 			array('servicio_ot, formapago_ot', 'length', 'max'=>50),
+			array('rut_funcionario', 'ValidateRut','message'=>'El RUT está mal ingresado'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_ot, rut_admin, descripcion_ot, fechaemision_ot, fechaejecucion_ot, estado_ot, inicio_ot, servicio_ot, observacion_ot, totalpagar_ot, formapago_ot', 'safe', 'on'=>'search'),
 		);
 	}
+	public function ValidateRut($attribute, $param){
+ 		$data = explode('-', $this->rut_funcionario);
+ 		$evaluate = strrev($data[0]);
+ 		$multiply = 2;
+ 		$store = 0;
+ 		for ($i = 0; $i < strlen($evaluate); $i++) {
+ 			 $store += $evaluate[$i] * $multiply;
+ 			 $multiply++;
+ 			 if ($multiply > 7)
+ 					 $multiply = 2;
+ 		}
+ 		isset($data[1]) ? $verifyCode = strtolower($data[1]) : $verifyCode = '';
+ 		$result = 11 - ($store % 11);
+ 		if ($result == 10)
+ 			 $result = 'k';
+ 		if ($result == 11)
+ 			 $result = 0;
+ 		if ($verifyCode != $result)
+ 			 $this->addError('rut', 'Rut inválido.');
+ 	}
 
 	/**
 	 * @return array relational rules.
@@ -63,7 +84,7 @@ class Ordentrabajo extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id_ot' => 'Id Ot',
+			'id_ot' => 'Número de orden',
 			'rut_admin' => 'Rut Admin',
 			'descripcion_ot' => 'Descripción del trabajo a realizar',
 			'fechaemision_ot' => 'Fecha de emisión',
@@ -113,7 +134,7 @@ class Ordentrabajo extends CActiveRecord
 		));
 	}
 
-	
+
 
 	/**
 	 * Returns the static model of the specified AR class.

@@ -127,7 +127,6 @@ class Arriendo extends CActiveRecord
 		$criteria->compare('termino_arriendo',$this->termino_arriendo,true);
 		$criteria->compare('valor_arriendo',$this->valor_arriendo);
 		$criteria->compare('activo_arriendo',1);
-		$criteria->condition ='(inicio_arriendo < CURDATE( ) AND termino_arriendo > CURDATE( ))';
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

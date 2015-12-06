@@ -23,7 +23,58 @@
   <section class="content">
     <div class="row">
       <!-- Inicio se container -->
+			<div class="col-md-12">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+						<h3 class="box-title">Datos del funcionario</h3>
+					</div>
+					<div class="form">
+						<div class="box-body">
 
+							<div class="col-xs-12 col-md-6 col-lg-4">
+								 <div class="form-group">
+									<?php echo $form->labelEx($funcionario,'rut_funcionario'); ?>
+									<?php echo $form->textField($funcionario,'rut_funcionario', array("class"=>"form-control select2", $funcionario->isNewRecord ? '' : 'disabled'=>true, 'placeholder'=>'Ejemplo: 12345678-9')); ?>
+								</div>
+							</div>
+							<div class="col-xs-12 col-md-6 col-lg-4">
+								<div class="form-group">
+									<?php echo $form->labelEx($funcionario,'nombres_funcionario'); ?>
+									<?php echo $form->textField($funcionario,'nombres_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Ingrese los nombres del funcionario', 'disabled'=>true)); ?>
+								</div>
+							</div>
+							<div class="col-xs-12 col-md-6 col-lg-4">
+								<div class="form-group">
+									<?php echo $form->labelEx($funcionario,'apellidos_funcionario'); ?>
+									<?php echo $form->textField($funcionario,'apellidos_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Ingrese los apellidos del funcionario', 'disabled'=>true)); ?>
+								</div>
+							</div>
+							<div class="col-xs-12 col-md-6 col-lg-4">
+							 <div class="form-group">
+								 <?php echo $form->labelEx($funcionario,'telefonocelular_funcionario'); ?>
+								 <?php echo $form->textField($funcionario,'telefonocelular_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Ejemplo +56912345678', 'disabled'=>true)); ?>
+							 </div>
+						 </div>
+						 <div class="col-xs-12 col-md-6 col-lg-4">
+							 <div class="form-group">
+								 <?php echo $form->labelEx($funcionario,'correo_funcionario'); ?>
+								<?php echo $form->textField($funcionario,'correo_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Correo del funcionario', 'disabled'=>true)); ?>
+							 </div>
+						 </div>
+						 <div class="col-xs-12 col-md-6 col-lg-4">
+							 <div class="form-group">
+								<?php echo $form->labelEx($funcionario,'cargo_funcionario'); ?>
+								<?php echo $form->textField($funcionario,'cargo_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Cargo del funcionario', 'disabled'=>true)); ?>
+							 </div>
+						 </div>
+
+						</div>
+						<div class="box-footer">
+
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="col-md-12">
 				<div class="box box-primary">
 					<div class="box-header with-border">
@@ -34,7 +85,7 @@
 							<div class="col-lg-3 col-md-6 col-xs-12">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'fechaemision_ot'); ?>
-									<?php echo $form->textField($model,'fechaemision_ot', array('class'=>'form-control', 'required'=>'required', 'disabled'=>'true')); ?>
+									<?php echo $form->dateField($model,'fechaemision_ot', array('class'=>'form-control', 'required'=>'required', 'disabled'=>'true')); ?>
 								</div>
 							</div>
 							<div class="col-lg-3 col-md-6 col-xs-12">
@@ -66,7 +117,16 @@
 							<div class="col-lg-4 col-md-6 col-xs-12">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'servicio_ot'); ?>
-									<?php echo $form->textField($model,'servicio_ot', array('class'=>'form-control', 'disabled'=>'true'  )); ?>
+									<?php echo $form->dropDownList($model,'servicio_ot',
+										array(
+											'Inspección' => 'Inspección',
+											'Inventariado' => 'Inventariado',
+											'Tasación' => 'Tasación',
+											'Estudio de título' => 'Estudio de título',
+											'Ampliaciones menores' => 'Ampliaciones menores',
+											'Aseo de propiedad' => 'Aseo de propiedad',
+										),
+										array("class"=>"form-control", 'disabled'=>'disabled'))?>
 								</div>
 							</div>
 							<div class="col-lg-4 col-md-6 col-xs-12">
@@ -81,13 +141,13 @@
 									<?php echo $form->textField($model,'formapago_ot', array('class'=>'form-control', 'required'=>'required', 'disabled'=>'true')); ?>
 								</div>
 							</div>
-							<div class="col-lg-12 col-md-12 col-xs-12">
+							<div class="col-lg-6 col-md-12 col-xs-12">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'descripcion_ot'); ?>
 									<?php echo $form->textArea($model,'descripcion_ot',array('rows'=>6, 'cols'=>50, 'class'=>'form-control', 'disabled'=>'true')); ?>
 								</div>
 							</div>
-							<div class="col-lg-12 col-md-12 col-xs-12">
+							<div class="col-lg-6 col-md-12 col-xs-12">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'observacion_ot'); ?>
 									<?php echo $form->textArea($model,'observacion_ot',array('rows'=>6, 'cols'=>50, 'class'=>'form-control', 'disabled'=>'true')); ?>
@@ -95,63 +155,19 @@
 							</div>
 					  </div>
             <div class="box-footer">
-
+							<?php echo CHtml::link('Términar', array('/intra/index'), array('class'=>'btn btn-primary')); ?>
+							<?php echo CHtml::link('Actualizar orden de trabajo', array('/Ordentrabajo/update/', 'id'=>$model->id_ot), array('class'=>'btn btn-info', 'confirm' => '¿Está seguro de actualizar la orden de trabajo?')); ?>
+							<?php echo CHtml::link("Eliminar orden de trabajo", '#', array(
+							    'submit'=>array('/Ordentrabajo/delete', "id"=>$model->id_ot),
+									'class'=>'btn btn-danger',
+							    'confirm' => '¿Está seguro de eliminar la orden de trabajo?'
+							    )
+							);?>
             </div>
 				  </div>
 			  </div>
       </div>
-			<div class="col-md-12">
-				<div class="box box-primary">
-					<div class="box-header with-border">
-            <h3 class="box-title">Datos del funcionario</h3>
-          </div>
-					<div class="form">
-						<div class="box-body">
 
-							<div class="col-xs-12 col-md-6 col-lg-4">
-								 <div class="form-group">
-									<?php echo $form->labelEx($funcionario,'rut_funcionario'); ?>
-									<?php echo $form->textField($funcionario,'rut_funcionario', array("class"=>"form-control select2", $funcionario->isNewRecord ? '' : 'disabled'=>true, 'placeholder'=>'Ejemplo: 12345678-9')); ?>
-								</div>
-							</div>
-							<div class="col-xs-12 col-md-6 col-lg-4">
-								<div class="form-group">
-									<?php echo $form->labelEx($funcionario,'nombres_funcionario'); ?>
-									<?php echo $form->textField($funcionario,'nombres_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Ingrese los nombres del funcionario', 'disabled'=>true)); ?>
-								</div>
-							</div>
-							<div class="col-xs-12 col-md-6 col-lg-4">
-								<div class="form-group">
-									<?php echo $form->labelEx($funcionario,'apellidos_funcionario'); ?>
-									<?php echo $form->textField($funcionario,'apellidos_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Ingrese los apellidos del funcionario', 'disabled'=>true)); ?>
-								</div>
-							</div>
-							<div class="col-xs-12 col-md-6 col-lg-4">
- 							 <div class="form-group">
- 								 <?php echo $form->labelEx($funcionario,'telefonocelular_funcionario'); ?>
- 								 <?php echo $form->textField($funcionario,'telefonocelular_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Ejemplo +56912345678', 'disabled'=>true)); ?>
- 							 </div>
- 						 </div>
-						 <div class="col-xs-12 col-md-6 col-lg-4">
-		 					 <div class="form-group">
-								 <?php echo $form->labelEx($funcionario,'correo_funcionario'); ?>
-						 		<?php echo $form->textField($funcionario,'correo_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Correo del funcionario', 'disabled'=>true)); ?>
-		 					 </div>
-		 				 </div>
-						 <div class="col-xs-12 col-md-6 col-lg-4">
-							 <div class="form-group">
-								<?php echo $form->labelEx($funcionario,'cargo_funcionario'); ?>
-								<?php echo $form->textField($funcionario,'cargo_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Cargo del funcionario', 'disabled'=>true)); ?>
-							 </div>
-						 </div>
-
-					  </div>
-            <div class="box-footer">
-
-            </div>
-				  </div>
-			  </div>
-      </div>
 
       <!-- término se container -->
     </div>

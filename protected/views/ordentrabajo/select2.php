@@ -15,7 +15,7 @@
   <section class="content">
     <div class="row">
       <!-- Inicio se container -->
-      <div class="col-md-6">
+      <div class="col-md-12">
 				<div class="box box-primary">
 					<div class="box-header with-border">
             <h3 class="box-title">Listado de ordenes de trabajo</h3>
@@ -49,7 +49,6 @@
               )); ?>
 					  </div>
             <div class="box-footer">
-              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#arrendatario">Boton</button>
             </div>
 				  </div>
 			  </div>

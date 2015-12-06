@@ -140,21 +140,23 @@ $this->menu=array(
 					<div class="form">
 						<div class="box-body">
 							<?php $this->widget('zii.widgets.CDetailView', array(
-								 'data'=>$model3,
-								 'htmlOptions' => array('class' => 'table-striped table-condensed table-responsive table table-hover'),
-								 'attributes'=>array(
-										 'id_propiedad',
-										 array('header' => 'Propiedatio',
-													 'label' => 'Propietario' ,
-													 'value' => $model3->rut_cliente, ),
-										 array(
-											 'header'=>'Nombre completo',
-											 'label'=>'Nombre completo',
-											 'value'=>$model3->direccion_propiedad.' '.$model3->numero_propiedad,
-										 ),
-										 'valor_propiedad',
-								 ),
-								 )); ?>
+      					 'data'=>$model3,
+      					 'htmlOptions' => array('class' => 'table-striped table-condensed table-responsive table table-hover'),
+      					 'attributes'=>array(
+      						 array(
+      							 'label'=>'Número de ficha',
+      								'value' =>  CHtml::link($model3->id_propiedad,array('/propiedad/view/', 'id'=>$model3->id_propiedad)) ,
+      								'type'=>'raw'
+      						 ),
+      						 array('header' => 'Propiedatio',
+      									 'label' => 'Propietario' ,
+      									 'value' => $model3->rut_cliente, ),
+      						 array('header' => 'direccion',
+      									 'label' => 'Dirección' ,
+      									 'value' => $model3->direccion_propiedad.' '.$model3->numero_propiedad, ),
+      						 'valor_propiedad',
+      					 ),
+      					 )); ?>
 						</div>
 						<div class="box-footer">
 						</div>

@@ -54,7 +54,7 @@
 
 					 ?>">
 						<div class="box-header with-border">
-	            <h3 class="box-title">Fecha de pago <?php echo CHtml::encode($value->mes_pago	); ?></h3>
+	            <h3 class="box-title">Fecha de pago <?php echo date("d/m/Y", strtotime($value->mes_pago	)) ?></h3>
 	          </div>
 						<div class="form">
 							<div class="box-body">

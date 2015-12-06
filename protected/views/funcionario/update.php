@@ -1,18 +1,3 @@
-<?php
-/* @var $this FuncionarioController */
-/* @var $model Funcionario */
-
-$this->breadcrumbs=array(
-	'Funcionarios'=>array('index'),
-	'Create',
-);
-
-$this->menu=array(
-	array('label'=>'List Funcionario', 'url'=>array('index')),
-	array('label'=>'Manage Funcionario', 'url'=>array('admin')),
-);
-?>
-
 <div class="content-wrapper">
   <section class="content-header">
     <h1>

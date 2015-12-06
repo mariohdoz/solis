@@ -46,8 +46,8 @@ $this->menu=array(
 							'htmlOptions' => array('class' => 'table-responsive'),
 							'selectableRows'=>1,
 							'selectionChanged'=>'obtenerCliente',	// via 1: para mostrar detalles al seleccionar
-							'dataProvider'=>$model2->search(),
-							'filter' => $model2,
+							'dataProvider'=>$cliente->search(),
+							'filter' => $cliente,
 							'summaryText' => 'Se encontraron {count} Clientes activos',
 							'columns'=>array(
 						// nota que con htmlOptions se puede personalizar el tamano de la columna
@@ -117,28 +117,28 @@ $this->menu=array(
 							<div class="col-xs-12 col-md-6 col-lg-6">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'rut_cliente'); ?>
-									<?php echo $form->textField($model,'rut_cliente',array('class'=>'form-control', 'placeholder'=>'RUT del propietario.')); ?>
+									<?php echo $form->textField($model,'rut_cliente',array('class'=>'form-control', 'placeholder'=>'RUT del propietario.', 'required'=>'required')); ?>
 									<?php echo $form->error($model,'rut_cliente'); ?>
 								</div>
 							</div>
 							<div class="col-xs-12 col-md-6 col-lg-6">
 								<div class="form-group">
-									<?php echo $form->labelEx($model2,'correo_cliente'); ?>
-									<?php echo $form->textField($model2,'correo_cliente',array('class'=>'form-control','disabled'=>'true', 'placeholder'=>'Correo del propietario.')); ?>
-									<?php echo $form->error($model2,'correo_cliente'); ?>
+									<?php echo $form->labelEx($formulario,'correo_cliente'); ?>
+									<?php echo $form->textField($formulario,'correo_cliente',array('class'=>'form-control','disabled'=>'true', 'placeholder'=>'Correo del propietario.')); ?>
+									<?php echo $form->error($formulario,'correo_cliente'); ?>
 								</div>
 							</div>
 							<div class="col-xs-12 col-md-6 col-lg-6">
 								<div class="form-group">
-									<?php echo $form->label($model2,'nombres_cliente'); ?>
-									<?php echo $form->textField($model2,'nombres_cliente', array('class'=>'form-control', 'disabled'=>'true', 'placeholder'=>'Nombres del propietario.')); ?>
-									<?php echo $form->error($model2,'nombres_cliente'); ?>
+									<?php echo $form->label($formulario,'nombres_cliente'); ?>
+									<?php echo $form->textField($formulario,'nombres_cliente', array('class'=>'form-control', 'disabled'=>'true', 'placeholder'=>'Nombres del propietario.')); ?>
+									<?php echo $form->error($formulario,'nombres_cliente'); ?>
 								</div>
 							</div>
 							<div class="col-xs-12 col-md-6 col-lg-6">
-								<?php echo $form->label($model2,'apellidos_cliente'); ?>
-								<?php echo $form->textField($model2,'apellidos_cliente', array('class'=>'form-control', 'disabled'=>'true','placeholder'=>'Apellidos del propietario.'));?>
-								<?php echo $form->error($model2,'apellidos_cliente'); ?>
+								<?php echo $form->label($formulario,'apellidos_cliente'); ?>
+								<?php echo $form->textField($formulario,'apellidos_cliente', array('class'=>'form-control', 'disabled'=>'true','placeholder'=>'Apellidos del propietario.'));?>
+								<?php echo $form->error($formulario,'apellidos_cliente'); ?>
 							</div>
 						</div>
 						<div class="box-footer">
@@ -165,7 +165,7 @@ $this->menu=array(
                           'Venta' => 'Venta',
                           'Arriendo' => 'Arriendo',
                       ),
-                      array("class"=>"form-control select2", 'empty' => 'Seleccione tipo de servicio')); ?>
+                      array("class"=>"form-control select2", 'empty' => 'Seleccione tipo de servicio', 'required'=>'required')); ?>
 								</div>
 							</div>
 							<div class="col-xs-12 col-md-6 col-lg-6">
@@ -184,7 +184,7 @@ $this->menu=array(
                           'Propiedad de inversión' => 'Propiedad de inversión',
                           'Terreno' => 'Terreno'
                       ),
-                      array("class"=>"form-control select2", 'empty' => 'Seleccione el tipo de propiedad')); ?>
+                      array("class"=>"form-control select2", 'empty' => 'Seleccione el tipo de propiedad', 'required'=>'required')); ?>
 								</div>
 							</div>
 							<div class="col-xs-12 col-md-6 col-lg-6">
@@ -196,13 +196,13 @@ $this->menu=array(
                           'Calama' => 'Calama',
                           'Iquique' => 'Iquique'
                           ),
-                      array("class"=>"form-control select2",  'empty' => 'Seleccione la comuna de la propiedad')); ?>
+                      array("class"=>"form-control select2",  'empty' => 'Seleccione la comuna de la propiedad', 'required'=>'required')); ?>
 								</div>
 							</div>
 							<div class="col-xs-8 col-md-4 col-lg-4">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'direccion_propiedad'); ?>
-                  <?php echo $form->textField($model,'direccion_propiedad', array("class"=>"form-control select2", 'placeholder'=>'Ingrese la dirección de la propiedad')); ?>
+                  <?php echo $form->textField($model,'direccion_propiedad', array("class"=>"form-control select2", 'placeholder'=>'Ingrese la dirección de la propiedad','required'=>'required')); ?>
 								</div>
 							</div>
 							<div class="col-xs-4 col-md-2 col-lg-2">
@@ -216,6 +216,7 @@ $this->menu=array(
 									<?php echo $form->labelEx($model,'habitacion_propiedad'); ?>
                   <?php echo $form->dropDownList($model,'habitacion_propiedad',
                       array(
+													'0' => '0',
                           '1' => '1',
                           '2' => '2',
                           '3' => '3',
@@ -226,7 +227,7 @@ $this->menu=array(
                           '8' => '8',
                           '9' => '9'
                       ),
-                      array("class"=>"form-control select2", 'empty' => 'Cantidad de Habitaciones')); ?>
+                      array("class"=>"form-control select2", 'empty' => 'Cantidad de Habitaciones','required'=>'required')); ?>
 								</div>
 							</div>
 							<div class="col-xs-12 col-md-6 col-lg-6">
@@ -234,6 +235,7 @@ $this->menu=array(
 									<?php echo $form->labelEx($model,'bano_propiedad'); ?>
                   <?php echo $form->dropDownList($model,'bano_propiedad',
                       array(
+													'0' => '0',
                           '1' => '1',
                           '2' => '2',
                           '3' => '3',
@@ -244,7 +246,7 @@ $this->menu=array(
                           '8' => '8',
                           '9' => '9'
                       ),
-                      array("class"=>"form-control select2", 'empty' => 'Cantidad de baños')); ?>
+                      array("class"=>"form-control select2", 'empty' => 'Cantidad de baños','required'=>'required')); ?>
 								</div>
 							</div>
 							<div class="col-xs-12 col-md-6 col-lg-6">
@@ -262,7 +264,7 @@ $this->menu=array(
 							<div class="col-xs-12 col-md-3 col-lg-3">
 								<div class="form-group">
 									<?php echo $form->labelEx($model, 'valor_propiedad');?>
-                  <?php echo $form->textField($model, 'valor_propiedad', array("class"=>"form-control select2", 'placeholder'=>'Ejemplo: 123456','onchange'=>"applyFormatCurrency(document.getElementById('Propiedad_valor_propiedad'));"));?>
+                  <?php echo $form->textField($model, 'valor_propiedad', array("class"=>"form-control select2", 'placeholder'=>'Ejemplo: 123456','onchange'=>"applyFormatCurrency(document.getElementById('Propiedad_valor_propiedad'));", 'required'=>'required'));?>
 								</div>
 							</div>
 							<div class="col-xs-12 col-md-3 col-lg-3">
@@ -291,25 +293,25 @@ $this->menu=array(
 													'19' => '19%',
 													'20' => '20%',
 											),
-											array("class"=>"form-control select2")); ?>
+											array("class"=>"form-control select2", 'required'=>'required')); ?>
 								</div>
 							</div>
 							<div class="col-xs-12 col-md-3 col-lg-3">
 								<div class="form-group">
 									<label for="end">Ganancia de comisión</label>
-									<input class="form-control" name="Pago[end]" id="end" type="text" disabled="true">
+									<input class="form-control" name="Pago[end]" id="end" type="text" disabled="true" required>
 								</div>
 							</div>
 							<div class="col-xs-12 col-md-3 col-lg-3">
 								<div class="form-group">
 									<label for="Propiedad_amoblado_propiedad">Propiedad amoblada</label><br>
-                  <?php echo $form->checkBox($model, 'amoblado_propiedad', array('class'=>'minimal'));?>
+                  <?php echo $form->checkBox($model, 'amoblado_propiedad', array('class'=>'minimal', 'required'=>'required'));?>
 								</div>
 							</div>
 							<div class="col-xs-12">
 								<div class="form-group">
                     <?php echo $form->labelEx($model,'descripcion_propiedad'); ?>
-                    <?php echo $form->textarea($model,'descripcion_propiedad', array('rows' => 4, 'class'=> 'form-control description-text ', 'cols'=> 50 )); ?>
+                    <?php echo $form->textarea($model,'descripcion_propiedad', array('rows' => 4, 'class'=> 'form-control description-text ', 'cols'=> 50, 'required'=>'required' )); ?>
 								</div>
 							</div>
 						</div>
@@ -330,6 +332,20 @@ $this->menu=array(
 
 <script>
 	$("#Propiedad_valor_propiedad").blur(function(){
+		var suffix = $(this).val();
+		var a=suffix.replace( /^\D+/g, '').replace( '.', '');
+		var b = parseInt(a);
+		if (!isNaN(b)) {
+			$('#Propiedad_valor_propiedad').formatCurrency({region: 'es-CL'
+				, roundToDecimalPlace: -1});
+			valor();
+		}else {
+			alert('Por favor ingresar un valor numérico.');
+			$(this).val('');
+			$(this).focus();
+		}
+	});
+	$("#Propiedad_valor_propiedad").keyup(function(){
 		$('#Propiedad_valor_propiedad').formatCurrency({region: 'es-CL'
 			, roundToDecimalPlace: -1});
 	});
@@ -361,29 +377,31 @@ $this->menu=array(
 		},
 	});
 	$('#Propiedad_valor_propiedad').blur(function(){
-		valor();
 	});
 	$('#Propiedad_valor_propiedad').click(function(){
 		$('#Propiedad_valor_propiedad').val('');
 	});
-	$('#Propiedad_valor_propiedad').keyup(function () {
-	if (isNaN($("#Propiedad_valor_propiedad").val())) {
-	alert('Porfavor ingresar solamente números');
-	}
-});
+
 	$('#Propiedad_comision_propiedad').change(function(){
 		valor();
 	});
+	$('#Propiedad_terreno_propiedad').blur(function(event) {
+
+	});
 	function valor(){
 		var a = $('#Propiedad_comision_propiedad').val();
-		a=a.replace(/[^\d]/, '');
+		a=a.replace(/^\D+/g, '');
 		a=parseInt(a.replace(".",""));
 		var b = $('#Propiedad_valor_propiedad').val();
 		b=b.replace(/[^\d]/, '');
-		b=parseInt(b.replace(".",""));
+		b=b.replace('.', '');
+		b=b.replace('.', '');
+		b=b.replace('.', '');
+		b=b.replace('.', '');
+		b=parseInt(b);
 		var c = (a/100)*b;
 		$('#end').val(c);
 		$('#end').formatCurrency({region: 'es-CL'
-			, roundToDecimalPlace: -0});
+			, roundToDecimalPlace: -1});
 	}
 </script>

@@ -85,6 +85,22 @@
   </section>
   <section class="content">
     <div class="row">
+      <div class="col-md-12">
+				<?php if(($msgs=Yii::app()->user->getFlashes())!=null): ?>
+         <?php foreach($msgs as $type => $message):?>
+           <div class="alert alert-<?php echo $type;?>" style="margin-left: 10px; margin-right: 10px ">
+             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+             <strong><?php
+							 if($type == 'danger'){
+								 echo 'Error';
+							 }elseif ($type == 'success'){
+								 echo 'Éxito';
+							 };
+							?> !</strong> <?php echo $message;?>.
+           </div>
+         <?php endforeach;?>
+       <?php endif; ?>
+			</div>
       <!-- Inicio se container -->
 			<?php $this->renderPartial('_form', array('model'=>$model, 'integra'=>$integra, 'funcionario'=>$funcionario)); ?>
       <!-- término se container -->
@@ -96,8 +112,8 @@
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.Rut.min.js" type="text/javascript"></script>
 <script>
 $( document ).ready(function(){
-  $('#Ordentrabajo_fechaemision_ot').val($.datepicker.formatDate('dd/mm/yy', new Date()));
-  
+  $('#Ordentrabajo_fechaemision_ot').val($.datepicker.formatDate('yy-mm-dd', new Date()));
+
 });
 $('#Ordentrabajo_totalpagar_ot').click(function(){
   $('#Ordentrabajo_totalpagar_ot').val('');

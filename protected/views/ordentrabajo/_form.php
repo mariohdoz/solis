@@ -16,7 +16,7 @@
 				<div class="col-xs-6">
 					<div class="form-group">
 						<?php echo $form->labelEx($model,'rut_funcionario'); ?>
-						<?php echo $form->textField($model,'rut_funcionario',array('size'=>10,'maxlength'=>10, 'class'=>'form-control', 'placeholder'=>'Ingrese el RUT del arrendatario o seleccione uno.')); ?>
+						<?php echo $form->textField($model,'rut_funcionario',array('size'=>10,'maxlength'=>10, 'class'=>'form-control', 'placeholder'=>'Ingrese el RUT del arrendatario o seleccione uno.', 'required'=>'required')); ?>
 					</div>
 				</div>
 				<div class="col-xs-6">
@@ -57,36 +57,52 @@
 						<?php echo $form->errorSummary($model); ?>
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-6 col-xs-12">
+
+				<div class="<?php echo $model->isNewRecord? 'col-lg-4 col-md-6 col-xs-12':'col-lg-3 col-md-6 col-xs-12'; ?>">
 					<div class="form-group">
 						<?php echo $form->labelEx($model,'fechaemision_ot'); ?>
-						<?php echo $form->textField($model,'fechaemision_ot', array('class'=>'form-control', 'required'=>'required', 'disabled'=>'true')); ?>
+						<?php echo $form->dateField($model,'fechaemision_ot', array('class'=>'form-control', 'required'=>'required', 'disabled'=>'true')); ?>
 					</div>
 				</div>
-				<?php if(!$model->isNewRecord):?>
-				<div class="col-lg-4 col-md-6 col-xs-12">
-					<div class="form-group">
-						<?php echo $form->labelEx($model,'estado_ot'); ?>
-						<?php echo $form->textField($model,'estado_ot', array('class'=>'form-control', 'required'=>'required')); ?>
-					</div>
-				</div>
-			<?php endif; ?>
-				<div class="col-lg-4 col-md-6 col-xs-12">
+				<div class="<?php echo $model->isNewRecord? 'col-lg-4 col-md-6 col-xs-12':'col-lg-3 col-md-6 col-xs-12'; ?>">
 					<div class="form-group">
 						<?php echo $form->labelEx($model,'inicio_ot'); ?>
 						<?php echo $form->dateField($model,'inicio_ot', array('class'=>'form-control', 'required'=>'required')); ?>
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-6 col-xs-12">
+				<div class="<?php echo $model->isNewRecord? 'col-lg-4 col-md-6 col-xs-12':'col-lg-3 col-md-6 col-xs-12'; ?>">
 					<div class="form-group">
 						<?php echo $form->labelEx($model,'fechaejecucion_ot'); ?>
 						<?php echo $form->dateField($model,'fechaejecucion_ot', array('class'=>'form-control', 'required'=>'required')); ?>
 					</div>
 				</div>
+				<?php if(!$model->isNewRecord):?>
+				<div class="<?php echo $model->isNewRecord? 'col-lg-4 col-md-6 col-xs-12':'col-lg-3 col-md-6 col-xs-12'; ?>">
+					<div class="form-group">
+						<?php echo $form->labelEx($model,'estado_ot'); ?>
+						<?php echo $form->dropDownList($model,'formapago_ot',
+							array(
+								'1' => 'Pendiente',
+								'0' => 'Terminado',
+							),
+							array("class"=>"form-control"))?>
+
+					</div>
+				</div>
+			<?php endif; ?>
 				<div class="col-lg-4 col-md-6 col-xs-12">
 					<div class="form-group">
 						<?php echo $form->labelEx($model,'servicio_ot'); ?>
-						<?php echo $form->textField($model,'servicio_ot', array('class'=>'form-control','size'=>50,'maxlength'=>50  )); ?>
+						<?php echo $form->dropDownList($model,'servicio_ot',
+							array(
+								'Inspección' => 'Inspección',
+								'Inventariado' => 'Inventariado',
+								'Tasación' => 'Tasación',
+								'Estudio de título' => 'Estudio de título',
+								'Ampliaciones menores' => 'Ampliaciones menores',
+								'Aseo de propiedad' => 'Aseo de propiedad',
+							),
+							array("class"=>"form-control"))?>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6 col-xs-12">
@@ -98,7 +114,14 @@
 				<div class="col-lg-4 col-md-6 col-xs-12">
 					<div class="form-group">
 						<?php echo $form->labelEx($model,'formapago_ot'); ?>
-						<?php echo $form->textField($model,'formapago_ot', array('class'=>'form-control', 'required'=>'required')); ?>
+						<?php echo $form->dropDownList($model,'formapago_ot',
+							array(
+								'Efectivo' => 'Efectivo',
+								'Cheque' => 'Cheque',
+								'Transferencia' => 'Transferencia',
+								'Depósito' => 'Depósito',
+							),
+							array("class"=>"form-control"))?>
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-12 col-xs-12">

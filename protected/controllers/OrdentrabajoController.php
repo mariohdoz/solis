@@ -32,7 +32,7 @@ class OrdentrabajoController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','index','view'),
+				'actions'=>array('create','update','index','view','select','select2'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -49,6 +49,16 @@ class OrdentrabajoController extends Controller
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
+	 public function actionSelect2()
+	 {
+		$orden = new Ordentrabajo('search');
+		$orden->unsetAttributes();  // clear any default values
+		if(isset($_GET['Ordentrabajo']))
+			$orden->attributes=$_GET['Ordentrabajo'];
+		$this->render('select2',array(
+		'model'=>$orden,
+		));
+	 }
 	 public function actionSelect()
 	 {
 		$orden = new Ordentrabajo('search');
@@ -90,16 +100,21 @@ class OrdentrabajoController extends Controller
 		if(isset($_POST['Ordentrabajo']))
 		{
 			$orden->attributes=$_POST['Ordentrabajo'];
-			$valor = intval(preg_replace('/[^0-9]+/', '', $orden->totalpagar_ot),10);
-			$orden->totalpagar_ot=$valor;
-			$integra->rut_funcionario=$orden->rut_funcionario;
-			$orden->rut_admin=Yii::app()->session['admin_rut'];
-			$orden->fechaemision_ot=date('Y-m-j');
-			if($orden->save()){
-				$integra->id_ot=$orden->id_ot;
-				if ($integra->save()) {
-					$this->redirect(array('view','id'=>$orden->id_ot));
+			if (Funcionario::model()->findByPk($orden->rut_funcionario)) {
+				$valor = intval(preg_replace('/[^0-9]+/', '', $orden->totalpagar_ot),10);
+				$orden->totalpagar_ot=$valor;
+				$integra->rut_funcionario=$orden->rut_funcionario;
+				$orden->rut_admin=Yii::app()->session['admin_rut'];
+				$orden->fechaemision_ot=date('Y-m-j');
+				if($orden->save()){
+					$integra->id_ot=$orden->id_ot;
+					if ($integra->save()) {
+						Yii::app()->user->setFlash('success','La orden de trabajo fue registada');
+						$this->redirect(array('view','id'=>$orden->id_ot));
+					}
 				}
+			}else {
+				Yii::app()->user->setFlash('danger','El funcionario no se encuentra registrado');
 			}
 		}
 
@@ -118,20 +133,38 @@ class OrdentrabajoController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
+		$orden=$this->loadModel($id);
+		$integra= Integra::model()->findByAttributes(
+		  array('id_ot'=>$id)
+		);
+		$funcionario = Funcionario::model()->findByPk($integra->rut_funcionario);
+		$formulario= new Funcionario('libre');
+		$orden->rut_funcionario=$integra->rut_funcionario;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		// $this->performAjaxValidation($orden);
 
 		if(isset($_POST['Ordentrabajo']))
 		{
-			$model->attributes=$_POST['Ordentrabajo'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_ot));
+			$orden->attributes=$_POST['Ordentrabajo'];
+			$valor = intval(preg_replace('/[^0-9]+/', '', $orden->totalpagar_ot),10);
+			$orden->totalpagar_ot=$valor;
+			$integra->rut_funcionario=$orden->rut_funcionario;
+			$orden->rut_admin=Yii::app()->session['admin_rut'];
+			$orden->fechaemision_ot=date('Y-m-j');
+			if($orden->save()){
+				$integra->id_ot=$orden->id_ot;
+				if ($integra->save()) {
+					$this->redirect(array('view','id'=>$orden->id_ot));
+				}
+			}
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
+			'model'=>$orden,
+			'integra'=>$integra,
+			'funcionario'=>$funcionario,
+			'formulario'=>$formulario,
 		));
 	}
 

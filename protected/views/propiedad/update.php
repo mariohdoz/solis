@@ -185,11 +185,11 @@ $this->menu=array(
 						<div class="box-body">
 
 									<?php foreach ($model->imagen as $key => $value) {
-					          echo '<div class="col-lg-2 col-sm-4 col-xs-6">';
+					          echo '<div class="col-lg-2 col-sm-4 col-xs-6" id='.$value->id_imagen.'>';
 										echo '<div class="form-group">';
-					          echo '<a class="showcase" href="'.Yii::app()->request->baseUrl.'/images/propiedades/'.$value->url_imagen.'" data-rel="lightcase:myCollection:slideshow">';
-					          echo  CHtml::image(Yii::app()->baseUrl."/images/propiedades/".$value->url_imagen, '',  array('class'=>'thumbnail img-responsive'));
-					          echo '</a></div></div>';
+					          echo '<a class="showcase" href="'.Yii::app()->request->baseUrl.'/images/propiedades/'.$value->url_imagen.'" data-rel="lightcase:myCollection:slideshow">Ver</a>';
+					          echo  CHtml::image(Yii::app()->baseUrl."/images/propiedades/".$value->url_imagen, '',  array('class'=>'thumbnail img-responsive', 'id'=>$value->id_imagen));
+					          echo '</div></div>';
 					        } ?>
 
 					  </div>
@@ -378,7 +378,26 @@ $this->menu=array(
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.Rut.min.js" type="text/javascript"></script>
 
 <script>
+$(document).ready(function(){
+	valor();
+	$('#Propiedad_valor_propiedad').formatCurrency({region: 'es-CL'
+		, roundToDecimalPlace: -1});
+});
 	$("#Propiedad_valor_propiedad").blur(function(){
+		var suffix = $(this).val();
+		var a=suffix.replace( /^\D+/g, '').replace( '.', '');
+		var b = parseInt(a);
+		if (!isNaN(b)) {
+			$('#Propiedad_valor_propiedad').formatCurrency({region: 'es-CL'
+				, roundToDecimalPlace: -1});
+			valor();
+		}else {
+			alert('Por favor ingresar un valor numérico.');
+			$(this).val('');
+			$(this).focus();
+		}
+	});
+	$("#Propiedad_valor_propiedad").keyup(function(){
 		$('#Propiedad_valor_propiedad').formatCurrency({region: 'es-CL'
 			, roundToDecimalPlace: -1});
 	});
@@ -410,29 +429,44 @@ $this->menu=array(
 		},
 	});
 	$('#Propiedad_valor_propiedad').blur(function(){
-		valor();
 	});
 	$('#Propiedad_valor_propiedad').click(function(){
 		$('#Propiedad_valor_propiedad').val('');
 	});
-	$('#Propiedad_valor_propiedad').keyup(function () {
-	if (isNaN($("#Propiedad_valor_propiedad").val())) {
-	alert('Porfavor ingresar solamente números');
-	}
-});
+
 	$('#Propiedad_comision_propiedad').change(function(){
 		valor();
 	});
+	$('#Propiedad_terreno_propiedad').blur(function(event) {
+
+	});
 	function valor(){
 		var a = $('#Propiedad_comision_propiedad').val();
-		a=a.replace(/[^\d]/, '');
+		a=a.replace(/^\D+/g, '');
 		a=parseInt(a.replace(".",""));
 		var b = $('#Propiedad_valor_propiedad').val();
 		b=b.replace(/[^\d]/, '');
-		b=parseInt(b.replace(".",""));
+		b=b.replace('.', '');
+		b=b.replace('.', '');
+		b=b.replace('.', '');
+		b=b.replace('.', '');
+		b=parseInt(b);
 		var c = (a/100)*b;
 		$('#end').val(c);
 		$('#end').formatCurrency({region: 'es-CL'
-			, roundToDecimalPlace: -0});
+			, roundToDecimalPlace: -1});
 	}
+	$('img').click(function(event) {
+		alert($(this).attr('id'));
+		var a = '#'+$(this).attr('id');
+			var action = "<?php echo Yii::app()->request->baseUrl; ?>"+'/propiedad/img/'+$(this).attr('id');
+			$.getJSON(action, function(data) {
+				$.each(data, function(key, cliente) {
+					alert(cliente);
+				});
+			}).error(function(jqXHR, textStatus, errorThrown) {
+				$("#respuesta").html(jqXHR.responseText);
+			});
+		$(a).hide('slow');
+	});
 </script>

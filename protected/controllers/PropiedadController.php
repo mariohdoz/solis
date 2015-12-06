@@ -113,8 +113,11 @@ class PropiedadController extends Controller
 	public function actionCreate()
 	{
 		$model=new Propiedad;
-		$model2=new Cliente;
-		// Uncomment the following line if AJAX validation is needed
+		$formulario=new Cliente;
+		$cliente=new Cliente('search');
+		$cliente->unsetAttributes();  // clear any default values
+		if(isset($_GET['Cliente']))
+			$cliente->attributes=$_GET['Cliente'];		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Propiedad']))
@@ -132,32 +135,13 @@ class PropiedadController extends Controller
 				}
 			}else {
 				Yii::app()->user->setFlash('danger','Seleccione un cliente para poder continuar');
-				$this->render('create',array(
-					'model'=>$model,
-					'model2'=>$model2,
-					'dataProvider'=>$dataProvider,
-				));
 			}
-			Yii::app()->end();
 		}
-		$criteria = new CDbCriteria();
-		$criteria->condition='activo_cliente =1';
-
-		$dataProvider=new CActiveDataProvider(Cliente::model(), array(
-			'keyAttribute'=>'rut_cliente',// IMPORTANTE, para que el CGridView conozca la seleccion
-			'criteria'=>$criteria,
-			'pagination'=>array(
-				'pageSize'=>5,
-			),
-			'sort'=>array(
-				'defaultOrder'=>array('rut_cliente'=>true),
-			),
-		));
-
 		$this->render('create',array(
 			'model'=>$model,
-			'model2'=>$model2,
-			'dataProvider'=>$dataProvider,
+			'formulario'=>$formulario,
+			'cliente'=>$cliente,
+
 		));
 	}
 
@@ -174,6 +158,19 @@ class PropiedadController extends Controller
 			echo CJSON::encode($resp);
 		}
 
+	}
+	public function actionimg($id)
+	{
+		$resp = Imagen::model()->findByPk($id);
+		if ($resp->delete()) {
+			$file=YiiBase::getPathOfAlias("webroot")."/images/propiedades/".$resp->url_imagen;
+			$do = unlink($file);
+			$var = 1;
+		}else {
+			$var = 0;
+		}
+		header("Content-type: application/json");
+		echo CJSON::encode($var);
 	}
 
 	public function codigo($var)
@@ -204,8 +201,11 @@ class PropiedadController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		$model2=new Cliente();
 		$model2= Cliente::model()->findByPk($model->rut_cliente);
+		$cliente=new Cliente('search');
+		$cliente->unsetAttributes();  // clear any default values
+		if(isset($_GET['Cliente']))
+			$cliente->attributes=$_GET['Cliente'];		// Uncomment the following line if AJAX validation is needed
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -213,6 +213,10 @@ class PropiedadController extends Controller
 		if(isset($_POST['Propiedad']))
 		{
 			$model->attributes=$_POST['Propiedad'];
+			$cadena = str_replace('.','',$model->rut_cliente);
+			$model->rut_cliente =$cadena;
+			$valor = intval(preg_replace('/[^0-9]+/', '', $model->valor_propiedad),10);
+			$model->valor_propiedad = $valor;
 			if($model->save()){
 				Yii::app()->user->setFlash('success','La propiedad fue actualizada exitosamente.');
 				$this->redirect(array('view','id'=>$model->id_propiedad));
@@ -222,6 +226,7 @@ class PropiedadController extends Controller
 		$this->render('update',array(
 			'model'=>$model,
 			'model2'=>$model2,
+			'cliente'=>$cliente
 		));
 	}
 

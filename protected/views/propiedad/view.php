@@ -320,23 +320,24 @@ $this->menu=array(
           </div>
 					<div class="form">
 						<div class="box-body">
-							<?php
-								 $this->widget('zii.widgets.CDetailView', array(
-										 'data' => $model2,
-										 'htmlOptions' => array('class' => 'table-striped table-condensed table-responsive table table-hover'),
-										 'attributes' => array(
-												 'rut_cliente',
-												 array(
-													 'header'=>'Nombre completo',
-													 'name'=>'nombres_cliente',
-													 'value'=>$model2->nombres_cliente.' '.$model2->apellidos_cliente,
-												 ),
-												 'telefonocelular_cliente',
-												 'domicilio_cliente',
-												 'correo_cliente'
-										 )
-								 ));
-								?>
+							<?php $this->widget('zii.widgets.CDetailView', array(
+      					 'data'=>$model2,
+      					 'htmlOptions' => array('class' => 'table-striped table-condensed table-responsive table table-hover'),
+      					 'attributes'=>array(
+      						 array(
+      							 'label'=>'RUT',
+      								'value' =>  CHtml::link($model2->rut_cliente,array('/cliente/view/', 'id'=>$model2->rut)) ,
+      								'type'=>'raw'
+      						 ),
+      						 array(
+      							 'header'=>'Nombre completo',
+      							 'label'=>'Nombre completo',
+      							 'value'=>$model2->nombres_cliente.' '.$model2->apellidos_cliente,
+      						 ),
+      						 'telefonocelular_cliente',
+      						 'correo_cliente',
+      					 ),
+      					 )); ?>
 						</div>
             <div class="box-footer">
             </div>

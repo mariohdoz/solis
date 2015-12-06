@@ -82,38 +82,7 @@
 		</div>
 	</div>
 </div>
-<div class="col-md-12">
-	<div class="box box-primary">
-		<div class="box-header with-border">
-			<h3 class="box-title">Pagos realizados.</h3>
-		</div>
-		<div class="form">
-			<div class="box-body">
-				<?php
-				if($arriendo->pago != null)
-				{
-					foreach ($arriendo->pago as $key => $value) {
-						echo '<div class="col-xs-12 col-md-6 col-lg-4"">';
-							echo '<ul class="nav nav-pills nav-stacked">';
-							$var = $value->activo_pago? 'con deudas' : 'completado';
-								echo '<li>'.CHtml::link('<i class="fa fa-money"></i>Fecha de pago '.$value->mes_pago.' se encuentra '.$var , array('arriendo/view/', 'id'=>$value->id_pago)).'</li>';
-							echo '</ul>';
-						echo '</div>';
-					}
-				}else {
-					echo '<div class="col-xs-12 col-md-12 col-lg-12"">';
-						echo '<h3>No tiene ningún pago registrado</h3>';
-					echo '</div>';
-					echo '<div class="col-xs-12 col-md-6 col-lg-4"">';
-					echo '</div>';
-				}
-				?>
-			</div>
-			<div class="box-footer">
-			</div>
-		</div>
-	</div>
-</div>
+
 
 <?php $this->endWidget(); ?>
 </div><!-- form -->

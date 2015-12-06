@@ -30,6 +30,21 @@ class SiteController extends Controller
 	 * This is the default 'index' action that is invoked
 	 * when an action is not explicitly requested by users.
 	 */
+	public function actionTest(){
+		$cliente=new Cliente('search');
+		$cliente->unsetAttributes();  // clear any default values
+		if(isset($_GET['Cliente']))
+			$cliente->attributes=$_GET['Cliente'];
+		$cliente1=new Cliente('search');
+		$cliente1->unsetAttributes();  // clear any default values
+		if(isset($_GET['Cliente']))
+			$cliente1->attributes=$_GET['Cliente'];
+		$this->render('test',array(
+			'cliente'=>$cliente,
+			'cliente1'=>$cliente1,
+
+		));
+ 	}
 	public function actionIndex()
 	{
 		$model  = new LoginForm;
@@ -84,15 +99,7 @@ class SiteController extends Controller
 			echo 0;
 		}	}
 
-	public function actionTest(){
-		$propiedad=new Propiedad('disponible');
-		$propiedad->unsetAttributes();  // clear any default values
-		if(isset($_GET['Propiedad']))
-			$propiedad->attributes=$_GET['Propiedad'];
-		$this->render('test',array(
-			'model3'=>$propiedad,
-		));
-	}
+
 
 
 
