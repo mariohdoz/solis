@@ -305,7 +305,7 @@ $this->menu=array(
 							<div class="col-xs-12 col-md-3 col-lg-3">
 								<div class="form-group">
 									<label for="Propiedad_amoblado_propiedad">Propiedad amoblada</label><br>
-                  <?php echo $form->checkBox($model, 'amoblado_propiedad', array('class'=>'minimal', 'required'=>'required'));?>
+                  <?php echo $form->checkBox($model, 'amoblado_propiedad', array('class'=>'minimal'));?>
 								</div>
 							</div>
 							<div class="col-xs-12">
