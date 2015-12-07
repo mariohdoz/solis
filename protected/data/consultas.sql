@@ -25,3 +25,19 @@ FROM  `solicitud`
 WHERE rut_cliente IS NULL
 AND rut_funcionario IS NULL
 LIMIT 0 , 30
+
+---------------------------------------------------------------------------------------------------------------
+SELECT t. *
+FROM arriendo t
+LEFT JOIN propiedad p ON p.id_propiedad = t.id_propiedad
+
+SELECT t.*, pa.*, p.*
+FROM arriendo t
+LEFT JOIN propiedad p ON p.id_propiedad = t.id_propiedad
+LEFT JOIN pago pa ON pa.id_arriendo=t.id_arriendo
+WHERE t.id_arriendo = pa.id_arriendo AND DATE_FORMAT( STR_TO_DATE( mes_pago,  "%d-%m-%Y" ) ,  "%m-%Y" ) =  DATE_FORMAT( NOW( ) ,  "%m-%Y" )
+
+-------------------------------------------------------------------------------------------------------------------
+SELECT DATE_FORMAT( NOW( ) ,  "%m-%Y" ) AS resultado,  DATE_FORMAT( STR_TO_DATE( mes_pago,  "%d-%m-%Y" ) ,  "%m-%Y" ) AS resultado2
+FROM pago pa
+WHERE DATE_FORMAT( STR_TO_DATE( mes_pago,  "%d-%m-%Y" ) ,  "%m-%Y" ) =  DATE_FORMAT( NOW( ) ,  "%m-%Y" )

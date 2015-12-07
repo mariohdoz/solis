@@ -31,17 +31,16 @@ class SiteController extends Controller
 	 * when an action is not explicitly requested by users.
 	 */
 	public function actionTest(){
-		$cliente=new Cliente('search');
-		$cliente->unsetAttributes();  // clear any default values
-		if(isset($_GET['Cliente']))
-			$cliente->attributes=$_GET['Cliente'];
-		$cliente1=new Cliente('search');
-		$cliente1->unsetAttributes();  // clear any default values
-		if(isset($_GET['Cliente']))
-			$cliente1->attributes=$_GET['Cliente'];
+		/**$criteria=new CDbCriteria;
+		$criteria->join = 'LEFT JOIN propiedad ON propiedad.id_propiedad = t.id_propiedad LEFT JOIN pago ON pago.id_arriendo=t.id_arriendo';
+		$criteria->select = 't.*, pago.*, propiedad.*';
+		$criteria->condition='t.id_arriendo = pago.id_arriendo AND DATE_FORMAT( STR_TO_DATE( pago.mes_pago,  "%d-%m-%Y" ) ,  "%m-%Y" ) =  DATE_FORMAT( NOW( ) ,  "%m-%Y" )';
+*/
+		$criteria=new CDbCriteria;
+		$criteria->condition='DATE_FORMAT( STR_TO_DATE( mes_pago,  "%d-%m-%Y" ) ,  "%m-%Y" ) =  DATE_FORMAT( NOW( ) ,  "%m-%Y" )';
+		$model =Pago::model()->findAll($criteria);
 		$this->render('test',array(
-			'cliente'=>$cliente,
-			'cliente1'=>$cliente1,
+			'model'=>$model,
 
 		));
  	}

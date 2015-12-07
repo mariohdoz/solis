@@ -55,6 +55,7 @@ class Arriendo extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'pago'=>array(self::HAS_MANY, 'Pago', 'id_arriendo', 'order'=>'id_pago ASC'),
+			'propiedad'=>array(self::BELONGS_TO, 'Propiedad', 'id_propiedad'),
 		);
 	}
 

@@ -1,57 +1,4 @@
-<script>
-	function obtenerCliente(){
-		var rut = $.fn.yiiGridView.getSelection('cliente');
-		var str = rut+"";
-		var res = str.split("-");
-		var action = "<?php echo Yii::app()->request->baseUrl; ?>"+'/propiedad/obtener/'+res[0];
-		$.getJSON(action, function(data) {
-			$.each(data, function(key, cliente) {
-				$('#Propiedad_rut_cliente').val(cliente.rut_cliente);
-				$('#Cliente_correo_cliente').val(cliente.correo_cliente);
-				$('#Cliente_nombres_cliente').val(cliente.nombres_cliente);
-				$('#Cliente_apellidos_cliente').val(cliente.apellidos_cliente);
-			});
-		}).error(function(jqXHR, textStatus, errorThrown) {
-			$("#respuesta").html(jqXHR.responseText);
-		});
-	}
-</script>
-<div class="modal-default" id="cliente" tabindex="-2" role="dialog" aria-labelledby="myModallabel" aria-hidden="false">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h3 style="text-align: center">Seleccionar Cliente</h3>
-			</div>
-			<div class="modal-body">
-				<div class="form-horizontal">
-					<?php
-						$this->widget('zii.widgets.grid.CGridView', array(
-							'id'=>'clientddde',
-							'itemsCssClass' => 'table table-hover',
-							'htmlOptions' => array('class' => 'table-responsive'),
-							'selectableRows'=>1,
-							'dataProvider'=>$cliente->search(),
-							'filter' => $cliente,
-							'summaryText' => 'Se encontraron {count} Clientes activos',
-							'columns'=>array(
-						// nota que con htmlOptions se puede personalizar el tamano de la columna
-								array('name'=>'rut_cliente','htmlOptions'=>array('width'=>'90px')),
-						// nota que aqui no se usa array, sino directamente el nombre de la columna
-								'nombres_cliente',
-								'apellidos_cliente',
-						// via 2: para mostrar detalles al hacer click en un icono.
-							),
-						));
-						?>
-				</div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-success center-block" data-dismiss="modal">Aceptar</button>
-			</div>
-		</div>
-	</div>
-</div>
+
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
@@ -76,7 +23,19 @@
           </div>
 					<div class="form">
 						<div class="box-body">
-
+              <!-- Envio de modelo se encuentra en SiteController/test/ -->
+              <?php foreach ($model as $pago) { // Se trabaja con un foreach por que se debe recorrer el array en el cual se encuentran los pagos
+                echo 'ID del pago: '.$pago->id_pago; // Se trabaja de la misma manera $modelo->atributo
+                echo '<br>Total pagado: '.$pago->totalpagado_pago; // Se obtiene el total pagado
+                echo '<br>ID del pago: '.$pago->id_pago; // Se obtiene el id del pago (Se hace de manera de ejemplo)
+                echo '<br>ID del arriendo: '.$pago->arriendo->id_arriendo; // Ahora se manejan las relaciones que posee el modelo, la relación del del pago con el arriedo es 'BELONGS_TO' por lo cual el pago pertenece al arriendo, y por lo cual la manera de acceder a éste es de la siguiente manera $modelo->relacion->atributo-de-la-relación
+                echo '<br>Valor total del arriendo: '.$pago->arriendo->valor_arriendo; // 'BELONGS_TO' se diferencia de 'HAS_MANY' ya que en 'HAS_MANY' se recorre las tablas enlazadas con un foreach, en cambio el 'BELONGS_TO' se accede de manera directa
+                echo '<br>ID de la propiedad: '.$pago->arriendo->propiedad->id_propiedad.'<br>'; // Pago es una tabla hija de de arriendo, al igual que arriendo con la propiedad, por lo cual se puede acceder de esta manera $modelo->relacion->relacion2->atributo-de-la-relacion2
+                foreach ($pago->arriendo->pago as $key => $value) { // arriendo tiene una relacion de 'HAS_MANY', ya que un arriendo puede tener muchos pagos y no así la relacion viceversa.
+                  echo $value->id_pago;
+                }
+              }
+              ?>
 					  </div>
             <div class="box-footer">
             </div>
@@ -90,26 +49,7 @@
           </div>
 					<div class="form">
 						<div class="box-body">
-              <?php
-    						$this->widget('zii.widgets.grid.CGridView', array(
-    							'id'=>'cliente',
-    							'itemsCssClass' => 'table table-hover',
-    							'htmlOptions' => array('class' => 'table-responsive'),
-    							'selectableRows'=>1,
-    							'selectionChanged'=>'obtenerCliente',	// via 1: para mostrar detalles al seleccionar
-    							'dataProvider'=>$cliente1->search(),
-    							'filter' => $cliente1,
-    							'summaryText' => 'Se encontraron {count} Clientes activos',
-    							'columns'=>array(
-    						// nota que con htmlOptions se puede personalizar el tamano de la columna
-    								array('name'=>'rut_cliente','htmlOptions'=>array('width'=>'90px')),
-    						// nota que aqui no se usa array, sino directamente el nombre de la columna
-    								'nombres_cliente',
-    								'apellidos_cliente',
-    						// via 2: para mostrar detalles al hacer click en un icono.
-    							),
-    						));
-    						?>
+
 					  </div>
             <div class="box-footer">
 							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#cliente"><i class="fa fa-spinner"> &nbsp;&nbsp;Cargar cliente</i></button>
