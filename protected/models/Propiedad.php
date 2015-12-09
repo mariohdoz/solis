@@ -70,6 +70,7 @@ class Propiedad extends CActiveRecord
 			'imagen'=>array(self::HAS_MANY, 'Imagen', 'id_propiedad'),
 			'documento'=>array(self::HAS_MANY, 'Documento', 'id_propiedad'),
 			'arriendo'=>array(self::HAS_MANY, 'Arriendo', 'id_propiedad', 'condition'=>'activo_arriendo=1'),
+			'venta'=>array(self::HAS_MANY, 'Venta', 'id_propiedad'),
 		);
 	}
 	public function getCliente(){

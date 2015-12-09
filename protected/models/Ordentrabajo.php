@@ -5,6 +5,7 @@
  *
  * The followings are the available columns in table 'ordentrabajo':
  * @property integer $id_ot
+ * @property string $rut_funcionario
  * @property string $rut_admin
  * @property string $descripcion_ot
  * @property string $fechaemision_ot
@@ -40,9 +41,10 @@ class Ordentrabajo extends CActiveRecord
 			array('rut_admin, rut_funcionario', 'length', 'max'=>10),
 			array('servicio_ot, formapago_ot', 'length', 'max'=>50),
 			array('rut_funcionario', 'ValidateRut','message'=>'El RUT está mal ingresado'),
+			array('inicio_ot','compare','compareAttribute'=>'fechaejecucion_ot','operator'=>'<=','message'=>  Yii::t('es', 'La fecha de inicio no puede ser mayor a la fecha de término')),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_ot, rut_admin, descripcion_ot, fechaemision_ot, fechaejecucion_ot, estado_ot, inicio_ot, servicio_ot, observacion_ot, totalpagar_ot, formapago_ot', 'safe', 'on'=>'search'),
+			array('id_ot, rut_admin,rut_funcionario, descripcion_ot, fechaemision_ot, fechaejecucion_ot, estado_ot, inicio_ot, servicio_ot, observacion_ot, totalpagar_ot, formapago_ot', 'safe', 'on'=>'search'),
 		);
 	}
 	public function ValidateRut($attribute, $param){
@@ -65,6 +67,9 @@ class Ordentrabajo extends CActiveRecord
  		if ($verifyCode != $result)
  			 $this->addError('rut', 'Rut inválido.');
  	}
+	function getFormato() {
+		return number_format( substr ( $this->rut_funcionario, 0 , -1 ) , 0, "", ".") . '-' . substr ( $this->rut_funcionario, strlen($this->rut_funcionario) -1 , 1 );
+	}
 
 	/**
 	 * @return array relational rules.
@@ -74,7 +79,7 @@ class Ordentrabajo extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'integra'=>array(self::HAS_MANY, 'Integra', 'id_ot'),
+			'funcionario'=>array(self::BELONGS_TO, 'Funcionario', 'rut_funcionario'),
 		);
 	}
 
@@ -85,6 +90,7 @@ class Ordentrabajo extends CActiveRecord
 	{
 		return array(
 			'id_ot' => 'Número de orden',
+			'rut_funcionario' => 'Rut Funcionario',
 			'rut_admin' => 'Rut Admin',
 			'descripcion_ot' => 'Descripción del trabajo a realizar',
 			'fechaemision_ot' => 'Fecha de emisión',
@@ -118,6 +124,7 @@ class Ordentrabajo extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id_ot',$this->id_ot);
+		$criteria->compare('rut_funcionario',$this->rut_funcionario,true);
 		$criteria->compare('rut_admin',$this->rut_admin,true);
 		$criteria->compare('descripcion_ot',$this->descripcion_ot,true);
 		$criteria->compare('fechaemision_ot',$this->fechaemision_ot,true);

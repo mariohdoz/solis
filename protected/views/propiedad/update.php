@@ -88,35 +88,35 @@ $this->menu=array(
 				'enableAjaxValidation'=>false,
 			)); ?>
       <!-- Inicio se container -->
-			<div class="col-md-6">
+			<div class="col-md-12">
 				<div class="box box-primary">
 					<div class="box-header with-border">
 						<h3 class="box-title">Selección del propietario.</h3>
 					</div><!-- /.box-header -->
 					<div class="form">
 						<div class="box-body">
-							<div class="col-xs-6">
+							<div class="col-lg-3 col-md-6 col-xs-12">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'rut_cliente'); ?>
 									<?php echo $form->textField($model,'rut_cliente',array('class'=>'form-control', 'placeholder'=>'RUT del propietario.')); ?>
 									<?php echo $form->error($model,'rut_cliente'); ?>
 								</div>
 							</div>
-							<div class="col-xs-6">
+							<div class="col-lg-3 col-md-6 col-xs-12">
 								<div class="form-group">
 									<?php echo $form->labelEx($model2,'correo_cliente'); ?>
 									<?php echo $form->textField($model2,'correo_cliente',array('class'=>'form-control','disabled'=>'true', 'placeholder'=>'Correo del propietario.')); ?>
 									<?php echo $form->error($model2,'correo_cliente'); ?>
 								</div>
 							</div>
-							<div class="col-xs-6">
+							<div class="col-lg-3 col-md-6 col-xs-12">
 								<div class="form-group">
 									<?php echo $form->label($model2,'nombres_cliente'); ?>
 									<?php echo $form->textField($model2,'nombres_cliente', array('class'=>'form-control', 'disabled'=>'true', 'placeholder'=>'Nombres del propietario.')); ?>
 									<?php echo $form->error($model2,'nombres_cliente'); ?>
 								</div>
 							</div>
-							<div class="col-xs-6">
+							<div class="col-lg-3 col-md-6 col-xs-12">
 								<?php echo $form->label($model2,'apellidos_cliente'); ?>
 								<?php echo $form->textField($model2,'apellidos_cliente', array('class'=>'form-control', 'disabled'=>'true','placeholder'=>'Apellidos del propietario.'));?>
 								<?php echo $form->error($model2,'apellidos_cliente'); ?>
@@ -129,57 +129,11 @@ $this->menu=array(
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6">
-				<div class="box box-primary">
-					<div class="box-header with-border">
-            <h3 class="box-title">Subir de fotos de la propiedad</h3>
-          </div>
-					<div class="form">
-						<div class="box-body">
-							<div class="col-md-12">
-								<div class="form-group">
-									<p>Seleccione las imagenes de la propiedad.</p>
-								</div>
-							</div>
-							<div class="col-md-3">
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-		              <?php $this->widget('ext.EAjaxUpload.EAjaxUpload', array(
-		                   'id' => 'uploadFile',
-		                   'config' => array(
-		                       'action' => Yii::app()->createUrl('propiedad/upload/',array('id'=>$model->id_propiedad)),
-		                       'allowedExtensions' => array("jpg","jpeg","gif","png"), //array("jpg","jpeg","gif","exe","mov" and etc...
-		                       'sizeLimit' => 10 * 1024 * 1024, // maximum file size in bytes
-		                       'buttonText' => 'Selección',
-		                       //'minSizeLimit'=>10*1024*1024,// minimum file size in bytes
-		                       //'onComplete'=>"js:function(id, fileName, responseJSON){ alert(fileName); }",
-		                       'messages' => array(
-		                           'typeError' => "{file} posee una extención invalida. se acepta solamente {extensions}.",
-		                           'sizeError' => "{file} is too large, maximum file size is {sizeLimit}.",
-		                           'minSizeError' => "{file} is too small, minimum file size is {minSizeLimit}.",
-		                           'emptyError' => "{file} is empty, please select files again without it.",
-		                           'onLeave' => "Los archivos seleccionados se están subiendo al servidor. si usted deja la página la carga será cancelada."
-		                       ),
-		                       'showMessage' => "js:function(message){ alert(message); }"
-		                   )
-		               ));
-		               ?>
-								</div>
-								<div class="col-md-3">
-								</div>
-							</div>
-					  </div>
-            <div class="box-footer">
-            </div>
-				  </div>
-			  </div>
-			</div>
       <!-- término se container -->
 			<div class="col-md-12">
 				<div class="box box-primary">
 					<div class="box-header with-border">
-            <h3 class="box-title">Imágenes de la propiedad</h3>
+            <h3 class="box-title">Eliminar imágenes de la propiedad</h3>
           </div>
 					<div class="form">
 						<div class="box-body">
@@ -191,6 +145,34 @@ $this->menu=array(
 					          echo  CHtml::image(Yii::app()->baseUrl."/images/propiedades/".$value->url_imagen, '',  array('class'=>'thumbnail img-responsive', 'id'=>$value->id_imagen));
 					          echo '</div></div>';
 					        } ?>
+
+					  </div>
+            <div class="box-footer">
+            </div>
+				  </div>
+			  </div>
+      </div>
+			<div class="col-md-12">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+            <h3 class="box-title">Eliminar documentos de la propiedad</h3>
+          </div>
+					<div class="form">
+						<div class="box-body">
+
+							<?php foreach ($model->documento as $key => $value) {
+								$url=str_replace(' ', '_', $value->url_documento);
+								$url=str_replace('.', '_', $url);
+
+							  echo '<div class="col-lg-4 col-md-6 col-xs-12" id="'.$url.'">';
+							  echo '<div class="form-group">';
+							  echo '<a class="showcase" href="'.Yii::app()->request->baseUrl.'/documento/propiedad/'.$value->url_documento.'" data-rel="lightcase:myCollection:slideshow">Ver</a>';
+							  echo '<ul class="nav nav-pills nav-stacked">';
+								echo '<li><i class="fa fa-home"></i> '.$value->url_documento.'</li>';
+								echo CHtml::button('Eliminar',array('class'=>'btn btn-danger', 'id'=>'elemento-'.$value->id_documento, 'checkID'=>$value->id_documento, 'title'=>$url));
+							  echo '</ul>';
+							  echo '</div></div>';
+							} ?>
 
 					  </div>
             <div class="box-footer">
@@ -376,13 +358,46 @@ $this->menu=array(
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.formatCurrency-1.4.0.js" type="text/javascript"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/i18n/jquery.formatCurrency.es-CL.js" type="text/javascript"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.Rut.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/noty/packaged/jquery.noty.packaged.min.js"></script>
 
 <script>
-$(document).ready(function(){
-	valor();
-	$('#Propiedad_valor_propiedad').formatCurrency({region: 'es-CL'
-		, roundToDecimalPlace: -1});
-});
+
+	$(document).ready(function(){
+		valor();
+		$('#Propiedad_valor_propiedad').formatCurrency({region: 'es-CL'
+			, roundToDecimalPlace: -1});
+
+		$('[id^=elemento]').click(function(){
+			var a = $(this).attr('checkID');
+			var title = '#'+$(this).attr("title");
+		  var n = noty({
+		      text        : '¿Está seguro de eliminar el documento?',
+		      type        : 'warning',
+		      dismissQueue: true,
+		      layout      : 'topCenter',
+		      theme       : 'defaultTheme',
+		      buttons     : [
+		          {addClass: 'btn btn-primary', text: 'Aceptar', onClick: function ($noty) {
+								var action = "<?php echo Yii::app()->request->baseUrl; ?>"+'/propiedad/doc/'+a;
+								$.getJSON(action, function(data) {
+								  $.each(data, function(key, cliente) {
+								  });
+								}).error(function(jqXHR, textStatus, errorThrown) {
+								  $("#respuesta").html(jqXHR.responseText);
+								});
+								$(title).hide('slow');
+		              $noty.close();
+		          }
+		          },
+		          {addClass: 'btn btn-danger', text: 'Cancelar', onClick: function ($noty) {
+		              $noty.close();
+
+		          }
+		          }
+		      ]
+		  });
+		});
+	});
 	$("#Propiedad_valor_propiedad").blur(function(){
 		var suffix = $(this).val();
 		var a=suffix.replace( /^\D+/g, '').replace( '.', '');
@@ -428,17 +443,11 @@ $(document).ready(function(){
 			  })
 		},
 	});
-	$('#Propiedad_valor_propiedad').blur(function(){
-	});
 	$('#Propiedad_valor_propiedad').click(function(){
 		$('#Propiedad_valor_propiedad').val('');
 	});
-
 	$('#Propiedad_comision_propiedad').change(function(){
 		valor();
-	});
-	$('#Propiedad_terreno_propiedad').blur(function(event) {
-
 	});
 	function valor(){
 		var a = $('#Propiedad_comision_propiedad').val();
@@ -457,16 +466,34 @@ $(document).ready(function(){
 			, roundToDecimalPlace: -1});
 	}
 	$('img').click(function(event) {
-		alert($(this).attr('id'));
-		var a = '#'+$(this).attr('id');
-			var action = "<?php echo Yii::app()->request->baseUrl; ?>"+'/propiedad/img/'+$(this).attr('id');
-			$.getJSON(action, function(data) {
-				$.each(data, function(key, cliente) {
-					alert(cliente);
-				});
-			}).error(function(jqXHR, textStatus, errorThrown) {
-				$("#respuesta").html(jqXHR.responseText);
-			});
-		$(a).hide('slow');
+		var b = $(this).attr('id');
+		var a = '#'+b;
+		var n = noty({
+		    text        : '¿Está seguro de eliminar la imagen?',
+		    type        : 'warning',
+		    dismissQueue: true,
+		    layout      : 'topCenter',
+		    theme       : 'defaultTheme',
+		    buttons     : [
+		        {addClass: 'btn btn-primary', text: 'Aceptar', onClick: function ($noty) {
+
+		          var action = "<?php echo Yii::app()->request->baseUrl; ?>"+'/propiedad/img/'+b;
+		          $.getJSON(action, function(data) {
+		            $.each(data, function(key, cliente) {
+		            });
+		          }).error(function(jqXHR, textStatus, errorThrown) {
+		            $("#respuesta").html(jqXHR.responseText);
+		          });
+		          $(a).hide('slow');
+		            $noty.close();
+		        }
+		        },
+		        {addClass: 'btn btn-danger', text: 'Cancelar', onClick: function ($noty) {
+		            $noty.close();
+
+		        }
+		        }
+		    ]
+		});
 	});
 </script>

@@ -59,8 +59,8 @@ class PagoController extends Controller
 	{
 		$model=new Arriendo('atrasado');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Pago']))
-			$model->attributes=$_GET['Pago'];
+		if(isset($_GET['Arriendo']))
+			$model->attributes=$_GET['Arriendo'];
 
 		$this->render('atrasado',array(
 			'model'=>$model,

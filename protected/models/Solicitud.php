@@ -108,6 +108,9 @@ class Solicitud extends CActiveRecord
  		if ($verifyCode != $result)
  			 $this->addError('rut', 'Rut inválido.');
  	}
+	function getFormato() {
+		return number_format( substr ( $this->rut, 0 , -1 ) , 0, "", ".") . '-' . substr ( $this->rut, strlen($this->rut) -1 , 1 );
+	}
 
 	/**
 	 * @return array relational rules.

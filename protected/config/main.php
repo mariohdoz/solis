@@ -40,6 +40,11 @@ return array(
 			'class' => 'CDbHttpSession',
 			'timeout'=>1200,
 		),
+		'mailer' => array(
+      'class' => 'application.extensions.mailer.EMailer',
+      'pathViews' => 'application.views.email',
+      'pathLayouts' => 'application.views.email.layouts'
+   ),
 		'ePdf' => array(
 			'class'         => 'ext.yii-pdf.EYiiPdf',
 			'params'        => array(

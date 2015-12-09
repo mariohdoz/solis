@@ -58,12 +58,31 @@ class ArriendoController extends Controller
 			}
 		}
 		$model=$this->loadModel($id);
-		$model2=new Arrendatario;
-		$model2=Arrendatario::model()->findByPk($model->rut_arrendatario);
-		$model3=new Propiedad;
-		$model3=Propiedad::model()->findByPk($model->id_propiedad);
+		$pagos =Pago::model()->findAllByAttributes(array('id_arriendo'=>$model->id_arriendo));
+		$count = count($pagos);
+		$valorTotal= $count*$model->valor_arriendo;
+		$criteria = new CDbCriteria;
+		$criteria->condition='id_arriendo = '.$id;
+		$criteria->group = 'id_arriendo';
+		$criteria->select = 'SUM(totalpagado_pago) AS total';
+		$pagado=  Yii::app()->db->createCommand()
+							->select('SUM(totalpagado_pago) AS total')
+							->from('pago')
+							->where('id_arriendo = ' . $id)
+							->queryRow();
+		$arriendo=new Arrendatario;
+		$arriendo=Arrendatario::model()->findByPk($model->rut_arrendatario);
+		$propiedad=new Propiedad;
+		$propiedad=Propiedad::model()->findByPk($model->id_propiedad);
+		$deuda=$valorTotal-$pagado['total'];
+		$inicio =date_create($model->inicio_arriendo);
+		$fin = date_create($model->termino_arriendo);
+		$model->inicio_arriendo= date_format($inicio,'d/m/Y');
+		$model->termino_arriendo= date_format($fin,'d/m/Y');
+
+
 		$this->render('view',array(
-			'model'=>$model,'model2'=>$model2,'model3'=>$model3
+			'model'=>$model,'model2'=>$arriendo,'model3'=>$propiedad, 'numeroMeses'=>$count, 'valor'=>$valorTotal, 'pagado'=>$pagado['total'], 'deuda'=>$deuda
 		));
 	}
 
@@ -201,8 +220,6 @@ class ArriendoController extends Controller
 	{
 		$model=$this->loadModel($id);
 		$variable= $this->loadModel($id);
-		$model2=new Arrendatario;
-		$model3=new Propiedad;
 		$model2=Arrendatario::model()->findByPk($model->rut_arrendatario);
 		$model3=Propiedad::model()->findByPk($model->id_propiedad);
 
@@ -237,8 +254,6 @@ class ArriendoController extends Controller
 						$pago->id_arriendo=$model->id_arriendo;
 						$pago->fecha_pago=date('Y-m-j');
 						$pago->totalpagado_pago=0;
-						$pago->mes=date('m');
-						$pago->ano=date('Y');
 						$data = explode('-', $model->inicio_arriendo);
 						$pago->mes_pago=$model->fechapago_arriendo.'-'.$data[1].'-'.$data[0];
 						$pago->save();
@@ -252,8 +267,7 @@ class ArriendoController extends Controller
 							$pago->id_arriendo=$model->id_arriendo;
 							$pago->fecha_pago=date('Y-m-j');
 							$pago->totalpagado_pago=0;
-							$pago->mes=date('m');
-							$pago->ano=date('Y');
+
 							$nuevafecha = strtotime ( '+1 month' , strtotime ( $nuevafecha ) ) ;
 							$nuevafecha = date ( 'Y-m-j' , $nuevafecha );
 							$data = explode('-', $nuevafecha);
@@ -263,7 +277,7 @@ class ArriendoController extends Controller
 						}
 					}
 					Yii::app()->user->setFlash('success','El arriendo fue actualizado.');
-					$this->redirect(array('view','id'=>$model->id_arriendo));
+					$this->redirect(array('view','id'=>$id));
 				}else{
 					Yii::app()->user->setFlash('danger','El arriendo no fue actualizado.');
 				}
@@ -347,7 +361,7 @@ class ArriendoController extends Controller
 
 	public function actionSelect()
 	{
-		$model=new Arriendo('search');
+		$model=new Arriendo('atrasado');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Arriendo']))
 			$model->attributes=$_GET['Arriendo'];

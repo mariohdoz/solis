@@ -92,6 +92,9 @@ class Cliente extends CActiveRecord
  		if ($verifyCode != $result)
  			 $this->addError('rut', 'Rut inválido.');
  	}
+	function getFormato() {
+    return number_format( substr ( $this->rut_cliente, 0 , -1 ) , 0, "", ".") . '-' . substr ( $this->rut_cliente, strlen($this->rut_cliente) -1 , 1 );
+	}
 
 	/**
 	 * @return array customized attribute labels (name=>label)

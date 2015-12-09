@@ -156,6 +156,52 @@
 				</div>
 			</div>
 			<?php $this->endWidget(); ?>
+			<?php
+			if($model->ot != null)
+			{
+			  foreach ($model->ot as $key => $value) {
+			    echo '<div class="col-md-6">
+			      <div class="box box-primary">
+			        <div class="box-header with-border">
+			          <h3 class="box-title">Arriendo asociado</h3>
+			        </div>
+			        <div class="form">
+			          <div class="box-body">
+			            <div class="col-lg-12 col-md-12 col-xs-12">
+			              <div class="form-group">';
+										$this->widget('zii.widgets.CDetailView', array(
+										  'data'=>$value,
+										  'htmlOptions' => array('class' => 'table-striped table-condensed table-responsive table table-hover'),
+										  'attributes'=>array(
+												array(
+		       							 'label'=>'Número de ficha',
+		       								'value' =>  CHtml::link($value->id_ot,array('/arriendo/view/', 'id'=>$value->id_ot)) ,
+		       								'type'=>'raw'
+		       						 ),
+										    'fechaemision_ot',
+										    'inicio_ot',
+										    'fechaejecucion_ot',
+										    array('header'=>'Valor',
+										      'label'=>'Valor',
+										      'value'=>Yii::app()->numberFormatter->format("¤#,##0", $value->totalpagar_ot, "$ "),
+										    ),
+												array('header'=>'Estado',
+										      'label'=>'Estado',
+										      'value'=>$value->estado_ot? 'Pendiente':'Terminado',
+										    ),
+										  ),
+										));
+			              echo '</div>
+			            </div>
+			          </div>
+			          <div class="box-footer">
+			          </div>
+			        </div>
+			      </div>
+			    </div>';
+			  }
+			}
+			?>
       <!-- término se container -->
     </div>
   </section>

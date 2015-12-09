@@ -1,23 +1,10 @@
-<?php
-/* @var $this VentaController */
-/* @var $model Venta */
 
-$this->breadcrumbs=array(
-	'Ventas'=>array('index'),
-	$model->id_venta=>array('view','id'=>$model->id_venta),
-	'Update',
-);
-
-$this->menu=array(
-	array('label'=>'List Venta', 'url'=>array('index')),
-	array('label'=>'Create Venta', 'url'=>array('create')),
-	array('label'=>'View Venta', 'url'=>array('view', 'id'=>$model->id_venta)),
-	array('label'=>'Manage Venta', 'url'=>array('admin')),
-);
-?>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.formatCurrency-1.4.0.js" type="text/javascript"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/i18n/jquery.formatCurrency.es-CL.js" type="text/javascript"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.Rut.min.js" type="text/javascript"></script>
+
 <script>
+
 function obtenerPropiedad(){
 	// no olvides configurar tu CActiveDataProvider con: 'keyAttribute'=>'idcategoria',
 	var id_propiedad = $.fn.yiiGridView.getSelection('propiedad');
@@ -74,6 +61,32 @@ function ganancia(){
 		$("#respuesta").html(jqXHR.responseText);
 	});
 }
+function aja()
+{
+	var a = $('#Venta_comisioncomprador_venta').val();
+	var b = $('#Venta_comisioncliente_venta').val();
+	var cont = $('#Propiedad_valor_propiedad').val() * ((parseInt(a)+parseInt(b))/100);
+	cont = Math.round(cont);
+	$('#Venta_ganancia_venta').val(cont);
+	$('#Venta_ganancia_venta').formatCurrency({region: 'es-CL'
+		, roundToDecimalPlace: -1});
+}
+$(document).ready(function() {
+	$('#Propiedad_valor_propiedad').formatCurrency({region: 'es-CL'
+		, roundToDecimalPlace: -1});
+	$('#Venta_ganancia_venta').formatCurrency({region: 'es-CL'
+		, roundToDecimalPlace: -1});
+	$("#Venta_rutcomprador_venta").Rut({
+		on_error: function(){
+			alert('El RUT ingresado es incorrecto.');
+			$('#Venta_rutcomprador_venta').val('');
+		},
+	});
+	$("#Venta_rutcomprador_venta").click(function(){
+		$("#Venta_rutcomprador_venta").val('');
+	});
+});
+
 </script>
 <div class="modal fade modal-default" id="propiedad" tabindex="-2" role="dialog" aria-labelledby="myModallabel" aria-hidden="true">
 	<div class="modal-dialog">
@@ -98,13 +111,15 @@ function ganancia(){
 						// nota que con htmlOptions se puede personalizar el tamano de la columna
 								array('name'=>'id_propiedad','htmlOptions'=>array('width'=>'80px')),
 						// nota que aqui no se usa array, sino directamente el nombre de la columna
-								'direccion_propiedad',
-								'numero_propiedad',
+								'direccion_propiedad'
 						// via 2: para mostrar detalles al hacer click en un icono.
 							),
 						));
 						?>
 				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success center-block" data-dismiss="modal">Aceptar</button>
 			</div>
 		</div>
 	</div>
@@ -204,7 +219,7 @@ function ganancia(){
 													'3' => '3%',
 													'4' => '4%',
 											),
-											array("class"=>"form-control select2", 'onchange'=>'ganancia()'),
+											array("class"=>"form-control select2", 'onchange'=>'aja()'),
 											array('empty' => '(Seleccione la cantidad de baños)')); ?>
 
 								</div>
@@ -219,7 +234,7 @@ function ganancia(){
 													'3' => '3%',
 													'4' => '4%',
 											),
-											array("class"=>"form-control select2", 'onchange'=>'ganancia()'),
+											array("class"=>"form-control select2", 'onchange'=>'aja()'),
 											array('empty' => '(Seleccione la cantidad de baños)')); ?>
 								</div>
 							</div>

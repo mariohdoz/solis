@@ -34,7 +34,12 @@
                   'fechapago_arriendo',
                   'id_propiedad',
                   'rut_arrendatario',
-                  'valor_arriendo',
+                  array(
+	                  'header'=>'Valor de arriendo',
+										'htmlOptions'=>array('width'=>'10'),
+	                  'name'=>'valor_arriendo',
+	                  'value'=>'Yii::app()->numberFormatter->format("¤#,##0", $data->valor_arriendo, "$ ")',
+                  ),
                   'inicio_arriendo',
                   'termino_arriendo',
                   /*

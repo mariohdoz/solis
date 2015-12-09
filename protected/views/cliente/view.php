@@ -160,36 +160,52 @@ $this->menu=array(
 			  </div>
       </div>
     </div>
-		<div class="col-md-12">
-			<div class="box box-primary">
-				<div class="box-header with-border">
-					<h3 class="box-title">Propiedades</h3>
-				</div>
-				<div class="form">
-					<div class="box-body">
-						<?php
-							if ($model->propiedad != null) {
-								foreach ($model->propiedad as $key => $value) {
-									echo '<div class="col-xs-12 col-md-6 col-lg-4"">';
-										echo '<ul class="nav nav-pills nav-stacked">';
-											echo '<li>'.CHtml::link('<i class="fa fa-home"></i>Número de ficha de la propiedad '.$value->id_propiedad, array('propiedad/view/', 'id'=>$value->id_propiedad)).'</li>';
-										echo '</ul>';
-									echo '</div>';
-								}
-							}else{
-								echo '<div class="col-xs-12 col-md-6 col-lg-4"">';
-									echo '<h3>No posee ninguna propiedad</h3>';
-								echo '</div>';
-							}
-						 ?>
-					 </ul>
-
-					</div>
-					<div class="box-footer">
-					</div>
-				</div>
-			</div>
-		</div>
+		<?php
+		if($model->propiedad != null)
+		{
+		  foreach ($model->propiedad as $key => $value) {
+		    echo '<div class="col-md-6">
+		      <div class="box box-primary">
+		        <div class="box-header with-border">
+		          <h3 class="box-title">Propiedad </h3>
+		        </div>
+		        <div class="form">
+		          <div class="box-body">
+		            <div class="col-lg-12 col-md-12 col-xs-12">
+		              <div class="form-group">';
+									$this->widget('zii.widgets.CDetailView', array(
+										'data'=>$value,
+										'htmlOptions' => array('class' => 'table-striped table-condensed table-responsive table table-hover'),
+										'attributes'=>array(
+											array(
+												'label'=>'Número de ficha',
+												 'value' =>  CHtml::link($value->id_propiedad,array('/propiedad/view/', 'id'=>$value->id_propiedad)) ,
+												 'type'=>'raw'
+											),
+											'servicio_propiedad',
+											array('header' => 'Estado',
+														'label' => 'Estado' ,
+														'value' => $value->activo_propiedad? 'Disponible':'Ocupado' ),
+											array('header' => 'direccion',
+														'label' => 'Dirección' ,
+														'value' => $value->direccion_propiedad.' '.$value->numero_propiedad, ),
+											array('header'=>'Valor',
+														'label'=>'Valor',
+														'value'=>Yii::app()->numberFormatter->format("¤#,##0", $value->valor_propiedad, "$ "),
+											),
+										),
+										));
+		              echo '</div>
+		            </div>
+		          </div>
+		          <div class="box-footer">
+		          </div>
+		        </div>
+		      </div>
+		    </div>';
+		  }
+		}
+		?>
   </section>
 </div>
 

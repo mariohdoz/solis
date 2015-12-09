@@ -72,13 +72,10 @@ class OrdentrabajoController extends Controller
 	public function actionView($id)
 	{
 		$orden = $this->loadModel($id);
-		$integra = Integra::model()->findByAttributes(
-		  array('id_ot'=>$id)
-		);
-		$funcionario = Funcionario::model()->findByPk($integra->rut_funcionario);
+		$funcionario = Funcionario::model()->findByPk($orden->rut_funcionario);
+		$funcionario->rut_funcionario = $funcionario->formato;
 		$this->render('view',array(
 			'model'=>$orden,
-			'integra'=>$integra,
 			'funcionario'=>$funcionario,
 		));
 	}
@@ -90,7 +87,6 @@ class OrdentrabajoController extends Controller
 	public function actionCreate()
 	{
 		$orden=new Ordentrabajo;
-		$integra= new Integra;
 		$funcionario= new Funcionario;
 		$formulario= new Funcionario('libre');
 
@@ -103,15 +99,11 @@ class OrdentrabajoController extends Controller
 			if (Funcionario::model()->findByPk($orden->rut_funcionario)) {
 				$valor = intval(preg_replace('/[^0-9]+/', '', $orden->totalpagar_ot),10);
 				$orden->totalpagar_ot=$valor;
-				$integra->rut_funcionario=$orden->rut_funcionario;
 				$orden->rut_admin=Yii::app()->session['admin_rut'];
 				$orden->fechaemision_ot=date('Y-m-j');
 				if($orden->save()){
-					$integra->id_ot=$orden->id_ot;
-					if ($integra->save()) {
 						Yii::app()->user->setFlash('success','La orden de trabajo fue registada');
 						$this->redirect(array('view','id'=>$orden->id_ot));
-					}
 				}
 			}else {
 				Yii::app()->user->setFlash('danger','El funcionario no se encuentra registrado');
@@ -120,7 +112,6 @@ class OrdentrabajoController extends Controller
 
 		$this->render('create',array(
 			'model'=>$orden,
-			'integra'=>$integra,
 			'funcionario'=>$funcionario,
 			'formulario'=>$formulario,
 		));
@@ -134,12 +125,8 @@ class OrdentrabajoController extends Controller
 	public function actionUpdate($id)
 	{
 		$orden=$this->loadModel($id);
-		$integra= Integra::model()->findByAttributes(
-		  array('id_ot'=>$id)
-		);
-		$funcionario = Funcionario::model()->findByPk($integra->rut_funcionario);
+		$funcionario = Funcionario::model()->findByPk($orden->rut_funcionario);
 		$formulario= new Funcionario('libre');
-		$orden->rut_funcionario=$integra->rut_funcionario;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($orden);
@@ -149,20 +136,15 @@ class OrdentrabajoController extends Controller
 			$orden->attributes=$_POST['Ordentrabajo'];
 			$valor = intval(preg_replace('/[^0-9]+/', '', $orden->totalpagar_ot),10);
 			$orden->totalpagar_ot=$valor;
-			$integra->rut_funcionario=$orden->rut_funcionario;
 			$orden->rut_admin=Yii::app()->session['admin_rut'];
 			$orden->fechaemision_ot=date('Y-m-j');
 			if($orden->save()){
-				$integra->id_ot=$orden->id_ot;
-				if ($integra->save()) {
 					$this->redirect(array('view','id'=>$orden->id_ot));
-				}
 			}
 		}
 
 		$this->render('update',array(
 			'model'=>$orden,
-			'integra'=>$integra,
 			'funcionario'=>$funcionario,
 			'formulario'=>$formulario,
 		));

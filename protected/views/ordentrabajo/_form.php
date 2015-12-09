@@ -40,7 +40,7 @@
 				</div>
 			</div>
 			<div class="box-footer">
-				<button type="button" class="btn btn-info" data-toggle="modal" data-target="#funcionario">Cargar arrendatario</button>
+				<button type="button" class="btn btn-info" data-toggle="modal" data-target="#funcionario">Cargar funcionario</button>
 			</div>
 		</div>
 	</div>
@@ -54,7 +54,7 @@
 			<div class="box-body">
 				<div class="col-xs-12">
 					<div class="form-group">
-						<?php echo $form->errorSummary($model); ?>
+						<?php echo $form->errorSummary($model,'<strong>Es necesario arreglar los siguientes errores:</strong><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><div class="alert alert-danger">', '</div>'); ?>
 					</div>
 				</div>
 

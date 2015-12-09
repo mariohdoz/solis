@@ -49,7 +49,7 @@
           </div>
 					<div class="form">
 						<div class="box-body">
-
+              <div class="col-xs-12 col-md-6 col-lg-4" ><a href="/nuevo/documento/propiedad/R02_VulnerabilityStatus.pdf">Eliminar</a><ul class="nav nav-pills nav-stacked"><li><a id="removeItem" checkid="24" title="R02_VulnerabilityStatus.pdf" onclick="return false" href=""><i class="fa fa-home"></i>R02_VulnerabilityStatus.pdf</a></li></ul></div>
 					  </div>
             <div class="box-footer">
 							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#cliente"><i class="fa fa-spinner"> &nbsp;&nbsp;Cargar cliente</i></button>

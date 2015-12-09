@@ -23,8 +23,7 @@
 						<div class="box-body">
               <?php $this->widget('zii.widgets.grid.CGridView', array(
               	'id'=>'propiedad-grid',
-                'itemsCssClass' => 'table table-hover',
-                'htmlOptions' => array('class' => 'table-responsive'),
+                'cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css',
               	'dataProvider'=>$model->search(),
               	'filter'=>$model,
               	'columns'=>array(
@@ -60,7 +59,7 @@
                     'template'=>'{email}',
                     'buttons'=>array(
                         'email' => array(
-                            'label'=>'<i class="fa fa-pencil-square-o"></i>',
+                          'label'=>'<i class="btn btn-primary">Modificar &nbsp;<i class="fa fa-pencil"></i></i>',
                             'url'=>'Yii::app()->createUrl("propiedad/update", array("id"=>$data->id_propiedad))',
                         ),
                     ),

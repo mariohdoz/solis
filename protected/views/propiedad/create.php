@@ -376,17 +376,11 @@ $this->menu=array(
 			  })
 		},
 	});
-	$('#Propiedad_valor_propiedad').blur(function(){
-	});
 	$('#Propiedad_valor_propiedad').click(function(){
 		$('#Propiedad_valor_propiedad').val('');
 	});
-
 	$('#Propiedad_comision_propiedad').change(function(){
 		valor();
-	});
-	$('#Propiedad_terreno_propiedad').blur(function(event) {
-
 	});
 	function valor(){
 		var a = $('#Propiedad_comision_propiedad').val();

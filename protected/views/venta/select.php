@@ -30,8 +30,8 @@
 					<div class="form">
 						<div class="box-body">
               <?php $this->widget('zii.widgets.grid.CGridView', array(
-              	'id'=>'venta-grid',
-                'itemsCssClass' => 'table table-hover',
+              	'cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css',
+
                 'htmlOptions' => array('class' => 'table-responsive'),
               	'dataProvider'=>$model->search(),
               	'filter'=>$model,
@@ -53,8 +53,8 @@
                     'template'=>'{actualizar}',
                     'buttons'=>array(
                         'actualizar' => array(
-                            'label'=>'<i class="fa fa-pencil-square-o"></i>',
-                            'url'=>'Yii::app()->createUrl("arrendatario/update", array("id"=>$data->rut))',
+                          'label'=>'<i class="btn btn-primary">Modificar &nbsp;<i class="fa fa-pencil"></i></i>',
+                            'url'=>'Yii::app()->createUrl("venta/update", array("id"=>$data->id_venta))',
                         ),
                     ),
                   ),

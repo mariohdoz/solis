@@ -140,6 +140,8 @@ class VentaController extends Controller
 					$model3->activo_propiedad= 0;
 					$valor = intval(preg_replace('/[^0-9]+/', '', $model->ganancia_venta),10);
 					$model->ganancia_venta = $valor;
+					$rut= str_replace('.','',$model->rutcomprador_venta);
+					$model->rutcomprador_venta = $rut;
 					if($model->save() && $model3->save())
 					{
 						Yii::app()->user->setFlash('success','La venta fue ingresada correctamente.');
@@ -170,8 +172,8 @@ class VentaController extends Controller
 	{
 		$model=$this->loadModel($id);
 		$variable= $this->loadModel($id);
-		$model3=new Propiedad;
-		$model3=Propiedad::model()->findByPk($model->id_propiedad);
+		$propiedad=new Propiedad;
+		$propiedad=Propiedad::model()->findByPk($model->id_propiedad);
 
 
 		// Uncomment the following line if AJAX validation is needed
@@ -179,8 +181,8 @@ class VentaController extends Controller
 
 		if(isset($_POST['Venta']))
 		{
-			$model->attributes=$_POST['Arriendo'];
-			$model3=Propiedad::model()->findByPk($model->id_propiedad);
+			$model->attributes=$_POST['Venta'];
+			$propiedad=Propiedad::model()->findByPk($model->id_propiedad);
 			if($model->id_propiedad != $variable->id_propiedad){
 				$model4=new Propiedad;
 				$model4=Propiedad::model()->findByPk($variable->id_propiedad);
@@ -191,8 +193,12 @@ class VentaController extends Controller
 					Yii::app()->user->setFlash('danger','La propiedad enlazada con el arriendo no pudo ser modificada.');
 				}
 			}
-			$model3->activo_propiedad =0;
-			if($model->save() && $model3->save()){
+			$propiedad->activo_propiedad =0;
+			$valor = intval(preg_replace('/[^0-9]+/', '', $model->ganancia_venta),10);
+			$model->ganancia_venta = $valor;
+			$rut= str_replace('.','',$model->rutcomprador_venta);
+			$model->rutcomprador_venta = $rut;
+			if($model->save() && $propiedad->save()){
 				Yii::app()->user->setFlash('success','El venta fue actualizado.');
 				$this->redirect(array('view','id'=>$model->id_venta));
 			}else{
@@ -227,7 +233,7 @@ class VentaController extends Controller
 
 		$this->render('update',array(
 			'model'=>$model,
-			'model3'=>$model3,
+			'model3'=>$propiedad,
 			'dataProvider'=>$dataProvider,
 			'dataProvider2'=>$dataProvider2,
 		));

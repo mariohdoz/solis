@@ -78,8 +78,8 @@ tr.odd
 
 .grid-view table.items tr.selected
 {
-	background: #53b7ad;
-	color:#fff;
+	background: rgba(61, 177, 183, 0.3);
+	color:#000000;
 
 
 }
@@ -87,7 +87,7 @@ tr.odd
 .grid-view table.items tr:hover td, .grid-view table.items tr:hover td a
 {
 	background: rgba(209, 209, 209, 0.9);
-
+	color: black;
 	cursor: pointer;
 }
 

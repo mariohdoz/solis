@@ -52,8 +52,7 @@ $this->menu=array(
 						<div class="box-body">
 							<?php $this->widget('zii.widgets.grid.CGridView', array(
 								'id'=>'arriendo-grid',
-								'itemsCssClass' => 'table table-hover',
-								'htmlOptions' => array('class' => 'table-responsive'),
+								'cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css',
 								'dataProvider'=>$model->historico(),
 								'filter'=>$model,
 								'columns'=>array(

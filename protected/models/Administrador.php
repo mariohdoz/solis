@@ -78,6 +78,9 @@ class Administrador extends CActiveRecord
 		$this->contrasena_admin = sha1($this->contrasena_admin);
 		return parent::beforeSave();
 	}
+	function getFormato() {
+		return number_format( substr ( $this->rut_admin, 0 , -1 ) , 0, "", ".") . '-' . substr ( $this->rut_admin, strlen($this->rut_admin) -1 , 1 );
+	}
 
 	/**
 	 * @return array relational rules.

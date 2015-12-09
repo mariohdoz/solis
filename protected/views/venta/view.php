@@ -93,12 +93,7 @@ $this->menu=array(
 										<?php echo $form->textField($model,'rutcomprador_venta', array('class'=>'form-control', 'disabled'=>'true' )); ?>
 									</div>
 							</div>
-							<div class="col-xs-3">
-									<div class="form-group">
-										<?php echo $form->label($model,'rutcomprador_venta'); ?>
-										<?php echo $form->textField($model,'rutcomprador_venta', array('class'=>'form-control', 'disabled'=>'true' )); ?>
-									</div>
-							</div>
+
 							<div class="col-xs-3">
 									<div class="form-group">
 										<?php echo $form->label($model,'nombrescomprador_venta'); ?>
@@ -137,7 +132,11 @@ $this->menu=array(
 									 'data'=>$model3,
 									 'htmlOptions' => array('class' => 'table-striped table-condensed table-responsive table table-hover'),
 									 'attributes'=>array(
-											 'id_propiedad',
+										 array(
+											 'label'=>'Número de ficha',
+												'value' =>  CHtml::link($model3->id_propiedad,array('/propiedad/view/', 'id'=>$model3->id_propiedad)) ,
+												'type'=>'raw'
+										 ),
 											 array('header' => 'Propiedatio',
 														 'label' => 'Propietario' ,
 														 'value' => $model3->rut_cliente, ),
@@ -162,7 +161,16 @@ $this->menu=array(
 </div>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.formatCurrency-1.4.0.js" type="text/javascript"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/i18n/jquery.formatCurrency.es-CL.js" type="text/javascript"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.Rut.min.js" type="text/javascript"></script>
 <script >
+$(document).ready(function() {
+	$("#Venta_rutcomprador_venta").Rut({
+		on_error: function(){
+			alert('El RUT ingresado es incorrecto.');
+			$('#Venta_rutcomprador_venta').val('');
+		},
+	});
+});
 	var a = $('#Venta_comisioncomprador_venta').val();
 	var b = $('#Venta_comisioncliente_venta').val();
 	$('#Venta_comisioncomprador_venta').val($('#Venta_comisioncomprador_venta').val()+'%');

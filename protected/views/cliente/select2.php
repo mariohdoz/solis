@@ -25,8 +25,8 @@
               <div class="form-group ">
                 <?php $this->widget('zii.widgets.grid.CGridView', array(
                 	'id'=>'cliente-grid',
-                  'itemsCssClass' => 'table table-hover',
-                  'htmlOptions' => array('class' => 'table-responsive'),
+                  'cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css',
+
                 	'dataProvider'=>$model->search(),
                 	'filter'=>$model,
                 	'columns'=>array(
@@ -53,8 +53,8 @@
                       'template'=>'{Eliminar}',
                       'buttons'=>array(
                           'Eliminar' => array(
-                              'label'=>'<i class="fa fa-trash-o"></i>',
-                              'url'=>'Yii::app()->createUrl("cliente/eliminar", array("id"=>$data->rut))',
+                              'label'=>'<i class="btn btn-google-plus">Eliminar &nbsp;<i class="fa fa-trash-o"></i></i>',
+                              'url'=>'Yii::app()->createUrl("cliente/eliminar", array("id"=>$data->rut))'
                           ),
                       ),
                     ),

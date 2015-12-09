@@ -19,7 +19,7 @@ $this->menu=array(
   <section class="content-header">
     <h1>
 	    Configuración
-	    <small>Texto aquí.</small>
+	    <small>Visualización de la propiedad <?php echo CHtml::encode($model->id_propiedad); ?>.</small>
 	  </h1>
 	  <ol class="breadcrumb">
 	    <li><a href="?r=intra/index">
@@ -150,6 +150,69 @@ $this->menu=array(
 				  </div>
 			  </div>
       </div>
+
+			<div class="col-md-12">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+						<h3 class="box-title">Documento</h3>
+					</div>
+					<div class="form">
+						<div class="box-body">
+							<?php
+								if($model->documento != null)
+								{
+									foreach ($model->documento as $key => $value) {
+										$data = explode('.', $value->url_documento);
+										echo '<div class="col-xs-12 col-md-6 col-lg-4"">';
+											echo '<ul class="nav nav-pills nav-stacked">';
+												echo '<li>'.CHtml::link('<i class="fa fa-home"></i>'.$value->url_documento,array('arrendatario/download', 'type'=>$value->url_documento)).'</li>';
+											echo '</ul>';
+										echo '</div>';
+									}
+								}else {
+									echo '<div class="col-xs-12 col-md-12 col-lg-12"">';
+										echo '<h3>No tiene ningún documento ingresado</h3>';
+									echo '</div>';
+									echo '<div class="col-xs-12 col-md-6 col-lg-4"">';
+									echo '</div>';
+								}
+							?>
+						</div>
+						<div class="box-footer">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-12">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+            <h3 class="box-title">Imágenes de la propiedad</h3>
+          </div>
+					<div class="form">
+						<div class="box-body">
+							<?php if($model->imagen != null){
+								foreach ($model->imagen as $key => $value) {
+									echo '<div class="col-lg-2 col-sm-4 col-xs-6" id='.$value->id_imagen.'>';
+									echo '<div class="form-group">';
+									echo '<a class="showcase" href="'.Yii::app()->request->baseUrl.'/images/propiedades/'.$value->url_imagen.'" data-rel="lightcase:myCollection:slideshow">';
+									echo  CHtml::image(Yii::app()->baseUrl."/images/propiedades/".$value->url_imagen, '',  array('class'=>'thumbnail img-responsive', 'id'=>$value->id_imagen));
+									echo '</a></div></div>';
+								}
+							} else{
+								echo '<div class="col-xs-12 col-md-12 col-lg-12"">';
+								echo '<h3>No tiene ningún documento ingresado</h3>';
+								echo '</div>';
+								echo '<div class="col-xs-12 col-md-6 col-lg-4"">';
+								echo '</div>';
+							}?>
+					  </div>
+            <div class="box-footer">
+            </div>
+				  </div>
+			  </div>
+      </div>
+
       <!-- Inicio se container -->
       <div class="col-md-12">
 				<div class="box box-primary">
@@ -168,43 +231,19 @@ $this->menu=array(
 							<div class="col-xs-3 col-md-3 col-lg-4  ">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'servicio_propiedad'); ?>
-                  <?php echo $form->dropDownList($model,'servicio_propiedad',
-                      array(
-                          'Venta' => 'Venta',
-                          'Arriendo' => 'Arriendo',
-                      ),
-                      array("class"=>"form-control select2", 'empty' => 'Seleccione tipo de servicio', 'disabled' => 'true')); ?>
+                  <?php echo $form->textField($model,'servicio_propiedad',array("class"=>"form-control select2", 'empty' => 'Seleccione tipo de servicio', 'disabled' => 'true')); ?>
 								</div>
 							</div>
 							<div class="col-xs-3 col-md-3 col-lg-4  ">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'tipo_propiedad'); ?>
-                  <?php echo $form->dropDownList($model,'tipo_propiedad',
-                      array(
-                          'Casa' => 'Casa',
-                          'Departamento Habitación' => 'Departamento Habitación',
-                          'Local' => 'Local',
-                          'Oficina Casa' => 'Oficina Casa',
-                          'Galpón' => 'Galpón',
-                          'Oficina Departamento' => 'Oficina Departamento',
-                          'Sitio Comercial' => 'Sitio Comercial',
-                          'Sitio Recidencial' => 'Sitio Recidencial',
-                          'Propiedad de inversión' => 'Propiedad de inversión',
-                          'Terreno' => 'Terreno'
-                      ),
-                      array("class"=>"form-control select2", 'empty' => 'Seleccione el tipo de propiedad', 'disabled' => 'true')); ?>
+                  <?php echo $form->textField($model,'tipo_propiedad', array("class"=>"form-control select2", 'empty' => 'Seleccione el tipo de propiedad', 'disabled' => 'true')); ?>
 								</div>
 							</div>
 							<div class="col-xs-3 col-md-3 col-lg-4  ">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'comuna_propiedad'); ?>
-                  <?php echo $form->dropDownList($model,'comuna_propiedad',
-                      array(
-                          'Antofagasta' => 'Antofagasta',
-                          'Calama' => 'Calama',
-                          'Iquique' => 'Iquique'
-                          ),
-                      array("class"=>"form-control select2",  'empty' => 'Seleccione la comuna de la propiedad', 'disabled' => 'true')); ?>
+                  <?php echo $form->textField($model,'comuna_propiedad', array("class"=>"form-control select2",  'empty' => 'Seleccione la comuna de la propiedad', 'disabled' => 'true')); ?>
 								</div>
 							</div>
 							<div class="col-xs-3 col-md-3 col-lg-4  ">
@@ -222,37 +261,13 @@ $this->menu=array(
 							<div class="col-xs-3 col-md-3 col-lg-4  ">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'habitacion_propiedad'); ?>
-                  <?php echo $form->dropDownList($model,'habitacion_propiedad',
-                      array(
-                          '1' => '1',
-                          '2' => '2',
-                          '3' => '3',
-                          '4' => '4',
-                          '5' => '5',
-                          '6' => '6',
-                          '7' => '7',
-                          '8' => '8',
-                          '9' => '9'
-                      ),
-                      array("class"=>"form-control select2", 'empty' => 'Cantidad de Habitaciones', 'disabled' => 'true')); ?>
+                  <?php echo $form->textField($model,'habitacion_propiedad', array("class"=>"form-control select2", 'empty' => 'Cantidad de Habitaciones', 'disabled' => 'true')); ?>
 								</div>
 							</div>
 							<div class="col-xs-3 col-md-3 col-lg-4  ">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'bano_propiedad'); ?>
-                  <?php echo $form->dropDownList($model,'bano_propiedad',
-                      array(
-                          '1' => '1',
-                          '2' => '2',
-                          '3' => '3',
-                          '4' => '4',
-                          '5' => '5',
-                          '6' => '6',
-                          '7' => '7',
-                          '8' => '8',
-                          '9' => '9'
-                      ),
-                      array("class"=>"form-control select2", 'empty' => 'Cantidad de baños', 'disabled' => 'true')); ?>
+                  <?php echo $form->textField($model,'bano_propiedad', array("class"=>"form-control select2", 'empty' => 'Cantidad de baños', 'disabled' => 'true')); ?>
 								</div>
 							</div>
 							<div class="col-xs-3 col-md-3 col-lg-4  ">
@@ -302,9 +317,9 @@ $this->menu=array(
 							<?php echo CHtml::link('Vista previa', array('/site/informacion', 'id'=>$model->id_propiedad), array('class'=>'btn btn-primary')); ?>
 							<?php echo CHtml::link('Actualizar propiedad', array('/propiedad/update/', 'id'=>$model->id_propiedad), array('class'=>'btn btn-info', 'confirm' => '¿Está seguro de actualizar la propiedad?')); ?>
 							<?php echo CHtml::link("Eliminar propiedad", '#', array(
-									'submit'=>array('/propiedad/delete', "id"=>$model->id_propiedad),
+									'submit'=>array('/propiedad/eliminar', "id"=>$model->id_propiedad),
 									'class'=>'btn btn-danger',
-									'confirm' => '¿Está seguro de eliminar la venta?'
+									'confirm' => '¿Está seguro de eliminar la propiedad?'
 									)
 							);?>
 						</div>
@@ -326,7 +341,7 @@ $this->menu=array(
       					 'attributes'=>array(
       						 array(
       							 'label'=>'RUT',
-      								'value' =>  CHtml::link($model2->rut_cliente,array('/cliente/view/', 'id'=>$model2->rut)) ,
+      								'value' =>  CHtml::link($model2->formato,array('/cliente/view/', 'id'=>$model2->rut)) ,
       								'type'=>'raw'
       						 ),
       						 array(
@@ -344,6 +359,99 @@ $this->menu=array(
 				  </div>
 			  </div>
       </div>
+			<?php
+			if($model->arriendo != null)
+			{
+			  foreach ($model->arriendo as $key => $value) {
+			    echo '<div class="col-md-6">
+			      <div class="box box-primary">
+			        <div class="box-header with-border">
+			          <h3 class="box-title">Arriendo asociado</h3>
+			        </div>
+			        <div class="form">
+			          <div class="box-body">
+			            <div class="col-lg-12 col-md-12 col-xs-12">
+			              <div class="form-group">';
+										$this->widget('zii.widgets.CDetailView', array(
+										  'data'=>$value,
+										  'htmlOptions' => array('class' => 'table-striped table-condensed table-responsive table table-hover'),
+										  'attributes'=>array(
+												array(
+		       							 'label'=>'Número de ficha',
+		       								'value' =>  CHtml::link($value->id_arriendo,array('/arriendo/view/', 'id'=>$value->id_arriendo)) ,
+		       								'type'=>'raw'
+		       						 ),
+										    'fechapago_arriendo',
+										    'inicio_arriendo',
+										    'termino_arriendo',
+										    array('header'=>'Valor',
+										      'label'=>'Valor',
+										      'value'=>Yii::app()->numberFormatter->format("¤#,##0", $value->valor_arriendo, "$ "),
+										    ),
+										  ),
+										));
+			              echo '</div>
+			            </div>
+			          </div>
+			          <div class="box-footer">
+			          </div>
+			        </div>
+			      </div>
+			    </div>';
+			  }
+			}
+			?>
+			<?php
+			if($model->venta != null)
+			{
+			  foreach ($model->venta as $key => $value) {
+			    echo '<div class="col-md-6">
+			      <div class="box box-primary">
+			        <div class="box-header with-border">
+			          <h3 class="box-title">Venta asociado</h3>
+			        </div>
+			        <div class="form">
+			          <div class="box-body">
+			            <div class="col-lg-12 col-md-12 col-xs-12">
+			              <div class="form-group">';
+										$this->widget('zii.widgets.CDetailView', array(
+										  'data'=>$value,
+										  'htmlOptions' => array('class' => 'table-striped table-condensed table-responsive table table-hover'),
+										  'attributes'=>array(
+												array(
+		       							 'label'=>'Número de ficha',
+		       								'value' =>  CHtml::link($value->id_venta,array('/venta/view/', 'id'=>$value->id_venta)) ,
+		       								'type'=>'raw'
+		       						 ),
+											 array(
+												 'header'=>'Rute del comprador',
+												 'label'=>'RUT del Comprador',
+													'value' =>  $value->formato ,
+													'type'=>'raw'
+											 ),
+											 array(
+												 'label'=>'RUT de comprador',
+													'value' =>  CHtml::link($value->Admin,array('/funcionario/view/', 'id'=>$value->ru)) ,
+													'type'=>'raw'
+											 ),
+
+										    array('header'=>'Valor',
+										      'label'=>'Valor',
+										      'value'=>Yii::app()->numberFormatter->format("¤#,##0", $value->ganancia_venta, "$ "),
+										    ),
+										  ),
+										));
+			              echo '</div>
+			            </div>
+			          </div>
+			          <div class="box-footer">
+			          </div>
+			        </div>
+			      </div>
+			    </div>';
+			  }
+			}
+			?>
       <!-- término se container -->
     </div>
   </section>

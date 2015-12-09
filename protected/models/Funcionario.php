@@ -81,6 +81,9 @@ class Funcionario extends CActiveRecord
        $this->contrasena_funcionario = sha1($this->contrasena_funcionario);
        return parent::beforeSave();
 }
+function getFormato() {
+	return number_format( substr ( $this->rut_funcionario, 0 , -1 ) , 0, "", ".") . '-' . substr ( $this->rut_funcionario, strlen($this->rut_funcionario) -1 , 1 );
+}
 
 	/**
 	 * @return array relational rules.
@@ -90,7 +93,7 @@ class Funcionario extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'integra'=>array(self::HAS_MANY, 'Integra', 'rut_funcionario'),
+			'ot'=>array(self::HAS_MANY, 'Ordentrabajo', 'rut_funcionario'),
 		);
 	}
 

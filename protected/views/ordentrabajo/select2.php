@@ -24,8 +24,8 @@
 						<div class="box-body">
               <?php $this->widget('zii.widgets.grid.CGridView', array(
                 'id'=>'ordentrabajo-grid',
-                'itemsCssClass' => 'table table-hover',
-                'htmlOptions' => array('class' => 'table-responsive'),
+                'cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css',
+
                 'dataProvider'=>$model->search(),
                 'filter'=>$model,
                 'columns'=>array(
@@ -43,7 +43,15 @@
                   'formapago_ot',
                   */
                   array(
-                    'class'=>'CButtonColumn',
+                    'header'=>'Actualizar',
+                      'class'=>'CButtonColumn',
+                      'template'=>'{email}',
+                      'buttons'=>array(
+                          'email' => array(
+                              'label'=>'<i class="btn btn-google-plus">Eliminar &nbsp;<i class="fa fa-trash-o"></i></i>',
+                              'url'=>'Yii::app()->createUrl("ordentrabajo/eliminar", array("id"=>$data->id_ot))'
+                          ),
+                      ),
                   ),
                 ),
               )); ?>

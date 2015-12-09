@@ -90,6 +90,9 @@ class Arrendatario extends CActiveRecord
  		if ($verifyCode != $result)
  			 $this->addError('rut', 'Rut inválido.');
  	}
+	function getFormato() {
+    return number_format( substr ( $this->rut_arrendatario, 0 , -1 ) , 0, "", ".") . '-' . substr ( $this->rut_arrendatario, strlen($this->rut_arrendatario) -1 , 1 );
+	}
 
 	/**
 	 * @return array customized attribute labels (name=>label)

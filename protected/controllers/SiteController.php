@@ -30,12 +30,118 @@ class SiteController extends Controller
 	 * This is the default 'index' action that is invoked
 	 * when an action is not explicitly requested by users.
 	 */
+	public function actionSendEmail()
+	{
+		Yii::app()->mailer->IsHTML(true);
+		Yii::app()->mailer->IsSMTP();
+		Yii::app()->mailer->SMTPAuth = true;
+		Yii::app()->mailer->SMTPSecure = "ssl";
+		Yii::app()->mailer->Host = "smtp.gmail.com";
+		Yii::app()->mailer->Port = 465;
+		Yii::app()->mailer->Username = "mario.hdoz1@gmail.com";
+		Yii::app()->mailer->Password = "NiNa1234";
+		Yii::app()->mailer->From = "mario.hdoz1@gmail.com";
+		Yii::app()->mailer->FromName = "Test";
+		Yii::app()->mailer->AddAddress("user@example.com");
+		Yii::app()->mailer->Subject = "Someone sent you an email.";
+		Yii::app()->mailer->Body = "Hi, This is just a test email using PHP Mailer and Yii Framework.";
+		if(!Yii::app()->mailer->Send()) {
+		    echo "Message sent successfully!";
+		}
+		else {
+		    echo "Fail to send your message!";
+		}
+
+	}
 	public function actionTest(){
 		/**$criteria=new CDbCriteria;
 		$criteria->join = 'LEFT JOIN propiedad ON propiedad.id_propiedad = t.id_propiedad LEFT JOIN pago ON pago.id_arriendo=t.id_arriendo';
 		$criteria->select = 't.*, pago.*, propiedad.*';
 		$criteria->condition='t.id_arriendo = pago.id_arriendo AND DATE_FORMAT( STR_TO_DATE( pago.mes_pago,  "%d-%m-%Y" ) ,  "%m-%Y" ) =  DATE_FORMAT( NOW( ) ,  "%m-%Y" )';
-*/
+*/	Yii::app()->mailer->IsHTML(true);
+Yii::app()->mailer->IsSMTP();
+Yii::app()->mailer->SMTPAuth = true;
+Yii::app()->mailer->SMTPSecure = "ssl";
+Yii::app()->mailer->Host = "smtp.gmail.com";
+Yii::app()->mailer->Port = 465;
+Yii::app()->mailer->Username = "Sycalama@gmail.com";
+Yii::app()->mailer->Password = "NiNa1234";
+Yii::app()->mailer->From = "mario.hdoz1@gmail.com";
+Yii::app()->mailer->FromName = "Propiedades Sol y Cobre";
+Yii::app()->mailer->AddAddress("mario.hdoz1@gmail.com");
+Yii::app()->mailer->Subject = "Propiedad arrendada.";
+Yii::app()->mailer->Body = '
+	<strong>Saludos.</strong>,
+	 <p>Estimado '.$model->nombres_solicitud.' '.$model->apellidos_solicitud.', se envía el presente correo con el motivo informar sobre la recepción de su solicitud.<br>
+			A la brevedad será contactado por la corredora.<br>
+			De antemano muchas gracias por contactarnos.</P>
+			<br>
+			<P>Datos de la solicitud</P><br>
+			<table style="BORDER-RIGHT:#c7d7ee 1px solid;BORDER-TOP:#c7d7ee 1px solid;BORDER-LEFT:#c7d7ee 1px solid;BORDER-BOTTOM:#c7d7ee 1px solid" cellspacing="0" cellpadding="2" width="65%">
+				 <tbody>
+						<tr style="FONT-WEIGHT:bold;FONT-SIZE:14px;FONT-FAMILY:arial;BACKGROUND-COLOR:#ebeff7;TEXT-ALIGN:center">
+							 <td colspan="2"><font color="#4264af">Datos del solicitante</font></td>
+						</tr>
+						<tr style="FONT-SIZE:11px;COLOR:#4264af;FONT-FAMILY:arial">
+							 <td style="BORDER:#ebeff7 1px solid" width="25%">Fecha de ingreso</td>
+							 <td style="BORDER:#ebeff7 1px solid" width="40%">'.$model->fecha_solicitud.'</td>
+						</tr>
+						<tr style="FONT-SIZE:11px;COLOR:#4264af;FONT-FAMILY:arial">
+							 <td style="BORDER:#ebeff7 1px solid" width="25%">Nombres</td>
+							 <td style="BORDER:#ebeff7 1px solid" width="40%">'.$model->nombres_solicitud.' '.$model->nombres_solicitud.'</td>
+						</tr>
+						<tr style="FONT-SIZE:11px;COLOR:#4264af;FONT-FAMILY:arial">
+							 <td style="BORDER:#ebeff7 1px solid" width="25%">Telefono</td>
+							 <td style="BORDER:#ebeff7 1px solid" width="40%">'.$model->telefono_solicitud.'</td>
+						</tr>
+						<tr style="FONT-SIZE:11px;COLOR:#4264af;FONT-FAMILY:arial">
+							 <td style="BORDER:#ebeff7 1px solid" width="25%">Correo electrónico</td>
+							 <td style="BORDER:#ebeff7 1px solid" width="40%">'.$model->correo_solicitud.'</td>
+						</tr>
+						<tr style="FONT-WEIGHT:bold;FONT-SIZE:14px;FONT-FAMILY:arial;BACKGROUND-COLOR:#ebeff7;TEXT-ALIGN:center">
+							 <td colspan="2"><font color="#4264af">Datos de la solicitud n° '.$model->id_solicitud.'</font></td>
+						</tr>
+						<tr style="FONT-SIZE:11px;COLOR:#4264af;FONT-FAMILY:arial">
+							 <td style="BORDER:#ebeff7 1px solid" width="25%">Servicio solicitado</td>
+							 <td style="BORDER:#ebeff7 1px solid" width="40%"> '.$model->servico_solicitud.'</td>
+						</tr>
+						<tr style="FONT-SIZE:11px;COLOR:#4264af;FONT-FAMILY:arial">
+							 <td style="BORDER:#ebeff7 1px solid" width="25%">Descripción</td>
+							 <td style="BORDER:#ebeff7 1px solid" width="40%"> '.$model->descripcion_solicitud.'</td>
+						</tr>
+						<tr style="FONT-SIZE:10px;FONT-FAMILY:arial;BACKGROUND-COLOR:#ebeff7;TEXT-ALIGN:left">
+							 <td><font color="#4264af">Sistema de Gestión Sol y Cobre</font></td>
+							 <td align="right"><font color="#4264af">Fecha:'.$model->fecha_solicitud.'</font></td>
+						</tr>
+				 </tbody>
+			</table>
+			<div dir="ltr">
+				 <div style="text-align:center"><br></div>
+				 <div style="text-align:center"><br></div>
+				 <div style="text-align:center">
+						<img src="https://ci3.googleusercontent.com/proxy/cX75_0gO3dYB8_6bTrn45cZlJq3IQmnI9zNKMZ9n1dz2F99weEvdVSBg87NE0SdBpymymdjA_UJHbvnfj2bgIyScTjUeOO1Xs2F9tzif_z81FUTFn6L3k4sMfzeNqg6g=s0-d-e1-ft#https://docs.google.com/uc?id=0B4-6sZUXle7vRk52YWV1RU94OXc&amp;export=download" width="200" height="136" class="CToWUd a6T" tabindex="0">
+						<div class="a6S" dir="ltr" style="opacity: 0.01; left: 447.5px; top: 162px;">
+							 <div id=":zq" class="T-I J-J5-Ji aQv T-I-ax7 L3 a5q" role="button" tabindex="0" aria-label="Descargar el archivo adjunto " data-tooltip-class="a1V" data-tooltip="Descargar">
+									<div class="aSK J-J5-Ji aYr"></div>
+							 </div>
+						</div>
+						<br><span style="color:rgb(0,0,0)">Corredora De Propiedades<br></span>
+				 </div>
+				 <div style="text-align:center"><span style="color:rgb(0,0,0)">Sandra Campusano Araya<br></span></div>
+				 <div style="text-align:center"><span style="color:rgb(0,0,0)">Contacto - 88357413 - 65378227<br></span></div>
+				 <div style="text-align:center">
+						<a href="https://www.facebook.com/propiedadessolycobre?fref=ts"><span style="color:rgb(0,0,0)">Facebook - Propiedades <span class="il">Sol</span> <span class="il">y</span> <span class="il">Cobre</span>.</span></a>
+						<div class="yj6qo"></div>
+						<div class="adL"><br></div>
+				 </div>
+			</div>
+			';
+if(!Yii::app()->mailer->Send()) {
+		echo Yii::app()->mailer->ErrorInfo;
+}
+else {
+		echo "Correo enviado!";
+}
 		$criteria=new CDbCriteria;
 		$criteria->condition='DATE_FORMAT( STR_TO_DATE( mes_pago,  "%d-%m-%Y" ) ,  "%m-%Y" ) =  DATE_FORMAT( NOW( ) ,  "%m-%Y" )';
 		$model =Pago::model()->findAll($criteria);
@@ -93,15 +199,87 @@ class SiteController extends Controller
 		$model->descripcion_solicitud = $descripcion;
 		$model->fecha_solicitud =date('Y-m-j') ;
 		if ($model->save()) {
+			Yii::app()->mailer->IsHTML(true);
+			Yii::app()->mailer->IsSMTP();
+			Yii::app()->mailer->SMTPAuth = true;
+			Yii::app()->mailer->SMTPSecure = "ssl";
+			Yii::app()->mailer->Host = "smtp.gmail.com";
+			Yii::app()->mailer->Port = 465;
+			Yii::app()->mailer->Username = "Sycalama@gmail.com";
+			Yii::app()->mailer->Password = "NiNa1234";
+			Yii::app()->mailer->From = "Sycalama@gmail.com";
+			Yii::app()->mailer->FromName = "Propiedades Sol y Cobre";
+			Yii::app()->mailer->AddAddress($correo);
+			Yii::app()->mailer->Subject = "Solicitud registrada.";
+			Yii::app()->mailer->Body = '
+			 <strong>Saludos.</strong>
+				<p>Estimado/a '.$nombres.' '.$apellidos.', se envía el presente correo con el motivo informar sobre la recepción de su solicitud.<br>
+					 A la brevedad será contactado por la corredora.<br>
+					 De antemano muchas gracias por contactarnos. antentamente, Corredora de propiedades Sol y Cobre.</P>
+					 <br>
+					 <P>Datos de la solicitud</P><br>
+					 <table style="BORDER-RIGHT:#c7d7ee 1px solid;BORDER-TOP:#c7d7ee 1px solid;BORDER-LEFT:#c7d7ee 1px solid;BORDER-BOTTOM:#c7d7ee 1px solid" cellspacing="0" cellpadding="2" width="65%">
+							<tbody>
+								 <tr style="FONT-WEIGHT:bold;FONT-SIZE:14px;FONT-FAMILY:arial;BACKGROUND-COLOR:#ebeff7;TEXT-ALIGN:center">
+										<td colspan="2"><font color="#4264af">Datos del solicitante</font></td>
+								 </tr>
+								 <tr style="FONT-SIZE:11px;COLOR:#4264af;FONT-FAMILY:arial">
+										<td style="BORDER:#ebeff7 1px solid" width="25%">Fecha de ingreso</td>
+										<td style="BORDER:#ebeff7 1px solid" width="40%">'.date('j/m/Y').'</td>
+								 </tr>
+								 <tr style="FONT-SIZE:11px;COLOR:#4264af;FONT-FAMILY:arial">
+										<td style="BORDER:#ebeff7 1px solid" width="25%">Nombres</td>
+										<td style="BORDER:#ebeff7 1px solid" width="40%">'.$nombres .' '.$Apellidos.'</td>
+								 </tr>
+								 <tr style="FONT-SIZE:11px;COLOR:#4264af;FONT-FAMILY:arial">
+										<td style="BORDER:#ebeff7 1px solid" width="25%">Telefono</td>
+										<td style="BORDER:#ebeff7 1px solid" width="40%">'.$telefono.'</td>
+								 </tr>
+								 <tr style="FONT-SIZE:11px;COLOR:#4264af;FONT-FAMILY:arial">
+										<td style="BORDER:#ebeff7 1px solid" width="25%">Correo electrónico</td>
+										<td style="BORDER:#ebeff7 1px solid" width="40%">'.$correo.'</td>
+								 </tr>
+								 <tr style="FONT-WEIGHT:bold;FONT-SIZE:14px;FONT-FAMILY:arial;BACKGROUND-COLOR:#ebeff7;TEXT-ALIGN:center">
+										<td colspan="2"><font color="#4264af">Datos de la solicitud n° '.$model->id_solicitud.'</font></td>
+								 </tr>
+								 <tr style="FONT-SIZE:11px;COLOR:#4264af;FONT-FAMILY:arial">
+										<td style="BORDER:#ebeff7 1px solid" width="25%">Servicio solicitado</td>
+										<td style="BORDER:#ebeff7 1px solid" width="40%"> '.$servicio.'</td>
+								 </tr>
+								 <tr style="FONT-SIZE:11px;COLOR:#4264af;FONT-FAMILY:arial">
+										<td style="BORDER:#ebeff7 1px solid" width="25%">Descripción</td>
+										<td style="BORDER:#ebeff7 1px solid" width="40%"> '.$descripcion.'</td>
+								 </tr>
+								 <tr style="FONT-SIZE:10px;FONT-FAMILY:arial;BACKGROUND-COLOR:#ebeff7;TEXT-ALIGN:left">
+										<td><strong><font color="#4264af">Sistema de Gestión Sol y Cobre</font></strong></td>
+										<td align="right"><font color="#4264af">Fecha:'.date('j/m/Y H:i:s').'</font></td>
+								 </tr>
+							</tbody>
+					 </table>
+					 <br>
+					 <br>
+					 <div>
+					   <div dir="ltr">
+					      <div>
+					         <div dir="ltr">
+					            <div style="text-align:center"><img src="https://ci6.googleusercontent.com/proxy/tzNiplLOMnUQ7ybgMuDeSVluGoR3TAeyp1VvVSJxByULIXurqCsWL0IzFxBloa3t_Nbyy2XXgCUB7Az7vXA3Zju1Blb2TzAZRQbHZMgYUc5U6ssPq1w67UjpcSDHZgkI-ydiM7ePJz1iGwXM9UluQCxzPYfV=s0-d-e1-ft#https://41.media.tumblr.com/ef4639767824c353ba94a25eff17a75f/tumblr_nz2sojYrTT1qi067zo1_540.png" width="200" height="64" style="font-size:12.8px" class="CToWUd"></div>
+					            <div style="text-align:center">
+											<br>
+					               <div style="font-size:12.8px"><span><span style="color:rgb(0,0,0)">Corredora de propiedades Sol y Cobre.<br></span></span></div>
+					               <div style="font-size:12.8px"><span style="color:rgb(0,0,0)">Sandra Campusano Araya<br></span></div>
+					               <div style="font-size:12.8px"><span style="color:rgb(0,0,0)">Contacto -&nbsp;<a href="tel:%2B56988357413" value="+56988357413" style="color:rgb(17,85,204)" target="_blank">+56988357413</a>&nbsp;-&nbsp;<a href="tel:%2B56965378227" value="+56965378227" style="color:rgb(17,85,204)" target="_blank">+56965378227</a></span></div>
+					               <div style="font-size:12.8px">Correo&nbsp;<a href="mailto:propiedadessolycobre@gmail.com" style="font-size:12.8px;color:rgb(17,85,204)" target="_blank">propiedadessolycobre@<wbr>gmail.com</a></div>
+					            </div>
+					         </div>
+					      </div>
+					   </div>
+					</div>
+					 ';
+		 		 Yii::app()->mailer->Send();
 			echo 1;
 		}else {
 			echo 0;
 		}	}
-
-
-
-
-
 
 	public function actionBusqueda()
 	{

@@ -267,7 +267,7 @@
 		<h1>Contáctenos</h1>
 		<div class="col-md-12">
 			<div id='co' class="col-md-12" style="display:none;">
-				<div class="alert alert-success" ><strong>¡Bien hecho!</strong> Has leído correctamente este mensaje tan importante.</div>
+				<div class="alert alert-success" ><strong>¡Éxisto!</strong> Se ha ingresado la solicitud correctamente.</div>
 			</div>
 		</div>
 
@@ -307,11 +307,10 @@
 			<li><a href="http://twitter.com/" class="fa fa-twitter" target="_blank"></a></li>
 			<li><a href="https://www.facebook.com/propiedadessolycobre?fref=ts" class="fa  fa-facebook" target="_blank"></a></li>
 			<li><a href="mailto:solycobre@gmail.com" class="fa fa-envelope"></a></li>
-
 		</ul>
-		Tratar con :Sandra Campusano Araya<BR>
+		Tratar con: Sandra Campusano Araya<BR>
 		PROPIEDADES SOL Y COBRE CALAMA © 2015<br>
-		Dirección : PASAJE LATORRE N° 1291 VILLA CHICA
+		Dirección: PASAJE LATORRE N° 1291 VILLA CHICA
 	</div>
 </footer>
 

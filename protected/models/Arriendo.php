@@ -4,7 +4,7 @@
  * This is the model class for table "arriendo".
  *
  * The followings are the available columns in table 'arriendo':
- * @property integer $id_arriendo
+ * @property integer $id_arriendox
  * @property integer $id_propiedad
  * @property string $rut_admin
  * @property string $rut_arrendatario
@@ -20,6 +20,7 @@ class Arriendo extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
+	public $total;
 	public function tableName()
 	{
 		return 'arriendo';
@@ -34,7 +35,7 @@ class Arriendo extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id_propiedad, rut_admin, inscripcion_arriendo, inicio_arriendo, termino_arriendo, valor_arriendo', 'required'),
-			array('id_propiedad, fechapago_arriendo, valor_arriendo, activo_arriendo', 'numerical', 'integerOnly'=>true),
+			array('id_propiedad, fechapago_arriendo, valor_arriendo, activo_arriendo,total', 'numerical', 'integerOnly'=>true),
 			array('rut_admin, rut_arrendatario', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -70,7 +71,7 @@ class Arriendo extends CActiveRecord
 			'rut_admin' => 'Rut Admin',
 			'rut_arrendatario' => 'RUT del arrendatario',
 			'inscripcion_arriendo' => 'Inscripcion Arriendo',
-			'fechapago_arriendo' => 'Fecha de pago',
+			'fechapago_arriendo' => 'Día de pago',
 			'inicio_arriendo' => 'Inicio del arriendo',
 			'termino_arriendo' => 'Término del arriendo',
 			'valor_arriendo' => 'Valor pactado de arriendo',
@@ -140,6 +141,15 @@ class Arriendo extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
+		$criteria->condition ='inicio_arriendo<CURDATE()
+		 AND termino_arriendo>CURDATE()
+		 AND fechapago_arriendo < DATE_FORMAT( CURDATE( ) ,  "%d" )
+		 AND id_arriendo IN (
+		  SELECT id_arriendo
+		  FROM pago
+		  WHERE activo_pago =1
+		  AND STR_TO_DATE( mes_pago,  "%d-%m-%Y" ) <= NOW( )
+		  )';
 		$criteria->compare('id_arriendo',$this->id_arriendo);
 		$criteria->compare('id_propiedad',$this->id_propiedad);
 		$criteria->compare('rut_admin',$this->rut_admin,true);
@@ -150,14 +160,6 @@ class Arriendo extends CActiveRecord
 		$criteria->compare('termino_arriendo',$this->termino_arriendo,true);
 		$criteria->compare('valor_arriendo',$this->valor_arriendo);
 		$criteria->compare('activo_arriendo',1);
-		$criteria->condition ='inicio_arriendo<CURDATE()
-		 AND termino_arriendo>CURDATE()
-		 AND fechapago_arriendo < DATE_FORMAT( CURDATE( ) ,  "%d" )
-		 AND id_arriendo NOT IN (
-		 SELECT id_arriendo
-		 FROM pago
-		 WHERE activo_pago =1
-		 AND STR_TO_DATE( mes_pago,  "%d-%m-%Y" ) <= DATE_FORMAT( NOW( ) ,  "%Y-%m-%j" ))';
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

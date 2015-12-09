@@ -53,6 +53,40 @@ class Venta extends CActiveRecord
 		return array(
 		);
 	}
+	public function getRut(){
+		$data = explode('-', $this->rutcomprador_venta);
+		return $data[0];
+	}
+ 	public function ValidateRut($attribute, $param){
+ 		$data = explode('-', $this->rutcomprador_venta);
+ 		$evaluate = strrev($data[0]);
+ 		$multiply = 2;
+ 		$store = 0;
+ 		for ($i = 0; $i < strlen($evaluate); $i++) {
+ 			 $store += $evaluate[$i] * $multiply;
+ 			 $multiply++;
+ 			 if ($multiply > 7)
+ 					 $multiply = 2;
+ 		}
+ 		isset($data[1]) ? $verifyCode = strtolower($data[1]) : $verifyCode = '';
+ 		$result = 11 - ($store % 11);
+ 		if ($result == 10)
+ 			 $result = 'k';
+ 		if ($result == 11)
+ 			 $result = 0;
+ 		if ($verifyCode != $result)
+ 			 $this->addError('rut', 'Rut inválido.');
+ 	}
+	function getFormato() {
+		return number_format( substr ( $this->rutcomprador_venta, 0 , -1 ) , 0, "", ".") . '-' . substr ( $this->rutcomprador_venta, strlen($this->rutcomprador_venta) -1 , 1 );
+	}
+	function getAdmin() {
+		return number_format( substr ( $this->rut_admin, 0 , -1 ) , 0, "", ".") . '-' . substr ( $this->rut_admin, strlen($this->rut_admin) -1 , 1 );
+	}
+	public function getRu(){
+		$data = explode('-', $this->rutcomprador_venta);
+		return $data[0];
+	}
 
 	/**
 	 * @return array customized attribute labels (name=>label)

@@ -22,24 +22,24 @@
           </div>
 					<div class="form">
 						<div class="box-body">
-              <?php $this->widget('zii.widgets.grid.CGridView', array(
-              	'id'=>'arrendatario-grid',
-                'itemsCssClass' => 'table table-hover',
-                'htmlOptions' => array('class' => 'table-responsive'),
-              	'dataProvider'=>$model->search(),
-              	'filter'=>$model,
-              	'columns'=>array(
+               <?php $this->widget('zii.widgets.grid.CGridView', array(
+                'id'=>'arrendatario-grid',
+                  'cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css',
+
+                'dataProvider'=>$model->search(),
+                'filter'=>$model,
+                'columns'=>array(
                   array(
                     'header'=>'RUT',
                     'name'=>'rut_arrendatario',
                     'value' => '$data->rut_arrendatario',
                     'htmlOptions'=>array('style'=>'width:100px'),
                    ),
-              		'nombres_arrendatario',
-              		'apellidos_arrendatario',
+                    'nombres_arrendatario',
+                    'apellidos_arrendatario',
                   'telefonofijo_arrendatario',
-              		'telefonocelular_arrendatario',
-              		'correo_arrendatario',
+                    'telefonocelular_arrendatario',
+                    'correo_arrendatario',
                   array(
                     'header'=>'Empresa',
                     'name'=>'empresa_arrendatario',
@@ -47,27 +47,27 @@
                     'filter' => array('0' => Yii::t('app', 'No'), '1' => Yii::t('app', 'Si')),
                     'htmlOptions' => array('style' => "text-align:center;"),
                    ),
-              		/*
+                    /*
                   'estadocivil_arrendatario',
-              		'profesion_arrendatario',
-              		'nrocuenta_arrendatario',
-              		'banco_arrendatario',
-              		'nacionalidad_arrendatario',
-              		'empresa_arrendatario',
-              		'activo_arrendatario',
-              		*/
+                    'profesion_arrendatario',
+                    'nrocuenta_arrendatario',
+                    'banco_arrendatario',
+                    'nacionalidad_arrendatario',
+                    'empresa_arrendatario',
+                    'activo_arrendatario',
+                    */
                   array(
                     'header'=>'Actualizar',
-                    'class'=>'CButtonColumn',
-                    'template'=>'{actualizar}',
-                    'buttons'=>array(
-                        'actualizar' => array(
-                            'label'=>'<i class="fa fa-pencil-square-o"></i>',
-                            'url'=>'Yii::app()->createUrl("arrendatario/update", array("id"=>$data->rut))',
-                        ),
-                    ),
+                      'class'=>'CButtonColumn',
+                      'template'=>'{email}',
+                      'buttons'=>array(
+                          'email' => array(
+                              'label'=>'<i class="btn btn-primary">Modificar &nbsp;<i class="fa fa-pencil"></i></i>',
+                              'url'=>'Yii::app()->createUrl("arrendatario/update", array("id"=>$data->rut))'
+                          ),
+                      ),
                   ),
-              	),
+                ),
               )); ?>
 					  </div>
             <div class="box-footer">

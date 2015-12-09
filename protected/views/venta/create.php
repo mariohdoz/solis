@@ -40,6 +40,12 @@ function obtenerPropiedad(){
         , roundToDecimalPlace: -1});
 			ganancia();
 			$('#Propiedad_rut_cliente').val(propiedad.rut_cliente);
+			$("#Propiedad_rut_cliente").Rut({
+				on_error: function(){
+					alert('El RUT ingresado es incorrecto.');
+					$(this).val('');
+				},
+			});
 			$( "#Propiedad_valor_propiedad" ).prop({
 				disabled: true
 			});
@@ -146,28 +152,28 @@ function ganancia(){
 					</div><!-- /.box-header -->
 					<div class="form">
 						<div class="box-body">
-							<div class="col-xs-6">
+							<div class="col-lg-6 col-md-6 col-xs-12">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'id_propiedad'); ?>
-									<?php echo $form->textField($model,'id_propiedad',array('class'=>'form-control', 'placeholder'=>'Ingrese el número de ficha de la propiedad o seleccione una.')); ?>
+									<?php echo $form->textField($model,'id_propiedad',array('class'=>'form-control', 'placeholder'=>'Ingrese el número de ficha de la propiedad o seleccione una.', 'required'=>'required')); ?>
 									<?php echo $form->error($model,'id_propiedad'); ?>
 								</div>
 							</div>
-							<div class="col-xs-6">
+							<div class="col-lg-6 col-md-6 col-xs-12">
 								<div class="form-group">
 									<?php echo $form->labelEx($model3,'rut_cliente'); ?>
 									<?php echo $form->textField($model3,'rut_cliente',array('class'=>'form-control','disabled'=>'true', 'placeholder'=>'RUT del propietario.')); ?>
 									<?php echo $form->error($model3,'rut_cliente'); ?>
 								</div>
 							</div>
-							<div class="col-xs-8">
+							<div class="col-lg-8 col-md-6 col-xs-12">
 								<div class="form-group">
 									<?php echo $form->label($model3,'direccion_propiedad'); ?>
 									<?php echo $form->textField($model3,'direccion_propiedad', array('class'=>'form-control', 'disabled'=>'true', 'placeholder'=>'Dirección de la propiedad.')); ?>
 									<?php echo $form->error($model3,'direccion_propiedad'); ?>
 								</div>
 							</div>
-							<div class="col-xs-4">
+							<div class="col-lg-4 col-md-6 col-xs-12">
 								<div class="form-group">
 									<?php echo $form->label($model3,'valor_propiedad'); ?>
 									<?php echo $form->textField($model3,'valor_propiedad', array('class'=>'form-control', 'disabled'=>'true','placeholder'=>'Valor de la propiedad.' ,'onchange'=>"applyFormatCurrency(document.getElementById('Propiedad_valor_propiedad'));"));?>
@@ -191,7 +197,7 @@ function ganancia(){
 							<div class="col-xs-3">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'rutcomprador_venta'); ?>
-									<?php echo $form->textField($model,'rutcomprador_venta',array('class'=>'form-control', 'placeholder'=>'Ejemplo: 12345678-9')); ?>
+									<?php echo $form->textField($model,'rutcomprador_venta',array('class'=>'form-control', 'placeholder'=>'Ejemplo: 12345678-9', 'required'=>'required')); ?>
 								</div>
 							</div>
 							<div class="col-xs-3">
@@ -226,20 +232,20 @@ function ganancia(){
 							<div class="col-xs-3">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'ganancia_venta'); ?>
-									<?php echo $form->textField($model,'ganancia_venta',array('class'=>'form-control')); ?>
+									<?php echo $form->textField($model,'ganancia_venta',array('class'=>'form-control', 'required'=>'required')); ?>
 								</div>
 							</div>
 							<div class="col-xs-6">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'nombrescomprador_venta'); ?>
-									<?php echo $form->textField($model,'nombrescomprador_venta',array('class'=>'form-control', 'placeholder'=>'Ingrese los nombres del comprador.')); ?>
+									<?php echo $form->textField($model,'nombrescomprador_venta',array('class'=>'form-control', 'placeholder'=>'Ingrese los nombres del comprador.', 'required'=>'required')); ?>
 
 								</div>
 							</div>
 							<div class="col-xs-6">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'apellidoscomprador_venta'); ?>
-									<?php echo $form->textField($model,'apellidoscomprador_venta',array('class'=>'form-control', 'placeholder'=>'Ingrese apellidos del comprador.')); ?>
+									<?php echo $form->textField($model,'apellidoscomprador_venta',array('class'=>'form-control', 'placeholder'=>'Ingrese apellidos del comprador.', 'required'=>'required')); ?>
 								</div>
 							</div>
 						</div>
@@ -253,3 +259,15 @@ function ganancia(){
     </div>
   </section>
 </div>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.Rut.min.js" type="text/javascript"></script>
+<script>
+$("#Venta_rutcomprador_venta").Rut({
+	on_error: function(){
+		alert('El RUT ingresado es incorrecto.');
+		$('#Venta_rutcomprador_venta').val('');
+	},
+});
+$("#Venta_rutcomprador_venta").click(function(){
+	$("#Venta_rutcomprador_venta").val('');
+});
+</script>

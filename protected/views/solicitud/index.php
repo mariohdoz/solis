@@ -2,7 +2,7 @@
   <section class="content-header">
     <h1>
 	    Configuración
-	    <small>Texto aquí.</small>
+	    <small>Listado de solicitudes.</small>
 	  </h1>
 	  <ol class="breadcrumb">
 	    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/intra/index">
@@ -40,8 +40,8 @@
 						<div class="box-body">
 							<?php
                $this->widget('zii.widgets.grid.CGridView', array(
-								'id'=>'solicitud-grid',
-								'itemsCssClass' => 'table table-hover',
+                 'cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css',
+
 								'htmlOptions' => array('class' => 'table-responsive'),
 								'dataProvider'=>$solicitud->sol(),
 								'filter'=>$solicitud,

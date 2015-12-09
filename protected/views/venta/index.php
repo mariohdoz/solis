@@ -37,8 +37,8 @@ $this->menu=array(
 						<div class="box-body">
 							<?php $this->widget('zii.widgets.grid.CGridView', array(
 								'id'=>'venta-grid',
-								'itemsCssClass' => 'table table-hover',
-								'htmlOptions' => array('class' => 'table-responsive'),
+								'cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css',
+
 								'dataProvider'=>$model->search(),
 								'filter'=>$model,
 								'columns'=>array(

@@ -15,7 +15,7 @@
   <section class="content">
     <div class="row">
       <!-- Inicio se container -->
-      <div class="col-md-6">
+      <div class="col-md-12">
 				<div class="box box-primary">
 					<div class="box-header with-border">
             <h3 class="box-title">Listado de ordenes de trabajo</h3>
@@ -24,26 +24,39 @@
 						<div class="box-body">
               <?php $this->widget('zii.widgets.grid.CGridView', array(
                 'id'=>'ordentrabajo-grid',
-                'itemsCssClass' => 'table table-hover',
-                'htmlOptions' => array('class' => 'table-responsive'),
+                'cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css',
                 'dataProvider'=>$model->search(),
                 'filter'=>$model,
                 'columns'=>array(
                   'id_ot',
                   'rut_admin',
-                  'descripcion_ot',
-                  'fechaemision_ot',
-                  'fechaejecucion_ot',
-                  'estado_ot',
-                  /*
                   'inicio_ot',
+                  'fechaemision_ot',
                   'servicio_ot',
+                  array(
+                    'header'=>'Estado',
+                    'name'=>'estado_ot',
+                    'value' => '$data->estado_ot?Yii::t(\'app\',\'Terminado\'):Yii::t(\'app\', \'Pendiente\')',
+                    'filter' => array('0' => Yii::t('app', 'Pendiente'), '1' => Yii::t('app', 'Terminado')),
+                    'htmlOptions' => array('style' => "text-align:center;"),
+                   ),
+                  /*
+                  'fechaejecucion_ot',
+                  'descripcion_ot',
                   'observacion_ot',
                   'totalpagar_ot',
                   'formapago_ot',
                   */
                   array(
+                    'header'=>'Actualizar',
                     'class'=>'CButtonColumn',
+                    'template'=>'{actualizar} ',
+                    'buttons'=>array(
+                      'actualizar' => array(
+                        'label'=>'<i class="btn btn-primary">Modificar &nbsp;<i class="fa fa-pencil"></i></i>',
+                        'url'=>'Yii::app()->createUrl("ordentrabajo/update", array("id"=>$data->id_ot))'
+                      ),
+                    ),
                   ),
                 ),
               )); ?>

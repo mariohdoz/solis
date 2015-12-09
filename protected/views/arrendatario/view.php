@@ -241,38 +241,48 @@ $this->menu=array(
       </div>
       <!-- término se container -->
     </div>
-		<div class="col-md-12">
-			<div class="box box-primary">
-				<div class="box-header with-border">
-					<h3 class="box-title">Arriendos enlazados</h3>
-				</div>
-				<div class="form">
-					<div class="box-body">
-						<?php
-						if($model->arriendo != null)
-						{
-							foreach ($model->arriendo as $key => $value) {
-								echo '<div class="col-xs-12 col-md-6 col-lg-4"">';
-									echo '<ul class="nav nav-pills nav-stacked">';
-										echo '<li>'.CHtml::link('<i class="fa fa-home"></i>Número de ficha del arriendo '.$value->id_propiedad, array('arriendo/view/', 'id'=>$value->id_arriendo)).'</li>';
-									echo '</ul>';
-								echo '</div>';
-							}
-						}else {
-							echo '<div class="col-xs-12 col-md-12 col-lg-12"">';
-								echo '<h3>No tiene ningún arriendo activo</h3>';
-							echo '</div>';
-							echo '<div class="col-xs-12 col-md-6 col-lg-4"">';
-								echo 	CHtml::link('Registrar arriendo', array('/arriendo/create'), array('class'=>'btn btn-primary'));
-							echo '</div>';
-						}
-						 ?>
-					</div>
-					<div class="box-footer">
-					</div>
-				</div>
-			</div>
-		</div>
+		<?php
+		if($model->arriendo != null)
+		{
+		  foreach ($model->arriendo as $key => $value) {
+		    echo '<div class="col-md-6">
+		      <div class="box box-primary">
+		        <div class="box-header with-border">
+		          <h3 class="box-title">Arriendo asociado</h3>
+		        </div>
+		        <div class="form">
+		          <div class="box-body">
+		            <div class="col-lg-12 col-md-12 col-xs-12">
+		              <div class="form-group">';
+									$this->widget('zii.widgets.CDetailView', array(
+									  'data'=>$value,
+									  'htmlOptions' => array('class' => 'table-striped table-condensed table-responsive table table-hover'),
+									  'attributes'=>array(
+											array(
+	       							 'label'=>'Número de ficha',
+	       								'value' =>  CHtml::link($value->id_arriendo,array('/arriendo/view/', 'id'=>$value->id_arriendo)) ,
+	       								'type'=>'raw'
+	       						 ),
+									    'fechapago_arriendo',
+									    'inicio_arriendo',
+									    'termino_arriendo',
+									    array('header'=>'Valor',
+									      'label'=>'Valor',
+									      'value'=>Yii::app()->numberFormatter->format("¤#,##0", $value->valor_arriendo, "$ "),
+									    ),
+									  ),
+									));
+		              echo '</div>
+		            </div>
+		          </div>
+		          <div class="box-footer">
+		          </div>
+		        </div>
+		      </div>
+		    </div>';
+		  }
+		}
+		?>
   </section>
 </div>
 <?php $this->endWidget(); ?>

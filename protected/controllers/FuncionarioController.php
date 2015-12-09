@@ -59,8 +59,10 @@ class FuncionarioController extends Controller
 			}
 		}
 		$rut=$this->codigo($id);
+		$model=$this->loadModel($rut);
+		$model->rut_funcionario=$model->formato;
 		$this->render('view',array(
-			'model'=>$this->loadModel($rut),
+			'model'=>$model,
 		));
 	}
 

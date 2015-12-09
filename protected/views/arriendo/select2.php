@@ -31,8 +31,7 @@
 						<div class="box-body">
               <?php $this->widget('zii.widgets.grid.CGridView', array(
 								'id'=>'arriendo-grid',
-								'itemsCssClass' => 'table table-hover',
-								'htmlOptions' => array('class' => 'table-responsive'),
+                'cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css',
 								'dataProvider'=>$model->historico(),
 								'filter'=>$model,
 								'columns'=>array(
@@ -64,10 +63,10 @@
                     'template'=>'{eliminar}',
                     'buttons'=>array(
 											'eliminar' => array(
-													'label'=>'<i class="fa fa-trash-o"></i>',
-													'url'=>'Yii::app()->createUrl("arriendo/eliminar", array("id"=>$data->id_arriendo))',
+												'label'=>'<i class="btn btn-google-plus">Eliminar &nbsp;<i class="fa fa-trash-o"></i></i>',
+												'url'=>'Yii::app()->createUrl("arriendo/eliminar", array("id"=>$data->id_arriendo))'
 											),
-                    ),
+										),
                   ),
 								),
 							)); ?>

@@ -37,9 +37,8 @@
 					<div class="form">
 						<div class="box-body">
               <?php $this->widget('zii.widgets.grid.CGridView', array(
-              	'id'=>'funcionario-grid',
-                'itemsCssClass' => 'table table-hover',
-                'htmlOptions' => array('class' => 'table-responsive'),
+                'cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css',
+
               	'dataProvider'=>$model->search(),
               	'filter'=>$model,
               	'columns'=>array(
@@ -60,8 +59,8 @@
                     'template'=>'{eliminar}',
                     'buttons'=>array(
 											'eliminar' => array(
-													'label'=>'<i class="fa fa-trash-o"></i>',
-													'url'=>'Yii::app()->createUrl("funcionario/eliminar", array("id"=>$data->rut))',
+                        'label'=>'<i class="btn btn-google-plus">Eliminar &nbsp;<i class="fa fa-trash-o"></i></i>',
+                           'url'=>'Yii::app()->createUrl("funcionario/eliminar", array("id"=>$data->rut))'
 											),
 
                     ),

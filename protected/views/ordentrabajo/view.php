@@ -155,7 +155,7 @@
 							</div>
 					  </div>
             <div class="box-footer">
-							<?php echo CHtml::link('Términar', array('/intra/index'), array('class'=>'btn btn-primary')); ?>
+							<?php echo CHtml::link('Generar ficha', array('/intra/index'), array('class'=>'btn btn-primary')); ?>
 							<?php echo CHtml::link('Actualizar orden de trabajo', array('/Ordentrabajo/update/', 'id'=>$model->id_ot), array('class'=>'btn btn-info', 'confirm' => '¿Está seguro de actualizar la orden de trabajo?')); ?>
 							<?php echo CHtml::link("Eliminar orden de trabajo", '#', array(
 							    'submit'=>array('/Ordentrabajo/delete', "id"=>$model->id_ot),
@@ -174,3 +174,14 @@
   </section>
 </div>
 <?php $this->endWidget(); ?>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.formatCurrency-1.4.0.js" type="text/javascript"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/i18n/jquery.formatCurrency.es-CL.js" type="text/javascript"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.Rut.min.js" type="text/javascript"></script>
+<script>
+$(document).ready(function() {
+	$('#Ordentrabajo_totalpagar_ot').formatCurrency({region: 'es-CL'
+		, roundToDecimalPlace: -0});
+
+});
+
+</script>

@@ -25,7 +25,7 @@ class IntraController extends CController{
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete', 'config'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -38,7 +38,7 @@ class IntraController extends CController{
 	{
 		$model = new Administrador();
 		$model = Administrador::model()->findByPk($id);
-		$this->render('/../perfil/index', array('model'=>$model));
+		$this->render('/perfil/index', array('model'=>$model));
 	}
 
 

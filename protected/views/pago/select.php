@@ -25,8 +25,7 @@
               <?php
               $this->widget('zii.widgets.grid.CGridView', array(
                 'id'=>'arriendo-grid',
-                'itemsCssClass' => 'table table-hover',
-                'htmlOptions' => array('class' => 'table-responsive'),
+                'cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css',
                 'dataProvider'=>$model->Busqueda(),
                 'selectableRows'=>1,
                 'filter'=>$model,
@@ -48,13 +47,13 @@
                   'valor_arriendo',
                   */
                   array(
-                    'header'=>'Pago',
+                    'header'=>'Pagos',
                     'class'=>'CButtonColumn',
                     'template'=>'{actualizar}',
                     'buttons'=>array(
                         'actualizar' => array(
-                            'label'=>'<i class="fa fa-money"></i>',
-                            'url'=>'Yii::app()->createUrl("pago/listado", array("id"=>$data->id_arriendo))',
+                          'label'=>'<i class="btn btn-google-plus">Pagos &nbsp;<i class="fa fa-money"></i></i>',
+                          'url'=>'Yii::app()->createUrl("pago/listado", array("id"=>$data->id_arriendo))',
                         ),
                     ),
                   ),

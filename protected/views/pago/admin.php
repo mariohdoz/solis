@@ -1,16 +1,14 @@
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
-	    Configuración
-	    <small>Texto aquí.</small>
-	  </h1>
-	  <ol class="breadcrumb">
-	    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/intra/index">
-			<i class="fa fa-dashboard"></i>Inicio</a></li>
-			<li class="active">algo</li>
-			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/intra/index">Gestión</a></li>
-			<li class="active">acción</li>
-	  </ol>
+        Estado de
+        <small>Pagos.</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/intra/index">
+            <i class="fa fa-dashboard"></i>Inicio</a></li>
+            <li class="active">Estado de pagos</li>
+      </ol>
   </section>
   <section class="content">
     <div class="row">
@@ -40,17 +38,17 @@
 					$b =$value->mes_pago;
 					$data= explode('-',$a);
 					$datb= explode('-',$b);
-					if($value->activo_pago==1){
-						if(($data[0]>$datb[1] && $data[1]>$datb[2]) || ($data[0]>$datb[1] && $data[1]==$datb[2]) ){
-							echo 'box-danger';
-						}elseif (($data[0]==$datb[1] && $data[1]==$datb[2]) && $arriendo->fechapago_arriendo <= $data[0]  ) {
-							echo 'box-warning';
-						}else{
-								echo 'box-primary';
-						}
-					}else{
-							echo 'box-info';
-					}
+          if($value->activo_pago==1){
+            if(($data[0]>$datb[1] && $data[1]>$datb[2]) || ($data[0]>$datb[1] && $data[1]==$datb[2]) ){
+              echo 'box-solid box-danger';
+            }elseif (($data[0]==$datb[1] && $data[1]==$datb[2]) && $arriendo->fechapago_arriendo <= $data[0]  ) {
+              echo 'box-solid box-warning';
+            }else{
+              echo 'box-solid box-primary';
+            }
+          }else{
+            echo ' box-info';
+          }
 
 					 ?>">
 						<div class="box-header with-border">

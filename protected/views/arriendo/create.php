@@ -79,9 +79,16 @@ $this->menu=array(
 					$('#Arriendo_id_propiedad').val(propiedad.id_propiedad);
 					$('#Propiedad_direccion_propiedad').val(propiedad.direccion_propiedad);
 					$('#Propiedad_valor_propiedad').val(propiedad.valor_propiedad);
-					$('#Propiedad_valor_propiedad').formatCurrency({region: 'es-CL'
+					$('#Propiedad_comision_propiedad').val('% '+propiedad.comision_propiedad);
+					$('#Arriendo_valor_arriendo').val(propiedad.valor_propiedad);
+					$('#ganancia_propiedad').val((propiedad.comision_propiedad/100)*propiedad.valor_propiedad);
+					$('#ganancia_propiedad').formatCurrency({region: 'es-CL'
 		        , roundToDecimalPlace: -1});
 					$('#Propiedad_rut_cliente').val(propiedad.rut_cliente);
+					$('#Propiedad_valor_propiedad').formatCurrency({region: 'es-CL'
+		        , roundToDecimalPlace: -1});
+					$('#Arriendo_valor_arriendo').formatCurrency({region: 'es-CL'
+		        , roundToDecimalPlace: -1});
 					$( "#Propiedad_valor_propiedad" ).prop({
 						disabled: true
 					});
@@ -216,22 +223,22 @@ $this->menu=array(
           </div><!-- /.box-header -->
 					<div class="form">
 						<div class="box-body">
-							<div class="col-xs-12">
+							<div class="col-lg-12 col-md-12 col-xs-12">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'rut_arrendatario'); ?>
-									<?php echo $form->textField($model,'rut_arrendatario',array('size'=>10,'maxlength'=>10, 'class'=>'form-control', 'placeholder'=>'Ingrese el RUT del arrendatario o seleccione uno.')); ?>
+									<?php echo $form->textField($model,'rut_arrendatario',array('size'=>10,'maxlength'=>10, 'class'=>'form-control', 'placeholder'=>'Ingrese el RUT del arrendatario o seleccione uno.', 'required'=>'required')); ?>
 								</div>
 							</div>
-							<div class="col-xs-6">
+							<div class="col-lg-6 col-md-6 col-xs-12">
 								<div class="form-group">
 									<?php echo $form->label($model2,'nombres_arrendatario'); ?>
-									<?php echo $form->textField($model2,'nombres_arrendatario', array('class'=>'form-control', 'disabled'=>'true')); ?>
+									<?php echo $form->textField($model2,'nombres_arrendatario', array('class'=>'form-control', 'disabled'=>'true', 'placeholder'=>'Nombres del arrendatario.')); ?>
 									<?php echo $form->error($model2,'nombres_arrendatario'); ?>
 								</div>
 							</div>
-							<div class="col-xs-6">
+							<div class="col-lg-6 col-md-6 col-xs-12">
 								<?php echo $form->label($model2,'apellidos_arrendatario'); ?>
-								<?php echo $form->textField($model2,'apellidos_arrendatario', array('class'=>'form-control', 'disabled'=>'true')); ?>
+								<?php echo $form->textField($model2,'apellidos_arrendatario', array('class'=>'form-control', 'disabled'=>'true', 'placeholder'=>'Apellidos del arrendatario.')); ?>
 								<?php echo $form->error($model2,'apellidos_arrendatario'); ?>
 							</div>
 						</div>
@@ -248,32 +255,42 @@ $this->menu=array(
           </div><!-- /.box-header -->
 					<div class="form">
 						<div class="box-body">
-							<div class="col-xs-6">
+							<div class="col-lg-4 col-md-12 col-xs-12">
 								<div class="form-group">
 									<?php echo $form->labelEx($model,'id_propiedad'); ?>
-									<?php echo $form->textField($model,'id_propiedad',array('class'=>'form-control', 'placeholder'=>'Ingrese el número de ficha de la propiedad o seleccione una.')); ?>
+									<?php echo $form->textField($model,'id_propiedad',array('class'=>'form-control', 'placeholder'=>'Ingrese el número de ficha de la propiedad o seleccione una.','required'=>'required')); ?>
 									<?php echo $form->error($model,'id_propiedad'); ?>
 								</div>
 							</div>
-							<div class="col-xs-6">
+							<div class="col-lg-4 col-md-12 col-xs-12">
 								<div class="form-group">
 									<label for="Propiedad_rut_cliente">RUT del propietario</label>
-									<?php echo $form->textField($model3,'rut_cliente',array('class'=>'form-control','disabled'=>'true', 'placeholder'=>'RUT del propietario.')); ?>
+									<?php echo $form->textField($model3,'rut_cliente',array('class'=>'form-control','disabled'=>'true',  'placeholder'=>'RUT del propietario.')); ?>
 									<?php echo $form->error($model3,'rut_cliente'); ?>
 								</div>
 							</div>
-							<div class="col-xs-8">
+							<div class="col-lg-4 col-md-12 col-xs-12">
+								<div class="form-group">
+									<?php echo $form->label($model3,'comision_propiedad'); ?>
+									<?php echo $form->textField($model3,'comision_propiedad', array('class'=>'form-control', 'disabled'=>'true', 'placeholder'=>'Comisión.')); ?>
+									<?php echo $form->error($model3,'comision_propiedad'); ?>
+								</div>
+							</div>
+							<div class="col-lg-8 col-md-12 col-xs-12">
 								<div class="form-group">
 									<?php echo $form->label($model3,'direccion_propiedad'); ?>
-									<?php echo $form->textField($model3,'direccion_propiedad', array('class'=>'form-control', 'disabled'=>'true')); ?>
+									<?php echo $form->textField($model3,'direccion_propiedad', array('class'=>'form-control', 'disabled'=>'true', 'placeholder'=>'Dirección de la propiedad.')); ?>
 									<?php echo $form->error($model3,'direccion_propiedad'); ?>
 								</div>
 							</div>
-							<div class="col-xs-4">
-								<?php echo $form->label($model3,'valor_propiedad'); ?>
-								<?php echo $form->textField($model3,'valor_propiedad', array('class'=>'form-control', 'disabled'=>'true')); ?>
-								<?php echo $form->error($model3,'valor_propiedad'); ?>
+							<div class="col-lg-4 col-md-12 col-xs-12">
+								<div class="form-group">
+									<?php echo $form->label($model3,'valor_propiedad'); ?>
+									<?php echo $form->textField($model3,'valor_propiedad', array('class'=>'form-control', 'disabled'=>'true', 'placeholder'=>'Valor de la propiedad.')); ?>
+									<?php echo $form->error($model3,'valor_propiedad'); ?>
+								</div>
 							</div>
+
 						</div>
 						<div class="box-footer">
 							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#propiedad">Cargar propiedad</button>
@@ -285,7 +302,7 @@ $this->menu=array(
 			<div class="col-md-12">
 				<div class="box box-primary">
 					<div class="box-header with-border">
-            <h3 class="box-title">Datos del arriendo</h3>
+            <h3 class="box-title">Datos del arriendo </h3>
           </div><!-- /.box-header -->
 					<div class="form">
 
@@ -298,11 +315,19 @@ $this->menu=array(
 								?>
 								<div class="form">
 									<?php echo $form->errorSummary($model,'<strong>Es necesario arreglar los siguientes errores:</strong><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><div class="alert alert-danger">', '</div>'); ?>
-									<div class="col-md-6">
+									<div class="col-lg-6 col-md-6 col-xs-12">
 										<div class="form-group">
 											<?php echo $form->labelEx($model,'inicio_arriendo'); ?>
-											<?php echo $form->dateField($model,'inicio_arriendo', array('class'=>'form-control', 'tabindex'=>1)); ?>
+											<?php echo $form->dateField($model,'inicio_arriendo', array('class'=>'form-control', 'required'=>'required')); ?>
 										</div>
+										</div>
+									<div class="col-lg-6 col-md-6 col-xs-12">
+										<div class="form-group">
+											<?php echo $form->labelEx($model,'termino_arriendo'); ?>
+											<?php echo $form->dateField($model,'termino_arriendo', array('class'=>'form-control', 'required'=>'required')); ?>
+										</div>
+									</div>
+										<div class="col-lg-6 col-md-6 col-xs-12">
 										<div class="form-group">
 											<?php echo $form->labelEx($model,'fechapago_arriendo'); ?>
 											<?php echo $form->dropDownList($model,'fechapago_arriendo',
@@ -339,17 +364,19 @@ $this->menu=array(
 															'30' => '30',
 															'31' => '31',
 													),
-													array("class"=>"form-control select2", 'empty' => 'Seleccione el día de pago', 'tabindex'=>3)); ?>
+													array("class"=>"form-control select2", 'empty' => 'Seleccione el día de pago', 'required'=>'required')); ?>
 										</div>
 									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<?php echo $form->labelEx($model,'termino_arriendo'); ?>
-											<?php echo $form->dateField($model,'termino_arriendo', array('class'=>'form-control', 'tabindex'=>2)); ?>
-										</div>
+									<div class="col-lg-3 col-md-12 col-xs-12">
 										<div class="form-group">
 											<?php echo $form->labelEx($model,'valor_arriendo'); ?>
-											<?php echo $form->textField($model,'valor_arriendo', array('class'=>'form-control', 'placeholder'=>'Ingresar valor pactado con el arrendatario Ej: "500000".', 'tabindex'=>4)); ?>
+											<?php echo $form->textField($model,'valor_arriendo', array('class'=>'form-control', 'placeholder'=>'Ingresar valor pactado con el arrendatario Ej: "500000".', 'required'=>'required')); ?>
+										</div>
+									</div>
+									<div class="col-lg-3 col-md-12 col-xs-12">
+										<div class="form-group">
+											<label for="Propiedad_comision_propiedad">Comisión </label>
+											<input class="form-control" disabled="disabled" placeholder="Comisión generada." name="Propiedad[comision_propiedad]" id="ganancia_propiedad" type="text">
 										</div>
 									</div>
 								</div><!-- form -->
@@ -366,7 +393,6 @@ $this->menu=array(
 		</div>
 	</section>
 </div>
-
 <script>
 	$("#Arriendo_valor_arriendo").click(function(){
 		$('#Arriendo_valor_arriendo').val('');
@@ -401,5 +427,37 @@ $this->menu=array(
 			  })
 		},
 
-	})
+	});
+	$("#Arriendo_valor_arriendo").keyup(function(){
+		$('#Arriendo_valor_arriendo').formatCurrency({region: 'es-CL'
+			, roundToDecimalPlace: -1});
+	});
+	$("#Arriendo_valor_arriendo").click(function(){
+		if ($('#Propiedad_valor_propiedad').val()=='') {
+			alert('Favor de seleccionar la propiedad primero');
+			$('#ganancia_propiedad').val('0');
+			$('#Arriendo_valor_arriendo').blur();
+		}else {
+				$('#ganancia_propiedad').val('');
+		}
+
+	});
+	$("#Arriendo_valor_arriendo").blur(function(){
+		if ($('#Propiedad_valor_propiedad').val()!='') {
+			var a = $('#Propiedad_comision_propiedad').val();
+			a=a.replace(/^\D+/g, '');
+			a=parseInt(a.replace(".",""));
+			var b = $('#Arriendo_valor_arriendo').val();
+			b=b.replace(/[^\d]/, '');
+			b=b.replace('.', '');
+			b=b.replace('.', '');
+			b=b.replace('.', '');
+			b=b.replace('.', '');
+			b=parseInt(b);
+			var c = (a/100)*b;
+			$('#ganancia_propiedad').val(c);
+			$('#ganancia_propiedad').formatCurrency({region: 'es-CL'
+				, roundToDecimalPlace: -1});
+		}
+	});
 </script>

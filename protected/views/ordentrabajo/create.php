@@ -113,7 +113,6 @@
 <script>
 $( document ).ready(function(){
   $('#Ordentrabajo_fechaemision_ot').val($.datepicker.formatDate('yy-mm-dd', new Date()));
-
 });
 $('#Ordentrabajo_totalpagar_ot').click(function(){
   $('#Ordentrabajo_totalpagar_ot').val('');
@@ -122,6 +121,7 @@ $('#Ordentrabajo_totalpagar_ot').blur(function(){
   $('#Ordentrabajo_totalpagar_ot').formatCurrency({region: 'es-CL'
     , roundToDecimalPlace: -0});
 });
+
 $('#Ordentrabajo_totalpagar_ot').keyup(function () {
   var suffix = this.id.match(/\d+/);
 if (isNaN(suffix)) {

@@ -41,3 +41,6 @@ WHERE t.id_arriendo = pa.id_arriendo AND DATE_FORMAT( STR_TO_DATE( mes_pago,  "%
 SELECT DATE_FORMAT( NOW( ) ,  "%m-%Y" ) AS resultado,  DATE_FORMAT( STR_TO_DATE( mes_pago,  "%d-%m-%Y" ) ,  "%m-%Y" ) AS resultado2
 FROM pago pa
 WHERE DATE_FORMAT( STR_TO_DATE( mes_pago,  "%d-%m-%Y" ) ,  "%m-%Y" ) =  DATE_FORMAT( NOW( ) ,  "%m-%Y" )
+-------------------------------------------------------------------------------------------------------------------------------------------------
+SELECT DATE_FORMAT( STR_TO_DATE( mes_pago,  "%d-%m-%Y" ) ,  "%d-%m-%Y" ) ,  DATE_FORMAT( NOW( ) ,  "%d-%m-%Y" )
+FROM pago

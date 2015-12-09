@@ -172,6 +172,22 @@ class PropiedadController extends Controller
 		header("Content-type: application/json");
 		echo CJSON::encode($var);
 	}
+	public function actionDoc($id)
+	{
+		$criteria = new CDbCriteria();
+		$criteria->condition='id_documento='.$id;
+		$criteria->addSearchCondition('url_documento', $var);
+		$resp = Documento::model()->findByPk($id);
+		if ($resp->delete()) {
+			$file=YiiBase::getPathOfAlias("webroot")."/documento/propiedad/".$resp->url_documento;
+			$do = unlink($file);
+			$var = 1;
+		}else {
+			$var = 0;
+		}
+		header("Content-type: application/json");
+		echo CJSON::encode($var);
+	}
 
 	public function codigo($var)
 	{
@@ -279,6 +295,18 @@ class PropiedadController extends Controller
 					$value->delete();
 				}
 			}
+			if($model->venta!=null)
+			{
+				foreach ($model->venta as $key => $venta) {
+					$venta->activo_venta =0;
+					if ($venta->save()) {
+						foreach ($venta->pago as $venta => $pago) {
+							$pago->activo_pago =0;
+							$pago->save();
+						}
+					}
+				}
+			}
 			if(!isset($_GET['ajax'])){
 				Yii::app()->user->setFlash('success','Se elimino correctamente la propiedad, servicios prestados y todos sus documentos e imagenes');
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
@@ -302,10 +330,9 @@ class PropiedadController extends Controller
 	public function actionEliminar($id)
 	{
 		$model=$this->loadModel($id);
-		$model3=new cliente;
-		$model3=cliente::model()->findByPk($model->rut_cliente);
+		$cliente=cliente::model()->findByPk($model->rut_cliente);
 		$this->render('eliminar',array(
-			'model'=>$model, 'model3'=>$model3
+			'model'=>$model, 'model2'=>$cliente
 		));
 	}
 	/**

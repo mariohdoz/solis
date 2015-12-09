@@ -19,7 +19,7 @@ $this->menu=array(
   <section class="content-header">
     <h1>
 	    Eliminar
-	    <small>Vista de la propiedad de la ficha número <?php echo $model->id_propiedad;?>.</small>
+	    <small>Eliminar propiedad de la ficha n° <?php echo $model->id_propiedad;?>.</small>
 	  </h1>
 	  <ol class="breadcrumb">
 	    <li><a href="?r=intra/index">
@@ -31,6 +31,12 @@ $this->menu=array(
   </section>
   <section class="content">
     <div class="row">
+			<div class="col-md-12">
+        <div class="callout callout-danger">
+          <h4>Está a punto de eliminar la propiedad n° <?php echo CHtml::encode($model->id_propiedad); ?> perteneciente a <?php echo CHtml::encode($model->rut_cliente); ?>!</h4>
+          <p>Si elimina la propiedad, también se eliminarán todos los documentos, imagenes y servicios asociados a ésta.</p>
+        </div>
+      </div>
       <!-- Inicio se container -->
 			<div class="col-md-12">
 				<?php if(($msgs=Yii::app()->user->getFlashes())!=null): ?>
@@ -198,32 +204,127 @@ $this->menu=array(
 				<div class="col-md-6">
 					<div class="box box-primary">
 						<div class="box-header with-border">
-	            <h3 class="box-title">Datos del Propiedatio</h3>
+	            <h3 class="box-title">Datos del propietario</h3>
 	          </div>
 						<div class="form">
 							<div class="box-body">
 								<?php $this->widget('zii.widgets.CDetailView', array(
-                   'data' => $model3,
-									 'htmlOptions' => array('class' => 'table-striped table-condensed table-responsive table table-hover'),
-                   'attributes' => array(
-                       'rut_cliente',
-                       array(
-                         'header'=>'Nombre completo',
-                         'name'=>'nombres_cliente',
-                         'value'=>$model3->nombres_cliente.' '.$model3->apellidos_cliente,
-                       ),
-                       'telefonocelular_cliente',
-                       'domicilio_cliente',
-                       'correo_cliente'
-                   )
-               )); ?>
+	      					 'data'=>$model2,
+	      					 'htmlOptions' => array('class' => 'table-striped table-condensed table-responsive table table-hover'),
+	      					 'attributes'=>array(
+	      						 array(
+	      							 'label'=>'RUT',
+	      								'value' =>  CHtml::link($model2->formato,array('/cliente/view/', 'id'=>$model2->rut)) ,
+	      								'type'=>'raw'
+	      						 ),
+	      						 array(
+	      							 'header'=>'Nombre completo',
+	      							 'label'=>'Nombre completo',
+	      							 'value'=>$model2->nombres_cliente.' '.$model2->apellidos_cliente,
+	      						 ),
+	      						 'telefonocelular_cliente',
+	      						 'correo_cliente',
+	      					 ),
+	      					 )); ?>
 							</div>
-							<div class="box-footer">
-							</div>
-						</div>
-					</div>
-				</div>
-      </div>
+	            <div class="box-footer">
+	            </div>
+					  </div>
+				  </div>
+	      </div>
+				<?php
+				if($model->arriendo != null)
+				{
+				  foreach ($model->arriendo as $key => $value) {
+				    echo '<div class="col-md-6">
+				      <div class="box box-primary">
+				        <div class="box-header with-border">
+				          <h3 class="box-title">Arriendo asociado</h3>
+				        </div>
+				        <div class="form">
+				          <div class="box-body">
+				            <div class="col-lg-12 col-md-12 col-xs-12">
+				              <div class="form-group">';
+											$this->widget('zii.widgets.CDetailView', array(
+											  'data'=>$value,
+											  'htmlOptions' => array('class' => 'table-striped table-condensed table-responsive table table-hover'),
+											  'attributes'=>array(
+													array(
+			       							 'label'=>'Número de ficha',
+			       								'value' =>  CHtml::link($value->id_arriendo,array('/arriendo/view/', 'id'=>$value->id_arriendo)) ,
+			       								'type'=>'raw'
+			       						 ),
+											    'fechapago_arriendo',
+											    'inicio_arriendo',
+											    'termino_arriendo',
+											    array('header'=>'Valor',
+											      'label'=>'Valor',
+											      'value'=>Yii::app()->numberFormatter->format("¤#,##0", $value->valor_arriendo, "$ "),
+											    ),
+											  ),
+											));
+				              echo '</div>
+				            </div>
+				          </div>
+				          <div class="box-footer">
+				          </div>
+				        </div>
+				      </div>
+				    </div>';
+				  }
+				}
+				?>
+				<?php
+				if($model->venta != null)
+				{
+				  foreach ($model->venta as $key => $value) {
+				    echo '<div class="col-md-6">
+				      <div class="box box-primary">
+				        <div class="box-header with-border">
+				          <h3 class="box-title">Venta asociado</h3>
+				        </div>
+				        <div class="form">
+				          <div class="box-body">
+				            <div class="col-lg-12 col-md-12 col-xs-12">
+				              <div class="form-group">';
+											$this->widget('zii.widgets.CDetailView', array(
+											  'data'=>$value,
+											  'htmlOptions' => array('class' => 'table-striped table-condensed table-responsive table table-hover'),
+											  'attributes'=>array(
+													array(
+			       							 'label'=>'Número de ficha',
+			       								'value' =>  CHtml::link($value->id_venta,array('/venta/view/', 'id'=>$value->id_venta)) ,
+			       								'type'=>'raw'
+			       						 ),
+												 array(
+													 'header'=>'Rute del comprador',
+													 'label'=>'RUT del Comprador',
+														'value' =>  $value->formato ,
+														'type'=>'raw'
+												 ),
+												 array(
+													 'label'=>'RUT de comprador',
+														'value' =>  CHtml::link($value->Admin,array('/funcionario/view/', 'id'=>$value->ru)) ,
+														'type'=>'raw'
+												 ),
+
+											    array('header'=>'Valor',
+											      'label'=>'Valor',
+											      'value'=>Yii::app()->numberFormatter->format("¤#,##0", $value->ganancia_venta, "$ "),
+											    ),
+											  ),
+											));
+				              echo '</div>
+				            </div>
+				          </div>
+				          <div class="box-footer">
+				          </div>
+				        </div>
+				      </div>
+				    </div>';
+				  }
+				}
+				?>
 			<?php $this->endWidget(); ?>
       <!-- término se container -->
   </section>
