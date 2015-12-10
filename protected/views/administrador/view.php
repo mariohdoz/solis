@@ -1,45 +1,4 @@
-<div class="modal fade modal-Default" id="contrasena" tabindex="-1" role="dialog" aria-labelledby="myModallabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-body">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 style="text-align: center">Cambio de contraseña</h4>
-				<div class="form-horizontal">
-					<?php $form=$this->beginWidget('CActiveForm', array(
-						'id'=>'contrasena-form',
-						'action'=>Yii::app()->request->baseUrl.'/administrador/contra/'.$model->rut,
-						// Please note: When you enable ajax validation, make sure the corresponding
-						// controller action is handling ajax validation correctly.
-						// There is a call to performAjaxValidation() commented in generated controller code.
-						// See class documentation of CActiveForm for details on this.
-						'enableAjaxValidation'=>false,
-					)); ?>
-					<div class="col-md-12">
-						<?php echo $form->errorSummary($model,'<strong>Es necesario arreglar los siguientes errores:</strong><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><div class="alert alert-danger">', '</div>'); ?>
-					</div>
-					<div class="col-md-12">
-						<div class="col-xs-12 col-md-6 col-lg-12">
-							<div class="form-group">
-								<?php echo $form->labelEx($model,'contrasena_admin'); ?>
-								<?php echo $form->passwordField($model,'contrasena_admin',array('class'=>'form-control', 'placeholder'=>'Constraseña del Admin',)); ?>
-							</div>
-						</div><br>
-						<div class="col-xs-12 col-md-6 col-lg-12">
-							<div class="form-group" id="box">
-								<?php echo $form->labelEx($model,'repeat_pass'); ?>
-								<?php echo $form->passwordField($model,'repeat_pass',array('class'=>'form-control', 'placeholder'=>'Repetir contraseña', )); ?>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="modal-footer">
-				<?php echo CHtml::submitButton('Actualizar contraseña', array('class'=>'btn btn-success center-block')); ?>
-			</div>
-		</div>
-	</div>
-</div>
-<?php $this->endWidget(); ?>
+
 <div class="content-wrapper">
 	<section class="content-header">
 		<h1>
@@ -82,7 +41,7 @@
 					<div class="box-header with-border">
 						<h3 class="box-title">Perfil de usuario : </h3><b> <?php echo $model->nombres_admin,' ', $model->apellidos_admin ?></b>
 						<div class="box-tools pull-right">
-							<input class="btn btn-primary" type="button" value="Editar" onclick="habilitar()"/>
+
 
 						</div><!-- /.box-tools -->
 					</div><!-- /.box-header -->
@@ -96,18 +55,6 @@
 
 							</div>
 
-
-							<script>
-								function habilitar(){
-									document.getElementById('uno').disabled=false;
-									document.getElementById('dos').disabled=false;
-									document.getElementById('tres').disabled=false;
-									document.getElementById('cuatro').disabled=false;
-									document.getElementById('cinco').disabled=false;
-									document.getElementById('seis').disabled=false;
-									document.getElementById('siete').disabled=false;
-								}
-							</script>
 						</div>
 						<div class="col-md-10">
 							<div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
@@ -126,25 +73,78 @@
 								<span class="input-group-addon" id="basic-addon1"><i class="fa fa-phone"></i></span>
 								<?php echo $form->textField($model,'telefono_admin', array('class'=>'form-control','disabled'=>'true', 'tabindex'=>5, 'placeholder'=>'Repita la nueva contraseña','id'=>'siete')); ?>
 							</div>
+							<?php
+							$data = explode('-',$model->rut_admin);
+
+							echo CHtml::link("Actualzar", array("administrador/update",'id'=>$data[0]), array('class'=>'btn btn-primary')); ?>
 						</div>
 
 
 
 					</div><!-- /.box-body -->
 					<div class="box-footer">
-						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#contrasena">Cambiar contraseña</button>
-						<?php
-						$data = explode('-',$model->rut_admin);
-
-						echo CHtml::link("Actualzar", array("administrador/update",'id'=>$data[0]), array('class'=>'btn btn-primary')); ?>
-
 
 					</div><!-- box-footer -->
 				</div><!-- /.box -->
 			</div>
+			<?php $this->endWidget(); ?>
 		</div>
 		<div class="row">
+			<?php $form=$this->beginWidget('CActiveForm', array(
+				'id'=>'admin-form',
+				// Please note: When you enable ajax validation, make sure the corresponding
+				// controller action is handling ajax validation correctly.
+				// There is a call to performAjaxValidation() commented in generated controller code.
+				// See class documentation of CActiveForm for details on this.
+				'enableAjaxValidation'=>false,
+			)); ?>
+			<div class="col-lg-12 col-md-12 col-xs-12">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+						<h3 class="box-title">Usuarios del sistema</h3>
+					</div>
+					<div class="form">
+						<div class="box-body">
+							<?php $this->widget('zii.widgets.grid.CGridView', array(
+								'id'=>'admin-grid',
+								'cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css',
+								'dataProvider'=>$model->search(),
+								'filter'=>$model,
+								'columns'=>array(
+									'rut_admin',
+									'nombres_admin',
+									'apellidos_admin',
+									'correo_admin',
 
+
+									array(
+										'header'=>'Actualizar',
+										'class'=>'CButtonColumn',
+										'template'=>'{buscar}  {actualizar}  {eliminar}',
+										'buttons'=>array(
+											'eliminar' => array(
+												'label'=>'<i class="fa fa-trash-o"></i>',
+												'url'=>'Yii::app()->createUrl("propiedad/eliminar", array("id"=>$data->rut_admin))',
+											),
+											'actualizar' => array(
+												'label'=>'<i class="fa fa-pencil-square-o"></i>',
+												'url'=>'Yii::app()->createUrl("propiedad/update", array("id"=>$data->rut_admin))',
+											),
+											'buscar' => array(
+												'label'=>'<i class="fa fa-eye"></i>',
+												'url'=>'Yii::app()->createUrl("propiedad/view", array("id"=>$data->rut_admin))',
+											),
+										),
+									),
+								),
+							)); ?>
+
+						</div>
+						<div class="box-footer">
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<?php $this->endWidget(); ?>
 	</section>
