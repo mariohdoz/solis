@@ -251,10 +251,10 @@ if(!Yii::app()->session['activo'])
                     <i class="fa fa-angle-left pull-right"></i>
                   </a>
                   <ul class="treeview-menu">
-                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/reporte/index"><i class="fa fa-plus"></i> Cotizaciòn</a></li>
-                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-exchange"></i> Otra</a></li>
-                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-close"></i> Otra</a></li>
-                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>"><i class="fa fa-close"></i> Otra</a></li>
+                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/reporte/index"><i class="fa fa-plus"></i> Cotización</a></li>
+                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/reporte/ganancia"><i class="fa fa-exchange"></i> Ganancias</a></li>
+                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/reporte/ganancia2"><i class="fa fa-exchange"></i> Ganancias</a></li>
+
                   </ul>
                 </li>
               </ul>

@@ -321,7 +321,18 @@
 </div>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-2.1.1.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/main.js"></script> <!-- Resource jQuery -->
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/noty/packaged/jquery.noty.packaged.min.js"></script>
+
 <script>
+$(document).ready(function() {
+	var n = noty({
+			text        : 'centerLeft',
+			type        : 'alert',
+			dismissQueue: true,
+			layout      : 'centerLeft',
+			theme       : 'defaultTheme'
+	});
+});
 	$('#validate').click(function(){
 		if ($('#Solicitud_nombres_solicitud').val()!='' && $('#Solicitud_apellidos_solicitud').val()!='' &&  $('#Solicitud_servicio_solicitud').val()!='' && $('#Solicitud_telefono_solicitud').val()!=''&& $('#Solicitud_correo_solicitud').val()!='' && $('#Solicitud_descripcion_solicitud').val()!='') {
 			var nombre = $('#Solicitud_nombres_solicitud').val();
@@ -345,6 +356,21 @@
 			  success: function(result)
 			  {
 			    if (result) {
+						var n = noty({
+                text        : 'Se ha enviado correctamente su solicitud.',
+                type        : 'success',
+                dismissQueue: true,
+                layout      : 'topLeft',
+                closeWith   : ['click'],
+                theme       : 'relax',
+                maxVisible  : 10,
+                animation   : {
+                    open  : 'animated shake',
+                    close : 'animated tada',
+                    easing: 'swing',
+                    speed : 500
+                }
+            });
 			    	$('#co').show("slow");
 						$('#validate').prop({
 							disabled: true

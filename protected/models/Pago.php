@@ -22,6 +22,8 @@ class Pago extends CActiveRecord
 		return 'pago';
 	}
 	public $totalpagar_pago;
+	public $inicio;
+	public $final;
 
 	/**
 	 * @return array validation rules for model attributes.
