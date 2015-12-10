@@ -68,7 +68,8 @@ class Ordentrabajo extends CActiveRecord
  			 $this->addError('rut', 'Rut inválido.');
  	}
 	function getFormato() {
-		return number_format( substr ( $this->rut_funcionario, 0 , -1 ) , 0, "", ".") . '-' . substr ( $this->rut_funcionario, strlen($this->rut_funcionario) -1 , 1 );
+		$rutTmp = explode( "-",  $this->rut_funcionario );
+		return number_format( $rutTmp[0], 0, "", ".") . '-' . $rutTmp[1];
 	}
 
 	/**

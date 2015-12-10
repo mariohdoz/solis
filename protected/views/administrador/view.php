@@ -3,7 +3,7 @@
 	<section class="content-header">
 		<h1>
 			Configuración
-			<small>Perfil de usuario.</small>
+			<small>Perfil de usuario. <?php echo Yii::app()->session['admin_super'] ?></small>
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="?r=intra/index">
@@ -76,7 +76,7 @@
 							<?php
 							$data = explode('-',$model->rut_admin);
 
-							echo CHtml::link("Actualzar", array("administrador/update",'id'=>$data[0]), array('class'=>'btn btn-primary')); ?>
+							echo CHtml::link("Actualizar", array("administrador/update",'id'=>$data[0]), array('class'=>'btn btn-primary')); ?>
 						</div>
 
 
@@ -89,6 +89,7 @@
 			</div>
 			<?php $this->endWidget(); ?>
 		</div>
+		<?php if(Yii::app()->session['admin_super']): ?>
 		<div class="row">
 			<?php $form=$this->beginWidget('CActiveForm', array(
 				'id'=>'funcionario-form',
@@ -108,8 +109,8 @@
 							<?php $this->widget('zii.widgets.grid.CGridView', array(
 								'id'=>'admin-grid',
 								'cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css',
-								'dataProvider'=>$model->search(),
-								'filter'=>$model,
+								'dataProvider'=>$formulario->search(),
+								'filter'=>$formulario,
 								'columns'=>array(
 									'rut_admin',
 									'nombres_admin',
@@ -147,6 +148,7 @@
 			</div>
 		</div>
 		<?php $this->endWidget(); ?>
+	<?php endif; ?>
 	</section>
 </div>
 

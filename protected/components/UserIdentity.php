@@ -33,6 +33,9 @@ class UserIdentity extends CUserIdentity
             Yii::app()->session['admin_img']=$admin->perfil_admin;
             Yii::app()->session['admin_ape']=$admin->apellidos_admin;
             Yii::app()->session['admin_correo']=$admin->correo_admin;
+            Yii::app()->session['admin_super'] = $admin->super_admin;
+            Yii::app()->session['funcionario'] = $admin->fn_admin;
+
 
 
             $this->errorCode=self::ERROR_NONE;

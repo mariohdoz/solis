@@ -30,6 +30,8 @@
                 'columns'=>array(
                   'id_ot',
                   'rut_admin',
+                  'rut_funcionario',
+
                   'inicio_ot',
                   'fechaemision_ot',
                   'servicio_ot',

@@ -51,10 +51,14 @@ class AdministradorController extends Controller
 	 */
 	public function actionView($id)
 	{
-		
+		$formulario=new Administrador('search');
+		$formulario->unsetAttributes();  // clear any default values
+		if(isset($_GET['Administrador']))
+			$formulario->attributes=$_GET['Administrador'];
 		$rut=$this->codigo($id);
 		$this->render('view',array(
 			'model'=>$this->loadModel($rut),
+			'formulario'=>$formulario,
 		));
 	}
 	public function codigo($var)

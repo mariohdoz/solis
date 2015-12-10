@@ -13,6 +13,7 @@
  * @property string $perfil_admin
  * @property integer $super_admin
  * @property integer $activo_admin
+ * @property integer $fn_admin
  */
 class Administrador extends CActiveRecord
 {
@@ -34,7 +35,7 @@ class Administrador extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('rut_admin, nombres_admin, apellidos_admin, contrasena_admin, correo_admin, telefono_admin, perfil_admin', 'required'),
-			array('super_admin, activo_admin', 'numerical', 'integerOnly'=>true),
+			array('super_admin, activo_admin,  fn_admin', 'numerical', 'integerOnly'=>true),
 			array('rut_admin', 'length', 'max'=>10),
 			array('contrasena_admin, repeat_pass', 'length', 'max'=>255),
 			array('rut_admin', 'ValidateRut'),
@@ -47,7 +48,7 @@ class Administrador extends CActiveRecord
 			array('repeat_pass','compare','compareAttribute'=>'contrasena_admin','message'=>'Las contrasñas no coinciden','on'=>'create'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('rut_admin, nombres_admin, apellidos_admin, contrasena_admin, correo_admin, telefono_admin, perfil_admin', 'safe', 'on'=>'search'),
+			array('rut_admin, nombres_admin, apellidos_admin, contrasena_admin, correo_admin, telefono_admin, perfil_admin, super_admin, activo_admin, fn_admin',  'safe', 'on'=>'search'),
 		);
 	}
 	public function getRut(){
@@ -140,6 +141,7 @@ class Administrador extends CActiveRecord
 		$criteria->compare('perfil_admin',$this->perfil_admin,true);
 		$criteria->compare('super_admin',$this->super_admin);
 		$criteria->compare('activo_admin',$this->activo_admin);
+		$criteria->compare('fn_admin',$this->fn_admin);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
