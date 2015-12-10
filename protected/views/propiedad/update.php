@@ -139,12 +139,13 @@ $this->menu=array(
 						<div class="box-body">
 
 									<?php foreach ($model->imagen as $key => $value) {
-					          echo '<div class="col-lg-2 col-sm-4 col-xs-6" id='.$value->id_imagen.'>';
-										echo '<div class="form-group">';
-					          echo '<a class="showcase" href="'.Yii::app()->request->baseUrl.'/images/propiedades/'.$value->url_imagen.'" data-rel="lightcase:myCollection:slideshow">Ver</a>';
-					          echo  CHtml::image(Yii::app()->baseUrl."/images/propiedades/".$value->url_imagen, '',  array('class'=>'thumbnail img-responsive', 'id'=>$value->id_imagen));
-					          echo '</div></div>';
+					          echo '<div class="col-lg-2 col-sm-4 col-xs-6 thumb" id='.$value->id_imagen.'>';
+										echo '<div class="image_wrapper">';
+					          echo '<a class="showcase" href="'.Yii::app()->request->baseUrl.'/images/propiedades/'.$value->url_imagen.'" data-rel="lightcase:myCollection:slideshow"><img src="../../../dist/img/ver.png" title="Ver" class="add"></a>';
+					          echo  CHtml::image(Yii::app()->baseUrl."/images/propiedades/".$value->url_imagen, '',  array('class'=>'image imagenes', 'id'=>$value->id_imagen));
+					          echo '<img src="../../../dist/img/eliminar.png" title="eliminar" class="remove"></div></div>';
 					        } ?>
+
 
 					  </div>
             <div class="box-footer">

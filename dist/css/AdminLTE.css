@@ -47,6 +47,64 @@ body {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
   position: relative;
 }
+.thumb {
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+
+
+.imagenes{
+  border-radius: 2px;
+  border: 2px solid white;
+  height: 100px;
+  width: 100px;
+  object-fit: contain;
+  object-position: top 75%;
+
+}
+
+.image_wrapper {
+  position:relative;
+  width:102px;
+  float:left;
+  margin:10px;
+}
+
+.image_wrapper .image {
+  border:1px solid #ccc;
+  width:100px;
+  height:100px;
+}
+
+/* Definimos el formato de las imagenes */
+.image_wrapper .add, .image_wrapper .remove {
+  position:absolute;
+  top:0px;
+  opacity:0;
+  transition:opacity 0.5s linear;
+  -webkit-transition:opacity 0.5s linear;
+  cursor:pointer;
+  border:0px;
+  width:32px;
+  height:32px;
+}
+
+/* Mostramos el icono al pasar por encima de la imagen con una transicion */
+.image_wrapper:hover .add, .image_wrapper:hover .remove {
+
+  transition: opacity 0.5s linear;
+  -webkit-transition: opacity 0.5s linear;
+  opacity: 0.8;
+}
+
+/* Posicionamos los botones en la posicion izquierda y derecha */
+.image_wrapper .add {
+  left:0px;
+}
+.image_wrapper .remove {
+  right:0px;
+}
+
 .layout-boxed {
   background: url('../img/boxed-bg.jpg') repeat fixed;
 }
