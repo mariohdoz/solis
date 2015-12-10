@@ -143,7 +143,7 @@ $this->menu=array(
 										echo '<div class="image_wrapper">';
 					          echo '<a class="showcase" href="'.Yii::app()->request->baseUrl.'/images/propiedades/'.$value->url_imagen.'" data-rel="lightcase:myCollection:slideshow"><img src="../../../dist/img/ver.png" title="Ver" class="add"></a>';
 					          echo  CHtml::image(Yii::app()->baseUrl."/images/propiedades/".$value->url_imagen, '',  array('class'=>'image imagenes', 'id'=>$value->id_imagen));
-					          echo '<img src="../../../dist/img/eliminar.png" title="eliminar" class="remove"></div></div>';
+					          echo '<img src="../../../dist/img/eliminar.png" id="borrar" title="eliminar" class="remove"></div></div>';
 					        } ?>
 
 
@@ -470,7 +470,7 @@ $this->menu=array(
 		var b = $(this).attr('id');
 		var a = '#'+b;
 		var n = noty({
-		    text        : '¿Está seguro de eliminar la imagen?',
+		    text        : '¿Está seguro de eliminar la imágen?',
 		    type        : 'warning',
 		    dismissQueue: true,
 		    layout      : 'topCenter',

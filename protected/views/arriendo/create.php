@@ -113,8 +113,7 @@ $this->menu=array(
 					<?php
 						$this->widget('zii.widgets.grid.CGridView', array(
 							'id'=>'arrendatario',
-							'itemsCssClass' => 'table table-hover',
-							'htmlOptions' => array('class' => 'table-responsive'),
+							'cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css',
 							'selectableRows'=>1,
 							'selectionChanged'=>'obtenerSeleccion',	// via 1: para mostrar detalles al seleccionar
 							'dataProvider'=>$model2->search(),
@@ -127,20 +126,14 @@ $this->menu=array(
 								'nombres_arrendatario',
 								'apellidos_arrendatario',
 						// via 2: para mostrar detalles al hacer click en un icono.
-								array(
-										'header' => '',
-										'class' => 'CButtonColumn','htmlOptions'=>array('width'=>'100px'),
-										'viewButtonImageUrl' => Yii::app()->baseUrl . '/css/gridViewStyle/images/' . 'gr-view.png',
-										'updateButtonImageUrl' => Yii::app()->baseUrl . '/css/gridViewStyle/images/' . 'gr-update.png',
-										'deleteButtonImageUrl' => Yii::app()->baseUrl . '/css/gridViewStyle/images/' . 'gr-delete.png',
-								),
+
 							),
 						));
 						?>
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-success center-block" data-dismiss="modal">Aceptar</button>
+				<button type="button" class="btn btn-success center-block" data-dismiss="modal"><i class="fa fa-check "></i> Aceptar </button>
 			</div>
 		</div>
 	</div>
@@ -157,8 +150,7 @@ $this->menu=array(
 					<?php
 						$this->widget('zii.widgets.grid.CGridView', array(
 							'id'=>'propiedad',
-							'itemsCssClass' => 'table table-hover',
-							'htmlOptions' => array('class' => 'table-responsive'),
+							'cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css',
 							'selectableRows'=>1,
 							'dataProvider'=>$model3->disponible(),
 							'filter' => $model3,
@@ -171,7 +163,7 @@ $this->menu=array(
 								'direccion_propiedad',
 								'tipo_propiedad',
 								'comuna_propiedad',
-								'servicio_propiedad',
+
 						// via 2: para mostrar detalles al hacer click en un icono.
 
 							),
@@ -180,7 +172,7 @@ $this->menu=array(
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-success center-block" data-dismiss="modal">Aceptar</button>
+				<button type="button" class="btn btn-success center-block" data-dismiss="modal"><i class="fa fa-check "></i> Aceptar</button>
 			</div>
 		</div>
 	</div>
@@ -243,7 +235,7 @@ $this->menu=array(
 							</div>
 						</div>
 						<div class="box-footer">
-							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#arrendatario">Cargar arrendatario</button>
+							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#arrendatario"><i class="fa fa-spinner "></i> Cargar arrendatario</button>
             </div>
 					</div>
 				</div>
@@ -293,7 +285,7 @@ $this->menu=array(
 
 						</div>
 						<div class="box-footer">
-							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#propiedad">Cargar propiedad</button>
+							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#propiedad"><i class="fa fa-spinner "></i> Cargar propiedad</button>
             </div>
 					</div>
 				</div>
