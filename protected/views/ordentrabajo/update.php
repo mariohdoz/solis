@@ -109,7 +109,9 @@ $('#Ordentrabajo_totalpagar_ot').blur(function(){
     , roundToDecimalPlace: -0});
 });
 $('#Ordentrabajo_totalpagar_ot').keyup(function () {
-  var suffix = this.id.match(/\d+/);
+  var a =$('#Ordentrabajo_totalpagar_ot').val();
+  var suffix = a.id.match(/\d+/);
+  alert( a);
 if (isNaN(suffix)) {
     alert('Porfavor ingresar solamente números');
 }else {
