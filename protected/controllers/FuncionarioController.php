@@ -110,6 +110,7 @@ class FuncionarioController extends Controller
 	public function actionCreate()
 	{
 		$model=new Funcionario('create');
+		// $user = 
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);

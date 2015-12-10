@@ -357,21 +357,12 @@ $(document).ready(function() {
 			  {
 			    if (result) {
 						var n = noty({
-                text        : 'Se ha enviado correctamente su solicitud.',
-                type        : 'success',
-                dismissQueue: true,
-                layout      : 'topLeft',
-                closeWith   : ['click'],
-                theme       : 'relax',
-                maxVisible  : 10,
-                animation   : {
-                    open  : 'animated shake',
-                    close : 'animated tada',
-                    easing: 'swing',
-                    speed : 500
-                }
-            });
-			    	$('#co').show("slow");
+								text        : '<div class="activity-item"><i class="fa fa-share-square-o text-success"></i></i> <div class="activity"> <a href="#">'+nombre+' '+apellido+' </a> Se ha registrado correctamente su solicitud. </div> </div>',
+								type        : 'success',
+								dismissQueue: true,
+								layout      : 'topLeft',
+								theme       : 'defaultTheme'
+						});
 						$('#validate').prop({
 							disabled: true
 						});

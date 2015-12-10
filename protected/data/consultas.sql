@@ -44,3 +44,8 @@ WHERE DATE_FORMAT( STR_TO_DATE( mes_pago,  "%d-%m-%Y" ) ,  "%m-%Y" ) =  DATE_FOR
 -------------------------------------------------------------------------------------------------------------------------------------------------
 SELECT DATE_FORMAT( STR_TO_DATE( mes_pago,  "%d-%m-%Y" ) ,  "%d-%m-%Y" ) ,  DATE_FORMAT( NOW( ) ,  "%d-%m-%Y" )
 FROM pago
+
+
+-----------------------------------------------SELECT SUM(`totalpagado_pago`)
+FROM `pago`
+WHERE STR_TO_DATE(mes_pago, '%d-%m-%Y') BETWEEN '2015-01-01' AND '2016-01-01'

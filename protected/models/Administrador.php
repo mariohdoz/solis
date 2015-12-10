@@ -79,7 +79,8 @@ class Administrador extends CActiveRecord
 		return parent::beforeSave();
 	}
 	function getFormato() {
-		return number_format( substr ( $this->rut_admin, 0 , -1 ) , 0, "", ".") . '-' . substr ( $this->rut_admin, strlen($this->rut_admin) -1 , 1 );
+		$rutTmp = explode( "-", $this->rut_admin );
+		return number_format( $rutTmp[0], 0, "", ".") . '-' . $rutTmp[1];
 	}
 
 	/**
