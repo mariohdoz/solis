@@ -36,6 +36,8 @@ class Pago extends CActiveRecord
 			array('fecha_pago, mes_pago, totalpagado_pago', 'required'),
 			array('id_arriendo, totalpagado_pago, activo_pago, totalpagar_pago,id_ot', 'numerical', 'integerOnly'=>true),
 			array('mes_pago', 'length', 'max'=>10),
+			array('inicio, final', 'safe'),
+			array('inicio, final','required','on'=>'reporte','message'=>'Debe escoger la fecha de inicio y término'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_pago, id_arriendo, fecha_pago, mes_pago, totalpagado_pago, activo_pago, id_ot', 'safe', 'on'=>'search'),
@@ -67,6 +69,9 @@ class Pago extends CActiveRecord
 			'totalpagado_pago' => 'Total pagado',
 			'activo_pago' => 'Pago concluido',
 			'totalpagar_pago'=>'Total a pagar',
+			'inicio' => 'Fecha de inicio',
+			'final' => 'Fecha de término',
+
 		);
 	}
 

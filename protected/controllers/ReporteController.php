@@ -26,11 +26,12 @@ Class ReporteController extends Controller
 
     }
     public function actionGanancia2(){
-        $model=new Pago;  // clear any default values
+        $model=new Pago('reporte');  // clear any default values
         if(isset($_POST['Pago'])) {
-            $model->attributes = $_POST['Pago'];
-            var_dump($model->inicio.' '.$model->final);
-            Yii:app()->end();
+            $model->attributes = $_POST['Pago'];// se obitnene las fechas desde el post
+            var_dump($model->inicio);// se obtiene la fecha de inicio
+            var_dump($model->final);// se obtiene la fecha de término
+            yii::app()->end(); // jano ql el var_dump y el Yii::app sacalo wn por que si no, no te va a funcionar
             $model =Propiedad::model()->findAll();
             $mPDF1 = Yii::app()->ePdf->mpdf('utf8_encode()','A4-L','','',15,15,35,25,9,9,'L'); //Esto lo pueden configurar como quieren, para eso deben de entrar en la web de MPDF para ver todo lo que permite.
             $mPDF1->useOnlyCoreFonts = true;
@@ -46,8 +47,6 @@ Class ReporteController extends Controller
             $mPDF1->Output('Reporte Propiedad'.date('YmdHis').'.pdf','I');  //Nombre del pdf y par?metro para ver pdf o descargarlo directamente.
             exit;
         }
-
-
         $this->render("ganancia2",array("model"=>$model));
 
     }
@@ -81,10 +80,11 @@ Class ReporteController extends Controller
     }
     public function actionGananciaPdf()
     {   $model= new Pago;
+        echo '1';
         if(isset($_POST['Pago'])) {
             $model->attributes = $_POST['Pago'];
             var_dump($model->inicio.' '.$model->final);
-            Yii:app()->end();
+            Yii::app()->end();
         }
 
         $model =Propiedad::model()->findAll();

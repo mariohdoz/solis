@@ -30,6 +30,9 @@
                                 // See class documentation of CActiveForm for details on this.
                                 'enableAjaxValidation'=>false,
                             )); ?>
+                            <div class="col-md-12">
+                      				<?php echo $form->errorSummary($model,'<strong>Es necesario arreglar los siguientes errores:</strong><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><div class="alert alert-danger">', '</div>'); ?>
+                      			</div>
                             <div class="col-md-1">
                                 <h4>Desde</h4>
                             </div>
@@ -49,11 +52,7 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <?php echo CHtml::link("Reporte &nbsp;&nbsp;<i class='fa fa-file-pdf-o'></i>", '#', array(
-                                        'submit'=>array('/reporte/gananciapdf'),
-                                        'class'=>'btn btn-google-plus',
-                                    )
-                                );?>
+                              <?php echo CHtml::submitButton( 'Reporte', array('class'=>'btn btn-google-plus' )); ?>
                             </div>
 
                         </div>
@@ -65,26 +64,6 @@
                 </div>
             </div>
             <!-- Inicio se container -->
-
-        </div>
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-xs-12">
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Ganancias en Ventas</h3>
-                    </div>
-                    <div class="form">
-                        <div class="box-body">
-
-                        </div>
-                        <div class="box-footer">
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
         <?php $this->endWidget(); ?>
     </section>
 </div>
