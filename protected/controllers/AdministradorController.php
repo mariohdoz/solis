@@ -51,6 +51,7 @@ class AdministradorController extends Controller
 	 */
 	public function actionView($id)
 	{
+		
 		$rut=$this->codigo($id);
 		$this->render('view',array(
 			'model'=>$this->loadModel($rut),
