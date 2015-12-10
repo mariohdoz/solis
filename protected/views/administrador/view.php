@@ -103,6 +103,9 @@
 				<div class="box box-primary">
 					<div class="box-header with-border">
 						<h3 class="box-title">Usuarios del sistema</h3>
+						<div class="pull-right">
+						<?php echo CHtml::link('<i class="fa fa-plus"></i> &nbsp;&nbsp;Agregar usuario ', array('administrador/create'), array('class'=>'btn btn-success')); ?>
+						</div>
 					</div>
 					<div class="form">
 						<div class="box-body">
@@ -119,21 +122,13 @@
 
 
 									array(
-										'header'=>'Actualizar',
 										'class'=>'CButtonColumn',
-										'template'=>'{buscar}  {actualizar}  {eliminar}',
+										'template'=>'{email}',
 										'buttons'=>array(
-											'eliminar' => array(
-												'label'=>'<i class="fa fa-trash-o"></i>',
-												'url'=>'Yii::app()->createUrl("propiedad/eliminar", array("id"=>$data->rut_admin))',
-											),
-											'actualizar' => array(
-												'label'=>'<i class="fa fa-pencil-square-o"></i>',
-												'url'=>'Yii::app()->createUrl("propiedad/update", array("id"=>$data->rut_admin))',
-											),
-											'buscar' => array(
-												'label'=>'<i class="fa fa-eye"></i>',
-												'url'=>'Yii::app()->createUrl("propiedad/view", array("id"=>$data->rut_admin))',
+											'email' => array(
+												'label'=>'<i class="btn btn-google-plus"><i class="fa fa-pencil-square-o "></i> Modificar</i> ',
+												'class'=>'btn btn-primary',
+												'url'=>'Yii::app()->createUrl("administrador/update", array("id"=>$data->rut))'
 											),
 										),
 									),

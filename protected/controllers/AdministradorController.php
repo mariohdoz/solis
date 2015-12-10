@@ -145,6 +145,24 @@ class AdministradorController extends Controller
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
+	public function actionUpload($id)
+	{
+		  $rut=$this->loadModel($id);
+		  $admin = Administrador::model()->findByPk($rut);
+		  Yii::import("ext.EAjaxUpload.qqFileUploader");
+		  $folder=Yii::app() -> getBasePath() . "/../dist/img/";// folder for uploaded files
+		  $allowedExtensions = array("jpg","jpeg","gif","png");//array("jpg","jpeg","gif","exe","mov" and etc...
+		  $sizeLimit = 5 * 3024 * 3024;// maximum file size in bytes
+		  $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
+		  $result = $uploader->handleUpload($folder);
+		  $return = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
+		  $fileSize=filesize($folder.$result['filename']);//GETTING FILE SIZE
+		  $fileName=$result['filename'];//GETTING FILE NAME
+		  $admin->perfil_admin = $fileName;
+		  $admin->rut_admin = $rut;
+		  $admin->save();
+		  echo $return;// it's array
+}
 
 	/**
 	 * Lists all models.

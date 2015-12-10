@@ -33,8 +33,8 @@ $this->menu=array(
     <div class="row">
 			<div class="col-md-12">
         <div class="callout callout-danger">
-          <h4>Está a punto de eliminar la propiedad n° <?php echo CHtml::encode($model->id_propiedad); ?> perteneciente a <?php echo CHtml::encode($model->rut_cliente); ?>!</h4>
-          <p>Si elimina la propiedad, también se eliminarán todos los documentos, imagenes y servicios asociados a ésta.</p>
+          <h4>Está a punto de eliminar al usuario  <?php echo CHtml::encode($model->nombres_admin); ?> perteneciente a <?php echo CHtml::encode($model->rut_cliente); ?>!</h4>
+
         </div>
       </div>
       <!-- Inicio se container -->
@@ -55,7 +55,7 @@ $this->menu=array(
 				<?php endif; ?>
 			</div>
 			<?php $form=$this->beginWidget('CActiveForm', array(
-				'id'=>'arriendo-form',
+				'id'=>'admin-form',
 				// Please note: When you enable ajax validation, make sure the corresponding
 				// controller action is handling ajax validation correctly.
 				// There is a call to performAjaxValidation() commented in generated controller code.

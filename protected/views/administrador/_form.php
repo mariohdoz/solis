@@ -113,7 +113,7 @@
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#contrasena"><i class="fa fa-unlock-alt"></i> Cambiar contraseña</button>
                         <div class="pull-right">
 						<?php
-						echo CHtml::submitButton($model->isNewRecord ? 'Registrar arrendatario' : 'Guardar Cambios', array('class'=>'btn btn-success', 'placeholder'=>'')); ?>
+						echo CHtml::submitButton($model->isNewRecord ? 'Registrar Usuario' : 'Guardar Cambios', array('class'=>'btn btn-success', 'placeholder'=>'')); ?>
                         </div>
 
 					</div><!-- box-footer -->
