@@ -31,11 +31,9 @@ $this->menu=array(
 		</ol>
 	</section>
 	<section class="content">
-		<div class="row">
 			<!-- Inicio se container -->
 			<?php $this->renderPartial('_form', array('model'=>$model)); ?>
 			<!-- término se container -->
-		</div>
 	</section>
 </div>
 <script>
