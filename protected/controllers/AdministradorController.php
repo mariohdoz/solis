@@ -32,7 +32,7 @@ class AdministradorController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','index','view'),
+				'actions'=>array('create','update','index','view','upload'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -147,7 +147,7 @@ class AdministradorController extends Controller
 	}
 	public function actionUpload($id)
 	{
-		  $rut=$this->loadModel($id);
+		  $rut=$this->codigo($id);
 		  $admin = Administrador::model()->findByPk($rut);
 		  Yii::import("ext.EAjaxUpload.qqFileUploader");
 		  $folder=Yii::app() -> getBasePath() . "/../dist/img/";// folder for uploaded files
@@ -159,7 +159,6 @@ class AdministradorController extends Controller
 		  $fileSize=filesize($folder.$result['filename']);//GETTING FILE SIZE
 		  $fileName=$result['filename'];//GETTING FILE NAME
 		  $admin->perfil_admin = $fileName;
-		  $admin->rut_admin = $rut;
 		  $admin->save();
 		  echo $return;// it's array
 }

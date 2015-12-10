@@ -67,7 +67,7 @@
 								<?php $this->widget('ext.EAjaxUpload.EAjaxUpload', array(
 									'id' => 'uploadFile',
 									'config' => array(
-										'action' => Yii::app()->createUrl('perfil/upload/',array('id'=>$model->rut)),
+                    'action' => Yii::app()->createUrl('administrador/upload/',array('id'=>$model->rut)),
 										'allowedExtensions' => array("jpg","jpeg","gif","png"), //array("jpg","jpeg","gif","exe","mov" and etc...
 										'sizeLimit' => 10 * 1024 * 1024, // maximum file size in bytes
 										'buttonText' => 'Selección',
