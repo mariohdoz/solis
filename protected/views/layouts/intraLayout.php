@@ -82,7 +82,7 @@ if(!Yii::app()->session['activo'])
                           echo $appe[0];
                           echo " ";
                           echo $appe[1];
-                        ?> - Administrador
+                        ?> - <?php echo Yii::app()->session['funcionario']? 'Funcionario':'Administrador' ?>
                       <small><?php echo date("j/ n/ Y");  ; ?></small>
                     </p>
                   </li>

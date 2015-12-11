@@ -84,12 +84,21 @@ class FuncionarioController extends Controller
 	{
 		$rut=$this->codigo($id);
 		$model=$this->loadModel($rut);
+		$admin=Administrador::model()->findByPk($rut);
+		$admin->setScenario('cambio');
 		if (isset($_POST['Funcionario'])) {
 			$model->attributes=$_POST['Funcionario'];
 			if ($model->repeat_pass != '') {
 				if ($model->contrasena_funcionario == $model->repeat_pass) {
+					$var = $model->contrasena_funcionario;
 					if ($model->save()) {
-						Yii::app()->user->setFlash('success','La contraseña del funcionario fue actualizada');
+						$admin->contrasena_admin = $var;
+						$admin->repeat_pass = $model->repeat_pass;
+						if ($model->save()){
+							Yii::app()->user->setFlash('success','La contraseña del funcionario fue actualizada');
+						}else {
+							Yii::app()->user->setFlash('error','La contraseña del funcionario no fue actualizada');
+						}
 					}else {
 						Yii::app()->user->setFlash('error','La contraseña del funcionario no fue actualizada');
 					}
@@ -226,9 +235,11 @@ class FuncionarioController extends Controller
 	public function actionDelete($id)
 	{
 		$rut=$this->codigo($id);
+		$admin = Administrador::model()->findByPk($rut);
 		$model=$this->loadModel($rut);
 		$model->eliminado_funcionario=1;
 		if ($model->save()) {
+			$admin->delete();
 			Yii::app()->user->setFlash('success','El funcionario fue eliminado correctamente.');
 		}else {
 			Yii::app()->user->setFlash('error','El funcionario no pudo ser eliminada.');

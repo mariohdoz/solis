@@ -8,7 +8,7 @@
 				<div class="form-horizontal">
           <?php $form=$this->beginWidget('CActiveForm', array(
             'id'=>'contrasena-form',
-            'action'=>Yii::app()->request->baseUrl.'/funcionario/contra/'.$model->rut,
+            'action'=>Yii::app()->request->baseUrl.'/funcionario/contra/'.str_replace('.','',$model->rut),
             // Please note: When you enable ajax validation, make sure the corresponding
             // controller action is handling ajax validation correctly.
             // There is a call to performAjaxValidation() commented in generated controller code.
@@ -144,9 +144,9 @@
 						</div>
 						<div class="box-footer">
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#contrasena">Cambiar contraseña</button>
-							<?php echo CHtml::link('Actualizar funcionario', array('/funcionario/update/', 'id'=>$model->rut), array('class'=>'btn btn-info', 'confirm' => '¿Está seguro de actualizar el funcionario?')); ?>
+							<?php echo CHtml::link('Actualizar funcionario', array('/funcionario/update/', 'id'=>str_replace('.','',$model->rut)), array('class'=>'btn btn-info', 'confirm' => '¿Está seguro de actualizar el funcionario?')); ?>
 							<?php echo CHtml::link("Eliminar funcionario", '#', array(
-									'submit'=>array('/funcionario/eliminar', "id"=>$model->rut),
+									'submit'=>array('/funcionario/eliminar', "id"=>str_replace('.','',$model->rut)),
 									'class'=>'btn btn-danger',
 									'confirm' => '¿Está seguro de eliminar el funcionario?'
 									)

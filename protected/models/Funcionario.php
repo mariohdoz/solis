@@ -37,7 +37,7 @@ class Funcionario extends CActiveRecord
 		return array(
 			array('rut_funcionario, nombres_funcionario, apellidos_funcionario, telefonofijo_funcionario, telefonocelular_funcionario, domicilio_funcionario, correo_funcionario,contrasena_funcionario', 'required'),
 			array('activo_funcionario, eliminado_funcionario', 'numerical', 'integerOnly'=>true),
-			array('rut_funcionario', 'length', 'max'=>10),
+			array('rut_funcionario', 'length', 'max'=>12),
 			array('contrasena_funcionario, repeat_pass', 'length', 'max'=>255),
 			array('rut_funcionario', 'ValidateRut'),
 			array('repeat_pass','required','on'=>'create','message'=>'Debe repetir la contraseña'),

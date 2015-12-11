@@ -50,6 +50,7 @@
                 <div class="col-sm-8">
                   <?php echo $form->dropDownList($model,'tipo_propiedad',
         						array(
+                      'Todas' => 'Todas',
         							'Casa' => 'Casa',
         							'Departamento Habitación' => 'Departamento Habitación',
         							'Local' => 'Local',
@@ -69,6 +70,8 @@
                 <div class="col-sm-8">
                   <?php echo $form->dropDownList($model,'bano_propiedad',
                       array(
+                        'Todas' => 'Todas',
+                          '0' => '0',
                           '1' => '1',
                           '2' => '2',
                           '3' => '3',
@@ -88,6 +91,8 @@
                 <div class="col-sm-8">
                   <?php echo $form->dropDownList($model,'habitacion_propiedad',
                       array(
+                        'Todas' => 'Todas',
+                          '0' => '0',
                           '1' => '1',
                           '2' => '2',
                           '3' => '3',
@@ -107,6 +112,8 @@
                 <div class="col-sm-8">
                   <?php echo $form->dropDownList($model,'amoblado_propiedad',
                       array(
+                        'Todas' => 'Todas',
+
                           '0' => 'Sin amoblar',
                           '1' => 'Amoblado',
                       ),
@@ -114,23 +121,6 @@
                       array('empty' => '(Seleccione la cantidad de baños)')); ?>
                 </div>
               </div>
-              <div class="form-group form-group">
-                <label class="col-sm-4 control-label" for="formGroupInputLarge">Terreno</label>
-                <div class="col-sm-8">
-                  <?php echo $form->dropDownList($model,'terreno_propiedad',
-                      array(
-                          'Todos' => 'Todos',
-                          '10' => 'Hasta 10 m²',
-                          '30' => 'Hasta 30 m²',
-                          '50' => 'Hasta 50 m²',
-                          '70' => 'Hasta 70 m²',
-                          '90' => '90 m² o más',
-                      ),
-                      array("class"=>"form-control"),
-                      array('empty' => '(Seleccione la cantidad de baños)')); ?>
-                </div>
-              </div>
-
           </div>
         </div>
         <div class="modal-footer">
@@ -166,4 +156,3 @@
           Dirección : PASAJE LATORRE N° 1291 VILLA CHICA
       </div>
   </footer>
-

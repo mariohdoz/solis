@@ -17,7 +17,7 @@
 <div class="col-md-12">
 	<div class="box box-primary">
 		<div class="box-header with-border">
-			<h3 class="box-title">Datos del funcionario <?php echo $model->isNewRecord ?></h3>
+			<h3 class="box-title">Datos del funcionario </h3>
 		</div>
 		<div class="form">
 			<div class="col-md-12">
@@ -26,44 +26,44 @@
 			<div class="box-body">
 				<div class="col-xs-12 col-md-6 col-lg-4">
 					 <div class="form-group">
-						<?php echo $form->labelEx($model,'rut_funcionario'); ?>
-						<?php echo $form->textField($model,'rut_funcionario', array("class"=>"form-control select2", $model->isNewRecord ? '' : 'disabled'=>true, 'placeholder'=>'Ejemplo: 12345678-9')); ?>
+						<?php echo $form->labelEx($model,'formato'); ?>
+						<?php echo $form->textField($model,'formato', array("class"=>"form-control select2", $model->isNewRecord ? '' : 'disabled'=>true, 'placeholder'=>'Ejemplo: 12345678-9', 'required'=>'required')); ?>
 					</div>
 				</div>
 				<div class="col-xs-12 col-md-6 col-lg-4">
 					<div class="form-group">
 						<?php echo $form->labelEx($model,'nombres_funcionario'); ?>
-						<?php echo $form->textField($model,'nombres_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Ingrese los nombres del funcionario')); ?>
+						<?php echo $form->textField($model,'nombres_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Ingrese los nombres del funcionario', 'required'=>'required')); ?>
 					</div>
 				</div>
 				<div class="col-xs-12 col-md-6 col-lg-4">
 					<div class="form-group">
 						<?php echo $form->labelEx($model,'apellidos_funcionario'); ?>
-						<?php echo $form->textField($model,'apellidos_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Ingrese los apellidos del funcionario')); ?>
+						<?php echo $form->textField($model,'apellidos_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Ingrese los apellidos del funcionario', 'required'=>'required')); ?>
 					</div>
 				</div>
 				<div class="col-xs-12 col-md-6 col-lg-4">
 				 <div class="form-group">
 					 <?php echo $form->labelEx($model,'telefonofijo_funcionario'); ?>
-					 <?php echo $form->textField($model,'telefonofijo_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Ejemplo +5655123456 ')); ?>
+					 <?php echo $form->textField($model,'telefonofijo_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Ejemplo +5655123456 ', 'required'=>'required')); ?>
 				 </div>
 			 </div>
 			 <div class="col-xs-12 col-md-6 col-lg-4">
 				 <div class="form-group">
 					 <?php echo $form->labelEx($model,'telefonocelular_funcionario'); ?>
-					 <?php echo $form->textField($model,'telefonocelular_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Ejemplo +56912345678')); ?>
+					 <?php echo $form->textField($model,'telefonocelular_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Ejemplo +56912345678', 'required'=>'required')); ?>
 				 </div>
 			 </div>
 			 <div class="col-xs-12 col-md-6 col-lg-4">
 				 <div class="form-group">
 					 <?php echo $form->labelEx($model,'domicilio_funcionario'); ?>
-					<?php echo $form->textField($model,'domicilio_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Dirección del domicilio')); ?>
+					<?php echo $form->textField($model,'domicilio_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Dirección del domicilio', 'required'=>'required')); ?>
 				 </div>
 			 </div>
 			 <div class="col-xs-12 col-md-6 col-lg-4">
 				 <div class="form-group">
 				 	<?php echo $form->labelEx($model,'correo_funcionario'); ?>
-			 		<?php echo $form->textField($model,'correo_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Correo del funcionario')); ?>
+			 		<?php echo $form->textField($model,'correo_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Correo del funcionario', 'required'=>'required', $model->isNewRecord ? '' : 'disabled'=>true,)); ?>
 				 </div>
 			 </div>
 
@@ -71,20 +71,20 @@
 			 <div class="col-xs-12 col-md-6 col-lg-4">
 				 <div class="form-group">
 				 	<?php echo $form->labelEx($model,'contrasena_funcionario'); ?>
-			 		<?php echo $form->passwordField($model,'contrasena_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Constraseña del funcionario', $model->isNewRecord ? '' : 'disabled'=>true,)); ?>
+			 		<?php echo $form->passwordField($model,'contrasena_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Constraseña del funcionario', $model->isNewRecord ? '' : 'disabled'=>true,'required'=>'required')); ?>
 				 </div>
 			 </div>
 			 <div class="col-xs-12 col-md-6 col-lg-4">
 				 <div class="form-group" id="box">
 				 	<?php echo $form->labelEx($model,'repeat_pass'); ?>
-			 		<?php echo $form->passwordField($model,'repeat_pass',array('class'=>'form-control select2', 'placeholder'=>'Repetir contraseña', $model->isNewRecord ? '' : 'disabled'=>true, )); ?>
+			 		<?php echo $form->passwordField($model,'repeat_pass',array('class'=>'form-control select2', 'placeholder'=>'Repetir contraseña', $model->isNewRecord ? '' : 'disabled'=>true,'required'=>'required' )); ?>
 				 </div>
 			 </div>
 			 <?php endIf; ?>
 			 <div class="col-xs-12 col-md-6 col-lg-4">
 				 <div class="form-group">
 				 	<?php echo $form->labelEx($model,'cargo_funcionario'); ?>
-			 		<?php echo $form->textField($model,'cargo_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Cargo del funcionario')); ?>
+			 		<?php echo $form->textField($model,'cargo_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Cargo del funcionario', 'required'=>'required')); ?>
 				 </div>
 			 </div>
 			</div>

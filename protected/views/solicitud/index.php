@@ -40,9 +40,8 @@
 						<div class="box-body">
 							<?php
                $this->widget('zii.widgets.grid.CGridView', array(
+                 'id'=>'solicitud-grid',
                  'cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css',
-
-								'htmlOptions' => array('class' => 'table-responsive'),
 								'dataProvider'=>$solicitud->sol(),
 								'filter'=>$solicitud,
 								'columns'=>array(
@@ -125,9 +124,8 @@
                 <div class="form-group">
                   <?php
                    $this->widget('zii.widgets.grid.CGridView', array(
-                    'id'=>'cliente-grid',
-                    'itemsCssClass' => 'table table-hover',
-                    'htmlOptions' => array('class' => 'table-responsive'),
+                     'cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css',
+
                     'dataProvider'=>$cliente->clie(),
                     'filter'=>$cliente,
                     'columns'=>array(
@@ -213,9 +211,8 @@
                 <div class="form-group">
                   <?php
                    $this->widget('zii.widgets.grid.CGridView', array(
-                    'id'=>'funcionario-grid',
-                    'itemsCssClass' => 'table table-hover',
-                    'htmlOptions' => array('class' => 'table-responsive'),
+                     'cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css',
+
                     'dataProvider'=>$funcionario->fun(),
                     'filter'=>$funcionario,
                     'columns'=>array(
