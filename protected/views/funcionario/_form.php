@@ -25,24 +25,36 @@
 			</div>
 			<div class="box-body">
 				<?php if(!$model->isNewRecord): ?>
-				<div class="col-xs-12 col-md-6 col-lg-4">
+				<div class="col-xs-12 col-md-6 col-lg-3">
 					 <div class="form-group">
 						<?php echo $form->labelEx($model,'formato'); ?>
 						<?php echo $form->textField($model,'formato', array("class"=>"form-control select2", $model->isNewRecord ? '' : 'disabled'=>true, 'placeholder'=>'Ejemplo: 12345678-9', 'required'=>'required')); ?>
 					</div>
 				</div>
 			<?php else: ?>
-				<div class="col-xs-12 col-md-6 col-lg-4">
+				<div class="col-xs-12 col-md-6 col-lg-3">
+					<div class="form-group">
+						<?php echo $form->labelEx($model,'rut_funcionario'); ?>
+						<?php echo $form->textField($model,'rut_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Ingrese los nombres del funcionario', 'required'=>'required')); ?>
+					</div>
+				</div>
+			<?php endif ?>
+				<div class="col-xs-12 col-md-6 col-lg-3">
 					<div class="form-group">
 						<?php echo $form->labelEx($model,'nombres_funcionario'); ?>
 						<?php echo $form->textField($model,'nombres_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Ingrese los nombres del funcionario', 'required'=>'required')); ?>
 					</div>
 				</div>
-			<?php endif ?>
-				<div class="col-xs-12 col-md-6 col-lg-4">
+				<div class="col-xs-12 col-md-6 col-lg-3">
 					<div class="form-group">
 						<?php echo $form->labelEx($model,'apellidos_funcionario'); ?>
 						<?php echo $form->textField($model,'apellidos_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Ingrese los apellidos del funcionario', 'required'=>'required')); ?>
+					</div>
+				</div>
+				<div class="col-xs-12 col-md-6 col-lg-3">
+					<div class="form-group">
+						<?php echo $form->labelEx($model,'cargo_funcionario'); ?>
+						<?php echo $form->textField($model,'cargo_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Cargo del funcionario', 'required'=>'required')); ?>
 					</div>
 				</div>
 				<div class="col-xs-12 col-md-6 col-lg-4">
@@ -84,12 +96,7 @@
 				 </div>
 			 </div>
 			 <?php endIf; ?>
-			 <div class="col-xs-12 col-md-6 col-lg-4">
-				 <div class="form-group">
-				 	<?php echo $form->labelEx($model,'cargo_funcionario'); ?>
-			 		<?php echo $form->textField($model,'cargo_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Cargo del funcionario', 'required'=>'required')); ?>
-				 </div>
-			 </div>
+
 			</div>
 			<div class="box-footer">
 				<?php echo CHtml::submitButton($model->isNewRecord ? 'Registrar funcionario' : 'Actualizar funcionario', array('class'=>'btn btn-primary', 'placeholder'=>'')); ?>
