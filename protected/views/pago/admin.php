@@ -1,8 +1,8 @@
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
-        Estado de
-        <small>Pagos.</small>
+        Vizualización de pagos
+        <small>Pagos correspondientes al arriendo <?php echo CHtml::link($arriendo->id_arriendo, array('arriendo/view', 'id'=>$arriendo->id_arriendo));?>.</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/intra/index">
@@ -50,7 +50,7 @@
             echo ' box-solid box-success';
           }
 
-					 ?>">
+					 ?>"  >
 						<div class="box-header with-border">
 	            <h3 class="box-title">Fecha de pago <?php echo date("d/m/Y", strtotime($value->mes_pago	)) ?></h3>
 	          </div>
@@ -79,8 +79,8 @@
                 <?php
                 $b =$value->mes_pago;
                 $datb= explode('-',$b);
-                 echo CHtml::link('Administrar pago', array('/pago/update/', 'id'=>$value->id_pago, 'm'=>$datb[1] , 'a'=>$datb[2]), array('class'=>"btn btn-primary", $value->activo_pago? '':'disabled'=>true,)); ?>
-                 <?php echo CHtml::link('Reiniciar valores del pago', array('/pago/limpiar/', 'id'=>$value->id_pago), array('class'=>"btn btn-danger",  'confirm' => '¿Está seguro de reiniciar los valores del pago?')); ?>
+                 echo CHtml::link('Administrar pago', array('/pago/update/', 'id'=>$value->id_pago, 'm'=>$datb[1] , 'a'=>$datb[2]), array('class'=>"btn btn-primary", $value->activo_pago? '':'disabled'=>true, $arriendo->activo_arriendo? '':'disabled'=>true,)); ?>
+                 <?php echo CHtml::link('Reiniciar valores del pago', array('/pago/limpiar/', 'id'=>$value->id_pago), array('class'=>"btn btn-danger",  'confirm' => '¿Está seguro de reiniciar los valores del pago?',$arriendo->activo_arriendo? '':'disabled'=>true)); ?>
 	            </div>
 					  </div>
 				  </div>

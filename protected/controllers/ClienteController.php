@@ -206,9 +206,9 @@ class ClienteController extends Controller
 	 				}
 	 			}
 			 }
-			 foreach ($model->solicitud as $key => $value) {
-			 	$value->delete();
-			 }
+			}
+			foreach ($cliente->solicitud as $key => $value) {
+				$value->delete();
 			}
 		}else {
 			Yii::app()->user->setFlash('danger','El cliente no ha podido ser eliminado.');

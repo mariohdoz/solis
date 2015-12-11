@@ -390,8 +390,18 @@ $this->menu=array(
 		$('#Arriendo_valor_arriendo').val('');
 	});
 	$("#Arriendo_valor_arriendo").blur(function(){
-		$('#Arriendo_valor_arriendo').formatCurrency({region: 'es-CL'
-			, roundToDecimalPlace: -1});
+		var suffix = $(this).val();
+		var a=suffix.replace( /^\D+/g, '').replace( '.', '');
+		var b = parseInt(a);
+		if (!isNaN(b)) {
+			$('#Arriendo_valor_arriendo').formatCurrency({region: 'es-CL'
+				, roundToDecimalPlace: -1});
+			valor();
+		}else {
+			alert('Por favor ingresar un valor numérico.');
+			$(this).val('');
+			$(this).focus();
+		}
 	});
 	$("#Arriendo_rut_arrendatario").click(function(){
 		$("#Arriendo_rut_arrendatario").val('');
@@ -418,7 +428,6 @@ $this->menu=array(
 			    console.log( "error" );
 			  })
 		},
-
 	});
 	$("#Arriendo_valor_arriendo").keyup(function(){
 		$('#Arriendo_valor_arriendo').formatCurrency({region: 'es-CL'
@@ -432,7 +441,6 @@ $this->menu=array(
 		}else {
 				$('#ganancia_propiedad').val('');
 		}
-
 	});
 	$("#Arriendo_valor_arriendo").blur(function(){
 		if ($('#Propiedad_valor_propiedad').val()!='') {
