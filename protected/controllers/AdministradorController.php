@@ -91,6 +91,7 @@ class AdministradorController extends Controller
 			}
 
 		}
+		$model->rut_admin = $model->Puntos;
 
 		$this->render('update',array(
 			'model'=>$model,
@@ -192,6 +193,7 @@ class AdministradorController extends Controller
 				$this->redirect(array('view','id'=>$id));
 			}
 		}
+		$model->rut_admin = $model->formato;
 
 		$this->render('update',array(
 			'model'=>$model,

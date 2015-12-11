@@ -120,7 +120,7 @@ if(!Yii::app()->session['activo'])
               ?></p>
               <a href="#"><i class="fa fa-circle text-success"></i> Conectado</a>
             </div>
-          </div>
+          </div><br>
           <ul class="sidebar-menu">
             <li class="header">PANEL DE NAVEGACIÓN</li>
             <?php if (!Yii::app()->session['funcionario']) : ?>

@@ -20,37 +20,36 @@
 	// See class documentation of CActiveForm for details on this.
 
 )); ?>
-<?php if(!Yii::app()->session['activo']){
-	echo '<div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
-			<div class="cd-user-modal-container"> <!-- this is the container wrapper -->
-				<div id="cd-login"> <!-- log in form -->
-					<div class="cd-form">';
-	echo '  <p class="fieldset">
-							<label class="image-replace cd-email" for="signin-email">E-mail</label>';
-	echo $form->emailField($model,'correo', array("class"=>"full-width has-padding has-border", "placeholder"=>"Correo electrónico"));
-	echo $form->error($model,'correo');
-	echo '</p>
-						<p class="fieldset">
-							<label class="image-replace cd-password" >Password</label>';
-	echo $form->passwordField($model,'password',array( "class"=>"full-width has-padding has-border", "placeholder"=>"Constraseña"));
-	echo $form->error($model,'password');
-	echo'</p>
-
-						<p class="fieldset">
-							<input class="full-width" type="submit" value="Iniciar sesión" />
-						</p>
-					</div>
-					';
-}
-?>
+<?php if(!Yii::app()->session['activo']):?>
+<div class="cd-user-modal">
+	<div class="cd-user-modal-container">
+		<div id="cd-login">
+			<div class="cd-form">
+				<p class="fieldset">
+					<label class="image-replace cd-email" for="LoginForm_correo">E-mail</label>
+					<?php echo $form->emailField($model,'correo', array("class"=>"full-width has-padding has-border", "placeholder"=>"Correo electrónico"));?>
+				</p>
+				<p class="fieldset">
+					<label class="image-replace cd-password" >Password</label>
+					<?php echo $form->passwordField($model,'password',array( "class"=>"full-width has-padding has-border", "placeholder"=>"Constraseña")); ?>
+				</p>
+				<p>
+					<?php echo $form->error($model,'correo'); ?>
+				</p>
+				<p>
+					<?php echo $form->error($model,'password') ?>
+				</p>
+				<p class="fieldset">
+					<input class="full-width" type="submit" value="Iniciar sesión" />
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<?php endIf; ?>
 <?php $this->endWidget(); ?>
 
-<!-- <a href ="#0" class="cd-close-form">Close</a> -->
-</div>		<!-- te rmina el inicio de sesion -->
-
-<a href="#0" class="cd-close-form">Cerrar</a>
-</div> <!-- cd-user-modal-container -->
-</div> <!-- termin el inicio de sesion completo -->
+<!-- <a href ="#0" class="cd-close-form">Close</a> --><!-- termin el inicio de sesion completo -->
 <section id="cd-intro">
 	<div id="cd-intro-tagline">
 		<video autoplay loop id="video-background"  muted>

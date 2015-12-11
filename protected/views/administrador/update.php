@@ -45,7 +45,7 @@
 	<section class="content-header">
 		<h1>
 			Actualizar
-			<small>Actualizar el <?php echo Yii::app()->session['funcionario']? 'funcionario':'administrador' ?> <?php echo CHtml::encode($model->formato); ?>.</small>
+			<small>Actualización de los datos del <?php echo $model->fn_admin? 'funcionario':'administrador' ?> <?php echo CHtml::encode($model->formato); ?>.</small>
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/intra/index">

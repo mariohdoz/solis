@@ -10,14 +10,19 @@
 <div class="col-md-12">
   <div class="box box-primary">
     <div class="box-header with-border">
+      <?php if($administrador->isNewRecord): ?>
       <h3 class="box-title">Datos del administrador</h3>
+    <?php else: ?>
+      <h3 class="box-title">Datos del <?php echo $administrador->fn_admin? 'funcionario':'administrador' ?></h3>
+    <?php endif; ?>
+
     </div>
     <div class="form">
       <div class="box-body">
         <div class="col-md-12">
           <?php echo $form->errorSummary($administrador,'<strong>Es necesario arreglar los siguientes errores:</strong><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><div class="alert alert-danger">', '</div>'); ?>
         </div>
-        <?php if($model->isNewRecord): ?>
+        <?php if($administrador->isNewRecord): ?>
         <div class="col-lg-3 col-md-12">
           <div class="center-block imagen">
              <img src="<?php echo Yii::app()->request->baseUrl; ?>/dist/img/null"  class="img-thumbnail" alt="Imagen de usuario" />
@@ -43,7 +48,7 @@
              <img src="<?php echo Yii::app()->request->baseUrl; ?>/<?php echo $administrador->perfil_admin ?>"  class="img-thumbnail" alt="Imagen de usuario" />
              </br>
              </br>
-             <div class="col-lg-12 col-md-12 col-xs-12" id='<?php echo $model->rut ?>'>
+             <div class="col-lg-12 col-md-12 col-xs-12" id='<?php echo $administrador->rut ?>'>
                <?php $this->widget('ext.EAjaxUpload.EAjaxUpload', array(
                	'id' => 'uploadFile',
                	'config' => array(
@@ -115,12 +120,14 @@
             </div>
           </div>
           <?php if(Yii::app()->session['admin_super']): ?>
-          <div class="col-lg-6 col-md-12 col-xs-12">
-            <div class="form-group">
-              <label for="admin_super_admin">Administrador de mayor privilegio</label><br>
-              <?php echo $form->checkBox($administrador , 'super_admin' , array()); ?>
+            <?php if(!$administrador->fn_admin): ?>
+            <div class="col-lg-6 col-md-12 col-xs-12">
+              <div class="form-group">
+                <label for="admin_super_admin">Administrador de mayor privilegio</label><br>
+                <?php echo $form->checkBox($administrador , 'super_admin' , array()); ?>
+              </div>
             </div>
-          </div>
+            <?php endif; ?>
         <?php endif; ?>
         </div>
       </div>
@@ -130,7 +137,7 @@
         <?php else: ?>
           <?php echo CHtml::submitButton($administrador->isNewRecord ? 'Registrar funcionario' : 'Actualizar funcionario', array('class'=>'btn btn-primary', 'placeholder'=>'')); ?>
         <?php endif; ?>
-        <?php if(!$model->isNewRecord): ?>
+        <?php if(!$administrador->isNewRecord): ?>
 					<button type="button" class="btn btn-info" data-toggle="modal" data-target="#contrasena">Cambiar contraseña</button>
 				<?php endIf; ?>
       </div>

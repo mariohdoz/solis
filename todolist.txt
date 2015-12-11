@@ -26,3 +26,6 @@ Ordenes de trabajo deben ir con hora
 
 Ver y actualizar ordenes de trabajo
 Crear solicitudes
+
+
+Campos de nacionalidad arrendatario. 

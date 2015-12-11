@@ -82,7 +82,7 @@ class Funcionario extends CActiveRecord
        return parent::beforeSave();
 }
 function getFormato() {
-	$rutTmp = explode( "-",  $this->rut_funcionario );
+	$rutTmp = explode( "-",  str_replace('.','',$this->rut_funcionario) );
 	return number_format( $rutTmp[0], 0, "", ".") . '-' . $rutTmp[1];
 }
 

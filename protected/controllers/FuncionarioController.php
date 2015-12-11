@@ -70,6 +70,9 @@ class FuncionarioController extends Controller
 	{
 		$rut=$this->codigo($id);
 		$resp = Funcionario::model()->findAllByAttributes(array('rut_funcionario'=>$rut));
+		foreach ($resp as $key => $value) {
+			$value->rut_funcionario=$value->formato;
+		}
 		if ($resp) {
 			header("Content-type: application/json");
 			echo CJSON::encode($resp);

@@ -42,8 +42,7 @@ $this->menu=array(
 					<?php
 						$this->widget('zii.widgets.grid.CGridView', array(
 							'id'=>'cliente',
-							'itemsCssClass' => 'table table-hover',
-							'htmlOptions' => array('class' => 'table-responsive'),
+							'cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css',
 							'selectableRows'=>1,
 							'selectionChanged'=>'obtenerCliente',	// via 1: para mostrar detalles al seleccionar
 							'dataProvider'=>$cliente->search(),
@@ -357,6 +356,8 @@ $this->menu=array(
 	});
 	$('#Propiedad_rut_cliente').Rut({
 		on_error: function(){
+			alert('RUT mal ingresado, favor de reingresarlo');
+			$('#Propiedad_rut_cliente').val('');
 		},
 		on_success: function(){
 			var rut = $('#Propiedad_rut_cliente').val();
@@ -367,9 +368,16 @@ $this->menu=array(
 			var action = "<?php echo Yii::app()->request->baseUrl; ?>"+'/propiedad/obtener/'+res[0];
 			$.getJSON(action, function(data) {
 				$.each(data, function(key, cliente) {
-					$('#Cliente_correo_cliente').val(cliente.correo_cliente);
-					$('#Cliente_nombres_cliente').val(cliente.nombres_cliente);
-					$('#Cliente_apellidos_cliente').val(cliente.apellidos_cliente);
+					if (cliente) {
+						$('#Cliente_correo_cliente').val(cliente.correo_cliente);
+						$('#Cliente_nombres_cliente').val(cliente.nombres_cliente);
+						$('#Cliente_apellidos_cliente').val(cliente.apellidos_cliente);
+					}else {
+						alert('usuario no encontrado');
+						$('#Propiedad_rut_cliente').val('');
+						return false;
+					}
+
 				});
 			}).fail(function() {
 			    console.log( "error" );

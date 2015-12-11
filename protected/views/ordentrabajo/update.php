@@ -86,7 +86,7 @@
   <section class="content">
     <div class="row">
       <!-- Inicio se container -->
-			<?php $this->renderPartial('_form', array('model'=>$model, 'integra'=>$integra, 'funcionario'=>$funcionario)); ?>
+			<?php $this->renderPartial('_form', array('model'=>$model, 'funcionario'=>$funcionario)); ?>
 
       <!-- término se container -->
     </div>

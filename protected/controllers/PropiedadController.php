@@ -149,6 +149,10 @@ class PropiedadController extends Controller
 	{
 		$rut=$this->codigo($id);
 		$resp = Cliente::model()->findAllByAttributes(array('rut_cliente'=>$rut));
+		if($resp==NULL){
+			$resp= new Cliente;
+			$resp->nombres_cliente='false';
+		}
 		if ($resp) {
 			header("Content-type: application/json");
 			echo CJSON::encode($resp);

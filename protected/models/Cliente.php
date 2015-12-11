@@ -93,7 +93,7 @@ class Cliente extends CActiveRecord
  			 $this->addError('rut', 'Rut inválido.');
  	}
 	function getFormato() {
-		$rutTmp = explode( "-",  $this->rut_cliente );
+		$rutTmp = explode( "-", str_replace('.','',$this->rut_cliente));
 	return number_format( $rutTmp[0], 0, "", ".") . '-' . $rutTmp[1];
 	}
 

@@ -1,6 +1,5 @@
 <script>
   function obtenerfuncionario(){
-    alert('Funcionario seleccionado');
 		var rut = $.fn.yiiGridView.getSelection('funcionario');
 		var str = rut+"";
 		var res = str.split("-");
@@ -35,8 +34,7 @@
 					<?php
 						$this->widget('zii.widgets.grid.CGridView', array(
 							'id'=>'funcionario',
-							'itemsCssClass' => 'table table-hover',
-							'htmlOptions' => array('class' => 'table-responsive'),
+              'cssFile' => Yii::app()->baseUrl . '/css/gridViewStyle/gridView.css',
 							'selectableRows'=>1,
 							'selectionChanged'=>'obtenerfuncionario',	// via 1: para mostrar detalles al seleccionar
 							'dataProvider'=>$formulario->libre(),
@@ -102,7 +100,7 @@
        <?php endif; ?>
 			</div>
       <!-- Inicio se container -->
-			<?php $this->renderPartial('_form', array('model'=>$model, 'integra'=>$integra, 'funcionario'=>$funcionario)); ?>
+			<?php $this->renderPartial('_form', array('model'=>$model,  'funcionario'=>$funcionario)); ?>
       <!-- término se container -->
     </div>
   </section>
@@ -113,22 +111,27 @@
 <script>
 $( document ).ready(function(){
   $('#Ordentrabajo_fechaemision_ot').val($.datepicker.formatDate('yy-mm-dd', new Date()));
-});
-$('#Ordentrabajo_totalpagar_ot').click(function(){
-  $('#Ordentrabajo_totalpagar_ot').val('');
-});
-$('#Ordentrabajo_totalpagar_ot').blur(function(){
-  $('#Ordentrabajo_totalpagar_ot').formatCurrency({region: 'es-CL'
-    , roundToDecimalPlace: -0});
+  $('#Ordentrabajo_totalpagar_ot').click(function(){
+    $('#Ordentrabajo_totalpagar_ot').val('');
+  });
+  $("#Ordentrabajo_totalpagar_ot").keyup(function(){
+		$('#Ordentrabajo_totalpagar_ot').formatCurrency({region: 'es-CL'
+			, roundToDecimalPlace: -1});
+	});
+  $("#Ordentrabajo_totalpagar_ot").blur(function(){
+    var suffix = $(this).val();
+    var a=suffix.replace( /^\D+/g, '').replace( '.', '');
+    var b = parseInt(a);
+    if (!isNaN(b)) {
+      $('#Ordentrabajo_totalpagar_ot').formatCurrency({region: 'es-CL'
+        , roundToDecimalPlace: -1});
+    }else {
+      alert('Por favor ingresar un valor numérico.');
+      $(this).val('');
+      $(this).focus();
+    }
+  });
 });
 
-$('#Ordentrabajo_totalpagar_ot').keyup(function () {
-  var suffix = this.id.match(/\d+/);
-if (isNaN(suffix)) {
-    alert('Porfavor ingresar solamente números');
-}else {
-  $('#Ordentrabajo_totalpagar_ot').formatCurrency({region: 'es-CL'
-    , roundToDecimalPlace: -0});
-}
-});
+
 </script>

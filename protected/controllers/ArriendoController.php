@@ -167,8 +167,18 @@ class ArriendoController extends Controller
 	public function actionObtener($id){
 		$rut=$this->codigo($id);
 		$resp = Arrendatario::model()->findAllByAttributes(array('rut_arrendatario'=>$rut));
-		header("Content-type: application/json");
-		echo CJSON::encode($resp);
+		if($resp==NULL){
+			$resp= new Arrendatario;
+			$resp->nombres_arrendatario='false';
+		}
+		if ($resp) {
+			header("Content-type: application/json");
+			echo CJSON::encode($resp);
+		}else {
+			$resp = '';
+			header("Content-type: application/json");
+			echo CJSON::encode($resp);
+		}
 	}
 
 	public function actionObtenerpro($id){

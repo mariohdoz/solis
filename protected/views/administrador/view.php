@@ -161,6 +161,13 @@
 									'apellidos_admin',
 									'correo_admin',
 									array(
+                    'header'=>'Estado',
+                    'name'=>'fn_admin',
+                    'value' => '$data->fn_admin?Yii::t(\'app\',\'Funcionario\'):Yii::t(\'app\', \'Administrador\')',
+                    'filter' => array('0' => Yii::t('app', 'Administrador'), '1' => Yii::t('app', 'Funcionario')),
+                    'htmlOptions' => array('style' => "text-align:center;"),
+                   ),
+									array(
                     'header'=>'Actualizar',
                     'class'=>'CButtonColumn',
                     'template'=>'{buscar}  {actualizar}  {eliminar}',

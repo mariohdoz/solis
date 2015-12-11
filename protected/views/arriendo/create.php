@@ -236,6 +236,7 @@ $this->menu=array(
 						</div>
 						<div class="box-footer">
 							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#arrendatario"><i class="fa fa-spinner "></i> Cargar arrendatario</button>
+							<?php echo CHtml::link('<i class="fa fa-plus"></i> &nbsp;&nbsp;Nuevo arrrendatario ', array('arrendatario/create'), array('class'=>'btn btn-success')); ?>
             </div>
 					</div>
 				</div>
@@ -286,6 +287,7 @@ $this->menu=array(
 						</div>
 						<div class="box-footer">
 							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#propiedad"><i class="fa fa-spinner "></i> Cargar propiedad</button>
+							<?php echo CHtml::link('<i class="fa fa-plus"></i> &nbsp;&nbsp;Nuevo propiedad ', array('propiedad/create'), array('class'=>'btn btn-success')); ?>
             </div>
 					</div>
 				</div>
@@ -405,8 +407,9 @@ $this->menu=array(
 	});
 	$("#Arriendo_rut_arrendatario").click(function(){
 		$("#Arriendo_rut_arrendatario").val('');
-	})
-	$("#Arriendo_rut_arrendatario").Rut({
+	});
+
+	$('#Arriendo_rut_arrendatario').Rut({
 		on_error: function(){
 			alert('El RUT ingresado es incorrecto.');
 			$('#Arrendatario_nombres_arrendatario').val('');
@@ -418,17 +421,25 @@ $this->menu=array(
 			var a = rut.replace('.','');
 			a = a.replace('.','');
 			var res = a.split("-");
-			var action = "<?php echo Yii::app()->request->baseUrl; ?>"+'/arriendo/arrendatario/'+res[0];
+			var action = "<?php echo Yii::app()->request->baseUrl; ?>"+'/arriendo/obtener/'+res[0];
 			$.getJSON(action, function(data) {
 				$.each(data, function(key, cliente) {
-					$('#Arrendatario_nombres_arrendatario').val(cliente.nombres_arrendatario);
-					$('#Arrendatario_apellidos_arrendatario').val(cliente.apellidos_arrendatario);
+					if (cliente) {
+						$('#Arrendatario_nombres_arrendatario').val(cliente.nombres_arrendatario);
+						$('#Arrendatario_apellidos_arrendatario').val(cliente.apellidos_arrendatario);
+					}else {
+						alert('Arrendatario no encontrado');
+						$('#Arriendo_rut_arrendatario').val('');
+						return false;
+					}
+
 				});
 			}).fail(function() {
 			    console.log( "error" );
 			  })
 		},
 	});
+
 	$("#Arriendo_valor_arriendo").keyup(function(){
 		$('#Arriendo_valor_arriendo').formatCurrency({region: 'es-CL'
 			, roundToDecimalPlace: -1});
@@ -460,4 +471,5 @@ $this->menu=array(
 				, roundToDecimalPlace: -1});
 		}
 	});
+
 </script>

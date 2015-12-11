@@ -42,7 +42,7 @@ class Solicitud extends CActiveRecord
 		return array(
 			array('servicio_solicitud, descripcion_solicitud', 'required'),
 			array('estado_solicitud', 'numerical', 'integerOnly'=>true),
-			array('rut_cliente, rut_funcionario', 'length', 'max'=>10),
+			array('rut_cliente, rut_funcionario', 'length', 'max'=>12),
 			array('rut_cliente, rut_funcionario', 'ValidateRut'),
 			array('fecha_solicitud, fechaejecucion_solicitud', 'safe'),
 
@@ -85,8 +85,8 @@ class Solicitud extends CActiveRecord
  			 $this->addError('rut', 'Rut inválido.');
  	}
 	public function getRutFuncionario(){
-		$data = explode('-', $this->rut_funcionario);
-		return $data[0];
+		$rutTmp = explode( "-",  str_replace('.','',$this->rut_funcionario) );
+		return number_format( $rutTmp[0], 0, "", ".") . '-' . $rutTmp[1];
 	}
  	public function ValidateRutFuncionario($attribute, $param){
  		$data = explode('-', $this->rut_funcionario);
@@ -109,8 +109,8 @@ class Solicitud extends CActiveRecord
  			 $this->addError('rut', 'Rut inválido.');
  	}
 	function getFormato() {
-		return number_format( substr ( $this->rut, 0 , -1 ) , 0, "", ".") . '-' . substr ( $this->rut, strlen($this->rut) -1 , 1 );
-	}
+		$rutTmp = explode( "-",  str_replace('.','',$this->rut_cliente) );
+		return number_format( $rutTmp[0], 0, "", ".") . '-' . $rutTmp[1];	}
 
 	/**
 	 * @return array relational rules.

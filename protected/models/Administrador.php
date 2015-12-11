@@ -82,11 +82,18 @@ class Administrador extends CActiveRecord
 		$this->contrasena_admin = sha1($this->contrasena_admin);
 		return parent::beforeSave();
 	}
-	function getFormato() {
-		$rutTmp = explode( "-", $this->rut_admin );
-		return number_format( $rutTmp[0], 0, "", ".") . '-' . $rutTmp[1];
+	function getPuntos(){
+		$parte4 = substr($this->rut_admin, -1); // seria solo el numero verificador
+		$parte3 = substr($this->rut_admin, -4,3); // la cuenta va de derecha a izq
+		$parte2 = substr($this->rut_admin, -7,3);
+		$parte1 = substr($this->rut_admin, 0,-8); //de esta manera toma todos los caracteres desde el 8 hacia la izq
+		return $parte1.".".$parte2.".".$parte3."".$parte4;
 	}
 
+	function getFormato() {
+		$rutTmp = explode( "-", str_replace('.','',$this->rut_admin) );
+		return number_format( $rutTmp[0], 0, "", ".") . '-' . $rutTmp[1];
+	}
 	/**
 	 * @return array relational rules.
 	 */
@@ -135,6 +142,7 @@ class Administrador extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
+		$criteria->condition ='activo_admin = 1 OR fn_admin=1';
 		$criteria->compare('rut_admin',$this->rut_admin,true);
 		$criteria->compare('nombres_admin',$this->nombres_admin,true);
 		$criteria->compare('apellidos_admin',$this->apellidos_admin,true);
@@ -143,7 +151,7 @@ class Administrador extends CActiveRecord
 		$criteria->compare('telefono_admin',$this->telefono_admin,true);
 		$criteria->compare('perfil_admin',$this->perfil_admin,true);
 		$criteria->compare('super_admin',$this->super_admin);
-		$criteria->compare('activo_admin',1);
+		$criteria->compare('activo_admin',$this->activo_admin);
 		$criteria->compare('fn_admin',$this->fn_admin);
 
 		return new CActiveDataProvider($this, array(

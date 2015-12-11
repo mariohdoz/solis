@@ -25,7 +25,7 @@ class LoginForm extends CFormModel
 			array('correo, password', 'required','message'=>'El campo {attribute} no puede estar vacío'),
 			// rememberMe needs to be a boolean
 			array('rememberMe', 'boolean'),
-			array('correo','exist','attributeName'=>'correo_admin','className'=>'Administrador', 'message'=>'El correo ingresado no es valido'),
+			array('correo','exist','attributeName'=>'correo_admin','className'=>'Administrador', 'message'=>'<p class="text-danger">El correo ingresado no es valido</p>'),
 			// password needs to be authenticated
 			array('password', 'authenticate'),
 		);
