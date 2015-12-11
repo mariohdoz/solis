@@ -1,5 +1,6 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
   'id'=>'administrador-form',
+  'action'=>$administrador->isNewRecord?  Yii::app()->request->baseUrl.'/administrador/create/' :  Yii::app()->request->baseUrl.'/administrador/update/'.$administrador->rut,
   // Please note: When you enable ajax validation, make sure the corresponding
   // controller action is handling ajax validation correctly.
   // There is a call to performAjaxValidation() commented in generated controller code.
@@ -39,7 +40,7 @@
       <?php else: ?>
         <div class="col-lg-3 col-md-12">
           <div class="center-block imagen">
-             <img src="<?php echo Yii::app()->request->baseUrl; ?>/<?php echo $model->perfil_admin ?>"  class="img-thumbnail" alt="Imagen de usuario" />
+             <img src="<?php echo Yii::app()->request->baseUrl; ?>/<?php echo $administrador->perfil_admin ?>"  class="img-thumbnail" alt="Imagen de usuario" />
              </br>
              </br>
              <div class="col-lg-12 col-md-12 col-xs-12" id='<?php echo $model->rut ?>'>
@@ -113,16 +114,22 @@
               <?php echo $form->textField($administrador , 'telefono_admin' , array('class'=>'form-control', 'required'=>'required')); ?>
             </div>
           </div>
+          <?php if(Yii::app()->session['admin_super']): ?>
           <div class="col-lg-6 col-md-12 col-xs-12">
             <div class="form-group">
               <label for="admin_super_admin">Administrador de mayor privilegio</label><br>
               <?php echo $form->checkBox($administrador , 'super_admin' , array()); ?>
             </div>
           </div>
+        <?php endif; ?>
         </div>
       </div>
       <div class="box-footer">
-        <?php echo CHtml::submitButton($administrador->isNewRecord ? 'Registrar administrador' : 'Actualizar administrador', array('class'=>'btn btn-primary', 'placeholder'=>'')); ?>
+        <?php if(!Yii::app()->session['funcionario']): ?>
+          <?php echo CHtml::submitButton($administrador->isNewRecord ? 'Registrar administrador' : 'Actualizar administrador', array('class'=>'btn btn-primary', 'placeholder'=>'')); ?>
+        <?php else: ?>
+          <?php echo CHtml::submitButton($administrador->isNewRecord ? 'Registrar funcionario' : 'Actualizar funcionario', array('class'=>'btn btn-primary', 'placeholder'=>'')); ?>
+        <?php endif; ?>
         <?php if(!$model->isNewRecord): ?>
 					<button type="button" class="btn btn-info" data-toggle="modal" data-target="#contrasena">Cambiar contraseña</button>
 				<?php endIf; ?>
