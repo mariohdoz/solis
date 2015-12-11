@@ -59,7 +59,7 @@ class SiteController extends Controller
 		$criteria->select = 't.*, pago.*, propiedad.*';
 		$criteria->condition='t.id_arriendo = pago.id_arriendo AND DATE_FORMAT( STR_TO_DATE( pago.mes_pago,  "%d-%m-%Y" ) ,  "%m-%Y" ) =  DATE_FORMAT( NOW( ) ,  "%m-%Y" )';
 */
-
+		$arriendo=Arriendo::model()->findByPk(49);
 		$model=Administrador::model()->findByPK('18183527-3');
 		$model2=Administrador::model()->findByPK('18183527-3');
 
@@ -83,6 +83,7 @@ class SiteController extends Controller
 
 		$this->render('test',array(
 			'model'=>$model,
+			'arriendo'=>$arriendo,
 
 		));
  	}

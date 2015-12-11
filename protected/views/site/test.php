@@ -3,7 +3,7 @@
   <section class="content-header">
     <h1>
 	    Configuración
-	    <small>Texto aquí.</small>
+	    <small>Texto aquí. <?php echo $arriendo->arrendatario->rut_arrendatario ?></small>
 	  </h1>
 	  <ol class="breadcrumb">
 	    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/intra/index">
@@ -23,7 +23,7 @@
           </div>
 					<div class="form">
 						<div class="box-body">
-    
+
 					  </div>
             <div class="box-footer">
             </div>

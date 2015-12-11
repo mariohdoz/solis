@@ -57,6 +57,7 @@ class Arriendo extends CActiveRecord
 		return array(
 			'pago'=>array(self::HAS_MANY, 'Pago', 'id_arriendo', 'order'=>'id_pago ASC'),
 			'propiedad'=>array(self::BELONGS_TO, 'Propiedad', 'id_propiedad'),
+			'arrendatario'=>array(self::BELONGS_TO, 'Arrendatario', 'rut_arrendatario'),
 		);
 	}
 
