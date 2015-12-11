@@ -138,7 +138,7 @@
               </div>
 					  </div>
             <div class="box-footer">
-              <?php echo CHtml::link('Orden de trabajo', array('/intra/index'), array('class'=>'btn btn-primary')); ?>
+              <?php echo CHtml::link('Completar solicitud', array('/solicitud/realizada','id'=>$solicitud->id_solicitud), array('class'=>'btn btn-primary')); ?>
 							<?php echo CHtml::link('Actualizar solicitud', array('/solicitud/update/', 'id'=>$solicitud->id_solicitud), array('class'=>'btn btn-info', 'confirm' => '¿Está seguro de actualizar la solicitud?')); ?>
 							<?php echo CHtml::link("Eliminar solicitud", '#', array(
 									'submit'=>array('/solicitud/delete', "id"=>$solicitud->id_solicitud),

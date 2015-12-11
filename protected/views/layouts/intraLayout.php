@@ -229,6 +229,7 @@ if(!Yii::app()->session['activo'])
                 </a>
                 <ul class="treeview-menu">
                   <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/solicitud/index"><i class="fa fa-eye"></i> Solicitudes pendientes </a></li>
+                  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/solicitud/create"><i class="fa fa-plus"></i> Crear Solicitud pendientes </a></li>
                 </ul>
               </li>
             </ul>            <!-- 4-->
