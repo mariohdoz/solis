@@ -174,9 +174,6 @@ class PropiedadController extends Controller
 	}
 	public function actionDoc($id)
 	{
-		$criteria = new CDbCriteria();
-		$criteria->condition='id_documento='.$id;
-		$criteria->addSearchCondition('url_documento', $var);
 		$resp = Documento::model()->findByPk($id);
 		if ($resp->delete()) {
 			$file=YiiBase::getPathOfAlias("webroot")."/documento/propiedad/".$resp->url_documento;

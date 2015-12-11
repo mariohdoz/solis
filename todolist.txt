@@ -15,5 +15,14 @@ Jano: CRUD de administrador el cual debe permitir modificar el perfil del usuari
       arreglar inicio de sesión para que funcionarios puedan ingresar y ser derivados a otro layout para que tengan acceso solo a los contoller y action permitidos.
 
 
-Crear orden de trabajo de reunion( tipo servicio), el cual se verá reflejado en el apartado del site con unos box por cada cita que se tenga para el día en si
+
+
+
+
+[Crear orden de trabajo de reunion( tipo servicio), el cual se verá reflejado en el apartado del site con unos box por cada cita que se tenga para el día en si
 Ordenes de trabajo deben ir con hora
+]
+
+
+Ver y actualizar ordenes de trabajo
+Crear solicitudes

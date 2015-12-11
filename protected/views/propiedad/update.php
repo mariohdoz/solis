@@ -142,8 +142,8 @@ $this->menu=array(
 					          echo '<div class="col-lg-2 col-sm-4 col-xs-6 thumb" id='.$value->id_imagen.'>';
 										echo '<div class="image_wrapper">';
 					          echo '<a class="showcase" href="'.Yii::app()->request->baseUrl.'/images/propiedades/'.$value->url_imagen.'" data-rel="lightcase:myCollection:slideshow"><img src="../../../dist/img/ver.png" title="Ver" class="add"></a>';
-					          echo  CHtml::image(Yii::app()->baseUrl."/images/propiedades/".$value->url_imagen, '',  array('class'=>'image imagenes', 'id'=>$value->id_imagen));
-					          echo '<img src="../../../dist/img/eliminar.png" id="borrar" title="eliminar" class="remove"></div></div>';
+					          echo  CHtml::image(Yii::app()->baseUrl."/images/propiedades/".$value->url_imagen, '',  array('class'=>'image imagenes', 'id'=>'img-'.rand(), 'checkID'=>$value->id_imagen));
+					          echo '<img src="../../../dist/img/eliminar.png" id="img-'.rand().'" title="eliminar" checkID="'.$value->id_imagen.'" class="remove"></div></div>';
 					        } ?>
 
 
@@ -364,6 +364,37 @@ $this->menu=array(
 <script>
 
 	$(document).ready(function(){
+		$('[id^=img]').click(function(event) {
+		  var b = $(this).attr('checkID');
+		  var a = '#'+b;
+		  var n = noty({
+		      text        : '¿Está seguro de eliminar la imágen?'+b,
+		      type        : 'warning',
+		      dismissQueue: true,
+		      layout      : 'topCenter',
+		      theme       : 'defaultTheme',
+		      buttons     : [
+		          {addClass: 'btn btn-primary', text: 'Aceptar', onClick: function ($noty) {
+
+		            var action = "<?php echo Yii::app()->request->baseUrl; ?>"+'/propiedad/img/'+b;
+		            $.getJSON(action, function(data) {
+		              $.each(data, function(key, cliente) {
+		              });
+		            }).error(function(jqXHR, textStatus, errorThrown) {
+		              $("#respuesta").html(jqXHR.responseText);
+		            });
+		            $(a).hide('slow');
+		              $noty.close();
+		          }
+		          },
+		          {addClass: 'btn btn-danger', text: 'Cancelar', onClick: function ($noty) {
+		              $noty.close();
+
+		          }
+		          }
+		      ]
+		  });
+		});
 		valor();
 		$('#Propiedad_valor_propiedad').formatCurrency({region: 'es-CL'
 			, roundToDecimalPlace: -1});
@@ -466,35 +497,5 @@ $this->menu=array(
 		$('#end').formatCurrency({region: 'es-CL'
 			, roundToDecimalPlace: -1});
 	}
-	$('img').click(function(event) {
-		var b = $(this).attr('id');
-		var a = '#'+b;
-		var n = noty({
-		    text        : '¿Está seguro de eliminar la imágen?',
-		    type        : 'warning',
-		    dismissQueue: true,
-		    layout      : 'topCenter',
-		    theme       : 'defaultTheme',
-		    buttons     : [
-		        {addClass: 'btn btn-primary', text: 'Aceptar', onClick: function ($noty) {
 
-		          var action = "<?php echo Yii::app()->request->baseUrl; ?>"+'/propiedad/img/'+b;
-		          $.getJSON(action, function(data) {
-		            $.each(data, function(key, cliente) {
-		            });
-		          }).error(function(jqXHR, textStatus, errorThrown) {
-		            $("#respuesta").html(jqXHR.responseText);
-		          });
-		          $(a).hide('slow');
-		            $noty.close();
-		        }
-		        },
-		        {addClass: 'btn btn-danger', text: 'Cancelar', onClick: function ($noty) {
-		            $noty.close();
-
-		        }
-		        }
-		    ]
-		});
-	});
 </script>

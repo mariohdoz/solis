@@ -166,7 +166,7 @@ class SiteController extends Controller
 								 </tr>
 								 <tr style="FONT-SIZE:11px;COLOR:#4264af;FONT-FAMILY:arial">
 										<td style="BORDER:#ebeff7 1px solid" width="25%">Nombres</td>
-										<td style="BORDER:#ebeff7 1px solid" width="40%">'.$nombres .' '.$Apellidos.'</td>
+										<td style="BORDER:#ebeff7 1px solid" width="40%">'.$nombres .' '.$apellidos.'</td>
 								 </tr>
 								 <tr style="FONT-SIZE:11px;COLOR:#4264af;FONT-FAMILY:arial">
 										<td style="BORDER:#ebeff7 1px solid" width="25%">Telefono</td>
