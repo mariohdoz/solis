@@ -47,7 +47,7 @@
               echo 'box-solid box-primary';
             }
           }else{
-            echo 'box-solid box-info';
+            echo ' box-solid box-success';
           }
 
 					 ?>">
