@@ -67,3 +67,16 @@ h1{
     border: 1px solid #000000;
     font-size: 16px;
 }
+.contrato{
+    text-align: justify;
+}
+.izquierda{
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+.derecha{
+    float: right;
+    width: 50%;
+    text-align: center;
+}

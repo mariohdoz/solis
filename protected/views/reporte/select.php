@@ -150,13 +150,13 @@
             <div class="col-xs-12">
                 <a href="·" target="_blank" onclick="javascript:window.print()" class="btn btn-default"><i class="fa fa-print"></i> Imprimir</a>
 
-                <div style="float: right" ><?php echo CHtml::link("<i class='fa fa-download'></i> &nbsp;&nbsp; Descargar PDF", '#', array(
+                <div ><?php echo CHtml::link("<i class='fa fa-download'></i> &nbsp;&nbsp; Descargar PDF", '#', array(
                             'submit'=>array('/reporte/gananciapdf'),
                             'class'=>'btn btn-primary pull-right',
                         )
                     );?>
 
-            </div>
+                 </div>
         </div>
     </section>
     <!-- /.content -->

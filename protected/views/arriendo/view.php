@@ -123,7 +123,11 @@ $this->menu=array(
 									'class'=>'btn btn-danger',
 							    'confirm' => '¿Está seguro de eliminar el arriendo?'
 							    )
-							);?>
+							)
+							;?>
+							<div class="pull-right">
+							<?php echo CHtml::link('<i class="fa fa-file-text"></i> &nbsp;&nbsp; Generar contrato PDF', array('/arriendo/generarpdf', 'id'=>$model->id_arriendo), array('class'=>'btn btn-primary')); ?>
+							</div>
 						</div>
 					</div>
 				</div>
