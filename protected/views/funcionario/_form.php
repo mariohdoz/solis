@@ -17,7 +17,7 @@
 <div class="col-md-12">
 	<div class="box box-primary">
 		<div class="box-header with-border">
-			<h3 class="box-title">Datos del funcionario</h3>
+			<h3 class="box-title">Datos del funcionario <?php echo $model->isNewRecord ?></h3>
 		</div>
 		<div class="form">
 			<div class="col-md-12">

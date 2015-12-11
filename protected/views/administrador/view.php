@@ -1,9 +1,51 @@
 
+<div class="modal fade modal-Default" id="contrasena" tabindex="-1" role="dialog" aria-labelledby="myModallabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 style="text-align: center">Cambio de contraseña</h4>
+				<div class="form-horizontal">
+          <?php $form=$this->beginWidget('CActiveForm', array(
+            'id'=>'contrasena-form',
+            'action'=>Yii::app()->request->baseUrl.'/funcionario/contra/'.$model->rut,
+            // Please note: When you enable ajax validation, make sure the corresponding
+            // controller action is handling ajax validation correctly.
+            // There is a call to performAjaxValidation() commented in generated controller code.
+            // See class documentation of CActiveForm for details on this.
+            'enableAjaxValidation'=>false,
+          )); ?>
+          <div class="col-md-12">
+            <?php echo $form->errorSummary($model,'<strong>Es necesario arreglar los siguientes errores:</strong><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><div class="alert alert-danger">', '</div>'); ?>
+          </div>
+          <div class="col-md-12">
+          <div class="col-xs-12 col-md-6 col-lg-12">
+   				 <div class="form-group">
+   				 	<?php echo $form->labelEx($model,'contrasena_admin'); ?>
+   			 		<?php echo $form->passwordField($model,'contrasena_admin',array('class'=>'form-control', 'placeholder'=>'Constraseña del funcionario',)); ?>
+   				 </div>
+   			 </div><br>
+     			 <div class="col-xs-12 col-md-6 col-lg-12">
+     				 <div class="form-group" id="box">
+     				 	<?php echo $form->labelEx($model,'repeat_pass'); ?>
+     			 		<?php echo $form->passwordField($model,'repeat_pass',array('class'=>'form-control', 'placeholder'=>'Repetir contraseña', )); ?>
+     				 </div>
+  				</div>
+        </div>
+				</div>
+			</div>
+			<div class="modal-footer">
+        <?php echo CHtml::submitButton('Actualizar contraseña', array('class'=>'btn btn-success center-block')); ?>
+			</div>
+		</div>
+	</div>
+</div>
+<?php $this->endWidget(); ?>
 <div class="content-wrapper">
 	<section class="content-header">
 		<h1>
 			Configuración
-			<small>Perfil de usuario. <?php echo Yii::app()->session['admin_super'] ?></small>
+			<small>Perfil de usuario. </small>
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="?r=intra/index">
@@ -47,43 +89,42 @@
 					</div><!-- /.box-header -->
 					<div class="box-body" >
 						<?php echo $form->errorSummary($model,'<strong>Es necesario arreglar los siguientes errores:</strong><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><div class="alert alert-danger">', '</div>'); ?>
-						<div class="col-md-2">
+						<div class="col-md-3">
 							<div class="center-block imagen">
 								<img src="<?php echo Yii::app()->request->baseUrl; ?>/<?php echo $model->perfil_admin ?>"  class="img-thumbnail" alt="Imagen de usuario" />
 								</br>
 								</br>
-
 							</div>
-
 						</div>
-						<div class="col-md-10">
-							<div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+						<div class="col-md-4">
+							<div class="input-group col-xs-12 col-md-12 col-lg-12" style="margin-bottom: 20px">
 								<span class="input-group-addon" id="basic-addon1">Nombres: </span>
 								<?php echo $form->textField($model,'nombres_admin',array('class'=>'form-control','disabled'=>'true','tabindex'=>2,'id'=>'uno' )); ?>
 							</div>
-							<div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
-								<span class="input-group-addon" id="basic-addon1">Apellidos: </span>
-								<?php echo $form->textField($model,'apellidos_admin',array('class'=>'form-control','disabled'=>'true','tabindex'=>2,'id'=>'dos' )); ?>
+							<div class="input-group col-xs-12 col-md-12 col-lg-12" style="margin-bottom: 20px">
+								<span class="input-group-addon" id="basic-addon1">RUT: </span>
+								<?php echo $form->textField($model,'formato',array('class'=>'form-control','disabled'=>'true','tabindex'=>2,'id'=>'uno' )); ?>
 							</div>
-							<div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+							<div class="input-group col-xs-12 col-md-12 col-lg-12" style="margin-bottom: 20px">
 								<span class="input-group-addon" id="basic-addon1"><i class="fa fa-at"></i></span>
 								<?php echo $form->textField($model,'correo_admin', array('class'=>'form-control','disabled'=>'true', 'tabindex'=>5, 'placeholder'=>'Repita la nueva contraseña','id'=>'seis')); ?>
 							</div>
-							<div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+						</div>
+						<div class="col-md-5">
+							<div class="input-group col-xs-12 col-md-12 col-lg-12" style="margin-bottom: 20px">
+								<span class="input-group-addon" id="basic-addon1">Apellidos: </span>
+								<?php echo $form->textField($model,'apellidos_admin',array('class'=>'form-control','disabled'=>'true','tabindex'=>2,'id'=>'dos' )); ?>
+							</div>
+							<div class="input-group col-xs-12 col-md-12 col-lg-12" style="margin-bottom: 20px">
 								<span class="input-group-addon" id="basic-addon1"><i class="fa fa-phone"></i></span>
 								<?php echo $form->textField($model,'telefono_admin', array('class'=>'form-control','disabled'=>'true', 'tabindex'=>5, 'placeholder'=>'Repita la nueva contraseña','id'=>'siete')); ?>
 							</div>
-							<?php
-							$data = explode('-',$model->rut_admin);
-
-							echo CHtml::link("Actualizar", array("administrador/update",'id'=>$data[0]), array('class'=>'btn btn-primary')); ?>
 						</div>
-
-
-
 					</div><!-- /.box-body -->
 					<div class="box-footer">
-
+						<?php
+						$data = explode('-',$model->rut_admin);
+						echo CHtml::link("Actualizar", array("administrador/update",'id'=>$data[0]), array('class'=>'btn btn-primary')); ?>
 					</div><!-- box-footer -->
 				</div><!-- /.box -->
 			</div>
@@ -119,19 +160,25 @@
 									'nombres_admin',
 									'apellidos_admin',
 									'correo_admin',
-
-
 									array(
-										'class'=>'CButtonColumn',
-										'template'=>'{email}',
-										'buttons'=>array(
-											'email' => array(
-												'label'=>'<i class="btn btn-google-plus"><i class="fa fa-pencil-square-o "></i> Modificar</i> ',
-												'class'=>'btn btn-primary',
-												'url'=>'Yii::app()->createUrl("administrador/update", array("id"=>$data->rut))'
+                    'header'=>'Actualizar',
+                    'class'=>'CButtonColumn',
+                    'template'=>'{buscar}  {actualizar}  {eliminar}',
+                    'buttons'=>array(
+											'eliminar' => array(
+													'label'=>'<i class="fa fa-trash-o"></i>',
+													'url'=>'Yii::app()->createUrl("administrador/eliminar", array("id"=>$data->rut))',
 											),
-										),
-									),
+                      'actualizar' => array(
+                          'label'=>'<i class="fa fa-pencil-square-o"></i>',
+                          'url'=>'Yii::app()->createUrl("administrador/update", array("id"=>$data->rut))',
+                      ),
+											'buscar' => array(
+													'label'=>'<i class="fa fa-eye"></i>',
+													'url'=>'Yii::app()->createUrl("administrador/view", array("id"=>$data->rut))',
+											),
+                    ),
+                  ),
 								),
 							)); ?>
 
@@ -148,24 +195,7 @@
 </div>
 
 <script>
-	$('#Administrador_contrasena_Administrador').ready(function(){
-		$('#Administrador_contrasena_Administrador').val('');
-	});
-	$("#Administrador_repeat_pass").keyup(function(){
-		if ($("#Administrador_repeat_pass").val()!== $('#Administrador_contrasena_admin').val() ) {
-			if (!$("#box").hasClass('has-error')) {
-				$("#box").toggleClass(' has-error');
-			}
-			if ($("#box").hasClass('has-success')) {
-				$("#box").toggleClass('has-success');
-			}
-		}else {
-			if ($("#box").hasClass('has-error')) {
-				$("#box").toggleClass(' has-error');
-			}
-			if (!$("#box").hasClass('has-success')) {
-				$("#box").toggleClass('has-success');
-			}
-		}
+	$(document).ready(function() {
+
 	});
 </script>

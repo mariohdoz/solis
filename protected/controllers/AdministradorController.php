@@ -32,7 +32,7 @@ class AdministradorController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','index','view','upload'),
+				'actions'=>array('create','update','index','view','upload','eliminar'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -49,6 +49,46 @@ class AdministradorController extends Controller
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
+	public function actionEliminar($id)
+	{
+		$rut=$this->codigo($id);
+
+		$model=$this->loadModel($rut);
+		$model->setScenario('update');
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['Administrador']))
+		{
+			$model->attributes=$_POST['Administrador'];
+			if($model->save()){
+				$this->redirect(array('view','id'=>$id));
+			}
+		}
+
+		$this->render('delete',array(
+			'model'=>$model,
+		));
+	}
+	public function actionCambio($id)
+	{
+		$rut=$this->codigo($id);
+		$model=$this->loadModel($rut);
+		$model->setScenario('cambio');
+		if(isset($_POST['Administrador']))
+		{
+			$model->attributes=$_POST['Administrador'];
+			if($model->save()){
+				$this->redirect(array('view','id'=>$id));
+			}
+		}
+
+		$this->render('update',array(
+			'model'=>$model,
+		));
+
+	}
 	public function actionView($id)
 	{
 		$formulario=new Administrador('search');
@@ -88,20 +128,30 @@ class AdministradorController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Administrador;
+		$administrador=new Administrador;
+		$administrador->setScenario('create');
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		// $this->performAjaxValidation($administrador);
 
 		if(isset($_POST['Administrador']))
 		{
-			$model->attributes=$_POST['Administrador'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->rut_admin));
+			$administrador->attributes=$_POST['Administrador'];
+			if($administrador->perfil_admin){
+				$administrador->perfil_admin = 'dist/img/avatar5.png';
+			}else {
+				$administrador->perfil_admin = 'dist/img/avatar3';
+			}
+			$rut= str_replace('.','',$administrador->rut_admin);
+			$administrador->rut_admin = $rut;
+			if($administrador->save()){
+				$data = explode('-', $model->rut_funcionario);
+				$this->redirect(array('view','id'=>$data[0]));
+			}
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+			'administrador'=>$administrador,
 		));
 	}
 
@@ -116,6 +166,7 @@ class AdministradorController extends Controller
 		$rut=$this->codigo($id);
 
 		$model=$this->loadModel($rut);
+		$model->setScenario('update');
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -123,8 +174,9 @@ class AdministradorController extends Controller
 		if(isset($_POST['Administrador']))
 		{
 			$model->attributes=$_POST['Administrador'];
-			if($model->save())
+			if($model->save()){
 				$this->redirect(array('view','id'=>$id));
+			}
 		}
 
 		$this->render('update',array(
@@ -139,11 +191,15 @@ class AdministradorController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
-
+		$rut=$this->codigo($id);
+		$model=$this->loadModel($rut);
+		$model->activo_admin = 0;
+		$model->save();
+		$as=Yii::app()->session['admin_rut'];
+		$data = explode('-', $model->rut_admin);
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('view', 'id'=>$data[0]));
 	}
 	public function actionUpload($id)
 	{
@@ -158,8 +214,9 @@ class AdministradorController extends Controller
 		  $return = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
 		  $fileSize=filesize($folder.$result['filename']);//GETTING FILE SIZE
 		  $fileName=$result['filename'];//GETTING FILE NAME
-		  $admin->perfil_admin = $fileName;
-		  $admin->save();
+		  $admin->perfil_admin = '/dist/img/'.$fileName;
+		  if($admin->save())
+				Yii::app()->session['admin_img']= $admin->perfil_admin;
 		  echo $return;// it's array
 }
 

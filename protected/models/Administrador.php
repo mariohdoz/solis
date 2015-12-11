@@ -34,18 +34,21 @@ class Administrador extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('rut_admin, nombres_admin, apellidos_admin, contrasena_admin, correo_admin, telefono_admin, perfil_admin', 'required'),
+			array('rut_admin, nombres_admin, apellidos_admin, contrasena_admin, correo_admin, telefono_admin, perfil_admin', 'required', 'on'=>'create'),
+			array('nombres_admin, apellidos_admin, correo_admin, telefono_admin', 'required', 'on'=>'update'),
+			array('contrasena_admin, repeat_pass', 'required', 'on'=>'cambio'),
 			array('super_admin, activo_admin,  fn_admin', 'numerical', 'integerOnly'=>true),
-			array('rut_admin', 'length', 'max'=>10),
+			array('rut_admin', 'length', 'max'=>12),
 			array('contrasena_admin, repeat_pass', 'length', 'max'=>255),
 			array('rut_admin', 'ValidateRut'),
+			array('contrasena_admin','hasha', 'on'=>'cambio'),
+			array('contrasena_admin','hasha', 'on'=>'create'),
 			array('repeat_pass','required','on'=>'create','message'=>'Debe repetir la contraseña'),
 			array('rut_admin', 'unique','attributeName'=>'rut_admin','className'=>'Administrador','message'=>'El administrador ya se encuentra ingresado'),
 			array('correo_admin', 'unique','attributeName'=>'correo_admin','className'=>'Administrador','message'=>'El correo  ya se encuentra ingresado'),
 			array('nombres_admin, apellidos_admin, contrasena_admin, correo_admin', 'length', 'max'=>100),
 			array('telefono_admin', 'length', 'max'=>12),
 			array('perfil_admin', 'length', 'max'=>250),
-			array('repeat_pass','compare','compareAttribute'=>'contrasena_admin','message'=>'Las contrasñas no coinciden','on'=>'create'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('rut_admin, nombres_admin, apellidos_admin, contrasena_admin, correo_admin, telefono_admin, perfil_admin, super_admin, activo_admin, fn_admin',  'safe', 'on'=>'search'),
@@ -75,7 +78,7 @@ class Administrador extends CActiveRecord
  		if ($verifyCode != $result)
  			 $this->addError('rut', 'Rut inválido.');
  	}
-	protected function beforeSave() {
+	function hasha() {
 		$this->contrasena_admin = sha1($this->contrasena_admin);
 		return parent::beforeSave();
 	}
@@ -140,7 +143,7 @@ class Administrador extends CActiveRecord
 		$criteria->compare('telefono_admin',$this->telefono_admin,true);
 		$criteria->compare('perfil_admin',$this->perfil_admin,true);
 		$criteria->compare('super_admin',$this->super_admin);
-		$criteria->compare('activo_admin',$this->activo_admin);
+		$criteria->compare('activo_admin',1);
 		$criteria->compare('fn_admin',$this->fn_admin);
 
 		return new CActiveDataProvider($this, array(

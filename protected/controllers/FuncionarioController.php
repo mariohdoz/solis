@@ -110,7 +110,8 @@ class FuncionarioController extends Controller
 	public function actionCreate()
 	{
 		$model=new Funcionario('create');
-		// $user = 
+		$user=new Administrador;
+		// $user =
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -118,11 +119,24 @@ class FuncionarioController extends Controller
 		if(isset($_POST['Funcionario']))
 		{
 			$model->attributes=$_POST['Funcionario'];
+			$var = $model->contrasena_funcionario;
 			$rut= str_replace('.','',$model->rut_funcionario);
 			$model->rut_funcionario = $rut;
 			$data = explode('-', $model->rut_funcionario);
 			if ($model->contrasena_funcionario == $model->repeat_pass) {
 				if($model->save()){
+					$user->rut_admin = $model->rut_funcionario;
+				  $user->nombres_admin= $model->nombres_funcionario;
+				  $user->apellidos_admin= $model->apellidos_funcionario;
+				  $user->contrasena_admin= $var;
+				  $user->correo_admin= $model->correo_funcionario;
+				  $user->telefono_admin= $model->telefonocelular_funcionario;
+				  $user->perfil_admin= 'dist/img/avatar5.png';
+				  $user->super_admin= 0;
+				  $user->activo_admin= 0;
+				  $user->fn_admin= 1;
+					$user->save();
+
 					Yii::app()->user->setFlash('success','El funcionario fue ingresado correctamente.');
 					$this->redirect(array('view','id'=>$data[0]));
 				}

@@ -42,10 +42,10 @@ $("#Funcionario_rut_funcionario").Rut({
 		alert('El RUT ingresado es incorrecto.');
 		$("#Funcionario_rut_funcionario").val('');
 	},
-})
+});
 $("#Funcionario_rut_funcionario").click(function(){
 	$("#Funcionario_rut_funcionario").val('');
-})
+});
 
 $("#Funcionario_repeat_pass").keyup(function(){
 	if ($("#Funcionario_repeat_pass").val()!== $('#Funcionario_contrasena_funcionario').val() ) {

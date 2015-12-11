@@ -23,19 +23,7 @@
           </div>
 					<div class="form">
 						<div class="box-body">
-              <!-- Envio de modelo se encuentra en SiteController/test/ -->
-              <?php foreach ($model as $pago) { // Se trabaja con un foreach por que se debe recorrer el array en el cual se encuentran los pagos
-                echo 'ID del pago: '.$pago->id_pago; // Se trabaja de la misma manera $modelo->atributo
-                echo '<br>Total pagado: '.$pago->totalpagado_pago; // Se obtiene el total pagado
-                echo '<br>ID del pago: '.$pago->id_pago; // Se obtiene el id del pago (Se hace de manera de ejemplo)
-                echo '<br>ID del arriendo: '.$pago->arriendo->id_arriendo; // Ahora se manejan las relaciones que posee el modelo, la relación del del pago con el arriedo es 'BELONGS_TO' por lo cual el pago pertenece al arriendo, y por lo cual la manera de acceder a éste es de la siguiente manera $modelo->relacion->atributo-de-la-relación
-                echo '<br>Valor total del arriendo: '.$pago->arriendo->valor_arriendo; // 'BELONGS_TO' se diferencia de 'HAS_MANY' ya que en 'HAS_MANY' se recorre las tablas enlazadas con un foreach, en cambio el 'BELONGS_TO' se accede de manera directa
-                echo '<br>ID de la propiedad: '.$pago->arriendo->propiedad->id_propiedad.'<br>'; // Pago es una tabla hija de de arriendo, al igual que arriendo con la propiedad, por lo cual se puede acceder de esta manera $modelo->relacion->relacion2->atributo-de-la-relacion2
-                foreach ($pago->arriendo->pago as $key => $value) { // arriendo tiene una relacion de 'HAS_MANY', ya que un arriendo puede tener muchos pagos y no así la relacion viceversa.
-                  echo $value->id_pago;
-                }
-              }
-              ?>
+    
 					  </div>
             <div class="box-footer">
             </div>
@@ -49,8 +37,135 @@
           </div>
 					<div class="form">
 						<div class="box-body">
-              <div class="col-xs-12 col-md-6 col-lg-4" ><a href="/nuevo/documento/propiedad/R02_VulnerabilityStatus.pdf">Eliminar</a><ul class="nav nav-pills nav-stacked"><li><a id="removeItem" checkid="24" title="R02_VulnerabilityStatus.pdf" onclick="return false" href=""><i class="fa fa-home"></i>R02_VulnerabilityStatus.pdf</a></li></ul></div>
-					  </div>
+              <div class="modal fade modal-Default" id="contrasena" tabindex="-1" role="dialog" aria-labelledby="myModallabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-body">
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                              <h4 style="text-align: center">Cambio de contraseña</h4>
+                              <div class="form-horizontal">
+                                  <?php $form=$this->beginWidget('CActiveForm', array(
+                                      'id'=>'contrasena-form',
+                                      'action'=>Yii::app()->request->baseUrl.'/administrador/contra/'.$model->rut,
+                                      // Please note: When you enable ajax validation, make sure the corresponding
+                                      // controller action is handling ajax validation correctly.
+                                      // There is a call to performAjaxValidation() commented in generated controller code.
+                                      // See class documentation of CActiveForm for details on this.
+                                      'enableAjaxValidation'=>false,
+                                  )); ?>
+                                  <div class="col-md-12">
+                                      <?php echo $form->errorSummary($model,'<strong>Es necesario arreglar los siguientes errores:</strong><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><div class="alert alert-danger">', '</div>'); ?>
+                                  </div>
+                                  <div class="col-md-12">
+                                      <div class="col-xs-12 col-md-6 col-lg-12">
+                                          <div class="form-group">
+                                              <?php echo $form->labelEx($model,'contrasena_admin'); ?>
+                                              <?php echo $form->passwordField($model,'contrasena_admin',array('class'=>'form-control', 'placeholder'=>'Constraseña del Admin',)); ?>
+                                          </div>
+                                      </div><br>
+                                      <div class="col-xs-12 col-md-6 col-lg-12">
+                                          <div class="form-group" id="box">
+                                              <?php echo $form->labelEx($model,'repeat_pass'); ?>
+                                              <?php echo $form->passwordField($model,'repeat_pass',array('class'=>'form-control', 'placeholder'=>'Repetir contraseña', )); ?>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="modal-footer">
+                              <?php echo CHtml::submitButton('Actualizar contraseña', array('class'=>'btn btn-success center-block')); ?>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <?php $this->endWidget(); ?>
+
+              <?php $form=$this->beginWidget('CActiveForm', array(
+              	'id'=>'administrador-form',
+              	'action'=>$model->isNewRecord ? 'administrador/create' : '',
+              	// Please note: When you enable ajax validation, make sure the corresponding
+              	// controller action is handling ajax validation correctly.
+              	// There is a call to performAjaxValidation() commented in generated controller code.
+              	// See class documentation of CActiveForm for details on this.
+              	'enableAjaxValidation'=>false,
+              )); ?>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="box  box-primary">
+                     <div class="box-header with-border">
+                        <h3 class="box-title">Perfil de usuario : </h3>
+                        <b> <?php echo $model->nombres_admin, $model->apellidos_admin ?></b>
+                     </div>
+                     <!-- /.box-header -->
+                     <div class="box-body" >
+                       <div class="col-md-12">
+                         <?php echo $form->errorSummary($model,'<strong>Es necesario arreglar los siguientes errores:</strong><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><div class="alert alert-danger">', '</div>'); ?>
+                       </div>
+                        <div class="col-md-2">
+                           <div class="center-block imagen">
+                              <img src="<?php echo Yii::app()->request->baseUrl; ?>/<?php echo $model->perfil_admin ?>"  class="img-thumbnail" alt="Imagen de usuario" />
+                              </br>
+                              </br>
+                              <?php $this->widget('ext.EAjaxUpload.EAjaxUpload', array(
+                                 'id' => 'uploadFile',
+                                 'config' => array(
+                                            'action' => Yii::app()->createUrl('administrador/upload/',array('id'=>$model->rut)),
+                                  'allowedExtensions' => array("jpg","jpeg","gif","png"), //array("jpg","jpeg","gif","exe","mov" and etc...
+                                  'sizeLimit' => 10 * 1024 * 1024, // maximum file size in bytes
+                                  'buttonText' => 'Selección',
+                                  //'minSizeLimit'=>10*1024*1024,// minimum file size in bytes
+                                  //'onComplete'=>"js:function(id, fileName, responseJSON){ alert(fileName); }",
+                                  'messages' => array(
+                                    'typeError' => "{file} posee una extención invalida. se acepta solamente {extensions}.",
+                                    'sizeError' => "{file} is too large, maximum file size is {sizeLimit}.",
+                                    'minSizeError' => "{file} is too small, minimum file size is {minSizeLimit}.",
+                                    'emptyError' => "{file} is empty, please select files again without it.",
+                                    'onLeave' => "Los archivos seleccionados se están subiendo al servidor. si usted deja la página la carga será cancelada."
+                                  ),
+                                  'showMessage' => "js:function(message){ alert(message); }"
+                                 )
+                                 ));
+                                 ?>
+                           </div>
+                        </div>
+
+                        <div class="col-md-10">
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1">Nombres: </span>
+                              <?php echo $form->textField($model,'nombres_admin',array('class'=>'form-control','tabindex'=>2 )); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1">Apellidos: </span>
+                              <?php echo $form->textField($model,'apellidos_admin',array('class'=>'form-control','tabindex'=>2 )); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1"><i class="fa fa-at"></i></span>
+                              <?php echo $form->textField($model,'correo_admin', array('class'=>'form-control', 'tabindex'=>5, 'placeholder'=>'@correo','id'=>'seis')); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1"><i class="fa fa-phone"></i></span>
+                              <?php echo $form->textField($model,'telefono_admin', array('class'=>'form-control', 'tabindex'=>5, 'placeholder'=>'Repita la nueva contraseña')); ?>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- /.box-body -->
+                     <div class="box-footer">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#contrasena"><i class="fa fa-unlock-alt"></i> Cambiar contraseña</button>
+                        <div class="pull-right">
+                           <?php
+                              echo CHtml::submitButton($model->isNewRecord ? 'Registrar Usuario' : 'Guardar Cambios', array('class'=>'btn btn-success', 'placeholder'=>'')); ?>
+                        </div>
+                     </div>
+                     <!-- box-footer -->
+                  </div>
+                  <!-- /.box -->
+                </div>
+              </div>
+              		<div class="row">
+
+              		</div>
+              		<?php $this->endWidget(); ?>					  </div>
             <div class="box-footer">
 							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#cliente"><i class="fa fa-spinner"> &nbsp;&nbsp;Cargar cliente</i></button>
 
