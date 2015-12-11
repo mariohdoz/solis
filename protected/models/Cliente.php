@@ -108,7 +108,7 @@ class Cliente extends CActiveRecord
 			'apellidos_cliente' => 'Apellidos',
 			'estadocivil_cliente' => 'Estado civil',
 			'profesion_cliente' => 'Profesión',
-			'domicilio_cliente' => 'domicilio',
+			'domicilio_cliente' => 'Domicilio',
 			'correo_cliente' => 'Correo electrónico',
 			'telefonofijo_cliente' => 'Teléfono fijo',
 			'telefonocelular_cliente' => 'Teléfono celular',

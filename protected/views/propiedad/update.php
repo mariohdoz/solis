@@ -368,7 +368,7 @@ $this->menu=array(
 		  var b = $(this).attr('checkID');
 		  var a = '#'+b;
 		  var n = noty({
-		      text        : '¿Está seguro de eliminar la imágen?'+b,
+		      text        : '¿Está seguro de eliminar la imágen?',
 		      type        : 'warning',
 		      dismissQueue: true,
 		      layout      : 'topCenter',

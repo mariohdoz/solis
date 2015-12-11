@@ -236,7 +236,7 @@ $this->menu=array(
 						</div>
 						<div class="box-footer">
 							<button type="button" class="btn btn-info" data-toggle="modal" data-target="#arrendatario"><i class="fa fa-spinner "></i> Cargar arrendatario</button>
-							<?php echo CHtml::link('<i class="fa fa-plus"></i> &nbsp;&nbsp;Nuevo arrrendatario ', array('arrendatario/create'), array('class'=>'btn btn-success')); ?>
+							<?php echo CHtml::link('<i class="fa fa-plus"></i> &nbsp;&nbsp;Nuevo arrendatario ', array('arrendatario/create'), array('class'=>'btn btn-success')); ?>
             </div>
 					</div>
 				</div>

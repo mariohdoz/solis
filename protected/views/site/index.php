@@ -100,6 +100,7 @@
 							<blanco>Típo de propiedad</blanco>
 							<?php echo $form->dropDownList($model2,'tipo_propiedad',
 								array(
+									'Todas' => 'Todas',
 									'Casa' => 'Casa',
 									'Departamento Habitación' => 'Departamento Habitación',
 									'Local' => 'Local',
