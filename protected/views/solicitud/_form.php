@@ -107,7 +107,7 @@
 						<div class="col-lg-3 col-md-6 col-xs-12">
 							<div class="form-group">
 								<?php echo $form->label(  $solicitud, 'fecha_solicitud'); ?>
-								<?php echo $form->dateField( $solicitud, 'fecha_solicitud' , array('class'=>'form-control', 'disabled'=>'disabled'  )); ?>
+								<?php echo $form->dateField( $solicitud, 'fecha_solicitud' , array('class'=>'form-control'  )); ?>
 							</div>
 						</div>
 						<div class="col-lg-3 col-md-6 col-xs-12">
@@ -123,7 +123,7 @@
 								<?php echo $form->dropDownList($solicitud,'estado_solicitud',
 										array(
 												'1' => 'Pendiente',
-												'0' => 'Terminada',
+												'0' => 'Realizada',
 										),
 										array("class"=>"form-control select2")); ?>
 							</div>
@@ -139,7 +139,7 @@
 				</div>
 			</div>
 			<div class="box-footer">
-				<?php echo CHtml::submitButton($model->isNewRecord ? 'Registrar solicitud' : 'Actualizar solicitud', array('class'=>'btn btn-primary' , 'tabindex'=>5)); ?>
+				<?php echo CHtml::submitButton($solicitud->isNewRecord ? 'Registrar solicitud' : 'Actualizar solicitud', array('class'=>'btn btn-primary' , 'tabindex'=>5)); ?>
 			</div>
 		</div>
 	</div>

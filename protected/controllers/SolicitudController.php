@@ -88,20 +88,44 @@ class SolicitudController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Solicitud;
+		$solicitud=new Solicitud;
+		$solicitud->setScenario('create');
+
 
 		// Uncomment the following line if AJAX validation is needed
-		$this->performAjaxValidation($model);
+		$this->performAjaxValidation($solicitud);
 
 		if(isset($_POST['Solicitud']))
 		{
-			$model->attributes=$_POST['Solicitud'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_solicitud));
+			$solicitud->attributes=$_POST['Solicitud'];
+			if($solicitud->save())
+				$this->redirect(array('view','id'=>$solicitud->id_solicitud));
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+			'solicitud'=>$solicitud,
+		));
+	}
+	public function actionRealizada($id)
+	{
+		$solicitud=$this->loadModel($id);
+		$cliente=new Cliente;
+		$funcionario= new Funcionario;
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['Solicitud']))
+		{
+			$solicitud->attributes=$_POST['Solicitud'];
+			if($solicitud->save())
+				$this->redirect(array('view','id'=>$solicitud->id_solicitud));
+		}
+
+		$this->render('realizada',array(
+			'solicitud'=>$solicitud,
+			'cliente'=>$cliente,
+			'funcionario'=>$funcionario,
 		));
 	}
 
