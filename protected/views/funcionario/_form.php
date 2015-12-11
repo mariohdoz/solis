@@ -24,18 +24,21 @@
 				<?php echo $form->errorSummary($model,'<strong>Es necesario arreglar los siguientes errores:</strong><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><div class="alert alert-danger">', '</div>'); ?>
 			</div>
 			<div class="box-body">
+				<?php if(!$model->isNewRecord): ?>
 				<div class="col-xs-12 col-md-6 col-lg-4">
 					 <div class="form-group">
 						<?php echo $form->labelEx($model,'formato'); ?>
 						<?php echo $form->textField($model,'formato', array("class"=>"form-control select2", $model->isNewRecord ? '' : 'disabled'=>true, 'placeholder'=>'Ejemplo: 12345678-9', 'required'=>'required')); ?>
 					</div>
 				</div>
+			<?php else: ?>
 				<div class="col-xs-12 col-md-6 col-lg-4">
 					<div class="form-group">
 						<?php echo $form->labelEx($model,'nombres_funcionario'); ?>
 						<?php echo $form->textField($model,'nombres_funcionario',array('class'=>'form-control select2', 'placeholder'=>'Ingrese los nombres del funcionario', 'required'=>'required')); ?>
 					</div>
 				</div>
+			<?php endif ?>
 				<div class="col-xs-12 col-md-6 col-lg-4">
 					<div class="form-group">
 						<?php echo $form->labelEx($model,'apellidos_funcionario'); ?>
