@@ -126,7 +126,7 @@ $this->menu=array(
 							)
 							;?>
 							<div class="pull-right">
-							<?php echo CHtml::link('<i class="fa fa-file-text"></i> &nbsp;&nbsp; Generar contrato PDF', array('/arriendo/generarpdf', 'id'=>$model->id_arriendo), array('class'=>'btn btn-primary')); ?>
+							<?php echo CHtml::link('<i class="fa fa-file-text"></i> &nbsp;&nbsp; Contrato de Arriendo PDF', array('/arriendo/generarpdf', 'id'=>$model->id_arriendo), array('class'=>'btn btn-primary')); ?>
 							</div>
 						</div>
 					</div>

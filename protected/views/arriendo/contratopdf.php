@@ -37,17 +37,9 @@
 
 <p class="contrato">
 
-    En <b>Calama</b>, a <b><?php
-    setlocale(LC_TIME, 'Spanish_Chile'); Echo iconv('ISO-8859-1', 'UTF-8', strftime(' %A %d de %B de %Y '))
-    ?></b> , ante el Ministro
-    de Fe que autoriza, comparecen: Don___ <b> <?php   $a= $arriendo->arrendatario->nombres_arrendatario  ;
-        var_dump($a);?></b>,
-    RUT<b> <?php echo $model->rut_arrendatario?></b> , con domicilio en la comuna de <b>Calama</b>,
-    calle____ y don______ ,
-    RUT <b> <?php echo $model->rut_arrendatario?></b>, con domicilio en la comuna de <b>Calama</b> ,
-    calle_____ , mayores de edad, quienes acreditan sus
-    identidades por intermedio de sus respectivas cédulas, ya anotadas y exponen que han
-    convenido en el siguiente Contrato de Arrendamiento:<br><br>
+    En <?php setlocale(LC_TIME, 'Spanish_Chile'); Echo iconv('ISO-8859-1', 'UTF-8', strftime('Calama, %A %d de %B de %Y ')) ?> comparecen: Por una parte, como arrendador/a don/ña  <b><?php echo $model->arrendatario->nombres_arrendatario ?></b>, domiciliado/a en la comuna de Calama, cédula de identidad número <b> <?php echo $model->rut_admin?></b>, y por otra parte como arrendatario don/ña  <b><?php echo $model->arrendatario->nombres_arrendatario ?></b>, domiciliado/a en la comuna de Calama , cédula de identidad número <b> <?php echo $model->rut_arrendatario?></b>  ambos mayores de edad, y expresan: Que vienen en celebrar el siguiente contrato de arrendamiento.
+
+    Don/ña _________________________ es dueño/a de la propiedad ubicada en calle __________ Nº __________ de la ciudad de __________ <br><br>
     <b>1.- OBJETO DEL CONTRATO:</b> A través del presente contrato de arrendamiento, el arrendador, don/ña  ________________________, da en arrendamiento el inmueble, descrito y ya identificado. La propiedad arrendada será destinada, exclusivamente, a la habitación del arrendatario y de su familia y dependientes domésticos.<br><br>
 
     <b>2.- PLAZO:</b> El presente contrato de arrendamiento rige a partir de la fecha de celebración del presente, en la que se hace entrega material al arrendatario de la vivienda y de las llaves de acceso a la misma, y su vigencia será desde la fecha <b> <?php echo $model->inicio_arriendo?></b> hasta la fecha <b> <?php echo $model->termino_arriendo?></b>. Este plazo se renovará en forma tácita, automática y sucesivamente en las mismas condiciones aquí pactadas, si ninguna de las partes manifiesta a la otra su voluntad de poner término al arrendamiento a través de un aviso. Dicho aviso se debe notificar mediante carta certificada al domicilio consignado por las partes en la comparecencia, con a lo menos 60 días de anticipación a la fecha de vencimiento del plazo pactado precedentemente o de una cualquiera de sus prórrogas.  En caso que el arrendatario quisiera poner término al arriendo antes del plazo convenido, restituyendo al efecto la propiedad, deberá cancelar la renta del período faltante para la terminación del contrato de arrendamiento. Si pasado un año, la parte arrendadora quisiera ponerle término al contrato de arrendamiento en cualquier momento, deberá comunicarlo a través de carta certificada al domicilio del arrendatario a lo  menos con 60 días de anticipación.-<br><br>
