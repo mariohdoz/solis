@@ -123,6 +123,7 @@ if(!Yii::app()->session['activo'])
           </div>
           <ul class="sidebar-menu">
             <li class="header">PANEL DE NAVEGACIÓN</li>
+            <?php if (!Yii::app()->session['funcionario']) : ?>
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-home"></i> <span>Propiedades</span>
@@ -220,6 +221,7 @@ if(!Yii::app()->session['activo'])
               </li>
             </ul>
             <ul class="sidebar-menu">
+            <?php endif; ?>
               <li class="treeview">
                 <a href="#">
                   <i class="fa fa-file-text-o"></i><span>Solicitud</span>
@@ -244,6 +246,7 @@ if(!Yii::app()->session['activo'])
                   </ul>
                 </li>
               </ul>
+              <?php if (!Yii::app()->session['funcionario']) : ?>
               <ul class="sidebar-menu">
                 <li class="treeview">
                   <a href="#">
@@ -258,6 +261,7 @@ if(!Yii::app()->session['activo'])
                   </ul>
                 </li>
               </ul>
+            <?php endif; ?>
             </section>
           </aside>
           <?php echo $content; ?>

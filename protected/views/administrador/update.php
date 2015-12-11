@@ -45,7 +45,7 @@
 	<section class="content-header">
 		<h1>
 			Actualizar
-			<small>Actualizar el arrendatario <?php echo CHtml::encode($model->rut_admin); ?>.</small>
+			<small>Actualizar el <?php echo Yii::app()->session['funcionario']? 'funcionario':'administrador' ?> <?php echo CHtml::encode($model->formato); ?>.</small>
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/intra/index">
@@ -57,6 +57,22 @@
 	</section>
 	<section class="content">
 		<div class="row">
+			<div class="col-md-12">
+				<?php if(($msgs=Yii::app()->user->getFlashes())!=null): ?>
+         <?php foreach($msgs as $type => $message):?>
+           <div class="alert alert-<?php echo $type;?>" style="margin-left: 10px; margin-right: 10px ">
+             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+             <strong><?php
+							 if($type == 'danger'){
+								 echo 'Error';
+							 }elseif ($type == 'success'){
+								 echo 'Éxito';
+							 };
+							?> !</strong> <?php echo $message;?>.
+           </div>
+         <?php endforeach;?>
+       <?php endif; ?>
+			</div>
 
 			<!-- Inicio se container -->
 			<?php $this->renderPartial('_form', array('administrador'=>$model)); ?>
@@ -64,6 +80,8 @@
 		</div>
 	</section>
 </div>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.Rut.min.js" type="text/javascript"></script>
+
 <script>
 $(document).ready(function(){
 	$('#Administrador_contrasena_admin').val('');
@@ -84,5 +102,14 @@ $(document).ready(function(){
 			}
 		}
 	});
+	$('#Administrador_rut_admin').click(function(){
+		$('#Administrador_rut_admin').val('');
+	});
+	$("#Administrador_rut_admin").Rut({
+  	on_error: function(){
+  		alert('El RUT ingresado es incorrecto.');
+  		$("#Administrador_rut_admin").val('');
+  	},
+  });
 });
 </script>

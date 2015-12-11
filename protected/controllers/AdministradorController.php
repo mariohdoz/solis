@@ -79,9 +79,17 @@ class AdministradorController extends Controller
 		if(isset($_POST['Administrador']))
 		{
 			$model->attributes=$_POST['Administrador'];
-			if($model->save()){
-				$this->redirect(array('view','id'=>$id));
+			if ($model->contrasena_admin == $model->repeat_pass) {
+				if($model->save()){
+					Yii::app()->user->setFlash('success','La contraseña fue actualizada');
+					$this->redirect(array('view','id'=>$id));
+				}else {
+					Yii::app()->user->setFlash('danger','La contraseña no fue actualizada');
+				}
+			}else {
+				Yii::app()->user->setFlash('danger','La contraseña no coinciden');
 			}
+
 		}
 
 		$this->render('update',array(
@@ -91,6 +99,12 @@ class AdministradorController extends Controller
 	}
 	public function actionView($id)
 	{
+		if(Yii::app()->user->hasFlash('success')){
+			$msgs=Yii::app()->user->getFlashes();
+			foreach ($msgs as $key => $value) {
+				Yii::app()->user->setFlash($key,$value);
+			}
+		}
 		$formulario=new Administrador('search');
 		$formulario->unsetAttributes();  // clear any default values
 		if(isset($_GET['Administrador']))
