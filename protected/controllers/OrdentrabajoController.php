@@ -96,6 +96,8 @@ class OrdentrabajoController extends Controller
 		if(isset($_POST['Ordentrabajo']))
 		{
 			$orden->attributes=$_POST['Ordentrabajo'];
+			$rut= str_replace('.','',$orden->rut_funcionario);
+			$orden->rut_funcionario = $rut;
 			if (Funcionario::model()->findByPk($orden->rut_funcionario)) {
 				$valor = intval(preg_replace('/[^0-9]+/', '', $orden->totalpagar_ot),10);
 				$orden->totalpagar_ot=$valor;
