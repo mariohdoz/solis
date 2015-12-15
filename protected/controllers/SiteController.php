@@ -288,6 +288,7 @@ class SiteController extends Controller
 	{
 		$this->layout ='//layouts/busquedaLayout';
 		$model = new Propiedad;
+		$model2  = new Propiedad;
 		if(isset($_POST['Propiedad'])){
 			$model->attributes = $_POST['Propiedad'];
 			if ($model->servicio_propiedad != 'Todas' && $model->tipo_propiedad != 'Todas' && $model->bano_propiedad != 'Todas' && $model->habitacion_propiedad != 'Todas' && $model->amoblado_propiedad != 'Todas' ) {
@@ -314,7 +315,66 @@ class SiteController extends Controller
 			      ),
 			    )
 			  );
-			}elseif($model->servicio_propiedad == 'Todas' && $model->tipo_propiedad == 'Todas' && $model->bano_propiedad != 'Todas' && $model->habitacion_propiedad != 'Todas' && $model->amoblado_propiedad != 'Todas'){
+			}//
+
+			elseif($model->servicio_propiedad != 'Todas' && $model->tipo_propiedad == 'Todas' && $model->bano_propiedad != 'Todas' && $model->habitacion_propiedad != 'Todas' && $model->amoblado_propiedad != 'Todas'){
+				$criteria = new CDbCriteria;
+				$criteria->select = 't.*';
+				$criteria->condition = 'comuna_propiedad="'.$model->comuna_propiedad.'" AND bano_propiedad="'. $model->bano_propiedad.'" AND habitacion_propiedad="'.$model->habitacion_propiedad.'" AND amoblado_propiedad='.$model->amoblado_propiedad.' AND activo_propiedad = TRUE AND eliminado_propiedad = false';
+				$dataProvider = new CActiveDataProvider(
+					'Propiedad', array(
+							'criteria' => $criteria,
+							'pagination' => array(
+							'pageSize' => 20
+						),
+					)
+				);
+
+			}elseif($model->servicio_propiedad != 'Todas' && $model->tipo_propiedad != 'Todas' && $model->bano_propiedad == 'Todas' && $model->habitacion_propiedad != 'Todas' && $model->amoblado_propiedad != 'Todas'){
+			  $criteria = new CDbCriteria;
+			  $criteria->select = 't.*';
+			  $criteria->condition = 'comuna_propiedad="'.$model->comuna_propiedad.'" AND bano_propiedad="'. $model->bano_propiedad.'" AND habitacion_propiedad="'.$model->habitacion_propiedad.'" AND amoblado_propiedad='.$model->amoblado_propiedad.' AND activo_propiedad = TRUE AND eliminado_propiedad = false';
+			  $dataProvider = new CActiveDataProvider(
+			    'Propiedad', array(
+			        'criteria' => $criteria,
+			        'pagination' => array(
+			        'pageSize' => 20
+			      ),
+			    )
+			  );
+
+			}elseif($model->servicio_propiedad != 'Todas' && $model->tipo_propiedad != 'Todas' && $model->bano_propiedad != 'Todas' && $model->habitacion_propiedad == 'Todas' && $model->amoblado_propiedad != 'Todas'){
+			  $criteria = new CDbCriteria;
+			  $criteria->select = 't.*';
+			  $criteria->condition = 'comuna_propiedad="'.$model->comuna_propiedad.'" AND bano_propiedad="'. $model->bano_propiedad.'" AND habitacion_propiedad="'.$model->habitacion_propiedad.'" AND amoblado_propiedad='.$model->amoblado_propiedad.' AND activo_propiedad = TRUE AND eliminado_propiedad = false';
+			  $dataProvider = new CActiveDataProvider(
+			    'Propiedad', array(
+			        'criteria' => $criteria,
+			        'pagination' => array(
+			        'pageSize' => 20
+			      ),
+			    )
+			  );
+			}
+			elseif($model->servicio_propiedad != 'Todas' && $model->tipo_propiedad != 'Todas' && $model->bano_propiedad != 'Todas' && $model->habitacion_propiedad != 'Todas' && $model->amoblado_propiedad == 'Todas'){
+			  $criteria = new CDbCriteria;
+			  $criteria->select = 't.*';
+			  $criteria->condition = 'comuna_propiedad="'.$model->comuna_propiedad.'" AND bano_propiedad="'. $model->bano_propiedad.'" AND habitacion_propiedad="'.$model->habitacion_propiedad.'" AND amoblado_propiedad='.$model->amoblado_propiedad.' AND activo_propiedad = TRUE AND eliminado_propiedad = false';
+			  $dataProvider = new CActiveDataProvider(
+			    'Propiedad', array(
+			        'criteria' => $criteria,
+			        'pagination' => array(
+			        'pageSize' => 20
+			      ),
+			    )
+			  );
+
+			}
+
+			//
+
+
+			elseif($model->servicio_propiedad == 'Todas' && $model->tipo_propiedad == 'Todas' && $model->bano_propiedad != 'Todas' && $model->habitacion_propiedad != 'Todas' && $model->amoblado_propiedad != 'Todas'){
 			  $criteria = new CDbCriteria;
 			  $criteria->select = 't.*';
 			  $criteria->condition = 'comuna_propiedad="'.$model->comuna_propiedad.'" AND bano_propiedad="'. $model->bano_propiedad.'" AND habitacion_propiedad="'.$model->habitacion_propiedad.'" AND amoblado_propiedad='.$model->amoblado_propiedad.' AND activo_propiedad = TRUE AND eliminado_propiedad = false';
@@ -365,7 +425,6 @@ class SiteController extends Controller
 			      ),
 			    )
 			  );
-
 			}elseif($model->servicio_propiedad == 'Todas' && $model->tipo_propiedad == 'Todas' && $model->bano_propiedad == 'Todas' && $model->habitacion_propiedad != 'Todas' && $model->amoblado_propiedad != 'Todas'){
 			  $criteria = new CDbCriteria;
 			  $criteria->select = 't.*';
@@ -587,6 +646,66 @@ class SiteController extends Controller
 			    )
 			  );
 
+			}elseif($model->servicio_propiedad != 'Todas' && $model->tipo_propiedad == 'Todas' && $model->bano_propiedad == 'Todas' && $model->habitacion_propiedad == 'Todas' && $model->amoblado_propiedad == 'Todas'){
+			  $criteria = new CDbCriteria;
+			  $criteria->select = 't.*';
+			  $criteria->condition = 'comuna_propiedad="'.$model->comuna_propiedad.'" AND servicio_propiedad="'. $model->servicio_propiedad.'"  AND activo_propiedad = TRUE AND eliminado_propiedad = false';
+			  $dataProvider = new CActiveDataProvider(
+			    'Propiedad', array(
+			        'criteria' => $criteria,
+			        'pagination' => array(
+			        'pageSize' => 20
+			      ),
+			    )
+			  );
+			}elseif($model->servicio_propiedad == 'Todas' && $model->tipo_propiedad != 'Todas' && $model->bano_propiedad == 'Todas' && $model->habitacion_propiedad == 'Todas' && $model->amoblado_propiedad == 'Todas'){
+			  $criteria = new CDbCriteria;
+			  $criteria->select = 't.*';
+			  $criteria->condition = 'comuna_propiedad="'.$model->comuna_propiedad.'" AND tipo_propiedad="'.$model->tipo_propiedad.'" AND activo_propiedad = TRUE AND eliminado_propiedad = false';
+			  $dataProvider = new CActiveDataProvider(
+			    'Propiedad', array(
+			        'criteria' => $criteria,
+			        'pagination' => array(
+			        'pageSize' => 20
+			      ),
+			    )
+			  );
+			}elseif($model->servicio_propiedad == 'Todas' && $model->tipo_propiedad == 'Todas' && $model->bano_propiedad != 'Todas' && $model->habitacion_propiedad == 'Todas' && $model->amoblado_propiedad == 'Todas'){
+			  $criteria = new CDbCriteria;
+			  $criteria->select = 't.*';
+			  $criteria->condition = 'comuna_propiedad="'.$model->comuna_propiedad.'" AND  bano_propiedad="'. $model->bano_propiedad.'" AND activo_propiedad = TRUE AND eliminado_propiedad = false';
+			  $dataProvider = new CActiveDataProvider(
+			    'Propiedad', array(
+			        'criteria' => $criteria,
+			        'pagination' => array(
+			        'pageSize' => 20
+			      ),
+			    )
+			  );
+			}elseif($model->servicio_propiedad == 'Todas' && $model->tipo_propiedad == 'Todas' && $model->bano_propiedad == 'Todas' && $model->habitacion_propiedad != 'Todas' && $model->amoblado_propiedad == 'Todas'){
+			  $criteria = new CDbCriteria;
+			  $criteria->select = 't.*';
+			  $criteria->condition = 'comuna_propiedad="'.$model->comuna_propiedad.'" AND habitacion_propiedad="'.$model->habitacion_propiedad.'" AND activo_propiedad = TRUE AND eliminado_propiedad = false';
+			  $dataProvider = new CActiveDataProvider(
+			    'Propiedad', array(
+			        'criteria' => $criteria,
+			        'pagination' => array(
+			        'pageSize' => 20
+			      ),
+			    )
+			  );
+			}elseif($model->servicio_propiedad == 'Todas' && $model->tipo_propiedad == 'Todas' && $model->bano_propiedad == 'Todas' && $model->habitacion_propiedad == 'Todas' && $model->amoblado_propiedad != 'Todas'){
+			  $criteria = new CDbCriteria;
+			  $criteria->select = 't.*';
+			  $criteria->condition = 'comuna_propiedad="'.$model->comuna_propiedad.'" AND  amoblado_propiedad='.$model->amoblado_propiedad.' AND activo_propiedad = TRUE AND eliminado_propiedad = false';
+			  $dataProvider = new CActiveDataProvider(
+			    'Propiedad', array(
+			        'criteria' => $criteria,
+			        'pagination' => array(
+			        'pageSize' => 20
+			      ),
+			    )
+			  );
 			}elseif($model->servicio_propiedad != 'Todas' && $model->tipo_propiedad != 'Todas' && $model->bano_propiedad != 'Todas' && $model->habitacion_propiedad == 'Todas' && $model->amoblado_propiedad == 'Todas'){//45
 			  $criteria = new CDbCriteria;
 			  $criteria->select = 't.*';
