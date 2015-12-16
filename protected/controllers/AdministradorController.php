@@ -189,6 +189,8 @@ class AdministradorController extends Controller
 		if(isset($_POST['Administrador']))
 		{
 			$model->attributes=$_POST['Administrador'];
+			$rut= str_replace('.','',$model->rut_admin);
+			$model->rut_admin = $rut;
 			if($model->save()){
 				$this->redirect(array('view','id'=>$id));
 			}

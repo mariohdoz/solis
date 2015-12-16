@@ -55,7 +55,8 @@ class Administrador extends CActiveRecord
 		);
 	}
 	public function getRut(){
-		$data = explode('-', $this->rut_admin);
+		$rut= str_replace('.','', $this->rut_admin);
+		$data = explode('-', $rut);
 		return $data[0];
 	}
  	public function ValidateRut($attribute, $param){

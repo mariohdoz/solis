@@ -17,7 +17,7 @@
             <div class="col-lg-12 col-md-12 col-xs-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Ganancia Arriendos</h3>
+                        <h3 class="box-title">Flujo de caja por rango de fecha</h3>
                     </div>
                     <div class="form">
                         <div class="box-body">
@@ -62,7 +62,37 @@
 
                     </div>
                 </div>
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Flujo de caja por mes</h3>
+                    </div>
+                    <div class="form">
+                        <div class="box-body">
+                            <div class="col-md-12">
+                              <?php echo $form->errorSummary($model,'<strong>Es necesario arreglar los siguientes errores:</strong><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><div class="alert alert-danger">', '</div>'); ?>
+                            </div>
+                            <div class="col-md-1">
+                                <h4>Desde</h4>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="input-group" style="margin-bottom: 20px">
+                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-calendar"></i></span>
+                                    <?php echo $form->dateField($model,'inicio', array('class'=>'form-control', 'tabindex'=>2)); ?>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                              <?php echo CHtml::submitButton( 'Reporte', array('class'=>'btn btn-google-plus' )); ?>
+                            </div>
+
+                        </div>
+                        <div class="box-footer">
+
+                        </div>
+
+                    </div>
+                </div>
             </div>
+        </div>
             <!-- Inicio se container -->
         <?php $this->endWidget(); ?>
     </section>
