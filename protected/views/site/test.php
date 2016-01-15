@@ -3,7 +3,6 @@
   <section class="content-header">
     <h1>
 	    Configuración
-	    <small>Texto aquí. <?php echo $arriendo->arrendatario->rut_arrendatario ?></small>
 	  </h1>
 	  <ol class="breadcrumb">
 	    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/intra/index">
@@ -147,6 +146,159 @@
                               <span class="input-group-addon" id="basic-addon1"><i class="fa fa-phone"></i></span>
                               <?php echo $form->textField($model,'telefono_admin', array('class'=>'form-control', 'tabindex'=>5, 'placeholder'=>'Repita la nueva contraseña')); ?>
                            </div>
+                        </div><div class="col-md-10">
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1">Nombres: </span>
+                              <?php echo $form->textField($model,'nombres_admin',array('class'=>'form-control','tabindex'=>2 )); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1">Apellidos: </span>
+                              <?php echo $form->textField($model,'apellidos_admin',array('class'=>'form-control','tabindex'=>2 )); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1"><i class="fa fa-at"></i></span>
+                              <?php echo $form->textField($model,'correo_admin', array('class'=>'form-control', 'tabindex'=>5, 'placeholder'=>'@correo','id'=>'seis')); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1"><i class="fa fa-phone"></i></span>
+                              <?php echo $form->textField($model,'telefono_admin', array('class'=>'form-control', 'tabindex'=>5, 'placeholder'=>'Repita la nueva contraseña')); ?>
+                           </div>
+                        </div><div class="col-md-10">
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1">Nombres: </span>
+                              <?php echo $form->textField($model,'nombres_admin',array('class'=>'form-control','tabindex'=>2 )); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1">Apellidos: </span>
+                              <?php echo $form->textField($model,'apellidos_admin',array('class'=>'form-control','tabindex'=>2 )); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1"><i class="fa fa-at"></i></span>
+                              <?php echo $form->textField($model,'correo_admin', array('class'=>'form-control', 'tabindex'=>5, 'placeholder'=>'@correo','id'=>'seis')); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1"><i class="fa fa-phone"></i></span>
+                              <?php echo $form->textField($model,'telefono_admin', array('class'=>'form-control', 'tabindex'=>5, 'placeholder'=>'Repita la nueva contraseña')); ?>
+                           </div>
+                        </div><div class="col-md-10">
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1">Nombres: </span>
+                              <?php echo $form->textField($model,'nombres_admin',array('class'=>'form-control','tabindex'=>2 )); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1">Apellidos: </span>
+                              <?php echo $form->textField($model,'apellidos_admin',array('class'=>'form-control','tabindex'=>2 )); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1"><i class="fa fa-at"></i></span>
+                              <?php echo $form->textField($model,'correo_admin', array('class'=>'form-control', 'tabindex'=>5, 'placeholder'=>'@correo','id'=>'seis')); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1"><i class="fa fa-phone"></i></span>
+                              <?php echo $form->textField($model,'telefono_admin', array('class'=>'form-control', 'tabindex'=>5, 'placeholder'=>'Repita la nueva contraseña')); ?>
+                           </div>
+                        </div><div class="col-md-10">
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1">Nombres: </span>
+                              <?php echo $form->textField($model,'nombres_admin',array('class'=>'form-control','tabindex'=>2 )); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1">Apellidos: </span>
+                              <?php echo $form->textField($model,'apellidos_admin',array('class'=>'form-control','tabindex'=>2 )); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1"><i class="fa fa-at"></i></span>
+                              <?php echo $form->textField($model,'correo_admin', array('class'=>'form-control', 'tabindex'=>5, 'placeholder'=>'@correo','id'=>'seis')); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1"><i class="fa fa-phone"></i></span>
+                              <?php echo $form->textField($model,'telefono_admin', array('class'=>'form-control', 'tabindex'=>5, 'placeholder'=>'Repita la nueva contraseña')); ?>
+                           </div>
+                        </div><div class="col-md-10">
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1">Nombres: </span>
+                              <?php echo $form->textField($model,'nombres_admin',array('class'=>'form-control','tabindex'=>2 )); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1">Apellidos: </span>
+                              <?php echo $form->textField($model,'apellidos_admin',array('class'=>'form-control','tabindex'=>2 )); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1"><i class="fa fa-at"></i></span>
+                              <?php echo $form->textField($model,'correo_admin', array('class'=>'form-control', 'tabindex'=>5, 'placeholder'=>'@correo','id'=>'seis')); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1"><i class="fa fa-phone"></i></span>
+                              <?php echo $form->textField($model,'telefono_admin', array('class'=>'form-control', 'tabindex'=>5, 'placeholder'=>'Repita la nueva contraseña')); ?>
+                           </div>
+                        </div><div class="col-md-10">
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1">Nombres: </span>
+                              <?php echo $form->textField($model,'nombres_admin',array('class'=>'form-control','tabindex'=>2 )); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1">Apellidos: </span>
+                              <?php echo $form->textField($model,'apellidos_admin',array('class'=>'form-control','tabindex'=>2 )); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1"><i class="fa fa-at"></i></span>
+                              <?php echo $form->textField($model,'correo_admin', array('class'=>'form-control', 'tabindex'=>5, 'placeholder'=>'@correo','id'=>'seis')); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1"><i class="fa fa-phone"></i></span>
+                              <?php echo $form->textField($model,'telefono_admin', array('class'=>'form-control', 'tabindex'=>5, 'placeholder'=>'Repita la nueva contraseña')); ?>
+                           </div>
+                        </div><div class="col-md-10">
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1">Nombres: </span>
+                              <?php echo $form->textField($model,'nombres_admin',array('class'=>'form-control','tabindex'=>2 )); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1">Apellidos: </span>
+                              <?php echo $form->textField($model,'apellidos_admin',array('class'=>'form-control','tabindex'=>2 )); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1"><i class="fa fa-at"></i></span>
+                              <?php echo $form->textField($model,'correo_admin', array('class'=>'form-control', 'tabindex'=>5, 'placeholder'=>'@correo','id'=>'seis')); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1"><i class="fa fa-phone"></i></span>
+                              <?php echo $form->textField($model,'telefono_admin', array('class'=>'form-control', 'tabindex'=>5, 'placeholder'=>'Repita la nueva contraseña')); ?>
+                           </div>
+                        </div><div class="col-md-10">
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1">Nombres: </span>
+                              <?php echo $form->textField($model,'nombres_admin',array('class'=>'form-control','tabindex'=>2 )); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1">Apellidos: </span>
+                              <?php echo $form->textField($model,'apellidos_admin',array('class'=>'form-control','tabindex'=>2 )); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1"><i class="fa fa-at"></i></span>
+                              <?php echo $form->textField($model,'correo_admin', array('class'=>'form-control', 'tabindex'=>5, 'placeholder'=>'@correo','id'=>'seis')); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1"><i class="fa fa-phone"></i></span>
+                              <?php echo $form->textField($model,'telefono_admin', array('class'=>'form-control', 'tabindex'=>5, 'placeholder'=>'Repita la nueva contraseña')); ?>
+                           </div>
+                        </div><div class="col-md-10">
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1">Nombres: </span>
+                              <?php echo $form->textField($model,'nombres_admin',array('class'=>'form-control','tabindex'=>2 )); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1">Apellidos: </span>
+                              <?php echo $form->textField($model,'apellidos_admin',array('class'=>'form-control','tabindex'=>2 )); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1"><i class="fa fa-at"></i></span>
+                              <?php echo $form->textField($model,'correo_admin', array('class'=>'form-control', 'tabindex'=>5, 'placeholder'=>'@correo','id'=>'seis')); ?>
+                           </div>
+                           <div class="input-group col-xs-12 col-md-6 col-lg-6" style="margin-bottom: 20px">
+                              <span class="input-group-addon" id="basic-addon1"><i class="fa fa-phone"></i></span>
+                              <?php echo $form->textField($model,'telefono_admin', array('class'=>'form-control', 'tabindex'=>5, 'placeholder'=>'Repita la nueva contraseña')); ?>
+                           </div>
                         </div>
                      </div>
                      <!-- /.box-body -->
@@ -178,3 +330,8 @@
     </div>
   </section>
 </div>
+<script>
+$("html, body").animate({
+  scrollTop: 3000
+}, 5000);
+</script>

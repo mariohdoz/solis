@@ -38,9 +38,9 @@ class SiteController extends Controller
 		Yii::app()->mailer->SMTPSecure = "ssl";
 		Yii::app()->mailer->Host = "smtp.gmail.com";
 		Yii::app()->mailer->Port = 465;
-		Yii::app()->mailer->Username = "mario.hdoz1@gmail.com";
-		Yii::app()->mailer->Password = "NiNa1234";
-		Yii::app()->mailer->From = "mario.hdoz1@gmail.com";
+		Yii::app()->mailer->Username = "correo";
+		Yii::app()->mailer->Password = "contraseña";
+		Yii::app()->mailer->From = "correo";
 		Yii::app()->mailer->FromName = "Test";
 		Yii::app()->mailer->AddAddress("user@example.com");
 		Yii::app()->mailer->Subject = "Someone sent you an email.";
@@ -143,7 +143,7 @@ class SiteController extends Controller
 			Yii::app()->mailer->Host = "smtp.gmail.com";
 			Yii::app()->mailer->Port = 465;
 			Yii::app()->mailer->Username = "Sycalama@gmail.com";
-			Yii::app()->mailer->Password = "NiNa1234";
+			Yii::app()->mailer->Password = "contrasena";
 			Yii::app()->mailer->From = "Sycalama@gmail.com";
 			Yii::app()->mailer->FromName = "Propiedades Sol y Cobre";
 			Yii::app()->mailer->AddAddress($correo);

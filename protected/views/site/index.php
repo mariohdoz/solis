@@ -374,4 +374,5 @@ $(document).ready(function() {
 			});
 		}
 	});
+
 </script>
